@@ -20,7 +20,6 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Overlay for mobile */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -28,21 +27,19 @@ export function Sidebar() {
         />
       )}
 
-      {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-[57px] md:top-[57px] bottom-0 w-64 bg-zinc-900/95 backdrop-blur-md border-r border-zinc-800 overflow-y-auto z-50 transition-transform duration-300 ${
+        className={`fixed left-0 top-[57px] md:top-[57px] bottom-0 w-64 bg-zinc-50/95 dark:bg-zinc-900/95 backdrop-blur-md border-r border-zinc-200 dark:border-zinc-800 overflow-y-auto z-50 transition-transform duration-300 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
         <div className="p-4">
-          {/* Mobile close button */}
           <div className="flex items-center justify-between mb-4 lg:hidden">
             <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
               Policies
             </h2>
             <button
               onClick={() => setSidebarOpen(false)}
-              className="p-1 rounded hover:bg-zinc-800"
+              className="p-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800"
             >
               <X className="w-4 h-4" />
             </button>
@@ -64,8 +61,8 @@ export function Sidebar() {
                   selectedPolicy === policy.id
                     ? "bg-blue-600 text-white"
                     : policy.ready
-                    ? "hover:bg-zinc-800 text-zinc-300"
-                    : "hover:bg-zinc-800/50 text-zinc-500"
+                    ? "hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
+                    : "hover:bg-zinc-100 dark:hover:bg-zinc-800/50 text-zinc-400 dark:text-zinc-500"
                 }`}
               >
                 <div className="relative">
@@ -78,18 +75,18 @@ export function Sidebar() {
                   )}
                 </div>
                 <span className="flex-1 text-left">{policy.shortName}</span>
-                {policy.ready && <ChevronRight className="w-4 h-4 text-zinc-500" />}
+                {policy.ready && <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />}
               </button>
             ))}
           </div>
 
           <div className="mt-6 p-3 rounded-xl bg-green-500/10 border border-green-500/20">
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-4 h-4 text-green-400" />
-              <span className="text-xs font-semibold text-green-400">AI Ready</span>
+              <Sparkles className="w-4 h-4 text-green-500 dark:text-green-400" />
+              <span className="text-xs font-semibold text-green-600 dark:text-green-400">AI Ready</span>
             </div>
             <p className="text-xs text-zinc-500">2 de 8 policies prontas</p>
-            <div className="mt-2 h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+            <div className="mt-2 h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
               <div className="h-full w-1/4 bg-green-500 rounded-full" />
             </div>
           </div>

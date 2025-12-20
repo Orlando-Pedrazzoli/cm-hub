@@ -3,10 +3,7 @@
 import { useState } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { 
-  Shield, ChevronDown, ChevronRight, AlertTriangle, 
-  Users, Target, Scale, BookOpen 
-} from "lucide-react";
+import { Shield, ChevronDown, ChevronRight, BookOpen } from "lucide-react";
 
 interface PolicySection {
   title: string;
@@ -147,7 +144,7 @@ export function PolicyList() {
 
       <div className="space-y-4">
         {policiesData.map((policy) => (
-          <Card key={policy.id} variant={policy.ready ? "default" : "default"}>
+          <Card key={policy.id}>
             <CardHeader
               className="cursor-pointer"
               onClick={() => setExpandedPolicy(expandedPolicy === policy.id ? null : policy.id)}
@@ -163,51 +160,49 @@ export function PolicyList() {
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-semibold">{policy.shortName}</h3>
-                      {policy.ready && (
-                        <Badge variant="success" size="sm">Ready</Badge>
-                      )}
+                      {policy.ready && <Badge variant="success" size="sm">Ready</Badge>}
                     </div>
                     <p className="text-sm text-zinc-500">{policy.name}</p>
                   </div>
                 </div>
                 {expandedPolicy === policy.id ? (
-                  <ChevronDown className="w-5 h-5 text-zinc-500" />
+                  <ChevronDown className="w-5 h-5 text-zinc-400 dark:text-zinc-500" />
                 ) : (
-                  <ChevronRight className="w-5 h-5 text-zinc-500" />
+                  <ChevronRight className="w-5 h-5 text-zinc-400 dark:text-zinc-500" />
                 )}
               </div>
             </CardHeader>
 
             {expandedPolicy === policy.id && (
               <CardContent className="pt-0">
-                <p className="text-sm text-zinc-400 mb-4 pb-4 border-b border-zinc-800">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
                   {policy.description}
                 </p>
 
                 <div className="space-y-3">
                   {policy.sections.map((section) => {
                     const key = `${policy.id}-${section.title}`;
-                    const isExpanded = expandedSections[key] !== false; // Default open
+                    const isExpanded = expandedSections[key] !== false;
 
                     return (
-                      <div key={section.title} className="rounded-lg bg-zinc-800/50">
+                      <div key={section.title} className="rounded-lg bg-zinc-50 dark:bg-zinc-800/50">
                         <button
                           onClick={() => toggleSection(policy.id, section.title)}
                           className="w-full flex items-center justify-between p-3 text-left"
                         >
                           <span className="text-sm font-medium">{section.title}</span>
                           {isExpanded ? (
-                            <ChevronDown className="w-4 h-4 text-zinc-500" />
+                            <ChevronDown className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
                           ) : (
-                            <ChevronRight className="w-4 h-4 text-zinc-500" />
+                            <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
                           )}
                         </button>
                         {isExpanded && (
                           <div className="px-3 pb-3">
                             <ul className="space-y-1">
                               {section.content.map((item, i) => (
-                                <li key={i} className="text-xs text-zinc-400 flex items-start gap-2">
-                                  <span className="text-zinc-600 mt-0.5">•</span>
+                                <li key={i} className="text-xs text-zinc-500 dark:text-zinc-400 flex items-start gap-2">
+                                  <span className="text-zinc-400 dark:text-zinc-600 mt-0.5">•</span>
                                   <span>{item}</span>
                                 </li>
                               ))}
@@ -223,14 +218,11 @@ export function PolicyList() {
           </Card>
         ))}
 
-        {/* Coming Soon */}
         <Card className="opacity-60">
           <CardContent className="py-8 text-center">
-            <BookOpen className="w-10 h-10 text-zinc-600 mx-auto mb-3" />
+            <BookOpen className="w-10 h-10 text-zinc-300 dark:text-zinc-600 mx-auto mb-3" />
             <h3 className="font-medium mb-1">Mais Policies em Breve</h3>
-            <p className="text-sm text-zinc-500">
-              SSIED, ASE, CSEAN, HS, DOI, FSDP
-            </p>
+            <p className="text-sm text-zinc-500">SSIED, ASE, CSEAN, HS, DOI, FSDP</p>
           </CardContent>
         </Card>
       </div>

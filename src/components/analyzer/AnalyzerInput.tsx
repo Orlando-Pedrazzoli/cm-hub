@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardHeader, CardContent } from "@/components/ui/Card";
+import { Card, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { MessageSquare, Zap, X } from "lucide-react";
 
@@ -34,7 +34,7 @@ export function AnalyzerInput({ onAnalyze, isAnalyzing }: AnalyzerInputProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <MessageSquare className="w-5 h-5 text-zinc-500" />
+            <MessageSquare className="w-5 h-5 text-zinc-400 dark:text-zinc-500" />
             <span className="font-medium">Conteúdo do JOB</span>
           </div>
           <span className="text-xs text-zinc-500">{text.length} caracteres</span>
@@ -50,11 +50,11 @@ export function AnalyzerInput({ onAnalyze, isAnalyzing }: AnalyzerInputProps) {
 Exemplo: "Vou te matar amanhã, Maria. Você vai ver só."
 
 Ctrl+Enter para analisar'
-        className="w-full h-40 px-5 py-4 bg-transparent text-zinc-100 placeholder:text-zinc-600 resize-none focus:outline-none"
+        className="w-full h-40 px-5 py-4 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 resize-none focus:outline-none"
       />
 
-      <div className="px-5 py-4 border-t border-zinc-800 flex items-center justify-between">
-        <p className="text-xs text-zinc-600">
+      <div className="px-5 py-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <p className="text-xs text-zinc-500 dark:text-zinc-600">
           Policies: V&I + B&H • Market: PT/BR
         </p>
 

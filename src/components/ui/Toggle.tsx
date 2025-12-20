@@ -11,14 +11,14 @@ export function Toggle({ enabled, onChange, label, description }: ToggleProps) {
   return (
     <label className="flex items-center justify-between cursor-pointer">
       <div>
-        {label && <span className="text-sm font-medium">{label}</span>}
+        {label && <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{label}</span>}
         {description && <p className="text-xs text-zinc-500">{description}</p>}
       </div>
       <button
         type="button"
         onClick={() => onChange(!enabled)}
         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-          enabled ? "bg-blue-600" : "bg-zinc-700"
+          enabled ? "bg-blue-600" : "bg-zinc-300 dark:bg-zinc-700"
         }`}
       >
         <span

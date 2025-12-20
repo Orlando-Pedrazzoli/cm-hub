@@ -8,14 +8,14 @@ interface CardProps {
 
 export function Card({ children, className = "", variant = "default" }: CardProps) {
   const variants = {
-    default: "border-zinc-800",
+    default: "border-zinc-200 dark:border-zinc-800",
     success: "border-green-500/50",
     warning: "border-amber-500/50",
     danger: "border-red-500/50",
   };
 
   return (
-    <div className={`bg-zinc-900 rounded-xl border ${variants[variant]} ${className}`}>
+    <div className={`bg-white dark:bg-zinc-900 rounded-xl border ${variants[variant]} ${className}`}>
       {children}
     </div>
   );
@@ -30,7 +30,7 @@ interface CardHeaderProps {
 export function CardHeader({ children, className = "", onClick }: CardHeaderProps) {
   return (
     <div 
-      className={`px-5 py-4 border-b border-zinc-800 ${onClick ? "cursor-pointer hover:bg-zinc-800/50 transition-colors" : ""} ${className}`}
+      className={`px-5 py-4 border-b border-zinc-200 dark:border-zinc-800 ${onClick ? "cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors" : ""} ${className}`}
       onClick={onClick}
     >
       {children}

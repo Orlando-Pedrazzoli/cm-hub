@@ -27,12 +27,11 @@ export function SettingsPanel() {
         <p className="text-sm text-zinc-500">Configura o CM Policy Hub</p>
       </div>
 
-      {/* Gemini API */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-              <Key className="w-5 h-5 text-blue-400" />
+              <Key className="w-5 h-5 text-blue-500 dark:text-blue-400" />
             </div>
             <div>
               <h3 className="font-medium">Gemini API</h3>
@@ -52,41 +51,44 @@ export function SettingsPanel() {
             <button
               type="button"
               onClick={() => setShowApiKey(!showApiKey)}
-              className="absolute right-3 top-9 text-zinc-500 hover:text-zinc-300"
+              className="absolute right-3 top-9 text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"
             >
               {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
           </div>
+
           <p className="text-xs text-zinc-500">
             Obtém a API Key em:{" "}
             <a
               href="https://aistudio.google.com/apikey"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:underline"
+              className="text-blue-500 dark:text-blue-400 hover:underline"
             >
               Google AI Studio
             </a>{" "}
             (gratuito)
           </p>
+
           <div className="flex items-center gap-3">
             <Button onClick={handleSaveApiKey} size="sm">
               <Save className="w-4 h-4 mr-1" />
               {saved ? "Guardado!" : "Guardar"}
             </Button>
             {settings.geminiApiKey && (
-              <span className="text-xs text-green-400">✓ API Key configurada</span>
+              <span className="text-xs text-green-600 dark:text-green-400">
+                ✓ API Key configurada
+              </span>
             )}
           </div>
         </CardContent>
       </Card>
 
-      {/* AI Settings */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-              <Brain className="w-5 h-5 text-purple-400" />
+              <Brain className="w-5 h-5 text-purple-500 dark:text-purple-400" />
             </div>
             <div>
               <h3 className="font-medium">Análise com IA</h3>
@@ -110,16 +112,17 @@ export function SettingsPanel() {
         </CardContent>
       </Card>
 
-      {/* Data Management */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-              <Trash2 className="w-5 h-5 text-red-400" />
+              <Trash2 className="w-5 h-5 text-red-500 dark:text-red-400" />
             </div>
             <div>
               <h3 className="font-medium">Gestão de Dados</h3>
-              <p className="text-xs text-zinc-500">{history.length} análises guardadas</p>
+              <p className="text-xs text-zinc-500">
+                {history.length} análises guardadas
+              </p>
             </div>
           </div>
         </CardHeader>

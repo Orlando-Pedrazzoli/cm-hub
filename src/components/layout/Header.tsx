@@ -17,13 +17,12 @@ export function Header() {
   const { activeTab, setActiveTab, sidebarOpen, setSidebarOpen, history } = useAppStore();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/80 dark:bg-zinc-900/80 light:bg-white/80 backdrop-blur-md border-b border-zinc-800 dark:border-zinc-800 light:border-zinc-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
       <div className="flex items-center justify-between px-4 py-3">
-        {/* Left: Menu + Logo */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-800 light:hover:bg-zinc-100 transition-colors lg:hidden"
+            className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors lg:hidden"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -39,7 +38,6 @@ export function Header() {
           </div>
         </div>
 
-        {/* Center: Tabs */}
         <div className="hidden md:block">
           <Tabs
             tabs={tabs}
@@ -48,24 +46,22 @@ export function Header() {
           />
         </div>
 
-        {/* Right: Theme + Status */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
           {history.length > 0 && (
-            <span className="px-2 py-1 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-100 text-zinc-400 rounded-full text-xs">
+            <span className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded-full text-xs">
               {history.length} análises
             </span>
           )}
-          <span className="hidden sm:inline-block px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">
+          <span className="hidden sm:inline-block px-2 py-1 bg-green-500/20 text-green-600 dark:text-green-400 rounded-full text-xs font-medium">
             V&I
           </span>
-          <span className="hidden sm:inline-block px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">
+          <span className="hidden sm:inline-block px-2 py-1 bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-xs font-medium">
             B&H
           </span>
         </div>
       </div>
 
-      {/* Mobile Tabs */}
       <div className="md:hidden px-4 pb-3 overflow-x-auto">
         <Tabs
           tabs={tabs}

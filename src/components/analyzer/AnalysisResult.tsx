@@ -27,7 +27,6 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
 
   return (
     <div className="space-y-4">
-      {/* Main Result Card */}
       <Card variant={result.shouldEscalate ? "danger" : hasViolation ? "warning" : "default"}>
         <CardContent>
           <div className="flex items-start justify-between mb-4">
@@ -84,7 +83,6 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
             )}
           </div>
 
-          {/* Decision Path */}
           {result.labelPath.length > 0 && (
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">
@@ -97,15 +95,15 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                       className={`px-3 py-1.5 rounded-lg text-sm font-medium ${
                         i === result.labelPath.length - 1
                           ? result.shouldEscalate
-                            ? "bg-red-500/20 text-red-400 border border-red-500/30"
-                            : "bg-amber-500/20 text-amber-400 border border-amber-500/30"
-                          : "bg-zinc-800"
+                            ? "bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/30"
+                            : "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
                       }`}
                     >
                       {part}
                     </span>
                     {i < result.labelPath.length - 1 && (
-                      <ChevronRight className="w-4 h-4 text-zinc-600" />
+                      <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-600" />
                     )}
                   </div>
                 ))}
@@ -115,7 +113,6 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
         </CardContent>
       </Card>
 
-      {/* Keywords Found */}
       {result.keywords.length > 0 && (
         <Card>
           <CardContent>
@@ -137,11 +134,9 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
         </Card>
       )}
 
-      {/* Credibility Check for V&I */}
       {result.policy === "vi" && <CredibilityCheck result={result} />}
 
-      {/* Disclaimer */}
-      <p className="text-xs text-zinc-600 text-center py-2">
+      <p className="text-xs text-zinc-500 dark:text-zinc-600 text-center py-2">
         ⚠️ Esta análise é uma sugestão automática. A decisão final é responsabilidade do analista.
       </p>
     </div>
