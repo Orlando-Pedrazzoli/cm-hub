@@ -3,9 +3,13 @@ export interface KeywordMatch {
   policy: "vi" | "bh";
   category: string;
   severity?: "high" | "mid" | "low";
+  isAmbiguous?: boolean;
 }
 
 export interface AnalysisResult {
+  id: string;
+  text: string;
+  timestamp: number;
   keywords: KeywordMatch[];
   policy: "vi" | "bh" | null;
   policyName: string | null;
@@ -20,6 +24,19 @@ export interface AnalysisResult {
     hasArmament: boolean;
     hasLocation: boolean;
   };
+  exceptions: {
+    hasSelfDefense: boolean;
+    hasRedemption: boolean;
+    hasCondemning: boolean;
+    hasHypothetical: boolean;
+    detected: string[];
+  };
+  aiAnalysis?: {
+    used: boolean;
+    reasoning: string[];
+    adjustedLabel?: string;
+    adjustedConfidence?: number;
+  };
 }
 
 export interface Policy {
@@ -28,4 +45,14 @@ export interface Policy {
   shortName: string;
   color: string;
   ready: boolean;
+  description?: string;
 }
+
+export interface AppSettings {
+  geminiApiKey: string;
+  useAI: boolean;
+  theme: "dark" | "light";
+  autoSaveHistory: boolean;
+}
+
+export type TabType = "analyzer" | "history" | "policies" | "settings";

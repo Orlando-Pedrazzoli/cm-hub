@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEventHandler } from "react";
 
 interface CardProps {
   children: ReactNode;
@@ -24,11 +24,15 @@ export function Card({ children, className = "", variant = "default" }: CardProp
 interface CardHeaderProps {
   children: ReactNode;
   className?: string;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-export function CardHeader({ children, className = "" }: CardHeaderProps) {
+export function CardHeader({ children, className = "", onClick }: CardHeaderProps) {
   return (
-    <div className={`px-5 py-4 border-b border-zinc-800 ${className}`}>
+    <div 
+      className={`px-5 py-4 border-b border-zinc-800 ${onClick ? "cursor-pointer hover:bg-zinc-800/50 transition-colors" : ""} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </div>
   );

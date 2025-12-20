@@ -83,8 +83,32 @@ function findKeywords(text: string): KeywordMatch[] {
   return found;
 }
 
-export function analyzeContent(text: string): AnalysisResult {
+function detectExceptions(text: string) {
+  const lower = text.toLowerCase();
+  
+  const hasSelfDefense = /\b(defesa|defender|proteger|atacou-me|atacou primeiro)\b/i.test(lower);
+  const hasRedemption = /\b(arrependo|desculpa|perdão|não devia|erro meu)\b/i.test(lower);
+  const hasCondemning = /\b(é errado|não se deve|condenamos|repudiamos|contra a violência)\b/i.test(lower);
+  const hasHypothetical = /\b(se eu fosse|imagine|hipótese|ficção|personagem|filme|série|jogo)\b/i.test(lower);
+
+  const detected: string[] = [];
+  if (hasSelfDefense) detected.push("Self-defense");
+  if (hasRedemption) detected.push("Redemption");
+  if (hasCondemning) detected.push("Condemning");
+  if (hasHypothetical) detected.push("Hypothetical/Fiction");
+
+  return {
+    hasSelfDefense,
+    hasRedemption,
+    hasCondemning,
+    hasHypothetical,
+    detected,
+  };
+}
+
+export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text" | "timestamp"> {
   const keywords = findKeywords(text);
+  const exceptions = detectExceptions(text);
 
   // Checks
   const hasIntent = /\bvou\s+(te\s+)?/i.test(text) || /\bvamos\s+/i.test(text);
@@ -107,7 +131,10 @@ export function analyzeContent(text: string): AnalysisResult {
   let labelPath: string[] = [];
   let shouldEscalate = false;
 
-  if (viKeywords.length > 0) {
+  // Check if exceptions apply
+  const hasException = exceptions.detected.length > 0;
+
+  if (viKeywords.length > 0 && !hasException) {
     policy = "vi";
     policyName = "Violence and Incitement";
 
@@ -125,7 +152,7 @@ export function analyzeContent(text: string): AnalysisResult {
       label = "Label > V&I > Low-severity violence";
       labelPath = ["Label", "V&I", "Low-severity violence"];
     }
-  } else if (bhKeywords.length > 0) {
+  } else if (bhKeywords.length > 0 && !hasException) {
     policy = "bh";
     policyName = "Bullying and Harassment";
     const category = bhKeywords[0].category;
@@ -133,13 +160,14 @@ export function analyzeContent(text: string): AnalysisResult {
     labelPath = ["Label", "B&H", category];
   }
 
-  // Confidence
+  // Reduce confidence if exceptions detected
   let confidence = 0;
   if (keywords.length > 0) confidence += 40;
   if (hasTarget) confidence += 20;
   if (hasIntent) confidence += 20;
   if (hasHighSeverity) confidence += 20;
-  confidence = Math.min(confidence, 100);
+  if (hasException) confidence -= 30;
+  confidence = Math.max(0, Math.min(confidence, 100));
 
   return {
     keywords,
@@ -150,5 +178,6 @@ export function analyzeContent(text: string): AnalysisResult {
     shouldEscalate,
     confidence,
     checks,
+    exceptions,
   };
 }
