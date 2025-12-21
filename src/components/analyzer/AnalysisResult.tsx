@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { AnalysisResult as AnalysisResultType } from "@/lib/types";
 import { CredibilityCheck } from "./CredibilityCheck";
-import { Target, Copy, Check, ChevronRight } from "lucide-react";
+import { Target, Copy, Check, ChevronRight, Sparkles } from "lucide-react";
 
 interface AnalysisResultProps {
   result: AnalysisResultType;
@@ -61,6 +61,12 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                   >
                     {result.confidence}% confiança
                   </Badge>
+                  {result.aiAnalysis?.used && (
+                    <Badge variant="info" size="sm">
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      AI
+                    </Badge>
+                  )}
                 </div>
                 <p className="text-sm text-zinc-500">{result.policyName || "N/A"}</p>
               </div>
@@ -112,6 +118,44 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
           )}
         </CardContent>
       </Card>
+
+      {/* AI Analysis Section */}
+      {result.aiAnalysis?.used && (
+        <Card>
+          <CardContent>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-blue-500" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                  Análise Gemini AI
+                </p>
+                {result.aiAnalysis.adjustedConfidence && (
+                  <p className="text-xs text-zinc-500">
+                    Confiança AI: {result.aiAnalysis.adjustedConfidence}%
+                  </p>
+                )}
+              </div>
+            </div>
+            {result.aiAnalysis.reasoning && result.aiAnalysis.reasoning.length > 0 && (
+              <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-3">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {result.aiAnalysis.reasoning[0]}
+                </p>
+              </div>
+            )}
+            {result.aiAnalysis.adjustedLabel && (
+              <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-700">
+                <p className="text-xs text-zinc-500 mb-1">Label sugerida pela AI:</p>
+                <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
+                  {result.aiAnalysis.adjustedLabel}
+                </code>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {result.keywords.length > 0 && (
         <Card>

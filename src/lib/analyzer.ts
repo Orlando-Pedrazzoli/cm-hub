@@ -15,6 +15,7 @@ import {
   BH_NEGATIVE_PHYSICAL,
   BH_DEHUMANIZING,
 } from "@/data/bh-terms";
+import { GeminiAnalysis } from "./gemini";
 
 function normalize(text: string): string {
   return text
@@ -32,7 +33,6 @@ function hasWord(text: string, word: string): boolean {
 function findKeywords(text: string): KeywordMatch[] {
   const found: KeywordMatch[] = [];
 
-  // V&I
   VI_HIGH_SEVERITY.forEach((t) => {
     if (hasWord(text, t))
       found.push({ term: t, policy: "vi", category: "High-Severity", severity: "high" });
@@ -50,7 +50,6 @@ function findKeywords(text: string): KeywordMatch[] {
       found.push({ term: t, policy: "vi", category: "Armament" });
   });
 
-  // B&H
   BH_SEXUALIZED.forEach((t) => {
     if (hasWord(text, t))
       found.push({ term: t, policy: "bh", category: "Sexualized Harassment" });
@@ -110,7 +109,6 @@ export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text"
   const keywords = findKeywords(text);
   const exceptions = detectExceptions(text);
 
-  // Checks
   const hasIntent = /\bvou\s+(te\s+)?/i.test(text) || /\bvamos\s+/i.test(text);
   const hasTiming = /\b(amanhã|hoje|às?\s*\d|daqui\s+a|esta\s+noite)\b/i.test(text);
   const hasTarget = /\b(te|você|tu|voce)\b/i.test(text) || /[A-Z][a-záàâãéèêíïóôõöúç]{2,}/.test(text);
@@ -119,7 +117,6 @@ export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text"
 
   const checks = { hasTarget, hasIntent, hasTiming, hasArmament, hasLocation };
 
-  // Determine policy and label
   const viKeywords = keywords.filter((k) => k.policy === "vi");
   const bhKeywords = keywords.filter((k) => k.policy === "bh");
   const hasHighSeverity = keywords.some((k) => k.severity === "high");
@@ -131,7 +128,6 @@ export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text"
   let labelPath: string[] = [];
   let shouldEscalate = false;
 
-  // Check if exceptions apply
   const hasException = exceptions.detected.length > 0;
 
   if (viKeywords.length > 0 && !hasException) {
@@ -160,7 +156,6 @@ export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text"
     labelPath = ["Label", "B&H", category];
   }
 
-  // Reduce confidence if exceptions detected
   let confidence = 0;
   if (keywords.length > 0) confidence += 40;
   if (hasTarget) confidence += 20;
@@ -179,5 +174,28 @@ export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text"
     confidence,
     checks,
     exceptions,
+  };
+}
+
+export function mergeWithAIAnalysis(
+  baseAnalysis: Omit<AnalysisResult, "id" | "text" | "timestamp">,
+  aiAnalysis: GeminiAnalysis
+): Omit<AnalysisResult, "id" | "text" | "timestamp"> {
+  return {
+    ...baseAnalysis,
+    policy: aiAnalysis.policy || baseAnalysis.policy,
+    policyName: aiAnalysis.policyName || baseAnalysis.policyName,
+    shouldEscalate: aiAnalysis.shouldEscalate || baseAnalysis.shouldEscalate,
+    confidence: Math.round((baseAnalysis.confidence + aiAnalysis.confidence) / 2),
+    label: aiAnalysis.suggestedLabel || baseAnalysis.label,
+    labelPath: aiAnalysis.suggestedLabel 
+      ? aiAnalysis.suggestedLabel.split(" > ") 
+      : baseAnalysis.labelPath,
+    aiAnalysis: {
+      used: true,
+      reasoning: [aiAnalysis.reasoning],
+      adjustedLabel: aiAnalysis.suggestedLabel || undefined,
+      adjustedConfidence: aiAnalysis.confidence,
+    },
   };
 }
