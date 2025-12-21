@@ -23,8 +23,8 @@ export function Tabs({ tabs, activeTab, onChange }: TabsProps) {
           onClick={() => onChange(tab.id)}
           className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
             activeTab === tab.id
-              ? "bg-blue-600 text-white shadow-lg"
-              : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700/50"
+              ? "bg-[#a100ff] text-white shadow-lg"
+              : "text-zinc-500 dark:text-zinc-400 hover:text-[#a100ff] hover:bg-zinc-200 dark:hover:bg-zinc-700/50"
           }`}
         >
           {tab.icon}

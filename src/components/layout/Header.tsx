@@ -28,9 +28,11 @@ export function Header() {
           </button>
           
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <Shield className="w-5 h-5 text-white" />
-            </div>
+           <img 
+  src="/accenture-logo.svg" 
+  alt="Accenture" 
+  className="w-9 h-9"
+/>
             <div className="hidden sm:block">
               <h1 className="text-base font-semibold">CM Policy Hub</h1>
               <p className="text-xs text-zinc-500">Content Moderation</p>
