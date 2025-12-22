@@ -10,39 +10,39 @@ export function Sidebar() {
   // Group policies by category
   const policyGroups: { title: string; policies: PolicyConfig[] }[] = [
     {
-      title: "🛡️ Segurança Infantil",
+      title: "Child Safety",
       policies: POLICIES.filter((p) => p.id === "csean"),
     },
     {
-      title: "⚠️ Violência",
+      title: "Violence",
       policies: POLICIES.filter((p) => ["vi", "vgc", "doi"].includes(p.id)),
     },
     {
-      title: "🔞 Conteúdo Sexual",
+      title: "Sexual Content",
       policies: POLICIES.filter((p) => ["ansa", "ase", "sspx"].includes(p.id)),
     },
     {
-      title: "🎯 Assédio & Ódio",
+      title: "Harassment & Hate",
       policies: POLICIES.filter((p) => ["bh", "hc"].includes(p.id)),
     },
     {
-      title: "💜 Saúde Mental",
+      title: "Mental Health",
       policies: POLICIES.filter((p) => ["ssied", "cis"].includes(p.id)),
     },
     {
-      title: "⛓️ Exploração & Crime",
+      title: "Exploitation & Crime",
       policies: POLICIES.filter((p) => ["he", "chpc"].includes(p.id)),
     },
     {
-      title: "🎭 Fraude & Segurança",
+      title: "Fraud & Security",
       policies: POLICIES.filter((p) => ["fsdp", "cyber", "pv"].includes(p.id)),
     },
     {
-      title: "💊 Bens Regulamentados",
+      title: "Regulated Goods",
       policies: POLICIES.filter((p) => ["dp", "ta", "wae", "ogg"].includes(p.id)),
     },
     {
-      title: "📦 Outros",
+      title: "Other",
       policies: POLICIES.filter((p) =>
         ["hw", "spam", "rp", "bcp", "bcr", "psl", "orgs"].includes(p.id)
       ),
@@ -60,7 +60,7 @@ export function Sidebar() {
       )}
 
       <aside
-        className={`fixed left-0 top-[57px] md:top-[57px] bottom-0 w-64 bg-zinc-50/95 dark:bg-zinc-900/95 backdrop-blur-md border-r border-zinc-200 dark:border-zinc-800 overflow-y-auto z-50 transition-transform duration-300 ${
+        className={`fixed left-0 top-[57px] md:top-[57px] bottom-0 w-72 bg-zinc-50/95 dark:bg-zinc-900/95 backdrop-blur-md border-r border-zinc-200 dark:border-zinc-800 overflow-y-auto z-50 transition-transform duration-300 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -114,19 +114,18 @@ export function Sidebar() {
                         )}
                       </div>
 
-                      {/* Policy info */}
+                      {/* Policy name - full name instead of shortName */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-base">{policy.icon}</span>
-                          <span className="font-medium truncate">{policy.shortName}</span>
-                        </div>
+                        <span className="font-medium text-xs leading-tight block">
+                          {policy.name}
+                        </span>
                       </div>
 
-                      {/* Status badge */}
+                      {/* Status icon */}
                       {policy.ready ? (
-                        <Check className="w-3.5 h-3.5 text-green-500" />
+                        <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
                       ) : (
-                        <Clock className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-600" />
+                        <Clock className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-600 flex-shrink-0" />
                       )}
                     </div>
                   ))}
@@ -140,11 +139,11 @@ export function Sidebar() {
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="w-4 h-4 text-green-500 dark:text-green-400" />
               <span className="text-sm font-semibold text-green-600 dark:text-green-400">
-                Policies Prontas
+                Ready Policies
               </span>
             </div>
             <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-2">
-              {POLICY_STATS.ready} de {POLICY_STATS.total} policies prontas para análise
+              {POLICY_STATS.ready} of {POLICY_STATS.total} policies ready for analysis
             </p>
             <div className="h-2 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
               <div
@@ -152,12 +151,12 @@ export function Sidebar() {
                 style={{ width: `${POLICY_STATS.readyPercentage}%` }}
               />
             </div>
-            <p className="text-xs text-zinc-500 mt-1.5">{POLICY_STATS.readyPercentage}% completo</p>
+            <p className="text-xs text-zinc-500 mt-1.5">{POLICY_STATS.readyPercentage}% complete</p>
           </div>
 
           {/* Ready policies list */}
           <div className="mt-4 p-3 rounded-lg bg-zinc-100 dark:bg-zinc-800/50">
-            <p className="text-xs font-semibold text-zinc-500 mb-2">✅ Prontas para Análise:</p>
+            <p className="text-xs font-semibold text-zinc-500 mb-2">Ready for Analysis:</p>
             <div className="flex flex-wrap gap-1">
               {POLICIES.filter((p) => p.ready).map((p) => (
                 <span

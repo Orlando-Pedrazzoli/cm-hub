@@ -847,17 +847,47 @@ export function mergeWithAIAnalysis(
     (baseAnalysis.confidence * 0.4) + (aiAnalysis.confidence * 0.6)
   );
 
+  // CRITICAL: If either local OR AI says escalate, the result MUST be escalate
+  const shouldEscalate = aiAnalysis.shouldEscalate || baseAnalysis.shouldEscalate;
+  
+  // If we're escalating, action must be "escalate" regardless of AI suggestion
+  let finalAction = aiAnalysis.suggestedAction || baseAnalysis.action;
+  let finalLabel = aiAnalysis.suggestedLabel || baseAnalysis.label;
+  let finalLabelPath = aiAnalysis.suggestedLabel
+    ? aiAnalysis.suggestedLabel.split(" > ")
+    : baseAnalysis.labelPath;
+
+  // Override if local analysis detected escalation but AI didn't
+  if (baseAnalysis.shouldEscalate && !aiAnalysis.shouldEscalate) {
+    finalAction = "escalate";
+    finalLabel = baseAnalysis.label; // Use local label which should have ESCALATE
+    finalLabelPath = baseAnalysis.labelPath;
+  }
+
+  // Ensure consistency: if shouldEscalate is true, action must be escalate
+  if (shouldEscalate) {
+    finalAction = "escalate";
+    if (!finalLabel?.startsWith("ESCALATE")) {
+      // Convert label to escalate format
+      const policy = aiAnalysis.policy || baseAnalysis.primaryPolicy || "V&I";
+      const category = aiAnalysis.category || "Credible Threat";
+      finalLabel = `ESCALATE > ${policy.toUpperCase()} > ${category}`;
+      finalLabelPath = ["ESCALATE", policy.toUpperCase(), category];
+    }
+  }
+
   return {
     ...baseAnalysis,
     primaryPolicy: aiAnalysis.policy || baseAnalysis.primaryPolicy,
     primaryPolicyName: aiAnalysis.policyName || baseAnalysis.primaryPolicyName,
-    action: aiAnalysis.suggestedAction || baseAnalysis.action,
-    shouldEscalate: aiAnalysis.shouldEscalate || baseAnalysis.shouldEscalate,
+    action: finalAction,
+    shouldEscalate,
+    escalationReason: shouldEscalate 
+      ? (baseAnalysis.escalationReason || aiAnalysis.reasoning || "Credible threat detected")
+      : undefined,
     confidence: mergedConfidence,
-    label: aiAnalysis.suggestedLabel || baseAnalysis.label,
-    labelPath: aiAnalysis.suggestedLabel
-      ? aiAnalysis.suggestedLabel.split(" > ")
-      : baseAnalysis.labelPath,
+    label: finalLabel,
+    labelPath: finalLabelPath,
     confidenceBreakdown: {
       ...baseAnalysis.confidenceBreakdown,
       aiAdjustment: aiAnalysis.confidence - baseAnalysis.confidence,

@@ -73,10 +73,19 @@ ESCALATE (requer ação imediata) quando:
 - Qualquer sexualização de crianças
 
 ### V&I - ESCALAR quando TODOS presentes:
-- Target identificável (pessoa, grupo, local)
-- Intent declarada ("vou", "vamos", "gonna")
-- Method especificado (como vai acontecer)
-- MAIS pelo menos 1 de: Timing, Armament, Location
+- Target identificável (pessoa: "te", "você", nome; grupo; local)
+- Intent declarada ("vou", "vamos", "gonna", "I will")
+- Method HIGH-SEVERITY (matar, assassinar, esfaquear, atirar, etc.)
+- MAIS pelo menos 1 de: Timing ("amanhã", "hoje"), Armament ("com faca"), Location ("na tua casa")
+
+EXEMPLOS V&I - ESCALATE:
+- "Vou te matar amanhã" → Target(te) + Intent(vou) + Method(matar) + Timing(amanhã) = ESCALATE
+- "Vou te matar com uma faca" → Target + Intent + Method + Armament = ESCALATE
+- "Vou te matar na escola" → Target + Intent + Method + Location = ESCALATE
+
+EXEMPLOS V&I - LABEL (não escalate):
+- "Vou te matar" → Falta Timing/Armament/Location = LABEL (não escalate)
+- "Quero que morras" → Aspirational, não Intent = LABEL
 
 ### ASE - ESCALAR quando:
 - Sextortion ativa
@@ -113,10 +122,11 @@ ESCALATE (requer ação imediata) quando:
 - Sextortion inclui ameaças com conteúdo real OU gerado por IA
 
 ### V&I - Violência:
-- Distinguir entre ameaça credível vs. expressão de frustração
-- "Vou te matar" sem contexto ≠ ameaça credível automaticamente
-- Verificar: target específico? timing? método? armamento? local?
-- Incitamento à violência contra grupos = sempre violar
+- HIGH-SEVERITY: matar, assassinar, esfaquear, decapitar, esquartejar, atirar, enforcar
+- MID-SEVERITY: bater, espancar, agredir, partir a cara
+- "matar" É o method - não precisa de mais especificação
+- Fórmula ESCALATE: Target + Intent + Method(high) + (Timing OU Armament OU Location)
+- Se faltar Timing/Armament/Location = LABEL, não escalate
 
 ### B&H - Bullying:
 - 4 tiers de proteção: Public Figure, LSPF, Private Adult, Private Minor
@@ -149,7 +159,7 @@ ${text}
 """
 
 ## FORMATO DE RESPOSTA
-Responda APENAS com um objeto JSON válido, sem markdown, sem backticks:
+Responda APENAS com JSON puro. NÃO use markdown, NÃO use backticks (\`\`\`).
 
 {
   "hasViolation": boolean,
@@ -160,20 +170,19 @@ Responda APENAS com um objeto JSON válido, sem markdown, sem backticks:
   "severity": "critical" | "high" | "mid" | "low" | null,
   "shouldEscalate": boolean,
   "confidence": number (0-100),
-  "reasoning": string (explicação breve em português),
-  "suggestedLabel": string | null (formato: "ESCALATE > Policy > Category" ou "LABEL > Policy > Category"),
-  "suggestedAction": "escalate" | "label" | "no_action" | "mute",
-  "exceptionsDetected": string[] (lista de exceções encontradas),
-  "ambiguityNotes": string | null (notas sobre ambiguidade se houver)
+  "reasoning": string (máximo 100 palavras),
+  "suggestedLabel": string | null,
+  "suggestedAction": "escalate" | "label" | "no_action",
+  "exceptionsDetected": [],
+  "ambiguityNotes": null
 }
 
-REGRAS IMPORTANTES:
-1. Se não houver violação clara, retorne hasViolation: false e action: "no_action"
-2. Considere SEMPRE o contexto - uma palavra violenta pode não ser violação
-3. CSEAN tem SEMPRE prioridade sobre outras violações
-4. Seja conservador com escalações - só escale quando os critérios forem claramente cumpridos
-5. Se houver ambiguidade, indique nas notas e reduza confidence
-6. reasoning deve explicar a decisão de forma clara e concisa`;
+REGRAS:
+- Se não houver violação: hasViolation=false, action="no_action"
+- CSEAN tem SEMPRE prioridade
+- reasoning: máximo 2 frases curtas
+- exceptionsDetected: array vazio se nenhuma
+- Responda SOMENTE o JSON, nada mais`;
 
   return prompt;
 }
@@ -226,14 +235,54 @@ export async function POST(request: NextRequest) {
       contents: prompt,
       config: {
         temperature: 0.1, // Low temperature for consistent analysis
-        maxOutputTokens: 1024,
+        maxOutputTokens: 4096, // Increased for complete JSON responses
       },
     });
 
-    const responseText = response.text;
+    let responseText = response.text || "";
 
-    // Parse JSON response
-    const jsonMatch = responseText?.match(/\{[\s\S]*\}/);
+    // Remove markdown code blocks if present
+    responseText = responseText
+      .replace(/^```json\s*/i, '')
+      .replace(/^```\s*/i, '')
+      .replace(/\s*```$/i, '')
+      .trim();
+
+    // Parse JSON response - handle potential truncation
+    let jsonMatch = responseText.match(/\{[\s\S]*\}/);
+    
+    // If JSON seems truncated, try to fix common issues
+    if (jsonMatch) {
+      let jsonStr = jsonMatch[0];
+      
+      // Check if JSON is complete (ends with })
+      const openBraces = (jsonStr.match(/\{/g) || []).length;
+      const closeBraces = (jsonStr.match(/\}/g) || []).length;
+      
+      if (openBraces > closeBraces) {
+        // JSON is truncated, try to complete it
+        console.warn("Truncated JSON detected, attempting to fix...");
+        
+        // Remove incomplete array at the end
+        jsonStr = jsonStr.replace(/,\s*\[[^\]]*$/, ', []');
+        // Remove incomplete key-value
+        jsonStr = jsonStr.replace(/,\s*"[^"]*"?\s*:?\s*"?[^"]*$/, '');
+        // Fix incomplete string value
+        jsonStr = jsonStr.replace(/:\s*"[^"]*$/, ': ""');
+        // Fix missing value after colon
+        jsonStr = jsonStr.replace(/:\s*$/, ': null');
+        
+        // Add missing closing braces
+        const newOpenBraces = (jsonStr.match(/\{/g) || []).length;
+        const newCloseBraces = (jsonStr.match(/\}/g) || []).length;
+        for (let i = 0; i < newOpenBraces - newCloseBraces; i++) {
+          jsonStr += '}';
+        }
+      }
+      
+      jsonMatch[0] = jsonStr;
+    }
+    
     if (!jsonMatch) {
       console.error("Invalid Gemini response:", responseText);
       return NextResponse.json(
