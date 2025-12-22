@@ -55,25 +55,25 @@ export function HistoryList() {
         {history.map((item) => (
           <Card
             key={item.id}
-            variant={item.shouldEscalate ? "danger" : item.policy ? "warning" : "default"}
+            variant={item.result.shouldEscalate ? "danger" : item.result.primaryPolicy ? "warning" : "default"}
             className="cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
           >
             <CardContent className="py-3">
               <div className="flex items-start gap-4">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                  item.shouldEscalate
+                  item.result.shouldEscalate
                     ? "bg-red-500/20"
-                    : item.policy === "vi"
+                    : item.result.primaryPolicy === "vi"
                     ? "bg-red-500/10"
-                    : item.policy === "bh"
+                    : item.result.primaryPolicy === "bh"
                     ? "bg-purple-500/10"
                     : "bg-zinc-100 dark:bg-zinc-800"
                 }`}>
-                  {item.shouldEscalate ? (
+                  {item.result.shouldEscalate ? (
                     <AlertTriangle className="w-5 h-5 text-red-500 dark:text-red-400" />
                   ) : (
                     <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">
-                      {item.policy?.toUpperCase() || "—"}
+                      {item.result.primaryPolicy?.toUpperCase() || "—"}
                     </span>
                   )}
                 </div>
@@ -82,19 +82,19 @@ export function HistoryList() {
                   <div className="flex items-center gap-2 mb-1">
                     <Badge
                       variant={
-                        item.shouldEscalate
+                        item.result.shouldEscalate
                           ? "danger"
-                          : item.policy === "vi"
+                          : item.result.primaryPolicy === "vi"
                           ? "danger"
-                          : item.policy === "bh"
+                          : item.result.primaryPolicy === "bh"
                           ? "purple"
                           : "default"
                       }
                       size="sm"
                     >
-                      {item.shouldEscalate ? "ESCALATE" : item.policyName || "Sem Violação"}
+                      {item.result.shouldEscalate ? "ESCALATE" : item.result.primaryPolicyName || "Sem Violação"}
                     </Badge>
-                    <span className="text-xs text-zinc-500">{item.confidence}%</span>
+                    <span className="text-xs text-zinc-500">{item.result.confidence}%</span>
                   </div>
                   <p className="text-sm text-zinc-700 dark:text-zinc-300 truncate">{truncateText(item.text)}</p>
                   <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">{formatDate(item.timestamp)}</p>
@@ -104,7 +104,7 @@ export function HistoryList() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      setCurrentResult(item);
+                      setCurrentResult(item.result);
                       setActiveTab("analyzer");
                     }}
                     className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg transition-colors"

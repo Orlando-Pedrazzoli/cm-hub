@@ -27,6 +27,7 @@ interface AppState {
   currentText: string;
   setCurrentText: (text: string) => void;
   currentResult: AnalysisResult | null;
+  setCurrentResult: (result: AnalysisResult | null) => void;
   isAnalyzing: boolean;
   analysisError: string | null;
   
@@ -104,6 +105,7 @@ export const useAppStore = create<AppState>()(
       currentText: "",
       setCurrentText: (text) => set({ currentText: text }),
       currentResult: null,
+      setCurrentResult: (result) => set({ currentResult: result, currentText: result?.text || "" }),
       isAnalyzing: false,
       analysisError: null,
 
