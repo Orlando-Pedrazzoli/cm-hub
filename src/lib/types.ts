@@ -242,7 +242,7 @@ export interface PolicyException {
   name: string;
   description: string;
   appliesTo: string[];
-  examples?: string[];  // OPTIONAL - some policies have examples
+  examples?: string[];
 }
 
 // Variation Rules interface (for PSL, etc.)
@@ -256,7 +256,7 @@ export interface PolicySubcategory {
   id: string;
   name: string;
   description?: string;
-  action?: ActionType;  // OPTIONAL - can inherit from parent category
+  action?: ActionType;
   examples?: string[];
   conditions?: string[];
 }
@@ -282,7 +282,106 @@ export interface LabelHierarchyItem {
   conditions?: string[];
 }
 
-// Policy Definition with all properties
+// ============================================
+// POLICY-SPECIFIC TYPES
+// ============================================
+
+// CHPC - Outing Risk Groups
+export interface OutingRiskGroup {
+  group: string;
+  countries: string[];
+  terms: string[];
+}
+
+// HC - Protected Characteristic
+export interface ProtectedCharacteristic {
+  id: string;
+  name: string;
+  description: string;
+}
+
+// HC - Harmful Stereotype
+export interface HarmfulStereotype {
+  name: string;
+  criteria: string[];
+  exception?: string;
+}
+
+// HC - Proxy
+export interface ProxyDefinition {
+  term: string;
+  proxy: string;
+  context: string;
+}
+
+// HC - Subsets
+export interface SubsetDefinition {
+  description: string;
+  examples: string[];
+}
+
+export interface HCSubsets {
+  fullyProtected: SubsetDefinition;
+  quasiProtected: SubsetDefinition;
+  otherCriminal: SubsetDefinition;
+  nonProtected: SubsetDefinition;
+}
+
+// HC - Proxies
+export interface HCProxies {
+  description: string;
+  examples: ProxyDefinition[];
+}
+
+// SSIED - Escalation Criteria
+export interface EscalationRequirement {
+  name: string;
+  description: string;
+  examples: string[];
+}
+
+export interface SSIEDEscalationCriteria {
+  name: string;
+  description: string;
+  requirements: {
+    allRequired: EscalationRequirement[];
+  };
+  action: string;
+}
+
+// SSIED - Viral Event
+export interface ViralEvent {
+  name: string;
+  status: string;
+  type: string;
+}
+
+// SSIED - ED Signals
+export interface EDSignals {
+  promotional: string[];
+  contextual: string[];
+  benign: string[];
+}
+
+// SPAM - Monetary Value
+export interface MonetaryValueDefinition {
+  hasMoney: string[];
+  noMoney: string[];
+}
+
+// FSDP - Secondary Indicators
+export interface FSDPSecondaryIndicators {
+  general: string[];
+  loan: string[];
+  gambling: string[];
+  investment: string[];
+  romance: string[];
+  job: string[];
+}
+
+// ============================================
+// POLICY DEFINITION WITH ALL PROPERTIES
+// ============================================
 export interface PolicyDefinition {
   id: PolicyId;
   name: string;
@@ -312,6 +411,60 @@ export interface PolicyDefinition {
   
   // Keywords (loaded separately for performance)
   keywordsLoaded?: boolean;
+
+  // ============================================
+  // CHPC - Coordinating Harm and Promoting Crime
+  // ============================================
+  outingRiskGroups?: OutingRiskGroup[];
+  highRiskChallenges?: string[];
+  midRiskStunts?: string[];
+  communicableDiseases?: string[];
+
+  // ============================================
+  // CYBER - Cybersecurity
+  // ============================================
+  sensitiveUserInfo?: string[];
+  legitimateMetaDomains?: string[];
+  securityQuestions?: string[];
+  dangerousFileExtensions?: string[];
+
+  // ============================================
+  // FSDP - Fraud, Scam, and Deceptive Practices
+  // ============================================
+  solicitationSignals?: string[];
+  secondaryIndicators?: FSDPSecondaryIndicators | Record<string, string[]>;
+  cardingKeywords?: string[];
+  unauthorizedStreamingBrands?: string[];
+  jailbrokenDeviceTerms?: string[];
+  lifeThreatening?: string[];
+  nonLifeThreatening?: string[];
+
+  // ============================================
+  // HC - Hateful Conduct
+  // ============================================
+  protectedCharacteristics?: ProtectedCharacteristic[];
+  quasiProtectedCharacteristics?: ProtectedCharacteristic[];
+  subsets?: HCSubsets;
+  harmfulStereotypes?: HarmfulStereotype[];
+  proxies?: HCProxies;
+
+  // ============================================
+  // SPAM - Spam
+  // ============================================
+  sitePrivileges?: string[];
+  fakeFunctionalities?: string[];
+  realFunctionalities?: Record<string, string[]>;
+  monetaryValue?: MonetaryValueDefinition;
+
+  // ============================================
+  // SSIED - Suicide, Self-Injury, Eating Disorders
+  // ============================================
+  escalationCriteria?: SSIEDEscalationCriteria;
+  viralEvents?: ViralEvent[];
+  edSignals?: EDSignals;
+  bodyPartsForIdealisation?: string[];
+  extremeWeightLossCriteria?: string[];
+  restrictiveDietingCriteria?: string[];
 }
 
 // ============================================

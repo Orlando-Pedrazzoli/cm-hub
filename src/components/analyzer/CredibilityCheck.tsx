@@ -10,13 +10,16 @@ interface CredibilityCheckProps {
 
 export function CredibilityCheck({ result }: CredibilityCheckProps) {
   const { checks, shouldEscalate } = result;
+  
+  // Aceder aos checks de VI (Violence and Incitement)
+  const viChecks = checks.vi;
 
   const items = [
-    { label: "Target", value: checks.hasTarget },
-    { label: "Statement of Intent", value: checks.hasIntent },
-    { label: "Timing", value: checks.hasTiming },
-    { label: "Armament", value: checks.hasArmament },
-    { label: "Location", value: checks.hasLocation },
+    { label: "Target", value: viChecks?.hasTarget ?? false },
+    { label: "Statement of Intent", value: viChecks?.hasIntent ?? false },
+    { label: "Timing", value: viChecks?.hasTiming ?? false },
+    { label: "Armament", value: viChecks?.hasArmament ?? false },
+    { label: "Location", value: viChecks?.hasLocation ?? false },
   ];
 
   return (
