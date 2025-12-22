@@ -11,6 +11,14 @@ import { ASE_POLICY } from "./ase-policy";
 import { SSPX_POLICY } from "./sspx-policy";
 import { BH_POLICY } from "./bh-policy";
 import { CSEAN_POLICY } from "./csean-policy";
+import { CHPC_POLICY_CONTENT } from "./chpc-policy";
+import { CYBER_POLICY_CONTENT } from "./cyber-policy";
+import { SSIED_POLICY_CONTENT } from "./ssied-policy";
+import { HC_POLICY_CONTENT } from "./hc-policy";
+import { SPAM_POLICY_CONTENT } from "./spam-policy";
+import { FSDP_POLICY_CONTENT } from "./fsdp-policy";
+import { PSL_POLICY_CONTENT } from "./psl-policy";
+import { HE_POLICY_CONTENT } from "./he-policy";
 
 // ============================================
 // POLICY DEFINITIONS
@@ -142,12 +150,13 @@ export const POLICIES: PolicyConfig[] = [
     id: "hc",
     name: "Hateful Conduct",
     shortName: "HC",
-    description: "Conduta de ódio baseada em características protegidas (raça, etnia, religião, orientação sexual, etc.).",
+    description: "Conduta de ódio baseada em características protegidas (PCs). Sistema de 2 tiers: T1 (desumanização, estereótipos) e T2 (insultos, exclusão). Inclui slurs e subsets.",
     color: "#c2410c",
     bgColor: "#fff7ed",
     icon: "🚫",
-    ready: false,
+    ready: true,
     priority: 7,
+    content: HC_POLICY_CONTENT,
   },
 
   // ============================================
@@ -157,23 +166,25 @@ export const POLICIES: PolicyConfig[] = [
     id: "ssied",
     name: "Suicide, Self-Injury, and Eating Disorders",
     shortName: "SSIED",
-    description: "Suicídio, auto-lesão e distúrbios alimentares. Promoção, glorificação, instruções.",
+    description: "Suicídio, auto-lesão e distúrbios alimentares. Inclui CIS (escalação), promoção, admissão, conteúdo gráfico, extreme weight loss e restrictive dieting.",
     color: "#7c3aed",
     bgColor: "#f5f3ff",
     icon: "💜",
-    ready: false,
+    ready: true,
     priority: 8,
+    content: SSIED_POLICY_CONTENT,
   },
   {
     id: "cis",
     name: "Credible Intent of Suicide",
     shortName: "CIS",
-    description: "Intenção credível de suicídio. Requer escalação imediata.",
+    description: "Intenção credível de suicídio. Parte do SSIED - requer escalação imediata quando: Intent + Capability + Imminence (<24h).",
     color: "#6d28d9",
     bgColor: "#f5f3ff",
     icon: "🆘",
-    ready: false,
+    ready: true,
     priority: 9,
+    content: SSIED_POLICY_CONTENT, // CIS is part of SSIED
   },
 
   // ============================================
@@ -183,23 +194,25 @@ export const POLICIES: PolicyConfig[] = [
     id: "he",
     name: "Human Exploitation",
     shortName: "HE",
-    description: "Tráfico humano, exploração laboral, tráfico de órgãos, casamento forçado.",
-    color: "#be123c",
-    bgColor: "#fff1f2",
+    description: "Tráfico humano (sexual, laboral, órgãos), contrabando humano, casamento forçado, crianças soldado. Removemos conteúdo que facilita ou coordena a exploração de humanos.",
+    color: "#7c3aed",
+    bgColor: "#f5f3ff",
     icon: "⛓️",
-    ready: false,
+    ready: true,
     priority: 12,
+    content: HE_POLICY_CONTENT,
   },
   {
     id: "chpc",
     name: "Coordinating Harm and Promoting Crime",
     shortName: "CHPC",
-    description: "Coordenação de danos e promoção de crime. Organização de atividades ilegais.",
-    color: "#9f1239",
+    description: "Coordenação de danos e promoção de crime. Inclui danos contra animais, propriedade, pessoas, interferência eleitoral e viral challenges.",
+    color: "#bf360c",
     bgColor: "#fff1f2",
     icon: "🔗",
-    ready: false,
+    ready: true,
     priority: 13,
+    content: CHPC_POLICY_CONTENT,
   },
 
   // ============================================
@@ -209,23 +222,25 @@ export const POLICIES: PolicyConfig[] = [
     id: "fsdp",
     name: "Fraud, Scam, and Deceptive Practices",
     shortName: "FSDP",
-    description: "Fraude, scams, práticas enganosas. Phishing, esquemas financeiros, falsificação.",
-    color: "#0891b2",
-    bgColor: "#ecfeff",
+    description: "Fraude, scams, práticas enganosas. Documentos falsos, carding, money muling, scams de empréstimo, investimento, romance, emprego, saúde enganosa.",
+    color: "#dc2626",
+    bgColor: "#fef2f2",
     icon: "🎭",
-    ready: false,
+    ready: true,
     priority: 14,
+    content: FSDP_POLICY_CONTENT,
   },
   {
     id: "cyber",
     name: "Cybersecurity",
     shortName: "Cyber",
-    description: "Ameaças de cibersegurança. Hacking, malware, exploits, doxxing.",
+    description: "Segurança cibernética. Phishing, hacking, malware, spyware, social engineering, partilha de credenciais.",
     color: "#0e7490",
     bgColor: "#ecfeff",
     icon: "🔐",
-    ready: false,
+    ready: true,
     priority: 15,
+    content: CYBER_POLICY_CONTENT,
   },
   {
     id: "pv",
@@ -320,12 +335,13 @@ export const POLICIES: PolicyConfig[] = [
     id: "spam",
     name: "Spam",
     shortName: "Spam",
-    description: "Spam e comportamento inautêntico. Conteúdo repetitivo, bots, manipulação.",
-    color: "#64748b",
-    bgColor: "#f8fafc",
+    description: "Spam e links enganosos. Compra/venda de engagement, engagement gating, links deceptivos, funcionalidades falsas, domain impersonation.",
+    color: "#f59e0b",
+    bgColor: "#fffbeb",
     icon: "📧",
-    ready: false,
+    ready: true,
     priority: 23,
+    content: SPAM_POLICY_CONTENT,
   },
 
   // ============================================
@@ -361,12 +377,13 @@ export const POLICIES: PolicyConfig[] = [
     id: "psl",
     name: "Profane and Sexualized Language",
     shortName: "PSL",
-    description: "Linguagem profana e sexualizada fora de contexto de exploração.",
-    color: "#ec4899",
-    bgColor: "#fdf2f8",
+    description: "Linguagem sexualmente vulgar ou profana. Frases ou palavras anatomicamente ou sexualmente derivadas. Protegemos adolescentes de exposição a tal linguagem, permitindo uso em contextos artísticos e benignos.",
+    color: "#9333ea",
+    bgColor: "#faf5ff",
     icon: "🤬",
-    ready: false,
+    ready: true,
     priority: 26,
+    content: PSL_POLICY_CONTENT,
   },
   {
     id: "orgs",
@@ -433,6 +450,8 @@ export { ASE_POLICY } from "./ase-policy";
 export { SSPX_POLICY } from "./sspx-policy";
 export { BH_POLICY } from "./bh-policy";
 export { CSEAN_POLICY } from "./csean-policy";
+export { PSL_POLICY, PSL_MARKETIZED_LISTS } from "./psl-policy";
+export { HE_POLICY, HE_LABOR_INDICATORS, HE_SMUGGLING_INDICATORS } from "./he-policy";
 
 // ============================================
 // POLICY STATISTICS

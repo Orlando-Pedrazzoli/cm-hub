@@ -36,8 +36,8 @@ export type PolicyId =
 // Severity levels
 export type Severity = "critical" | "high" | "mid" | "low" | "info";
 
-// Action types
-export type ActionType = "escalate" | "label" | "no_action" | "mute";
+// Action types - includes "information" for PSL
+export type ActionType = "escalate" | "label" | "no_action" | "mute" | "information";
 
 // ============================================
 // KEYWORD MATCH
@@ -235,6 +235,54 @@ export interface GeminiAnalysis {
 // ============================================
 // POLICY DEFINITION
 // ============================================
+
+// Policy Exception interface - examples is OPTIONAL
+export interface PolicyException {
+  id: string;
+  name: string;
+  description: string;
+  appliesTo: string[];
+  examples?: string[];  // OPTIONAL - some policies have examples
+}
+
+// Variation Rules interface (for PSL, etc.)
+export interface VariationRules {
+  qualifies: string[];
+  doesNotQualify: string[];
+}
+
+// Policy Subcategory interface - action is OPTIONAL (inherits from parent category)
+export interface PolicySubcategory {
+  id: string;
+  name: string;
+  description?: string;
+  action?: ActionType;  // OPTIONAL - can inherit from parent category
+  examples?: string[];
+  conditions?: string[];
+}
+
+// Policy Category with optional subcategories
+export interface PolicyCategory {
+  id: string;
+  name: string;
+  description?: string;
+  severity: Severity;
+  requiresEscalation?: boolean;
+  requiresChecks?: string[];
+  subcategories?: PolicySubcategory[];
+}
+
+// Label Hierarchy Item
+export interface LabelHierarchyItem {
+  id: string;
+  label: string;
+  path: string[];
+  action: ActionType;
+  severity: Severity;
+  conditions?: string[];
+}
+
+// Policy Definition with all properties
 export interface PolicyDefinition {
   id: PolicyId;
   name: string;
@@ -247,29 +295,23 @@ export interface PolicyDefinition {
   // Categories within the policy
   categories: PolicyCategory[];
   
-  // Label hierarchy
-  labelHierarchy: LabelHierarchyItem[];
+  // Label hierarchy (optional for simpler policies)
+  labelHierarchy?: LabelHierarchyItem[];
+  
+  // Exceptions (No Action contexts)
+  exceptions?: PolicyException[];
+  
+  // Variation rules (for PSL, etc.)
+  variationRules?: VariationRules;
+  
+  // Glossary definitions
+  glossary?: Record<string, string>;
+  
+  // Operational guidelines
+  operationalGuidelines?: Record<string, string>;
   
   // Keywords (loaded separately for performance)
   keywordsLoaded?: boolean;
-}
-
-export interface PolicyCategory {
-  id: string;
-  name: string;
-  description?: string;
-  severity: Severity;
-  requiresEscalation?: boolean;
-  requiresChecks?: string[];
-}
-
-export interface LabelHierarchyItem {
-  id: string;
-  label: string;
-  path: string[];
-  action: ActionType;
-  severity: Severity;
-  conditions?: string[];
 }
 
 // ============================================
@@ -413,9 +455,11 @@ export const SEVERITY_COLORS: Record<Severity, string> = {
   info: "#2196f3",
 };
 
+// Includes "information" action
 export const ACTION_LABELS: Record<ActionType, string> = {
   escalate: "ESCALATE",
   label: "LABEL",
   no_action: "NO ACTION",
   mute: "MUTE",
+  information: "INFORMATION",
 };
