@@ -12,7 +12,7 @@ import {
   PolicyId,
   AnalysisHistoryItem,
 } from "./types";
-import { analyzeContent, mergeWithAIAnalysis, GeminiAnalysis } from "./analyzer";
+import { analyzeContent, mergeWithAIAnalysis, DecisionTreeResponse } from "./analyzer";
 
 // ============================================
 // STORE INTERFACE
@@ -149,7 +149,7 @@ export const useAppStore = create<AppState>()(
                 if (data.success && data.analysis) {
                   finalAnalysis = mergeWithAIAnalysis(
                     localAnalysis,
-                    data.analysis as GeminiAnalysis
+                    data.analysis as DecisionTreeResponse
                   );
                 }
               } else {

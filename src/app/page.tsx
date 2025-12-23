@@ -1,15 +1,16 @@
 "use client";
 
+import { useRef, useState, useCallback } from "react";
 import { useAppStore } from "@/lib/store";
 import { POLICIES, POLICY_STATS } from "@/data/policies";
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { AnalyzerInput } from "@/components/analyzer/AnalyzerInput";
+import { AnalyzerInput, AnalyzerInputRef } from "@/components/analyzer/AnalyzerInput";
 import { AnalysisResult } from "@/components/analyzer/AnalysisResult";
 import { HistoryList } from "@/components/history/HistoryList";
 import { PolicyList } from "@/components/policies/PolicyList";
 import { SettingsPanel } from "@/components/settings/SettingsPanel";
-import { Brain, Shield, Sparkles, Zap } from "lucide-react";
+import { Brain, Shield, Sparkles, Zap, CheckCircle, AlertTriangle } from "lucide-react";
 
 export default function Home() {
   const {
@@ -22,6 +23,9 @@ export default function Home() {
     clearResult,
   } = useAppStore();
 
+  const inputRef = useRef<AnalyzerInputRef>(null);
+  const [shouldClearInput, setShouldClearInput] = useState(false);
+
   const handleAnalyze = async (text: string) => {
     try {
       await analyze(text);
@@ -29,6 +33,17 @@ export default function Home() {
       console.error("Analysis error:", error);
     }
   };
+
+  const handleNewAnalysis = useCallback(() => {
+    // Clear the result
+    clearResult();
+    // Trigger input clear
+    setShouldClearInput(true);
+  }, [clearResult]);
+
+  const handleInputCleared = useCallback(() => {
+    setShouldClearInput(false);
+  }, []);
 
   const readyPolicies = POLICIES.filter((p) => p.ready);
 
@@ -65,27 +80,41 @@ export default function Home() {
               </div>
               <h2 className="text-2xl font-bold mb-2">Policy Analyzer</h2>
               <p className="text-zinc-500 max-w-md mx-auto">
-                Cola o texto do JOB e recebe uma análise instantânea baseada em{" "}
+                Cola o texto do JOB e recebe uma analise instantanea baseada em{" "}
                 <strong>{POLICY_STATS.ready} policies</strong> prontas
               </p>
             </div>
 
             {/* Input section */}
             <div className="mb-6">
-              <AnalyzerInput onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
+              <AnalyzerInput
+                ref={inputRef}
+                onAnalyze={handleAnalyze}
+                isAnalyzing={isAnalyzing}
+                shouldClear={shouldClearInput}
+                onCleared={handleInputCleared}
+              />
             </div>
 
             {/* Error display */}
             {analysisError && (
               <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="text-red-600 dark:text-red-400 text-sm">
-                  ⚠️ {analysisError}
-                </p>
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-red-500" />
+                  <p className="text-red-600 dark:text-red-400 text-sm">
+                    {analysisError}
+                  </p>
+                </div>
               </div>
             )}
 
             {/* Results */}
-            {currentResult && <AnalysisResult result={currentResult} />}
+            {currentResult && (
+              <AnalysisResult
+                result={currentResult}
+                onNewAnalysis={handleNewAnalysis}
+              />
+            )}
 
             {/* Empty state */}
             {!currentResult && !isAnalyzing && (
@@ -96,7 +125,7 @@ export default function Home() {
                 <h3 className="text-lg font-semibold mb-2">Pronto para Analisar</h3>
                 <p className="text-zinc-500 max-w-md mx-auto mb-6">
                   Cola o texto do JOB acima e clica em &quot;Analisar&quot; para receber
-                  uma análise detalhada com sugestão de label.
+                  uma analise detalhada com sugestao de label.
                 </p>
 
                 {/* Ready policies grid */}
@@ -107,7 +136,10 @@ export default function Home() {
                       className="flex items-center gap-2 px-3 py-2 rounded-lg"
                       style={{ backgroundColor: `${policy.color}10` }}
                     >
-                      <span className="text-lg">{policy.icon}</span>
+                      <Shield
+                        className="w-4 h-4"
+                        style={{ color: policy.color }}
+                      />
                       <div className="text-left">
                         <p
                           className="text-xs font-semibold"
@@ -125,19 +157,23 @@ export default function Home() {
 
                 {/* Features */}
                 <div className="flex flex-wrap justify-center gap-2">
-                  <span className="px-3 py-1 bg-green-500/20 text-green-600 dark:text-green-400 rounded-full text-xs">
-                    ✓ {POLICY_STATS.ready} Policies Prontas
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-500/20 text-green-600 dark:text-green-400 rounded-full text-xs">
+                    <CheckCircle className="w-3 h-3" />
+                    {POLICY_STATS.ready} Policies Prontas
                   </span>
-                  <span className="px-3 py-1 bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-xs">
-                    ✓ ~300+ Keywords PT/EN
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full text-xs">
+                    <CheckCircle className="w-3 h-3" />
+                    ~300+ Keywords PT/EN
                   </span>
                   {settings.useAI && (
-                    <span className="px-3 py-1 bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-xs">
-                      ✓ Gemini AI Enabled
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-xs">
+                      <CheckCircle className="w-3 h-3" />
+                      Gemini AI Enabled
                     </span>
                   )}
-                  <span className="px-3 py-1 bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-full text-xs">
-                    ✓ Detecção de Exceções
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-full text-xs">
+                    <CheckCircle className="w-3 h-3" />
+                    Deteccao de Excecoes
                   </span>
                 </div>
               </div>
@@ -152,8 +188,8 @@ export default function Home() {
                 <h3 className="text-lg font-semibold mb-2">A Analisar...</h3>
                 <p className="text-zinc-500 max-w-md mx-auto">
                   {settings.useAI
-                    ? "A processar com análise local + Gemini AI..."
-                    : "A processar análise local..."}
+                    ? "A processar com analise local + Gemini AI..."
+                    : "A processar analise local..."}
                 </p>
                 <div className="flex justify-center gap-2 mt-4">
                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />

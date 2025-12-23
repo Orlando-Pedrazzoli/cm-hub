@@ -6,7 +6,7 @@ import { Card, CardHeader, CardContent } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Toggle } from "@/components/ui/Toggle";
 import { Button } from "@/components/ui/Button";
-import { Key, Brain, Save, Trash2, Eye, EyeOff } from "lucide-react";
+import { Key, Brain, Save, Trash2, Eye, EyeOff, CheckCircle } from "lucide-react";
 
 export function SettingsPanel() {
   const { settings, updateSettings, clearHistory, history } = useAppStore();
@@ -23,7 +23,7 @@ export function SettingsPanel() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold mb-1">Definições</h2>
+        <h2 className="text-lg font-semibold mb-1">Definicoes</h2>
         <p className="text-sm text-zinc-500">Configura o CM Policy Hub</p>
       </div>
 
@@ -35,7 +35,7 @@ export function SettingsPanel() {
             </div>
             <div>
               <h3 className="font-medium">Gemini API</h3>
-              <p className="text-xs text-zinc-500">Análise contextual com IA</p>
+              <p className="text-xs text-zinc-500">Analise contextual com IA</p>
             </div>
           </div>
         </CardHeader>
@@ -58,7 +58,7 @@ export function SettingsPanel() {
           </div>
 
           <p className="text-xs text-zinc-500">
-            Obtém a API Key em:{" "}
+            Obtem a API Key em:{" "}
             <a
               href="https://aistudio.google.com/apikey"
               target="_blank"
@@ -76,8 +76,9 @@ export function SettingsPanel() {
               {saved ? "Guardado!" : "Guardar"}
             </Button>
             {settings.geminiApiKey && (
-              <span className="text-xs text-green-600 dark:text-green-400">
-                ✓ API Key configurada
+              <span className="inline-flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
+                <CheckCircle className="w-3 h-3" />
+                API Key configurada
               </span>
             )}
           </div>
@@ -91,8 +92,8 @@ export function SettingsPanel() {
               <Brain className="w-5 h-5 text-purple-500 dark:text-purple-400" />
             </div>
             <div>
-              <h3 className="font-medium">Análise com IA</h3>
-              <p className="text-xs text-zinc-500">Configurações de análise</p>
+              <h3 className="font-medium">Analise com IA</h3>
+              <p className="text-xs text-zinc-500">Configuracoes de analise</p>
             </div>
           </div>
         </CardHeader>
@@ -101,13 +102,13 @@ export function SettingsPanel() {
             enabled={settings.useAI}
             onChange={(enabled) => updateSettings({ useAI: enabled })}
             label="Usar Gemini AI"
-            description="Análise contextual para casos ambíguos"
+            description="Analise contextual para casos ambiguos"
           />
           <Toggle
             enabled={settings.autoSaveHistory}
             onChange={(enabled) => updateSettings({ autoSaveHistory: enabled })}
-            label="Guardar Histórico"
-            description="Guardar análises automaticamente"
+            label="Guardar Historico"
+            description="Guardar analises automaticamente"
           />
         </CardContent>
       </Card>
@@ -119,9 +120,9 @@ export function SettingsPanel() {
               <Trash2 className="w-5 h-5 text-red-500 dark:text-red-400" />
             </div>
             <div>
-              <h3 className="font-medium">Gestão de Dados</h3>
+              <h3 className="font-medium">Gestao de Dados</h3>
               <p className="text-xs text-zinc-500">
-                {history.length} análises guardadas
+                {history.length} analises guardadas
               </p>
             </div>
           </div>
@@ -134,7 +135,7 @@ export function SettingsPanel() {
             disabled={history.length === 0}
           >
             <Trash2 className="w-4 h-4 mr-1" />
-            Limpar Histórico
+            Limpar Historico
           </Button>
         </CardContent>
       </Card>

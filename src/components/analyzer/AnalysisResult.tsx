@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/Button";
 import { AnalysisResult as AnalysisResultType, PolicyId } from "@/lib/types";
 import { getPolicyById } from "@/data/policies";
 import {
-  Target,
   Copy,
   Check,
   ChevronRight,
@@ -17,46 +16,68 @@ import {
   Shield,
   ShieldAlert,
   ShieldCheck,
+  ShieldX,
   Clock,
+  RefreshCw,
+  FileText,
+  Users,
+  Skull,
+  Heart,
+  Ban,
+  Eye,
+  Lock,
+  Link,
+  Pill,
+  Wine,
+  Target,
+  Gamepad2,
+  Activity,
+  Mail,
+  Package,
   Tag,
+  MessageCircle,
+  Scale,
+  Flame,
+  Siren,
 } from "lucide-react";
 
 interface AnalysisResultProps {
   result: AnalysisResultType;
+  onNewAnalysis: () => void;
 }
 
-// Policy-specific icons
-const POLICY_ICONS: Record<PolicyId, string> = {
-  csean: "🛡️",
-  vi: "⚠️",
-  bh: "🎯",
-  ase: "⛔",
-  sspx: "💬",
-  ansa: "🔞",
-  vgc: "🩸",
-  doi: "🚨",
-  hc: "🚫",
-  ssied: "💜",
-  he: "⛓️",
-  pv: "👁️",
-  fsdp: "🎭",
-  cyber: "🔐",
-  chpc: "🔗",
-  dp: "💊",
-  ta: "🚬",
-  wae: "💣",
-  ogg: "🎰",
-  hw: "🏥",
-  spam: "📧",
-  rp: "📦",
-  bcp: "🏷️",
-  bcr: "🔖",
-  psl: "🤬",
-  orgs: "📋",
-  cis: "🆘",
+// Policy icons using Lucide (no emojis)
+const POLICY_ICONS: Record<PolicyId, React.ReactNode> = {
+  csean: <ShieldAlert className="w-5 h-5" />,
+  vi: <Flame className="w-5 h-5" />,
+  bh: <Target className="w-5 h-5" />,
+  ase: <Ban className="w-5 h-5" />,
+  sspx: <MessageCircle className="w-5 h-5" />,
+  ansa: <Eye className="w-5 h-5" />,
+  vgc: <Skull className="w-5 h-5" />,
+  doi: <Siren className="w-5 h-5" />,
+  hc: <Users className="w-5 h-5" />,
+  ssied: <Heart className="w-5 h-5" />,
+  he: <Link className="w-5 h-5" />,
+  pv: <Eye className="w-5 h-5" />,
+  fsdp: <Scale className="w-5 h-5" />,
+  cyber: <Lock className="w-5 h-5" />,
+  chpc: <Link className="w-5 h-5" />,
+  dp: <Pill className="w-5 h-5" />,
+  ta: <Wine className="w-5 h-5" />,
+  wae: <Target className="w-5 h-5" />,
+  ogg: <Gamepad2 className="w-5 h-5" />,
+  hw: <Activity className="w-5 h-5" />,
+  spam: <Mail className="w-5 h-5" />,
+  rp: <Package className="w-5 h-5" />,
+  bcp: <Tag className="w-5 h-5" />,
+  bcr: <Tag className="w-5 h-5" />,
+  psl: <MessageCircle className="w-5 h-5" />,
+  orgs: <FileText className="w-5 h-5" />,
+  cis: <Siren className="w-5 h-5" />,
 };
 
-export function AnalysisResult({ result }: AnalysisResultProps) {
+export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
   const [copied, setCopied] = useState(false);
   const [showAllKeywords, setShowAllKeywords] = useState(false);
   const [showExceptions, setShowExceptions] = useState(false);
@@ -97,21 +118,20 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
             <div className="flex items-center gap-4">
               {/* Policy Icon */}
               <div
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl ${
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center ${
                   result.shouldEscalate
-                    ? "bg-gradient-to-br from-red-500 to-orange-600"
+                    ? "bg-gradient-to-br from-red-500 to-orange-600 text-white"
                     : hasViolation
-                    ? "bg-gradient-to-br from-amber-500 to-orange-600"
-                    : "bg-gradient-to-br from-green-500 to-teal-600"
+                    ? "bg-gradient-to-br from-amber-500 to-orange-600 text-white"
+                    : "bg-gradient-to-br from-green-500 to-teal-600 text-white"
                 }`}
-                style={policy ? { backgroundColor: `${policy.color}20` } : undefined}
               >
                 {result.shouldEscalate ? (
-                  <ShieldAlert className="w-7 h-7 text-white" />
+                  <ShieldAlert className="w-7 h-7" />
                 ) : hasViolation ? (
-                  <span>{policy ? POLICY_ICONS[policy.id] : "⚠️"}</span>
+                  policy ? POLICY_ICONS[policy.id] : <ShieldX className="w-7 h-7" />
                 ) : (
-                  <ShieldCheck className="w-7 h-7 text-white" />
+                  <ShieldCheck className="w-7 h-7" />
                 )}
               </div>
 
@@ -120,15 +140,15 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                   {/* Main Status */}
                   <h2 className="text-lg font-semibold">
                     {result.shouldEscalate
-                      ? "⚠️ ESCALATE"
+                      ? "ESCALATE"
                       : hasViolation
-                      ? "Violação Detectada"
-                      : "✅ Sem Violação"}
+                      ? "Violacao Detectada"
+                      : "Sem Violacao"}
                   </h2>
 
                   {/* Confidence Badge */}
                   <Badge variant={getSeverityVariant(result.confidence)} size="sm">
-                    {result.confidence}% confiança
+                    {result.confidence}% confianca
                   </Badge>
 
                   {/* AI Badge */}
@@ -164,7 +184,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 {copied ? (
                   <>
                     <Check className="w-4 h-4 mr-1" />
-                    Copiado!
+                    Copiado
                   </>
                 ) : (
                   <>
@@ -183,7 +203,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 <AlertTriangle className="w-4 h-4 text-red-500 mt-0.5" />
                 <div>
                   <p className="text-sm font-medium text-red-600 dark:text-red-400">
-                    Razão para Escalação
+                    Razao para Escalacao
                   </p>
                   <p className="text-sm text-red-500 dark:text-red-300">
                     {result.escalationReason}
@@ -234,13 +254,14 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                   return (
                     <span
                       key={dp.policy}
-                      className="px-2 py-1 rounded-lg text-xs font-medium"
+                      className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium"
                       style={{
                         backgroundColor: p ? `${p.color}15` : undefined,
                         color: p?.color,
                       }}
                     >
-                      {POLICY_ICONS[dp.policy]} {dp.policyName} ({dp.confidence}%)
+                      {POLICY_ICONS[dp.policy]}
+                      {dp.policyName} ({dp.confidence}%)
                     </span>
                   );
                 })}
@@ -260,11 +281,11 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
               </div>
               <div>
                 <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                  Análise Gemini AI
+                  Analise Gemini AI
                 </p>
                 {result.aiAnalysis.adjustedConfidence !== undefined && (
                   <p className="text-xs text-zinc-500">
-                    Confiança AI: {result.aiAnalysis.adjustedConfidence}%
+                    Confianca AI: {result.aiAnalysis.adjustedConfidence}%
                   </p>
                 )}
               </div>
@@ -281,7 +302,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
             {result.aiAnalysis.ambiguityNotes && result.aiAnalysis.ambiguityNotes.length > 0 && (
               <div className="mt-3 p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
                 <p className="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">
-                  ⚠️ Notas de Ambiguidade
+                  Notas de Ambiguidade
                 </p>
                 <p className="text-xs text-amber-500">
                   {result.aiAnalysis.ambiguityNotes.join("; ")}
@@ -371,7 +392,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 </div>
                 <div className="text-left">
                   <p className="text-sm font-semibold text-green-600 dark:text-green-400">
-                    Exceções Detectadas ({result.exceptions.detected.length})
+                    Excecoes Detectadas ({result.exceptions.detected.length})
                   </p>
                   <p className="text-xs text-zinc-500">
                     Contextos que podem reduzir severidade
@@ -390,7 +411,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 <div className="flex flex-wrap gap-2">
                   {result.exceptions.detected.map((exc, i) => (
                     <Badge key={i} variant="success" size="sm">
-                      ✓ {exc}
+                      {exc}
                     </Badge>
                   ))}
                 </div>
@@ -423,7 +444,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 <div className="text-left">
                   <p className="text-sm font-semibold">Escalation Check</p>
                   <p className="text-xs text-zinc-500">
-                    {result.shouldEscalate ? "⚠️ ESCALATE" : "NO ESCALATION"}
+                    {result.shouldEscalate ? "ESCALATE REQUIRED" : "NO ESCALATION"}
                   </p>
                 </div>
               </div>
@@ -440,7 +461,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 {result.checks.vi && (
                   <div className="mb-4">
                     <p className="text-xs font-semibold text-zinc-500 mb-2">
-                      Violence & Incitement Checks
+                      Violence and Incitement Checks
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {[
@@ -459,13 +480,13 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                               : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
                           }`}
                         >
-                          {item.value ? "✓" : "✗"} {item.label}
+                          {item.value ? "YES" : "NO"} - {item.label}
                         </div>
                       ))}
                     </div>
                     {result.checks.vi.isCredibleThreat && (
                       <div className="mt-2 p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-600 dark:text-red-400">
-                        ⚠️ Ameaça Credível Detectada
+                        CREDIBLE THREAT DETECTED
                       </div>
                     )}
                   </div>
@@ -494,7 +515,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                               : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
                           }`}
                         >
-                          {item.value ? "⚠️" : "✓"} {item.label}
+                          {item.value ? "ALERT" : "OK"} - {item.label}
                         </div>
                       ))}
                     </div>
@@ -510,7 +531,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                 {result.checks.bh && result.primaryPolicy === "bh" && (
                   <div className="mb-4">
                     <p className="text-xs font-semibold text-zinc-500 mb-2">
-                      Bullying & Harassment Checks
+                      Bullying and Harassment Checks
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {[
@@ -531,7 +552,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
                               : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
                           }`}
                         >
-                          {item.value ? "✓" : "✗"} {item.label}
+                          {item.value ? "YES" : "NO"} - {item.label}
                         </div>
                       ))}
                     </div>
@@ -545,8 +566,8 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
 
                 {/* Formula reminder */}
                 <div className="p-3 rounded-lg bg-zinc-100 dark:bg-zinc-800/50 text-xs text-zinc-500">
-                  <strong className="text-zinc-700 dark:text-zinc-400">Fórmula V&I:</strong> Target
-                  + Intent + High-Severity + (Timing OU Armament OU Location)
+                  <strong className="text-zinc-700 dark:text-zinc-400">Formula V&I:</strong> Target
+                  + Intent + High-Severity + (Timing OR Armament OR Location)
                 </div>
               </div>
             )}
@@ -559,7 +580,7 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
         <Card>
           <CardContent>
             <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">
-              Breakdown de Confiança
+              Breakdown de Confianca
             </p>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -605,9 +626,22 @@ export function AnalysisResult({ result }: AnalysisResultProps) {
         </Card>
       )}
 
+      {/* New Analysis Button */}
+      <div className="pt-4">
+        <Button
+          onClick={onNewAnalysis}
+          variant="primary"
+          size="lg"
+          className="w-full"
+        >
+          <RefreshCw className="w-5 h-5 mr-2" />
+          Nova Analise
+        </Button>
+      </div>
+
       {/* Disclaimer */}
       <p className="text-xs text-zinc-500 dark:text-zinc-600 text-center py-2">
-        ⚠️ Esta análise é uma sugestão automática. A decisão final é responsabilidade do analista.
+        Esta analise e uma sugestao automatica. A decisao final e responsabilidade do analista.
       </p>
     </div>
   );
