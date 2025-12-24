@@ -1,0 +1,463 @@
+{
+  "id": "vi",
+  "name": "Violence and Incitement",
+  "shortName": "VI",
+  "description": "Policy preventing potential offline harm by removing language that threatens, incites, or facilitates violence. Considers context including condemnation, awareness raising, target vulnerability, and credibility of threats.",
+  "color": "#d32f2f",
+  "icon": "alert-octagon",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "protections_everyone",
+      "name": "Protections for Everyone and Places",
+      "description": "Universal protections against violence threats for all targets",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "high_severity_threats",
+          "name": "High-Severity Violence Threats",
+          "description": "Threats of likely-lethal violence against any target (except DOIs/criminals)",
+          "action": "label",
+          "examples": ["I will kill you", "shoot him", "stab her to death"]
+        },
+        {
+          "id": "mid_severity_credible",
+          "name": "Mid-Severity Violence - Credible",
+          "description": "Threats of serious injury with credibility signals against public figures or groups",
+          "action": "label",
+          "conditions": ["Requires credibility: bounty/payment OR spelled-out address OR 2+ of: location, timing, method"]
+        },
+        {
+          "id": "mid_severity_private",
+          "name": "Mid-Severity Violence - Private Targets",
+          "description": "Threats of serious injury against private individuals regardless of credibility",
+          "action": "label"
+        },
+        {
+          "id": "admissions_violence",
+          "name": "Admissions of Violence",
+          "description": "Admissions to high or mid-severity violence (written, verbal, or visual by perpetrator/associate)",
+          "action": "label",
+          "exceptions": ["redemption", "self-defense", "law enforcement/military duty", "contact sports (mid or less)"]
+        },
+        {
+          "id": "kidnapping",
+          "name": "Kidnapping Content",
+          "description": "Threats or admissions of kidnapping, or non-condemnation depictions",
+          "action": "label",
+          "exceptions": ["victim/family plea for help", "condemnation/awareness-raising"]
+        }
+      ]
+    },
+    {
+      "id": "protections_vulnerable",
+      "name": "Additional Protections for Children, Private Adults, and PC Groups",
+      "description": "Enhanced protections for vulnerable targets",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "low_severity_private",
+          "name": "Low-Severity Violence - Private Individuals",
+          "description": "Threats of minor physical harm against private individuals with name/face match",
+          "action": "label",
+          "conditions": ["Requires name AND/OR face match"]
+        },
+        {
+          "id": "low_severity_children",
+          "name": "Low-Severity Violence - Children",
+          "description": "Threats of minor physical harm against any child",
+          "action": "label"
+        },
+        {
+          "id": "low_severity_pc",
+          "name": "Low-Severity Violence - Protected Characteristics",
+          "description": "Threats of minor physical harm based on protected characteristics",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "visual_violence",
+      "name": "Visual Violence",
+      "description": "Visual threats without textual threat present",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "visual_high_digital",
+          "name": "Visual High-Severity - Digital Imagery",
+          "description": "Digitally-generated or altered imagery depicting high-severity violence",
+          "action": "label"
+        },
+        {
+          "id": "visual_high_pc",
+          "name": "Visual High-Severity - PC Targets",
+          "description": "Any visual form of high-severity violence targeting people based on protected characteristics",
+          "action": "label"
+        },
+        {
+          "id": "visual_mid_low_pc",
+          "name": "Visual Mid/Low-Severity - PC Targets",
+          "description": "Visual threats of mid or low-severity violence against PC groups",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "doi_criminal",
+      "name": "Designated DOIs and Criminal/Predator Status",
+      "description": "Special treatment for threats against designated dangerous organizations or established criminals",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "doi_intent",
+          "name": "DOI - Statements of Intent",
+          "description": "Statements of intent to commit high/mid-severity violence against DOIs",
+          "action": "label"
+        },
+        {
+          "id": "doi_credible_calls",
+          "name": "DOI - Credible Calls for Action",
+          "description": "Credible calls for mid-severity violence against DOI public figures/groups",
+          "action": "label"
+        },
+        {
+          "id": "criminal_intent",
+          "name": "Criminal/Predator - Intent or Calls",
+          "description": "Statements of intent or calls for high/mid-severity violence against established criminals",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "other_violence",
+      "name": "Other Violence",
+      "description": "Services, instructions, locations, and other violence-related content",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "services_violence",
+          "name": "Services of High-Severity Violence",
+          "description": "Asking, offering, or admitting to offering hitmen, mercenaries, assassins, FGM services",
+          "action": "label"
+        },
+        {
+          "id": "weapons_instructions",
+          "name": "Weapons Instructions",
+          "description": "Instructions on making/using weapons with explicit intent to injure/kill",
+          "action": "label",
+          "exceptions": ["non-violent purpose context"]
+        },
+        {
+          "id": "explosives_instructions",
+          "name": "Explosives Instructions",
+          "description": "Instructions on making/using explosives",
+          "action": "label",
+          "exceptions": ["non-violent purpose context (fireworks, fishing, video games)"]
+        },
+        {
+          "id": "hrl_threats",
+          "name": "High-Risk Location Threats",
+          "description": "Threats to bring weapons to or forcibly enter high-risk locations",
+          "action": "label"
+        },
+        {
+          "id": "calls_for_death",
+          "name": "Calls for Death",
+          "description": "The phrase 'death to' against high-risk persons",
+          "action": "label"
+        },
+        {
+          "id": "election_violence",
+          "name": "Election Violence",
+          "description": "Threats related to voting, registration, or election administration/outcome",
+          "action": "label"
+        },
+        {
+          "id": "stop_the_steal",
+          "name": "Stop the Steal",
+          "description": "Phrase shared with content-level threat signal in election context",
+          "action": "label"
+        },
+        {
+          "id": "gbv_glorification",
+          "name": "Glorification of Gender-Based Violence",
+          "description": "Glorifying intimate partner violence or honor-based violence",
+          "action": "label"
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "vi_escalate",
+      "label": "Escalate - Threatening Other",
+      "path": ["Escalate", "Threatening - Other"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 0,
+      "conditions": ["Target + HSV + statement of intent/call for action + (armament OR specific timing OR location)", "Statement of intent to run over/hit with vehicle", "Bomb threats with intent/call for action"]
+    },
+    {
+      "id": "vi_election",
+      "label": "Election Violence",
+      "path": ["Label", "Violence and Incitement", "Election violence"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "vi_hsv_threats",
+      "label": "High-Severity Violence - Threats",
+      "path": ["Label", "Violence and Incitement", "High-severity violence", "Threats"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vi_hsv_admissions",
+      "label": "High-Severity Violence - Admissions",
+      "path": ["Label", "Violence and Incitement", "High-severity violence", "Admissions"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vi_calls_death",
+      "label": "Calls for Death",
+      "path": ["Label", "Violence and Incitement", "High-severity violence", "Calls for death"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vi_services",
+      "label": "Services of High-Severity Violence",
+      "path": ["Label", "Violence and Incitement", "Other Violence", "Services of high-severity violence"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "vi_msv_threats",
+      "label": "Mid-Severity Violence - Threats",
+      "path": ["Label", "Violence and Incitement", "Mid-severity violence", "Threats"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vi_msv_admissions",
+      "label": "Mid-Severity Violence - Admissions",
+      "path": ["Label", "Violence and Incitement", "Mid-severity violence", "Admissions"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vi_lsv",
+      "label": "Low-Severity Violence",
+      "path": ["Label", "Violence and Incitement", "Low-severity violence"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "vi_hrl_armaments",
+      "label": "Bringing Armaments to HRL or THRL",
+      "path": ["Label", "Violence and Incitement", "Bringing armaments to HRL or THRL"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "vi_explosives",
+      "label": "Instructions - Explosives",
+      "path": ["Label", "Violence and Incitement", "Other Violence", "Instructions to make or use explosives"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "vi_weapons",
+      "label": "Instructions - Weapons",
+      "path": ["Label", "Violence and Incitement", "Other Violence", "Instructions to make or use weapons"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "vi_gbv",
+      "label": "Glorification of Gender-Based Violence",
+      "path": ["Label", "Violence and Incitement", "Other Violence", "Glorification of Gender-based violence"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "contact_sports",
+      "name": "Contact Sports Context",
+      "description": "Mid-severity or less violence in contact sports context (boxing, rugby, etc.)",
+      "appliesTo": ["mid_severity_threats", "admissions_violence"],
+      "action": "no_action"
+    },
+    {
+      "id": "self_defense",
+      "name": "Self-Defense",
+      "description": "Admissions of violence in defense of self or another human with proportional response",
+      "appliesTo": ["admissions_violence"],
+      "action": "no_action"
+    },
+    {
+      "id": "law_enforcement",
+      "name": "Law Enforcement/Military Duty",
+      "description": "Violence committed by law enforcement, military, or state security in line of duty",
+      "appliesTo": ["admissions_violence"],
+      "action": "no_action"
+    },
+    {
+      "id": "redemption",
+      "name": "Redemption Context",
+      "description": "Admissions shared in redemption or regret context",
+      "appliesTo": ["admissions_violence"],
+      "action": "no_action"
+    },
+    {
+      "id": "condemnation_awareness",
+      "name": "Condemnation/Awareness Raising",
+      "description": "Threats shared to condemn or raise awareness about violence",
+      "appliesTo": ["protections_everyone", "kidnapping"],
+      "action": "no_action"
+    },
+    {
+      "id": "neutral_reference",
+      "name": "Neutral Reference/Advisory Warning",
+      "description": "Neutral references to potential outcomes or advisory warnings without threat intent",
+      "appliesTo": ["protections_everyone"],
+      "action": "no_action"
+    },
+    {
+      "id": "doi_non_credible",
+      "name": "Non-Credible DOI Threats",
+      "description": "Threats against DOIs without credibility signals",
+      "appliesTo": ["doi_criminal"],
+      "action": "no_action"
+    },
+    {
+      "id": "non_violent_purpose",
+      "name": "Non-Violent Purpose",
+      "description": "Educational self-defense, military training, recreational (fireworks, fishing, games), news reporting",
+      "appliesTo": ["weapons_instructions", "explosives_instructions"],
+      "action": "no_action"
+    },
+    {
+      "id": "mid_severity_no_credibility",
+      "name": "Mid-Severity Without Credibility",
+      "description": "Mid-severity threats against public figures/groups without credibility signals",
+      "appliesTo": ["mid_severity_credible"],
+      "action": "no_action"
+    },
+    {
+      "id": "past_tense_mid_low",
+      "name": "Past Tense Mid/Low Severity",
+      "description": "Threats of mid or low severity in past tense ('you should have punched him')",
+      "appliesTo": ["mid_severity_threats", "low_severity_private"],
+      "action": "no_action"
+    }
+  ],
+
+  "glossary": {
+    "high_severity_violence": "Violence that is likely to be lethal. When unclear if high or mid severity, default to high severity. Includes: stab, shoot, kill, hang, poison, armament use, stone, hit+weapon, choke, dismemberment, whip/cane, burn, drown, FGM, run over.",
+    "mid_severity_violence": "Violence likely to lead to serious injury, equivalent to a punch or higher. Includes: punch, kick, gag, hit, beat.",
+    "low_severity_violence": "Violence likely to lead to physical harm, lower than a punch. Includes: pinch, push, shove, drag, slap, spit, trip, pull/yank hair.",
+    "target": "A person, animal, object, or place that is the aim of an attack. Valid targets include: living persons, deceased persons (if violence victim or PC-based attack), groups based on PC, places (city or smaller, buildings, properties).",
+    "threat": "Statement or visual representing intention, aspiration, or call for an act against a target. Types: statement of intent, call for action, advocating, aspirational, conditional.",
+    "high_risk_person": "Persons designated high-risk due to status, occupation, or visibility: heads of state (current/former), candidates, ambassadors, law enforcement, witnesses, journalists, activists, homeless, healthcare workers, Zionists, foreigners.",
+    "high_risk_location": "Location deemed high-risk: places of worship, educational facilities, workplaces of high-risk persons, election sites, locations affiliated with PC groups.",
+    "temporary_high_risk_location": "Location temporarily designated as high-risk for a time-bound period (THRL).",
+    "credibility_signals": "Indicators making a threat credible: bounty/payment demand, spelled-out address, OR 2+ of: location, specific timing, method.",
+    "specific_timing": "Achievable timing indicator (when it rains, when I reach 50 pounds, countdown sticker). Does NOT include impossible conditions (when pigs fly, when hell freezes over).",
+    "calls_for_death": "Threats that could lead to death without explicit method. Example: 'Death to [journalist]'.",
+    "brutality": "Physical violence against persons in forcibly restrained or dominated positions.",
+    "glorification": "Legitimizing/defending violent acts by claiming moral/political justification, or characterizing/celebrating violence as achievement.",
+    "intimate_partner_violence": "Behavior within intimate relationship causing physical harm, including current and former partners.",
+    "honor_based_violence": "Violence against relatives or community members accused of bringing shame to family/community.",
+    "armament": "Weapons including firearms, explosives, knives, bladed weapons, and improvised weapons (bats, hammers). Fist is NOT a weapon.",
+    "weapons": "Objects used to cause serious injury or death: firearms (machine guns), explosives (molotov cocktails), bladed weapons (machetes), improvised weapons.",
+    "proportional_response": "Self-defense violence equal to or lower than the violence being responded to. NCST and home invasion are considered high-severity for proportionality.",
+    "election_official": "Official who oversees election duties: voter registration, voting, vote counting. Includes poll workers and election workers.",
+    "election_site": "Facility used for voter registration, polling, vote counting, or election administration.",
+    "stop_the_steal": "Phrase used in US 2020 election protest movement alleging voter fraud. Only applies in election context with threat signals."
+  },
+
+  "violenceSeverityLevels": {
+    "high_severity": {
+      "description": "Likely to be lethal",
+      "explicit_methods": [
+        "stab", "shoot", "kill", "hang", "poison", "stone", "choke", 
+        "dismember", "whip", "cane", "burn", "drown", "run over",
+        "strangle", "suffocate", "decapitate", "lynch", "massacre"
+      ],
+      "proxy_language": [
+        "send to morgue/grave", "won't breathe again", "CPF cancelado",
+        "JFK him", "keep your knee on his neck"
+      ]
+    },
+    "mid_severity": {
+      "description": "Likely to lead to serious injury (punch equivalent or higher)",
+      "explicit_methods": [
+        "punch", "kick", "gag", "hit", "beat", "headbutt", "bite", "stomp"
+      ]
+    },
+    "low_severity": {
+      "description": "Likely to lead to physical harm (lower than punch)",
+      "explicit_methods": [
+        "pinch", "push", "shove", "drag", "slap", "spit", "trip", "pull hair", "yank hair"
+      ]
+    }
+  },
+
+  "escalationCriteria": {
+    "escalate_when": [
+      "Target + high-severity violence + statement of intent/call for action + (armament OR specific timing OR location)",
+      "Target + statement of intent to run over/hit with vehicle",
+      "Statement of intent/call for action/conditional for bomb threats (excluding atomic/nuclear)",
+      "Instructions on how to make bombs (excluding atomic/nuclear)"
+    ],
+    "do_not_escalate": [
+      "Calls for action against adult/minor public figures (even high-risk)",
+      "Calls for action when method is run over/hit with vehicle",
+      "Statements targeting specific body parts (finger, toe, hand, foot, tongue, ear, kneecap, male genitalia)",
+      "Threats with physically impossible methods",
+      "Content posted 1+ month in the past",
+      "Kidnapping without additional HSV + escalation criteria"
+    ]
+  },
+
+  "threatSignals": {
+    "content_level_signals": [
+      "Explicit threats to take up or bring a weapon",
+      "Visual depiction of a weapon",
+      "Reference to arson, theft, or vandalism",
+      "Military language (war, combat, raid, storm, battalion, army, soldier, troops)",
+      "References to historical/recent violence incidents or perpetrators"
+    ],
+    "military_language_excluded": [
+      "enlist", "join up", "join our ranks", "join our campaign", 
+      "deploy", "battleground state", "fight voter suppression"
+    ]
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "If multiple violations: 1.Escalations, 2.Election violence, 3.HSV threats/admissions/calls for death, 4.Services of HSV, 5.MSV threats/admissions, 6.LSV, 7.HRL armaments, 8.Explosives instructions, 9.Weapons instructions, 10.GBV glorification",
+    "default_to_violation": "When unsure if target is valid, default to valid target",
+    "default_to_higher_severity": "When unsure of violence severity, default to higher severity",
+    "default_to_future_tense": "When unsure of statement tense, default to future (threat)",
+    "visual_threats": "Default to no violation if not explicitly clear target represents real human/group and violence represents threat",
+    "pronoun_targets": "Use context to determine if pronoun refers to valid target"
+  }
+}

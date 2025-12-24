@@ -1,0 +1,830 @@
+{
+  "policy": "vgc",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+  
+  "keywords": [
+    {
+      "term": "dismemberment",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "dismembered",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "desmembrado",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "decapitated",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "decapitado",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "beheaded",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "degolado",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "throat slit",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "visible innards",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "órgãos expostos",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "entrails",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "tripas",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "guts",
+      "category": "Mutilated Humans",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "mutilated",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "mutilação",
+      "category": "Mutilated Humans",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "burning alive",
+      "category": "Burning/Charring",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "queimando vivo",
+      "category": "Burning/Charring",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "burned alive",
+      "category": "Burning/Charring",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "charred body",
+      "category": "Burning/Charring",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "corpo queimado",
+      "category": "Burning/Charring",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "set on fire",
+      "category": "Burning/Charring",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "on fire",
+      "category": "Burning/Charring",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "execution",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "execução",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "capital punishment",
+      "category": "Violent Death",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "pena de morte",
+      "category": "Violent Death",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "hanging",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Capital punishment method"
+    },
+    {
+      "term": "enforcamento",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "firing squad",
+      "category": "Violent Death",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "pelotão de fuzilamento",
+      "category": "Violent Death",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "lethal injection",
+      "category": "Violent Death",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "shot dead",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "stabbed to death",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "esfaqueado até a morte",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "violent death",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "morte violenta",
+      "category": "Violent Death",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "life threatening",
+      "category": "Violent Death",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "brutality",
+      "category": "Brutality",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "brutalidade",
+      "category": "Brutality",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "torture",
+      "category": "Brutality",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "tortura",
+      "category": "Brutality",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "beaten",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "espancado",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "beating",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "surra",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "restrained",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "tied down",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "amarrado",
+      "category": "Brutality",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "gore",
+      "category": "Human Gore",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "blood",
+      "category": "Human Gore",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "sangue",
+      "category": "Human Gore",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "bleeding",
+      "category": "Human Gore",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "sangrando",
+      "category": "Human Gore",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "bodily fluids",
+      "category": "Human Gore",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "dead body",
+      "category": "Deceased",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "corpo morto",
+      "category": "Deceased",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "corpse",
+      "category": "Deceased",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "cadáver",
+      "category": "Deceased",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "deceased",
+      "category": "Deceased",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "dead fetus",
+      "category": "Deceased Babies",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "feto morto",
+      "category": "Deceased Babies",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "dead baby",
+      "category": "Deceased Babies",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "bebê morto",
+      "category": "Deceased Babies",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "animal cruelty",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "crueldade animal",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "animal abuse",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "maus tratos",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "animal suffering",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "sofrimento animal",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "animal torture",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "dog fight",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "rinha",
+      "category": "Animal",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt",
+      "notes": "Animal fighting in Portuguese"
+    },
+    {
+      "term": "car crash",
+      "category": "Vehicle Damage",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "acidente de carro",
+      "category": "Vehicle Damage",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "plane crash",
+      "category": "Vehicle Damage",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "vehicle collision",
+      "category": "Vehicle Damage",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "explosion",
+      "category": "Vehicle Damage",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "explosão",
+      "category": "Vehicle Damage",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    }
+  ],
+
+  "sadisticIndicators": [
+    {
+      "term": "lol",
+      "type": "laughter",
+      "severity": "high",
+      "notes": "Only violating when accompanying graphic imagery"
+    },
+    {
+      "term": "lmao",
+      "type": "laughter",
+      "severity": "high"
+    },
+    {
+      "term": "haha",
+      "type": "laughter",
+      "severity": "mid"
+    },
+    {
+      "term": "kkk",
+      "type": "laughter",
+      "severity": "mid",
+      "language": "pt",
+      "notes": "Portuguese laughter - context needed to distinguish from hate group"
+    },
+    {
+      "term": "rsrs",
+      "type": "laughter",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "funny",
+      "type": "laughter",
+      "severity": "mid"
+    },
+    {
+      "term": "🤣",
+      "type": "emoji_laughter",
+      "severity": "high"
+    },
+    {
+      "term": "😂",
+      "type": "emoji_laughter",
+      "severity": "high"
+    },
+    {
+      "term": "😄",
+      "type": "emoji_laughter",
+      "severity": "mid"
+    },
+    {
+      "term": "XD",
+      "type": "laughter",
+      "severity": "mid"
+    },
+    {
+      "term": "he deserved it",
+      "type": "positive_reinforcement",
+      "severity": "high"
+    },
+    {
+      "term": "mereceu",
+      "type": "positive_reinforcement",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "bem feito",
+      "type": "positive_reinforcement",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "good news",
+      "type": "positive_reinforcement",
+      "severity": "mid"
+    },
+    {
+      "term": "this is great",
+      "type": "positive_reinforcement",
+      "severity": "mid"
+    },
+    {
+      "term": "best gore",
+      "type": "gore_appreciation",
+      "severity": "critical"
+    },
+    {
+      "term": "gore lover",
+      "type": "gore_appreciation",
+      "severity": "critical"
+    },
+    {
+      "term": "🤤",
+      "type": "erotic_response",
+      "severity": "high"
+    },
+    {
+      "term": "so sexy",
+      "type": "erotic_response",
+      "severity": "high"
+    }
+  ],
+
+  "excludedTerms": [
+    {
+      "term": "video game",
+      "reason": "Fictional context"
+    },
+    {
+      "term": "movie",
+      "reason": "Fictional context"
+    },
+    {
+      "term": "filme",
+      "reason": "Fictional context",
+      "language": "pt"
+    },
+    {
+      "term": "cartoon",
+      "reason": "Fictional context"
+    },
+    {
+      "term": "animation",
+      "reason": "Fictional context"
+    },
+    {
+      "term": "CGI",
+      "reason": "Fictional context"
+    },
+    {
+      "term": "special effects",
+      "reason": "Fictional context"
+    },
+    {
+      "term": "stunt",
+      "reason": "Controlled entertainment"
+    },
+    {
+      "term": "makeup",
+      "reason": "Special effects makeup"
+    },
+    {
+      "term": "maquiagem",
+      "reason": "Special effects makeup",
+      "language": "pt"
+    },
+    {
+      "term": "Halloween",
+      "reason": "Costume/decoration context"
+    },
+    {
+      "term": "medical procedure",
+      "reason": "Medical context"
+    },
+    {
+      "term": "surgery",
+      "reason": "Medical context"
+    },
+    {
+      "term": "cirurgia",
+      "reason": "Medical context",
+      "language": "pt"
+    },
+    {
+      "term": "vaccination",
+      "reason": "Medical context - allowed"
+    },
+    {
+      "term": "vacinação",
+      "reason": "Medical context - allowed",
+      "language": "pt"
+    },
+    {
+      "term": "acupuncture",
+      "reason": "Medical context - allowed"
+    },
+    {
+      "term": "tattoo",
+      "reason": "Body art - allowed"
+    },
+    {
+      "term": "tatuagem",
+      "reason": "Body art - allowed",
+      "language": "pt"
+    },
+    {
+      "term": "piercing",
+      "reason": "Body art - allowed"
+    },
+    {
+      "term": "food preparation",
+      "reason": "Culinary context"
+    },
+    {
+      "term": "cooking",
+      "reason": "Culinary context"
+    },
+    {
+      "term": "cozinhando",
+      "reason": "Culinary context",
+      "language": "pt"
+    },
+    {
+      "term": "butcher",
+      "reason": "Food preparation"
+    },
+    {
+      "term": "açougue",
+      "reason": "Food preparation",
+      "language": "pt"
+    }
+  ],
+
+  "brutalityIndicators": {
+    "against_persons": [
+      "Forcibly restrained or dominated position",
+      "Armament pointed at person",
+      "Evidence of physical injury",
+      "Subjected to violence",
+      "Humiliating acts (cutting hair/beard, beatings with footwear)",
+      "Apprehended by uniformed personnel with repeated low-severity or mid-severity violence"
+    ],
+    "against_animals": [
+      "Kicking",
+      "Beating",
+      "Drowning",
+      "Suffocating",
+      "Impalement or foreign object insertion",
+      "Plucking feathers",
+      "Stabbing",
+      "Shooting",
+      "Poisoning",
+      "Neglect leading to starvation/dehydration"
+    ],
+    "not_brutality": [
+      "Amateur fights where all participants are fighting",
+      "Uniformed officers handling resisting arrest without excessive force",
+      "Consensual fetish acts",
+      "Forced stripping (evaluate under ASE)"
+    ]
+  }
+}

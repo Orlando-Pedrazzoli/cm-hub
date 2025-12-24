@@ -1,0 +1,415 @@
+{
+  "id": "ta",
+  "name": "Tobacco and Alcohol",
+  "shortName": "TA",
+  "description": "Policy restricting the sale, promotion, and depiction of tobacco/nicotine products and alcohol. Distinguishes between brick-and-mortar businesses and peer-to-peer sales, with specific rules for consumption depiction, brand display, and fictional contexts.",
+  "color": "#795548",
+  "icon": "cigarette",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "tobacco_products",
+      "name": "Tobacco and Related Products",
+      "description": "Tobacco, nicotine products, ENDS, vapes, and products that simulate smoking",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "tobacco_sale_bnm",
+          "name": "Tobacco Sale - Brick-and-Mortar",
+          "description": "Buy/sell/trade/donate/gift tobacco products by legitimate business entity",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_sale_p2p",
+          "name": "Tobacco Sale - Peer-to-Peer",
+          "description": "Buy/sell/trade/donate/gift tobacco products between individuals",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_promotion",
+          "name": "Tobacco Promotion",
+          "description": "Coordinating or promoting use of tobacco, tobacco paraphernalia, or tobacco brands",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_establishments",
+          "name": "Tobacco Establishments/Events",
+          "description": "Promoting establishments, groups, or events where tobacco is offered or encouraged",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_admission",
+          "name": "Tobacco Admission/Discussion",
+          "description": "Admitting usage, debating legality, or discussing scientific/medical merits",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_depiction",
+          "name": "Tobacco Depiction",
+          "description": "Depicting tobacco products, paraphernalia, ENDS, or brands without consumption",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_consumption_video",
+          "name": "Tobacco Consumption - Video",
+          "description": "Video depicting smoking/tobacco consumption in non-fictional context",
+          "action": "label",
+          "conditions": ["5+ consecutive seconds = Label", "<5 consecutive seconds = Label (lower severity)"]
+        },
+        {
+          "id": "tobacco_consumption_image",
+          "name": "Tobacco Consumption - Image",
+          "description": "Still imagery depicting smoking/tobacco consumption in non-fictional context",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_cessation_unapproved",
+          "name": "Cessation Products - Unapproved",
+          "description": "Tobacco cessation products not approved by FDA or WHO",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_cessation_approved",
+          "name": "Cessation Products - Approved",
+          "description": "FDA or WHO approved cessation products (gum, lozenges, patches, sprays)",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "tobacco_fictional",
+      "name": "Tobacco in Fictional Context",
+      "description": "Tobacco products in movies, television, documentaries, etc.",
+      "severity": "low",
+      "subcategories": [
+        {
+          "id": "tobacco_fictional_no_sale",
+          "name": "Fictional - No Sale Intent",
+          "description": "Tobacco in fictional context without actual intent to buy/sell/trade",
+          "action": "no_action"
+        },
+        {
+          "id": "tobacco_fictional_consumption_5plus",
+          "name": "Fictional Consumption - 5+ Seconds",
+          "description": "Fictional video with 5+ consecutive seconds of tobacco consumption",
+          "action": "label"
+        },
+        {
+          "id": "tobacco_fictional_consumption_under5",
+          "name": "Fictional Consumption - Under 5 Seconds",
+          "description": "Fictional video with <5 seconds consumption or still imagery",
+          "action": "no_action"
+        }
+      ]
+    },
+    {
+      "id": "alcohol_products",
+      "name": "Alcohol Products",
+      "description": "Alcoholic beverages and alcohol-related content",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "alcohol_sale_bnm",
+          "name": "Alcohol Sale - Brick-and-Mortar",
+          "description": "Buy/sell/trade/donate/gift alcohol by legitimate business entity",
+          "action": "label"
+        },
+        {
+          "id": "alcohol_sale_p2p",
+          "name": "Alcohol Sale - Peer-to-Peer",
+          "description": "Buy/sell/trade/donate/gift alcohol between individuals",
+          "action": "label"
+        },
+        {
+          "id": "alcohol_event_primary",
+          "name": "Alcohol Event - Primary Focus",
+          "description": "Events/venues where primary focus is drinking alcohol",
+          "action": "label"
+        },
+        {
+          "id": "alcohol_consumption_primary",
+          "name": "Alcohol Consumption - Primary Focus",
+          "description": "Content where primary focus is real-world person actively drinking",
+          "action": "label"
+        },
+        {
+          "id": "alcohol_brand_depiction",
+          "name": "Alcohol Brand Depiction",
+          "description": "Visible alcohol brands/logos on bottles, cups, cans, packaging",
+          "action": "label"
+        },
+        {
+          "id": "alcohol_recipe",
+          "name": "Alcohol Recipe",
+          "description": "Recipes for alcoholic beverages or tutorials on making them",
+          "action": "label"
+        },
+        {
+          "id": "alcohol_promotion",
+          "name": "Alcohol Promotion",
+          "description": "Coordinating or promoting use of alcohol or alcohol brands",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "alcohol_fictional",
+      "name": "Alcohol in Fictional Context",
+      "description": "Alcohol in movies, television, documentaries, etc.",
+      "severity": "low",
+      "subcategories": [
+        {
+          "id": "alcohol_fictional_commercial",
+          "name": "Fictional - Commercial Intent",
+          "description": "Alcohol in fictional context without actual sale intent",
+          "action": "no_action"
+        },
+        {
+          "id": "alcohol_fictional_event",
+          "name": "Fictional - Event Reference",
+          "description": "Fictional alcohol event or venue invitation",
+          "action": "no_action"
+        },
+        {
+          "id": "alcohol_fictional_consumption",
+          "name": "Fictional - Consumption",
+          "description": "Fictional consumption <5 seconds or still image",
+          "action": "no_action"
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "ta_tobacco_sale_p2p",
+      "label": "Tobacco - Peer-to-Peer Sales",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Tobacco", "Peer-to-Peer (Sales / Asks)"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "ta_tobacco_sale_bnm",
+      "label": "Tobacco - Brick-and-Mortar Sales",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Tobacco", "Sale (Brick-and-Mortar)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "ta_tobacco_promotion",
+      "label": "Tobacco - Promotion / Brand Promotion / Consumption",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Tobacco", "Promotion / Brand Promotion / Consumption"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "ta_tobacco_depiction",
+      "label": "Tobacco - Depiction",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Tobacco", "Depiction"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "ta_tobacco_cessation",
+      "label": "Tobacco - Cessation Products",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Tobacco", "Cessation Products"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "ta_alcohol_sale_p2p",
+      "label": "Alcohol - Peer-to-Peer Sales",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Alcohol", "Peer-to-Peer (Sales / Asks)"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "ta_alcohol_sale_bnm",
+      "label": "Alcohol - Brick-and-Mortar Sales",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Alcohol", "Sale (Brick-and-Mortar)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "ta_alcohol_event",
+      "label": "Alcohol - Event / Venue",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Alcohol", "Event / Venue (Primary Focus)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "ta_alcohol_consumption",
+      "label": "Alcohol - Consumption (Primary Focus)",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Alcohol", "Consumption (Primary Focus)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "ta_alcohol_promotion",
+      "label": "Alcohol - Promotion / Brand Promotion / Consumption / Recipe",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Alcohol", "Promotion / Brand Promotion / Consumption / Recipe"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "ta_alcohol_brand",
+      "label": "Alcohol - Brand Depiction",
+      "path": ["Label", "RGS - Tobacco and Alcohol", "Alcohol", "Depiction of Brand"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 6
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "tobacco_informational",
+      "name": "Tobacco - Informational/Educational Context",
+      "description": "Portraying or referencing tobacco in informational, educational, documentary, political advocacy, news, personal testimonial, or PSA context",
+      "appliesTo": ["tobacco_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "tobacco_anti_smoking",
+      "name": "Anti-Smoking Campaigns",
+      "description": "Promoting anti-smoking campaigns, e-books, counseling services, rehabilitation programs, or anti-smoking content depicting tobacco",
+      "appliesTo": ["tobacco_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "tobacco_interest_groups",
+      "name": "Tobacco Interest Groups",
+      "description": "Promoting blogs or groups connecting people with tobacco-related interests without leading to sales",
+      "appliesTo": ["tobacco_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "tobacco_fictional",
+      "name": "Fictional Tobacco Content",
+      "description": "Tobacco in movies, TV, documentaries without actual intent to buy/sell/trade with real people",
+      "appliesTo": ["tobacco_products"],
+      "action": "no_action",
+      "conditions": ["<5 seconds consumption in video", "Still imagery in fictional context"]
+    },
+    {
+      "id": "alcohol_not_primary",
+      "name": "Alcohol - Not Primary Focus",
+      "description": "Events/venues where primary focus is NOT drinking alcohol, consumption absent or incidental",
+      "appliesTo": ["alcohol_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "alcohol_incidental",
+      "name": "Alcohol - Incidental Depiction",
+      "description": "Background alcohol, people holding drinks without active consumption, environmental context",
+      "appliesTo": ["alcohol_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "alcohol_discussion",
+      "name": "Alcohol - Discussion/Debate",
+      "description": "Admitting usage, debating legality, or discussing scientific/medical merits",
+      "appliesTo": ["alcohol_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "alcohol_informational",
+      "name": "Alcohol - Informational Context",
+      "description": "Depicting or referencing alcohol in informational, educational, documentary, political advocacy, news, personal testimonial, or PSA context",
+      "appliesTo": ["alcohol_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "alcohol_non_alcoholic",
+      "name": "Non-Alcoholic Products",
+      "description": "Non-alcoholic beverages (like Heineken 0.0%) and alcohol accessories without other violating signals",
+      "appliesTo": ["alcohol_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "alcohol_fictional",
+      "name": "Fictional Alcohol Content",
+      "description": "Alcohol in movies, TV, documentaries without actual sale intent, or <5 seconds consumption",
+      "appliesTo": ["alcohol_products"],
+      "action": "no_action"
+    }
+  ],
+
+  "glossary": {
+    "tobacco_products": "Any product containing tobacco or nicotine: cigars, cigarettes, hookah, chewing tobacco, pipe tobacco, rolling tobacco, vape oils/cartridges, e-cigarettes, vape pens, ENDS products, cessation products.",
+    "ends": "Electronic Nicotine Delivery Systems - battery-powered devices for smoking/vaping flavored solutions with or without nicotine. Includes e-cigarettes, vape pens, vaporizers.",
+    "wellness_vapes": "E-cigarette devices delivering vitamins (B-12, C, melatonin, caffeine, green tea) directly into lungs, tobacco and nicotine free.",
+    "products_simulating_smoking": "E-cigarettes, vapes, and all products that simulate smoking regardless of tobacco/nicotine content.",
+    "tobacco_consumption": "Subject (real, cartoon, or animated) consuming smoking product in/on mouth. Smoke may or may not be emanating. Holding in hands only is NOT consumption.",
+    "tobacco_paraphernalia": "Hookah, bongs, tobacco pipes, rolling paper, cigarette filters, water pipes (with tobacco context), e-cigarette batteries/chargers, e-liquids, cigar cutters, cigarette rollers, ashtrays, lighters (if explicitly for smoking).",
+    "tobacco_cessation_fda_who": "FDA/WHO approved cessation products: Gum (2mg, 4mg), Lozenges (2mg, 4mg), Transdermal Patches (7-30mg), Oral Mouth Spray (1mg per actuation), Nasal Spray (10mg/ml Rx), Oral Inhaler (10mg/ml Rx).",
+    "alcohol_products": "Products containing alcohol intended for consumption: beer, wine, alcoholic cider, spirits (vodka, whiskey, etc.).",
+    "not_alcohol_products": "Fermented drinks with minimal alcohol (kombucha, ginger beer), candies/foods/baked goods containing alcohol (rum cakes, chocolate with rum).",
+    "alcohol_consumption": "Visual signals of someone (real or animated) drinking alcoholic beverage, or words encouraging/offering drinking. Subject has beverage on lips/mouth, drinking from bottle/can/cup/glass. Holding only is NOT consumption.",
+    "alcohol_brand_depiction": "Obvious or intentional mention/depiction of alcohol brand - logo by itself or on labels/bottles/cups/cans/packaging. Must be fully visible, not blurry or partially obscured.",
+    "alcohol_event": "Planned occasion organized primarily for drinking: happy hours, tastings/tours, booze cruises, beer pong, bar crawl. Does NOT include events where alcohol is offered but other activities present (paint & sip, concerts, fairs).",
+    "alcohol_venue": "Physical location where primary activity is drinking or making alcoholic beverages: vineyards, cocktail bars, distilleries, bars, pubs.",
+    "incidental_alcohol": "Secondary, non-prominent alcohol presence not tied to consumption: background depictions, environmental context (wine racks, unopened bottles), people holding drinks at party without active consumption.",
+    "primary_focus": "For events: event itself is for selling/consuming alcohol. For consumption: real-world person actively drinking is the main subject.",
+    "brick_and_mortar": "Legitimate business (physical or e-commerce), government entity, or non-profit. Signals: professional website link, physical location with hours/address/storefront, verified account, business identification.",
+    "peer_to_peer": "Individual (not business) selling directly to another individual online. Signals: lack of business name/logo, informal language/slang, personal pronouns, specific meetup spots, phrases like 'DM me', 'OBO', 'hmu'.",
+    "fictional_content": "Content created from imagination: movies, television shows, cartoons, video games, comic books, music videos, song lyrics.",
+    "documentary": "Non-fictional content documenting reality for instruction, education, or historical record.",
+    "promote": "Speaking positively, encouraging use, providing information/instructions, providing information on how to obtain.",
+    "coordinate": "Any attempt to organize the flow of goods."
+  },
+
+  "brickAndMortarIndicators": [
+    "Link to professional website (not social media/blog)",
+    "Physical location with office hours",
+    "Image of location (storefront, interior, shelves)",
+    "Specific business address",
+    "Location pin specific to business premises",
+    "Customer check-ins specific to business premises",
+    "Page/Profile identifies as business (retail store, liquor store, brewery, e-cigarette store, tobacco store)",
+    "Verified (green/blue check) legitimate business/government/non-profit"
+  ],
+
+  "callToActionBnMSignals": [
+    "Book now", "Buy tickets", "Call now", "Contact us", "Get offer",
+    "Get quote", "Order now", "See menu", "Send message", "Shop now",
+    "View event", "Get promotions"
+  ],
+
+  "peerToPeerSignals": [
+    "Lack of clear business name or logo",
+    "Use of informal language or slang",
+    "Personal pronouns (I, me, my)",
+    "Specific location or meetup spot (pick up at my house)",
+    "Phrases: DM me, OBO, or best offer, lmk, hmu, hit me up"
+  ],
+
+  "consumptionTextSignals": {
+    "tobacco": ["smoke", "inhale", "vape", "hit", "chew"],
+    "alcohol": ["sip", "savor", "enjoy", "drink", "taste"]
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "If multiple signals present, select label highest in tree hierarchy",
+    "5_second_rule": "Video consumption: 5+ consecutive seconds = Label, <5 seconds = lower severity or no action (fictional)",
+    "unknown_bnm_p2p": "If cannot identify brick-and-mortar or peer-to-peer signals, default to Peer-to-Peer",
+    "call_to_action_only": "If only see CTA signals but no other BnM indicators, still select Brick-and-Mortar",
+    "uncertain_5_seconds": "If cannot confidently determine if <5 seconds, treat as 5+ seconds",
+    "no_dosage_cessation": "Cessation products without visible dosage = Not FDA/WHO approved",
+    "uncertain_fictional": "Use Google search to verify if content is from movie/TV/music video",
+    "brand_uncertain": "If uncertain between depiction vs promotion, treat as depiction (for alcohol) or promotion (for tobacco)",
+    "partial_brand": "If brand partially obscured/blurry/no search results, do NOT label as brand depiction",
+    "image_sequence_video": "Video containing only images (slideshow) = apply still imagery guidance, not 5-second rule"
+  }
+}

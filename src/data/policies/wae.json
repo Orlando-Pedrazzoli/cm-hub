@@ -1,0 +1,405 @@
+{
+  "id": "wae",
+  "name": "Weapons, Ammunition, and Explosives",
+  "shortName": "WAE",
+  "description": "Policy that restricts the sale, trade, and promotion of weapons, ammunition, explosives, and related accessories. Content is evaluated based on commercial intent, non-commercial depictions, and discussion/advocacy context.",
+  "color": "#880e4f",
+  "icon": "crosshair",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "commercial_intent",
+      "name": "Commercial Intent",
+      "description": "Content involving buy, sell, trade, donate, gift, or ask for weapons. This section takes precedence when commercial intent is present.",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "machine_gun_conversion",
+          "name": "Machine Gun Conversion Devices",
+          "description": "Content that attempts to buy, sell, trade, donate, gift or ask for machine gun conversion devices (e.g. glock switches, auto sears)",
+          "action": "label",
+          "examples": ["glock switch", "auto sear", "full auto conversion", "switch for glock"]
+        },
+        {
+          "id": "3d_printing",
+          "name": "3D Printing / CAM Instructions",
+          "description": "Content that attempts to buy, sell, gift, exchange, transfer, coordinate, speak positively about, encourage the use of or provides access to 3D printing or computer-aided manufacturing instructions for firearms or firearms parts",
+          "action": "label",
+          "examples": ["3D printed gun files", "CAD files for firearms", "CNC gun schematics", "ghost gun files"]
+        },
+        {
+          "id": "firearms_explosives_bm",
+          "name": "Firearms/Explosives - Brick and Mortar",
+          "description": "Sales by legitimate brick-and-mortar entities including retail businesses, websites, brands, government agencies, or private individuals sharing on their behalf",
+          "action": "label",
+          "conditions": ["Legitimate business indicators", "Professional website link", "Physical location", "Verified account"]
+        },
+        {
+          "id": "firearms_explosives_other",
+          "name": "Firearms/Explosives - Other Context",
+          "description": "Any attempt to buy, sell, trade, donate, gift or ask for firearms, explosives, lethal accessories, or firearm parts in non-brick-and-mortar context",
+          "action": "label"
+        },
+        {
+          "id": "bladed_other_weapons",
+          "name": "Bladed Items and Other Weapons",
+          "description": "Content that attempts to buy, sell, trade, coordinate, donate, gift, or ask for bladed items and other weapons that don't meet definition of firearms/explosives",
+          "action": "label",
+          "examples": ["swords", "daggers", "pepper spray", "knuckle rings", "nunchucks", "batons"]
+        },
+        {
+          "id": "non_lethal_accessories",
+          "name": "Non-Lethal Accessories",
+          "description": "Sales offers for non-lethal accessories",
+          "action": "label",
+          "examples": ["holsters", "gun cases", "cleaning kits", "bipods", "bulletproof vests"]
+        },
+        {
+          "id": "product_reviews",
+          "name": "Product Reviews",
+          "description": "Content that speaks positively about, provides instructions to use or encourages the use of firearms, explosives, lethal accessories, firearm parts, or bladed items in product reviews",
+          "action": "label"
+        },
+        {
+          "id": "buyback_auction_raffle",
+          "name": "Buyback/Auction/Raffle",
+          "description": "Posted in context of donating, trading in, buying back, auction or raffle by legitimate brick-and-mortar entities",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "non_commercial_depiction",
+      "name": "Non-Commercial Depictions",
+      "description": "Depictions of weapons without commercial intent in various contexts",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "neutral_no_discussion",
+          "name": "Neutral Context - No Discussion",
+          "description": "Depicts weapons in a non-violent and neutral context without discussion or advocacy (pure depiction)",
+          "action": "label"
+        },
+        {
+          "id": "neutral_with_discussion",
+          "name": "Neutral Context - With Discussion/Advocacy",
+          "description": "Depicts weapons in a non-violent and neutral context with discussion or advocacy",
+          "action": "information"
+        },
+        {
+          "id": "visual_threat",
+          "name": "Visual Threat",
+          "description": "Content that is a visual threat depicting a weapon",
+          "action": "information"
+        },
+        {
+          "id": "weapon_pointed",
+          "name": "Weapon Pointed at Viewer/Person",
+          "description": "Imagery depicting weapons being pointed at the viewer or another person, or weapons being used in violent death, life threatening event, or brutality context",
+          "action": "information"
+        }
+      ]
+    },
+    {
+      "id": "discussion_advocacy",
+      "name": "Discussion/Advocacy",
+      "description": "Discussion and admission of firearms and other weapons",
+      "severity": "low",
+      "subcategories": [
+        {
+          "id": "instructions_violence",
+          "name": "Instructions Encouraging Violence",
+          "description": "Content that provides instructions to make or use firearms, explosives, lethal accessories, firearm parts, or bladed items, or that encourages the use of weapons for violence against people",
+          "action": "information"
+        },
+        {
+          "id": "instructions_no_violence",
+          "name": "Instructions Without Violence",
+          "description": "Content that encourages the use of or provides instructions to make or use weapons without encouraging violence against people",
+          "action": "label"
+        },
+        {
+          "id": "mgcd_admission",
+          "name": "Machine Gun Conversion - Admission/Positive",
+          "description": "Content that attempts to speak positively about, encourages the use of, or admits ownership of machine gun conversion devices",
+          "action": "label"
+        },
+        {
+          "id": "3d_access",
+          "name": "3D Printing Access",
+          "description": "Content providing access to 3D printing or computer-aided manufacturing instructions for firearms or firearms parts",
+          "action": "label"
+        },
+        {
+          "id": "non_lethal_promotion",
+          "name": "Non-Lethal Accessories Promotion",
+          "description": "Content promoting non-lethal accessories",
+          "action": "label"
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "wae_commercial_mgcd_3d",
+      "label": "Machine gun conversion device OR 3D printing OR computer-aided manufacturing instructions",
+      "path": ["Label", "RGS - Weapons, Ammunition, Explosives", "Commercial Intent or Discussion/Advocacy", "Machine gun conversion device OR 3D printing OR CAM instructions"],
+      "action": "label",
+      "severity": "high"
+    },
+    {
+      "id": "wae_commercial_firearms",
+      "label": "Firearms / Explosives / Lethal Accessories / Firearm Parts",
+      "path": ["Label", "RGS - Weapons, Ammunition, Explosives", "Commercial Intent or Discussion/Advocacy", "Firearms / Explosives / Lethal Accessories / Firearm Parts"],
+      "action": "label",
+      "severity": "high"
+    },
+    {
+      "id": "wae_commercial_bladed",
+      "label": "Bladed Weapon / Other Weapons",
+      "path": ["Label", "RGS - Weapons, Ammunition, Explosives", "Commercial Intent or Discussion/Advocacy", "Bladed Weapon / Other Weapons"],
+      "action": "label",
+      "severity": "mid"
+    },
+    {
+      "id": "wae_commercial_non_lethal",
+      "label": "Non-lethal Accessories",
+      "path": ["Label", "RGS - Weapons, Ammunition, Explosives", "Commercial Intent or Discussion/Advocacy", "Non-lethal Accessories"],
+      "action": "label",
+      "severity": "low"
+    },
+    {
+      "id": "wae_non_commercial",
+      "label": "Non-Commercial Depiction",
+      "path": ["Label", "RGS - Weapons, Ammunition, Explosives", "Non-Commercial Depiction (depiction without promotion or advocacy)"],
+      "action": "label",
+      "severity": "low"
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "toy_weapons",
+      "name": "Toy Weapons",
+      "description": "Toy guns, NERF guns, foam bullet guns, miniature guns, hot glue guns, plastic/wood swords, gel guns, water bead guns, ultra-realistic looking toy guns, cosplay weapons, lightsabers, boomerangs",
+      "appliesTo": ["all"],
+      "examples": ["NERF gun for sale", "toy lightsaber", "cosplay sword", "water gun"]
+    },
+    {
+      "id": "fictional_content",
+      "name": "Fictional Content",
+      "description": "Content in fictional context: video games, music, movies, television, documentary, cartoons, comic books, music videos, song lyrics",
+      "appliesTo": ["non_commercial_depiction"],
+      "examples": ["Call of Duty gameplay", "movie scene with guns", "music video with weapons"]
+    },
+    {
+      "id": "military_police_sporting",
+      "name": "Military/Police/Sporting/Hunting",
+      "description": "Depicts weapons in a military, police, sporting, or hunting context in non-violent manner",
+      "appliesTo": ["non_commercial_depiction"],
+      "examples": ["police training video", "Olympic shooting", "hunting trip photos", "military parade"]
+    },
+    {
+      "id": "celebratory_fireworks",
+      "name": "Celebratory Fireworks/Explosives",
+      "description": "Depicts fireworks or explosives in a celebratory or non-violent, non-dangerous context",
+      "appliesTo": ["non_commercial_depiction"],
+      "examples": ["New Year fireworks", "Diwali celebrations", "July 4th display", "construction demolition"]
+    },
+    {
+      "id": "legality_debate",
+      "name": "Legality Debate/Advocacy",
+      "description": "Debating or advocating for the legality of firearms, explosives, lethal accessories, or firearm parts. Includes news and PSAs",
+      "appliesTo": ["discussion_advocacy"],
+      "examples": ["Second Amendment debate", "gun control news", "weapons legislation discussion"]
+    },
+    {
+      "id": "safety_training",
+      "name": "Safety Training/Education",
+      "description": "Speaking positively about safety courses for firearm training or licenses, and books/videos about firearm safety",
+      "appliesTo": ["discussion_advocacy"],
+      "examples": ["concealed carry course", "gun safety class", "NRA safety training"]
+    },
+    {
+      "id": "informative_educational",
+      "name": "Informative/Educational Content",
+      "description": "Informative or neutral content on weapons including research, data, history and other educational content",
+      "appliesTo": ["discussion_advocacy"],
+      "examples": ["history of firearms", "weapon crime statistics", "antique gun restoration"]
+    },
+    {
+      "id": "ownership_admission",
+      "name": "Ownership Admission (Non-Violent)",
+      "description": "Admission of or speaking positively about ownership in a non-violent or non-threatening context",
+      "appliesTo": ["discussion_advocacy"],
+      "examples": ["showing gun collection", "discussing favorite hunting rifle"]
+    },
+    {
+      "id": "interest_groups",
+      "name": "Interest Groups/Blogs",
+      "description": "Blogs or groups connecting people with weapons-related interests, as long as the service doesn't lead to sales",
+      "appliesTo": ["discussion_advocacy"]
+    },
+    {
+      "id": "culinary_items",
+      "name": "Culinary Items",
+      "description": "Kitchen/chef knives, blenders, meat tenderizers, barbecue equipment - indicated by food context, cutting boards, knife blocks",
+      "appliesTo": ["all"],
+      "examples": ["chef knife set", "kitchen knives", "BBQ tools"]
+    },
+    {
+      "id": "tools_gardening",
+      "name": "Tools and Gardening",
+      "description": "Construction tools, power tools, multipurpose tools, gardening/farming tools, scissors, craft tools",
+      "appliesTo": ["all"],
+      "examples": ["Victorinox", "Leatherman", "garden shears", "woodworking tools"]
+    },
+    {
+      "id": "religious_items",
+      "name": "Religious Items",
+      "description": "Knives or swords used for religious purposes or ceremonies (e.g., Sikh kirpan)",
+      "appliesTo": ["all"],
+      "examples": ["kirpan", "ceremonial sword", "religious knife"]
+    },
+    {
+      "id": "fashion_apparel",
+      "name": "Fashion Apparel",
+      "description": "Clothing with images of guns/weapons or camouflage prints",
+      "appliesTo": ["all"]
+    },
+    {
+      "id": "gun_shaped_products",
+      "name": "Gun-Shaped Non-Weapons",
+      "description": "Gun/weapon shaped products that are not actual weapons",
+      "appliesTo": ["all"],
+      "examples": ["gun lighter", "gun cookie cutter", "weapon-shaped decor"]
+    }
+  ],
+
+  "glossary": {
+    "weapon": "A part or an entire object that can cut, slice, penetrate, shoot or severely harm an individual or animal",
+    "firearm": "A lethal barreled weapon from which any shot, bullet or missile can be charged by the action of an explosive; includes firearm parts or lethal accessories",
+    "bladed_item": "An item that has a bladed, sharp edge capable of breaking human skin. Excludes plastic/toy knives, scissors, culinary knives, religious knives, multi-utility tools, farming/gardening/craft tools",
+    "lethal_accessory": "Any item not directly sold as part of the weapon but can be attached to increase its lethality by improving force, form or accuracy",
+    "non_lethal_accessory": "Any item not directly sold as part of the weapon to enhance lethality, but intended for user comfort, device protection, storage or transportation. Includes wearable items",
+    "machine_gun_conversion_device": "A gun accessory (small piece of plastic or metal) that converts a firearm into a fully-automatic weapon (e.g., glock switch, auto sear)",
+    "ammunition": "Bullets, bullet tips, casings, gun powder, primers, shotgun shells, magazines, empty shells, cartridges, rounds or clips",
+    "commercial_intent": "Content where there is a direct or indirect intention to buy, sell, trade, gift, donate, ask for, auction, or raffle a product/service",
+    "non_commercial_depiction": "Showing an image of, describing in words, audio or broadcasting a product in a neutral non-violent context absent any buy/sell/trade/gift/donate/ask/raffle/auction signals",
+    "brick_and_mortar": "Legitimate business (physical or e-commerce), government-affiliated entity or non-profit with: professional website link, physical location, business identification, or verified account",
+    "fictional_content": "Content created based on imagination rather than fact: movies, TV shows, cartoons, video games, comic books, music videos, song lyrics",
+    "documentary": "Non-fictional content intended to document reality, primarily for instruction, education, or maintaining historical record",
+    "promote": "Content that speaks positively about, encourages use of, provides information/instructions, or provides information on how to obtain a good or service",
+    "coordinate": "Any attempt to organize the flow of goods",
+    "admission": "Content that admits to the ownership or use of a product or good",
+    "auction": "A sale in which goods or property are sold to the highest bidder",
+    "raffle": "An activity in which people buy tickets with different numbers, some of which are later chosen to win prizes",
+    "neutral_context": "Content that is impartial, unbiased, and does not take a position or depict content in an offensive, off-putting, or graphic way",
+    "product_review": "Feedback about a product/service sharing opinions on features, performance or value to help potential buyers make informed decisions",
+    "weapons_buyback": "A program run by law enforcement or charities to buy-back weapons to help address violence by taking them out of circulation"
+  },
+
+  "keywords": {
+    "firearms_general": {
+      "terms": ["gun", "firearm", "pistol", "rifle", "shotgun", "handgun", "revolver", "arma de fogo", "pistola", "espingarda", "carabina", "revólver"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "firearms_brands": {
+      "terms": ["glock", "beretta", "colt", "smith wesson", "s&w", "ruger", "remington", "winchester", "sig sauer", "walther", "browning", "AK-47", "AK47", "AR-15", "AR15", "M16", "uzi", "mauser"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "firearms_models": {
+      "terms": ["glock 19", "glock 17", "M1911", "M9", "M4", "M14", "M249", "M240", "RPG-7", "SKS"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "machine_gun_conversion": {
+      "terms": ["glock switch", "auto sear", "switch para glock", "conversão automática", "full auto conversion", "bump stock"],
+      "severity": "critical",
+      "requiresContext": false
+    },
+    "3d_printing": {
+      "terms": ["3D printed gun", "ghost gun", "arma 3D", "CAD firearm", "CNC gun", "3D gun files", "imprimir arma"],
+      "severity": "critical",
+      "requiresContext": false
+    },
+    "ammunition": {
+      "terms": ["ammunition", "ammo", "munição", "bullets", "balas", "cartridge", "cartucho", "shotgun shells", "magazine", "clip", ".223", "5.56mm", ".45 ACP", "9mm", ".357"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "explosives": {
+      "terms": ["explosive", "explosivo", "bomb", "bomba", "grenade", "granada", "dynamite", "dinamite", "C4", "detonator", "detonador"],
+      "severity": "critical",
+      "requiresContext": true
+    },
+    "lethal_accessories": {
+      "terms": ["silencer", "silenciador", "suppressor", "scope", "mira", "red dot", "laser sight", "night vision", "flash suppressor", "speed loader"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "bladed_weapons": {
+      "terms": ["sword", "espada", "dagger", "adaga", "machete", "facão", "bayonet", "baioneta", "knife", "faca", "katana", "Ka-Bar"],
+      "severity": "mid",
+      "requiresContext": true
+    },
+    "other_weapons": {
+      "terms": ["pepper spray", "spray pimenta", "taser", "stun gun", "nunchucks", "nunchaku", "knuckle rings", "soqueira", "baton", "bastão", "crossbow", "besta"],
+      "severity": "mid",
+      "requiresContext": true
+    },
+    "non_lethal_accessories": {
+      "terms": ["holster", "coldre", "gun case", "estojo de arma", "gun safe", "cofre de armas", "bipod", "tripod", "cleaning kit", "bulletproof vest", "colete à prova de balas"],
+      "severity": "low",
+      "requiresContext": true
+    },
+    "slang_terms": {
+      "terms": ["blicky", "chopper", "burner", "heater", "heat", "gat", "gatt", "cannon", "boom stick", "cuete", "leng", "rod", "jammy", "9", "strap", "piece", "iron"],
+      "severity": "mid",
+      "requiresContext": true
+    },
+    "commercial_signals": {
+      "terms": ["for sale", "à venda", "vendo", "buy now", "compre agora", "WTS", "WTB", "trade", "troca", "DM for price", "inbox", "cheap price", "best price", "shipping available", "entrega"],
+      "severity": "high",
+      "requiresContext": true
+    }
+  },
+
+  "circumventionIndicators": [
+    "Silencers/suppressors disguised as 'fuel filters' or 'solvent traps' with barrel measurements like '1/2-28', '4003 WIX', '5/8-24'",
+    "Non-lethal accessory sales where weapon in images is not explicitly excluded",
+    "Gun cases sold at excessive prices (>$200 USD)",
+    "Placeholder prices like $1, $111, $123, $1234, $5555",
+    "Firearms/ammunition stickers at high prices or misleading amounts",
+    "High quantity of units available for stickers",
+    "Text implying something else may be on sale",
+    "Hole punchers offered at high prices",
+    "'Nothing for sale' in bio while showing sale indicators",
+    "Code words for prices (banknote colors, number of likes)",
+    "Requesting DM or private contact for 'details'"
+  ],
+
+  "brickAndMortarIndicators": [
+    "Link to professional website (not blogs/social media for direct contact)",
+    "Physical location with office hours",
+    "Image of storefront, interior, or store shelves",
+    "Specific business address or location pin",
+    "Customer check-ins specific to business premises",
+    "Page/Profile identifies as: retail store, liquor store, gun range, weapon shows/exhibit",
+    "Verified account (green or blue check) as legitimate business/government/non-profit"
+  ],
+
+  "operationalGuidelines": {
+    "hierarchy": "If multiple abuse types present, select the type that appears first in the hierarchy: Machine Gun Conversion/3D > Firearms/Explosives > Bladed/Other > Non-Lethal",
+    "commercial_priority": "Where content involves commercial intent, action under Commercial section even if it also involves depiction or discussion",
+    "implicit_content": "For implicit terms/emojis, require at least one signal (price, unit, description of result, contact info) to determine violation",
+    "toy_determination": "Presence of term 'toy' alone does not qualify as toy gun. If content shows potential to cause physical damage or cannot determine if it's a toy, treat as violating",
+    "knife_determination": "Look for culinary signals: words like kitchen/chef/cooking, positioned with food/cutting board, stored in knife block. If cannot determine purpose, assume violating",
+    "fictional_context": "Video games, movies, TV, documentaries, cartoons, music videos = No Action for non-commercial depictions",
+    "military_police": "Use market context to assess if uniforms are from authorized military/police units. If unsure, check DOI policy"
+  }
+}

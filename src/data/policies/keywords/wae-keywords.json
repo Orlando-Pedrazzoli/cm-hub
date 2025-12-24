@@ -1,0 +1,1000 @@
+{
+  "policy": "wae",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+  
+  "keywords": [
+    {
+      "term": "glock switch",
+      "category": "Machine Gun Conversion",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "notes": "Auto conversion device - always violating"
+    },
+    {
+      "term": "auto sear",
+      "category": "Machine Gun Conversion",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "switch para glock",
+      "category": "Machine Gun Conversion",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "bump stock",
+      "category": "Machine Gun Conversion",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "full auto conversion",
+      "category": "Machine Gun Conversion",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "3d printed gun",
+      "category": "3D Printing",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "ghost gun",
+      "category": "3D Printing",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "arma 3d",
+      "category": "3D Printing",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "language": "pt"
+    },
+    {
+      "term": "cnc gun",
+      "category": "3D Printing",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false
+    },
+    {
+      "term": "code is free speech",
+      "category": "3D Printing",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": false,
+      "notes": "Known 3D gun file website reference"
+    },
+    {
+      "term": "glock",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "glock 19",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "glock 17",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "beretta",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "colt",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "smith wesson",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "s&w",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ruger",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "remington",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "winchester",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "sig sauer",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "walther",
+      "category": "Firearms Brand",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ak-47",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ak47",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ar-15",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ar15",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "m16",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "m4",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "uzi",
+      "category": "Firearms Model",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "rpg-7",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "pistol",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "pistola",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "rifle",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "shotgun",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "espingarda",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "revolver",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "revólver",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "handgun",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "arma de fogo",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "firearm",
+      "category": "Firearms General",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ammunition",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ammo",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "munição",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "bullets",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "balas",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "cartridge",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": ".223",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "5.56mm",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": ".45 acp",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "9mm",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": ".357",
+      "category": "Ammunition",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "explosive",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "explosivo",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "bomb",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "bomba",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "grenade",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "granada",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "dynamite",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "c4",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "detonator",
+      "category": "Explosives",
+      "severity": "critical",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "silencer",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "silenciador",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "suppressor",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "fuel filter",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Common disguise for silencers - check for barrel measurements"
+    },
+    {
+      "term": "solvent trap",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Common disguise for silencers"
+    },
+    {
+      "term": "1/2-28",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Barrel thread measurement - often with disguised silencers"
+    },
+    {
+      "term": "5/8-24",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Barrel thread measurement"
+    },
+    {
+      "term": "scope",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "mira",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "red dot",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "night vision",
+      "category": "Lethal Accessories",
+      "severity": "high",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "sword",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "espada",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "dagger",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "adaga",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "machete",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "facão",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "bayonet",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "katana",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "ka-bar",
+      "category": "Bladed Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "pepper spray",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "spray pimenta",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "taser",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "stun gun",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "nunchucks",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "nunchaku",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "knuckle rings",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "soqueira",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "crossbow",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "besta",
+      "category": "Other Weapons",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "holster",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "coldre",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "gun case",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "gun safe",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "bipod",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "bulletproof vest",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true
+    },
+    {
+      "term": "colete à prova de balas",
+      "category": "Non-Lethal Accessories",
+      "severity": "low",
+      "action": "label",
+      "requiresContext": true,
+      "language": "pt"
+    },
+    {
+      "term": "blicky",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for gun in rap music"
+    },
+    {
+      "term": "chopper",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for AK-47"
+    },
+    {
+      "term": "burner",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Firearm previously used in crime or stolen"
+    },
+    {
+      "term": "heater",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for weapon/pistol"
+    },
+    {
+      "term": "heat",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for weapon"
+    },
+    {
+      "term": "gat",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "From gatling gun - any type of gun"
+    },
+    {
+      "term": "strap",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for gun"
+    },
+    {
+      "term": "piece",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for gun"
+    },
+    {
+      "term": "iron",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for gun"
+    },
+    {
+      "term": "boom stick",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Slang for shotgun"
+    },
+    {
+      "term": "cuete",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "Spanish slang for pistol"
+    },
+    {
+      "term": "leng",
+      "category": "Slang",
+      "severity": "mid",
+      "action": "label",
+      "requiresContext": true,
+      "notes": "UK slang for weapon (knife or gun)"
+    }
+  ],
+
+  "commercialSignals": [
+    {
+      "term": "for sale",
+      "type": "direct_sale"
+    },
+    {
+      "term": "à venda",
+      "type": "direct_sale",
+      "language": "pt"
+    },
+    {
+      "term": "vendo",
+      "type": "direct_sale",
+      "language": "pt"
+    },
+    {
+      "term": "buy now",
+      "type": "direct_sale"
+    },
+    {
+      "term": "compre agora",
+      "type": "direct_sale",
+      "language": "pt"
+    },
+    {
+      "term": "wts",
+      "type": "direct_sale",
+      "notes": "Want to sell"
+    },
+    {
+      "term": "wtb",
+      "type": "direct_buy",
+      "notes": "Want to buy"
+    },
+    {
+      "term": "trade",
+      "type": "trade"
+    },
+    {
+      "term": "troca",
+      "type": "trade",
+      "language": "pt"
+    },
+    {
+      "term": "dm for price",
+      "type": "contact"
+    },
+    {
+      "term": "inbox",
+      "type": "contact"
+    },
+    {
+      "term": "pm me",
+      "type": "contact"
+    },
+    {
+      "term": "hmu",
+      "type": "contact",
+      "notes": "Hit me up"
+    },
+    {
+      "term": "cheap price",
+      "type": "price_indicator"
+    },
+    {
+      "term": "best price",
+      "type": "price_indicator"
+    },
+    {
+      "term": "shipping available",
+      "type": "delivery"
+    },
+    {
+      "term": "entrega",
+      "type": "delivery",
+      "language": "pt"
+    },
+    {
+      "term": "shop now",
+      "type": "cta"
+    },
+    {
+      "term": "send message",
+      "type": "contact"
+    },
+    {
+      "term": "available",
+      "type": "availability"
+    },
+    {
+      "term": "disponível",
+      "type": "availability",
+      "language": "pt"
+    },
+    {
+      "term": "in stock",
+      "type": "availability"
+    }
+  ],
+
+  "excludedTerms": [
+    {
+      "term": "nerf",
+      "reason": "Toy weapon brand"
+    },
+    {
+      "term": "toy gun",
+      "reason": "Explicitly toy"
+    },
+    {
+      "term": "water gun",
+      "reason": "Toy"
+    },
+    {
+      "term": "lightsaber",
+      "reason": "Fictional/cosplay"
+    },
+    {
+      "term": "kitchen knife",
+      "reason": "Culinary"
+    },
+    {
+      "term": "chef knife",
+      "reason": "Culinary"
+    },
+    {
+      "term": "faca de cozinha",
+      "reason": "Culinary",
+      "language": "pt"
+    },
+    {
+      "term": "victorinox",
+      "reason": "Multi-utility tool"
+    },
+    {
+      "term": "leatherman",
+      "reason": "Multi-utility tool"
+    },
+    {
+      "term": "garden shears",
+      "reason": "Gardening tool"
+    },
+    {
+      "term": "scissors",
+      "reason": "Common tool"
+    },
+    {
+      "term": "tesoura",
+      "reason": "Common tool",
+      "language": "pt"
+    },
+    {
+      "term": "boomerang",
+      "reason": "Toy/sport"
+    },
+    {
+      "term": "kirpan",
+      "reason": "Religious item"
+    },
+    {
+      "term": "call of duty",
+      "reason": "Video game"
+    },
+    {
+      "term": "fortnite",
+      "reason": "Video game"
+    },
+    {
+      "term": "pubg",
+      "reason": "Video game"
+    },
+    {
+      "term": "counter strike",
+      "reason": "Video game"
+    },
+    {
+      "term": "cs:go",
+      "reason": "Video game"
+    },
+    {
+      "term": "fireworks",
+      "reason": "Celebratory context check needed"
+    },
+    {
+      "term": "fogos de artifício",
+      "reason": "Celebratory context check needed",
+      "language": "pt"
+    }
+  ]
+}

@@ -1,0 +1,847 @@
+{
+  "id": "ssied",
+  "name": "Suicide, Self-Injury, and Eating Disorders",
+  "shortName": "SSIED",
+  "description": "Policy protecting users from content that encourages suicide, self-injury, or eating disorders. Allows discussion and support-seeking while removing promotional, instructional, or graphic content. Includes special escalation for Credible Intent of Suicide (CIS).",
+  "color": "#9c27b0",
+  "icon": "heart-pulse",
+  "ready": true,
+  "sensitive": true,
+
+  "categories": [
+    {
+      "id": "suicide",
+      "name": "Suicide",
+      "description": "Content related to suicide promotion, admission, imagery, and mocking",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "suicide_promotes_imminent",
+          "name": "Promotes Suicide - Imminent Risk",
+          "description": "Content promoting suicide where risk of harm is imminent",
+          "action": "label",
+          "escalate": true
+        },
+        {
+          "id": "suicide_encourages_coordinates",
+          "name": "Encourages/Coordinates/Instructs Suicide",
+          "description": "Content that encourages, coordinates, or provides instructions for suicide",
+          "action": "label"
+        },
+        {
+          "id": "suicide_speaks_positively",
+          "name": "Speaks Positively of Suicide",
+          "description": "Content speaking positively about suicide without promotional indicators",
+          "action": "label"
+        },
+        {
+          "id": "suicide_mocking_satirical",
+          "name": "Mocking/Satirical Promotion",
+          "description": "Promoting suicide in satirical or humorous context",
+          "action": "label"
+        },
+        {
+          "id": "suicide_mocking_concept",
+          "name": "Mocking Concept of Suicide",
+          "description": "Mocking or dismissing the concept of suicide",
+          "action": "label"
+        },
+        {
+          "id": "suicide_mocking_victims",
+          "name": "Mocking Victims/Survivors",
+          "description": "Mocking people who have experienced or survived suicide",
+          "action": "label"
+        },
+        {
+          "id": "suicide_imagery_photo",
+          "name": "Suicide Imagery - Photos",
+          "description": "Photos depicting suicide attempt or death by suicide with incapacitated body",
+          "action": "label"
+        },
+        {
+          "id": "suicide_imagery_video",
+          "name": "Suicide Imagery - Videos",
+          "description": "Videos depicting suicide attempt or death by suicide",
+          "action": "label"
+        },
+        {
+          "id": "suicide_imagery_graphic",
+          "name": "Graphic Suicide Imagery",
+          "description": "Graphic suicide imagery not covered by photo/video categories",
+          "action": "label"
+        },
+        {
+          "id": "suicide_imagery_media",
+          "name": "Suicide Imagery - News/Media",
+          "description": "News or media reporting depicting suicide imagery",
+          "action": "label"
+        },
+        {
+          "id": "suicide_euthanasia_medical",
+          "name": "Euthanasia in Medical Setting",
+          "description": "Videos/photos depicting euthanasia/assisted suicide in medical setting",
+          "action": "label"
+        },
+        {
+          "id": "suicide_admission",
+          "name": "Suicide Admission",
+          "description": "Written or verbal admissions of engagement in suicide or attempted suicide",
+          "action": "label"
+        },
+        {
+          "id": "suicide_vague_ssi_context",
+          "name": "Vague Statements - SSI Context",
+          "description": "Vague, potentially suicidal statements in suicide/self-injury context",
+          "action": "label"
+        },
+        {
+          "id": "suicide_vague_other",
+          "name": "Vague Statements - Other Context",
+          "description": "Vague, potentially suicidal statements in any other context",
+          "action": "label"
+        },
+        {
+          "id": "suicide_narratives",
+          "name": "Suicide Narratives",
+          "description": "Narratives with detailed descriptions beyond mere naming of act/aftermath",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "self_injury",
+      "name": "Self-Injury",
+      "description": "Content related to self-injury promotion, admission, imagery, and mocking",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "si_encourages_coordinates",
+          "name": "Encourages/Coordinates/Instructs Self-Injury",
+          "description": "Content that encourages, coordinates, or provides instructions for self-injury",
+          "action": "label"
+        },
+        {
+          "id": "si_speaks_positively",
+          "name": "Speaks Positively of Self-Injury",
+          "description": "Content speaking positively about self-injury without promotional indicators",
+          "action": "label"
+        },
+        {
+          "id": "si_mocking_satirical",
+          "name": "Mocking/Satirical Promotion",
+          "description": "Promoting self-injury in satirical or humorous context",
+          "action": "label"
+        },
+        {
+          "id": "si_mocking_concept",
+          "name": "Mocking Concept of Self-Injury",
+          "description": "Mocking or dismissing the concept of self-injury",
+          "action": "label"
+        },
+        {
+          "id": "si_mocking_victims",
+          "name": "Mocking Victims/Survivors",
+          "description": "Mocking specific individuals experiencing or having experienced self-injury",
+          "action": "label"
+        },
+        {
+          "id": "si_graphic_ssi_context",
+          "name": "Graphic Self-Injury - SSI Context",
+          "description": "Graphic self-injury imagery in suicide or self-injury context",
+          "action": "label"
+        },
+        {
+          "id": "si_graphic_media",
+          "name": "Graphic Self-Injury - News/Media",
+          "description": "News or media reporting with graphic self-injury imagery",
+          "action": "label"
+        },
+        {
+          "id": "si_healed_ssi_context",
+          "name": "Healed Cuts - SSI Context",
+          "description": "Healed cuts or self-injury imagery in SSI context without recovery",
+          "action": "label"
+        },
+        {
+          "id": "si_healed_recovery",
+          "name": "Healed Cuts - Recovery Context",
+          "description": "Healed cuts in self-injury recovery context",
+          "action": "label"
+        },
+        {
+          "id": "si_body_mod_ssi",
+          "name": "Body Modification - SSI Context",
+          "description": "Body modification imagery (tattoo, piercing, scarification) with SSI context",
+          "action": "label"
+        },
+        {
+          "id": "si_admission",
+          "name": "Self-Injury Admission",
+          "description": "Written or verbal admissions of engagement in self-injury",
+          "action": "label"
+        },
+        {
+          "id": "si_narratives",
+          "name": "Self-Injury Narratives",
+          "description": "Narratives with detailed descriptions beyond mere naming of act/aftermath",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "eating_disorders",
+      "name": "Eating Disorders",
+      "description": "Content related to eating disorder promotion, admission, imagery, and mocking",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "ed_encourages_coordinates",
+          "name": "Encourages/Coordinates/Instructs ED",
+          "description": "Content that encourages, coordinates, or provides instructions for eating disorders",
+          "action": "label"
+        },
+        {
+          "id": "ed_speaks_positively",
+          "name": "Speaks Positively of ED",
+          "description": "Content speaking positively about eating disorders without promotional indicators",
+          "action": "label"
+        },
+        {
+          "id": "ed_mocking_satirical",
+          "name": "Mocking/Satirical Promotion",
+          "description": "Promoting eating disorders in satirical or humorous context",
+          "action": "label"
+        },
+        {
+          "id": "ed_mocking_concept",
+          "name": "Mocking Concept of ED",
+          "description": "Mocking or dismissing the concept of eating disorders",
+          "action": "label"
+        },
+        {
+          "id": "ed_mocking_victims",
+          "name": "Mocking Victims/Survivors",
+          "description": "Mocking specific individuals experiencing or having experienced eating disorders",
+          "action": "label"
+        },
+        {
+          "id": "ed_graphic",
+          "name": "Graphic ED Imagery",
+          "description": "Graphic eating disorder imagery (active purging, consumption of inedible objects)",
+          "action": "label"
+        },
+        {
+          "id": "ed_admission",
+          "name": "ED Admission",
+          "description": "Written or verbal admissions of engagement in eating disorders",
+          "action": "label"
+        },
+        {
+          "id": "ed_body_focus_ed_context",
+          "name": "Body Focus - ED Context",
+          "description": "Imagery focusing on body parts in eating disorder context",
+          "action": "label"
+        },
+        {
+          "id": "ed_body_focus_non_ed",
+          "name": "Body Focus - Non-ED Context",
+          "description": "Imagery focusing on body parts associated with body idealization without ED context",
+          "action": "label"
+        },
+        {
+          "id": "ed_body_focus_recovery",
+          "name": "Body Focus - Recovery Context",
+          "description": "Imagery focusing on body parts in ED recovery context",
+          "action": "label"
+        },
+        {
+          "id": "ed_weight_comparison",
+          "name": "Weight Loss/Gain Comparison",
+          "description": "Side-by-side before/after weight comparison not related to products",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "extreme_weight_loss",
+      "name": "Extreme Weight Loss Behavior",
+      "description": "Unhealthy weight loss methods posing health risks",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "ewl_ed_context",
+          "name": "Extreme Weight Loss - ED Context",
+          "description": "Extreme weight loss behavior shared in eating disorder context",
+          "action": "label"
+        },
+        {
+          "id": "ewl_promotional",
+          "name": "Extreme Weight Loss - Promotional",
+          "description": "Extreme weight loss behavior shared in promotional context",
+          "action": "label"
+        },
+        {
+          "id": "ewl_admission",
+          "name": "Extreme Weight Loss - Admission",
+          "description": "Extreme weight loss behavior shared in admissive context",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "restrictive_dieting",
+      "name": "Restrictive Dieting",
+      "description": "Diets limiting food consumption not clearly tied to disordered eating",
+      "severity": "low",
+      "subcategories": [
+        {
+          "id": "rd_ed_context",
+          "name": "Restrictive Dieting - ED Context",
+          "description": "Restrictive dieting shared in eating disorder context",
+          "action": "label"
+        },
+        {
+          "id": "rd_promotional",
+          "name": "Restrictive Dieting - Promotional",
+          "description": "Restrictive dieting shared in promotional context",
+          "action": "label"
+        },
+        {
+          "id": "rd_admission",
+          "name": "Restrictive Dieting - Admission",
+          "description": "Restrictive dieting shared in admissive context",
+          "action": "no_action"
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "ssied_escalate_cis_graphic",
+      "label": "Escalate - CIS Graphic/Promotion",
+      "path": ["Escalate", "Suicide", "Graphic/Promotion"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 0,
+      "conditions": ["Explicit Intent + Specific Capability + Time (<24h)"]
+    },
+    {
+      "id": "ssied_escalate_cis_admission",
+      "label": "Escalate - CIS Admission Only",
+      "path": ["Escalate", "Suicide", "Admission"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 0
+    },
+    {
+      "id": "ssied_suicide_promotion_encourage",
+      "label": "Suicide - Encourage/Coordinate/Instruct",
+      "path": ["Label", "SSIED", "Suicide", "Promotion", "Encourage, coordinate, and provide instructions"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "ssied_suicide_promotion_positive",
+      "label": "Suicide - Speaks Positively",
+      "path": ["Label", "SSIED", "Suicide", "Promotion", "Speaks Positively"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "ssied_suicide_graphic_imagery",
+      "label": "Suicide - Imagery (Attempt/Death)",
+      "path": ["Label", "SSIED", "Suicide", "Graphic Content", "Imagery depicting a suicide attempt or death by suicide"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "ssied_suicide_graphic_media",
+      "label": "Suicide - Sensational (Media)",
+      "path": ["Label", "SSIED", "Suicide", "Graphic Content", "Sensational (Media)"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "ssied_suicide_graphic_admission",
+      "label": "Suicide - Graphic Admission",
+      "path": ["Label", "SSIED", "Suicide", "Graphic Content", "Graphic Admission"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "ssied_suicide_mocking_satirical",
+      "label": "Suicide - Promotes Satirically/Humorously",
+      "path": ["Label", "SSIED", "Suicide", "Mocking", "Promotes Satirically OR Humorously"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "ssied_suicide_euthanasia",
+      "label": "Suicide - Assisted/Euthanasia Medical",
+      "path": ["Label", "SSIED", "Suicide", "Graphic Content", "Assisted Suicide or Euthanasia in medical setting"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "ssied_suicide_admission",
+      "label": "Suicide - Admission (No Graphic)",
+      "path": ["Label", "SSIED", "Suicide", "Admission", "Admission or vague statement engagement in suicide or attempted suicide (no graphic imagery)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "ssied_suicide_mocking_concept",
+      "label": "Suicide - Mocking/Dismissing Concept",
+      "path": ["Label", "SSIED", "Suicide", "Mocking", "Mocking OR Dismissing the concept of Suicide"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "ssied_suicide_narratives",
+      "label": "Suicide - Reference/Narratives",
+      "path": ["Label", "SSIED", "Suicide", "Suicide Reference or Narratives"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "ssied_si_promotion_encourage",
+      "label": "Self-Injury - Encourage/Coordinate/Instruct",
+      "path": ["Label", "SSIED", "Self-Injury", "Promotion", "Encourage, coordinate, and provide instructions"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "ssied_si_promotion_positive",
+      "label": "Self-Injury - Speaks Positively",
+      "path": ["Label", "SSIED", "Self-Injury", "Promotion", "Speaks Positively"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "ssied_si_graphic_media",
+      "label": "Self-Injury - Sensational (Media)",
+      "path": ["Label", "SSIED", "Self-Injury", "Graphic Content", "Sensational (Media)"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "ssied_si_graphic_admission",
+      "label": "Self-Injury - Graphic Admission",
+      "path": ["Label", "SSIED", "Self-Injury", "Graphic Content", "Graphic Admission"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "ssied_si_mocking_satirical",
+      "label": "Self-Injury - Promotes Satirically/Humorously",
+      "path": ["Label", "SSIED", "Self-Injury", "Mocking", "Promotes satirically or humorously"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "ssied_si_healed_ssi",
+      "label": "Self-Injury - Admission with Healed Cut",
+      "path": ["Label", "SSIED", "Self-Injury", "Graphic Content", "Admission of engagement in self-injury or attempted self-injury (with healed cut presented)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "ssied_si_admission",
+      "label": "Self-Injury - Admission (No Imagery)",
+      "path": ["Label", "SSIED", "Self-Injury", "Admission", "Admissions of engagement in self-injury or attempted self-injury (no imagery)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "ssied_si_recovery",
+      "label": "Self-Injury - Recovery with Imagery",
+      "path": ["Label", "SSIED", "Self-Injury", "Admission", "Recovery with Imagery presented"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "ssied_si_mocking_concept",
+      "label": "Self-Injury - Mocking/Dismissing Concept",
+      "path": ["Label", "SSIED", "Self-Injury", "Mocking", "Mocking OR Dismisses the concept of Self-injury"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "ssied_si_narratives",
+      "label": "Self-Injury - Reference/Narratives",
+      "path": ["Label", "SSIED", "Self-Injury", "Self-Injury Reference OR Narratives"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "ssied_ed_promotion_encourage",
+      "label": "Eating Disorder - Encourage/Coordinate/Instruct",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Promotion", "Encourage, coordinate, and provide instructions"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "ssied_ed_promotion_positive",
+      "label": "Eating Disorder - Speaks Positively",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Promotion", "Eating Disorder speaks positively"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "ssied_ed_graphic",
+      "label": "Eating Disorder - Graphic Admission",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Graphic Content", "Graphic Admission"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "ssied_ed_mocking_satirical",
+      "label": "Eating Disorder - Promotes Satirically/Humorously",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Mocking", "Promotes satirically or humorously"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "ssied_ed_admission",
+      "label": "Eating Disorder - Admission (No Imagery)",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Admission", "Admissions of engagement in eating disorder or attempted eating disorder (no imagery)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "ssied_ewl_promotion",
+      "label": "Extreme Weight Loss - Promotion",
+      "path": ["Label", "SSIED", "Eating Disorder", "No", "Promotion", "Extreme Weightloss Promotion"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "ssied_rd_promotion",
+      "label": "Restrictive Dieting - Promotion",
+      "path": ["Label", "SSIED", "Eating Disorder", "No", "Promotion", "Restrictive dieting content shared in a promotional Context"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "ssied_body_focus",
+      "label": "Imagery Focusing on Body Parts",
+      "path": ["Label", "SSIED", "Eating Disorder", "No", "Graphic Content", "Imagery focusing on OR Glamorizing body parts with non-ED context"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "ssied_ewl_admission",
+      "label": "Extreme Weight Loss - Admission",
+      "path": ["Label", "SSIED", "Eating Disorder", "No", "Admission", "Extreme weight loss content shared in an admissive context"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "ssied_ed_recovery",
+      "label": "Eating Disorder - Recovery with Imagery",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Recovery", "Recovery with focused imagery presented"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "ssied_ed_mocking_concept",
+      "label": "Eating Disorder - Mocking/Dismissing Concept",
+      "path": ["Label", "SSIED", "Eating Disorder", "Yes", "Mocking", "Mocking or Dismisses the concept of Eating Disorder"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 11
+    },
+    {
+      "id": "ssied_weight_comparison",
+      "label": "Weight Comparison - Not Product Related",
+      "path": ["Label", "SSIED", "Eating Disorder", "No", "Other", "Side-by-side Weight Gain/Loss Comparison not related to products"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 12
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "discussion_euthanasia",
+      "name": "Discussion of Euthanasia/Right to Die",
+      "description": "Content discussing assisted suicide/euthanasia or individual's right to die",
+      "appliesTo": ["suicide"],
+      "action": "no_action"
+    },
+    {
+      "id": "support_resources",
+      "name": "Support Resources",
+      "description": "Content created as support resource for victims with no self-injury imagery",
+      "appliesTo": ["suicide", "self_injury", "eating_disorders"],
+      "action": "no_action"
+    },
+    {
+      "id": "past_recovery_no_graphic",
+      "name": "Past Attempt with Recovery",
+      "description": "Content about past suicide attempt/self-injury/ED with clear recovery indication and no graphic imagery",
+      "appliesTo": ["suicide", "self_injury", "eating_disorders"],
+      "action": "no_action"
+    },
+    {
+      "id": "healed_cuts_no_context",
+      "name": "Healed Cuts - No SSI Context",
+      "description": "Healed cuts or self-injury imagery shared without SSI context",
+      "appliesTo": ["self_injury"],
+      "action": "no_action"
+    },
+    {
+      "id": "body_mod_religious",
+      "name": "Body Modification - Religious/Cultural",
+      "description": "Body modification shared for aesthetic, religious, or cultural reasons without SSI context",
+      "appliesTo": ["self_injury"],
+      "action": "no_action",
+      "referTo": "VGC"
+    },
+    {
+      "id": "underweight_no_ed",
+      "name": "Underweight Photos - No ED Context",
+      "description": "Photos or videos of underweight people without eating disorder context",
+      "appliesTo": ["eating_disorders"],
+      "action": "no_action"
+    },
+    {
+      "id": "weight_loss_no_comparison",
+      "name": "Weight Loss - No Comparison",
+      "description": "Weight loss content without side-by-side comparison and not in ED context",
+      "appliesTo": ["eating_disorders"],
+      "action": "no_action"
+    },
+    {
+      "id": "rd_admission",
+      "name": "Restrictive Dieting - Admission",
+      "description": "Restrictive dieting shared in admissive context without ED signals",
+      "appliesTo": ["restrictive_dieting"],
+      "action": "no_action"
+    },
+    {
+      "id": "contradictory_context",
+      "name": "Contradictory Context",
+      "description": "Apparent SSI/ED context negated by contradictory indicators",
+      "appliesTo": ["suicide", "self_injury", "eating_disorders"],
+      "action": "no_action"
+    },
+    {
+      "id": "fictional_under_5_seconds",
+      "name": "Fictional Content - Under 5 Seconds",
+      "description": "Fictional video consumption <5 seconds or still imagery",
+      "appliesTo": ["suicide", "self_injury", "eating_disorders"],
+      "action": "no_action"
+    },
+    {
+      "id": "religious_fasting",
+      "name": "Religious Fasting",
+      "description": "Fasting in context of religious observance (Ramadan, Lent) or medically advised procedures",
+      "appliesTo": ["extreme_weight_loss", "restrictive_dieting"],
+      "action": "no_action"
+    }
+  ],
+
+  "glossary": {
+    "ssi_context": "Suicide/Self-Injury context determined by visual, written, or verbal indicators. Can be present in imagery, caption, hashtag, text overlay, audio, or subject elements. Examples: cuts on inner wrist, tied noose, statements like 'kms'.",
+    "ed_context": "Eating Disorder context determined by visual, written, or verbal indicators. Established by ED signals, focused body part imagery, or promotional signals paired with weight loss content.",
+    "healed_cuts": "Skin has restored to cover wound, raised features visible within scar margins, no blood visible on scars. For B&W images, no shine from liquid blood.",
+    "graphic_self_injury": "Unhealed cuts as primary subject, skin not covering wound, blood/scabs visible, active self-injury (razor in use), means of self-injury (razor/sharp objects), environmental indicators (blood on tissue/sink/floor).",
+    "graphic_ed_imagery": "Active purging/vomiting in ED context, consumption of inedible objects (soil, clay, sand, chalk, hair, paper, cigarette butts, glue, plastic, soap), environmental indicators (vomit in bingeing context).",
+    "promotes": "Speaks positively of, coordinates, encourages, or provides instructions, including using polls to determine whether to engage.",
+    "recovery_context": "Clear statement that user has or is healing from past suicide attempt, self-injury, eating disorder, or drug addiction.",
+    "extreme_weight_loss": "Consuming <1200 calories/day, fasting 24+ hours, rapid weight loss >2 lbs/week, calling for children under 13 to engage in unsupervised weight loss.",
+    "restrictive_dieting": "Unquantified rapid weight loss, elimination of entire macronutrient groups (carbs, proteins, fats), intermittent fasting, meal skipping/substitution, detoxes/cleanses without solid food.",
+    "body_idealization_parts": "Exhaustive list: ribs, collarbones, thigh gaps, hips, concave stomach, protruding spine, scapula, visible bones in arms/legs, hollow cheeks.",
+    "focused_depiction": "Body parts deliberately made center or focal point: cropping/zooming to exclude face, placing body parts at forefront, displacing/removing clothing to ensure body parts are focal.",
+    "viral_events": "SSIED Viral Events: games/challenges promoting suicide, self-injury, or eating disorders. Examples: Blue Whale, Momo, Jonathan Galindo/Dogface, 6inner/7inner, White Rabbit.",
+    "cis_criteria": "Credible Intent of Suicide requires ALL: Explicit Intent (statement of intent, attempt in progress, or suicide note) + Specific Capability (method/means mentioned or depicted) + Imminence (<24 hours).",
+    "contradictory_context": "Context negating SSI/ED: injury by others, accidental cuts, body modification for religious/cultural reasons, prevention/awareness materials, medical diagnostics, famine/illness not ED-related, baby/animal eating inedible objects, religious/medical fasting."
+  },
+
+  "credibleIntentSuicide": {
+    "criteria": {
+      "explicitIntent": [
+        "Statement explicitly stating intent to take own life: 'I am going to kill myself', 'I will commit suicide', 'I am going to drink bleach'",
+        "User conveying suicide attempt in progress",
+        "User explicitly stating this is their suicide note"
+      ],
+      "specificCapability": [
+        "Explicit mention of method/means: pills, gun, knife, rope, hanging",
+        "Depiction of method/means: picture of pills, gun, knife, rope, top of building/cliff"
+      ],
+      "imminence": [
+        "Plans <24 hours in future: 'now', 'tomorrow'",
+        "Content <24 hours old"
+      ]
+    },
+    "doNotEscalate": [
+      "Content >24 hours old",
+      "Fictional content without captions meeting criteria",
+      "Content determined newsworthy by Content Policy",
+      "Person clearly receiving help from Law Enforcement/Medical Provider",
+      "Memes in satirical/humorous context without captions meeting criteria"
+    ]
+  },
+
+  "edSignals": {
+    "promotionSignals": [
+      "thinspo", "bonespo", "meanspo", "thinspiration", "proana", "promia", "edtips",
+      "anabuddy", "princessanamia", "anatips", "anagoals", "eating disorder coach", "ana coach"
+    ],
+    "contextSignals": [
+      "bulimia", "anorexia", "orthorexia", "binging", "pica", "ARFID", "eating disorder",
+      "#mia", "#ana", "#anamia", "edtwt", "anatwt", "edinsta", "eddiary",
+      "thigh gap", "body checking", "#selfharm", "#cutting",
+      "#stopeating", "#starveyourself", "#donteat", "fasting",
+      "goal weight", "GW", "UGW"
+    ],
+    "benignSignals": [
+      "#depression", "#sad", "#goals", "#bodygoals", "fitspo", "fitspiration", "#healthinspo",
+      "dieting", "juice cleanse", "healthy eating",
+      "#edrecovery", "#anafighter", "#anawarrior",
+      "flat stomach", "skinny legs", "pretty", "fat", "thin", "dainty"
+    ]
+  },
+
+  "suicideMethods": {
+    "highSeverity": [
+      "hanging", "pills/poison ingestion", "sharp objects to major arteries",
+      "suffocation", "jumping", "firearm", "drowning", "setting on fire"
+    ],
+    "signals": {
+      "gun": "Gun fired/pointed at head, mouth, chest, stomach - finger on trigger",
+      "pills": "Substance consumed or touching lips/mouth",
+      "sharp_objects": "Vertical cuts on inner forearms, stabbing chest, cutting major artery",
+      "rope": "Body hanging in noose, noose around head, bag over head",
+      "jump": "Steps over edge, standing on edge, running to edge"
+    }
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "CIS Escalations > Suicide Promotion > SI Promotion > ED Promotion > Suicide Graphic > SI Graphic > ED Graphic > Suicide Mocking > SI Mocking > ED Mocking > Admissions > Narratives",
+    "default_ssi_context": "If unclear whether cuts are self-inflicted, consider NOT in SSI context unless contextual clues present",
+    "fictional_treatment": "Fictional content assessed same as real content - promotional signals, graphic imagery, mocking all treated equally",
+    "vertical_vs_horizontal": "Vertical cuts on inner forearm = suicide context, Horizontal cuts = self-injury context",
+    "live_content": "Leave live suicide content up as long as possible for intervention, stop at point of attempt",
+    "5_second_rule": "Fictional video >5 seconds consumption = Label, <5 seconds = No Action (except suicide photos/videos)",
+    "pica_as_ed": "Pica (eating non-food items like hair, dirt, paint chips) is classified as eating disorder - treat same as anorexia/bulimia",
+    "incapacitated_body_photos": "For suicide photos, incapacitated body must be present. Does not include open-casket funeral imagery",
+    "meme_hashtags_exception": "Do not action SSI hashtags paired with meme hashtags (#meme, #dankmemes, #edgymeme) if no other SSI context present"
+  },
+
+  "suicideAttemptSignals": {
+    "methods": {
+      "gun": {
+        "attempt": "Gun fired at head, mouth, chest, or stomach/internal organs",
+        "imminent": "Gun pointed to head, mouth, chest or stomach with finger on trigger"
+      },
+      "pills_poison": {
+        "attempt": "Substance consumed",
+        "imminent": "Substance touching lips/mouth"
+      },
+      "sharp_objects": {
+        "attempt": "Vertical cuts on inner forearms, stabbing chest, cutting major artery/internal organ",
+        "imminent": "Sharp objects approaching major artery/internal organ in vertical position"
+      },
+      "rope_suffocation": {
+        "attempt": "Body hanging in noose",
+        "imminent": "Noose around head, bag over head"
+      },
+      "jump": {
+        "attempt": "Steps over edge",
+        "imminent": "Standing on edge, running to edge"
+      }
+    },
+    "contextSignals": [
+      "Word 'suicide' in caption/video",
+      "Goodbye message",
+      "Desire to end life, apologizing for actions",
+      "Saying no reason to live/nobody would care if they died",
+      "Naming a time of suicide attempt",
+      "1+ unhealed vertical cut on inside of forearm"
+    ],
+    "nonSuicideSignals": [
+      "Jumping with protective gear (helmet, parachute, harness)",
+      "Swallowing pills in medicinal context",
+      "Staged magic tricks or stunts",
+      "Engaging in parkour"
+    ]
+  },
+
+  "graphicSelfInjuryIndicators": [
+    "One or more cuts present on body part as primary subject",
+    "Skin does not cover the wound",
+    "Blood visible (including scabs), even with past wound scars",
+    "Active self-injury (razor/sharp objects in use on skin)",
+    "Means of self-injury passively depicted (razor/sharp objects not in use)",
+    "Environmental indicator (blood on tissue, sink, floor)"
+  ],
+
+  "healedCutsIndicators": [
+    "Skin has restored to cover the wound",
+    "Raised features of skin (slight inflammation) visible within scar margins",
+    "No blood visible on the scars",
+    "For B&W images: no shine from liquid blood"
+  ],
+
+  "focusedDepictionIndicators": [
+    "Cropping/zooming so face/head not fully visible",
+    "Editing image to focus on certain body parts",
+    "Placing body parts at forefront of image",
+    "Displacing or removing clothing to ensure body parts are focal point"
+  ],
+
+  "bodyIdealizationParts": [
+    "ribs",
+    "collarbones", 
+    "thigh gaps",
+    "hips",
+    "concave stomach",
+    "protruding spine",
+    "scapula",
+    "visible bones in arms",
+    "visible bones in legs",
+    "hollow cheeks"
+  ],
+
+  "scaledPolicyDecisions": [
+    {
+      "id": "pica_as_ed",
+      "description": "Pica classified as eating disorder - treat same as anorexia/bulimia",
+      "action": "delete",
+      "markets": "agnostic"
+    }
+  ]
+}

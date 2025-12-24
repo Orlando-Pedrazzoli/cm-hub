@@ -1,0 +1,1067 @@
+{
+  "policy": "vi",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "highSeverityViolence": [
+    {
+      "term": "kill",
+      "aliases": ["killing", "killed"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "matar",
+      "aliases": ["matando", "matei", "matou", "mate"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt",
+      "caveats": "Can be used in 'matar a fome' (kill hunger) or 'matar aula' (skip class)"
+    },
+    {
+      "term": "assassinar",
+      "aliases": ["assassinada", "assassinado", "assassinados", "assassinar"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "shoot",
+      "aliases": ["shooting", "shot"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "atirar",
+      "aliases": ["atirando", "atirou", "atire"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "meter bala",
+      "aliases": ["mete bala", "bala na cabeça"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "stab",
+      "aliases": ["stabbing", "stabbed"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "esfaquear",
+      "aliases": ["esfaqueou", "facada", "facadas"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "hang",
+      "aliases": ["hanging", "hanged"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "enforcar",
+      "aliases": ["enforcada", "enforcadas", "enforcado", "enforcados", "enforcou"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "burn",
+      "aliases": ["burning", "burned", "set on fire"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "queimar",
+      "aliases": ["queimada", "queimadas", "queimado", "queimando", "colocar na fogueira", "colocar no fogo"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt",
+      "caveats": "'queimada' and 'queimado' can refer to dodgeball game"
+    },
+    {
+      "term": "drown",
+      "aliases": ["drowning", "drowned"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "afogar",
+      "aliases": ["afogado", "afogando", "afogou"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt",
+      "caveats": "Can be used in 'afogar as mágoas' (drown sorrows)"
+    },
+    {
+      "term": "strangle",
+      "aliases": ["strangling", "strangled"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "estrangular",
+      "aliases": ["estrangulada", "estranguladas", "estrangulado", "estrangulados"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "suffocate",
+      "aliases": ["suffocating", "suffocated"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "sufocar",
+      "aliases": ["sufocada", "sufocadas", "sufocado", "sufocados"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "poison",
+      "aliases": ["poisoning", "poisoned"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "envenenar",
+      "aliases": ["envenenada", "envenenadas", "envenenado", "envenenando"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "decapitate",
+      "aliases": ["decapitated", "behead", "beheaded"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "decapitar",
+      "aliases": ["degolar", "degolado", "degolada"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "dismember",
+      "aliases": ["dismembered", "dismembering"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "desmembrar",
+      "aliases": ["desmembrada", "desmembrado", "desmembrando", "decepar", "esquartejar"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "lynch",
+      "aliases": ["lynching", "lynched"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "linchar",
+      "aliases": ["linchada", "linchadas", "linchado", "linchados", "linchamento"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt",
+      "caveats": "If in online harassment/cancel culture context, may be non-violating"
+    },
+    {
+      "term": "massacre",
+      "aliases": ["massacring", "massacred"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "massacrar",
+      "aliases": ["massacrada", "massacradas", "massacrado", "massacrados"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "run over",
+      "aliases": ["run down", "hit with car", "hit by car"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "atropelar",
+      "aliases": ["atropelada", "atropeladas", "atropelado", "atropelados"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "stone",
+      "aliases": ["stoning", "stoned"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "en"
+    },
+    {
+      "term": "apedrejar",
+      "aliases": ["tacar pedra", "pedrada", "jogar tijolo", "tacar tijolo"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "CPF cancelado",
+      "aliases": ["cancelar CPF"],
+      "severity": "critical",
+      "category": "proxy_lethal",
+      "language": "pt",
+      "notes": "Brazilian proxy for murder - do not confuse with CPF Cancelado > Further Degrading"
+    },
+    {
+      "term": "death to",
+      "aliases": ["death to all"],
+      "severity": "critical",
+      "category": "calls_for_death",
+      "language": "en",
+      "notes": "Only violating against high-risk persons"
+    },
+    {
+      "term": "morte a",
+      "aliases": ["morte aos", "morte às"],
+      "severity": "critical",
+      "category": "calls_for_death",
+      "language": "pt"
+    },
+    {
+      "term": "eliminar",
+      "severity": "critical",
+      "category": "proxy_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "fuzilar",
+      "aliases": ["fuzilamento", "paredão de fuzilamento"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "metralhar",
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "explodir",
+      "aliases": ["explosão"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "incendiar",
+      "aliases": ["inflamar"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "esguelar",
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "espancar",
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "mutilar",
+      "aliases": ["mutilação genital feminina", "circuncisão genital feminina"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "chicotear",
+      "aliases": ["chicotada", "chibatada", "açoitar"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "empalar",
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "enterrar vivo",
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "jogar ácido",
+      "aliases": ["entornar ácido"],
+      "severity": "critical",
+      "category": "explicit_lethal",
+      "language": "pt"
+    },
+    {
+      "term": "dar um fim",
+      "severity": "critical",
+      "category": "implicit_lethal",
+      "language": "pt",
+      "notes": "Proxy for high severity violence"
+    }
+  ],
+
+  "midSeverityViolence": [
+    {
+      "term": "punch",
+      "aliases": ["punching", "punched"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "en"
+    },
+    {
+      "term": "socar",
+      "aliases": ["meter soco", "meter um soco", "soco", "esmurrar", "murro", "dar murro"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "kick",
+      "aliases": ["kicking", "kicked"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "en"
+    },
+    {
+      "term": "chutar",
+      "aliases": ["pontapé", "dar um bico", "bicuda", "biqueiro"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "beat",
+      "aliases": ["beating", "beaten"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "en"
+    },
+    {
+      "term": "bater",
+      "aliases": ["surra", "sova", "pancada", "peia"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "hit",
+      "aliases": ["hitting"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "en"
+    },
+    {
+      "term": "arrebentar",
+      "aliases": ["arrebentada", "arrebentadas", "arrebentado", "arrebentados"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "partir a cara",
+      "aliases": ["quebrar tua cara", "foder a cara", "partir a boca", "partir a cabeça"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt",
+      "notes": "'Partir a cabeça' becomes HSV if weapon involved"
+    },
+    {
+      "term": "cabeçada",
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "joelhada",
+      "aliases": ["cotovelada"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "voadora",
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "pisotear",
+      "aliases": ["espezinhar"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "morder",
+      "aliases": ["mordida"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "gag",
+      "aliases": ["gagging", "gagged"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "en"
+    },
+    {
+      "term": "amordaçar",
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "spray de pimenta",
+      "aliases": ["gás pimenta", "gás lacrimogêneo"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "chinelada",
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt",
+      "notes": "Object+violence but not lethal, treat as mid severity"
+    },
+    {
+      "term": "bala de borracha",
+      "aliases": ["rubber bullet"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "descer o cacete",
+      "aliases": ["enfiar o cacete", "meter o cacete", "dar um pau", "meter o pau", "descer o pau"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "quebrar na porrada",
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    },
+    {
+      "term": "sentar o aço",
+      "aliases": ["meter o ferro"],
+      "severity": "high",
+      "category": "explicit_serious",
+      "language": "pt"
+    }
+  ],
+
+  "lowSeverityViolence": [
+    {
+      "term": "slap",
+      "aliases": ["slapping", "slapped"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "tapa",
+      "aliases": ["dar tapa", "estapear", "bofetada", "chapada", "chapa", "chapo"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "push",
+      "aliases": ["pushing", "pushed", "shove"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "empurrar",
+      "aliases": ["empurrada", "empurradas", "empurrado", "empurrados", "empurrão"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt",
+      "notes": "'Empurrar das escadas' is HSV (potentially lethal)"
+    },
+    {
+      "term": "spit",
+      "aliases": ["spitting", "spat"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "cuspir",
+      "aliases": ["cuspe"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "trip",
+      "aliases": ["tripping", "tripped"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "tropeçar",
+      "aliases": ["tropeço", "trupicar", "rasteira"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "pinch",
+      "aliases": ["pinching", "pinched"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "beliscar",
+      "aliases": ["beliscada", "beliscado", "beliscados", "dar um beliscão"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "pull hair",
+      "aliases": ["yank hair"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "puxar cabelo",
+      "aliases": ["arrancar cabelo", "puxão de orelha", "orelhada"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "drag",
+      "aliases": ["dragging", "dragged"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "en"
+    },
+    {
+      "term": "arrastar",
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "calduço",
+      "aliases": ["dar um calduço", "levar um calduço"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "pescotapa",
+      "aliases": ["pescoçada"],
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    },
+    {
+      "term": "tacar ovo",
+      "severity": "mid",
+      "category": "explicit_minor",
+      "language": "pt"
+    }
+  ],
+
+  "armaments": [
+    {
+      "term": "gun",
+      "aliases": ["firearm", "pistol", "rifle", "shotgun"],
+      "category": "armament",
+      "language": "en"
+    },
+    {
+      "term": "fuzil",
+      "aliases": ["fuzilzão", "metralhadora"],
+      "category": "armament",
+      "language": "pt"
+    },
+    {
+      "term": "3oitão",
+      "aliases": ["38tão", "38ão", "trezoitão"],
+      "category": "armament",
+      "language": "pt",
+      "notes": "Brazilian slang for .38 revolver"
+    },
+    {
+      "term": "semi automática",
+      "category": "armament",
+      "language": "pt"
+    },
+    {
+      "term": "knife",
+      "aliases": ["blade", "machete"],
+      "category": "armament",
+      "language": "en"
+    },
+    {
+      "term": "faca",
+      "aliases": ["facas", "facão", "peixeira", "pexeira"],
+      "category": "armament",
+      "language": "pt"
+    },
+    {
+      "term": "machado",
+      "aliases": ["machadada", "machados"],
+      "category": "armament",
+      "language": "pt"
+    },
+    {
+      "term": "explosive",
+      "aliases": ["bomb", "grenade"],
+      "category": "armament",
+      "language": "en"
+    },
+    {
+      "term": "explosivo",
+      "aliases": ["explosivos", "dinamite", "dinamites"],
+      "category": "armament",
+      "language": "pt"
+    },
+    {
+      "term": "molotov",
+      "aliases": ["coquetel molotov", "molotovs"],
+      "category": "armament",
+      "language": "multi"
+    },
+    {
+      "term": "💣",
+      "category": "armament_emoji"
+    },
+    {
+      "term": "🔪",
+      "category": "armament_emoji"
+    },
+    {
+      "term": "🗡",
+      "category": "armament_emoji"
+    },
+    {
+      "term": "🔫",
+      "category": "armament_emoji"
+    }
+  ],
+
+  "highRiskPersons": [
+    {
+      "term": "journalist",
+      "aliases": ["reporter", "columnist", "correspondent"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "jornalista",
+      "aliases": ["jornalistas", "reporter", "repórter", "repórteres", "colunista", "colunistas", "correspondente", "correspondentes", "comentarista", "comentaristas"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "activist",
+      "aliases": ["activists"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "ativista",
+      "aliases": ["ativistas"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "police officer",
+      "aliases": ["cop", "law enforcement"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "policial",
+      "aliases": ["policiais", "agente da polícia", "agente da GNR", "agente da PSP"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "head of state",
+      "aliases": ["president", "prime minister"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "chefe de estado",
+      "aliases": ["chefes de estado", "presidente", "presidenta", "presidente da república", "primeira dama", "primeira-dama"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "senator",
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "senador",
+      "aliases": ["senadores", "senadora", "senadoras"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "judge",
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "juiz",
+      "aliases": ["juíz", "juizes", "juíza", "juiza", "juizas"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "witness",
+      "aliases": ["informant"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "testemunha",
+      "aliases": ["testemunhas", "informante", "informantes"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "healthcare worker",
+      "aliases": ["doctor", "nurse"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "médico",
+      "aliases": ["doutor", "doutores", "enfermeiro", "enfermeira", "enfermeiros", "enfermeiras", "cirurgião", "cirurgiões", "dentista", "dentistas"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "homeless",
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "mendigo",
+      "aliases": ["mendigos", "morador de rua", "moradores de rua"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "foreigner",
+      "aliases": ["foreigners"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "estrangeiro",
+      "aliases": ["estrangeiros"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "Zionist",
+      "aliases": ["Zionists"],
+      "category": "high_risk_person",
+      "language": "en"
+    },
+    {
+      "term": "prefeita",
+      "aliases": ["prefeitas"],
+      "category": "high_risk_person",
+      "language": "pt"
+    },
+    {
+      "term": "detetive",
+      "aliases": ["detetives"],
+      "category": "high_risk_person",
+      "language": "pt"
+    }
+  ],
+
+  "highRiskLocations": [
+    {
+      "term": "church",
+      "aliases": ["mosque", "temple", "synagogue"],
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "igreja",
+      "aliases": ["igrejas", "mesquita", "mesquitas", "templo", "templos", "sinagoga", "capela", "capelas", "catedral", "catedrais", "basílica", "basilica", "santuário", "santuários", "convento", "conventos", "monastério", "monastérios", "terreiro", "terreiros"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "school",
+      "aliases": ["university", "college", "campus"],
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "escola",
+      "aliases": ["faculdade", "faculdades", "campus", "campi", "instituto de tecnologia", "berçário", "biblioteca", "bibliotecas", "ginásio", "auditório", "auditórios"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "hospital",
+      "aliases": ["clinic", "medical center"],
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "hospital",
+      "aliases": ["centro médico", "centro cirúrgico", "centro de radiologia", "consultório médico", "consultório de dentista", "maternidade", "pronto socorro", "emergência", "banco de sangue", "sanatório", "manicômio"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "embassy",
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "embaixada",
+      "aliases": ["embaixadas", "Itamaraty"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "election site",
+      "aliases": ["polling station", "voting center"],
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "seção eleitoral",
+      "aliases": ["seções eleitorais", "zona eleitoral", "zonas eleitorais", "Justiça Eleitoral", "Tribunal Superior Eleitoral", "TSE"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "government building",
+      "aliases": ["capitol", "parliament"],
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "tribunal",
+      "aliases": ["tribunais", "Supremo Tribunal Federal", "STF", "supremo", "senado", "câmara", "prefeitura", "Palácio da Alvorada", "Palácio do Planalto"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "LGBTQ venue",
+      "aliases": ["gay bar", "pride parade"],
+      "category": "high_risk_location",
+      "language": "en"
+    },
+    {
+      "term": "bar gay",
+      "aliases": ["bares gays", "balada gay", "baladas gay", "parada gay", "parada LGBT", "parada LGBTQ", "parada LGBTQI", "parada LGBTQIA", "parada do orgulho gay"],
+      "category": "high_risk_location",
+      "language": "pt"
+    },
+    {
+      "term": "academia",
+      "category": "high_risk_location",
+      "language": "pt"
+    }
+  ],
+
+  "threatStatements": [
+    {
+      "pattern": "I will",
+      "aliases": ["I'm going to", "I am going to", "gonna"],
+      "type": "statement_of_intent",
+      "language": "en"
+    },
+    {
+      "pattern": "vou",
+      "aliases": ["irei", "farei"],
+      "type": "statement_of_intent",
+      "language": "pt"
+    },
+    {
+      "pattern": "should be",
+      "aliases": ["deserves to be", "needs to be"],
+      "type": "advocating",
+      "language": "en"
+    },
+    {
+      "pattern": "deveria ser",
+      "aliases": ["merece ser", "precisa ser"],
+      "type": "advocating",
+      "language": "pt"
+    },
+    {
+      "pattern": "I wish",
+      "aliases": ["I hope", "I pray"],
+      "type": "aspirational",
+      "language": "en"
+    },
+    {
+      "pattern": "quero que",
+      "aliases": ["espero que", "tomara que"],
+      "type": "aspirational",
+      "language": "pt"
+    },
+    {
+      "pattern": "if you",
+      "aliases": ["when you"],
+      "type": "conditional",
+      "language": "en"
+    },
+    {
+      "pattern": "se você",
+      "aliases": ["quando você"],
+      "type": "conditional",
+      "language": "pt"
+    },
+    {
+      "pattern": "let's",
+      "aliases": ["we should", "everyone should"],
+      "type": "call_for_action",
+      "language": "en"
+    },
+    {
+      "pattern": "vamos",
+      "aliases": ["devemos", "todos devem"],
+      "type": "call_for_action",
+      "language": "pt"
+    }
+  ],
+
+  "excludedTerms": [
+    {
+      "term": "matar a fome",
+      "reason": "Idiomatic expression - to satisfy hunger",
+      "language": "pt"
+    },
+    {
+      "term": "matar aula",
+      "reason": "Idiomatic expression - to skip class",
+      "language": "pt"
+    },
+    {
+      "term": "afogar as mágoas",
+      "reason": "Idiomatic expression - to drown sorrows",
+      "language": "pt"
+    },
+    {
+      "term": "contact sport",
+      "reason": "Sports context exception",
+      "language": "en"
+    },
+    {
+      "term": "esporte de contato",
+      "reason": "Sports context exception",
+      "language": "pt"
+    },
+    {
+      "term": "boxing",
+      "reason": "Sports context",
+      "language": "en"
+    },
+    {
+      "term": "boxe",
+      "reason": "Sports context",
+      "language": "pt"
+    },
+    {
+      "term": "self-defense",
+      "reason": "Self-defense context exception",
+      "language": "en"
+    },
+    {
+      "term": "legítima defesa",
+      "reason": "Self-defense context exception",
+      "language": "pt"
+    },
+    {
+      "term": "queimada",
+      "reason": "Can refer to dodgeball game",
+      "language": "pt",
+      "notes": "Context-dependent"
+    },
+    {
+      "term": "linchamento virtual",
+      "reason": "Online harassment/cancel culture context",
+      "language": "pt"
+    }
+  ],
+
+  "notHighRiskPersons": [
+    {
+      "term": "Deputado Estadual",
+      "reason": "Member of statewide legislative body - not nationwide",
+      "language": "pt"
+    },
+    {
+      "term": "Governador",
+      "reason": "State elected official - not nationwide",
+      "language": "pt"
+    },
+    {
+      "term": "Vereador",
+      "reason": "Member of citywide legislative body - not nationwide",
+      "language": "pt"
+    }
+  ]
+}

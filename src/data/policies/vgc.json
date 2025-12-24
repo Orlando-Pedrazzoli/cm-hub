@@ -1,0 +1,648 @@
+{
+  "id": "vgc",
+  "name": "Violent and Graphic Content",
+  "shortName": "VGC",
+  "description": "Policy that restricts graphic imagery of violence, gore, mutilation, and death to protect users while allowing space for awareness-raising and condemnation of human rights abuses. Content is evaluated based on type (humans, animals, fictional), context, and presence of sadistic remarks.",
+  "color": "#c62828",
+  "icon": "alert-triangle",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "imagery_humans",
+      "name": "Imagery of Humans",
+      "description": "Graphic imagery of real humans in real settings. Where unclear if real, presume it is real.",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "mutilated_humans",
+          "name": "Mutilated Humans",
+          "description": "Dismemberment, visible innards, severely burning/charred persons, or throat slitting",
+          "action": "label",
+          "conditions": ["No sadism present - sadism evaluated separately in Section 4"]
+        },
+        {
+          "id": "violent_death",
+          "name": "Violent Death or Life-Threatening Event",
+          "description": "High-severity violence (shooting, stabbing) or high-intensity trauma (collisions, drowning, explosions, falling)",
+          "action": "label"
+        },
+        {
+          "id": "brutality",
+          "name": "Brutality",
+          "description": "Excessive/unnecessary force resulting in harm, injury, or indignity to victim",
+          "action": "label"
+        },
+        {
+          "id": "human_gore",
+          "name": "Human Gore",
+          "description": "Non-medical foreign objects piercing skin, bleeding gums/teeth, human waste/bodily fluids",
+          "action": "label"
+        },
+        {
+          "id": "deceased_babies",
+          "name": "Deceased Babies and Fetuses",
+          "description": "Deceased babies and fetuses outside the womb",
+          "action": "label"
+        },
+        {
+          "id": "needles_medical",
+          "name": "Needles/Medical Context",
+          "description": "Needles piercing skin, injured humans in medical context",
+          "action": "label",
+          "conditions": ["Exception: Vaccination, acupuncture, tattoo, piercing with no visible blood = No Action"]
+        },
+        {
+          "id": "armaments",
+          "name": "Armaments",
+          "description": "Weapons pointed at viewer or another person",
+          "action": "label"
+        },
+        {
+          "id": "deceased_humans",
+          "name": "Deceased Humans",
+          "description": "Dead bodies partially or fully uncovered without violent death indicators",
+          "action": "label",
+          "conditions": ["Fully covered body = No Action"]
+        },
+        {
+          "id": "graphic_historical",
+          "name": "Graphic Historical Imagery",
+          "description": "Designated historical events (Holocaust, Tiananmen, etc.)",
+          "action": "label"
+        },
+        {
+          "id": "graphic_vehicle",
+          "name": "Graphic Vehicle Damage",
+          "description": "Exploding/burning vehicles or severe collision damage",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "imagery_animals",
+      "name": "Imagery of Animals",
+      "description": "Graphic imagery of real animals (excluding invertebrates like insects/shellfish)",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "animal_mutilation",
+          "name": "Animal Mutilation",
+          "description": "Dismemberment of non-regenerating body part, visible innards, severe burning/charring, boiled alive",
+          "action": "label"
+        },
+        {
+          "id": "animal_live_to_dead",
+          "name": "Animals Going Live to Dead",
+          "description": "Imagery depicting animals suffering violent death",
+          "action": "label"
+        },
+        {
+          "id": "animal_blood",
+          "name": "Animals with Visible Blood",
+          "description": "Any imagery of animals with visible blood",
+          "action": "label"
+        },
+        {
+          "id": "animal_birthing",
+          "name": "Animal Birthing",
+          "description": "Animals in birthing context, even with visible blood or innards",
+          "action": "label"
+        },
+        {
+          "id": "animal_insects",
+          "name": "Animals with Insects",
+          "description": "Animals with insects (maggots, worms) coming out from inside",
+          "action": "label"
+        },
+        {
+          "id": "animal_brutality",
+          "name": "Brutality Against Animals",
+          "description": "Humans committing acts of brutality against live animals",
+          "action": "label"
+        },
+        {
+          "id": "animal_suffering",
+          "name": "Animal Suffering",
+          "description": "Live animals displaying pain, distress, discomfort while restrained/injured",
+          "action": "label"
+        },
+        {
+          "id": "staged_fights",
+          "name": "Staged Animal Fights",
+          "description": "Imagery of staged animal-to-animal fights",
+          "action": "information"
+        }
+      ]
+    },
+    {
+      "id": "fictional_graphic",
+      "name": "Fictional Graphic Imagery",
+      "description": "Recognized fictional content (TV, film, animation, CGI) depicting graphic violence",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "fictional_mutilated_humans",
+          "name": "Fictional Mutilated Humans",
+          "description": "Photorealistic or non-photorealistic: dismemberment, visible innards, burning/charring, throat slitting",
+          "action": "label"
+        },
+        {
+          "id": "fictional_photorealistic_humans",
+          "name": "Fictional Photorealistic Humans",
+          "description": "Photorealistic only: foreign objects piercing skin, bodily fluids, deceased babies",
+          "action": "label"
+        },
+        {
+          "id": "fictional_armament_viewer",
+          "name": "Fictional Armament at Viewer",
+          "description": "Photorealistic armament pointed at viewer (excluding movie posters)",
+          "action": "label"
+        },
+        {
+          "id": "fictional_animals",
+          "name": "Fictional Photorealistic Animals",
+          "description": "Photorealistic: dismemberment, innards, burning, blood, brutality, suffering",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "sadistic_remarks",
+      "name": "Sadistic Remarks",
+      "description": "Commentary expressing joy or pleasure from suffering or humiliation",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "sadism_medical_defense",
+          "name": "Sadistic Remarks - Medical/Self-Defense",
+          "description": "Sadistic remarks in medical or self-defense context",
+          "action": "label"
+        },
+        {
+          "id": "sadism_doi_targets",
+          "name": "Sadistic Remarks - DOI Targets",
+          "description": "Sadistic remarks targeting members of designated dangerous organizations",
+          "action": "label"
+        },
+        {
+          "id": "sadism_other",
+          "name": "Sadistic Remarks - Other Context",
+          "description": "Sadistic remarks in any other context",
+          "action": "label"
+        },
+        {
+          "id": "sadism_animals",
+          "name": "Sadistic Remarks - Animals",
+          "description": "Sadistic remarks toward animal suffering imagery",
+          "action": "label"
+        },
+        {
+          "id": "sadism_historical",
+          "name": "Sadistic Remarks - Historical",
+          "description": "Sadistic remarks toward graphic historical imagery",
+          "action": "label"
+        },
+        {
+          "id": "sadism_soliciting",
+          "name": "Soliciting/Offering with Sadism",
+          "description": "Soliciting or offering graphic imagery with sadistic remarks",
+          "action": "label"
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "vgc_sadistic_medical",
+      "label": "Sadistic Remarks - Medical or self-defense context",
+      "path": ["Label", "Violent and Graphic Content", "Sadistic Remarks", "Medical or self-defense context"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "vgc_sadistic_other",
+      "label": "Sadistic Remarks - Any other context",
+      "path": ["Label", "Violent and Graphic Content", "Sadistic Remarks", "Any other context"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "vgc_mutilated_video_medical",
+      "label": "Mutilated Humans - Video - Medical/Birthing/Cremation",
+      "path": ["Label", "Violent and Graphic Content", "Mutilated Humans", "In video", "Medical, Birthing or Cremation Context"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vgc_mutilated_video_other",
+      "label": "Mutilated Humans - Video - Other context",
+      "path": ["Label", "Violent and Graphic Content", "Mutilated Humans", "In video", "Any other context"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vgc_mutilated_photo",
+      "label": "Mutilated Humans - Photo",
+      "path": ["Label", "Violent and Graphic Content", "Mutilated Humans", "In photo", "Dismemberment, severely burned or charred, Throat Slitting"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vgc_capital_punishment",
+      "label": "Live-streams of Capital Punishment",
+      "path": ["Label", "Violent and Graphic Content", "Violence, Brutality and Capital Punishment", "Live-streams of Capital Punishment"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "vgc_violent_death",
+      "label": "Violent Death or Life-Threatening Event",
+      "path": ["Label", "Violent and Graphic Content", "Violence, Brutality and Capital Punishment", "Violent Death or Life-Threatening Event"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "vgc_brutality",
+      "label": "Brutality",
+      "path": ["Label", "Violent and Graphic Content", "Violence, Brutality and Capital Punishment", "Brutality"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "vgc_gore_objects",
+      "label": "Non-Medical Objects Piercing Skin",
+      "path": ["Label", "Violent and Graphic Content", "Human Gore", "Non-Medical Objects piercing the skin"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vgc_gore_teeth",
+      "label": "Bleeding Gums and Teeth",
+      "path": ["Label", "Violent and Graphic Content", "Human Gore", "Bleeding Gums and Teeth"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vgc_gore_fluids",
+      "label": "Human Waste and Bodily Fluids",
+      "path": ["Label", "Violent and Graphic Content", "Human Gore", "Human Waste and Bodily Fluids"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vgc_dead_body",
+      "label": "Dead Body Partially or Fully Uncovered",
+      "path": ["Label", "Violent and Graphic Content", "Human Gore", "Dead Body is partially or fully uncovered"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vgc_graphic_historical",
+      "label": "Graphic Historical Imagery",
+      "path": ["Label", "Violent and Graphic Content", "Human Gore", "Graphic Historical Imagery"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "vgc_dead_babies_head",
+      "label": "Dead Babies/Fetus - Head Visible",
+      "path": ["Label", "Violent and Graphic Content", "Dead Babies and Fetus", "Head of another person is visible"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "vgc_dead_babies_other",
+      "label": "Dead Babies/Fetus - Other Context",
+      "path": ["Label", "Violent and Graphic Content", "Dead Babies and Fetus", "Any other context"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "vgc_medical_needles",
+      "label": "Needles Piercing Skin",
+      "path": ["Label", "Violent and Graphic Content", "Human Medical", "Needles piercing the skin"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "vgc_medical_injured",
+      "label": "Injured Human in Medical Context",
+      "path": ["Label", "Violent and Graphic Content", "Human Medical", "Injured human in a medical context"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "vgc_armament_viewer",
+      "label": "Armament Pointed at Viewer",
+      "path": ["Label", "Violent and Graphic Content", "Armament", "Armament pointed at the viewer"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "vgc_armament_person",
+      "label": "Armament Pointed at Another Person",
+      "path": ["Label", "Violent and Graphic Content", "Armament", "Armament pointed at another person"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "vgc_vehicle_damage",
+      "label": "Graphic Vehicle Damage",
+      "path": ["Label", "Violent and Graphic Content", "Graphic Vehicle Damage"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "vgc_animal_mutilated",
+      "label": "Mutilated Animals",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "Mutilated Animals"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_animal_live_dead",
+      "label": "Animals Going Live to Dead",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "Animals going from live to dead (no dismemberment)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_animal_brutality",
+      "label": "Brutality Against Animals",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "Brutality against an animal"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_animal_birthing",
+      "label": "Animal Birthing Context",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "Birthing Context"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_animal_blood",
+      "label": "Animal with Visible Blood",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "with visible blood"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_animal_insects",
+      "label": "Animals with Insects",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "with insects coming out of them"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_animal_suffering",
+      "label": "Animal Suffering",
+      "path": ["Label", "Violent and Graphic Content", "Animal", "Animal Suffering"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "vgc_fictional_mutilated",
+      "label": "Fictional - Mutilated Humans",
+      "path": ["Label", "Violent and Graphic Content", "Recognized Fictional Graphic Imagery", "Mutilated Humans"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "vgc_fictional_photorealistic",
+      "label": "Fictional - Photorealistic Humans",
+      "path": ["Label", "Violent and Graphic Content", "Recognized Fictional Graphic Imagery", "Photorealistic graphic imagery of humans (except mutilation)"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "vgc_fictional_armament",
+      "label": "Fictional - Armament at Viewer",
+      "path": ["Label", "Violent and Graphic Content", "Recognized Fictional Graphic Imagery", "Photorealistic armament pointed at the viewer"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "vgc_fictional_animals",
+      "label": "Fictional - Photorealistic Animals",
+      "path": ["Label", "Violent and Graphic Content", "Recognized Fictional Graphic Imagery", "Photorealistic graphic imagery of animals"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "vaccination_acupuncture",
+      "name": "Vaccination/Acupuncture/Tattoo/Piercing",
+      "description": "Needles piercing skin in vaccination, acupuncture, dry-needling, tattoo, or piercing contexts with no visible blood",
+      "appliesTo": ["needles_medical"],
+      "action": "no_action"
+    },
+    {
+      "id": "fully_covered_body",
+      "name": "Fully Covered Deceased Body",
+      "description": "Deceased humans where body is fully covered (body bags, closed coffins)",
+      "appliesTo": ["deceased_humans"],
+      "action": "no_action"
+    },
+    {
+      "id": "animal_no_blood",
+      "name": "Animals Without Blood/Dismemberment",
+      "description": "Imagery of animals with no visible blood or dismemberment",
+      "appliesTo": ["imagery_animals"],
+      "action": "no_action"
+    },
+    {
+      "id": "taxidermy_skeleton",
+      "name": "Taxidermy/Skeleton/Caged Animals",
+      "description": "Animal taxidermy, skeleton with no flesh/fur, animals on leash or in cage without suffering",
+      "appliesTo": ["imagery_animals"],
+      "action": "no_action"
+    },
+    {
+      "id": "food_preparation",
+      "name": "Food Preparation Context",
+      "description": "Meat, offal, or animal carcasses in food preparation context",
+      "appliesTo": ["imagery_animals"],
+      "action": "no_action"
+    },
+    {
+      "id": "non_photorealistic_fictional",
+      "name": "Non-Photorealistic Fictional Content",
+      "description": "Non-photorealistic fictional imagery (cartoons, animation) depicting: foreign objects piercing skin, bodily fluids, deceased babies, medical diagrams, brutality, deceased persons, vehicle damage, injured medical",
+      "appliesTo": ["fictional_graphic"],
+      "action": "no_action"
+    },
+    {
+      "id": "photorealistic_blood_only",
+      "name": "Fictional Photorealistic Blood Only",
+      "description": "Photorealistic fictional imagery depicting only blood (no other violations)",
+      "appliesTo": ["fictional_graphic"],
+      "action": "no_action"
+    },
+    {
+      "id": "movie_posters",
+      "name": "Movie Posters - Armament",
+      "description": "Photorealistic movie posters with armament pointed at viewer",
+      "appliesTo": ["fictional_armament_viewer"],
+      "action": "no_action"
+    },
+    {
+      "id": "sadism_fictional",
+      "name": "Sadistic Remarks on Fictional Content",
+      "description": "Sadistic remarks made toward fictional graphic imagery",
+      "appliesTo": ["sadistic_remarks"],
+      "action": "no_action"
+    },
+    {
+      "id": "armament_commercial",
+      "name": "Armaments - Commercial Intent",
+      "description": "Armaments with commercial intent or in non-commercial non-violent neutral context - evaluate under WAE policy",
+      "appliesTo": ["armaments"],
+      "action": "information"
+    },
+    {
+      "id": "skeletons_mummies",
+      "name": "Skeletons and Mummies",
+      "description": "Mummified bodies and skeletons where no flesh is present on bones",
+      "appliesTo": ["deceased_humans"],
+      "action": "no_action"
+    }
+  ],
+
+  "glossary": {
+    "brutality": "Using excessive and/or unnecessary force or violence, typically resulting in harm, injury, or indignity to a victim. For persons: forcibly restrained position with armament pointed, evidence of injury, subjected to violence or humiliating acts. For animals: conduct subjecting live animals to physical pain beyond necessity for discipline or defense.",
+    "capital_punishment": "The act by a state entity of executing a person following legal trial. Methods: hanging, electrocution, lethal injection, firing squad, lethal gas.",
+    "forcibly_restrained_position": "Imagery depicting a person tied down, physically bound, or held presumably against their will; or kneeling, prone, cornered, or otherwise unable to defend themselves.",
+    "human_waste_bodily_fluids": "Blood, feces, urine, vomit (except infant burping), earwax, mucus, vaginal discharge, afterbirth, byproduct of dermal extraction (pimples, pus), infected rashes and blisters.",
+    "imagery": "Visual depictions in both still image and video form.",
+    "invertebrates": "Animals without backbone: arthropods (insects, arachnids, crustaceans), mollusks, shellfish (shrimp, crab, lobster, oysters), annelids (earthworms, leeches), cnidarians (jellyfish, sea anemones, corals).",
+    "incapacitation": "State of being rendered unconscious, barely conscious, or immobilized due to physical injury or trauma.",
+    "live_animal_suffering": "Displaying behaviors indicating pain, distress or discomfort while: tied/bound/cornered, injured/wounded/attacked, or with foreign objects inserted without visible blood. Also includes visibly infected wounds or rashes.",
+    "medical_context": "Language or imagery relating directly to treatment of disease, condition, or health-related issue. Includes: hospital/clinic setting, presence of medical personnel/equipment, uniforms, stretchers, latex gloves, medical instruments.",
+    "medical_diagrams": "Non-photorealistic imagery representing human anatomy including visible innards - anatomical drawings, digital animations, 3D representations for diagnosis, research, or education.",
+    "photorealistic_imagery": "Still image or video of real humans/animals, as well as digital/AI-generated imagery and real world art that looks like photograph/video of real subjects. When uncertain, presume realness.",
+    "fictional_graphic_imagery": "Imagery depicting humans or animals subjected to graphic violence in recognized fictional context (TV, film, animation, CGI) where targets are not actually experiencing real violence.",
+    "sadistic_remarks": "Commentary (captions, comments, text overlay, hashtags) expressing joy or pleasure from suffering or humiliation of human or animal. Includes: laughter (lol, lmao, 🤣😂), positive reinforcement, erotic response, gore appreciation.",
+    "violent_death_life_threatening": "Imagery depicting high-severity violence (shooting, stabbing) or high-intensity physical trauma (collisions, drowning, freezing, explosions, falling from great height).",
+    "visible_innards": "Bones, organs, muscle tissue, cartilage, or fat rendered visible by wound or medical incision; or decomposing remains with flesh present. Does not include stomas.",
+    "weapons_armaments": "Objects that may cause serious injury or death: firearms (including machine guns), explosives (including molotov cocktails), knives and bladed weapons, and improvised weapons. A fist is not a weapon.",
+    "wound": "Opening in the skin caused by injury, medical incision, or lesion. Abscesses are not wounds.",
+    "throat_slitting": "Likely-lethal cut across throat revealing visible innards, or likely-fatal cut with wound partially/fully covered by blood. Does not include surface-level cuts.",
+    "dismemberment": "Separation of body parts from the main body."
+  },
+
+  "graphicHistoricalEvents": [
+    "Holocaust",
+    "1975 Laos Genocide",
+    "2017 Venezuelan Protests Burning Man",
+    "1992 Carandiru Massacre Brazil",
+    "1989 Tiananmen Square",
+    "Hiroshima and Nagasaki atomic bombings",
+    "1976 Thammasat University demonstration",
+    "Cambodian Genocide",
+    "Kargil War India-Pakistan",
+    "1982 Sabra & Shatila Massacre Lebanon",
+    "2009 Neda Agha-Soltan killing Iran",
+    "1948 Palestinian Al Nakba",
+    "1979 Iran Firing Squad",
+    "Armenian Genocide 1915-1923"
+  ],
+
+  "sadisticIndicators": {
+    "laughter": ["lol", "lmao", "haha", "funny", "🤣", "😂", "😄", "😸", "XD", "kkk", "rsrs"],
+    "positive_reinforcement": ["he deserved that", "good", "great", "mereceu", "bem feito"],
+    "erotic_response": ["sexy", "🤤", "🍆", "hot"],
+    "gore_appreciation": ["gore lover", "best gore", "gore", "love it"],
+    "inappropriate_music": "Melody, song lyrics, or combination overlaid to mock or trivialize violent/graphic content",
+    "humorous_manipulation": ["memes", "starter pack", "10 year challenge", "compilations mocking events"]
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "When multiple VGC themes present, select first that applies in order: 1.Sadistic Remarks, 2.Mutilated Humans, 3.Violence/Brutality/Capital Punishment, 4.Human Gore, 5.Dead Babies, 6.Human Medical, 7.Armament, 8.Vehicle Damage, 9.Animal, 10.Fictional",
+    "still_images_in_video": "Videos containing compilation or slideshow of still images should be treated as still images",
+    "context_assessment": "Use all contextual information: captions, audio commentary, text overlay, page/group name",
+    "blurred_pixelated": "Policy applies to digitally blurred/pixelated imagery where contextual knowledge confirms violating content",
+    "presumption_of_realness": "Where unclear if imagery depicts real humans/animals in real settings, presume it does",
+    "sadism_elements": "Check: caption, text/audio overlay (if caption neutral), username/title, bio/description, reported comment",
+    "sadism_formats": "Text, emojis, hashtags, GIFs, stickers, overlaid music/sounds"
+  },
+
+  "keywords": {
+    "mutilation": {
+      "terms": ["dismemberment", "dismembered", "desmembrado", "mutilated", "mutilação", "decapitated", "decapitado", "beheaded", "throat slit", "degolado", "visible innards", "órgãos expostos"],
+      "severity": "critical",
+      "requiresContext": false
+    },
+    "burning_charring": {
+      "terms": ["burning alive", "queimando vivo", "charred body", "corpo queimado", "set on fire", "on fire", "burned alive"],
+      "severity": "critical",
+      "requiresContext": true
+    },
+    "violent_death": {
+      "terms": ["violent death", "morte violenta", "shot dead", "stabbed to death", "execution", "execução", "killed", "assassinado", "murdered", "life threatening"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "brutality": {
+      "terms": ["brutality", "brutalidade", "torture", "tortura", "beaten", "espancado", "beating", "surra", "restrained", "dominado"],
+      "severity": "high",
+      "requiresContext": true
+    },
+    "gore": {
+      "terms": ["gore", "blood", "sangue", "bleeding", "sangrando", "bodily fluids", "fluidos corporais", "guts", "tripas", "entrails"],
+      "severity": "mid",
+      "requiresContext": true
+    },
+    "deceased": {
+      "terms": ["dead body", "corpo morto", "corpse", "cadáver", "deceased", "falecido", "death", "morte", "morto"],
+      "severity": "mid",
+      "requiresContext": true
+    },
+    "animal_cruelty": {
+      "terms": ["animal cruelty", "crueldade animal", "animal abuse", "maus tratos", "animal suffering", "sofrimento animal", "animal torture"],
+      "severity": "mid",
+      "requiresContext": true
+    },
+    "sadistic_terms": {
+      "terms": ["lol", "lmao", "haha", "funny", "best gore", "gore lover", "deserved", "mereceu", "bem feito"],
+      "severity": "high",
+      "requiresContext": true,
+      "notes": "Only violating when accompanying graphic imagery"
+    }
+  }
+}

@@ -1,0 +1,736 @@
+{
+  "policy": "ssied",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+  "sensitive": true,
+
+  "suicideTerms": [
+    {
+      "term": "kill myself",
+      "aliases": ["kms", "kill yourself", "kys"],
+      "category": "suicide_explicit",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "me matar",
+      "aliases": ["vou me matar", "quero me matar", "me suicidar"],
+      "category": "suicide_explicit",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "commit suicide",
+      "aliases": ["suicide", "suicidal"],
+      "category": "suicide_explicit",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "suicídio",
+      "aliases": ["suicida", "cometer suicídio"],
+      "category": "suicide_explicit",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "end my life",
+      "aliases": ["end it all", "take my life", "end this"],
+      "category": "suicide_explicit",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "acabar com minha vida",
+      "aliases": ["tirar minha vida", "acabar com tudo"],
+      "category": "suicide_explicit",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "hang myself",
+      "aliases": ["hanging", "noose"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "me enforcar",
+      "aliases": ["enforcamento", "corda no pescoço", "forca"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "overdose",
+      "aliases": ["take pills", "swallow pills"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "overdose",
+      "aliases": ["tomar pílulas", "engolir remédios"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "jump off",
+      "aliases": ["jump from", "jump off building", "jump off bridge"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "pular de",
+      "aliases": ["pular do prédio", "pular da ponte"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "shoot myself",
+      "aliases": ["gun to head", "bullet in head"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "me dar um tiro",
+      "aliases": ["arma na cabeça", "bala na cabeça"],
+      "category": "suicide_method",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "want to die",
+      "aliases": ["wanna die", "wish I was dead", "better off dead"],
+      "category": "suicide_ideation",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "quero morrer",
+      "aliases": ["queria estar morto", "melhor morto"],
+      "category": "suicide_ideation",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "no reason to live",
+      "aliases": ["nothing to live for", "life not worth living"],
+      "category": "suicide_ideation",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "sem razão para viver",
+      "aliases": ["nada pelo que viver", "vida não vale a pena"],
+      "category": "suicide_ideation",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "suicide pact",
+      "aliases": ["die together"],
+      "category": "suicide_coordination",
+      "severity": "critical",
+      "language": "en"
+    },
+    {
+      "term": "pacto suicida",
+      "aliases": ["morrer juntos"],
+      "category": "suicide_coordination",
+      "severity": "critical",
+      "language": "pt"
+    },
+    {
+      "term": "goodbye",
+      "aliases": ["farewell", "this is goodbye", "final goodbye"],
+      "category": "suicide_signal",
+      "severity": "mid",
+      "language": "en",
+      "notes": "Only in SSI context"
+    },
+    {
+      "term": "adeus",
+      "aliases": ["despedida", "adeus final"],
+      "category": "suicide_signal",
+      "severity": "mid",
+      "language": "pt",
+      "notes": "Only in SSI context"
+    }
+  ],
+
+  "selfInjuryTerms": [
+    {
+      "term": "cutting",
+      "aliases": ["cut myself", "self-cut", "cuts on arm"],
+      "category": "self_injury_explicit",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "me cortar",
+      "aliases": ["cortes no braço", "automutilação", "se cortar"],
+      "category": "self_injury_explicit",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "self-harm",
+      "aliases": ["self harm", "selfharm", "sh"],
+      "category": "self_injury_explicit",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "autolesão",
+      "aliases": ["auto-lesão", "se machucar"],
+      "category": "self_injury_explicit",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "razor",
+      "aliases": ["blade", "sharp object"],
+      "category": "self_injury_means",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "gilete",
+      "aliases": ["lâmina", "objeto cortante", "estilete"],
+      "category": "self_injury_means",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "scars",
+      "aliases": ["scarring", "self-inflicted scars"],
+      "category": "self_injury_aftermath",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cicatrizes",
+      "aliases": ["marcas", "cicatrizes de corte"],
+      "category": "self_injury_aftermath",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "healed cuts",
+      "aliases": ["old scars", "faded scars"],
+      "category": "self_injury_healed",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "cortes cicatrizados",
+      "aliases": ["cicatrizes antigas", "marcas antigas"],
+      "category": "self_injury_healed",
+      "severity": "low",
+      "language": "pt"
+    }
+  ],
+
+  "eatingDisorderTerms": [
+    {
+      "term": "anorexia",
+      "aliases": ["anorexic", "ana"],
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "multi"
+    },
+    {
+      "term": "anorexia",
+      "aliases": ["anoréxica", "anoréxico"],
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "bulimia",
+      "aliases": ["bulimic", "mia"],
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "multi"
+    },
+    {
+      "term": "bulimia",
+      "aliases": ["bulímica", "bulímico"],
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "pica",
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "multi",
+      "notes": "Eating disorder involving consumption of non-food items"
+    },
+    {
+      "term": "binge eating",
+      "aliases": ["binging", "binge"],
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "compulsão alimentar",
+      "aliases": ["comer compulsivo"],
+      "category": "ed_explicit",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "purging",
+      "aliases": ["purge", "making myself throw up"],
+      "category": "ed_behavior",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "purgação",
+      "aliases": ["vomitar", "provocar vômito"],
+      "category": "ed_behavior",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "starving",
+      "aliases": ["starve", "starve myself"],
+      "category": "ed_behavior",
+      "severity": "high",
+      "language": "en"
+    },
+    {
+      "term": "passar fome",
+      "aliases": ["me matar de fome", "jejuar"],
+      "category": "ed_behavior",
+      "severity": "high",
+      "language": "pt"
+    },
+    {
+      "term": "thigh gap",
+      "aliases": ["thighgap"],
+      "category": "ed_body_signal",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "espaço entre coxas",
+      "category": "ed_body_signal",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "body checking",
+      "aliases": ["bodycheck"],
+      "category": "ed_behavior",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "goal weight",
+      "aliases": ["GW", "UGW", "ultimate goal weight"],
+      "category": "ed_signal",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "peso ideal",
+      "aliases": ["meta de peso"],
+      "category": "ed_signal",
+      "severity": "mid",
+      "language": "pt"
+    }
+  ],
+
+  "edPromotionSignals": [
+    {
+      "term": "thinspo",
+      "aliases": ["thinspiration", "thynspo"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "bonespo",
+      "aliases": ["bonespiration", "bonespoooo"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "meanspo",
+      "aliases": ["meanspiration"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "proana",
+      "aliases": ["pro-ana", "pro ana"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "promia",
+      "aliases": ["pro-mia", "pro mia"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "edtips",
+      "aliases": ["ed tips", "anatips", "ana tips"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "anabuddy",
+      "aliases": ["ana buddy", "ed buddy"],
+      "category": "ed_coordination",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "anagoals",
+      "aliases": ["ana goals", "ed goals"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "anamia",
+      "aliases": ["ana mia"],
+      "category": "ed_promotion",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "edtwt",
+      "aliases": ["anatwt", "edinsta", "eddiary"],
+      "category": "ed_community",
+      "severity": "high",
+      "language": "multi"
+    }
+  ],
+
+  "extremeWeightLossTerms": [
+    {
+      "term": "water fasting",
+      "aliases": ["water fast", "water only diet"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "jejum de água",
+      "aliases": ["só água", "dieta de água"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "under 1200 calories",
+      "aliases": ["1000 calories", "800 calories", "500 calories"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "menos de 1200 calorias",
+      "aliases": ["1000 calorias", "800 calorias", "500 calorias"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "24 hour fast",
+      "aliases": ["48 hour fast", "72 hour fast", "extended fast"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "jejum de 24 horas",
+      "aliases": ["jejum de 48 horas", "jejum prolongado"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "lose 3 pounds a week",
+      "aliases": ["rapid weight loss", "fast weight loss"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "perder 1.5kg por semana",
+      "aliases": ["perda rápida de peso", "emagrecer rápido"],
+      "category": "extreme_weight_loss",
+      "severity": "mid",
+      "language": "pt"
+    }
+  ],
+
+  "restrictiveDietingTerms": [
+    {
+      "term": "intermittent fasting",
+      "aliases": ["IF", "16:8", "18:6", "OMAD"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "jejum intermitente",
+      "aliases": ["JI"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "pt"
+    },
+    {
+      "term": "no carb",
+      "aliases": ["zero carb", "carb free"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "sem carboidrato",
+      "aliases": ["zero carbo", "low carb"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "pt"
+    },
+    {
+      "term": "meal replacement",
+      "aliases": ["meal substitute", "shake diet"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "substituição de refeição",
+      "aliases": ["dieta de shakes"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "pt"
+    },
+    {
+      "term": "detox",
+      "aliases": ["cleanse", "juice cleanse"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "multi"
+    },
+    {
+      "term": "skip meals",
+      "aliases": ["skipping meals", "skip breakfast", "skip lunch"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "pular refeições",
+      "aliases": ["pular café da manhã", "pular almoço"],
+      "category": "restrictive_dieting",
+      "severity": "low",
+      "language": "pt"
+    }
+  ],
+
+  "viralEvents": [
+    {
+      "term": "Blue Whale",
+      "aliases": ["Blue Whale Challenge", "baleia azul"],
+      "category": "viral_event",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "Momo",
+      "aliases": ["Momo Challenge"],
+      "category": "viral_event",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "Jonathan Galindo",
+      "aliases": ["Dogface", "Dog Face Challenge"],
+      "category": "viral_event",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "6inner",
+      "aliases": ["7inner"],
+      "category": "viral_event",
+      "severity": "critical",
+      "language": "multi"
+    },
+    {
+      "term": "White Rabbit",
+      "aliases": ["White Rabbit Challenge"],
+      "category": "viral_event",
+      "severity": "critical",
+      "language": "multi"
+    }
+  ],
+
+  "mockingIndicators": [
+    {
+      "term": "#meme",
+      "aliases": ["#dankmeme", "#funnymemes", "#gorememes", "#edgymemes", "#blackhumor"],
+      "category": "mocking_signal",
+      "language": "multi"
+    },
+    {
+      "term": "lol",
+      "aliases": ["lmao", "rofl", "😂", "🤣"],
+      "category": "humor_signal",
+      "language": "multi"
+    },
+    {
+      "term": "kkk",
+      "aliases": ["kkkk", "rsrs", "haha"],
+      "category": "humor_signal",
+      "language": "pt"
+    }
+  ],
+
+  "bodyParts": {
+    "focusedDepiction": [
+      "ribs",
+      "collarbones",
+      "thigh gaps",
+      "hips",
+      "concave stomach",
+      "protruding spine",
+      "scapula",
+      "visible bones arms",
+      "visible bones legs",
+      "hollow cheeks"
+    ],
+    "portuguese": [
+      "costelas",
+      "clavículas",
+      "espaço entre coxas",
+      "quadris",
+      "barriga côncava",
+      "espinha protuberante",
+      "escápula",
+      "ossos visíveis braços",
+      "ossos visíveis pernas",
+      "bochechas fundas"
+    ]
+  },
+
+  "contradictoryContext": [
+    {
+      "term": "accidental injury",
+      "reason": "Not self-inflicted",
+      "language": "en"
+    },
+    {
+      "term": "corte acidental",
+      "reason": "Not self-inflicted",
+      "language": "pt"
+    },
+    {
+      "term": "religious tattoo",
+      "aliases": ["religious scarification", "cultural modification"],
+      "reason": "Body modification for religious/cultural reasons",
+      "language": "en"
+    },
+    {
+      "term": "tatuagem religiosa",
+      "aliases": ["modificação cultural"],
+      "reason": "Body modification for religious/cultural reasons",
+      "language": "pt"
+    },
+    {
+      "term": "Ramadan fasting",
+      "aliases": ["Lent fasting", "religious fast"],
+      "reason": "Religious observance",
+      "language": "en"
+    },
+    {
+      "term": "jejum do Ramadã",
+      "aliases": ["jejum da Quaresma", "jejum religioso"],
+      "reason": "Religious observance",
+      "language": "pt"
+    },
+    {
+      "term": "medical procedure",
+      "aliases": ["colonoscopy prep", "surgery prep"],
+      "reason": "Medical context",
+      "language": "en"
+    },
+    {
+      "term": "procedimento médico",
+      "aliases": ["preparo colonoscopia", "preparo cirurgia"],
+      "reason": "Medical context",
+      "language": "pt"
+    },
+    {
+      "term": "famine",
+      "aliases": ["starvation from poverty"],
+      "reason": "Not ED-related",
+      "language": "en"
+    },
+    {
+      "term": "fome",
+      "aliases": ["desnutrição por pobreza"],
+      "reason": "Not ED-related",
+      "language": "pt"
+    }
+  ],
+
+  "excludedTerms": [
+    {
+      "term": "suicide awareness",
+      "aliases": ["suicide prevention", "mental health awareness"],
+      "reason": "Prevention/support context",
+      "language": "en"
+    },
+    {
+      "term": "prevenção ao suicídio",
+      "aliases": ["conscientização saúde mental"],
+      "reason": "Prevention/support context",
+      "language": "pt"
+    },
+    {
+      "term": "recovery",
+      "aliases": ["healing", "getting better", "in recovery"],
+      "reason": "Recovery context",
+      "language": "en"
+    },
+    {
+      "term": "recuperação",
+      "aliases": ["em recuperação", "melhorando"],
+      "reason": "Recovery context",
+      "language": "pt"
+    },
+    {
+      "term": "help hotline",
+      "aliases": ["crisis line", "support number"],
+      "reason": "Support resource",
+      "language": "en"
+    },
+    {
+      "term": "CVV",
+      "aliases": ["188", "linha de apoio"],
+      "reason": "Support resource",
+      "language": "pt"
+    }
+  ]
+}

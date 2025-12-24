@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { AnalysisResult as AnalysisResultType, PolicyId } from "@/lib/types";
-import { getPolicyById } from "@/data/policies";
+import { getPolicyById, POLICIES, PolicyConfig } from "@/data/policies/";
 import {
   Copy,
   Check,
@@ -39,6 +39,8 @@ import {
   Scale,
   Flame,
   Siren,
+  Bomb,
+  Cigarette,
 } from "lucide-react";
 
 interface AnalysisResultProps {
@@ -46,7 +48,7 @@ interface AnalysisResultProps {
   onNewAnalysis: () => void;
 }
 
-// Policy icons using Lucide (no emojis)
+// Policy icons using Lucide
 const POLICY_ICONS: Record<PolicyId, React.ReactNode> = {
   csean: <ShieldAlert className="w-5 h-5" />,
   vi: <Flame className="w-5 h-5" />,
@@ -65,7 +67,7 @@ const POLICY_ICONS: Record<PolicyId, React.ReactNode> = {
   chpc: <Link className="w-5 h-5" />,
   dp: <Pill className="w-5 h-5" />,
   ta: <Wine className="w-5 h-5" />,
-  wae: <Target className="w-5 h-5" />,
+  wae: <Bomb className="w-5 h-5" />,
   ogg: <Gamepad2 className="w-5 h-5" />,
   hw: <Activity className="w-5 h-5" />,
   spam: <Mail className="w-5 h-5" />,
@@ -77,11 +79,58 @@ const POLICY_ICONS: Record<PolicyId, React.ReactNode> = {
   cis: <Siren className="w-5 h-5" />,
 };
 
+// Map short names to full names for Decision Path
+const POLICY_FULL_NAMES: Record<string, string> = {
+  // From POLICIES array
+  "WAE": "Weapons, Ammunition, Explosives",
+  "VGC": "Violent and Graphic Content",
+  "VI": "Violence and Incitement",
+  "TA": "Tobacco and Alcohol",
+  "SSIED": "Suicide, Self-Injury, and Eating Disorders",
+  "CSEAN": "Child Safety - CSAM/Exploitation",
+  "HE": "Human Exploitation",
+  "DOI": "Dangerous Organizations and Individuals",
+  "HC": "Hateful Conduct",
+  "BH": "Bullying and Harassment",
+  "ASE": "Adult Sexual Exploitation",
+  "ANSA": "Adult Nudity and Sexual Activity",
+  "SSPX": "Sexual Solicitation",
+  "CHPC": "Coordinating Harm and Publicizing Crime",
+  "FSDP": "Fraud, Scams, Deceptive Practices",
+  "CYBER": "Cybersecurity",
+  "PV": "Privacy Violations",
+  "DP": "Drugs and Pharmaceuticals",
+  "HW": "Health and Wellness",
+  "OGG": "Online Gambling and Gaming",
+  "SPAM": "Spam",
+  "RP": "Recalled Products",
+  "BCP": "Branded Content - Prohibited",
+  "BCR": "Branded Content - Restricted",
+  "PSL": "Profanity and Sensitive Language",
+};
+
+// Function to expand policy abbreviations in decision path
+function expandPolicyName(part: string): string {
+  // Check if it's just an abbreviation (all uppercase, 2-5 chars)
+  const upperPart = part.toUpperCase();
+  if (POLICY_FULL_NAMES[upperPart]) {
+    return POLICY_FULL_NAMES[upperPart];
+  }
+  // Check if the part contains an abbreviation
+  for (const [abbr, full] of Object.entries(POLICY_FULL_NAMES)) {
+    if (part === abbr || part.toUpperCase() === abbr) {
+      return full;
+    }
+  }
+  return part;
+}
+
 export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
   const [copied, setCopied] = useState(false);
   const [showAllKeywords, setShowAllKeywords] = useState(false);
   const [showExceptions, setShowExceptions] = useState(false);
   const [showChecks, setShowChecks] = useState(false);
+  const [showConfidence, setShowConfidence] = useState(false);
 
   const handleCopy = () => {
     if (result.label) {
@@ -91,8 +140,34 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
     }
   };
 
-  const hasViolation = result.primaryPolicy !== null;
+  // Determine violation status based on ACTION, not just primaryPolicy
+  const isEscalate = result.action === "escalate" || result.shouldEscalate;
+  const isLabel = result.action === "label";
+  const isNoAction = result.action === "no_action";
+  const hasViolation = isEscalate || isLabel;
+
   const policy = result.primaryPolicy ? getPolicyById(result.primaryPolicy) : null;
+
+  // Get the full policy name for display
+  const getFullPolicyName = (): string => {
+    if (result.primaryPolicyName) {
+      // Try to find in POLICIES array first
+      const foundPolicy = POLICIES.find(
+        (p: PolicyConfig) => p.shortName === result.primaryPolicyName || 
+             p.name === result.primaryPolicyName ||
+             p.id === result.primaryPolicy
+      );
+      if (foundPolicy) return foundPolicy.name;
+      
+      // Try to expand abbreviation
+      const expanded = expandPolicyName(result.primaryPolicyName);
+      if (expanded !== result.primaryPolicyName) return expanded;
+      
+      return result.primaryPolicyName;
+    }
+    if (policy) return policy.name;
+    return "Nenhuma policy violada";
+  };
 
   // Get severity badge variant
   const getSeverityVariant = (confidence: number) => {
@@ -102,34 +177,39 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
     return "default";
   };
 
-  // Get action badge variant
-  const getActionVariant = () => {
-    if (result.shouldEscalate) return "danger";
-    if (result.action === "label") return "warning";
-    return "success";
+  // Get action badge variant and text
+  const getActionInfo = () => {
+    if (isEscalate) return { variant: "danger" as const, text: "ESCALATE", color: "red" };
+    if (isLabel) return { variant: "warning" as const, text: "LABEL", color: "amber" };
+    return { variant: "success" as const, text: "NO ACTION", color: "green" };
   };
+
+  const actionInfo = getActionInfo();
+
+  // Expand decision path parts
+  const expandedLabelPath = result.labelPath.map(expandPolicyName);
 
   return (
     <div className="space-y-4">
       {/* Main Result Card */}
-      <Card variant={result.shouldEscalate ? "danger" : hasViolation ? "warning" : "default"}>
+      <Card variant={isEscalate ? "danger" : isLabel ? "warning" : "default"}>
         <CardContent>
-          <div className="flex items-start justify-between mb-4">
+          <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
-              {/* Policy Icon */}
+              {/* Policy Icon - FIXED: Now based on action */}
               <div
                 className={`w-14 h-14 rounded-2xl flex items-center justify-center ${
-                  result.shouldEscalate
-                    ? "bg-gradient-to-br from-red-500 to-orange-600 text-white"
-                    : hasViolation
+                  isEscalate
+                    ? "bg-gradient-to-br from-red-500 to-red-700 text-white"
+                    : isLabel
                     ? "bg-gradient-to-br from-amber-500 to-orange-600 text-white"
                     : "bg-gradient-to-br from-green-500 to-teal-600 text-white"
                 }`}
               >
-                {result.shouldEscalate ? (
+                {isEscalate ? (
                   <ShieldAlert className="w-7 h-7" />
-                ) : hasViolation ? (
-                  policy ? POLICY_ICONS[policy.id] : <ShieldX className="w-7 h-7" />
+                ) : isLabel ? (
+                  policy ? POLICY_ICONS[policy.id as PolicyId] : <ShieldX className="w-7 h-7" />
                 ) : (
                   <ShieldCheck className="w-7 h-7" />
                 )}
@@ -137,18 +217,18 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
 
               <div>
                 <div className="flex items-center gap-3 mb-1 flex-wrap">
-                  {/* Main Status */}
+                  {/* Main Status - FIXED: Based on action */}
                   <h2 className="text-lg font-semibold">
-                    {result.shouldEscalate
+                    {isEscalate
                       ? "ESCALATE"
-                      : hasViolation
-                      ? "Violacao Detectada"
-                      : "Sem Violacao"}
+                      : isLabel
+                      ? "Violação Detectada"
+                      : "Sem Violação"}
                   </h2>
 
                   {/* Confidence Badge */}
                   <Badge variant={getSeverityVariant(result.confidence)} size="sm">
-                    {result.confidence}% confianca
+                    {result.confidence}% confiança
                   </Badge>
 
                   {/* AI Badge */}
@@ -160,14 +240,14 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
                   )}
 
                   {/* Action Badge */}
-                  <Badge variant={getActionVariant()} size="sm">
-                    {result.action.toUpperCase()}
+                  <Badge variant={actionInfo.variant} size="sm">
+                    {actionInfo.text}
                   </Badge>
                 </div>
 
-                {/* Policy Name */}
-                <p className="text-sm text-zinc-500">
-                  {result.primaryPolicyName || "Nenhuma policy violada"}
+                {/* Policy Name - FIXED: Full name */}
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                  {getFullPolicyName()}
                 </p>
 
                 {/* Processing Time */}
@@ -178,32 +258,34 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
               </div>
             </div>
 
-            {/* Copy Button */}
-            {result.label && (
-              <Button variant="secondary" size="sm" onClick={handleCopy}>
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4 mr-1" />
-                    Copiado
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4 mr-1" />
-                    Copiar
-                  </>
-                )}
-              </Button>
-            )}
+            {/* Action Buttons */}
+            <div className="flex items-center gap-2">
+              {result.label && (
+                <Button variant="secondary" size="sm" onClick={handleCopy}>
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4 mr-1" />
+                      Copiado
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4 mr-1" />
+                      Copiar
+                    </>
+                  )}
+                </Button>
+              )}
+            </div>
           </div>
 
           {/* Escalation Reason */}
-          {result.shouldEscalate && result.escalationReason && (
-            <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+          {isEscalate && result.escalationReason && (
+            <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
               <div className="flex items-start gap-2">
-                <AlertTriangle className="w-4 h-4 text-red-500 mt-0.5" />
+                <AlertTriangle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm font-medium text-red-600 dark:text-red-400">
-                    Razao para Escalacao
+                    Razão para Escalação
                   </p>
                   <p className="text-sm text-red-500 dark:text-red-300">
                     {result.escalationReason}
@@ -213,27 +295,29 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
             </div>
           )}
 
-          {/* Decision Path */}
-          {result.labelPath.length > 0 && (
-            <div>
+          {/* Decision Path - FIXED: Full names */}
+          {expandedLabelPath.length > 0 && (
+            <div className="mt-4">
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">
                 Decision Path
               </p>
               <div className="flex items-center gap-2 flex-wrap">
-                {result.labelPath.map((part, i) => (
+                {expandedLabelPath.map((part, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <span
                       className={`px-3 py-1.5 rounded-lg text-sm font-medium ${
-                        i === 0 && result.shouldEscalate
+                        i === 0 && isEscalate
                           ? "bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/30"
-                          : i === result.labelPath.length - 1
+                          : i === 0 && isLabel
                           ? "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+                          : i === expandedLabelPath.length - 1
+                          ? "bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30"
                           : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
                       }`}
                     >
                       {part}
                     </span>
-                    {i < result.labelPath.length - 1 && (
+                    {i < expandedLabelPath.length - 1 && (
                       <ChevronRight className="w-4 h-4 text-zinc-400 dark:text-zinc-600" />
                     )}
                   </div>
@@ -242,104 +326,67 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
             </div>
           )}
 
-          {/* Multiple Policies Detected */}
-          {result.detectedPolicies.length > 1 && (
-            <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-2">
-                Outras Policies Detectadas
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {result.detectedPolicies.slice(1).map((dp) => {
-                  const p = getPolicyById(dp.policy);
-                  return (
-                    <span
-                      key={dp.policy}
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium"
-                      style={{
-                        backgroundColor: p ? `${p.color}15` : undefined,
-                        color: p?.color,
-                      }}
-                    >
-                      {POLICY_ICONS[dp.policy]}
-                      {dp.policyName} ({dp.confidence}%)
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          {/* New Analysis Button - MOVED UP */}
+          <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
+            <Button
+              onClick={onNewAnalysis}
+              variant="secondary"
+              size="md"
+              className="w-full"
+            >
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Nova Análise
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
-      {/* AI Analysis Section */}
-      {result.aiAnalysis?.used && (
+      {/* AI Analysis Section - Compact */}
+      {result.aiAnalysis?.used && result.aiAnalysis.reasoning && result.aiAnalysis.reasoning.length > 0 && (
         <Card>
-          <CardContent>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
+          <CardContent className="py-3">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
                 <Sparkles className="w-4 h-4 text-blue-500" />
               </div>
-              <div>
-                <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                  Analise Gemini AI
-                </p>
-                {result.aiAnalysis.adjustedConfidence !== undefined && (
-                  <p className="text-xs text-zinc-500">
-                    Confianca AI: {result.aiAnalysis.adjustedConfidence}%
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                    Análise Gemini AI
                   </p>
-                )}
-              </div>
-            </div>
-
-            {result.aiAnalysis.reasoning && result.aiAnalysis.reasoning.length > 0 && (
-              <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-3">
+                  {result.aiAnalysis.adjustedConfidence !== undefined && (
+                    <Badge variant="info" size="sm">
+                      {result.aiAnalysis.adjustedConfidence}%
+                    </Badge>
+                  )}
+                </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   {result.aiAnalysis.reasoning[0]}
                 </p>
               </div>
-            )}
-
-            {result.aiAnalysis.ambiguityNotes && result.aiAnalysis.ambiguityNotes.length > 0 && (
-              <div className="mt-3 p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                <p className="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">
-                  Notas de Ambiguidade
-                </p>
-                <p className="text-xs text-amber-500">
-                  {result.aiAnalysis.ambiguityNotes.join("; ")}
-                </p>
-              </div>
-            )}
-
-            {result.aiAnalysis.suggestedLabel && (
-              <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-700">
-                <p className="text-xs text-zinc-500 mb-1">Label sugerida pela AI:</p>
-                <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
-                  {result.aiAnalysis.suggestedLabel}
-                </code>
-              </div>
-            )}
+            </div>
           </CardContent>
         </Card>
       )}
 
-      {/* Keywords Section */}
+      {/* Keywords Section - Compact */}
       {result.keywords.length > 0 && (
         <Card>
-          <CardContent>
-            <div className="flex items-center justify-between mb-3">
+          <CardContent className="py-3">
+            <div className="flex items-center justify-between mb-2">
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                Keywords Detectadas ({result.keywords.length})
+                Keywords ({result.keywords.length})
               </p>
               {result.keywords.length > 6 && (
                 <button
                   onClick={() => setShowAllKeywords(!showAllKeywords)}
                   className="text-xs text-blue-500 hover:underline"
                 >
-                  {showAllKeywords ? "Ver menos" : "Ver todas"}
+                  {showAllKeywords ? "Menos" : "Todas"}
                 </button>
               )}
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {(showAllKeywords ? result.keywords : result.keywords.slice(0, 6)).map((kw, i) => {
                 const p = getPolicyById(kw.policy);
                 return (
@@ -350,26 +397,16 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
                         ? "danger"
                         : kw.severity === "high"
                         ? "warning"
-                        : kw.policy === "csean"
-                        ? "danger"
-                        : kw.policy === "vi"
-                        ? "danger"
-                        : kw.policy === "bh"
-                        ? "purple"
                         : "default"
                     }
+                    size="sm"
                   >
                     <span
-                      className="w-2 h-2 rounded-full mr-1.5"
+                      className="w-1.5 h-1.5 rounded-full mr-1"
                       style={{ backgroundColor: p?.color }}
                     />
                     {kw.term}
-                    <span className="ml-1 opacity-60">({kw.category})</span>
-                    {kw.requiresContext && (
-                      <span className="ml-1 opacity-40" title="Requer contexto">
-                        ?
-                      </span>
-                    )}
+                    <span className="ml-1 opacity-50 text-xs">({kw.category})</span>
                   </Badge>
                 );
               })}
@@ -378,270 +415,147 @@ export function AnalysisResult({ result, onNewAnalysis }: AnalysisResultProps) {
         </Card>
       )}
 
-      {/* Exceptions Section */}
-      {result.exceptions.detected.length > 0 && (
-        <Card>
-          <CardContent>
-            <button
-              onClick={() => setShowExceptions(!showExceptions)}
-              className="w-full flex items-center justify-between"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+      {/* Collapsible Sections */}
+      <div className="space-y-2">
+        {/* Exceptions - Collapsible */}
+        {result.exceptions.detected.length > 0 && (
+          <Card>
+            <CardContent className="py-2">
+              <button
+                onClick={() => setShowExceptions(!showExceptions)}
+                className="w-full flex items-center justify-between py-1"
+              >
+                <div className="flex items-center gap-2">
                   <Shield className="w-4 h-4 text-green-500" />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-semibold text-green-600 dark:text-green-400">
-                    Excecoes Detectadas ({result.exceptions.detected.length})
-                  </p>
-                  <p className="text-xs text-zinc-500">
-                    Contextos que podem reduzir severidade
-                  </p>
-                </div>
-              </div>
-              {showExceptions ? (
-                <ChevronDown className="w-4 h-4 text-zinc-400" />
-              ) : (
-                <ChevronRight className="w-4 h-4 text-zinc-400" />
-              )}
-            </button>
-
-            {showExceptions && (
-              <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-700">
-                <div className="flex flex-wrap gap-2">
-                  {result.exceptions.detected.map((exc, i) => (
-                    <Badge key={i} variant="success" size="sm">
-                      {exc}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Policy-Specific Checks */}
-      {hasViolation && (
-        <Card variant={result.shouldEscalate ? "danger" : "default"}>
-          <CardContent>
-            <button
-              onClick={() => setShowChecks(!showChecks)}
-              className="w-full flex items-center justify-between"
-            >
-              <div className="flex items-center gap-2">
-                <div
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                    result.shouldEscalate ? "bg-red-500/20" : "bg-zinc-100 dark:bg-zinc-800"
-                  }`}
-                >
-                  <AlertTriangle
-                    className={`w-4 h-4 ${
-                      result.shouldEscalate ? "text-red-500" : "text-zinc-500"
-                    }`}
-                  />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-semibold">Escalation Check</p>
-                  <p className="text-xs text-zinc-500">
-                    {result.shouldEscalate ? "ESCALATE REQUIRED" : "NO ESCALATION"}
-                  </p>
-                </div>
-              </div>
-              {showChecks ? (
-                <ChevronDown className="w-4 h-4 text-zinc-400" />
-              ) : (
-                <ChevronRight className="w-4 h-4 text-zinc-400" />
-              )}
-            </button>
-
-            {showChecks && (
-              <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
-                {/* V&I Checks */}
-                {result.checks.vi && (
-                  <div className="mb-4">
-                    <p className="text-xs font-semibold text-zinc-500 mb-2">
-                      Violence and Incitement Checks
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                      {[
-                        { label: "Target", value: result.checks.vi.hasTarget },
-                        { label: "Intent", value: result.checks.vi.hasIntent },
-                        { label: "Timing", value: result.checks.vi.hasTiming },
-                        { label: "Armament", value: result.checks.vi.hasArmament },
-                        { label: "Location", value: result.checks.vi.hasLocation },
-                        { label: "Method", value: result.checks.vi.hasMethod },
-                      ].map((item) => (
-                        <div
-                          key={item.label}
-                          className={`p-2 rounded-lg text-center text-xs ${
-                            item.value
-                              ? "bg-green-500/20 text-green-600 dark:text-green-400"
-                              : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
-                          }`}
-                        >
-                          {item.value ? "YES" : "NO"} - {item.label}
-                        </div>
-                      ))}
-                    </div>
-                    {result.checks.vi.isCredibleThreat && (
-                      <div className="mt-2 p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-600 dark:text-red-400">
-                        CREDIBLE THREAT DETECTED
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* CSEAN Checks */}
-                {result.checks.csean && result.primaryPolicy === "csean" && (
-                  <div className="mb-4">
-                    <p className="text-xs font-semibold text-zinc-500 mb-2">
-                      Child Safety Checks (CSEAN)
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                      {[
-                        { label: "Minor Present", value: result.checks.csean.hasMinorPresent },
-                        { label: "CSAM Indicators", value: result.checks.csean.hasCSAMIndicators },
-                        { label: "Solicitation", value: result.checks.csean.hasSolicitationSignals },
-                        { label: "IIC Elements", value: result.checks.csean.hasIICElements },
-                        { label: "Sexualization", value: result.checks.csean.hasSexualizationSignals },
-                        { label: "Exploitative", value: result.checks.csean.isExploitativeContent },
-                      ].map((item) => (
-                        <div
-                          key={item.label}
-                          className={`p-2 rounded-lg text-center text-xs ${
-                            item.value
-                              ? "bg-red-500/20 text-red-600 dark:text-red-400"
-                              : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
-                          }`}
-                        >
-                          {item.value ? "ALERT" : "OK"} - {item.label}
-                        </div>
-                      ))}
-                    </div>
-                    {result.checks.csean.ageCategory !== "unknown" && (
-                      <div className="mt-2 text-xs text-zinc-500">
-                        Age Category: <strong>{result.checks.csean.ageCategory}</strong>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* B&H Checks */}
-                {result.checks.bh && result.primaryPolicy === "bh" && (
-                  <div className="mb-4">
-                    <p className="text-xs font-semibold text-zinc-500 mb-2">
-                      Bullying and Harassment Checks
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                      {[
-                        { label: "Target ID", value: result.checks.bh.hasIdentifiableTarget },
-                        { label: "Purposeful Exp.", value: result.checks.bh.hasPurposefulExposure },
-                        { label: "Endearing", value: result.checks.bh.isEndearingContext, invert: true },
-                        { label: "Business Review", value: result.checks.bh.isBusinessReview, invert: true },
-                      ].map((item) => (
-                        <div
-                          key={item.label}
-                          className={`p-2 rounded-lg text-center text-xs ${
-                            item.invert
-                              ? item.value
-                                ? "bg-green-500/20 text-green-600 dark:text-green-400"
-                                : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
-                              : item.value
-                              ? "bg-amber-500/20 text-amber-600 dark:text-amber-400"
-                              : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
-                          }`}
-                        >
-                          {item.value ? "YES" : "NO"} - {item.label}
-                        </div>
-                      ))}
-                    </div>
-                    {result.checks.bh.targetType !== "unknown" && (
-                      <div className="mt-2 text-xs text-zinc-500">
-                        Target Type: <strong>{result.checks.bh.targetType.replace("_", " ")}</strong>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Formula reminder */}
-                <div className="p-3 rounded-lg bg-zinc-100 dark:bg-zinc-800/50 text-xs text-zinc-500">
-                  <strong className="text-zinc-700 dark:text-zinc-400">Formula V&I:</strong> Target
-                  + Intent + High-Severity + (Timing OR Armament OR Location)
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Confidence Breakdown */}
-      {result.confidenceBreakdown && (
-        <Card>
-          <CardContent>
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">
-              Breakdown de Confianca
-            </p>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-zinc-600 dark:text-zinc-400">Keywords Match</span>
-                <span className="text-sm font-medium">
-                  +{result.confidenceBreakdown.keywordMatch}%
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-zinc-600 dark:text-zinc-400">Context Analysis</span>
-                <span
-                  className={`text-sm font-medium ${
-                    result.confidenceBreakdown.contextAnalysis < 0
-                      ? "text-red-500"
-                      : "text-green-500"
-                  }`}
-                >
-                  {result.confidenceBreakdown.contextAnalysis > 0 ? "+" : ""}
-                  {result.confidenceBreakdown.contextAnalysis}%
-                </span>
-              </div>
-              {result.aiAnalysis?.used && (
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-zinc-600 dark:text-zinc-400">AI Adjustment</span>
-                  <span
-                    className={`text-sm font-medium ${
-                      result.confidenceBreakdown.aiAdjustment < 0
-                        ? "text-red-500"
-                        : "text-green-500"
-                    }`}
-                  >
-                    {result.confidenceBreakdown.aiAdjustment > 0 ? "+" : ""}
-                    {result.confidenceBreakdown.aiAdjustment}%
+                  <span className="text-sm font-medium">
+                    Exceções ({result.exceptions.detected.length})
                   </span>
                 </div>
+                {showExceptions ? (
+                  <ChevronDown className="w-4 h-4 text-zinc-400" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-zinc-400" />
+                )}
+              </button>
+              {showExceptions && (
+                <div className="mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-700">
+                  <div className="flex flex-wrap gap-1.5">
+                    {result.exceptions.detected.map((exc, i) => (
+                      <Badge key={i} variant="success" size="sm">
+                        {exc}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
               )}
-              <div className="pt-2 mt-2 border-t border-zinc-200 dark:border-zinc-700 flex items-center justify-between">
-                <span className="text-sm font-semibold">Total</span>
-                <span className="text-sm font-bold">{result.confidence}%</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+            </CardContent>
+          </Card>
+        )}
 
-      {/* New Analysis Button */}
-      <div className="pt-4">
-        <Button
-          onClick={onNewAnalysis}
-          variant="primary"
-          size="lg"
-          className="w-full"
-        >
-          <RefreshCw className="w-5 h-5 mr-2" />
-          Nova Analise
-        </Button>
+        {/* Escalation Checks - Collapsible */}
+        {hasViolation && result.checks.vi && (
+          <Card variant={isEscalate ? "danger" : "default"}>
+            <CardContent className="py-2">
+              <button
+                onClick={() => setShowChecks(!showChecks)}
+                className="w-full flex items-center justify-between py-1"
+              >
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className={`w-4 h-4 ${isEscalate ? "text-red-500" : "text-zinc-500"}`} />
+                  <span className="text-sm font-medium">
+                    Escalation Check
+                  </span>
+                  <Badge variant={isEscalate ? "danger" : "default"} size="sm">
+                    {isEscalate ? "ESCALATE" : "NO"}
+                  </Badge>
+                </div>
+                {showChecks ? (
+                  <ChevronDown className="w-4 h-4 text-zinc-400" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-zinc-400" />
+                )}
+              </button>
+              {showChecks && (
+                <div className="mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-700">
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-1.5 mb-2">
+                    {[
+                      { label: "Target", value: result.checks.vi.hasTarget },
+                      { label: "Intent", value: result.checks.vi.hasIntent },
+                      { label: "Method", value: result.checks.vi.hasMethod },
+                      { label: "Timing", value: result.checks.vi.hasTiming },
+                      { label: "Armament", value: result.checks.vi.hasArmament },
+                      { label: "Location", value: result.checks.vi.hasLocation },
+                    ].map((item) => (
+                      <div
+                        key={item.label}
+                        className={`p-1.5 rounded text-center text-xs ${
+                          item.value
+                            ? "bg-green-500/20 text-green-600 dark:text-green-400"
+                            : "bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400"
+                        }`}
+                      >
+                        {item.value ? "✓" : "✗"} {item.label}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-zinc-500 bg-zinc-100 dark:bg-zinc-800/50 p-2 rounded">
+                    <strong>Formula:</strong> Target + Intent + Method + (Timing OR Armament OR Location)
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Confidence Breakdown - Collapsible */}
+        {result.confidenceBreakdown && (
+          <Card>
+            <CardContent className="py-2">
+              <button
+                onClick={() => setShowConfidence(!showConfidence)}
+                className="w-full flex items-center justify-between py-1"
+              >
+                <div className="flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-zinc-500" />
+                  <span className="text-sm font-medium">Confiança</span>
+                  <Badge variant="default" size="sm">{result.confidence}%</Badge>
+                </div>
+                {showConfidence ? (
+                  <ChevronDown className="w-4 h-4 text-zinc-400" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-zinc-400" />
+                )}
+              </button>
+              {showConfidence && (
+                <div className="mt-2 pt-2 border-t border-zinc-200 dark:border-zinc-700 space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-zinc-500">Keywords</span>
+                    <span className="font-medium">+{result.confidenceBreakdown.keywordMatch}%</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-zinc-500">Context</span>
+                    <span className={`font-medium ${result.confidenceBreakdown.contextAnalysis < 0 ? "text-red-500" : "text-green-500"}`}>
+                      {result.confidenceBreakdown.contextAnalysis > 0 ? "+" : ""}{result.confidenceBreakdown.contextAnalysis}%
+                    </span>
+                  </div>
+                  {result.aiAnalysis?.used && (
+                    <div className="flex justify-between text-xs">
+                      <span className="text-zinc-500">AI</span>
+                      <span className={`font-medium ${result.confidenceBreakdown.aiAdjustment < 0 ? "text-red-500" : "text-green-500"}`}>
+                        {result.confidenceBreakdown.aiAdjustment > 0 ? "+" : ""}{result.confidenceBreakdown.aiAdjustment}%
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
       </div>
 
       {/* Disclaimer */}
-      <p className="text-xs text-zinc-500 dark:text-zinc-600 text-center py-2">
-        Esta analise e uma sugestao automatica. A decisao final e responsabilidade do analista.
+      <p className="text-xs text-zinc-400 dark:text-zinc-600 text-center">
+        Análise automática. Decisão final é responsabilidade do analista.
       </p>
     </div>
   );

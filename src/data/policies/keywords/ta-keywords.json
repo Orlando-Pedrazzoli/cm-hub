@@ -1,0 +1,894 @@
+{
+  "policy": "ta",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "tobaccoProducts": [
+    {
+      "term": "cigarette",
+      "aliases": ["cigarettes", "cig", "cigs", "ciggy", "fag", "fags"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cigarro",
+      "aliases": ["cigarros", "cigarro de palha", "palheiro"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "cigar",
+      "aliases": ["cigars", "stogie", "stogies"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "charuto",
+      "aliases": ["charutos", "charutinho"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "hookah",
+      "aliases": ["shisha", "water pipe", "narghile", "hubbly bubbly"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "narguilé",
+      "aliases": ["arguile", "shisha", "hookah"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "vape",
+      "aliases": ["vaping", "vaper", "vapes", "vaporizer", "vaporiser"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "vape",
+      "aliases": ["vaporizador", "vapear", "vaping"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "e-cigarette",
+      "aliases": ["e-cig", "ecig", "electronic cigarette", "e-cigarettes"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cigarro eletrônico",
+      "aliases": ["cigarro eletronico", "e-cigarro", "pod"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "vape pen",
+      "aliases": ["vape pens", "pen vape"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "juul",
+      "aliases": ["juuling"],
+      "category": "ends_brand",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "puff bar",
+      "aliases": ["puff bars", "puff", "disposable vape"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "chewing tobacco",
+      "aliases": ["dip", "snuff", "snus", "chew"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "tabaco de mascar",
+      "aliases": ["rapé", "fumo de rolo"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "rolling tobacco",
+      "aliases": ["loose tobacco", "roll-your-own", "ryo"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "tabaco para enrolar",
+      "aliases": ["fumo desfiado", "tabaco solto"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "pipe tobacco",
+      "aliases": ["tobacco pipe"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "tabaco para cachimbo",
+      "aliases": ["cachimbo"],
+      "category": "tobacco_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "nicotine",
+      "aliases": ["nic", "nicotina"],
+      "category": "tobacco_ingredient",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "vape juice",
+      "aliases": ["e-liquid", "e-juice", "vape oil", "ejuice", "eliquid"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "juice para vape",
+      "aliases": ["líquido para vape", "essência para vape", "e-líquido"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "wellness vape",
+      "aliases": ["vitamin vape", "caffeine vape", "melatonin vape"],
+      "category": "wellness_vape",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cartouche",
+      "aliases": ["cartridge", "cartridges", "cart", "carts"],
+      "category": "ends",
+      "severity": "mid",
+      "language": "multi",
+      "notes": "Check context - may be tobacco-related"
+    }
+  ],
+
+  "tobaccoParaphernalia": [
+    {
+      "term": "bong",
+      "aliases": ["bongs", "water bong"],
+      "category": "paraphernalia",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "rolling papers",
+      "aliases": ["rolling paper", "papers", "skins"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "seda",
+      "aliases": ["sedas", "papel para enrolar"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "pt"
+    },
+    {
+      "term": "ashtray",
+      "aliases": ["ashtrays", "ash tray"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "cinzeiro",
+      "aliases": ["cinzeiros"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "pt"
+    },
+    {
+      "term": "lighter",
+      "aliases": ["lighters", "zippo"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "en",
+      "notes": "Only violating if explicitly for tobacco use or with other tobacco signals"
+    },
+    {
+      "term": "isqueiro",
+      "aliases": ["isqueiros"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "pt",
+      "notes": "Only violating if explicitly for tobacco use or with other tobacco signals"
+    },
+    {
+      "term": "cigarette filter",
+      "aliases": ["cigarette filters", "filter tips"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "cigar cutter",
+      "aliases": ["cigar cutters", "guillotine cutter"],
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "en"
+    },
+    {
+      "term": "cortador de charuto",
+      "category": "paraphernalia",
+      "severity": "low",
+      "language": "pt"
+    }
+  ],
+
+  "tobaccoBrands": [
+    {
+      "term": "Marlboro",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Camel",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Winston",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Newport",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Lucky Strike",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Pall Mall",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Parliament",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Dunhill",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Davidoff",
+      "category": "tobacco_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "IQOS",
+      "category": "ends_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "JUUL",
+      "category": "ends_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "VUSE",
+      "aliases": ["Vuse Alto"],
+      "category": "ends_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "NJOY",
+      "category": "ends_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Blu",
+      "category": "ends_brand",
+      "severity": "mid"
+    }
+  ],
+
+  "alcoholProducts": [
+    {
+      "term": "beer",
+      "aliases": ["beers", "brew", "brews", "lager", "ale", "stout", "pilsner"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cerveja",
+      "aliases": ["cervejas", "chopp", "chope", "breja", "gelada", "loira gelada"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "wine",
+      "aliases": ["wines", "vino", "red wine", "white wine", "rosé"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "vinho",
+      "aliases": ["vinhos", "vinho tinto", "vinho branco", "rosé"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "vodka",
+      "aliases": ["vodkas"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "whiskey",
+      "aliases": ["whisky", "bourbon", "scotch", "rye"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "uísque",
+      "aliases": ["whisky", "whiskey"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "rum",
+      "aliases": ["rums"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "tequila",
+      "aliases": ["tequilas", "mezcal", "mezcal"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "gin",
+      "aliases": ["gins"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "cachaça",
+      "aliases": ["pinga", "caninha", "aguardente"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "cocktail",
+      "aliases": ["cocktails", "mixed drink", "mixed drinks"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "coquetel",
+      "aliases": ["coquetéis", "drink", "drinks"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "champagne",
+      "aliases": ["champagnes", "sparkling wine", "prosecco", "cava"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "espumante",
+      "aliases": ["espumantes", "champanhe"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "liquor",
+      "aliases": ["liquors", "spirits", "booze", "hard liquor"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "licor",
+      "aliases": ["licores", "destilado", "destilados"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "shot",
+      "aliases": ["shots", "shooter", "shooters"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "caipirinha",
+      "aliases": ["caipirinhas", "caipiroska"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "brandy",
+      "aliases": ["cognac", "armagnac"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "absinthe",
+      "aliases": ["absinto"],
+      "category": "alcohol_product",
+      "severity": "mid",
+      "language": "multi"
+    }
+  ],
+
+  "alcoholBrands": [
+    {
+      "term": "Budweiser",
+      "aliases": ["Bud", "Bud Light"],
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Heineken",
+      "category": "alcohol_brand",
+      "severity": "mid",
+      "notes": "Heineken 0.0% is non-alcoholic and allowed"
+    },
+    {
+      "term": "Corona",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Stella Artois",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Smirnoff",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Absolut",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Jack Daniels",
+      "aliases": ["Jack Daniel's", "JD"],
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Johnnie Walker",
+      "aliases": ["Johnny Walker"],
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Jim Beam",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Bacardi",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Captain Morgan",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Grey Goose",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Hennessy",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Moët",
+      "aliases": ["Moët & Chandon", "Moet"],
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Dom Pérignon",
+      "aliases": ["Dom Perignon"],
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Skol",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Brahma",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Antarctica",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "Itaipava",
+      "category": "alcohol_brand",
+      "severity": "mid"
+    },
+    {
+      "term": "51",
+      "aliases": ["Pirassununga 51"],
+      "category": "alcohol_brand",
+      "severity": "mid"
+    }
+  ],
+
+  "alcoholVenues": [
+    {
+      "term": "bar",
+      "aliases": ["bars", "pub", "pubs", "tavern"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "bar",
+      "aliases": ["bares", "boteco", "botecos", "botequim"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "brewery",
+      "aliases": ["breweries", "brewpub"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cervejaria",
+      "aliases": ["cervejarias"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "winery",
+      "aliases": ["wineries", "vineyard", "vineyards"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "vinícola",
+      "aliases": ["vinícolas", "adega", "adegas"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "distillery",
+      "aliases": ["distilleries"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "destilaria",
+      "aliases": ["destilarias", "alambique"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "liquor store",
+      "aliases": ["liquor stores", "bottle shop", "off-license"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "loja de bebidas",
+      "aliases": ["distribuidora de bebidas", "empório de bebidas"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "cocktail bar",
+      "aliases": ["cocktail lounge", "speakeasy"],
+      "category": "alcohol_venue",
+      "severity": "mid",
+      "language": "en"
+    }
+  ],
+
+  "alcoholEvents": [
+    {
+      "term": "happy hour",
+      "aliases": ["happy hours"],
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "multi"
+    },
+    {
+      "term": "wine tasting",
+      "aliases": ["wine tastings", "wine tour", "wine tours"],
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "degustação de vinho",
+      "aliases": ["degustação de vinhos", "tour de vinhos"],
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "beer tasting",
+      "aliases": ["beer tastings", "beer tour"],
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "booze cruise",
+      "aliases": ["booze cruises"],
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "bar crawl",
+      "aliases": ["bar crawls", "pub crawl"],
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "beer pong",
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "open bar",
+      "category": "alcohol_event",
+      "severity": "mid",
+      "language": "multi"
+    }
+  ],
+
+  "tobaccoVenues": [
+    {
+      "term": "hookah lounge",
+      "aliases": ["hookah bar", "shisha lounge", "shisha bar"],
+      "category": "tobacco_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "vape shop",
+      "aliases": ["vape store", "vape lounge", "e-cigarette store"],
+      "category": "tobacco_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "loja de vape",
+      "aliases": ["tabacaria", "tabacarias"],
+      "category": "tobacco_venue",
+      "severity": "mid",
+      "language": "pt"
+    },
+    {
+      "term": "tobacco shop",
+      "aliases": ["tobacco store", "tobacconist", "smoke shop"],
+      "category": "tobacco_venue",
+      "severity": "mid",
+      "language": "en"
+    },
+    {
+      "term": "cigar lounge",
+      "aliases": ["cigar bar"],
+      "category": "tobacco_venue",
+      "severity": "mid",
+      "language": "en"
+    }
+  ],
+
+  "saleSignals": [
+    {
+      "term": "for sale",
+      "aliases": ["4 sale", "fs", "selling"],
+      "category": "sale_signal",
+      "language": "en"
+    },
+    {
+      "term": "à venda",
+      "aliases": ["vendo", "a venda", "vendendo"],
+      "category": "sale_signal",
+      "language": "pt"
+    },
+    {
+      "term": "buy now",
+      "aliases": ["shop now", "order now", "get yours"],
+      "category": "sale_signal",
+      "language": "en"
+    },
+    {
+      "term": "compre agora",
+      "aliases": ["peça já", "encomende"],
+      "category": "sale_signal",
+      "language": "pt"
+    },
+    {
+      "term": "DM for price",
+      "aliases": ["DM me", "inbox", "hmu", "hit me up", "PM me"],
+      "category": "sale_signal",
+      "language": "en"
+    },
+    {
+      "term": "chama no direct",
+      "aliases": ["chama no inbox", "chama na DM", "chama no privado"],
+      "category": "sale_signal",
+      "language": "pt"
+    },
+    {
+      "term": "delivery",
+      "aliases": ["entrega", "entregas", "we deliver"],
+      "category": "sale_signal",
+      "language": "multi"
+    },
+    {
+      "term": "free shipping",
+      "aliases": ["frete grátis", "frete gratuito"],
+      "category": "sale_signal",
+      "language": "multi"
+    }
+  ],
+
+  "notAlcoholProducts": [
+    {
+      "term": "kombucha",
+      "reason": "Minimal alcohol content",
+      "language": "multi"
+    },
+    {
+      "term": "ginger beer",
+      "reason": "Minimal alcohol content",
+      "language": "en"
+    },
+    {
+      "term": "rum cake",
+      "aliases": ["rum cakes"],
+      "reason": "Food containing alcohol",
+      "language": "en"
+    },
+    {
+      "term": "bolo de rum",
+      "reason": "Food containing alcohol",
+      "language": "pt"
+    },
+    {
+      "term": "chocolate with rum",
+      "reason": "Food containing alcohol",
+      "language": "en"
+    },
+    {
+      "term": "Heineken 0.0%",
+      "aliases": ["Heineken Zero"],
+      "reason": "Non-alcoholic beverage",
+      "language": "multi"
+    }
+  ],
+
+  "excludedTerms": [
+    {
+      "term": "smoke detector",
+      "reason": "Not tobacco-related",
+      "language": "en"
+    },
+    {
+      "term": "smoke alarm",
+      "reason": "Not tobacco-related",
+      "language": "en"
+    },
+    {
+      "term": "smoked salmon",
+      "aliases": ["smoked meat", "smoked fish"],
+      "reason": "Food preparation",
+      "language": "en"
+    },
+    {
+      "term": "salmão defumado",
+      "aliases": ["carne defumada"],
+      "reason": "Food preparation",
+      "language": "pt"
+    },
+    {
+      "term": "rubbing alcohol",
+      "aliases": ["isopropyl alcohol", "alcohol swab"],
+      "reason": "Medical/cleaning product",
+      "language": "en"
+    },
+    {
+      "term": "álcool em gel",
+      "aliases": ["álcool 70"],
+      "reason": "Medical/cleaning product",
+      "language": "pt"
+    },
+    {
+      "term": "alcoholics anonymous",
+      "aliases": ["AA", "alcohol rehabilitation"],
+      "reason": "Recovery/support context",
+      "language": "en"
+    },
+    {
+      "term": "alcoólicos anônimos",
+      "reason": "Recovery/support context",
+      "language": "pt"
+    }
+  ]
+}
