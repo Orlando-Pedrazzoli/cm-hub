@@ -1,0 +1,283 @@
+{
+  "policyId": "ase",
+  "policyName": "Adult Sexual Exploitation",
+  "shortName": "ASE",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-27",
+
+  "ncstTerms": {
+    "directTerms": {
+      "en": ["rape", "sexual assault", "molestation", "groping", "sexual abuse", "forced sex"],
+      "pt": ["estupro", "abuso sexual", "molestação", "violação"],
+      "es": ["violación", "abuso sexual", "agresión sexual"]
+    },
+    "lackOfConsentIndicators": {
+      "verbal": ["no", "stop", "don't", "para", "não", "basta"],
+      "physical": ["pushing away", "slapping", "fighting back", "struggling"],
+      "stateIndicators": ["unconscious", "drugged", "intoxicated", "passed out", "drunk", "asleep"]
+    },
+    "threatPhrases": {
+      "en": [
+        "I will rape", "going to rape", "will be raped", "should be raped",
+        "deserves to be raped", "let's rape", "can we rape", "I wish you got raped",
+        "I want to rape", "I pray you get raped"
+      ],
+      "pt": [
+        "vou estuprar", "vai ser estuprada", "merece ser estuprada",
+        "deveria ser estuprada", "tomara que seja estuprada"
+      ]
+    },
+    "admissionPhrases": ["I rape", "I like raping", "I raped", "I have raped"],
+    "mockingPhrases": [
+      "haha rape", "rape is not serious", "should be happy to get raped",
+      "LOL raped", "rape joke"
+    ]
+  },
+
+  "sextortionTerms": {
+    "threatPhrases": {
+      "en": [
+        "send money or I'll share", "pay me or everyone sees",
+        "I will post your nudes", "I'll share this with everyone",
+        "your family will see", "I'll expose you", "leak your photos",
+        "send me money now", "pay up or else"
+      ],
+      "pt": [
+        "manda dinheiro ou eu vou mostrar", "paga ou todo mundo vai ver",
+        "vou postar suas fotos", "vou expor você", "vazar suas fotos"
+      ]
+    },
+    "financialIndicators": {
+      "paymentMethods": [
+        "PayPal", "Western Union", "Venmo", "Cash App", "Pix", "Apple Pay",
+        "gift card", "money transfer", "wire transfer", "cryptocurrency",
+        "Bitcoin", "bank transfer", "Zelle"
+      ],
+      "demandPhrases": [
+        "send money", "pay me", "transfer money", "give me money",
+        "cash", "dollars", "payment", "deposit"
+      ]
+    },
+    "contentIndicators": [
+      "send more pics", "send me nudes", "send me photos",
+      "I want more", "show me more", "send video"
+    ],
+    "favorIndicators": [
+      "meet me", "come to my place", "have sex with me",
+      "get back together", "unblock me", "sex chat",
+      "video call naked"
+    ],
+    "urgencyTactics": [
+      "countdown", "you have X seconds", "last chance",
+      "final warning", "time is running out", "deadline",
+      "hurry up", "right now"
+    ],
+    "leverageIndicators": [
+      "I have your photos", "I recorded you", "I screenshotted",
+      "I saved your nudes", "I have proof", "I have evidence",
+      "your friends list", "your followers", "your family contacts"
+    ]
+  },
+
+  "nciiTerms": {
+    "sharingPhrases": {
+      "en": [
+        "leaked nudes", "revenge porn", "exposed", "nudes leaked",
+        "intimate photos shared", "sex tape leaked", "private photos",
+        "without consent", "didn't agree to share"
+      ],
+      "pt": [
+        "nudes vazados", "pornô de vingança", "fotos íntimas",
+        "vídeo vazado", "exposta", "sem consentimento"
+      ]
+    },
+    "threatPhrases": [
+      "I'll post your nudes", "everyone will see",
+      "I'm going to share", "I'll leak this", "I'll expose you"
+    ],
+    "solicitationPhrases": [
+      "who has the video", "send me the leak", "where can I find",
+      "anyone have", "share with me", "DM me the photos"
+    ],
+    "sensationalistPhrases": [
+      "you won't believe", "watch before it's gone",
+      "sex tape scandal", "leaked footage", "exclusive nudes",
+      "celebrity naked", "viral video"
+    ],
+    "vengefulContextIndicators": [
+      "whore", "slut", "look at this bitch", "cheater exposed",
+      "this is what she deserves", "shame on her", "disgusting"
+    ]
+  },
+
+  "nciiServicesTerms": {
+    "appNames": [
+      "Undress AI", "DeepNude", "Nudify", "Cloth Off", "Remove Clothes",
+      "Erase Clothing", "Delete Clothes", "AI Nudes", "Deep-Nude AI",
+      "Nude It Now", "PornX AI", "SoulGen", "Crushmate"
+    ],
+    "promotionPhrases": {
+      "en": [
+        "remove clothes", "undress anyone", "make nudes",
+        "see anyone naked", "nudify", "strip clothing",
+        "AI nude generator", "deepfake nudes", "fake nudes"
+      ],
+      "pt": [
+        "tirar roupa", "ver nua", "gerar nudes",
+        "criar nudes falsos", "despir IA"
+      ]
+    },
+    "aiPromptIndicators": [
+      "imagine naked", "imagine nude", "remove clothes from photo",
+      "undress this person", "make this photo nude"
+    ]
+  },
+
+  "creepshotTerms": {
+    "types": {
+      "en": ["upskirt", "upskirting", "downblouse", "creepshot", "voyeur", "hidden camera"],
+      "pt": ["por baixo da saia", "câmera escondida", "voyeur"]
+    },
+    "takenWithoutKnowledgeIndicators": [
+      "she doesn't know", "without her knowing", "secretly filmed",
+      "hidden recording", "caught on camera", "didn't notice"
+    ],
+    "mockingEmojis": ["🤡", "🐷", "🤣", "🥴", "💀"],
+    "sexualizingEmojis": ["🍆", "🥒", "🤤", "🥵", "🍑", "👅", "💋", "💦", "👉", "👌", "👈", "✊", "🐍", "🌭", "🍌", "🌋"]
+  },
+
+  "forcedStrippingTerms": {
+    "actionTerms": {
+      "en": ["strip", "tear off clothes", "rip clothing", "force naked", "pull off clothes"],
+      "pt": ["arrancar roupa", "rasgar roupa", "forçar a tirar", "despir à força"]
+    },
+    "resistanceIndicators": [
+      "screaming", "yelling", "shouting", "crying",
+      "fighting back", "hands up", "pulling clothes back on"
+    ],
+    "intentPhrases": [
+      "I'm going to strip", "tear off those clothes",
+      "strip her naked in public", "rip her clothes off"
+    ]
+  },
+
+  "necrophiliaTerms": {
+    "directTerms": ["necrophilia", "sex with corpse", "dead body sex"],
+    "actionPhrases": [
+      "fuck that dead body", "have sex with corpse",
+      "let's fuck her dead body"
+    ],
+    "note": "Figurative expressions like 'I'll fuck your dead body' treated as targeted cursing under BH"
+  },
+
+  "identificationSignals": {
+    "explicitIdentification": [
+      "First name", "Middle name", "Last name", "Full name",
+      "Face visible", "Profile photo match"
+    ],
+    "implicitIdentification": [
+      "Username", "Account handle", "Specific person reference",
+      "My teacher", "This girl", "This guy"
+    ]
+  },
+
+  "privateSettingIndicators": [
+    "bedroom", "bathroom", "shower", "hotel room", "car",
+    "apartment", "home", "office", "private location",
+    "enclosed space", "residential building"
+  ],
+
+  "commercialImageryIndicators": [
+    "professional lighting", "studio setting", "watermark",
+    "porn site logo", "production company", "professionally edited",
+    "staged", "high production value"
+  ],
+
+  "likelySextortionSignals": {
+    "sexuallyEngagingTalk": [
+      "I'm naked", "in the shower", "in bed", "do you like sex",
+      "sneaky pics exchange", "come on video", "see you naked",
+      "add me on Snap", "show me your face", "sexy video call"
+    ],
+    "notSexuallyEngagingTalk": [
+      "Spammy off-platform links",
+      "Sale of sexual services with prices",
+      "Romantic conversations with money requests but no NCII attempts"
+    ],
+    "nonSexualizedAttractiveFemale": {
+      "profilePhotoIndicators": [
+        "Young-looking woman (under 30)",
+        "Friendly and approachable appearance",
+        "Not overtly sexualized",
+        "Focus on face rather than body"
+      ],
+      "publicPhotosIndicators": [
+        "Limited photos (less than 15)",
+        "Same person in different settings",
+        "Not overly edited or provocative"
+      ],
+      "nameIndicators": [
+        "Real-sounding names with variations",
+        "No obvious keywords suggesting violations"
+      ],
+      "excludeIndicators": [
+        "Bio mentions OnlyFans or adult content",
+        "Link aggregators (link.tree, beacons.ai)",
+        "Emojis suggesting adult content",
+        "Escort or sexual services"
+      ]
+    },
+    "knownSextortionLocales": [
+      "Ivory Coast", "India", "Indonesia", "Philippines",
+      "Morocco", "Benin", "Nigeria", "Ghana"
+    ]
+  },
+
+  "disableThresholds": {
+    "igpr": {
+      "subjectElementsViolate": 2,
+      "oneSubjectViolateRestEmpty": true,
+      "oneSubjectViolatePlusContent": true,
+      "mediaCommentPercentage": 30
+    },
+    "sextortionHarassment": {
+      "oneSubjectDisable": true
+    }
+  },
+
+  "bankingSignals": {
+    "sextortionNudity": [
+      "Nudity/Sexual Activity + threat to expose",
+      "Nudity/Sexual Activity + commercial watermark (bandicam, snapchat) + known sextortion locale",
+      "Nudity/Sexual Activity + screenshot of video call with MALE PDITI + responsible is FEMALE",
+      "Nudity/Sexual Activity + screenshot of video call with MALE PDITI + captions targeting"
+    ],
+    "harassmentNudity": [
+      "Nudity/Sexual Activity + private setting + PDITI face + disabled/checkpointed for NCII",
+      "Nudity/Sexual Activity + private setting + face/name match",
+      "Nudity/Sexual Activity + private setting + vengeful captions/text overlay/bios",
+      "Deepfakes + private setting + face/name match or vengeful context"
+    ],
+    "doNotBank": [
+      "Commercial pornography",
+      "Bestiality",
+      "Close up nudity without face/captions",
+      "Multiple collage of sexual imagery",
+      "Screenshots of sexual chats",
+      "Content covered >15% by emojis",
+      "Content with borders >10%",
+      "Collages with >3 images/videos"
+    ]
+  },
+
+  "scaledPolicyDecisions": {
+    "aiKissingApps": {
+      "action": "delete",
+      "description": "Remove content depicting or promoting AI Kissing Apps that create kissing imagery without consent"
+    },
+    "nciiServicesGenAI": {
+      "action": "delete",
+      "description": "Remove services/apps offering to make synthetic NCII even without nude imagery shared"
+    }
+  }
+}

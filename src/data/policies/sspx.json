@@ -1,0 +1,448 @@
+{
+  "id": "sspx",
+  "name": "Adult Sexual Solicitation & Sexually Explicit Language",
+  "shortName": "SSPX",
+  "description": "Restricts content facilitating sexual encounters, commercial sexual services, pornography requests/offers, and sexually explicit language. Protects against trafficking, coercion, and non-consensual acts.",
+  "color": "#BE185D",
+  "icon": "MessageCircleOff",
+  "ready": true,
+  "sensitive": true,
+
+  "corePrinciple": "We allow discussion of sex worker rights and sex work regulation, but draw the line when content facilitates sexual encounters or commercial sexual services between adults, or when content asks for or offers pornographic/sexual content.",
+
+  "categories": {
+    "prostitution": {
+      "id": "prostitution",
+      "name": "Prostitution",
+      "definition": "Asking or offering (for oneself) for sexual encounters where an exchange of money or anything of value is involved",
+      "action": "label",
+      "combinations": [
+        {
+          "id": "sexual_encounters_price",
+          "description": "Any type of sexual encounters or sexual partners + price/transaction indicator",
+          "action": "label"
+        },
+        {
+          "id": "prostitution_terms",
+          "description": "Prostitution Terms + ANY ONE OF:",
+          "requires": ["Ask", "Offer", "Interaction information", "Price/transaction indicator", "Location"],
+          "action": "label"
+        },
+        {
+          "id": "sexual_terms",
+          "description": "Sexual Terms + ANY ONE OF:",
+          "requires": ["Ask", "Offer", "Interaction information", "Price/transaction indicator"],
+          "action": "label"
+        },
+        {
+          "id": "solicitation_price",
+          "description": "(Explicit or implicit) Sexual Solicitation + Price/transaction indicator",
+          "action": "label"
+        }
+      ],
+      "transactionIndicators": {
+        "moneyExchange": [
+          "Deals available", "Discount", "Limited time offer", "Premium",
+          "Booking available", "Book now", "💰", "💸", "💲",
+          "No payment", "No credit card", "Free trial", "100% free"
+        ],
+        "valueExchange": [
+          "Sex for flight ticket", "Sex for Uber ride", "Sex for gifts"
+        ]
+      }
+    },
+    "adultSexualSolicitation": {
+      "id": "sexual_solicitation",
+      "name": "Adult Sexual Solicitation",
+      "definition": "Asking or offering (for oneself or others) for sexual encounters without any exchange of money or value",
+      "action": "label",
+      "requires": {
+        "all": [
+          "Content depicting or mentioning sexual encounters or sexual partner(s)",
+          "Indication of solicitation (Ask OR Offer OR Interaction information)"
+        ]
+      },
+      "manifestations": ["Explicit attempts", "Implicit attempts"],
+      "note": "If accompanied by price/transaction indicator, consider as Prostitution"
+    },
+    "pornographyAndAdultWebsites": {
+      "id": "pornography",
+      "name": "Pornography, Adult Websites, and Sexual Education",
+      "types": [
+        {
+          "id": "porn_material",
+          "name": "Pornographic Material Requests/Offers",
+          "definition": "Content that asks for, offers, or includes interaction information related to pornographic material",
+          "action": "label"
+        },
+        {
+          "id": "porn_websites",
+          "name": "Pornographic Website Links/Usernames",
+          "definition": "Usernames or links to pornographic websites, even with no other context",
+          "action": "label"
+        },
+        {
+          "id": "adult_subscription",
+          "name": "Adult Subscription Websites",
+          "definition": "Usernames, links to, or logos of adult subscription websites, even with no other context",
+          "action": "label"
+        },
+        {
+          "id": "sex_education",
+          "name": "Sex Education Programs",
+          "definition": "Content promoting sex education or offering classes that teach sexual techniques or discuss sex",
+          "action": "information"
+        }
+      ],
+      "adultSubscriptionWebsites": [
+        "OnlyFans", "Fansly", "Fanvue", "AdultNode", "IsMyGirl",
+        "Frisk", "FanCentro", "Flirtback", "Fanspicy", "AdmireMe",
+        "iFans", "MYM", "Manyvids"
+      ]
+    },
+    "sexuallyExplicitLanguage": {
+      "id": "sel",
+      "name": "Sexually Explicit Language",
+      "definition": "Uses explicit or graphic detail to describe genitals, states of arousal, or sexual encounters",
+      "contexts": [
+        { "context": "Humor or Satire", "action": "label" },
+        { "context": "Commercial Music", "action": "no_action" },
+        { "context": "Any other context", "action": "label" }
+      ],
+      "examples": {
+        "violating": [
+          "Fucked me so hard",
+          "Her ass was dripping wet after we fucked",
+          "I fingered her vagina until she was dripping wet",
+          "I rode him hard until he started to cum",
+          "I pegged him so good until he started to moan",
+          "That is one wet pussy!",
+          "I will always love pussy fuck dick",
+          "I love it when he just puts his dick into my mouth",
+          "Face down, ass up - that's the way I like to fuck",
+          "Eat her pussy before you fuck"
+        ],
+        "notViolating": [
+          "I had sex with her yesterday",
+          "I got a blowjob from a prostitute",
+          "I fucked her on Wednesday"
+        ]
+      }
+    },
+    "sexuallySuggestiveLanguage": {
+      "id": "ssl",
+      "name": "Sexually Suggestive Language",
+      "definition": "Content that implies or hints at sexual meaning, intention, or connotation",
+      "includes": [
+        "Double entendres - phrases with multiple meanings, one sexual",
+        "Sexual or suggestive metaphors",
+        "Euphemisms, abbreviations, emojis for sexual activity",
+        "Sexual sounds written descriptions",
+        "Slang from SSPx slang terms lists",
+        "Content discussing sexual practices/experiences"
+      ],
+      "contexts": [
+        { "context": "Sexual Encounters without Humor/Satire", "action": "label" },
+        { "context": "Sexual Encounters with Humor/Satire", "action": "label" },
+        { "context": "Commercial Music", "action": "no_action" },
+        { "context": "Non-Sexual Encounter context", "action": "no_action" }
+      ]
+    },
+    "sexualCursing": {
+      "id": "sexual_cursing",
+      "name": "Sexual Cursing",
+      "definition": "Cursing with sexual references",
+      "action": "information",
+      "examples": ["suck my dick", "fuck your mother"],
+      "note": "May fall under B&H for targeted cursing"
+    },
+    "sexualizedCommentary": {
+      "id": "sexualized_commentary",
+      "name": "Sexualized Commentary or Questions",
+      "definition": "Sexual commentary when not otherwise labeled under SSPx or B&H",
+      "types": [
+        {
+          "id": "physical_appearance",
+          "description": "Sexualizing commentary about physical appearance (no specific body part named OR referring to self)",
+          "examples": ["hot and sexy", "hot or not", "sexualized emojis"],
+          "action": "label"
+        },
+        {
+          "id": "intimate_apparel",
+          "description": "Commentary about intimate apparel",
+          "examples": ["do you like my bra?", "guess the color of my panties"],
+          "action": "label"
+        },
+        {
+          "id": "sexual_desire_audience",
+          "description": "Questioning sexual desire of audience (referring to self)",
+          "examples": ["smash or pass", "are you horny looking at me"],
+          "action": "label"
+        },
+        {
+          "id": "sexualized_body_parts",
+          "description": "Commentary about commonly sexualized body parts (referring to self)",
+          "examples": ["big boobs", "nice butt", "juicy lips", "small tits + big heart"],
+          "action": "label"
+        },
+        {
+          "id": "removal_promise",
+          "description": "Promising removal of clothing",
+          "examples": ["I'll remove my bikini now"],
+          "action": "label"
+        },
+        {
+          "id": "general_desire",
+          "description": "Content expressing general desire for sexual encounters without solicitation of specific person",
+          "examples": ["I'm so horny", "Some nights I wish I had someone to sleep with"],
+          "action": "label"
+        }
+      ]
+    }
+  },
+
+  "definitions": {
+    "sexualEncounter": {
+      "definition": "Activity expected to lead to sexual arousal or gratification",
+      "depictedOrMentioned": [
+        "Sexual positions (missionary, doggie style, etc.)",
+        "Photorealistic/digital depictions of explicit/implicit sexual intercourse or stimulation",
+        "Visible genitalia, female nipples, anuses, close-ups of buttocks",
+        "Erotic dancing",
+        "Active stripping (removal of clothing to expose skin)",
+        "Fetish imagery, scenarios, items or encounters",
+        "State of arousal (erect penis in underwear, erect nipples, 'I am so wet!', 'I have a hard-on')",
+        "Sexual content mentions (nudes, sex videos) excluding business promotion",
+        "Upskirt imagery of sexualized body parts",
+        "Sexual and erotic massages",
+        "Sexual audio (moaning, groaning, sighing, body sounds, sexual conversation)",
+        "Sex chats and conversations (including screenshots)"
+      ],
+      "proxies": [
+        "Mention of '18+' or similar age indicators",
+        "Slang terms from SSPx Part 1 and Part 2 lists",
+        "Commonly sexualized emojis (specific combinations)",
+        "Sexually Suggestive Pose",
+        "Nude body parts covered digitally or by objects",
+        "Camel toe close-up",
+        "Squeezing of female breasts by self over clothing",
+        "Twerking",
+        "Hotel setting + promise of service without details"
+      ]
+    },
+    "askOrOffer": {
+      "ask": {
+        "definition": "To seek, make a request, or call for something",
+        "examples": [
+          "I am looking for... (sexual encounters)",
+          "Anyone up for a (sexual encounter)?",
+          "(Sexual Encounters)... anyone up for it?"
+        ]
+      },
+      "offer": {
+        "definition": "A suggestion, expressing willingness to provide something",
+        "examples": [
+          "Available (for sexual encounters)",
+          "I am ready to (engage in sexual encounters)",
+          "(Sexual Encounters) here"
+        ]
+      }
+    },
+    "interactionInformation": {
+      "definition": "Any method for establishing contact between two people",
+      "includes": [
+        {
+          "type": "Contact instructions",
+          "examples": ["DM", "hit me up", "chat/call me", "scan qr", "link in bio", "check my link", "🔗"]
+        },
+        {
+          "type": "Contact details",
+          "examples": ["Phone numbers", "Email", "Screenshots of group chats"]
+        },
+        {
+          "type": "Usernames/links",
+          "platforms": ["Subscription websites (Patreon)", "Adult subscription websites", "Adult content apps", "Messaging apps (WhatsApp, Telegram)", "Online forums", "Computer games"]
+        },
+        {
+          "type": "Engagement requests",
+          "examples": ["Follow me for more", "subscribe to me", "comment on this post", "swipe up"]
+        },
+        {
+          "type": "Call-To-Action buttons",
+          "examples": ["Install Now", "Learn More", "Send Message", "non-functional play button overlay"]
+        }
+      ]
+    },
+    "sexuallySuggestivePose": {
+      "spreadingLegs": {
+        "definition": "PDITI spreading legs while sitting/squatting/kneeling/lying down",
+        "requires": [
+          "NOT in fitness/sports/dance context",
+          "ANY OF: Wearing only underwear or equivalent, Wearing fishnet/pantyhose/stockings over underwear, Genitalia cropped but likely visible, Pubic hair/ridge visible"
+        ]
+      },
+      "bendingOver": {
+        "definition": "PDITI bending over while standing/kneeling/crouching on hands and knees",
+        "requires": [
+          "NOT in fitness/sports/dance context",
+          "ANY OF: Wearing only underwear or equivalent, Wearing fishnet/pantyhose/stockings over underwear, Underwear showing from below despite other clothes"
+        ]
+      }
+    },
+    "fetish": {
+      "sspxDefinition": "Sexual interest in specific object, act, body part or state that evokes sexual pleasure or arousal",
+      "examples": [
+        "Acts leading to death (crushing, erotic asphyxiation)",
+        "Dismemberment", "Cannibalism",
+        "Feces, urine, spit, snot, menstruation, vomit",
+        "Bestiality", "Incest",
+        "BDSM (bondage, discipline, domination, submission, sadism, masochism)",
+        "Spanking",
+        "Sexual attraction to feet or hands",
+        "Sexual attraction to pregnancy/pregnant people",
+        "Sexual attraction to disabled people or disability",
+        "Sexual affinity for used clothing items (underwear)",
+        "Restricting sexual gratification or orgasm"
+      ]
+    },
+    "sexualOrEroticMassage": {
+      "requires": "Both indicators present",
+      "indicators": [
+        "Massage service depicted or mentioned",
+        "ANY OF: Touching/exposure of sexualized body parts, Masseuses in intimate wear (lingerie, towels, swimwear), Sexual slangs or phrases like 'full satisfaction guaranteed', 'full privacy', 'discrete massages', Mentions of sexual encounters"
+      ]
+    }
+  },
+
+  "sexualizedEmojis": {
+    "definition": "Exhaustive list of emoji combinations qualifying as sexual encounter proxies",
+    "note": "Exact combination required, sequence not necessary",
+    "combinations": [
+      "🍑🍆", "👉👌", "👅🍆", "👅🍌", "👅🍑",
+      "✊👅", "✊👄", "✊😯", "👌🍌", "👌🍆",
+      "✊🍌", "✊🍆", "🍑👆", "🍌💦", "🍆💦",
+      "🍑💦", "👅🍆💦", "👅🍌💦", "😯💦",
+      "😯🍆💦", "😯🍌💦", "👠🦮", "👑🦮", "🔞"
+    ],
+    "meaningTable": {
+      "🍆": "Penis",
+      "🍑": "Buttocks",
+      "💦": "Ejaculation",
+      "👅": "Oral sex",
+      "🍒": "Breasts/Virginity",
+      "🌽": "Porn",
+      "🥜": "Ejaculation",
+      "🌶️": "Hot content/Spicy video",
+      "🐱": "Vagina",
+      "🍌": "Penis",
+      "🌮": "Vagina"
+    }
+  },
+
+  "policyWideAllowedContent": {
+    "allowedContexts": [
+      { "context": "Condemnation", "action": "no_action" },
+      { "context": "Educational or Awareness raising", "action": "no_action" },
+      { "context": "News reporting", "action": "no_action" },
+      { "context": "Health", "action": "no_action" }
+    ],
+    "outOfScope": [
+      {
+        "type": "Meet-ups, friendships, dating",
+        "condition": "Purpose is not to have a sexual encounter",
+        "action": "no_action"
+      },
+      {
+        "type": "Business promotion",
+        "condition": "Selling lingerie, tattoo services, etc.",
+        "action": "no_action"
+      },
+      {
+        "type": "Rights discussions",
+        "condition": "LGBTQIA+ or sex worker rights/issues",
+        "action": "no_action"
+      }
+    ]
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "label": "Prostitution", "action": "label" },
+    { "rank": 2, "label": "Adult Sexual Solicitation", "action": "label" },
+    { "rank": 3, "label": "Pornography and Adult Websites", "action": "label" },
+    { "rank": 4, "label": "Sexualized Language", "sublabels": [
+      { "rank": "4.1", "label": "Sexually Explicit Language" },
+      { "rank": "4.2", "label": "Sexually Suggestive Language" },
+      { "rank": "4.3", "label": "Sexual Commentary" },
+      { "rank": "4.4", "label": "Content expressing desire for sexual activity" }
+    ]}
+  ],
+
+  "overlappingPolicies": {
+    "sspxAndAnsa": {
+      "scenario1": {
+        "description": "Sexually Suggestive Poses with Ask/Offer/Interaction Information",
+        "condition": "Sexual encounter depiction + Ask/Offer/Interaction info (including off-platform links)",
+        "action": "Label under SSPx"
+      },
+      "scenario2": {
+        "description": "Sexual Activity Imagery with Ask/Offer/Interaction Information",
+        "condition": "Imagery depicting sexual activity + Ask/Offer/Interaction info",
+        "action": "Label under SSPx"
+      },
+      "scenario3": {
+        "description": "Near Nudity/Focus on Sexualized Parts without Solicitation",
+        "condition": "Near nudity OR focus on sexualized body parts OR simulating sexual poses WITHOUT Ask/Offer/Interaction info",
+        "action": "Label under ANSA"
+      }
+    },
+    "humanExploitation": {
+      "minorSexTrafficking": "Third party recruiting/offering/soliciting minor for commercial sexual activity",
+      "adultSexTrafficking": "Third party recruiting/offering/soliciting adults for commercial sexual activity",
+      "note": "Free is not commercial indicator for HE, but is for SSPx Prostitution"
+    }
+  },
+
+  "platformSpecificGuidance": {
+    "bioUsage": {
+      "instruction": "When assessing simple object on IG/FB/Threads, use bio to look for ask/offer/interaction info",
+      "examples": [
+        "Sexual encounter content + bio with OnlyFans/getallmylinks/pornhub/Linktree = Sexual Solicitation",
+        "Sexual encounter content + emojis directing to bio (➡️👉👇) = Sexual Solicitation",
+        "No sexual encounter content + bio with Adult Subscription/Porn site link only = Pornography and Adult Websites",
+        "No sexual encounter content + bio with link/ask/offer = No Action",
+        "Sexual encounter content + bio with link + transaction indicator = Prostitution"
+      ]
+    },
+    "callToAction": {
+      "definition": "Buttons like Send Message, Install Now, Learn More",
+      "treatment": "Considered as ask/offer or sharing interaction information for SSPx"
+    },
+    "offPlatformLinks": {
+      "reviewProcess": [
+        "Examine link name and URL for SSPx signals",
+        "Review crawler screenshots for sexual encounter indicators, transaction indicators, adult sites",
+        "Apply matrix for enforcement decision"
+      ],
+      "exceptions": [
+        "App store transactional indicators (Free downloads, In-app Purchases) don't qualify",
+        "Policy-wide allowances (news reporting from CNN, Reuters, etc.)"
+      ]
+    },
+    "messenger": {
+      "holisticReview": false,
+      "note": "Violations need to happen in messages, not profile"
+    }
+  },
+
+  "notViolating": {
+    "language": [
+      "Mere mentioning of commonly sexualized body parts",
+      "Explicit sexual references in lyrics when engaged with/written out",
+      "Vague abbreviations, emojis, slang for sexual activity"
+    ],
+    "examples": [
+      "What would you like for dinner? (with suggestive emoji)",
+      "Your office favorite ✨ text me tonight?"
+    ]
+  }
+}

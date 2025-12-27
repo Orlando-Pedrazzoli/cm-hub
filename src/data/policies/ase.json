@@ -1,0 +1,418 @@
+{
+  "id": "ase",
+  "name": "Adult Sexual Exploitation",
+  "shortName": "ASE",
+  "description": "Addresses non-consensual sexual touching, sextortion, non-consensual intimate imagery (NCII), creepshots, necrophilia, and forced stripping. Protects victims while allowing discussion of sexual violence.",
+  "color": "#4C1D95",
+  "icon": "EyeOff",
+  "ready": true,
+  "sensitive": true,
+
+  "corePrinciple": "We recognize the importance of our services as a place to discuss and draw attention to sexual violence and exploitation. We allow victims to share their experiences but remove content that depicts, threatens, or promotes sexual violence, sexual assault, or sexual exploitation.",
+
+  "categories": {
+    "nonConsensualSexualTouching": {
+      "id": "ncst",
+      "name": "Non-Consensual Sexual Touching (NCST)",
+      "definition": "Any form of explicit, implicit, or other sexual activity or sexual touching that occurs without consent",
+      "lackOfConsentIndicators": [
+        "Verbal expressions (no, stop) or physical gestures (pushing away, slapping)",
+        "Person being touched is unconscious, severely drugged, or intoxicated",
+        "Someone saying the sexual activity was unwanted",
+        "Someone calling the sexual activity rape or sexual assault"
+      ],
+      "types": [
+        {
+          "id": "ncst_imagery",
+          "name": "NCST Imagery",
+          "definition": "Imagery depicting non-consensual sexual touching",
+          "action": "label",
+          "exception": "Real-world art depicting non-real people with condemning/neutral caption"
+        },
+        {
+          "id": "ncst_solicitation",
+          "name": "NCST Solicitation",
+          "definition": "Statements attempting to share, offer, ask for, or threaten to share NCST imagery",
+          "action": "label"
+        },
+        {
+          "id": "ncst_narratives",
+          "name": "NCST Narratives",
+          "definition": "Descriptions of NCST with details beyond mere naming/mentioning",
+          "contexts": [
+            { "context": "Shared by victim/survivor or third party in support/condemnation/awareness/news", "action": "label" },
+            { "context": "Any other context", "action": "label" }
+          ]
+        },
+        {
+          "id": "ncst_threats",
+          "name": "NCST Rape Threats",
+          "definition": "Advocacy, threats, or admission of participation in NCST",
+          "action": "label",
+          "escalateCriteria": {
+            "potentiallyCredible": {
+              "requires": "Statement of intent OR call to action OR admission + rape + target + ANY ONE OF:",
+              "indicators": ["Location", "Specific timing", "Armament", "High severity violence"]
+            }
+          }
+        },
+        {
+          "id": "ncst_identifying_victims",
+          "name": "Identifying Victims of Sexual Assault",
+          "definition": "Content identifying victims by name or image when reported by victim",
+          "action": "label",
+          "requires": "Name match OR face match between reporter and person targeted"
+        },
+        {
+          "id": "ncst_mocking",
+          "name": "Mocking NCST",
+          "definition": "Content mocking victims/survivors or the concept of NCST",
+          "action": "label"
+        }
+      ]
+    },
+    "sextortion": {
+      "id": "sextortion",
+      "name": "Sextortion",
+      "definition": "Coercing money, favors, or intimate imagery from people with threats to expose their intimate imagery or intimate information",
+      "action": "label",
+      "types": [
+        {
+          "id": "financial_sextortion",
+          "name": "Financial-Based Sextortion",
+          "definition": "Threatening to share intimate imagery/information in return for financial gains, cash, or equivalent",
+          "examples": [
+            "Send me $10,000 or I will share your nudes",
+            "Send the money through Western Union or I will send your nudes to your family"
+          ]
+        },
+        {
+          "id": "favor_sextortion",
+          "name": "Favor-Based Sextortion",
+          "definition": "Threatening to share intimate imagery/information in return for favors",
+          "examples": [
+            "Unblock me or I will share your nudes",
+            "Meet me today or I will send your nudes to your family",
+            "You better have sex with me if you don't want your sex video on the internet"
+          ]
+        },
+        {
+          "id": "content_sextortion",
+          "name": "Content-Based Sextortion",
+          "definition": "Threatening to share intimate imagery/information in return for additional intimate imagery",
+          "examples": [
+            "Send me a photo of your breasts or I'll post your nudes online",
+            "Send me a video of you stripping if you don't want your parents to see your nudes"
+          ]
+        }
+      ],
+      "likelySextortionIndicators": {
+        "primaryIndicators": [
+          "Sexually Engaging Talk to Acquire Intimate Imagery",
+          "Threatening or Transactional Talk without clear mention of NCII",
+          "Identifying as Non-Sexualized Attractive Female (NSAF)",
+          "Linked Sextortion Accounts"
+        ],
+        "secondaryIndicators": [
+          "Friend Rejection percentage >20%",
+          "DATR contains accounts disabled for Human Exploitation, VAN",
+          "FAI Score ≥0.6 for Facebook, ≥0.2 for Instagram"
+        ],
+        "threshold": "2 primary + 2 secondary OR 3 primary + 0 secondary"
+      },
+      "knownSextortionLocales": [
+        "India", "Indonesia", "Ghana", "Nigeria", "Philippines",
+        "Côte d'Ivoire (Ivory Coast)", "Benin", "Morocco"
+      ]
+    },
+    "nonConsensualIntimateImagery": {
+      "id": "ncii",
+      "name": "Non-Consensual Intimate Imagery (NCII)",
+      "definition": "Sharing, threatening, stating intent to share, offering, or asking for intimate imagery without consent",
+      "requirements": {
+        "all": [
+          "Depicts intimate imagery in private setting OR screenshots of private sexual conversations",
+          "Imagery is non-commercial",
+          "Lack of consent indicated by signals"
+        ]
+      },
+      "lackOfConsentSignals": [
+        {
+          "signal": "Vengeful context",
+          "description": "Caption, comments, or page title indicating intent to harm"
+        },
+        {
+          "signal": "Independent sources",
+          "examples": ["Media coverage", "Law enforcement records", "Representatives of victim", "Previously assessed NCII"]
+        },
+        {
+          "signal": "Face match",
+          "description": "Face match between reporter and PDITI"
+        },
+        {
+          "signal": "Name match",
+          "description": "Name match between reporter and PDITI"
+        }
+      ],
+      "types": [
+        {
+          "id": "ncii_harassment",
+          "name": "NCII Harassment",
+          "definition": "NCII shared to humiliate, intimidate, cause distress or embarrassment",
+          "action": "label"
+        },
+        {
+          "id": "ncii_sensationalist",
+          "name": "NCII Sensationalist",
+          "definition": "NCII shared for salacious or titillating purposes, including public figures",
+          "action": "label"
+        },
+        {
+          "id": "ncii_services",
+          "name": "NCII Services",
+          "definition": "Services, applications, or instructions to generate non-real NCII (deepfakes, nudification)",
+          "action": "label",
+          "note": "No nude imagery required for violation"
+        }
+      ],
+      "privateConversations": {
+        "definition": "Sharing, threatening, or stating intent to share private sexual conversations",
+        "lackOfConsentSignals": [
+          "Vengeful context or threatening",
+          "Independent sources (media, law enforcement)",
+          "Face match between reporter and PDITI",
+          "Name match between reporter and PDITI"
+        ]
+      }
+    },
+    "otherExploitation": {
+      "id": "other",
+      "name": "Other Adult Sexual Exploitation",
+      "types": [
+        {
+          "id": "creepshots",
+          "name": "Creepshots",
+          "definition": "Intimate imagery taken without knowledge of PDITI, shared with intent to mock, sexualize, or reveal identity",
+          "action": "label",
+          "indicators": {
+            "takenWithoutKnowledge": [
+              "PDITI not looking at, posing for, or engaging with camera",
+              "Taken through windows, doors, or other openings",
+              "Taken from CCTV or hidden camera",
+              "Partially-obscured camera edges",
+              "Taken from mid-long distance with PDITI facing away"
+            ],
+            "intentSignals": [
+              "Sexual slangs in caption/audio/overlay",
+              "Sexually explicit or suggestive language",
+              "Sexual audio or gestures",
+              "Bullying and harassment violations",
+              "Audio effects or digital alterations drawing attention",
+              "Captions/overlay revealing identity",
+              "Emojis suggesting mockery or sexualization"
+            ]
+          },
+          "excludes": "Commercial imagery (photoshoots, fashion shows)"
+        },
+        {
+          "id": "necrophilia",
+          "name": "Necrophilia",
+          "definition": "Sexual activity between person(s) and corpse(s)",
+          "action": "label",
+          "covers": [
+            "Imagery depicting necrophilia",
+            "Statements attempting to share/offer/ask/threaten",
+            "Statements of intent, calls for action, aspirational/conditional statements",
+            "Advocacy, admission of participation, mocking survivors"
+          ],
+          "note": "Figurative profane expressions (e.g., 'I'll fuck your dead body') treated as targeted cursing under BH"
+        },
+        {
+          "id": "forced_stripping",
+          "name": "Forced Stripping",
+          "definition": "Forceful removal of clothing by another person with intent to humiliate or shame",
+          "action": "label",
+          "forcedActionIndicators": [
+            "Resistance from target (throwing hands up, pulling clothes back on)",
+            "Physical restraint of target",
+            "Target is crying",
+            "Ripped clothing"
+          ],
+          "covers": [
+            "Imagery depicting forced stripping",
+            "Statements of intent",
+            "Calls for action",
+            "Aspirational/conditional statements",
+            "Advocacy, admission, threats to share imagery"
+          ],
+          "note": "Forced stripping + NCST = enforce as NCST"
+        }
+      ]
+    }
+  },
+
+  "definitions": {
+    "intimateImagery": {
+      "definition": "Imagery of one or more people, including manipulated imagery",
+      "includes": [
+        "Nudity (including images of genitalia)",
+        "Near nudity",
+        "People engaged in sexual activity",
+        "People in sexually suggestive pose",
+        "Imagery focusing on commonly sexualized body parts"
+      ],
+      "manipulatedIncludes": ["Photoshop", "Shallow-fake", "Deep-fake", "Stickers/emojis/cropped imagery"]
+    },
+    "intimateInformation": {
+      "includes": [
+        "Private sexual conversations",
+        "Language exposing details of sexual activities",
+        "Claims of sexual activity, romantic involvement, sexual orientation, gender identity"
+      ]
+    },
+    "privateSetting": {
+      "definition": "Places you would not expect many members of the public to be at any one time",
+      "includes": [
+        "Setting where it's not possible to determine if taken in public",
+        "Enclosed setting with one or few people (residential, apartment, car, hotel, bathroom, office, bedroom)",
+        "Outdoors but private due to limited people or seclusion"
+      ],
+      "excludes": ["Roads", "Parks", "Beaches", "Town squares", "City streets"]
+    },
+    "privateConversation": {
+      "definition": "Imagery of private conversation or audio/video recording where names/faces are identifiable and conversation describes sexual arousal or activity"
+    },
+    "commercialImagery": {
+      "definition": "Imagery produced for commercial media or pornography, typically highly stylized, staged, or professionally edited"
+    },
+    "vengefulContext": {
+      "indicators": [
+        "Expression of contempt, disgust, mocking or humiliation",
+        "Attacks through derogatory terms related to sexual activity",
+        "Attacks based on experiences of sexual assault",
+        "Claims about sexual activity, romantic involvement, sexual orientation, gender identity",
+        "Claims about sexually transmitted infections",
+        "Derogatory female gendered cursing",
+        "Comparison to animals/insects perceived as inferior or inanimate objects",
+        "Attacks through negative physical descriptions",
+        "Negative character/ability claim",
+        "Negative comparison to public/fictional/private individuals",
+        "Attacks through derogatory terms related to lack of sexual activity"
+      ],
+      "note": "Emojis by themselves do not count"
+    },
+    "mock": {
+      "definition": "Attempt to make a joke about, laugh at, embarrass, or degrade someone or something",
+      "doesNotMean": "Attempting to offer counter opinion, refute, or denounce"
+    },
+    "awareness_raising": {
+      "definition": "Sharing, discussing or reporting new information for improving understanding of issue with public interest value",
+      "requirements": "Should not aim to incite violence, spread hate or misinformation"
+    }
+  },
+
+  "nciiServicesApps": {
+    "knownViolating": [
+      "AI Clothes Remover", "AI Generations", "AI Nudes", "AI Porn Tool", "AINudez",
+      "Bra Off", "Cloth Off", "Crushai", "Crushmate", "Deep Nudes", "Deep-Nude AI",
+      "DeepNude AI脱衣", "DeepStrip", "DeepSukebe", "Delete Clothes", "Delete Clothing",
+      "Draw Nudes", "Erase Clothes", "Erase Clothing", "Get Nude App", "MagikFace",
+      "MakeNudeAI", "Matechat", "New Face Porn", "Nubee AI", "Nude Fusion",
+      "Nude It Now", "Nude V AI VIP", "Nudify", "Nudify Art", "Nudify Online",
+      "Nudiva", "Porn Fake", "Porn Journey", "PornWorksAI", "PornX AI", "Ptool AI",
+      "Remove Clothes", "Remove Clothing", "RetouchNude", "SoulGen", "SwaperFace",
+      "Swapper AI", "Take Off Clothes", "Tear Off Clothing", "Unclothy", "Undress AI",
+      "Undress AI Tool", "Undress App", "Undress Baby", "Undress CC", "Undress Girl",
+      "Undress Guru", "Undress Her", "Undress Love", "Undress Me", "Undress Zone",
+      "UndressGirls App", "Undressing AI", "UndressWith AI", "Xjoy", "XNudes"
+    ],
+    "notViolating": [
+      "Change face apps without nudity/near nudity/sexually suggestive pose",
+      "AI friend apps without NCII creation signals",
+      "Change cloth/dress apps without NCII creation signals",
+      "Design cloth/dress apps without NCII creation signals"
+    ],
+    "metaAIPrompts": {
+      "violating": [
+        "AI prompts indicating specific real individual by name or unique characteristics",
+        "Uploading photo of any individual with prompts to nudify"
+      ],
+      "notViolating": [
+        "AI generated nudity/sexual activity not indicating specific real individual"
+      ]
+    }
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "label": "NCST Credible Rape Threat", "escalate": true },
+    { "rank": 2, "label": "NCII Sextortion", "action": "label" },
+    { "rank": 3, "label": "NCII Harassment", "action": "label" },
+    { "rank": 4, "label": "NCII Sensationalist", "action": "label" },
+    { "rank": 5, "label": "NCII Services", "action": "label" },
+    { "rank": 6, "label": "NCST Rape Threat", "action": "label" },
+    { "rank": 7, "label": "NCST Imagery", "action": "label" },
+    { "rank": 8, "label": "NCST Text", "action": "label" },
+    { "rank": 9, "label": "NCST Identifying Victims of Sexual Assault", "action": "label" },
+    { "rank": 10, "label": "NCST Awareness", "action": "label" },
+    { "rank": 11, "label": "Creepshots", "action": "label" },
+    { "rank": 12, "label": "Forced Stripping or Necrophilia", "action": "label" }
+  ],
+
+  "escalationCriteria": {
+    "potentiallyCredibleRapeThreat": {
+      "requires": "Statement of intent OR call to action OR admission + rape + target + ANY ONE OF:",
+      "indicators": [
+        "Location",
+        "Specific Timing",
+        "Armament",
+        "Any other form of High Severity Violence"
+      ],
+      "notes": [
+        "Apply existing VI definitions for location, timing, armament, high severity violence",
+        "Since includes admissions, do not consider time limit on post date",
+        "Target includes pronouns (you, him, your sister, women, all supporters) or names",
+        "Do not escalate if target is clearly fictional character",
+        "Do not escalate aspirational or conditional statements (enforce under NCST Rape Threat)"
+      ]
+    }
+  },
+
+  "allowedContexts": {
+    "ncstAwareness": {
+      "definition": "NCST-related narrative or news reporting that supports victims/survivors, raises awareness, or condemns NCST",
+      "action": "MAS for organic content",
+      "note": "If NCST imagery present, action under NCST Imagery"
+    },
+    "realWorldArt": {
+      "applies": "NCST imagery depicting non-real people with condemning or neutral caption",
+      "action": "Allow"
+    },
+    "victimSharing": {
+      "applies": "Descriptions shared by victim/survivor or third party in support/condemnation/awareness",
+      "action": "Allow with appropriate labeling"
+    }
+  },
+
+  "bankingCriteria": {
+    "bankable": [
+      "Nudity/Sexual Activity + threat to expose",
+      "Nudity/Sexual Activity + commercial watermark + known sextortion locale",
+      "Nudity/Sexual Activity + private setting + face/name match",
+      "Nudity/Sexual Activity + private setting + vengeful captions/text overlay/bios",
+      "Deepfakes depicting nudity/sexual activity + private setting + face/name match",
+      "NCST imagery + nudity/sexual activity/near nudity",
+      "Creepshots + context mocking/sexualizing/revealing identity"
+    ],
+    "doNotBank": [
+      "Commercial pornography (except NCST)",
+      "Bestiality",
+      "Close up nudity without captions or PDITI face",
+      "Multiple collage of sexual imagery",
+      "Screenshots/recordings of sexual chats",
+      "Content covered >15% by emojis",
+      "Content with borders >10%",
+      "Videos with mix of violating/non-violating",
+      "Collages with >3 images/videos"
+    ]
+  }
+}

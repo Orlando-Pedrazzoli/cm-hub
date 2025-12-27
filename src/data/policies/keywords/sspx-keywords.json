@@ -1,0 +1,372 @@
+{
+  "policyId": "sspx",
+  "policyName": "Adult Sexual Solicitation & Sexually Explicit Language",
+  "shortName": "SSPX",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-27",
+
+  "slangTermCategories": {
+    "part1SexualSolicitation": {
+      "description": "Terms used as proxies for sexual encounters. Combined with ask/offer/interaction info = Sexual Solicitation. Combined with price = Prostitution.",
+      "global": [
+        "nudes", "sex video", "sex tape", "porn", "xxx",
+        "hookup", "hook up", "one night stand", "friends with benefits", "FWB",
+        "casual sex", "no strings attached", "NSA", "booty call",
+        "DTF", "down to fuck", "Netflix and chill",
+        "sugar daddy", "sugar baby", "sugar mommy",
+        "VCS", "video call sex", "phone sex", "cyber sex",
+        "sexting", "sext", "dirty talk",
+        "oral", "BJ", "blowjob", "head", "going down",
+        "anal", "doggy", "missionary", "cowgirl", "reverse cowgirl",
+        "threesome", "3some", "foursome", "orgy", "gangbang",
+        "BDSM", "bondage", "domination", "submission", "dom", "sub",
+        "kink", "kinky", "fetish", "roleplay", "RP"
+      ]
+    },
+    "part2SexualSolicitation": {
+      "description": "More implicit terms that could have other meanings. Use market discretion/knowledge to determine if referencing sexual encounters.",
+      "global": [
+        "pitcher", "top", "bottom", "vers", "versatile",
+        "service", "services", "full service",
+        "experience", "special experience", "VIP experience",
+        "massage", "body massage", "happy ending",
+        "companion", "companionship", "escort",
+        "date", "dating", "meet up",
+        "fun", "good time", "party", "private party",
+        "discreet", "discrete", "no drama",
+        "generous", "gentleman", "lady"
+      ]
+    },
+    "prostitutionTerms": {
+      "description": "Combined with ask/offer/interaction info/price/location = Prostitution",
+      "global": [
+        "escort", "escort service", "outcall", "incall",
+        "GFE", "girlfriend experience", "PSE", "pornstar experience",
+        "full service", "extra services", "special services",
+        "hourly rate", "per hour", "overnight", "all night",
+        "donation", "roses", "tribute",
+        "call girl", "working girl", "pro", "provider",
+        "john", "client", "punter",
+        "brothel", "massage parlor", "red light",
+        "sugar arrangement", "pay for play", "P4P",
+        "transactional", "compensated dating"
+      ]
+    },
+    "sexualTerms": {
+      "description": "Combined with ask/offer/interaction info/price = Prostitution",
+      "global": [
+        "sex", "intercourse", "fuck", "fucking", "screw",
+        "blow", "suck", "lick", "eat out",
+        "penetration", "insertion", "inside",
+        "cum", "orgasm", "climax", "finish",
+        "hard", "wet", "horny", "aroused", "turned on",
+        "naked", "nude", "undress", "strip",
+        "touch", "feel", "stroke", "rub", "grind"
+      ]
+    }
+  },
+
+  "askIndicators": {
+    "phrases": {
+      "en": [
+        "I am looking for", "looking for", "searching for",
+        "anyone up for", "who wants to", "who's down for",
+        "need someone to", "want someone to",
+        "any takers", "interested in", "seeking"
+      ],
+      "pt": [
+        "estou procurando", "procuro", "quem quer",
+        "alguém quer", "preciso de alguém"
+      ],
+      "es": [
+        "estoy buscando", "busco", "quien quiere",
+        "alguien quiere", "necesito a alguien"
+      ]
+    },
+    "questionFormats": [
+      "Anyone up for...?", "Who wants...?", "Looking for...?"
+    ]
+  },
+
+  "offerIndicators": {
+    "phrases": {
+      "en": [
+        "available", "I am ready to", "ready for",
+        "offering", "I offer", "here for",
+        "come get", "come and get", "waiting for you",
+        "I can", "I will", "let me"
+      ],
+      "pt": [
+        "disponível", "estou pronta", "oferecendo",
+        "vem", "venha", "esperando você"
+      ],
+      "es": [
+        "disponible", "estoy lista", "ofreciendo",
+        "ven", "venga", "esperándote"
+      ]
+    }
+  },
+
+  "interactionInformation": {
+    "contactMethods": {
+      "en": ["DM", "DM me", "hit me up", "HMU", "chat me", "call me", "text me", "message me", "inbox me", "PM", "PM me"],
+      "abbreviations": ["DM", "PM", "HMU", "TXT"]
+    },
+    "linkReferences": [
+      "link in bio", "check my link", "click link", "🔗",
+      "linktree", "linktr.ee", "allmylinks", "getallmylinks",
+      "bio link", "profile link", "swipe up", "tap link"
+    ],
+    "platformReferences": [
+      "add me on", "find me on", "follow me on",
+      "Snapchat", "Snap", "SC", "Telegram", "TG",
+      "WhatsApp", "WA", "Kik", "Discord", "Signal"
+    ],
+    "engagementRequests": [
+      "follow me for more", "subscribe to me", "subscribe for",
+      "comment for", "like for", "swipe up", "swipe down",
+      "click for", "tap for"
+    ],
+    "directingEmojis": ["➡️", "👉", "👇", "⬇️", "🔗", "📲", "📱"]
+  },
+
+  "transactionIndicators": {
+    "moneyTerms": {
+      "en": [
+        "price", "rate", "rates", "fee", "cost",
+        "pay", "payment", "paid", "cash", "money",
+        "dollars", "euros", "pounds", "$", "€", "£",
+        "Venmo", "PayPal", "Cash App", "Zelle", "Pix",
+        "gift card", "Amazon gift card", "Apple gift card"
+      ]
+    },
+    "dealTerms": [
+      "deals available", "discount", "special offer",
+      "limited time offer", "premium", "VIP",
+      "booking available", "book now", "reserve",
+      "free trial", "100% free", "no payment", "no credit card"
+    ],
+    "moneyEmojis": ["💰", "💸", "💲", "💵", "💴", "💶", "💷", "🤑"],
+    "valueExchangeExamples": [
+      "I'll have sex with anyone who pays for my flight",
+      "If I get you an Uber will you come over"
+    ]
+  },
+
+  "sexuallyExplicitLanguageIndicators": {
+    "graphicDescriptions": [
+      "fucked me so hard", "dripping wet", "fingered her vagina",
+      "rode him hard", "started to cum", "pegged him so good",
+      "wet pussy", "throbbing cock", "pounding",
+      "deep inside", "all the way in", "filled her up"
+    ],
+    "explicitActions": [
+      "pussy fuck dick", "puts his dick into my mouth",
+      "face down ass up", "eat her pussy before you fuck",
+      "grips my dick", "sucking his cock"
+    ],
+    "notExplicit": [
+      "I had sex with her",
+      "I got a blowjob",
+      "I fucked her on Wednesday"
+    ]
+  },
+
+  "sexuallySuggestiveLanguageIndicators": {
+    "doubleEntendres": [
+      "want you inside me", "give it to me",
+      "make me feel good", "take me", "have your way with me"
+    ],
+    "metaphors": [
+      "ride the wave", "go all night", "satisfy your needs",
+      "explore your body", "passionate encounter"
+    ],
+    "euphemisms": {
+      "intercourse": ["doing it", "making love", "getting busy", "hooking up", "sleeping together"],
+      "oralSex": ["going down", "giving head", "eating out", "rimming", "69"],
+      "masturbation": ["playing with yourself", "self-pleasure", "touching yourself"],
+      "arousal": ["getting hard", "getting wet", "turned on", "horny"]
+    },
+    "sexualSounds": [
+      "Haah", "Uugh", "Aaah", "mmm", "ooh",
+      "moaning", "groaning", "panting"
+    ],
+    "commonPhrases": [
+      "going down on someone", "being good in bed", "body count",
+      "smash or pass", "hit it", "tap that"
+    ]
+  },
+
+  "sexualizedEmojiCombinations": {
+    "exhaustiveList": [
+      "🍑🍆", "👉👌", "👅🍆", "👅🍌", "👅🍑",
+      "✊👅", "✊👄", "✊😯", "👌🍌", "👌🍆",
+      "✊🍌", "✊🍆", "🍑👆", "🍌💦", "🍆💦",
+      "🍑💦", "👅🍆💦", "👅🍌💦", "😯💦",
+      "😯🍆💦", "😯🍌💦", "👠🦮", "👑🦮", "🔞"
+    ],
+    "emojiMeanings": {
+      "🍆": { "literal": "Eggplant", "sexual": "Penis" },
+      "🍑": { "literal": "Peach", "sexual": "Buttocks" },
+      "💦": { "literal": "Sweat/water", "sexual": "Ejaculation" },
+      "👅": { "literal": "Tongue", "sexual": "Oral sex" },
+      "🍒": { "literal": "Cherries", "sexual": "Breasts/Virginity" },
+      "🌽": { "literal": "Corn", "sexual": "Porn" },
+      "🥜": { "literal": "Peanut", "sexual": "Ejaculation" },
+      "🌶️": { "literal": "Pepper", "sexual": "Hot content/Spicy video" },
+      "🐱": { "literal": "Cat", "sexual": "Vagina" },
+      "🍌": { "literal": "Banana", "sexual": "Penis" },
+      "🌮": { "literal": "Taco", "sexual": "Vagina" }
+    }
+  },
+
+  "adultSubscriptionWebsites": {
+    "exhaustiveList": [
+      "OnlyFans", "Fansly", "Fanvue", "AdultNode", "IsMyGirl",
+      "Frisk", "FanCentro", "Flirtback", "Fanspicy", "AdmireMe",
+      "iFans", "MYM", "Manyvids"
+    ],
+    "usernamePatterns": [
+      "onlyfans.com/", "fansly.com/", "fanvue.com/",
+      "@onlyfans", "OF:", "OF link", "my OF"
+    ]
+  },
+
+  "pornographicWebsites": {
+    "knownSites": [
+      "Pornhub", "XVideos", "XNXX", "RedTube", "YouPorn",
+      "Brazzers", "Bangbros", "Reality Kings", "Naughty America",
+      "XHamster", "Tube8", "SpankBang", "Eporner"
+    ],
+    "indicators": [
+      "xxx", "porn", "adult video", "adult content",
+      ".xxx", "adult site"
+    ]
+  },
+
+  "sexualizedBodyPartTerms": {
+    "breasts": {
+      "en": ["boobs", "tits", "breasts", "titties", "rack", "chest", "cleavage", "nipples"],
+      "pt": ["peitos", "seios", "mamas", "tetas"],
+      "es": ["tetas", "pechos", "senos", "chichis"]
+    },
+    "buttocks": {
+      "en": ["ass", "butt", "booty", "behind", "rear", "bum", "cheeks", "backside"],
+      "pt": ["bunda", "traseiro", "rabo"],
+      "es": ["culo", "trasero", "nalgas", "pompas"]
+    },
+    "genitalia": {
+      "female": {
+        "en": ["pussy", "vagina", "clit", "vulva", "cooch", "kitty"],
+        "pt": ["buceta", "vagina", "xoxota"],
+        "es": ["coño", "vagina", "concha", "chocho"]
+      },
+      "male": {
+        "en": ["dick", "cock", "penis", "balls", "nuts", "package", "junk"],
+        "pt": ["pau", "pênis", "pica", "rola"],
+        "es": ["polla", "verga", "pene", "huevos"]
+      }
+    }
+  },
+
+  "sexualEncounterProxies": {
+    "ageIndicators": ["18+", "18 plus", "adults only", "NSFW", "mature content", "explicit"],
+    "hotelContext": {
+      "setting": ["hotel", "motel", "room", "suite", "private room"],
+      "servicePromises": [
+        "Don't be shy", "real girls are waiting", "VIP service",
+        "full service", "discrete service", "private service"
+      ]
+    },
+    "stateOfArousal": {
+      "en": ["I am so wet", "I have a hard-on", "so horny", "turned on", "aroused", "excited"],
+      "pt": ["estou molhada", "estou duro", "tesão", "excitado"],
+      "es": ["estoy mojada", "la tengo dura", "caliente", "excitado"]
+    }
+  },
+
+  "sexuallySuggestivePoseIndicators": {
+    "spreadingLegs": {
+      "positions": ["sitting", "squatting", "kneeling", "lying down"],
+      "clothingConditions": [
+        "Wearing only underwear or equivalent",
+        "Wearing fishnet/pantyhose/stockings over underwear",
+        "Genitalia cropped but likely visible",
+        "Pubic hair/ridge visible"
+      ],
+      "excludedContexts": ["fitness", "sports", "dance"]
+    },
+    "bendingOver": {
+      "positions": ["standing", "kneeling", "crouching on hands and knees"],
+      "clothingConditions": [
+        "Wearing only underwear or equivalent",
+        "Wearing fishnet/pantyhose/stockings over underwear",
+        "Underwear showing from below"
+      ],
+      "excludedContexts": ["fitness", "sports", "dance"]
+    }
+  },
+
+  "sexualMassageIndicators": {
+    "massageTypes": ["massage", "body massage", "full body massage", "tantra massage", "erotic massage"],
+    "sexualSignals": [
+      "full satisfaction guaranteed", "full privacy", "discrete massages",
+      "happy ending", "extra services", "special touch"
+    ],
+    "attireIndicators": ["lingerie", "towel only", "swimwear", "intimate wear"]
+  },
+
+  "slangTermVariations": {
+    "acceptedVariations": [
+      "Punctuation between letters (S.E.X.)",
+      "Asterisks or symbols (s*x, f**k)",
+      "Number replacements (nud3, VC5, s3x)",
+      "Emoji replacements (se❌ for sex)",
+      "Hashtag combinations (#sexchat)"
+    ],
+    "examples": [
+      { "variation": "nud3", "original": "nude" },
+      { "variation": "VC5", "original": "VCS" },
+      { "variation": "s*x", "original": "sex" },
+      { "variation": "#sexchat", "original": "sex chat" }
+    ]
+  },
+
+  "allowedContextKeywords": {
+    "condemnation": ["condemn", "criticize", "against", "oppose", "wrong", "harmful", "exploitation"],
+    "educational": ["education", "awareness", "learn", "understand", "inform", "research", "study"],
+    "newsReporting": ["news", "report", "journalism", "investigation", "coverage", "breaking"],
+    "health": ["health", "medical", "anatomy", "disease", "prevention", "treatment", "doctor"],
+    "rightsDiscussion": ["rights", "advocacy", "law", "legal", "policy", "decriminalization", "sex work rights", "LGBTQIA+"]
+  },
+
+  "notViolatingExamples": {
+    "mereMentioning": ["boobs", "tits", "butt"],
+    "lyricsReference": "Explicit sexual references in song lyrics when quoted",
+    "vagueReferences": [
+      "What would you like for dinner? (with suggestive emoji)",
+      "Your office favorite ✨ text me tonight?"
+    ]
+  },
+
+  "profileReviewSignals": {
+    "usernamePatterns": [
+      "Contains sexual slang terms",
+      "Contains adult site usernames",
+      "Contains suggestive phrases"
+    ],
+    "bioSignals": [
+      "Links to adult subscription sites",
+      "Links to porn sites",
+      "Contact information with sexual context",
+      "Price/rate mentions",
+      "Service descriptions"
+    ],
+    "crawlerScreenshotSignals": [
+      "Sexual encounter indicators",
+      "Transaction indicators",
+      "Adult subscription site presence",
+      "Porn website presence"
+    ]
+  }
+}

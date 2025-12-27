@@ -1,0 +1,559 @@
+{
+  "id": "ansa",
+  "name": "Adult Nudity and Sexual Activity",
+  "shortName": "ANSA",
+  "description": "Restricts display of nudity and sexual activity due to cultural sensitivity and age considerations. Allows certain contexts like protest, breastfeeding, and medical purposes.",
+  "color": "#1E3A8A",
+  "icon": "UserX",
+  "ready": true,
+
+  "corePrinciple": "We restrict nudity and sexual activity because some people may be sensitive to this content due to cultural background or age. We make allowances for protest, breastfeeding, post-mastectomy, and real world art depicting nudity.",
+
+  "imageryTypes": {
+    "photorealistic": {
+      "definition": "Image or video that looks like a photograph or video of a real person, place, or event",
+      "defaultRule": "If unsure, assume photorealistic"
+    },
+    "digital": {
+      "definition": "AI or computer-generated imagery that is not photorealistic",
+      "indicators": [
+        "Photoshopping, lines or coloring",
+        "Photo editing using a program (cut and paste signals)",
+        "Paint programs with 8-bit or square pieces on lines"
+      ]
+    },
+    "realWorldArt": {
+      "definition": "Artwork as real world object using traditional forms",
+      "indicators": [
+        "Artwork is real world object (statues, figurines, lamps)",
+        "Traditional medium (paint, pencil, marker, charcoal)",
+        "Physical medium clearly present"
+      ],
+      "note": "Does not include imagery of real people on any medium"
+    }
+  },
+
+  "categories": {
+    "adultSexualActivity": {
+      "name": "Adult Sexual Activity",
+      "id": "sexual_activity",
+      "subsections": {
+        "photorealisticDigital": {
+          "name": "Photorealistic or Digital Imagery",
+          "types": [
+            {
+              "id": "explicit_sexual",
+              "name": "Explicit Sexual Activity or Stimulation",
+              "definition": "Explicit intercourse/oral sex with visible genitals/anus, or explicit stimulation with sex toys",
+              "contexts": [
+                { "context": "Medical or health context (photorealistic)", "action": "label" },
+                { "context": "Medical or health context (digital)", "action": "label" },
+                { "context": "Visible body shapes or contours", "action": "label" },
+                { "context": "Any other context", "action": "label" }
+              ]
+            },
+            {
+              "id": "implicit_sexual",
+              "name": "Implicit or Other Sexual Activity or Stimulation",
+              "definition": "Implied intercourse/oral sex where contact not directly visible, or impending sexual activity",
+              "contexts": [
+                { "context": "Visible body shapes or contours", "action": "label" },
+                { "context": "Recognized fictional imagery (photorealistic)", "action": "label" },
+                { "context": "Recognized fictional imagery (digital)", "action": "label" },
+                { "context": "Medical or health context", "action": "label" },
+                { "context": "Sexual education context", "action": "info" },
+                { "context": "Any other context", "action": "label" }
+              ]
+            },
+            {
+              "id": "fetish",
+              "name": "Fetish Content",
+              "action": "label",
+              "exhaustiveList": [
+                "Acts likely to lead to death (crushing, erotic asphyxiation)",
+                "Dismemberment",
+                "Cannibalism",
+                "Feces, urine, spit, snot, menstruation, vomit",
+                "Bestiality",
+                "Incest"
+              ]
+            },
+            {
+              "id": "sex_related",
+              "name": "Sex-Related Activity",
+              "action": "label"
+            },
+            {
+              "id": "simulating",
+              "name": "Simulating Sexual Activity",
+              "action": "label"
+            },
+            {
+              "id": "gestures",
+              "name": "Gestures Signifying Sexual Acts",
+              "definition": "Gestures signifying genitalia, masturbation, oral sex, or intercourse",
+              "action": "label"
+            },
+            {
+              "id": "porn_logos",
+              "name": "Pornographic Website Logos/Screenshots",
+              "action": "label"
+            }
+          ]
+        },
+        "realWorldArt": {
+          "name": "Real World Art",
+          "types": [
+            {
+              "id": "explicit_implicit_art",
+              "name": "Explicit/Implicit Sexual Activity in Art",
+              "contexts": [
+                { "context": "Medical or health contexts", "action": "label" },
+                { "context": "Sexual education context", "action": "info" },
+                { "context": "Visible body shapes or contours", "action": "label" },
+                { "context": "Any other context", "action": "label" }
+              ]
+            },
+            {
+              "id": "fetish_art",
+              "name": "Fetish in Art",
+              "contexts": [
+                { "context": "Bestiality neutral/condemning, non-real", "action": "label" },
+                { "context": "Any other context", "action": "label" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "adultNudity": {
+      "name": "Adult Nudity",
+      "id": "nudity",
+      "subsections": {
+        "photorealisticDigital": {
+          "name": "Photorealistic or Digital Imagery",
+          "types": [
+            {
+              "id": "visible_genitalia",
+              "name": "Visible Genitalia, Anuses, Close-ups of Buttocks",
+              "definition": "Including genitalia covered only by pubic hair",
+              "contexts": [
+                { "context": "Famine, genocide, war crimes, crimes against humanity", "action": "label" },
+                { "context": "Medical or health contexts", "action": "label" },
+                { "context": "Gender confirmation surgery context", "action": "label" },
+                { "context": "Any other context", "action": "label" }
+              ]
+            },
+            {
+              "id": "visible_female_nipples",
+              "name": "Visible Female Nipples",
+              "contexts": [
+                { "context": "Famine, genocide, war crimes, crimes against humanity", "action": "label" },
+                { "context": "Medical or health contexts", "action": "label" },
+                { "context": "Gender confirmation surgery context", "action": "label" },
+                { "context": "Act of protest context", "action": "label" },
+                { "context": "Breastfeeding context (non-sexualized)", "action": "label" },
+                { "context": "Any other context", "action": "label" }
+              ]
+            },
+            {
+              "id": "secretly_recorded",
+              "name": "Secretly Recorded Videos",
+              "definition": "Videos focusing on crotch, buttocks, or female breasts recorded without PDITI's awareness",
+              "action": "label"
+            },
+            {
+              "id": "suggestive_pose_near_nude",
+              "name": "Sexually Suggestive Pose + Near Nudity",
+              "action": "label"
+            },
+            {
+              "id": "suggestive_pose_focus",
+              "name": "Sexually Suggestive Pose + Focus on Crotch/Buttocks",
+              "action": "label"
+            },
+            {
+              "id": "near_nudity",
+              "name": "Near Nudity",
+              "action": "label"
+            },
+            {
+              "id": "body_focus",
+              "name": "Crotch/Buttock/Female Breasts as Focus",
+              "action": "label"
+            },
+            {
+              "id": "suggestive_pose_alone",
+              "name": "Sexually Suggestive Pose (not in medical/health context)",
+              "action": "label"
+            }
+          ]
+        },
+        "realWorldArt": {
+          "name": "Real World Art",
+          "types": [
+            {
+              "id": "genitalia_art",
+              "name": "Visible Genitalia/Anuses/Buttocks in Art",
+              "contexts": [
+                { "context": "Nudity NOT focus of image", "action": "no_action" },
+                { "context": "Nudity IS focus of image", "action": "label" },
+                { "context": "Medical or health context", "action": "label" },
+                { "context": "Gender confirmation surgery context", "action": "label" }
+              ]
+            },
+            {
+              "id": "nipples_art",
+              "name": "Visible Female Nipples in Art",
+              "contexts": [
+                { "context": "Nudity NOT focus of image", "action": "no_action" },
+                { "context": "Nudity IS focus of image", "action": "label" },
+                { "context": "Medical or health context", "action": "label" },
+                { "context": "Gender confirmation surgery context", "action": "label" },
+                { "context": "Breastfeeding context (non-sexualized)", "action": "label" }
+              ]
+            },
+            {
+              "id": "suggestive_art",
+              "name": "Sexually Suggestive Content in Art",
+              "contexts": [
+                { "context": "Suggestive pose + near nudity", "action": "no_action" },
+                { "context": "Suggestive pose + focus on crotch/buttocks", "action": "no_action" },
+                { "context": "Near nudity alone", "action": "no_action" },
+                { "context": "Focus on crotch/buttocks/breasts", "action": "no_action" },
+                { "context": "Sexually suggestive pose alone", "action": "no_action" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "otherSexualContent": {
+      "name": "Other Sexual Content",
+      "id": "other",
+      "types": [
+        {
+          "id": "sexual_audio",
+          "name": "Sexual Audio",
+          "definition": "Sounds typically associated with sexual activity (moaning, groaning, sighing, body sounds)",
+          "contexts": [
+            { "context": "Less than 10 seconds", "action": "label" },
+            { "context": "10 seconds or longer", "action": "label" }
+          ]
+        }
+      ]
+    },
+    "animals": {
+      "name": "Animals",
+      "id": "animals",
+      "types": [
+        {
+          "id": "animal_sexual",
+          "name": "Animal Sexual Activity",
+          "definition": "Animals engaged in sexual activity or with visible genitals",
+          "action": "label",
+          "applies": "Photorealistic, Digital, Real World Art"
+        }
+      ]
+    },
+    "sexuallySuggestiveContent": {
+      "name": "Sexually Suggestive Content",
+      "id": "suggestive",
+      "note": "Only label under this section when content not labeled under any above sections",
+      "types": [
+        {
+          "id": "stripping",
+          "name": "Stripping and Passive Stripping",
+          "definition": "Removal or partial tugging of clothing to expose what's underneath",
+          "action": "label",
+          "excludes": "Medical/health or scientific contexts"
+        },
+        {
+          "id": "revealing_clothing",
+          "name": "Revealing Clothing",
+          "definition": "Clothing with coverage equivalent to underwear, or see-through clothing",
+          "action": "label",
+          "excludes": [
+            "Athletic, sport, or dance context",
+            "Formal event context",
+            "Background/incidental depictions"
+          ]
+        },
+        {
+          "id": "sexually_touching",
+          "name": "Sexually Touching/Moving Body Parts",
+          "definition": "Sexual contact with or repeated shaking of sexualized body parts",
+          "action": "label"
+        },
+        {
+          "id": "topless_back",
+          "name": "Topless Female from Back",
+          "action": "label"
+        }
+      ]
+    }
+  },
+
+  "definitions": {
+    "explicitSexualActivity": {
+      "definition": "Explicit sexual intercourse or oral sex with visible genitals/anus, or explicit stimulation with sex toys where contact is directly visible",
+      "includes": [
+        "Explicit sexual intercourse or oral sex with at least one person's genitals/anus visible",
+        "Explicit stimulation of genitals/anus with sex toys when contact is directly visible"
+      ]
+    },
+    "implicitSexualActivity": {
+      "definition": "Sexual activity where the act itself is not directly visible",
+      "includes": [
+        "Implicit intercourse/oral sex where contact not directly visible",
+        "Implicit stimulation where placement/insertion not directly visible",
+        "Impending sexual activity (positions suggesting imminent contact)"
+      ]
+    },
+    "otherSexualActivity": {
+      "definition": "Other sexual stimulation activities",
+      "includes": [
+        "Erection (with Context + Shape indicators)",
+        "By-products of sexual activity (pre-cum, semen, vaginal secretions, wet spots)",
+        "Sex toy placement in or insertion into mouth",
+        "Stimulation of visible male/female nipple",
+        "Squeezing of female breast"
+      ]
+    },
+    "sexRelatedActivity": {
+      "includes": {
+        "breasts_nipples": [
+          "Stimulation of covered male/female nipples",
+          "Cupping or spanking of female breast",
+          "Squeezing of female breasts by self over clothing"
+        ],
+        "buttocks": [
+          "Groping, spanking, squeezing, cupping, grasping buttocks"
+        ],
+        "mouths": [
+          "Kissing with visible tongue",
+          "Person licking or biting another person anywhere"
+        ],
+        "other": [
+          "Sexual or erotic dancing (excluding twerking)",
+          "Two or more persons undressing to reveal buttock/genital/crotch/breast while kissing or engaging in prolonged eye contact"
+        ]
+      }
+    },
+    "nearNudity": {
+      "definition": "Human not fully clothed in specific ways",
+      "includes": {
+        "pubicHair": "Partially visible pubic hair/ridge despite being covered",
+        "genitalia": [
+          "Covered only by opaque object/overlay/body part",
+          "Clear outline through clothing (camel toe)",
+          "Cropped but likely visible if not cropped"
+        ],
+        "femaleNipples": [
+          "Covered only by opaque object/overlay/body part",
+          "Covered by paint",
+          "Visible under see-through clothing"
+        ],
+        "buttocks": [
+          "Close-ups in lingerie thongs",
+          "Under see-through clothing/paint/tattoos/shimmer",
+          "Butt crack partially visible (plumber's crack)",
+          "Longshots of visible buttocks",
+          "Side views when butt crack not visible"
+        ]
+      },
+      "note": "Swimsuit thongs NOT considered near nudity for adults"
+    },
+    "sexuallySuggestivePose": {
+      "spreadingLegs": {
+        "position": "Sitting, squatting, kneeling, or lying down",
+        "conditions": [
+          "Wearing only underwear or equivalent coverage (excluding swimsuits)",
+          "Wearing fishnet/pantyhose/stockings over underwear",
+          "Genitalia cropped but likely visible if not cropped",
+          "Pubic hair/ridge plainly visible"
+        ],
+        "excludes": "Fitness, sports, or dance contexts"
+      },
+      "bendingOver": {
+        "position": "Standing, kneeling, or crouching on hands and knees",
+        "conditions": [
+          "Wearing only underwear or equivalent coverage (excluding swimsuits)",
+          "Wearing fishnet/pantyhose/stockings over underwear",
+          "Underwear showing from below despite other clothes"
+        ],
+        "excludes": "Fitness, sports, or dance contexts"
+      }
+    },
+    "visibleGenitalia": {
+      "female": ["Labia majora", "Labia minora", "Clitoris", "Hymen", "Vaginal opening", "Urethral opening"],
+      "male": ["Penis", "Scrotum"],
+      "visibleIncludes": [
+        "Through transparent objects (glass, water, plastic wraps)",
+        "Under see-through clothing",
+        "Covered only by pubic hair"
+      ]
+    },
+    "visibleNipple": {
+      "definition": "Nipple (excluding areola) not obscured by opaque object/substance/clothing/body part/digital overlay",
+      "visibleIncludes": [
+        "Through transparent objects (glass, water, plastic wraps)",
+        "Pierced nipple still visible"
+      ],
+      "notVisible": [
+        "Under see-through clothing (considered near nudity)",
+        "Covered by paint (considered near nudity)",
+        "Only outline visible through clothing"
+      ]
+    },
+    "fetish": {
+      "forANSA": {
+        "exhaustiveList": [
+          "Acts likely to lead to death (crushing, erotic asphyxiation)",
+          "Dismemberment",
+          "Cannibalism",
+          "Feces, urine, spit, snot, menstruation, vomit",
+          "Bestiality",
+          "Incest"
+        ]
+      },
+      "forOtherPolicies": {
+        "additionalNonExhaustive": [
+          "BDSM (bondage, discipline, domination, submission, sadism, masochism)",
+          "Spanking",
+          "Sexual attraction to feet or hands",
+          "Sexual attraction to pregnancy/pregnant people",
+          "Sexual attraction to disabled people/disability",
+          "Sexual affinity for used clothing (underwear)",
+          "Restricting sexual gratification or orgasm"
+        ]
+      }
+    },
+    "sexToys": [
+      "Dildos",
+      "Genital vibrators",
+      "Clitoral massagers",
+      "Butt plugs",
+      "Anal beads",
+      "Nipple clamps",
+      "Ball gags",
+      "Open mouth gags",
+      "Sex dolls",
+      "Any object used to stimulate genitals or anus"
+    ],
+    "bestiality": {
+      "includes": [
+        "Naked human crotch against animal anus",
+        "Animal crotch touching naked human crotch/butt",
+        "Animal licking/sucking naked human genitals/anus/female nipples",
+        "Human sucking/licking animal genital/anus",
+        "Pose next to aroused animals in sexualized context",
+        "Naked humans humping/mounting near animal orifice",
+        "Animals humping/mounting near nude human orifice",
+        "Humans stimulating animal genitals/anus (non-medical)"
+      ]
+    }
+  },
+
+  "allowedContexts": {
+    "medicalHealth": {
+      "definition": "Language or imagery relating directly to treatment of disease, condition, or health issue",
+      "includes": [
+        "Birthing (natural vaginal or cesarean)",
+        "After-birth skin-to-skin contact",
+        "Mastectomy for breast cancer (not gender confirmation)",
+        "Medical examination by self or practitioner"
+      ]
+    },
+    "breastfeeding": {
+      "definition": "Breast attached to pump, or shown with baby/child/animal latched or in reasonable position to feed",
+      "notBreastfeeding": "Doll depicted breastfeeding from human",
+      "sexualizedIndicators": [
+        "Sexual encounter elements",
+        "Links to adult subscription sites, porn sites, group chats",
+        "Profile name references genitalia/sexual activity",
+        "Focus on unengaged breast with baby obscured",
+        "Sexual audio present",
+        "Presence of #viral",
+        "Statements redirecting to private/restricted content",
+        "Captions/hashtags unconnected to breastfeeding",
+        "Video collages of multiple breastfeeding mothers",
+        "No face match with poster (unless permitted)",
+        "Fake play button",
+        "Nipples covered in transparent clothing"
+      ]
+    },
+    "actOfProtest": {
+      "indicators": [
+        "In or outside recognized government building",
+        "Words painted on body",
+        "Holding sign/symbol with social/political message",
+        "Being forcibly evicted",
+        "Uniformed military/police in same image"
+      ]
+    },
+    "genderConfirmationSurgery": {
+      "definition": "Rely on signals within content or account level",
+      "defaultIfNoSignal": "Consider as medical context"
+    },
+    "athleticSport": {
+      "includes": [
+        "Sportswear with non-underwear-like bottoms",
+        "Bikini-like top appropriate for sport depicted",
+        "Engaged in athletic/sports activities",
+        "Competitive context (spectators, tracks, courts, stadiums)"
+      ],
+      "indicators": [
+        "Bib or competition tags",
+        "Team sportswear with numbers/logos",
+        "Country representation"
+      ]
+    },
+    "formalEvent": {
+      "indicators": [
+        "Red carpet event",
+        "Holding awards",
+        "Wedding, prom, debutante ball, Quinceañera",
+        "Tiaras, corsages, bouquets",
+        "Other attendees in formal-wear"
+      ]
+    }
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "label": "Explicit Sexual Activity or Stimulation", "category": "sexual_activity" },
+    { "rank": 2, "label": "Implicit Sexual Activity or Stimulation", "category": "sexual_activity" },
+    { "rank": 3, "label": "Other Sexual Activity or Stimulation", "category": "sexual_activity" },
+    { "rank": 4, "label": "Fetish", "category": "sexual_activity" },
+    { "rank": 5, "label": "Sexual audio (10+ seconds)", "category": "sexual_activity" },
+    { "rank": 6, "label": "Visible genitalia, anuses, close-ups buttocks", "category": "nudity" },
+    { "rank": 7, "label": "Visible female nipples", "category": "nudity" },
+    { "rank": 8, "label": "Secretly recorded videos", "category": "nudity" },
+    { "rank": 9, "label": "Sexually suggestive pose AND near nudity", "category": "nudity" },
+    { "rank": 10, "label": "Sexually suggestive pose AND focus crotch/buttocks", "category": "nudity" },
+    { "rank": 11, "label": "Near nudity", "category": "nudity" },
+    { "rank": 12, "label": "Crotch/buttocks/breasts as focus", "category": "nudity" },
+    { "rank": 13, "label": "Sex-related activity", "category": "sexual_activity" },
+    { "rank": 14, "label": "Simulating sexual activity", "category": "sexual_activity" },
+    { "rank": 15, "label": "Gestures signifying sexual acts", "category": "sexual_activity" },
+    { "rank": 16, "label": "Pornographic website logos/screenshots", "category": "sexual_activity" },
+    { "rank": 17, "label": "Sexual audio (<10 seconds)", "category": "sexual_activity" },
+    { "rank": 18, "label": "Sexually suggestive pose", "category": "nudity" },
+    { "rank": 19, "label": "Animals sexual activity/visible genitals", "category": "animals" },
+    { "rank": 20, "label": "Stripping or passive stripping", "category": "suggestive" },
+    { "rank": 21, "label": "Revealing clothing", "category": "suggestive" },
+    { "rank": 22, "label": "Sexually touching/moving body parts", "category": "suggestive" },
+    { "rank": 23, "label": "Topless female from back", "category": "suggestive" }
+  ],
+
+  "commerceAdsRestrictions": {
+    "note": "Adult content prohibited in ads and commerce surfaces",
+    "prohibited": [
+      "Nudity",
+      "Explicit or suggestive positions",
+      "Overly sexually suggestive activities",
+      "Sexually suggestive elements in dating ads",
+      "Implicit sexual activity to promote products"
+    ]
+  }
+}

@@ -1,0 +1,454 @@
+{
+  "policyId": "ansa",
+  "policyName": "Adult Nudity and Sexual Activity",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "sexualActivityTerms": {
+    "explicit": {
+      "en": [
+        "sex",
+        "intercourse",
+        "penetration",
+        "fucking",
+        "oral sex",
+        "blowjob",
+        "cunnilingus",
+        "fellatio",
+        "anal sex",
+        "sodomy",
+        "masturbation",
+        "jerking off",
+        "fingering"
+      ],
+      "pt": [
+        "sexo",
+        "penetração",
+        "foda",
+        "transar",
+        "sexo oral",
+        "boquete",
+        "chupeta",
+        "sexo anal",
+        "punheta",
+        "siririca",
+        "dedada"
+      ]
+    },
+    "implicit": {
+      "en": [
+        "making love",
+        "hooking up",
+        "getting laid",
+        "sleeping with",
+        "doing it",
+        "getting busy",
+        "intimate"
+      ],
+      "pt": [
+        "fazendo amor",
+        "ficando",
+        "dando",
+        "comendo",
+        "pegando"
+      ]
+    }
+  },
+
+  "bodyPartTerms": {
+    "genitalia": {
+      "female": {
+        "en": ["vagina", "pussy", "vulva", "labia", "clitoris", "clit"],
+        "pt": ["vagina", "buceta", "xoxota", "xereca", "ppk", "pepeka", "periquita"]
+      },
+      "male": {
+        "en": ["penis", "dick", "cock", "balls", "scrotum", "testicles"],
+        "pt": ["pênis", "pau", "pinto", "rola", "caralho", "saco", "bolas"]
+      }
+    },
+    "buttocks": {
+      "en": ["ass", "butt", "buttocks", "booty", "behind", "rear", "bum"],
+      "pt": ["bunda", "cu", "traseiro", "popozão", "rabo", "nádegas"]
+    },
+    "breasts": {
+      "en": ["breasts", "boobs", "tits", "nipples", "chest", "cleavage"],
+      "pt": ["seios", "peitos", "mamas", "tetas", "mamilos", "decote"]
+    },
+    "sexualizedParts": [
+      "genitalia",
+      "crotch",
+      "breasts",
+      "anus",
+      "buttocks",
+      "lips",
+      "mouth",
+      "tongue"
+    ]
+  },
+
+  "nudityTerms": {
+    "explicit": {
+      "en": ["naked", "nude", "bare", "undressed", "unclothed", "in the buff"],
+      "pt": ["nu", "nua", "pelado", "pelada", "sem roupa", "despido"]
+    },
+    "nearNudity": {
+      "en": [
+        "topless",
+        "bottomless",
+        "almost naked",
+        "barely covered",
+        "see-through",
+        "transparent",
+        "lingerie",
+        "underwear",
+        "thong",
+        "g-string"
+      ],
+      "pt": [
+        "sem blusa",
+        "quase nu",
+        "quase pelado",
+        "transparente",
+        "lingerie",
+        "calcinha",
+        "cueca",
+        "fio dental"
+      ]
+    }
+  },
+
+  "sexRelatedActivityTerms": {
+    "breasts_nipples": [
+      "squeezing breasts",
+      "groping",
+      "fondling",
+      "nipple play",
+      "breast play",
+      "cupping breasts"
+    ],
+    "buttocks": [
+      "spanking",
+      "slapping ass",
+      "grabbing ass",
+      "groping butt"
+    ],
+    "mouths": [
+      "french kissing",
+      "tongue kissing",
+      "making out",
+      "licking",
+      "biting"
+    ],
+    "dancing": [
+      "erotic dancing",
+      "lap dance",
+      "strip dance",
+      "pole dancing",
+      "grinding",
+      "twerking",
+      "pelvic thrust"
+    ]
+  },
+
+  "fetishTerms": {
+    "ansaExhaustive": {
+      "eroticAsphyxiation": ["choking", "strangling", "breath play", "asphyxiation", "suffocation"],
+      "dismemberment": ["dismemberment", "amputation fetish", "acrotomophilia"],
+      "cannibalism": ["cannibalism", "vorarephilia", "vore"],
+      "bodilyCluids": ["scat", "golden shower", "watersports", "spitting", "snot", "period play"],
+      "bestiality": ["bestiality", "zoophilia", "animal sex"],
+      "incest": ["incest", "family sex", "step-family"]
+    },
+    "otherPolicies": {
+      "bdsm": ["BDSM", "bondage", "domination", "submission", "sadism", "masochism", "dom", "sub", "master", "slave"],
+      "spanking": ["spanking", "paddling", "caning"],
+      "footFetish": ["foot fetish", "foot worship", "feet pics"],
+      "handFetish": ["hand fetish", "hand worship"],
+      "pregnancyFetish": ["pregnancy fetish", "pregnant porn", "breeding"],
+      "usedClothing": ["used panties", "worn underwear", "dirty underwear"]
+    }
+  },
+
+  "sexToyTerms": {
+    "en": [
+      "dildo",
+      "vibrator",
+      "sex toy",
+      "butt plug",
+      "anal beads",
+      "nipple clamps",
+      "ball gag",
+      "sex doll",
+      "fleshlight",
+      "cock ring"
+    ],
+    "pt": [
+      "vibrador",
+      "dildo",
+      "plug anal",
+      "brinquedo sexual",
+      "boneca sexual",
+      "anel peniano"
+    ]
+  },
+
+  "sexualGestures": {
+    "description": "Hand gestures signifying sexual acts",
+    "examples": [
+      "Circle with thumb and index finger + finger through (intercourse)",
+      "Fist pumping motion (masturbation)",
+      "V sign with tongue between fingers (oral sex on female)",
+      "Open mouth + pushing cheek with tongue (oral sex on male)",
+      "Two fingers pointed at crotch (genitalia)"
+    ]
+  },
+
+  "pornographicWebsites": {
+    "known": [
+      "Pornhub",
+      "XVideos",
+      "XNXX",
+      "RedTube",
+      "YouPorn",
+      "Brazzers",
+      "Bangbros",
+      "Reality Kings",
+      "Naughty America",
+      "Spicy.porn"
+    ],
+    "adultSubscription": [
+      "OnlyFans",
+      "Fansly",
+      "JustForFans",
+      "ManyVids",
+      "IsMyGirl",
+      "LoyalFans"
+    ]
+  },
+
+  "sexualAudioIndicators": {
+    "sounds": [
+      "moaning",
+      "groaning",
+      "sighing",
+      "panting",
+      "screaming",
+      "body slapping sounds",
+      "wet sounds"
+    ],
+    "description": "Sounds typically associated with sexual activity between people"
+  },
+
+  "sexualExpressionsIndicators": {
+    "facial": [
+      "Eyes closed or rolled back",
+      "Mouth open",
+      "Biting lips",
+      "Jaw clenched",
+      "O-face"
+    ],
+    "notSexual": [
+      "Laughing",
+      "Yawning",
+      "Crying",
+      "Yelling without context"
+    ]
+  },
+
+  "erectionIndicators": {
+    "contextIndicators": [
+      "Imagery recorded in private setting",
+      "Person in sexually suggestive pose",
+      "Person engaged in sexual activity"
+    ],
+    "shapeIndicators": {
+      "notFocus": "Shape straight in any direction, fabric constrained",
+      "isFocus": "Shape straight or curved"
+    },
+    "note": "Requires 1 Context + 1 Shape indicator to be considered erection"
+  },
+
+  "byProductsOfSexualActivity": [
+    "Pre-ejaculate (pre-cum)",
+    "Semen",
+    "Vaginal secretions",
+    "Female ejaculate",
+    "Wet spot in/near crotch area"
+  ],
+
+  "strippingTerms": {
+    "en": [
+      "stripping",
+      "strip tease",
+      "taking off clothes",
+      "undressing",
+      "getting naked"
+    ],
+    "pt": [
+      "tirando roupa",
+      "strip tease",
+      "se despindo",
+      "ficando nu"
+    ],
+    "passiveStripping": "Clothing pulled or tugged down partially to expose what's underneath"
+  },
+
+  "revealingClothingTerms": {
+    "female": [
+      "bikini top",
+      "bra only",
+      "underwear only",
+      "lingerie",
+      "see-through top",
+      "crop top showing underboob",
+      "side boob visible"
+    ],
+    "male": [
+      "briefs",
+      "trunks",
+      "short boxers",
+      "speedo"
+    ],
+    "notRevealing": [
+      "Shorts (even short shorts)",
+      "Leggings",
+      "Sports bra with leggings",
+      "Tennis skirt",
+      "Full swimsuit (non-thong)"
+    ]
+  },
+
+  "allowedContextKeywords": {
+    "medical": [
+      "medical",
+      "health",
+      "doctor",
+      "examination",
+      "diagnosis",
+      "treatment",
+      "surgery",
+      "procedure",
+      "anatomy",
+      "education"
+    ],
+    "breastfeeding": [
+      "breastfeeding",
+      "nursing",
+      "lactation",
+      "breast milk",
+      "feeding baby",
+      "amamentação",
+      "aleitamento"
+    ],
+    "protest": [
+      "protest",
+      "activism",
+      "free the nipple",
+      "body positive",
+      "rights",
+      "demonstration"
+    ],
+    "genderConfirmation": [
+      "gender confirmation",
+      "transition",
+      "top surgery",
+      "bottom surgery",
+      "transgender",
+      "trans",
+      "non-binary"
+    ],
+    "mastectomy": [
+      "mastectomy",
+      "breast cancer",
+      "cancer survivor",
+      "reconstruction",
+      "lumpectomy"
+    ],
+    "birthing": [
+      "birth",
+      "delivery",
+      "labor",
+      "natural birth",
+      "cesarean",
+      "c-section",
+      "newborn",
+      "after-birth"
+    ]
+  },
+
+  "athleticSportContextKeywords": [
+    "competition",
+    "championship",
+    "tournament",
+    "athlete",
+    "sports",
+    "fitness",
+    "gym",
+    "workout",
+    "training",
+    "team",
+    "match",
+    "game"
+  ],
+
+  "formalEventContextKeywords": [
+    "red carpet",
+    "awards",
+    "gala",
+    "wedding",
+    "prom",
+    "graduation",
+    "formal",
+    "ceremony",
+    "ball",
+    "quinceañera"
+  ],
+
+  "privateSettingIndicators": [
+    "bedroom",
+    "bathroom",
+    "shower",
+    "hotel room",
+    "car interior",
+    "office",
+    "apartment",
+    "home",
+    "enclosed space"
+  ],
+
+  "focusIndicators": {
+    "framingLayout": [
+      "Blurred background with sharp body part",
+      "Cropped to emphasize body part",
+      "Close-up angle",
+      "Body part in foreground",
+      "Arrows/emojis pointing to body part"
+    ],
+    "pditiPositioning": [
+      "Leaning forward (breasts)",
+      "Protruding crotch/buttocks",
+      "Hand gestures drawing attention to crotch",
+      "Removing covering from body part"
+    ]
+  },
+
+  "transgenderNonBinarySignals": {
+    "explicitStatements": [
+      "they/them pronouns",
+      "he/him for AFAB",
+      "she/her for AMAB",
+      "transgender",
+      "trans woman",
+      "trans man",
+      "non-binary",
+      "gender fluid",
+      "transição"
+    ],
+    "rules": {
+      "maleToFemale": "Consider as female nipples",
+      "femaleToMale": "NOT considered female nipples",
+      "nonBinary": "NOT considered female nipples",
+      "default": "If unclear and presents female, apply female nipple rules"
+    }
+  }
+}
