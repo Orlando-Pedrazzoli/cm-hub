@@ -1,0 +1,521 @@
+{
+  "id": "doi",
+  "name": "Dangerous Organizations and Individuals",
+  "shortName": "DOI",
+  "description": "Policy preventing organizations/individuals with violent missions or engaged in violence from having platform presence. Assesses entities based on behavior and ties to violence.",
+  "color": "#DC2626",
+  "icon": "ShieldAlert",
+  "ready": true,
+
+  "corePrinciple": "Prevent and disrupt offline harm by not allowing organizations or individuals that proclaim violent missions or engage in violence to have platform presence. Two-tier system based on severity of offline harms.",
+
+  "tiers": {
+    "tier1": {
+      "name": "Tier 1 - Most Extensive Enforcement",
+      "description": "Entities engaging in serious offline harms against civilians",
+      "enforcement": "Remove ALL references, glorification, support, and representation, including unclear or positive references",
+      "entityTypes": [
+        {
+          "id": "terrorist",
+          "name": "Terrorist Organizations, Individuals, and Media Wings",
+          "definition": "Non-state actors engaging in/advocating purposive planned violence causing death/injury to civilians to coerce/intimidate population/government for political/religious/ideological aims"
+        },
+        {
+          "id": "hate_org",
+          "name": "Hate Organizations, Figures, Domains, and Bands",
+          "definition": "Association of 3+ people organized under name/sign/symbol with ideology/statements/actions attacking individuals based on protected characteristics"
+        },
+        {
+          "id": "criminal_org",
+          "name": "Criminal Organizations",
+          "definition": "Non-governmental orgs (cartels, gangs, trafficking groups) committing serious offenses for financial/territorial gain"
+        },
+        {
+          "id": "hateful_ideology",
+          "name": "Hateful Ideologies",
+          "types": ["Nazism", "White Supremacy", "White Nationalism", "White Separatism"]
+        },
+        {
+          "id": "vve",
+          "name": "Violating Violent Events (VVE)",
+          "definition": "Intentional act of high-severity violence by non-state actor against civilian targets outside armed conflict",
+          "includes": ["Terrorist attacks", "Hate events", "Multiple-victim violence", "Mass murders", "Hate crimes"],
+          "signals": [
+            "Intentional high-severity violence or attempt",
+            "Perpetrator is non-state actor or rogue government actor",
+            "Targets civilians/civilian property outside active hostilities",
+            "Not in context of armed conflict or war",
+            "Risk of on-platform Glorification, Support or Representation"
+          ]
+        }
+      ]
+    },
+    "tier2": {
+      "name": "Tier 2 - Moderate Enforcement",
+      "description": "Groups engaging in violence against state/military actors, not generally targeting civilians",
+      "enforcement": "Remove glorification, material support, and representation (but NOT mere references)",
+      "entityTypes": [
+        {
+          "id": "vnsa",
+          "name": "Violent Non-State Actors (VNSA)",
+          "definition": "Non-state actors engaging in planned violence primarily against government/military, may also attack civilians"
+        },
+        {
+          "id": "vie",
+          "name": "Violence Inducing Entities (VIE)",
+          "subtypes": [
+            {
+              "id": "msm",
+              "name": "Militarized Social Movements",
+              "definition": "Social movements calling for civic violence/civil war, distributing weapons info, developing armed networks"
+            },
+            {
+              "id": "vicn",
+              "name": "Violence Inducing Conspiracy Networks",
+              "definition": "Non-state actors promoting debunked theories attributing violent behavior, advocating real-world violence"
+            },
+            {
+              "id": "hbe",
+              "name": "Hate-Banned Entities",
+              "definition": "Entities with repeated hateful conduct not rising to Tier 1 due to lack of explicit violence advocacy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "violationTypes": {
+    "references": {
+      "name": "References",
+      "definition": "Referring to designated entity including positive references without mentioning violent/hateful activities",
+      "tier1Action": "label",
+      "tier2Action": "label",
+      "examples": [
+        "Hamas is my hero",
+        "Rest in peace Bin Laden",
+        "❤️ Lawrence Bishnoi",
+        "Tim McVeigh is a patriot",
+        "Incidental depiction (DOI secondary in background)",
+        "Captionless photos without explicit RGSR context",
+        "Unclear satire/humor unless explicitly condemning"
+      ],
+      "notViolating": [
+        "Stating entity is/is not a threat",
+        "Stating entity was wrongly sanctioned/punished",
+        "Stating entity should not be considered dangerous"
+      ]
+    },
+    "glorification": {
+      "name": "Glorification",
+      "definition": "Content justifying or amplifying DOI harmful/hateful/violent activity to characterize as effective, legitimate, or defensible",
+      "tier1Action": "label",
+      "tier2Action": "label",
+      "types": [
+        {
+          "id": "legitimizing",
+          "name": "Legitimizing/Defending",
+          "description": "Claiming violent/hateful acts have moral, political, logical justification making them acceptable",
+          "examples": [
+            "9/11 was the right response to the American war against Islam",
+            "Tim McVeigh was a patriot. Sometimes you need to shake up the world",
+            "Hitler did nothing wrong"
+          ]
+        },
+        {
+          "id": "celebrating",
+          "name": "Celebrating/Characterizing Achievement",
+          "description": "Characterizing violence or hate as achievement or accomplishment",
+          "examples": [
+            "Well done", "King behavior",
+            "Hizbul Mujahideen is winning the war for a free Kashmir"
+          ]
+        },
+        {
+          "id": "aspirational",
+          "name": "Aspirational Membership",
+          "description": "Statement of desire to be designated entity or perpetrator of VVE",
+          "examples": [
+            "I wish I can join ISIS and be part of the Khilafah",
+            "3%ers are true inspiration. I should join"
+          ]
+        }
+      ]
+    },
+    "support": {
+      "name": "Support",
+      "definition": "Content providing tangible financial, operational, or strategic advantage to designated entity",
+      "tier1Action": "label",
+      "tier2Action": "label",
+      "types": {
+        "materialSupport": {
+          "name": "Material Support",
+          "categories": [
+            {
+              "id": "material_aid",
+              "name": "Material Aid",
+              "definition": "Specific tangible non-financial support",
+              "examples": [
+                "Free martial arts lessons for Rise Above Movement members",
+                "If you want to send care packages to Sinaloa Cartel, use this address"
+              ]
+            },
+            {
+              "id": "financial",
+              "name": "Improving Financial Status",
+              "definition": "Direct or indirect financial support",
+              "examples": [
+                "Donate to the Islamic State's KickStarter!",
+                "I'll give the KKK a dollar for every like & share",
+                "Free tax preparation services for Proud Boys"
+              ]
+            },
+            {
+              "id": "recruiting",
+              "name": "Recruiting",
+              "definition": "Encouraging/coordinating individuals to become members",
+              "examples": [
+                "Join the only sensical political party, join TLP",
+                "If you want to go to Syria and fight for the caliphate, DM me",
+                "I can show you the 1488 life"
+              ]
+            }
+          ]
+        },
+        "otherSupport": {
+          "name": "Other Support",
+          "condition": "Must NOT include glorification of violence/hate",
+          "categories": [
+            {
+              "id": "calls_to_action",
+              "name": "Calls to Action",
+              "definition": "Directing audience to act or not act to further entity/cause",
+              "examples": [
+                "Contact us via Jabhat Al-Nusra Telegram",
+                "View Aryan Nations' website for more information",
+                "All proud white men should support the Nazi party"
+              ]
+            },
+            {
+              "id": "channeling_info",
+              "name": "Channeling Information",
+              "definition": "Distributing official communications on behalf of DOI",
+              "signals": [
+                "Known watermark from DOI media wing",
+                "Content generated by media wing",
+                "Caption states produced by/on behalf of DOI",
+                "Leader/spokesperson speaking about organization",
+                "Attempting to sell/buy/trade works authored by DOI"
+              ],
+              "examples": [
+                "Posting official communication with no/nonsense caption",
+                "Posting video/audio by hate figure",
+                "Directly quoting DOI outside allowable context",
+                "Creating 'unofficial' or 'fan' page for DOI"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "representation": {
+      "name": "Representation",
+      "definition": "Presenting oneself as a designated entity",
+      "tier1Action": "label",
+      "tier2Action": "label",
+      "types": [
+        {
+          "id": "explicit_membership",
+          "name": "Explicit Statement of Membership",
+          "examples": [
+            "I am a grand dragon of the KKK",
+            "I stormed the Capitol on January 6th, and proud of it!",
+            "I joined Hizbul Mujahideen to fight for Kashmir"
+          ]
+        },
+        {
+          "id": "complex_object",
+          "name": "Creating/Maintaining Complex Object",
+          "description": "Page, group, account, event claiming to be DOI or run on their behalf",
+          "examples": [
+            "Page title: Osama Bin Laden",
+            "Group title: American Nazi Party",
+            "Group cover photo with ISIS Flag",
+            "Event: Official Annual Meeting of Nazi Party 2019"
+          ],
+          "exception": "If says 'unofficial' or 'fan account', treat as Support instead"
+        },
+        {
+          "id": "admin_control",
+          "name": "Admin Control",
+          "description": "Assets controlled by admins who are leaders/prominent members of DOI"
+        }
+      ]
+    }
+  },
+
+  "socialPoliticalDiscourse": {
+    "name": "Social and Political Discourse",
+    "description": "Allowed contexts for discussing DOI without RGSR",
+    "requirements": [
+      "Does NOT include Glorification, Support, or Representation",
+      "Context explicitly mentioned or unambiguous intent"
+    ],
+    "contexts": [
+      {
+        "id": "elections",
+        "name": "Elections Context",
+        "action": "label",
+        "definition": "DOI officially registered in formal electoral process",
+        "notAllowed": ["Campaign material", "Calls to vote/join", "Glorification of violence"]
+      },
+      {
+        "id": "parliamentary",
+        "name": "Parliamentary and Executive Functions",
+        "action": "label",
+        "definition": "DOI is member of parliament or holds official government position",
+        "notAllowed": ["Campaign material", "Support or representation", "References to previous positions"]
+      },
+      {
+        "id": "conflict_resolution",
+        "name": "Conflict Resolution",
+        "action": "label",
+        "definition": "DOI involved in peace process, truce, ceasefire, UN resolutions"
+      },
+      {
+        "id": "international_agreements",
+        "name": "International Agreements or Treaties",
+        "action": "label",
+        "definition": "DOI involved in bilateral/multilateral agreements"
+      },
+      {
+        "id": "disaster_response",
+        "name": "Disaster Response and Humanitarian Relief",
+        "action": "label",
+        "definition": "DOI plays role in response to natural/human-made disasters"
+      },
+      {
+        "id": "local_services",
+        "name": "Local Community Services",
+        "action": "label",
+        "definition": "DOI is key provider of essential services (garbage, education, electricity, healthcare)"
+      },
+      {
+        "id": "human_rights",
+        "name": "Human Rights and Humanitarian Discourse",
+        "action": "no_action",
+        "definition": "Defending human rights of DOIs or calls for action based on humanitarian reasons",
+        "includes": [
+          "Right to be free from torture/capital punishment",
+          "Right to fair trial",
+          "Protection from forced disappearance/extrajudicial killing",
+          "Criticism of collective punishment",
+          "Minors' rights to be protected",
+          "Calls for humane treatment in incarceration",
+          "DOI family members' rights"
+        ]
+      },
+      {
+        "id": "neutral_discussion",
+        "name": "Neutral Discussion and Fictional Depiction",
+        "action": "no_action",
+        "definition": "Factual statements, commentary, questions without normative language",
+        "examples": [
+          "White Supremacy is not a threat",
+          "Naziism doesn't matter",
+          "Shaheed Burhan Wani was born in 1994 (biography)"
+        ]
+      },
+      {
+        "id": "news_reporting",
+        "name": "News Reporting",
+        "action": "no_action",
+        "signals": [
+          "Result of editorial intervention by news outlet",
+          "Does not include glorification or incitement",
+          "Does not amplify DOI messages or encourage imitative behaviors",
+          "Outlet not affiliated to DOI or designated media wing"
+        ]
+      },
+      {
+        "id": "condemnation",
+        "name": "Condemnation and Criticism",
+        "action": "no_action",
+        "definition": "Expression of negative perspective without reservation",
+        "examples": [
+          "I feel disgusted by the crime of Salvador Ramos",
+          "Hitler's crimes shall never be forgotten"
+        ]
+      },
+      {
+        "id": "satire_humor",
+        "name": "Satire and Humor",
+        "action": "no_action",
+        "definition": "Content comparing DOI with non-DOI OR condemning/ridiculing/discrediting DOI",
+        "examples": [
+          "I am a complete blood thirsty criminal but people treat me as a philosopher - Pablo Escobar (satirical)",
+          "The President's policies would even put Hitler's Third Reich to shame"
+        ],
+        "notAllowed": [
+          "Comparison not ridiculing DOI",
+          "Mocking victims of violence"
+        ]
+      },
+      {
+        "id": "legal_discussion",
+        "name": "Legal Discussion",
+        "action": "no_action",
+        "definition": "Discussion of laws, punishments, charges, legal defenses",
+        "examples": [
+          "First degree murder charge isn't appropriate, doesn't seem premeditated",
+          "Hamas should not be considered terrorist organization because...",
+          "They are innocent, they were protecting themselves"
+        ]
+      }
+    ]
+  },
+
+  "perpetratorContent": {
+    "name": "Perpetrator-Generated Content",
+    "definition": "Imagery filmed/created by perpetrator during attack or directly related",
+    "action": "label",
+    "includes": [
+      "First-person POV footage",
+      "Content posted during/immediately after attack",
+      "Plans for attack",
+      "Weapons used in attack",
+      "Location of attack",
+      "Manifesto/ideological motive",
+      "Goodbye or suicide note"
+    ],
+    "thirdPartyContent": {
+      "definition": "Third party content depicting moment of attack on visible victims",
+      "action": "label",
+      "visibleVictim": "Victim seen in imagery at some point, need not be shown simultaneously with violence"
+    }
+  },
+
+  "symbolsAndSlogans": {
+    "definition": "Visuals expressing underlying character, mission, ideology of DOI",
+    "types": ["Flag", "Logo", "Watermark", "Branding", "Associated visuals"],
+    "inherentlyViolating": [
+      "Swastika", "Sonnenrad (Black Sun)", "SS Bolts", "Totenkopf",
+      "Celtic Cross", "Hammer and Sword", "Triskele"
+    ],
+    "contextSpecific": "Some symbols used by multiple orgs - assess context",
+    "variations": {
+      "allowed": ["Changed color scheme", "Modified/cropped", "Additional symbols overlaid", "Language translation"],
+      "note": "Still violating if main features recognizable"
+    }
+  },
+
+  "specialRules": {
+    "shaheedContext": {
+      "rule": "Shaheed + no signal of violence = Neutral (SPD)",
+      "violenceSignals": [
+        "Visual depiction of weapon",
+        "Statement of intent to use weapon",
+        "Reference to designated event"
+      ],
+      "withViolenceSignal": "Label as Reference",
+      "withNewsCondemnation": "SPD even with violence signal"
+    },
+    "quotations": {
+      "rule": "Attributed quotes = Support unless in allowable SPD context",
+      "noContext": "Support (channeling information)"
+    },
+    "emojis": {
+      "positive": "👍❤️😍🫶 with DOI = References",
+      "violence": "💣🗡🎯💀🧨💉🔫🔪 with DOI = Glorification"
+    },
+    "isISFlag": {
+      "fullFlag": "Violating",
+      "topPartOnly": "Not violating (shahada statement)",
+      "bottomPartOnly": "Not violating (Muhammad's ring/stamp)",
+      "bothPartsRecognizable": "Violating"
+    }
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "category": "Terrorist Groups/Individuals/Media Wings", "severity": "very_high" },
+    { "rank": 2, "category": "Hate Organizations/Figures/Domains/Bands", "severity": "very_high" },
+    { "rank": 3, "category": "Criminal Organizations", "severity": "very_high" },
+    { "rank": 4, "category": "Violating Violent Events (VVE)", "severity": "very_high" },
+    { "rank": 5, "category": "Violent Non-State Actors (VNSA)", "severity": "very_high" },
+    { "rank": 6, "category": "Violence Inducing Entities (VIE)", "severity": "very_high" }
+  ],
+
+  "escalationCriteria": {
+    "category": "Threatening - Dangerous Individuals and Orgs",
+    "types": [
+      {
+        "id": "direct_harm",
+        "name": "Direct Harm",
+        "signals": ["Target + high severity violence + statement of intent/call for action/conditional/admission", "Target + intent to kidnap or admission of kidnapping"]
+      },
+      {
+        "id": "bomb_threats",
+        "name": "Bomb Threats",
+        "signals": ["Statement of intent/call for action for bomb threats (excluding nuclear)", "Instructions on making bombs"]
+      },
+      {
+        "id": "fighting",
+        "name": "Fighting",
+        "signals": ["Admission/intent to conduct real world attacks", "Offer services as contract killer", "Publish manifesto with intent/call for violence"]
+      },
+      {
+        "id": "instructing",
+        "name": "Instructing",
+        "signals": ["Instructions that could cause real world harm (how to make poison, stab, carry weapons through security)"]
+      }
+    ]
+  },
+
+  "complexObjectReview": {
+    "pages": {
+      "removeConditions": [
+        "≥1 violating subject element",
+        "No subject element violations AND 3 severe strikes",
+        "No subject element violations AND 5 standard strikes"
+      ],
+      "subjectElements": ["Title", "Description", "Cover Photo", "Profile Photo"]
+    },
+    "groups": {
+      "removeConditions": [
+        "≥1 violating subject element",
+        "No subject element violations AND 3 severe strikes",
+        "No subject element violations AND 5 standard strikes"
+      ],
+      "subjectElements": ["Title", "Description", "Cover Photo", "Pinned Post/Announcement and Rules", "Membership Questions"]
+    },
+    "events": {
+      "removeConditions": [
+        "≥1 subject element violations",
+        "No subject element violations AND 3 severe strikes or 5 standard strikes in last 90 days"
+      ],
+      "subjectElements": ["Title", "Description", "Cover Photo", "Pinned post"]
+    },
+    "profiles": {
+      "disableConditions": [
+        "≥1 violating subject element",
+        "Multiple pieces of RGSR content",
+        "User is Admin of violating Complex Object"
+      ],
+      "subjectElements": ["Name/Username/Alias", "Profile Photo", "Cover Photo", "Bio", "Email", "Education"]
+    }
+  },
+
+  "glossary": {
+    "civilian": "Individual not member of state armed forces or militarized non-state actors AND not directly participating in armed hostilities",
+    "designated_entity": "All individuals and organizations designated under DOI policy including leaders and prominent members",
+    "glorification": "Legitimizing/defending violent acts OR celebrating violence as achievement OR aspirational statement of membership",
+    "news_reporting": "Sharing reliable information by news outlets to increase situational awareness without glorification/incitement",
+    "non_state_actor": "Individuals/organizations not controlled by or administratively affiliated with a state",
+    "reference": "Referring to DOI including positive references without mentioning violent/hateful activities",
+    "representation": "Presenting oneself as designated entity - membership statement OR creating entity claiming to be DOI",
+    "support": "Content providing tangible financial, operational, or strategic advantage to DOI",
+    "material_support": "Material aid + improving financial status + recruiting",
+    "other_support": "Calls to action + channeling information (without glorification)",
+    "perpetrator": "Individual who carries out, facilitates, or participates in designated VVE"
+  }
+}

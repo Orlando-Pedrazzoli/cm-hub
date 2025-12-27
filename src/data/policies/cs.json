@@ -1,0 +1,311 @@
+{
+  "id": "cs",
+  "name": "Cybersecurity",
+  "shortName": "CS",
+  "description": "Policy protecting users from attempts to gather sensitive information or engage in unauthorized access through deceptive or invasive methods.",
+  "color": "#0891B2",
+  "icon": "ShieldCheck",
+  "ready": true,
+
+  "corePrinciple": "Safety includes security of personal information, accounts, profiles and platform entities. Do not allow attempts to gather sensitive user information or engage in unauthorized access through platform abuse.",
+
+  "categories": [
+    {
+      "id": "unauthorized_access",
+      "name": "Unauthorized Account & Data Access",
+      "description": "Attempts to access accounts or obtain sensitive information without permission",
+      "subcategories": [
+        {
+          "id": "phishing",
+          "name": "Phishing",
+          "definition": "Creating communications or websites designed to look like trusted/reputable sources to fraudulently acquire sensitive user information",
+          "action": "label",
+          "signals": [
+            {
+              "condition": "Screenshot shows login page for Meta Family of Apps",
+              "requirements": [
+                "User required to enter password",
+                "Domain is NOT legitimate Meta URL",
+                "Content promises destination but redirects to unrelated site"
+              ]
+            },
+            {
+              "condition": "No screenshot available - assess text",
+              "requirements": [
+                "Text notifies about restriction, violation, account block, or security issue",
+                "Text speaks in voice of Meta platforms",
+                "Asks user to take action through offsite link",
+                "Link does NOT contain legitimate Meta URL"
+              ]
+            }
+          ],
+          "legitimateMetaURLs": [
+            "facebook.com", "instagram.com", "whatsapp.com", "threads.com",
+            "fb.me", "fb.com", "messenger.com", "meta.com", "oculus.com",
+            "fbcdn.net", "whatsapp.net", "facebook-hardware.com", "cdninstagram.com", "wa.me"
+          ],
+          "examples": [
+            "Fake login page mimicking Facebook on non-Facebook domain",
+            "Message claiming account violation with link to fake Meta support",
+            "URL showing gmail.com but redirecting to different site"
+          ],
+          "notViolating": [
+            "Content not referencing Meta product in landing page",
+            "Sharing others' login info (= Publicly Sharing Login Information)",
+            "Fake play buttons to get user to follow link (= Deceptive Links)"
+          ]
+        },
+        {
+          "id": "social_engineering",
+          "name": "Social Engineering",
+          "definition": "Manipulating users to give away credentials or sensitive information, including repeated attempts to harvest answers to common recovery questions",
+          "action": "label",
+          "signals": [
+            "Manipulating user to give login credentials under false promises",
+            "Attempting to gather sensitive user information (passwords, usernames)",
+            "Repeatedly asking common security questions (2+ times by same poster)"
+          ],
+          "commonSecurityQuestions": [
+            "What is your mother's/grandmother's maiden name?",
+            "What is your [relative's] middle name?",
+            "What was the make and model of your first car?",
+            "What are your favorite pizza toppings?",
+            "What is your favorite movie?",
+            "Where did you go to Elementary/Middle school?"
+          ],
+          "note": "Single question in isolation is NOT violating - must be repeated or consistent",
+          "examples": [
+            "Give me your FB account id, password and recovery code and I'll lift the block",
+            "Everyone share their mothers maiden name (posted repeatedly in groups)",
+            "Where did everyone go to high school? (harvesting pattern)"
+          ]
+        },
+        {
+          "id": "publicly_sharing_login_info",
+          "name": "Publicly Sharing Login Information",
+          "definition": "Sharing others' login information on platform or via linked third-party service",
+          "action": "label",
+          "signals": [
+            "Explicitly sharing other users' account and login information",
+            "URL claimed to include account and login information of others"
+          ],
+          "examples": [
+            "Here is the list of most recently leaked account names and passwords on Instagram",
+            "Click on the link to access Facebook verified accounts login details: xyz123.com"
+          ]
+        },
+        {
+          "id": "hacking_threats",
+          "name": "Threatening, Supporting, or Admitting to Hacking",
+          "definition": "Activities related to malicious hacking threats, offers, or admissions",
+          "action": "label",
+          "includes": [
+            "Threatening, offering/requesting or admitting to hack accounts (Facebook, WhatsApp, Email)",
+            "Web defacements and denial of service attacks",
+            "Offering services to access unauthorized data (phone/laptop camera, criminal/university records)",
+            "Giving instructions/tutorials on how to hack"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "malicious_code",
+      "name": "Malicious & Harmful Code",
+      "description": "Attempts to share, develop, host, or distribute malicious or harmful code",
+      "subcategories": [
+        {
+          "id": "malware",
+          "name": "Malware",
+          "definition": "Malicious programs designed to harm or gain unauthorized access to systems, including ransomware",
+          "action": "label"
+        },
+        {
+          "id": "greyware",
+          "name": "Greyware",
+          "definition": "Software which detracts from hardware/software use and may be difficult to remove",
+          "action": "label"
+        },
+        {
+          "id": "spyware",
+          "name": "Spyware",
+          "definition": "Code that collects data on users and sends to third parties without consent or uses for illicit purposes (sextortion, blackmail)",
+          "action": "label"
+        },
+        {
+          "id": "automatic_download",
+          "name": "Automatic Download",
+          "definition": "Links causing automatic download upon opening landing page",
+          "action": "label",
+          "signals": [
+            "Automatic download triggered when URL clicked",
+            "URL ends in file extension (.exe, .zip, .doc, .pdf, .apk)",
+            "Google Drive link includes 'download&id' in URL",
+            "Crawler screenshot shows indication of downloaded file"
+          ],
+          "examples": [
+            "peru-prod-dev4.obs.myhuaweicloud.com/apps/peru_googleplay_release_v1.2.0.apk",
+            "drive.google.com/uc?export=download&id=1UXLwI-d80jjfXchd2tFJPbR9GafGIOaz"
+          ]
+        },
+        {
+          "id": "circumventing_security",
+          "name": "Circumventing Security Systems",
+          "definition": "Software or products enabling people to circumvent security systems, hack software, passwords, or credentials",
+          "action": "label",
+          "signals": [
+            "Promotes software/products enabling hacking of accounts or unauthorized access",
+            "Text includes: spy, hack, clone, monitoring, location tracker",
+            "Phrase: 'installation on other device not required'",
+            "Depicts secretly gaining access to mobile device/app/location without permission",
+            "References accessing cheating partner's phone",
+            "Promotes hacking training courses including 'ethical hacking'"
+          ],
+          "notViolating": [
+            "Page/profile has 'hack' or 'spy' in title but content doesn't offer services"
+          ],
+          "examples": [
+            "Click here to learn how to hack a Facebook account",
+            "I have software to spy on WhatsApp accounts",
+            "With the help of this app, you can become a master hacker",
+            "Contact @hire_hackingservices on Telegram"
+          ]
+        },
+        {
+          "id": "disrupting_communication",
+          "name": "Disrupting Communication or Signal Sharing",
+          "definition": "Software or products designed to disrupt communication, including jammer and descrambling devices",
+          "action": "label",
+          "signals": [
+            "Promotes software/products to intercept signals",
+            "Promotes jammers or devices to disrupt communication",
+            "Devices intercepting connection between phone and mobile base station"
+          ],
+          "notViolating": [
+            "Academic articles discussion",
+            "Legitimate promotional campaigns"
+          ],
+          "examples": [
+            "Cell phone jammers on sale! Buy one to block your target's phone calls"
+          ]
+        },
+        {
+          "id": "malicious_infrastructure",
+          "name": "Malicious Infrastructure",
+          "definition": "Providing online infrastructure enabling abusive links violating Community Standards",
+          "action": "label",
+          "includes": [
+            "Web hosting services",
+            "Domain name system servers",
+            "Ad networks"
+          ],
+          "condition": "Majority of links violate Spam or Cybersecurity sections"
+        }
+      ]
+    }
+  ],
+
+  "sensitiveUserInformation": {
+    "definition": "Information requiring protection from unauthorized access",
+    "types": [
+      "Usernames",
+      "Email Addresses",
+      "Passwords",
+      "Answers to common security questions",
+      "Financial Data (Credit Card, Bank Information)",
+      "Social Security or Government ID information",
+      "Other PII as described in Privacy Violations"
+    ]
+  },
+
+  "loginInformation": {
+    "definition": "Email, username and password combinations for any app or service, whether or not associated with Meta platform"
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "label": "Phishing", "severity": "critical" },
+    { "rank": 2, "label": "Social Engineering", "severity": "high" },
+    { "rank": 3, "label": "Publicly Sharing Login Information", "severity": "high" },
+    { "rank": 4, "label": "Automatic Download", "severity": "high" },
+    { "rank": 5, "label": "Circumventing Security Systems", "severity": "high" },
+    { "rank": 6, "label": "Disrupting Communication", "severity": "mid" }
+  ],
+
+  "allowedContent": {
+    "condemnation": {
+      "description": "Re-sharing of violating content for purpose of condemnation",
+      "allowed": true,
+      "exception": "If functional violating links present, still violating (risk of harm)"
+    }
+  },
+
+  "urlReviewProcess": [
+    "Open SRT job",
+    "Review content including URLs - assess validity",
+    "Check available screenshots from Crawler for landing page",
+    "If authorized to click URL, review landing page information for additional signals",
+    "If unauthorized to go off-platform, make decision based on SRT content",
+    "Label appropriate violation in UDT and close job"
+  ],
+
+  "phishingDecisionTree": {
+    "withScreenshot": {
+      "conditions": [
+        "Screenshot shows login page for Meta Family of Apps (Facebook, Instagram, Threads, WhatsApp, Messenger)",
+        "User is required to enter password",
+        "Domain is NOT legitimate Meta URL",
+        "Content promises destination but redirects to unrelated site"
+      ],
+      "action": "Label for Cybersecurity > Phishing"
+    },
+    "withoutScreenshot": {
+      "conditions": [
+        "Text notifies about restriction, violation, account block, or security issue",
+        "Text speaks in voice of Meta platforms (Meta does not notify through messenger or posts/comments)",
+        "Asks user to take action through offsite link",
+        "Link does NOT contain legitimate Meta URL"
+      ],
+      "action": "Label for Cybersecurity > Phishing"
+    },
+    "doNotTag": [
+      "Content not referencing Meta product in landing page",
+      "Sharing others' login info (= Publicly Sharing Login Information)",
+      "Fake play buttons to get user to follow link (= Deceptive Links > Deceptive Platform Functionality)"
+    ]
+  },
+
+  "circumventingSecurityDecisionTree": {
+    "conditions": [
+      "Promotes software/products enabling hacking accounts or unauthorized access",
+      "Text includes: spy, hack, clone, monitoring, location tracker",
+      "Phrase: 'installation on other device not required'",
+      "Depicts secretly gaining access to device/app/location without permission",
+      "References accessing cheating partner's phone",
+      "Promotes hacking training courses including 'ethical hacking'"
+    ],
+    "action": "Label for Cybersecurity > Circumventing Security Systems",
+    "doNotTag": [
+      "Page/profile has 'hack' or 'spy' in title but content doesn't offer services"
+    ]
+  },
+
+  "automaticDownloadDecisionTree": {
+    "conditions": [
+      "Automatic download triggered when URL clicked",
+      "URL ends in file extension (.exe, .zip, .doc, .pdf, .apk, etc.)",
+      "Google Drive link includes 'download&id' in URL",
+      "Crawler screenshot shows indication of downloaded file"
+    ],
+    "action": "Label for Cybersecurity > Automatic Download",
+    "ifUnableToVerify": "Check crawler screenshot for download indication, otherwise consider benign"
+  },
+
+  "glossary": {
+    "phishing": "Creating communications/websites designed to look like trusted sources to fraudulently acquire sensitive information",
+    "malware": "Malicious programs designed to harm or gain unauthorized access to systems, including ransomware",
+    "spyware": "Code collecting data on users and sending to third parties without consent or for illicit purposes",
+    "greyware": "Software detracting from hardware/software use, difficult to remove",
+    "social_engineering": "Manipulating users to give away credentials through deception or repeated harvesting attempts",
+    "sensitive_user_information": "Usernames, emails, passwords, security question answers, financial data, government IDs, PII",
+    "login_information": "Email, username and password combinations for any app or service"
+  }
+}

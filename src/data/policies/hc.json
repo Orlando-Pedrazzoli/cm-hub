@@ -1,0 +1,637 @@
+{
+  "id": "hc",
+  "name": "Hateful Conduct",
+  "shortName": "HC",
+  "description": "We don't allow hateful conduct - direct attacks against people on the basis of protected characteristics (PCs): race, ethnicity, national origin, disability, religious affiliation, caste, sexual orientation, sex, gender identity, and serious disease. We also protect refugees, migrants, immigrants and asylum seekers from severe attacks (Tier 1).",
+  "color": "#7C3AED",
+  "icon": "ShieldX",
+  "ready": true,
+
+  "protectedCharacteristics": {
+    "full": [
+      { "id": "race", "name": "Race", "description": "Racial identity", "protection": "all_tiers" },
+      { "id": "ethnicity", "name": "Ethnicity", "description": "Common ancestral, social, cultural, or national experience", "protection": "all_tiers" },
+      { "id": "national_origin", "name": "National Origin/Nationality", "description": "Country, continent, or region of origin/citizenship", "protection": "all_tiers" },
+      { "id": "disability", "name": "Disability", "description": "Physical or mental disability", "protection": "all_tiers" },
+      { "id": "religious_affiliation", "name": "Religious Affiliation", "description": "Religion, denomination, or tradition (includes atheists)", "protection": "all_tiers" },
+      { "id": "caste", "name": "Caste", "description": "Social hierarchy based on traditional occupations (Brahman, Kshatriya, Vaishya, Sudra, Dalits)", "protection": "all_tiers" },
+      { "id": "sexual_orientation", "name": "Sexual Orientation", "description": "Sexual orientation identity", "protection": "all_tiers" },
+      { "id": "sex", "name": "Sex", "description": "Biological sex", "protection": "all_tiers" },
+      { "id": "gender_identity", "name": "Gender Identity", "description": "Gender identity including transgender, non-binary", "protection": "all_tiers" },
+      { "id": "serious_disease", "name": "Serious Disease", "description": "Serious illness including cancer, HIV/AIDS, STIs", "protection": "all_tiers" }
+    ],
+    "quasi": [
+      { "id": "migrants", "name": "Migrants", "description": "People who cross international borders for residency", "protection": "tier1_only" },
+      { "id": "refugees", "name": "Refugees", "description": "People fleeing persecution", "protection": "tier1_only" },
+      { "id": "immigrants", "name": "Immigrants", "description": "People establishing residency in new country", "protection": "tier1_only" },
+      { "id": "asylum_seekers", "name": "Asylum Seekers", "description": "People seeking asylum", "protection": "tier1_only" }
+    ],
+    "age_rule": "Age is protected ONLY when combined with a PC or QPC"
+  },
+
+  "subsets": {
+    "fully_protected": {
+      "description": "Protected from ALL tiers of attack",
+      "combinations": [
+        "PC + PC (e.g., Muslim women)",
+        "PC + age (e.g., Black children)",
+        "PC + words indicating most of PC group (e.g., Most Muslims)",
+        "PC + location >= country (e.g., Muslims in the US)",
+        "Slur + any PC/QPC/NPC (e.g., Chink drivers)"
+      ]
+    },
+    "quasi_protected": {
+      "description": "Protected from Tier 1 attacks ONLY",
+      "combinations": [
+        "PC + QPC (e.g., Muslim refugees)",
+        "PC + NPC (e.g., Irish taxi drivers)",
+        "QPC + age (e.g., Immigrant children)",
+        "PC + age + NPC (e.g., Ugly old men)",
+        "QPC + age + NPC",
+        "PC/QPC + location < country (e.g., Berliner Muslims)",
+        "QPC + location >= country (e.g., Migrants in Europe)",
+        "QPC + words indicating most of QPC"
+      ]
+    },
+    "other_criminal": {
+      "description": "Protected from Tier 1 attacks - PC/QPC + criminals (except violent/sexual)",
+      "examples": ["Illegal immigrants", "White thieves", "Undocumented migrants"]
+    },
+    "non_protected": {
+      "description": "NO protection",
+      "combinations": [
+        "PC/QPC + violent criminals or sexual offenders (e.g., American terrorists)",
+        "NPC only (e.g., Blondes)",
+        "NPC + age (e.g., Rich children)",
+        "Age only (e.g., Children)"
+      ]
+    }
+  },
+
+  "categories": [
+    {
+      "id": "tier1",
+      "name": "Tier 1 Attacks",
+      "description": "Most severe attacks - Dehumanizing speech, allegations of serious immorality/criminality, harmful stereotypes",
+      "severity": "critical",
+      "appliesTo": ["PCs", "QPCs", "All subsets except non-protected"],
+      "subcategories": [
+        {
+          "id": "dehumanizing_animals",
+          "name": "Dehumanizing - Animals",
+          "description": "Comparisons to animals culturally perceived as inferior",
+          "action": "label",
+          "examples": [
+            "Insects (cockroaches, locusts)",
+            "Black people + apes",
+            "Jewish people + rats",
+            "Muslim people + pigs",
+            "Mexican people + worms"
+          ],
+          "conditions": ["Calling PC group an animal", "Comparative words (like, as, worse than)", "Manipulated imagery adding animal parts"]
+        },
+        {
+          "id": "dehumanizing_pathogens",
+          "name": "Dehumanizing - Pathogens",
+          "description": "Comparisons to diseases, bacteria, viruses, microbes",
+          "action": "label",
+          "examples": [
+            "PC group are a disease",
+            "PC group are a virus",
+            "PC group are a plague",
+            "PC group are a cancer on society"
+          ],
+          "conditions": ["Comparison to disease/pathogen"]
+        },
+        {
+          "id": "dehumanizing_subhuman",
+          "name": "Dehumanizing - Subhumanity",
+          "description": "Comparisons to savages, devils, monsters",
+          "action": "label",
+          "examples": [
+            "Women are ogres",
+            "Jews are vampires",
+            "Trans people are barbarians",
+            "Catholics are cannibals"
+          ],
+          "conditions": ["Comparison to subhuman entities"]
+        },
+        {
+          "id": "sexual_predators",
+          "name": "Allegations - Sexual Predators/Pedophiles",
+          "description": "Comparisons to sexual predators, pedophiles",
+          "action": "label",
+          "examples": [
+            "Muslims are pedophiles",
+            "Muslim people having sex with goats or pigs",
+            "PC group are child molesters"
+          ],
+          "conditions": ["Comparison to sexual criminals"]
+        },
+        {
+          "id": "violent_criminals",
+          "name": "Allegations - Violent Criminals",
+          "description": "Comparisons to terrorists, murderers",
+          "action": "label",
+          "examples": [
+            "Muslims are terrorists",
+            "Asians are killers",
+            "White men are wife beaters"
+          ],
+          "conditions": ["Comparison to violent criminals"]
+        },
+        {
+          "id": "statements_harm",
+          "name": "Statements Supporting Harm",
+          "description": "Calls, aspirational, conditional, or advocating statements for harm",
+          "action": "label",
+          "examples": [
+            "I hope gay people get AIDS (contracting disease)",
+            "I hope Haitians experience an earthquake (natural disaster)",
+            "People with autism should kill themselves (self-injury/suicide)",
+            "I hope all PC die (death without perpetrator)",
+            "May God tip the boat over with immigrants (accidents/deity harm)"
+          ],
+          "conditions": ["Call for action OR aspirational OR conditional OR advocating statement", "One of 5 harm types"]
+        },
+        {
+          "id": "blackface",
+          "name": "Harmful Stereotype - Blackface",
+          "description": "Depiction with darkened face + exaggerated features",
+          "action": "label",
+          "examples": [
+            "Black makeup/paint on face + bulging eyes OR oversized lips"
+          ],
+          "conditions": ["Darkened face visible", "Lighter skin visible (neck, arm)", "2+ exaggerated features (bulging eyes, oversized lips)"]
+        },
+        {
+          "id": "holocaust_denial",
+          "name": "Harmful Stereotype - Holocaust Denial",
+          "description": "Denying, calling into doubt, or minimizing the Holocaust",
+          "action": "label",
+          "examples": [
+            "The Holocaust didn't happen",
+            "Holohoax",
+            "Only 6 thousand not 6 million",
+            "Jews exaggerated the Holocaust"
+          ],
+          "conditions": ["Denying fact, number, mechanisms, intentionality, OR accusing of inventing/exaggerating"]
+        },
+        {
+          "id": "jewish_control",
+          "name": "Harmful Stereotype - Jewish Control",
+          "description": "Claims Jewish people control financial, political, or media institutions",
+          "action": "label",
+          "examples": [
+            "Jews control the banks",
+            "Jews own the media",
+            "Jews rule the world"
+          ],
+          "conditions": ["Reference to Jewish people/proxy", "Reference to controlling financial/political/media"]
+        },
+        {
+          "id": "dalits_menial",
+          "name": "Harmful Stereotype - Dalits as Menial Laborers",
+          "description": "References to Dalits/lower caste as menial laborers",
+          "action": "label",
+          "examples": [
+            "Dalits + toilets/cleaners/filth/sewage/scavenging/feces"
+          ],
+          "conditions": ["Reference to lower caste", "Reference to menial labor imagery"]
+        },
+        {
+          "id": "black_farm_equipment",
+          "name": "Harmful Stereotype - Black People as Farm Equipment",
+          "description": "Comparing Black people to farm equipment",
+          "action": "label",
+          "examples": [
+            "Black people are farm equipment"
+          ],
+          "conditions": ["Black people + farm equipment comparison"]
+        },
+        {
+          "id": "mocking_hate_crimes",
+          "name": "Mocking Hate Crimes",
+          "description": "Mocking concept, events, or victims of hate crimes",
+          "action": "label",
+          "examples": [
+            "Mocking Holocaust victims",
+            "Mocking slavery victims",
+            "Mocking Srebrenica massacre"
+          ],
+          "conditions": ["Mocking context", "Hate crime reference", "Even if no real person depicted"]
+        },
+        {
+          "id": "mocking_disease",
+          "name": "Mocking People with Disease",
+          "description": "Mocking people for having or experiencing a disease",
+          "action": "label",
+          "examples": [
+            "Mocking AIDS patients",
+            "Mocking cancer patients"
+          ],
+          "conditions": ["Mocking context", "Disease reference", "Targeting based on PC"]
+        }
+      ]
+    },
+    {
+      "id": "tier2",
+      "name": "Tier 2 Attacks",
+      "description": "Insults, disgust, cursing, and exclusion - applies to PCs ONLY",
+      "severity": "high",
+      "appliesTo": ["PCs only - NOT QPCs"],
+      "subcategories": [
+        {
+          "id": "character_insults",
+          "name": "Insults - Character",
+          "description": "Allegations of cowardice, dishonesty, basic criminality, sexual immorality",
+          "action": "label",
+          "examples": [
+            "Jews are greedy",
+            "Black people are all drug dealers",
+            "Muslim women are slutty"
+          ],
+          "conditions": ["Insult about character", "Targeting PC group"]
+        },
+        {
+          "id": "mental_insults",
+          "name": "Insults - Mental Characteristics",
+          "description": "Allegations of stupidity, intellectual capacity, mental illness",
+          "action": "label",
+          "examples": [
+            "Women are retarded",
+            "White people have a mental illness"
+          ],
+          "conditions": ["Insult about mental characteristics", "Targeting PC group", "NOT gender/sexual orientation + mental illness"]
+        },
+        {
+          "id": "mental_insults_gender_exception",
+          "name": "Insults - Mental (Gender/SO Exception)",
+          "description": "Mental illness allegations based on gender or sexual orientation",
+          "action": "no_action",
+          "examples": [
+            "Trans people are mentally ill",
+            "Gays are not normal",
+            "Women are crazy"
+          ],
+          "conditions": ["Mental illness/abnormality allegation", "Based on gender OR sexual orientation"]
+        },
+        {
+          "id": "other_insults",
+          "name": "Insults - Other",
+          "description": "Allegations of worthlessness, uselessness, ugliness, dirtiness",
+          "action": "label",
+          "examples": [
+            "Women are worthless",
+            "Men are useless",
+            "Jews are ugly",
+            "Muslims are scum",
+            "Roma are filthy"
+          ],
+          "conditions": ["Insult about worth, appearance, cleanliness"]
+        },
+        {
+          "id": "expressions_disgust",
+          "name": "Expressions of Disgust",
+          "description": "Statements suggesting target causes sickness",
+          "action": "label",
+          "examples": [
+            "Muslims make me want to vomit",
+            "Jews are disgusting",
+            "PC group is vile"
+          ],
+          "conditions": ["Expressions like 'makes me vomit', 'disgusting', 'vile'", "NOT 'I hate', 'I don't like'"]
+        },
+        {
+          "id": "targeted_cursing",
+          "name": "Targeted Cursing",
+          "description": "Targeted use of 'fuck' or sexual engagement terms",
+          "action": "label",
+          "examples": [
+            "Fuck the [PC]!",
+            "Suck my dick, [PC]",
+            "Kiss my ass, [PC]"
+          ],
+          "conditions": ["Targeted 'fuck' OR sexual engagement terms", "Intent to insult"]
+        },
+        {
+          "id": "general_exclusion",
+          "name": "Exclusion - General",
+          "description": "Calls for general exclusion or segregation",
+          "action": "label",
+          "examples": [
+            "No X allowed!",
+            "Muslims should be kicked out of Europe",
+            "World without Jews!",
+            "Keep the white race pure!"
+          ],
+          "conditions": ["Call for removal, exclusion, segregation, racial purity"]
+        },
+        {
+          "id": "political_exclusion",
+          "name": "Exclusion - Political",
+          "description": "Denying right to political participation or incarceration",
+          "action": "label",
+          "examples": [
+            "Women should not be allowed to protest",
+            "Black people should not vote",
+            "Gay people should not run for president",
+            "Imprison the Oromos!"
+          ],
+          "conditions": ["Denying right to organize, vote, run for office", "OR calling for imprisonment"]
+        },
+        {
+          "id": "economic_exclusion",
+          "name": "Exclusion - Economic",
+          "description": "Denying access to economic entitlements",
+          "action": "label",
+          "examples": [
+            "No Jews in the workplace",
+            "Black people should not be given loans",
+            "I do not rent to Muslims"
+          ],
+          "conditions": ["Denying labor market, credit, employment, assets, goods/services", "NOT gender-based military/law enforcement/teaching", "NOT sexual orientation + religious belief context"]
+        },
+        {
+          "id": "social_exclusion",
+          "name": "Exclusion - Social",
+          "description": "Denying access to spaces and social services",
+          "action": "label",
+          "examples": [
+            "No Jews allowed in this club",
+            "No Muslims on this thread",
+            "Girls should not go to school"
+          ],
+          "conditions": ["Denying physical spaces, online spaces, social services", "NOT sex/gender-based for commonly limited spaces"]
+        }
+      ]
+    },
+    {
+      "id": "slurs",
+      "name": "Slurs",
+      "description": "Words creating atmosphere of exclusion and intimidation",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "slur_attack",
+          "name": "Slur with Attack",
+          "description": "Slur combined with Tier 1-2 attack",
+          "action": "label",
+          "examples": [
+            "Faggots should die",
+            "Niggers are animals"
+          ],
+          "conditions": ["Slur present", "Combined with T1-T2 attack", "Label for the attack tier"]
+        },
+        {
+          "id": "slur_reference",
+          "name": "Slur Targeting Person/Group",
+          "description": "Calling or referring to person/group as slur",
+          "action": "label",
+          "examples": [
+            "You're a faggot",
+            "Look at that nigger"
+          ],
+          "conditions": ["Slur targeting person/group", "No allowable context"]
+        },
+        {
+          "id": "slur_no_context",
+          "name": "Slur without Context",
+          "description": "Slur posted without additional context",
+          "action": "label",
+          "examples": [
+            "Faggot",
+            "Nigger"
+          ],
+          "conditions": ["Slur only", "No context", "Default to negative targeting"]
+        }
+      ]
+    },
+    {
+      "id": "allowed_content",
+      "name": "Allowed Content",
+      "description": "Content that does not violate Hateful Conduct policies",
+      "severity": "none",
+      "subcategories": [
+        {
+          "id": "mocking_condemning",
+          "name": "Mocking/Condemning Hateful Conduct",
+          "description": "Using hateful conduct or slurs to mock or condemn",
+          "action": "no_action",
+          "examples": [
+            "I can't believe they called him a nigger!",
+            "I am not a chink",
+            "Don't call me a faggot"
+          ],
+          "conditions": ["Clear intent to mock or condemn"]
+        },
+        {
+          "id": "discussing",
+          "name": "Discussing Hateful Conduct",
+          "description": "Debating or reporting on hateful conduct or slur use",
+          "action": "no_action",
+          "examples": [
+            "Do you think calling someone a Jewish pig is acceptable?",
+            "Someone called me a dyke"
+          ],
+          "conditions": ["Discussion/debate context", "Reporting context"]
+        },
+        {
+          "id": "self_referential",
+          "name": "Self-Referential Use",
+          "description": "Using slurs or hateful conduct about oneself",
+          "action": "no_action",
+          "examples": [
+            "I am a die-hard dyke",
+            "We beaners on the block"
+          ],
+          "conditions": ["First-person pronoun (I/me, we/us)", "NOT comparative statements with selfie"]
+        },
+        {
+          "id": "explicitly_positive",
+          "name": "Explicitly Positive Context",
+          "description": "Slurs used in positive character claims, physical descriptions, relationships",
+          "action": "no_action",
+          "examples": [
+            "All my best friends are fags, they're so nice!",
+            "You are one beautiful paki",
+            "Happy birthday beaner!"
+          ],
+          "conditions": ["Positive character/ability claim", "Positive physical description", "Positive relationship claim", "Term of praise"]
+        },
+        {
+          "id": "attacking_concepts",
+          "name": "Attacking Concepts",
+          "description": "Attacks on institutions, ideas, practices, beliefs - not people",
+          "action": "no_action",
+          "examples": [
+            "Islam is terrible",
+            "Homosexuality is wrong",
+            "America is the worst"
+          ],
+          "conditions": ["Targeting concept NOT people", "No pronoun referring to people"]
+        },
+        {
+          "id": "behavioral_statements",
+          "name": "Behavioral Statements",
+          "description": "Statements about actions, not inherent qualities",
+          "action": "no_action",
+          "examples": [
+            "Americans kill people",
+            "Black people commit crimes",
+            "Muslims commit terrorist attacks"
+          ],
+          "conditions": ["Statement about actions", "NOT generalization about inherent qualities"]
+        },
+        {
+          "id": "superiority_statements",
+          "name": "Statements of Superiority",
+          "description": "Statements of superiority not referencing intellectual inferiority",
+          "action": "no_action",
+          "examples": [
+            "Asians are the best!",
+            "Whites are better"
+          ],
+          "conditions": ["Statement of superiority", "NOT referencing inherent intellectual inferiority of another PC"]
+        },
+        {
+          "id": "gender_sex_exclusion_exceptions",
+          "name": "Gender/Sex Exclusion Exceptions",
+          "description": "Exclusion from commonly sex/gender-limited spaces",
+          "action": "no_action",
+          "examples": [
+            "No men in women's bathrooms",
+            "No trans women in women's sports",
+            "Sacred Heart School for girls only"
+          ],
+          "conditions": ["Sex/gender-based exclusion", "Commonly limited spaces (restrooms, sports, schools, health groups)"]
+        },
+        {
+          "id": "romantic_breakup",
+          "name": "Romantic Break-up Context",
+          "description": "Expressions of disgust/cursing in break-up context",
+          "action": "no_action",
+          "examples": [
+            "Fuck men (in divorce context)",
+            "Men are disgusting (in break-up context)"
+          ],
+          "conditions": ["Explicit break-up/divorce/separation context", "Gender-based expressions"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    { "id": "t1_comparisons", "label": "HC > T1 > Comparisons or Generalizations", "hierarchyRank": 1 },
+    { "id": "t1_harm", "label": "HC > T1 > Statements Supporting Harm", "hierarchyRank": 2 },
+    { "id": "t1_stereotypes", "label": "HC > T1 > Harmful Stereotypes", "hierarchyRank": 3 },
+    { "id": "t1_mocking", "label": "HC > T1 > Mocking Hate Crimes/Disease", "hierarchyRank": 4 },
+    { "id": "t2_character", "label": "HC > T2 > Character Insults", "hierarchyRank": 5 },
+    { "id": "t2_mental", "label": "HC > T2 > Mental Insults", "hierarchyRank": 6 },
+    { "id": "t2_other", "label": "HC > T2 > Other Insults", "hierarchyRank": 7 },
+    { "id": "t2_disgust", "label": "HC > T2 > Expressions of Disgust", "hierarchyRank": 8 },
+    { "id": "t2_cursing", "label": "HC > T2 > Targeted Cursing", "hierarchyRank": 9 },
+    { "id": "t2_exclusion", "label": "HC > T2 > Exclusion/Segregation", "hierarchyRank": 10 },
+    { "id": "slur", "label": "HC > Slur", "hierarchyRank": 11 }
+  ],
+
+  "proxyRules": {
+    "zionist": {
+      "treat_as_jewish_when": [
+        "Parent content explicitly calls out Jewish/Israeli people + comment contains 'Zionist' + hateful attack",
+        "Allegations of controlling financial/political/media institutions (EXCEPT in Israel/West Bank/Gaza)",
+        "T1 comparisons to animals (rats) or pathogens, insults about dirtiness, statements advocating harm, mocking disease"
+      ],
+      "NOT_treated_as_jewish": [
+        "Comparisons to violent or sexual criminals",
+        "Insults about criminality (T2)",
+        "References to institutions in Israel/West Bank/Gaza"
+      ]
+    },
+    "mohammed_ahmed_abdul": {
+      "treat_as_muslim_when": [
+        "Content comparing PC group to pigs",
+        "Claims of sexual relations with goats or pigs"
+      ]
+    },
+    "invaders": {
+      "treat_as_qpc_when": [
+        "Immigration context present (reference to immigrants/migrants/refugees OR immigration/migration/asylum terms)"
+      ]
+    }
+  },
+
+  "visualDepictionIndicators": {
+    "disability": ["Person + known disability symbol", "Mention of disability + person", "Visible disability as focus"],
+    "religious_affiliation": [
+      "Religious clothing (hijab, kippah, monk robes, priest collar)",
+      "Religious symbols (Star of David, Cross, Crescent, Om)",
+      "Reference to religious concepts + person",
+      "Jewish caricature (exaggerated hook-nose, drooping eyelids)"
+    ],
+    "sexual_orientation": ["Rainbow flag/colors/emoji + person", "Same-sex emojis + person", "Sexual orientation concept + person"],
+    "gender_identity": ["Trans flags + person", "Gender symbols + person", "Non-binary/trans mention + person"],
+    "national_origin": ["National flag/colors + person", "Traditional headgear + person", "Nationality concept + person"],
+    "race": ["Only one race in image", "Focus on one race", "Racial submission/inferiority positioning", "Vitiligo skin (representing Black people)"],
+    "serious_disease": ["Person + disease symbol (AIDS ribbon)", "Mention of disease + person", "Visible disease as focus"]
+  },
+
+  "exceptions": [
+    { "id": "mocking_condemning", "description": "Mocking or condemning hateful conduct/slurs" },
+    { "id": "discussing_reporting", "description": "Discussing or reporting hateful conduct/slurs" },
+    { "id": "self_referential", "description": "Self-referential use with first-person pronouns" },
+    { "id": "explicitly_positive", "description": "Slurs in explicitly positive context" },
+    { "id": "alternative_meaning", "description": "Slurs with benign alternative meaning" },
+    { "id": "attacking_concepts", "description": "Attacking concepts, institutions, ideas - not people" },
+    { "id": "behavioral_statements", "description": "Statements about actions, not inherent qualities" },
+    { "id": "superiority_no_inferiority", "description": "Superiority statements without intellectual inferiority claims" },
+    { "id": "gender_sex_spaces", "description": "Sex/gender exclusion from commonly limited spaces" },
+    { "id": "gender_military_teaching", "description": "Gender-based military/law enforcement/teaching exclusion" },
+    { "id": "so_religious_jobs", "description": "Sexual orientation job exclusion based on religious beliefs" },
+    { "id": "romantic_breakup", "description": "Expressions in romantic break-up context" },
+    { "id": "mental_illness_gender_so", "description": "Mental illness allegations based on gender/sexual orientation" },
+    { "id": "disputing_history", "description": "Disputing historical events (except Holocaust denial)" },
+    { "id": "denying_existence", "description": "Denying PC group exists (e.g., 'trans people don't exist')" },
+    { "id": "weakness_strength", "description": "Insults about weakness/physical strength" },
+    { "id": "sinning_immorality", "description": "Insults about sinning/general immorality (not sexual)" },
+    { "id": "ability_task", "description": "Insults about ability to perform specific task" },
+    { "id": "personal_preferences", "description": "Personal relationship, marriage, or adoption preferences" },
+    { "id": "boycotts", "description": "Calls for boycotts of products/businesses" },
+    { "id": "going_home", "description": "'Go home' statements" },
+    { "id": "voting_preferences", "description": "Personal voting preferences" }
+  ],
+
+  "glossary": {
+    "protected_characteristics": "Exhaustively: race, ethnicity, national origin/nationality, disability, religious affiliation, caste, sex, gender identity, sexual orientation, serious disease",
+    "quasi_protected_characteristics": "Immigration status: migrants, refugees, immigrants, asylum seekers - protected from T1 only",
+    "slur": "Words inherently creating exclusion and intimidation against people based on PC, often tied to historical discrimination",
+    "subset": "Group defined by PC/QPC + one other variable",
+    "fully_protected_subset": "Groups defined only by PCs - protected from all tiers",
+    "quasi_protected_subset": "Groups defined by PC/QPC + NPC or location - protected from T1 only",
+    "proxy": "Word frequently used instead of PC/QPC - treated same as PC/QPC",
+    "behavioral_statement": "Assertion about actions people take (allowed)",
+    "generalization": "Statement about people's inherent qualities (may violate)",
+    "dehumanizing_speech": "Comparisons to animals, pathogens, subhuman entities",
+    "harmful_stereotype": "Dehumanizing comparison historically linked to violence against specific groups",
+    "hate_crime": "Criminal act with prejudiced motive targeting people based on PC (Holocaust, slavery, Srebrenica)",
+    "tier1_attack": "Dehumanizing speech, allegations of serious immorality/criminality, harmful stereotypes, statements supporting harm",
+    "tier2_attack": "Insults, expressions of disgust, targeted cursing, exclusion/segregation",
+    "economic_exclusion": "Denial of labor market, credit, employment, assets, goods/services",
+    "social_exclusion": "Denial of physical/online spaces and social services",
+    "political_exclusion": "Denial of right to organize, vote, run for office, or imprisonment",
+    "general_exclusion": "Calls for removal, no more, or world without PC group",
+    "targeted_cursing": "'Fuck' or sexual engagement terms with intent to insult"
+  },
+
+  "operationalGuidelines": {
+    "default_delete_slurs": "Default to delete slurs unless clear non-violating use",
+    "slur_plus_attack": "Slur + T1/T2 attack = label for the attack tier, not slur",
+    "unclear_intent": "If intent unclear, default to delete",
+    "concept_plus_pronoun": "Concept + pronoun referring to people = violation",
+    "individual_attacks": "Attacks on individuals based on PC still violate",
+    "distinct_group_criteria": "Distinct group attack violates if: slur used, harmful stereotype, OR targets broader PC group",
+    "violent_criminal_subset": "PC + violent/sexual criminal = non-protected subset, no violation",
+    "age_only": "Age alone = no protection",
+    "quantifiers": "Most/all = protected; some/few/many = unprotected quantifier"
+  }
+}

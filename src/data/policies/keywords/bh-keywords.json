@@ -1,0 +1,608 @@
+{
+  "policyId": "bh",
+  "policyName": "Bullying and Harassment",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "sexualizedHarassment": {
+    "derogatoryTermsSexualActivity": {
+      "en": [
+        { "term": "whore", "severity": "high" },
+        { "term": "slut", "severity": "high" },
+        { "term": "cocksucker", "severity": "high" },
+        { "term": "manwhore", "severity": "high" },
+        { "term": "manslut", "severity": "high" },
+        { "term": "mistress", "severity": "mid" },
+        { "term": "prostitute", "severity": "mid", "note": "Rely on context if about job" },
+        { "term": "gigolo", "severity": "mid" },
+        { "term": "hoe", "severity": "high" },
+        { "term": "hooker", "severity": "high" },
+        { "term": "tramp", "severity": "mid" },
+        { "term": "escort", "severity": "mid", "note": "Context needed" }
+      ],
+      "pt": [
+        { "term": "puta", "severity": "high" },
+        { "term": "vadia", "severity": "high" },
+        { "term": "vagabunda", "severity": "high" },
+        { "term": "piranha", "severity": "high" },
+        { "term": "quenga", "severity": "high" },
+        { "term": "rameira", "severity": "high" },
+        { "term": "meretriz", "severity": "high" },
+        { "term": "rapariga", "severity": "high", "note": "Brazil only - rely on context" },
+        { "term": "prostituta", "severity": "mid", "note": "Rely on context" },
+        { "term": "garota de programa", "severity": "mid", "note": "Context needed" },
+        { "term": "profissional do sexo", "severity": "mid", "note": "Context needed" },
+        { "term": "caceteira", "severity": "high" },
+        { "term": "marmita", "severity": "high" },
+        { "term": "sirigaita", "severity": "high" },
+        { "term": "boca de pelo", "severity": "high", "note": "Brazil only" },
+        { "term": "boca de veludo", "severity": "high", "note": "Brazil only" },
+        { "term": "boca de broche", "severity": "high" },
+        { "term": "bafo de pica", "severity": "high" },
+        { "term": "cheira pomba", "severity": "high", "note": "Brazil only" },
+        { "term": "chupa rola", "severity": "high" },
+        { "term": "chupador de rola", "severity": "high" },
+        { "term": "deposito de porra", "severity": "high" },
+        { "term": "garganta profunda", "severity": "mid", "note": "Context needed" },
+        { "term": "lambe conas", "severity": "high" },
+        { "term": "mamador de piroca", "severity": "high" },
+        { "term": "pechenga", "severity": "high" },
+        { "term": "pêga", "severity": "high" },
+        { "term": "punheteira", "severity": "high" },
+        { "term": "gigolo", "severity": "mid" },
+        { "term": "acompanhante", "severity": "mid" },
+        { "term": "mulher atirada", "severity": "high" },
+        { "term": "balde de sêmen", "severity": "high" },
+        { "term": "goblin de pica", "severity": "high" },
+        { "term": "provador de rola", "severity": "high" },
+        { "term": "ninfeta", "severity": "high" },
+        { "term": "ninfetinha", "severity": "high" },
+        { "term": "kit das tropas", "severity": "high", "note": "PALOP - whore" },
+        { "term": "perona", "severity": "high", "note": "PALOP - whore" },
+        { "term": "yabará", "severity": "high", "note": "PALOP - whore" }
+      ]
+    },
+    "severeSexualizedCommentary": {
+      "en": [
+        { "phrase": "making me so horny", "type": "sexual_arousal" },
+        { "phrase": "you look horny", "type": "sexual_arousal" },
+        { "phrase": "I masturbated over this", "type": "imposing_activity" },
+        { "phrase": "photo to masturbate with", "type": "imposing_activity" },
+        { "phrase": "I want to lick your", "type": "imposing_activity" },
+        { "phrase": "MILF", "definition": "mother I'd like to fuck" },
+        { "phrase": "DILF", "definition": "daddy I'd like to fuck" }
+      ],
+      "pt": [
+        { "phrase": "tesão", "type": "sexual_arousal" },
+        { "phrase": "tezuda", "type": "sexual_arousal" },
+        { "phrase": "vou te comer", "type": "imposing_activity" },
+        { "phrase": "vou te foder", "type": "imposing_activity" },
+        { "phrase": "bati punheta para você", "type": "imposing_activity" },
+        { "phrase": "bati uma punheta vendo tuas fotos", "type": "imposing_activity" },
+        { "phrase": "eu teria sexo com você", "type": "imposing_activity" }
+      ]
+    }
+  },
+
+  "callsForDeath": {
+    "en": [
+      { "phrase": "kill yourself", "severity": "critical" },
+      { "phrase": "go die", "severity": "critical" },
+      { "phrase": "I hope you die", "severity": "critical" },
+      { "phrase": "death to", "severity": "critical" },
+      { "phrase": "you should die", "severity": "critical" },
+      { "phrase": "hope death comes quickly", "severity": "critical" },
+      { "phrase": "why don't you die", "severity": "critical" }
+    ],
+    "pt": [
+      { "phrase": "morre", "severity": "critical" },
+      { "phrase": "morra", "severity": "critical" },
+      { "phrase": "porque é que não morres", "severity": "critical" },
+      { "phrase": "espero que morras", "severity": "critical" },
+      { "phrase": "morte ao", "severity": "critical" },
+      { "phrase": "você deveria morrer", "severity": "critical" },
+      { "phrase": "espero que a morte chegue depressa", "severity": "critical" }
+    ]
+  },
+
+  "callsForSSI": {
+    "en": [
+      { "phrase": "kill yourself", "severity": "critical" },
+      { "phrase": "jump off a bridge", "severity": "critical" },
+      { "phrase": "why don't you shoot yourself", "severity": "critical" },
+      { "phrase": "cut yourself", "severity": "critical" },
+      { "phrase": "you should kill yourself", "severity": "critical" },
+      { "phrase": "go hang yourself", "severity": "critical" },
+      { "phrase": "slit your wrists", "severity": "critical" }
+    ],
+    "pt": [
+      { "phrase": "mata-te", "severity": "critical" },
+      { "phrase": "se mata", "severity": "critical" },
+      { "phrase": "salta de uma ponte", "severity": "critical" },
+      { "phrase": "porque que razão não disparas sobre ti mesmo", "severity": "critical" },
+      { "phrase": "corta-te", "severity": "critical" },
+      { "phrase": "se corte", "severity": "critical" },
+      { "phrase": "devias matar-te", "severity": "critical" },
+      { "phrase": "espero que saltes de uma ponte", "severity": "critical" },
+      { "phrase": "você deveria rasgar o cu", "severity": "high", "note": "Context dependent" }
+    ]
+  },
+
+  "sexualActivityClaims": {
+    "en": [
+      { "phrase": "slept with", "type": "claim" },
+      { "phrase": "had sex with", "type": "claim" },
+      { "phrase": "fucked", "type": "claim" },
+      { "phrase": "banged", "type": "claim" },
+      { "phrase": "blowjob", "type": "claim" },
+      { "phrase": "gives head", "type": "claim" },
+      { "phrase": "sleeps around", "type": "claim" }
+    ],
+    "pt": [
+      { "phrase": "dá pra todos", "type": "claim" },
+      { "phrase": "ela faz garganta profunda", "type": "claim" },
+      { "phrase": "cavalgando no pau", "type": "claim" },
+      { "phrase": "come todo mundo", "type": "claim", "note": "Brazil context" },
+      { "phrase": "dá a ré no quibe", "type": "claim" },
+      { "phrase": "rodar a bolsinha", "type": "claim" },
+      { "phrase": "tá sendo mal comida", "type": "claim" },
+      { "phrase": "de pernas abertas", "type": "claim", "note": "Context needed" },
+      { "phrase": "fazer amor", "type": "claim" },
+      { "phrase": "você chupa rola", "type": "claim" },
+      { "phrase": "você adora piroca", "type": "claim" },
+      { "phrase": "comer na anilha", "type": "claim" },
+      { "phrase": "mulherengo", "type": "claim" },
+      { "phrase": "rodada", "type": "claim" },
+      { "phrase": "fazendo porno", "type": "claim" },
+      { "phrase": "comedor de pau", "type": "claim" }
+    ]
+  },
+
+  "romanticInvolvementClaims": {
+    "en": [
+      { "term": "dating", "type": "romantic" },
+      { "term": "seeing each other", "type": "romantic" },
+      { "term": "going out", "type": "romantic" },
+      { "term": "boyfriend", "type": "romantic" },
+      { "term": "girlfriend", "type": "romantic" },
+      { "term": "cheated on", "type": "romantic", "note": "Requires relationship context" },
+      { "term": "fancying", "type": "romantic" },
+      { "term": "has a crush on", "type": "romantic" }
+    ],
+    "pt": [
+      { "term": "amante", "type": "romantic" },
+      { "term": "casal", "type": "romantic" },
+      { "term": "chifrudo", "type": "romantic" },
+      { "term": "corno", "type": "romantic" },
+      { "term": "esposo", "type": "romantic" },
+      { "term": "namorado", "type": "romantic" },
+      { "term": "marido", "type": "romantic" },
+      { "term": "envolvido", "type": "romantic", "note": "Context needed" },
+      { "term": "ex-namorado", "type": "romantic" },
+      { "term": "seu macho", "type": "romantic" },
+      { "term": "sua mina", "type": "romantic" },
+      { "term": "mozão", "type": "romantic" },
+      { "term": "se pegar com", "type": "romantic" },
+      { "term": "talarico", "type": "romantic" },
+      { "term": "boi", "type": "romantic", "note": "With clear relationship context" },
+      { "term": "tem um crush", "type": "romantic" }
+    ]
+  },
+
+  "sexualOrientationClaims": {
+    "en": [
+      { "term": "gay", "type": "orientation" },
+      { "term": "lesbian", "type": "orientation" },
+      { "term": "bisexual", "type": "orientation" },
+      { "term": "trans", "type": "gender_identity" },
+      { "term": "transgender", "type": "gender_identity" },
+      { "term": "homosexual", "type": "orientation" },
+      { "term": "heterosexual", "type": "orientation" },
+      { "term": "came out of the closet", "type": "orientation" }
+    ],
+    "pt": [
+      { "term": "bicha", "type": "orientation" },
+      { "term": "viado", "type": "orientation", "note": "Clear orientation context" },
+      { "term": "frutinha", "type": "orientation" },
+      { "term": "gilete", "type": "orientation" },
+      { "term": "passiva", "type": "orientation" },
+      { "term": "POC", "type": "orientation" },
+      { "term": "sair do armário", "type": "orientation" },
+      { "term": "LGBTQIA+", "type": "orientation" },
+      { "term": "drag queen", "type": "gender_identity" },
+      { "term": "travesti", "type": "gender_identity" },
+      { "term": "transexual", "type": "gender_identity" },
+      { "term": "corta para os dois lados", "type": "orientation" },
+      { "term": "abafa-palhinha", "type": "orientation" },
+      { "term": "abaitolado", "type": "orientation" }
+    ]
+  },
+
+  "sexualizingAdult": {
+    "en": [
+      { "phrase": "sexy hands", "type": "non_regenerating_body_part" },
+      { "phrase": "those boobs", "type": "sexualized_body_part" },
+      { "phrase": "what an ass", "type": "sexualized_body_part" },
+      { "phrase": "big dick", "type": "sexualized_body_part" }
+    ],
+    "pt": [
+      { "phrase": "popozuda", "type": "sexualized_body_part" },
+      { "phrase": "rabetão", "type": "sexualized_body_part" },
+      { "phrase": "que bundão", "type": "sexualized_body_part" },
+      { "phrase": "que cuzão", "type": "sexualized_body_part" },
+      { "phrase": "sem bunda", "type": "sexualized_body_part" },
+      { "phrase": "sem peito", "type": "sexualized_body_part" }
+    ],
+    "emojis": ["🍆", "🍑", "👅", "💦", "👌", "👈", "👉", "🐍", "✊", "🌭", "🍌", "🌋", "🖕", "🐱"]
+  },
+
+  "lackOfSexualActivityTerms": {
+    "en": [
+      { "term": "virgin", "type": "derogatory" },
+      { "term": "incel", "type": "derogatory" },
+      { "term": "nobody fucks you", "type": "derogatory" }
+    ],
+    "pt": [
+      { "term": "virgem", "type": "derogatory" },
+      { "term": "incel", "type": "derogatory" }
+    ]
+  },
+
+  "dehumanizingComparisons": {
+    "inferiorAnimals": {
+      "en": ["pig", "dog", "rat", "cockroach", "snake", "monkey", "ape", "gorilla", "insect", "parasite", "vermin", "animal", "beast", "creature"],
+      "pt": ["porco", "cachorro", "rato", "barata", "cobra", "macaco", "gorila", "inseto", "parasita", "verme", "animal", "bicho", "criatura", "penosas", "mabeco"]
+    },
+    "subhumanCreatures": {
+      "en": ["monster", "mutant", "vampire", "zombie", "witch", "devil", "demon"],
+      "pt": ["monstro", "mutante", "vampiro", "zombie", "bruxa", "diabo", "capeta", "feiticeiro", "ngampa", "orc"]
+    },
+    "diseases": {
+      "en": ["cancer", "plague", "disease", "virus", "bacteria", "infection"],
+      "pt": ["câncer", "praga", "doença", "vírus", "bactéria", "infecção"]
+    },
+    "inanimateObjects": {
+      "en": ["trash", "garbage", "filth", "feces", "shit", "dirt", "waste"],
+      "pt": ["lixo", "sujeira", "fezes", "merda", "imundície"]
+    },
+    "animalSounds": ["oink", "moo", "woof", "au au", "muuu"],
+    "comparativeWords": ["like", "as", "worse than", "better than", "como", "igual a", "pior que"]
+  },
+
+  "negativePhysicalDescription": {
+    "en": [
+      { "term": "ugly", "severity": "mid" },
+      { "term": "fat", "severity": "mid", "note": "Negative by default unless self-referential/endearing" },
+      { "term": "disgusting", "severity": "high" },
+      { "term": "horrible body", "severity": "high" },
+      { "term": "why do you smell", "severity": "mid" },
+      { "term": "deformed", "severity": "high" },
+      { "term": "gross", "severity": "mid" }
+    ],
+    "pt": [
+      { "term": "feia", "severity": "mid" },
+      { "term": "gorda", "severity": "mid" },
+      { "term": "aberração", "severity": "high" },
+      { "term": "baleia", "severity": "high" },
+      { "term": "bujão", "severity": "high" },
+      { "term": "canhão", "severity": "high" },
+      { "term": "catingoso", "severity": "mid", "note": "PALOP - smelly" },
+      { "term": "chupeta de baleia", "severity": "high" },
+      { "term": "curva de rio", "severity": "high", "note": "Brazil only" },
+      { "term": "deformado", "severity": "high" },
+      { "term": "dragão", "severity": "high" },
+      { "term": "elefante", "severity": "high" },
+      { "term": "fedida", "severity": "mid" },
+      { "term": "horrível", "severity": "high" },
+      { "term": "imundo", "severity": "high" },
+      { "term": "javardo", "severity": "high" },
+      { "term": "macumba", "severity": "high" },
+      { "term": "magrela", "severity": "mid" },
+      { "term": "maracuja de gaveta", "severity": "high" },
+      { "term": "não toma banho", "severity": "mid" },
+      { "term": "ninho de piolho", "severity": "high" },
+      { "term": "oferenda", "severity": "high" },
+      { "term": "projeto de aborto", "severity": "critical" },
+      { "term": "resto de aborto", "severity": "critical" },
+      { "term": "rolha de poço", "severity": "high" },
+      { "term": "queimas", "severity": "high" },
+      { "term": "sebosa", "severity": "mid" },
+      { "term": "sujo", "severity": "mid" },
+      { "term": "suvaco peludo", "severity": "mid" },
+      { "term": "tribufu", "severity": "high" },
+      { "term": "tutu", "severity": "high", "note": "PALOP - ugly" },
+      { "term": "visão do inferno", "severity": "high" },
+      { "term": "feto", "severity": "high" },
+      { "term": "aborto", "severity": "high" },
+      { "term": "cara de aborto", "severity": "high" },
+      { "term": "cara de cu", "severity": "high" },
+      { "term": "nojento", "severity": "high", "note": "With physical appearance context" }
+    ]
+  },
+
+  "targetedCursing": {
+    "en": [
+      { "term": "dickhead", "type": "genitalia" },
+      { "term": "dick", "type": "genitalia" },
+      { "term": "cock", "type": "genitalia" },
+      { "term": "asshole", "type": "anus" },
+      { "term": "shithead", "type": "feces" },
+      { "term": "piece of shit", "type": "feces" },
+      { "term": "turd", "type": "feces" },
+      { "term": "fuckhead", "type": "sexual_noun" },
+      { "term": "motherfucker", "type": "family_sexual" },
+      { "term": "son of a whore", "type": "family_sexual" },
+      { "term": "son of a bitch", "type": "family_sexual" },
+      { "term": "fuck you", "type": "call_for_sexual_contact" },
+      { "term": "fuck off", "type": "call_for_sexual_contact" },
+      { "term": "go fuck yourself", "type": "call_for_sexual_contact" },
+      { "term": "eat my dick", "type": "call_for_sexual_contact" },
+      { "term": "suck my dick", "type": "call_for_sexual_contact" },
+      { "term": "shove it up your ass", "type": "call_for_contact" },
+      { "term": "eat shit", "type": "call_for_contact" }
+    ],
+    "pt": [
+      { "term": "arrombado", "type": "genitalia" },
+      { "term": "cabeça de rola", "type": "genitalia" },
+      { "term": "cona da tua mãe", "type": "family_sexual" },
+      { "term": "cuzão", "type": "anus" },
+      { "term": "escroto", "type": "genitalia" },
+      { "term": "filho da puta", "type": "family_sexual" },
+      { "term": "FDP", "type": "family_sexual" },
+      { "term": "merda", "type": "feces" },
+      { "term": "pau no cu", "type": "call_for_contact" },
+      { "term": "pnc", "type": "call_for_contact" },
+      { "term": "vai cheirar pomba", "type": "call_for_contact" },
+      { "term": "vai dar o cu", "type": "call_for_contact" },
+      { "term": "vai pro caralho", "type": "call_for_sexual_contact" },
+      { "term": "vai se fuder", "type": "call_for_sexual_contact" },
+      { "term": "vsf", "type": "call_for_sexual_contact" },
+      { "term": "vai se lascar", "type": "call_for_sexual_contact" },
+      { "term": "vai tomar no cu", "type": "call_for_contact" },
+      { "term": "vtnc", "type": "call_for_contact" },
+      { "term": "vai mamar na quinta pata do cavalo", "type": "call_for_contact" },
+      { "term": "chupa meu pau", "type": "call_for_sexual_contact" },
+      { "term": "chupa minhas bolas", "type": "call_for_sexual_contact" },
+      { "term": "pedaço de merda", "type": "feces" },
+      { "term": "foda-se a tua mãe", "type": "family_sexual" },
+      { "term": "cara de fimose", "type": "genitalia" },
+      { "term": "cara de hemorróida", "type": "anus" },
+      { "term": "fakiu", "type": "call_for_sexual_contact", "note": "PALOP" },
+      { "term": "futseka", "type": "call_for_sexual_contact", "note": "PALOP" },
+      { "term": "kongo wa nyine", "type": "family_sexual", "note": "PALOP" },
+      { "term": "kongodji", "type": "family_sexual", "note": "PALOP" },
+      { "term": "matximba yaku", "type": "family_sexual", "note": "PALOP" },
+      { "term": "nhofi", "type": "anus", "note": "PALOP" },
+      { "term": "ntumo na maio", "type": "family_sexual", "note": "PALOP" },
+      { "term": "PQP", "type": "family_sexual", "note": "Puta que pariu acronym" }
+    ]
+  },
+
+  "femaleGenderedCursing": {
+    "en": [
+      { "term": "cunt", "type": "female_genitalia" },
+      { "term": "pussy", "type": "female_genitalia" },
+      { "term": "twat", "type": "female_genitalia" },
+      { "term": "bitch", "type": "female_animal" }
+    ],
+    "pt": [
+      { "term": "buceta", "type": "female_genitalia" },
+      { "term": "biscate", "type": "female_animal", "note": "Brazil only" },
+      { "term": "cabra", "type": "female_animal" },
+      { "term": "cachorra", "type": "female_animal" },
+      { "term": "cadela", "type": "female_animal" },
+      { "term": "egua", "type": "female_animal" },
+      { "term": "galinha", "type": "female_animal" },
+      { "term": "periquita", "type": "female_genitalia" },
+      { "term": "piranha", "type": "female_animal" },
+      { "term": "vaca", "type": "female_animal" },
+      { "term": "xerecard", "type": "female_genitalia" },
+      { "term": "ze buceta", "type": "female_genitalia" }
+    ]
+  },
+
+  "negativeCharacterClaims": {
+    "en": [
+      { "term": "idiot", "severity": "mid" },
+      { "term": "stupid", "severity": "mid" },
+      { "term": "moron", "severity": "mid" },
+      { "term": "imbecile", "severity": "mid" },
+      { "term": "retard", "severity": "high" },
+      { "term": "loser", "severity": "mid" },
+      { "term": "pathetic", "severity": "mid" },
+      { "term": "worthless", "severity": "high" },
+      { "term": "scum", "severity": "high" },
+      { "term": "trash", "severity": "high" },
+      { "term": "disgusting", "severity": "high" },
+      { "term": "evil", "severity": "high" },
+      { "term": "liar", "severity": "mid" },
+      { "term": "coward", "severity": "mid" },
+      { "term": "traitor", "severity": "mid" }
+    ],
+    "pt": [
+      { "term": "idiota", "severity": "mid" },
+      { "term": "estupido", "severity": "mid" },
+      { "term": "imbecil", "severity": "mid" },
+      { "term": "retardado", "severity": "high" },
+      { "term": "burro", "severity": "mid" },
+      { "term": "ignorante", "severity": "mid" },
+      { "term": "otario", "severity": "mid" },
+      { "term": "babaca", "severity": "mid" },
+      { "term": "trouxa", "severity": "mid" },
+      { "term": "mané", "severity": "mid" },
+      { "term": "palhaço", "severity": "mid" },
+      { "term": "cretino", "severity": "mid" },
+      { "term": "safado", "severity": "mid" },
+      { "term": "sacana", "severity": "mid" },
+      { "term": "pilantra", "severity": "mid" },
+      { "term": "vagabunda", "severity": "high" },
+      { "term": "favelado", "severity": "high" },
+      { "term": "drogado", "severity": "mid" },
+      { "term": "maconheiro", "severity": "mid" },
+      { "term": "noia", "severity": "mid" },
+      { "term": "gado", "severity": "mid" },
+      { "term": "mentiroso", "severity": "mid" },
+      { "term": "covarde", "severity": "mid" },
+      { "term": "traidor", "severity": "mid" },
+      { "term": "vendido", "severity": "mid" },
+      { "term": "desgraçado", "severity": "high" },
+      { "term": "ordinário", "severity": "mid" },
+      { "term": "cabeça oca", "severity": "mid" },
+      { "term": "alienado", "severity": "mid" },
+      { "term": "analfabeto", "severity": "mid" },
+      { "term": "bazeza", "severity": "mid", "note": "PALOP" },
+      { "term": "boelo", "severity": "mid", "note": "PALOP" },
+      { "term": "buluzento", "severity": "mid", "note": "PALOP" },
+      { "term": "mamparra", "severity": "mid", "note": "PALOP" },
+      { "term": "matreco", "severity": "mid", "note": "PALOP" },
+      { "term": "matumbo", "severity": "mid", "note": "PALOP" }
+    ]
+  },
+
+  "expressionsOfContempt": {
+    "en": [
+      "I hate [target]",
+      "I despise [target]",
+      "I can't stand [target]",
+      "I don't respect [target]",
+      "I don't like [target]",
+      "I don't care for [target]"
+    ],
+    "pt": [
+      "acho [target] insuportável",
+      "como é possível alguém gostar de [target]",
+      "desejaria que [target] não tivesse nascido",
+      "devemos desprezar [target]",
+      "[target] deveria ter sido abortado",
+      "[target] não deveria existir",
+      "[target] não deveria se reproduzir",
+      "não gosto de [target]",
+      "não tolero [target]",
+      "odeio [target]",
+      "[target] não presta pra nada"
+    ]
+  },
+
+  "expressionsOfDisgust": {
+    "en": [
+      "I'm disgusted by [target]",
+      "[target] makes me sick",
+      "[target] is disgusting",
+      "[target] makes me want to vomit",
+      "ew",
+      "yuck",
+      "gross",
+      "vile",
+      "repulsive"
+    ],
+    "pt": [
+      "eu tenho nojo de [target]",
+      "[target] é nojento",
+      "[target] me dá vontade de vomitar",
+      "[target] me dá ânsia de vômito",
+      "nojento",
+      "asqueroso",
+      "repugnante"
+    ],
+    "emojis": ["🤢", "🤮", "💩"]
+  },
+
+  "mentalIllnessClaims": {
+    "note": "Treated as non-negative claims - requires name/face match",
+    "en": ["insane", "crazy", "schizophrenia", "OCD", "paranoia", "bipolar", "psycho", "mental"],
+    "pt": [
+      "autista", "bipolar", "doido", "esquizofrénico", "insano", "louco", "maluco",
+      "OCD", "paranóico", "alucinado", "demente", "doentio", "histérico", "lunático",
+      "maniaco", "mongol", "mongoloide", "neurótico", "perturbado", "psicopata", "sociopata"
+    ]
+  },
+
+  "criminalAllegations": {
+    "note": "Allowed against adults, even with negative character claims",
+    "en": ["thief", "robber", "murderer", "fraudster", "rapist", "pedophile", "criminal"],
+    "pt": [
+      "golpista", "caloteiro", "trapaceiro", "picareta", "vigarista", "ladrão",
+      "assaltante", "estelionatário", "contrabandista"
+    ]
+  },
+
+  "nonViolatingTerms": {
+    "ideologyClaims": {
+      "note": "NOT considered character claims",
+      "terms": [
+        "racist", "xenophobe", "homophobe", "fascist", "Nazi", "misogynist",
+        "racista", "xenofóbico", "homofóbico", "fascista", "nazi", "misógino"
+      ]
+    },
+    "politicalTerms": {
+      "note": "Generally not violating",
+      "terms": [
+        "bolsominion", "bolsogado", "bolsonarista", "bozolatra", "coxinha",
+        "petralha", "esquerdopata", "mortadelo", "lulista", "socialista",
+        "comunista", "esquerdista", "petista"
+      ]
+    },
+    "relationshipStatus": ["separado", "solteiro", "viuvo", "ex-marido", "ex-mulher"]
+  },
+
+  "nonInferiorAnimals": {
+    "note": "Requires self-report - not culturally perceived as inferior",
+    "terms": ["tiger", "lion", "eagle", "wolf", "bear", "tigre", "leão", "águia", "lobo", "urso", "raposa", "coruja", "touro"]
+  },
+
+  "positivePhysicalDescriptions": {
+    "note": "Requires self-report for private individuals",
+    "en": ["beautiful", "handsome", "gorgeous", "stunning", "attractive", "pretty", "cute", "hot", "sexy"],
+    "pt": [
+      "barbie", "bonito", "bonita", "gato", "gata", "gatinho", "gatinha",
+      "gostoso", "gostosa", "lindo", "linda", "charmoso", "charmosa",
+      "elegante", "atraente", "fofo", "formoso", "formosa", "maravilhoso",
+      "sensual", "sexy", "estiloso", "diva", "musa", "bombado", "sarado",
+      "poderoso", "delícia"
+    ]
+  },
+
+  "positiveCharacterClaims": {
+    "note": "Requires self-report for private individuals",
+    "en": ["smart", "intelligent", "genius", "funny", "brilliant", "inspiring", "authentic"],
+    "pt": [
+      "esperto", "inteligente", "gênio", "engraçado", "brilhante", "perspicaz",
+      "autêntico", "carismático", "empático", "entusiasta", "inspirador",
+      "visionário", "íntegro", "altruísta", "paciente", "incrível", "notável",
+      "especial", "extraordinário"
+    ]
+  },
+
+  "emojiGuide": {
+    "condemnation": ["😥", "😢", "💔", "👎", "😠", "🤢", "🙅", "🤦", "🤮"],
+    "praise_support": ["😀", "😍", "👍", "❤️", "👌", "👏", "😊", "🙏", "🤞", "💯", "🤣", "😂", "✊"],
+    "dehumanizing": ["🐷", "🐽", "🐖", "🐭", "🐁", "🐀", "🐸", "🐍", "🐗", "🦍", "🦧", "🐵", "🐒", "🦛", "🐔", "🐮", "🐋", "🐄", "🐂", "🐑", "🐏", "🚜", "🧹"],
+    "mocking": ["😂", "🤣", "🤢", "💩", "😷", "🤮"],
+    "sexualized": ["🍆", "🍑", "👅", "💦", "👌", "👈", "👉", "🐍", "✊", "🌭", "🍌", "🌋", "🖕", "🐱"],
+    "attack_harm": ["💣", "🔪", "🗡", "🔫", "👊", "⚰️", "💉"],
+    "ssi": ["🔫", "🔪"],
+    "sexual_orientation": ["🌈", "🏳️‍🌈", "💏", "👨‍❤️‍💋‍👨", "👩‍❤️‍💋‍👩", "💑", "👨‍❤️‍👨", "👩‍❤️‍👩", "👫", "👬", "👭", "♀", "♂"]
+  },
+
+  "violentTragedyExamples": [
+    "Parkland Shooting",
+    "Fort Lauderdale Airport Shooting",
+    "Roanoke Shooting",
+    "Aurora, Colorado Theater Shooting",
+    "Sutherland Springs Church Shooting",
+    "Sandy Hook Shooting"
+  ],
+
+  "crisisActorIndicators": [
+    "crisis actor",
+    "false flag",
+    "\"death\"",
+    "\"victim\"",
+    "paid actor",
+    "fake victim",
+    "staged",
+    "ator de crise",
+    "bandeira falsa",
+    "vítima falsa"
+  ]
+}

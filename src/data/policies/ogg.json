@@ -1,0 +1,458 @@
+{
+  "id": "ogg",
+  "name": "Online Gambling and Games",
+  "shortName": "OGG",
+  "description": "Meta defines online gambling and games as any product or service where anything of monetary value is included as part of a method of entry and prize. We prohibit attempts by individuals, manufacturers, and retailers to purchase, sell, raffle, gift, transfer, or trade these services without prior written permission.",
+  "color": "#F59E0B",
+  "icon": "Dice5",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "real_money_gambling",
+      "name": "Online Real Money Gambling",
+      "description": "Content selling, trading, depicting or promoting online gambling where monetary value is part of entry AND prize (Money IN + Money OUT)",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "games_of_skill",
+          "name": "Games of Skill",
+          "description": "Skill-based games with real money entry and prizes (quizzes, chess, pool, rummy, fantasy sports, e-sports)",
+          "action": "label",
+          "examples": [
+            "Online poker tournament with buy-in",
+            "Fantasy sports league with cash prizes",
+            "Rummy game with real money entry",
+            "E-sports betting platform"
+          ],
+          "conditions": ["Skill-based game", "Real money entry (IN)", "Real money prize (OUT)", "Online"]
+        },
+        {
+          "id": "lotteries_raffles",
+          "name": "Lotteries / Raffles",
+          "description": "Games where entry is paid and winning depends on chance, includes tombolas",
+          "action": "label",
+          "examples": [
+            "Online lottery tickets",
+            "Digital raffle entries",
+            "Online tombola game"
+          ],
+          "conditions": ["Paid entry", "Prize present", "Winning depends on chance", "Online"]
+        },
+        {
+          "id": "charitable_lotteries",
+          "name": "Charitable Lotteries / Raffles",
+          "description": "Non-profit lotteries/raffles to raise funds for charitable purposes",
+          "action": "label",
+          "examples": [
+            "Charity raffle online",
+            "Non-profit lottery fundraiser"
+          ],
+          "conditions": ["Charitable/non-profit organization", "Online lottery/raffle"]
+        },
+        {
+          "id": "betting_sports",
+          "name": "Betting / Sports Betting",
+          "description": "Placing wagers on sports, virtual sports, e-sports, horse racing, or non-sports outcomes",
+          "action": "label",
+          "examples": [
+            "Football betting platform",
+            "Horse race betting app",
+            "E-sports betting site",
+            "Virtual sports betting",
+            "Election betting",
+            "Betting exchange"
+          ],
+          "conditions": ["Wagering on outcomes", "Real money stake", "Real money prize", "Online"]
+        },
+        {
+          "id": "casino_games",
+          "name": "Casino Games / Games of Chance",
+          "description": "Games depending on chance or luck - slots, roulette, blackjack, craps, dice, poker",
+          "action": "label",
+          "examples": [
+            "Online slots with real money",
+            "Virtual roulette casino",
+            "Online blackjack for cash",
+            "Fortune Tiger game",
+            "Fortune Rabbit game",
+            "Instant win scratch cards"
+          ],
+          "conditions": ["Chance-based game", "Real money entry", "Real money prize", "Online"]
+        },
+        {
+          "id": "sweepstakes",
+          "name": "Sweepstakes / Prize Draws",
+          "description": "Games requiring real money to play with real money prizes",
+          "action": "label",
+          "examples": [
+            "Online sweepstakes with entry fee",
+            "Prize draw requiring purchase"
+          ],
+          "conditions": ["Real money required to enter", "Real money prize", "Online"]
+        },
+        {
+          "id": "free_trial_pay",
+          "name": "Free-to-Play with Payment Required",
+          "description": "Games offering limited trial then requiring payment to continue",
+          "action": "label",
+          "examples": [
+            "Free trial casino game requiring payment after X plays",
+            "Game demo that requires purchase to continue"
+          ],
+          "conditions": ["Limited free trial", "Payment required to continue", "Gambling mechanics"]
+        }
+      ]
+    },
+    {
+      "id": "brick_and_mortar",
+      "name": "Physical Gambling Establishments",
+      "description": "Physical real-money gambling activity or establishments",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "physical_casinos",
+          "name": "Physical Casinos and Events",
+          "description": "Brick and mortar casinos, casino events, offline poker tournament streaming",
+          "action": "label",
+          "examples": [
+            "Las Vegas casino promotion",
+            "Entertainment events at physical casinos",
+            "Streaming offline poker tournaments"
+          ],
+          "conditions": ["Physical establishment", "No redirect to online gambling", "Complies with applicable laws"]
+        },
+        {
+          "id": "state_lottery",
+          "name": "State/Government Lottery",
+          "description": "Official state or government lottery advertised by responsible entity",
+          "action": "label",
+          "examples": [
+            "Mega Millions official promotion",
+            "Powerball official advertising",
+            "National lottery by government entity"
+          ],
+          "conditions": ["State/government lottery", "Advertised by official entity with direct responsibility"]
+        }
+      ]
+    },
+    {
+      "id": "free_to_play_gambling",
+      "name": "Free-to-Play Games with Gambling Context",
+      "description": "Games simulating gambling with no money entry but opportunity to win money (No Money IN, Money OUT)",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "f2p_gambling_context",
+          "name": "Free-to-Play with Money OUT",
+          "description": "Gambling simulation games that are free to play but offer real money prizes",
+          "action": "label",
+          "examples": [
+            "Free casino game with real cash prizes",
+            "No-entry-fee lottery with cash prize",
+            "Free tournament with money winnings"
+          ],
+          "conditions": ["No money required to play (No Money IN)", "Opportunity to win money/money's worth (Money OUT)"]
+        }
+      ]
+    },
+    {
+      "id": "social_casino_games",
+      "name": "Social Casino Games",
+      "description": "Gambling simulation games with no opportunity to win money or money's worth",
+      "severity": "low",
+      "subcategories": [
+        {
+          "id": "scg",
+          "name": "Social Casino Games (SCG)",
+          "description": "Games simulating gambling (slots, poker, roulette) where users wager in-game currency with no real money prizes",
+          "action": "label",
+          "examples": [
+            "Social slots game - win coins",
+            "Free poker with virtual chips",
+            "Casino simulation - no real prizes",
+            "Slot game with only in-game currency"
+          ],
+          "conditions": ["Simulates gambling games", "In-game currency only", "No opportunity to win real money or prizes"]
+        }
+      ]
+    },
+    {
+      "id": "allowed_content",
+      "name": "Allowed Gambling-Related Content",
+      "description": "Content that does not violate the gambling policy",
+      "severity": "none",
+      "subcategories": [
+        {
+          "id": "conditional_prizes",
+          "name": "Conditional Prizes on Retail Purchase",
+          "description": "Prizes conditional on product purchase at usual retail price, where gambling is not primary business",
+          "action": "no_action",
+          "examples": [
+            "Buy cereal, chance to win trip",
+            "Purchase product for sweepstakes entry",
+            "Retail promotion with prize draw"
+          ],
+          "conditions": ["Prize conditional on retail purchase", "Usual retail price", "Gambling NOT primary business model"]
+        },
+        {
+          "id": "entirely_free",
+          "name": "Entirely Free-to-Play Games",
+          "description": "Games completely free to play with no paid entry options, even if prizes exist",
+          "action": "no_action",
+          "examples": [
+            "Completely free game with prizes",
+            "No paid entry option at all",
+            "Free mobile game"
+          ],
+          "conditions": ["No paid method of entry", "No alternative paid entry method"]
+        },
+        {
+          "id": "in_person_games",
+          "name": "In-Person Games Among Users",
+          "description": "Games played in person among Facebook or Instagram users",
+          "action": "no_action",
+          "examples": [
+            "Poker night with friends",
+            "In-person card game"
+          ],
+          "conditions": ["In-person game", "Among platform users", "Not online"]
+        },
+        {
+          "id": "handicappers_only",
+          "name": "Handicappers/Odds Services",
+          "description": "Services providing odds without promoting/facilitating online gambling",
+          "action": "no_action",
+          "examples": [
+            "Sports odds information site",
+            "Betting tips without gambling facilitation"
+          ],
+          "conditions": ["Provides odds/tips only", "Landing page does NOT promote/facilitate online gambling"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "rmg_casino",
+      "label": "OGG > Real Money Gambling > Casino/Games of Chance",
+      "path": ["Online Gambling and Games", "Real Money Gambling", "Casino Games"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "rmg_betting",
+      "label": "OGG > Real Money Gambling > Betting/Sports Betting",
+      "path": ["Online Gambling and Games", "Real Money Gambling", "Betting"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "rmg_lottery",
+      "label": "OGG > Real Money Gambling > Lotteries/Raffles",
+      "path": ["Online Gambling and Games", "Real Money Gambling", "Lotteries"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "rmg_skill",
+      "label": "OGG > Real Money Gambling > Games of Skill",
+      "path": ["Online Gambling and Games", "Real Money Gambling", "Games of Skill"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "rmg_sweepstakes",
+      "label": "OGG > Real Money Gambling > Sweepstakes/Prize Draws",
+      "path": ["Online Gambling and Games", "Real Money Gambling", "Sweepstakes"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "f2p_gambling",
+      "label": "OGG > Free-to-Play with Gambling Context",
+      "path": ["Online Gambling and Games", "Free-to-Play", "Gambling Context"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "social_casino",
+      "label": "OGG > Social Casino Games",
+      "path": ["Online Gambling and Games", "Social Casino Games"],
+      "action": "label",
+      "severity": "low",
+      "hierarchyRank": 7
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "state_lottery_official",
+      "name": "Official State/Government Lottery",
+      "description": "State or government lottery advertised by the entity with direct or exclusive responsibility for running it",
+      "appliesTo": ["lotteries_raffles"],
+      "action": "special_attention",
+      "note": "Still labeled but has different treatment"
+    },
+    {
+      "id": "conditional_retail_prize",
+      "name": "Retail Purchase Prizes",
+      "description": "Prizes conditional on purchasing product at usual retail price, where gambling is not the primary business",
+      "appliesTo": ["sweepstakes", "lotteries_raffles"],
+      "action": "no_action"
+    },
+    {
+      "id": "entirely_free_to_play",
+      "name": "Entirely Free-to-Play",
+      "description": "Games with no paid entry method at all, even if prizes can be won",
+      "appliesTo": ["free_to_play_gambling", "social_casino_games"],
+      "action": "no_action"
+    },
+    {
+      "id": "in_person_games",
+      "name": "In-Person Games",
+      "description": "Games played in person among Facebook or Instagram users",
+      "appliesTo": ["real_money_gambling"],
+      "action": "no_action"
+    },
+    {
+      "id": "brick_and_mortar_no_redirect",
+      "name": "Physical Casinos Without Online Redirect",
+      "description": "Physical casino promotion that does not redirect to online gambling",
+      "appliesTo": ["brick_and_mortar"],
+      "action": "special_attention",
+      "note": "Allowed if no online gambling facilitation and complies with laws"
+    },
+    {
+      "id": "handicappers_no_gambling",
+      "name": "Handicappers/Odds Without Gambling",
+      "description": "Services providing odds where landing page does not promote/facilitate online gambling",
+      "appliesTo": ["betting_sports"],
+      "action": "no_action"
+    },
+    {
+      "id": "free_to_play_signals",
+      "name": "Free-to-Play Priority",
+      "description": "When 'free to play' signals are present, they take priority over money IN signals",
+      "appliesTo": ["real_money_gambling", "free_to_play_gambling"],
+      "action": "reduce_severity",
+      "note": "Classify as Social Casino Gaming if ambiguous"
+    }
+  ],
+
+  "moneySignals": {
+    "money_in": {
+      "description": "Signals indicating real money is required to play",
+      "terms": [
+        "buy-in", "bet", "pay", "pay now", "wager", "lotto", "join", "spend",
+        "odds", "percentage", "transaction", "debit card", "credit card",
+        "deposit", "top up", "recharge", "e-wallet", "in-app purchases"
+      ],
+      "special_cases": [
+        "WhatsApp reference for payment arrangement",
+        "Depiction of credit/debit card accounts",
+        "Payment systems (Venmo, Gcash, PIX, etc.)",
+        "Bank notification pop-ups",
+        "Account numbers shown"
+      ]
+    },
+    "money_out": {
+      "description": "Signals indicating real money can be won",
+      "terms": [
+        "win", "pay out", "money back", "win real money", "award", "prize",
+        "jackpot", "gain", "withdraw", "cashout"
+      ]
+    },
+    "both_in_out": {
+      "description": "Terms that indicate both money in AND money out",
+      "terms": [
+        "bet", "betting", "odds", "sportsbook"
+      ],
+      "note": "'Bet' in game/website name with no other context = treat as BOTH IN/OUT"
+    }
+  },
+
+  "currencySymbols": {
+    "common": [
+      { "name": "US Dollar", "abbreviation": "USD", "symbol": "$" },
+      { "name": "Euro", "abbreviation": "EUR", "symbol": "€" },
+      { "name": "Japanese Yen", "abbreviation": "JPY", "symbol": "¥" },
+      { "name": "British Pound", "abbreviation": "GBP", "symbol": "£" },
+      { "name": "Australian Dollar", "abbreviation": "AUD", "symbol": "A$" },
+      { "name": "Philippine Peso", "abbreviation": "PHP", "symbol": "P$" },
+      { "name": "Russian Ruble", "abbreviation": "RUB", "symbol": "₽" },
+      { "name": "Thai Baht", "abbreviation": "THB", "symbol": "฿" },
+      { "name": "Indian Rupee", "abbreviation": "INR", "symbol": "₹" },
+      { "name": "Brazilian Real", "abbreviation": "BRL", "symbol": "R$" },
+      { "name": "South Korean Won", "abbreviation": "KRW", "symbol": "₩" },
+      { "name": "Bitcoin", "abbreviation": "BTC", "symbol": "฿" }
+    ],
+    "note": "Use Google search or Currency Converter to verify unfamiliar currencies"
+  },
+
+  "glossary": {
+    "online_gambling_gaming": "Promotion or facilitation of online games where monetary value can be paid to play AND forms part of prize. Must have real money IN AND real money OUT. Activity must be online.",
+    "games_of_skill": "Skill-based games relying on player skill to win: quizzes, chess, pool, rummy, fantasy sports, e-sports",
+    "games_of_chance": "Games relying entirely on chance/randomness: slots, roulette, scratch cards, lottery",
+    "lotteries_raffles": "Games with paid entry, prize present, winning depends only on chance. Raffle = lottery with range of prizes drawn at same event",
+    "charitable_lotteries": "Non-profit raffles to raise funds for charitable purposes",
+    "bingo": "Game of chance marking numbers on cards as drawn randomly, winner marks all numbers first",
+    "betting_exchanges": "Peer-to-peer betting platforms (Betfair Exchange, Smarkets) vs bookmaker",
+    "sports_betting": "Predicting sports results and placing wagers. Includes virtual sports, e-sports, horse racing",
+    "casino_style_games": "Games mimicking casinos: dice, card games, roulette, slots, craps, blackjack, dominoes",
+    "fantasy_sports": "Choose team of real players from different teams, win points based on their performance. FanDuel, DraftKings, PointsBet",
+    "poker_rummy": "Poker: betting on card value. Rummy: forming sets/sequences. Includes Texas Hold'em, Omaha, 7-Card Stud, etc.",
+    "sweepstakes_prize_draws": "Real money required to play AND real money can be won",
+    "social_casino_games": "Simulated gambling with no opportunity to win money. Users wager in-game currency. Includes poker, slots, roulette simulations",
+    "free_to_play": "Games providing significant content without paying or not requiring payment to continue",
+    "monetary_value": "Value measured in money terms. Includes cash, digital currencies (Bitcoin)",
+    "affiliates_handicappers": "Entities not providing gambling but promoting gambling operators. Includes aggregators, tipster sites, lottery ticket retailers",
+    "money_in": "Real money required to play/continue playing",
+    "money_out": "Real money able to be won from playing",
+    "promote": "Speaking positively, encouraging use, providing instructions, or info on how to obtain"
+  },
+
+  "knownGamblingGames": {
+    "critical_always_rmg": [
+      "Fortune Tiger",
+      "Fortune Rabbit",
+      "Fortune Ox",
+      "Fortune Mouse",
+      "Gates of Olympus",
+      "Sweet Bonanza"
+    ],
+    "casino_keywords": [
+      "casino", "slots", "roulette", "blackjack", "craps", "baccarat",
+      "poker", "dice game", "card game", "jackpot", "spin to win"
+    ],
+    "betting_keywords": [
+      "sportsbook", "betting", "bet now", "place bet", "odds",
+      "spread", "over/under", "parlay", "accumulator"
+    ],
+    "fantasy_keywords": [
+      "fantasy", "fantasy sports", "fantasy league", "draft",
+      "FanDuel", "DraftKings", "PointsBet"
+    ]
+  },
+
+  "operationalGuidelines": {
+    "core_rule": "Game must have: (1) Real money IN option, (2) Real money OUT option, (3) Online activity",
+    "rmg_formula": "Money IN + Money OUT = Real Money Gambling",
+    "scg_formula": "May have Money IN but NO Money OUT with real value",
+    "f2p_formula": "NO Money IN but has Money OUT",
+    "free_to_play_priority": "'Free to play' signals take priority over money IN signals",
+    "ambiguity_rule": "In case of ambiguity, classify as Social Casino Gaming",
+    "bet_in_name": "'Bet' in game/website name alone = treat as BOTH money IN/OUT",
+    "emoji_signals": "🤑 💰 💸 and monetary symbols ($, £, €) = signals of real money, but must assess with IN/OUT context",
+    "oflp_review": "If OFLP has pop-ups, deactivate and review (max 5 scrolls). If OFLP error, use ad creative signals only",
+    "state_lottery_verification": "If cannot determine if lottery is official state lottery, do NOT apply carve-out",
+    "fortune_games": "Fortune Tiger, Fortune Rabbit matching sample creatives = RMG regardless of explicit IN/OUT signals"
+  }
+}

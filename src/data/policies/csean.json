@@ -1,0 +1,633 @@
+{
+  "id": "csean",
+  "name": "Child Sexual Exploitation, Abuse, and Nudity",
+  "shortName": "CSEAN",
+  "description": "Policy prohibiting content that sexually exploits or endangers children, including CSAM, solicitation, inappropriate interactions, sextortion, sexualization, nudity, and non-sexual abuse.",
+  "color": "#DC2626",
+  "icon": "ShieldAlert",
+  "ready": true,
+  "priority": "critical",
+
+  "corePrinciple": "We do not allow content or activity that sexually exploits or endangers children. When we become aware of apparent child exploitation, we report it to NCMEC in compliance with applicable law.",
+
+  "ageBuckets": {
+    "fetuses_babies": {
+      "ageRange": "0 - 1.5 years",
+      "description": "Includes fetuses and infants who cannot stand"
+    },
+    "toddlers": {
+      "ageRange": "1.5 - <4 years",
+      "description": "Children who can stand but are under 4 years old"
+    },
+    "minors": {
+      "ageRange": "4 - <18 years",
+      "description": "Children aged 4 to under 18 years"
+    },
+    "defaultRules": [
+      "If unsure adult vs minor → treat as minor",
+      "If unsure baby vs toddler → treat as baby",
+      "If unsure toddler vs minor → treat as minor",
+      "If unsure real vs non-real → treat as real for escalation"
+    ]
+  },
+
+  "categories": {
+    "childSexualExploitation": {
+      "name": "Child Sexual Exploitation (CSE)",
+      "id": "cse",
+      "action": "label",
+      "escalateForCSAM": true,
+      "types": [
+        {
+          "id": "explicit_sexual_activity",
+          "name": "Explicit Sexual Activity or Stimulation",
+          "definition": "Explicit sexual intercourse or oral sex with visible genitals/anus, or explicit stimulation with sex toys"
+        },
+        {
+          "id": "implicit_sexual_activity",
+          "name": "Implicit Sexual Activity or Stimulation",
+          "definition": "Implied intercourse/oral sex where contact is not directly visible, or imminent contact"
+        },
+        {
+          "id": "bestiality",
+          "name": "Sexual Activity Involving Animals",
+          "definition": "Any sexual activity involving a child and an animal"
+        },
+        {
+          "id": "sexual_elements",
+          "name": "Children with Sexual Activity Elements",
+          "elements": [
+            "Restraints (ropes, chains, handcuffs, duct tape)",
+            "Spreading of genitalia or anus",
+            "Signs of arousal (erection, wetness)",
+            "Presence of aroused adult",
+            "Focus/cropped on genitalia",
+            "Sexualized costume (lingerie, fishnets)",
+            "Stripping",
+            "Presence of sex toys or objects for stimulation",
+            "Staged environment (bed) or professionally shot",
+            "Open-mouth kissing with child/adult",
+            "Stimulation of nipples or squeezing breast (except breastfeeding)",
+            "Presence of by-products of sexual activity"
+          ]
+        },
+        {
+          "id": "fetish_content",
+          "name": "Fetish Content",
+          "definition": "Sexual interest in specific object, act, body part, or state evoking arousal"
+        },
+        {
+          "id": "pedophilia_support",
+          "name": "Pedophilia Support",
+          "definition": "Content supporting, advocating, promoting pedophilia (except neutral health discussions)"
+        },
+        {
+          "id": "victim_identification",
+          "name": "Victim Identification/Mocking",
+          "definition": "Content identifying or mocking alleged CSE victims by name or image"
+        }
+      ]
+    },
+    "solicitation": {
+      "name": "Solicitation",
+      "id": "solicitation",
+      "action": "label",
+      "escalate": true,
+      "definition": "Offering, asking for, admitting possession of, or trying to obtain sexual content depicting children",
+      "types": [
+        {
+          "id": "csam_solicitation",
+          "name": "CSAM Solicitation",
+          "definition": "Soliciting Child Sexual Abuse Material"
+        },
+        {
+          "id": "nude_imagery",
+          "name": "Nude Imagery of Children",
+          "definition": "Soliciting nude imagery of real or non-real children"
+        },
+        {
+          "id": "sexualized_imagery",
+          "name": "Sexualized Imagery of Children",
+          "definition": "Soliciting sexualized imagery of real or non-real children"
+        }
+      ],
+      "solicitationSignals": [
+        "Statements asking/offering (looking for, send me, I want, I'm selling, I need)",
+        "Requesting to be contacted",
+        "Providing contact information (phone, email, messaging apps)",
+        "Seeking contact (hit me up, hmu, DM me, DMs open)",
+        "Sharing links to platforms/websites/file-sharing",
+        "Offering content/services (menu, content seller, lists)",
+        "Admitting possession of CSAM",
+        "QR codes linked to inappropriate content",
+        "Call to action buttons (Install Now, Learn More, Send Message)"
+      ],
+      "sexualizedContentSignals": [
+        "Reference to children with sexual activity hints",
+        "Reference to children with sexualized language/imagery",
+        "Slang/code words for CSE (cheese pizza, pedobait, mapfriendly)",
+        "Slang terms for sexual content (teen packs, cp xxx)",
+        "Reference to children with non-real explicit content",
+        "Reference to children with nudity/near nudity"
+      ]
+    },
+    "inappropriateInteractions": {
+      "name": "Inappropriate Interactions with Children (IIC)",
+      "id": "iic",
+      "action": "label",
+      "escalate": true,
+      "types": [
+        {
+          "id": "soliciting_encounters",
+          "name": "Soliciting Sexual Encounters",
+          "definition": "Soliciting, arranging, or planning sexual encounters with children (in person or online)",
+          "purposefulExposureRequired": false
+        },
+        {
+          "id": "adult_enticing",
+          "name": "Adults Enticing Children",
+          "definition": "Adults enticing children to engage in sexual activity",
+          "purposefulExposureRequired": true,
+          "includes": [
+            "Engaging in sexualized conversations",
+            "Offering/displaying/obtaining/requesting sexual material",
+            "Expressing romantic interest in children"
+          ]
+        },
+        {
+          "id": "minor_enticing",
+          "name": "Minors Enticing Children",
+          "definition": "Minors enticing other children to engage in sexual activity",
+          "purposefulExposureRequired": true,
+          "includes": [
+            "Engaging in sexualized conversations",
+            "Offering/displaying/obtaining/requesting sexual material"
+          ]
+        }
+      ],
+      "noAction": ["Minors expressing romantic interest in other minors"],
+      "sexualizedConversations": {
+        "definition": "Contact directed at child mentioning/implying sexual activity",
+        "examples": [
+          "Mentioning sexual activity directed at child (I'd like to fuck you)",
+          "Questioning sexual desire/arousal of child (Are you horny?)",
+          "Using adjectives to describe sexualized body parts (Nice boobs)",
+          "Using sexual adjectives to describe child (You're so sexy)",
+          "Using sexually suggestive emojis + body part mention"
+        ],
+        "notSexualized": [
+          "Positive adjectives about appearance as whole (You're beautiful)",
+          "Describing non-sexualized body parts (Nice hands)",
+          "Language of endearment without sexual context (I love you, darling)"
+        ]
+      },
+      "romanticInterest": {
+        "examples": [
+          "Will you be my GF/BF/girlfriend/boyfriend?",
+          "Will you marry me?",
+          "Will you date me?",
+          "I have a crush on you"
+        ],
+        "notRomanticInterest": [
+          "Questions about relationship status",
+          "Questions about marital status"
+        ]
+      }
+    },
+    "exploitativeIntimateImagery": {
+      "name": "Exploitative Intimate Imagery and Sextortion",
+      "id": "sextortion",
+      "action": "label",
+      "escalate": true,
+      "types": [
+        {
+          "id": "sextortion",
+          "name": "Sextortion",
+          "definition": "Coercing money, favors, or imagery with threats to expose nude/intimate imagery or information",
+          "subtypes": [
+            { "type": "financial", "description": "Demanding money or monetary value" },
+            { "type": "content", "description": "Demanding more imagery" },
+            { "type": "favor", "description": "Demanding favors like meeting or sexual activity" }
+          ]
+        },
+        {
+          "id": "sharing_threats",
+          "name": "Sharing/Threatening to Share Imagery",
+          "conditions": {
+            "minor": "Nude, near nude, sexual activity, or sexually suggestive pose",
+            "baby_toddler": "Nude, sexual activity, or sexually suggestive pose"
+          },
+          "additionalConditions": [
+            "Vengeful context apparent",
+            "Independent sources confirm vengeful context",
+            "Face or name match between reporter and PDITI"
+          ]
+        },
+        {
+          "id": "private_conversations",
+          "name": "Private Sexual Conversations",
+          "definition": "Sharing, threatening, or stating intent to share private sexual conversations"
+        }
+      ],
+      "vengefulContextIndicators": [
+        "Expressions of contempt or disgust (mocking, humiliation)",
+        "Attacks through derogatory sexual terms",
+        "Attacks based on sexual assault experiences",
+        "Claims about sexual activity/romantic involvement/orientation/gender identity",
+        "Claims about STIs",
+        "Derogatory female-gendered cursing",
+        "Comparison to inferior animals/objects",
+        "Negative physical descriptions",
+        "Negative character/ability claims",
+        "Attacks through lack of sexual activity terms"
+      ]
+    },
+    "sexualizationOfChildren": {
+      "name": "Sexualization of Children",
+      "id": "sexualization",
+      "action": "label",
+      "types": [
+        {
+          "id": "explicit_sexualization",
+          "name": "Explicit Sexualization",
+          "definition": "Content explicitly sexualizing real or non-real children",
+          "categories": [
+            {
+              "type": "suggestive_poses",
+              "description": "Near nude children in sexually suggestive poses (camel toe, male bulge)"
+            },
+            {
+              "type": "focal_point",
+              "description": "Imagery drawing attention to sexualized body parts through positioning/editing",
+              "examples": [
+                "Cropping/zooming on sexualized parts without face visible",
+                "Digital effects focusing on sexualized parts",
+                "Adjusting clothing to focus on parts",
+                "Using hands to frame sexualized parts",
+                "High/low angle imagery focusing on breasts/buttocks/crotch",
+                "Upskirt imagery",
+                "Secretly taken imagery"
+              ]
+            },
+            {
+              "type": "edited_content",
+              "description": "Edited/manipulated/AI-generated sexualized content",
+              "examples": [
+                "Genitalia photoshopped onto child image",
+                "Sex toys on child image",
+                "Sexually-explicit text overlays/emojis/stickers",
+                "Adult nudity or sexual activity on child image"
+              ]
+            },
+            {
+              "type": "sexualized_movements",
+              "description": "Sexualized movements or dancing",
+              "examples": [
+                "Movements simulating sexual activity",
+                "Sexually licking/biting another person",
+                "Simulating oral sex with objects",
+                "Sexual touching of sexualized body parts",
+                "Repeated shaking/jiggling/twerking",
+                "Dancing in intimate apparel (underwear, lingerie, only towel)"
+              ]
+            },
+            {
+              "type": "sexualized_language",
+              "description": "Sexualized language expressing sexual interest in child",
+              "examples": [
+                "Sexualizing comments (hot, sexy, hot or not)",
+                "Comments about intimate apparel",
+                "Mentioning sexual activity directed at child",
+                "Questioning sexual desire about child",
+                "Commentary about child's body parts with sexual adjectives",
+                "Offering imagery to be used in sexual activity"
+              ]
+            },
+            {
+              "type": "romantic_under_12",
+              "description": "Expressing romantic interest in children 12 or below",
+              "examples": [
+                "Looking for girlfriend 8, 9, 10",
+                "Looking for singles aged 10, 11, 12, 13, 14",
+                "I want to date ages 12"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "implicit_sexualization",
+          "name": "Implicit Sexualization",
+          "definition": "Complex objects aggregating non-violating imagery with comments/hashtags indicating sexual interest",
+          "visualSignals": [
+            "Near nude imagery of children",
+            "Sexually suggestive poses in dances",
+            "Headshot or glamor shot imagery",
+            "Children with bare midriff",
+            "Children in uniforms (school, sports)",
+            "Imagery focusing on covered sexualized body parts",
+            "Wrestling or tackling positions",
+            "Market-specific sexual signal poses"
+          ],
+          "textSignals": [
+            "Commentary about physical appearance (handsome, cute, pretty)",
+            "Conditional/aspirational statements for physical activity",
+            "Soliciting content/imagery of children",
+            "Emojis/GIFs indicating affection/romantic/sexual interest"
+          ]
+        }
+      ]
+    },
+    "childNudity": {
+      "name": "Child Nudity",
+      "id": "nudity",
+      "action": "label",
+      "note": "Applies to nudity WITHOUT signals of exploitation or sexualization",
+      "byAgeBucket": {
+        "babies": {
+          "label": ["Close-ups of genitalia"]
+        },
+        "toddlers": {
+          "label": [
+            "Visible genitalia (even through transparent clothing)",
+            "Visible anus and/or fully nude close-up of buttocks",
+            "Female nipples",
+            "Long-shots of fully nude buttocks",
+            "Implied nudity (under-clothed between knees and neck, no genitalia visible)"
+          ]
+        },
+        "minors": {
+          "label": [
+            "Visible genitalia (even through transparent clothing)",
+            "Visible anus and/or fully nude close-up of buttocks",
+            "Uncovered female nipples",
+            "No clothes from neck to knee (even if no genitalia/nipples showing)",
+            "Implied nudity (side views, obscured genitalia/nipples, cropped above genitalia, fully visible buttocks/butt crack)"
+          ]
+        }
+      },
+      "realWorldArt": {
+        "sexualContext": "label",
+        "healthContext": "label",
+        "otherContext": "label"
+      },
+      "nonRealHealthContext": "label"
+    },
+    "nonSexualChildAbuse": {
+      "name": "Non-Sexual Child Abuse",
+      "id": "nsca",
+      "action": "label",
+      "escalateForLifeThreatening": true,
+      "definition": "Non-sexual physical abuse by adult or animal towards anyone under 18",
+      "exhaustiveList": [
+        "Kicking, beating, slapping, punching, shoving, stepping on",
+        "Pulling of hair",
+        "Dragging by hair",
+        "Strangling, choking, smothering, suffocating",
+        "Drowning (except religious ritual immersion → MAS)",
+        "Biting through skin",
+        "Poisoning",
+        "Forcible restraint",
+        "Inflicting burn or cut wounds",
+        "Forcible smoking or drug/alcohol intake",
+        "Tossing, rotating, throwing, dropping, shaking by wrists/ankles/arms/legs/neck",
+        "Placing/pointing weapons at children",
+        "Scalding with liquid or hot substances/surfaces/objects",
+        "Caning, whipping, flogging",
+        "Dropping",
+        "Forcing ingestion of something other than food/medicine",
+        "Scratching with visible blood",
+        "Twisting of limbs"
+      ],
+      "noAction": [
+        "Real-world art depicting NSCA",
+        "Cartoons or movies depicting NSCA",
+        "Video games depicting NSCA"
+      ],
+      "escalationCriteria": {
+        "all_required": [
+          "Contains life threatening harm",
+          "Is recent (within 24 hours)",
+          "Posted by person responsible for abuse"
+        ]
+      }
+    }
+  },
+
+  "csamDefinition": {
+    "name": "Child Sexual Abuse Material (CSAM)",
+    "definition": "Any visual depiction of person under 18 engaged in sexually explicit conduct",
+    "escalate": true,
+    "reportToNCMEC": true,
+    "criteria": {
+      "scenario1": "Sexual intercourse (actual, implied, or made to appear)",
+      "scenario2": "Sadistic masochistic abuse (S&M)",
+      "scenario3": "Genitalia/anus visible AND 2+ sexual elements present"
+    },
+    "sexualIntercourse": [
+      "Genital to genital",
+      "Genital to mouth",
+      "Genital to anus",
+      "Mouth to anus",
+      "Hand manipulation of genitals to arouse",
+      "Masturbation (erect penis + touching)",
+      "Sexual fluid present (at least one person nude/near nude)",
+      "Any of above involving animal",
+      "Foreign object insertion into genitals or anus",
+      "Sex toy in mouth",
+      "Apparent imminent sexual intercourse"
+    ],
+    "sexualElements": [
+      "Focus on genitals/anus",
+      "Setting associated with sexual activity",
+      "Sexualized pose",
+      "Imagery intended to elicit sexual response"
+    ],
+    "notCSAM": [
+      "Medical imagery",
+      "Art imagery",
+      "Cartoon imagery (hentai)",
+      "Appropriate bathing/toileting/diapering",
+      "Religious or cultural photos",
+      "Family photos without sexual elements",
+      "Non-sexual child abuse imagery"
+    ]
+  },
+
+  "nearNudityDefinition": {
+    "general": [
+      "Partially visible pubic hair or pubic ridge covered by clothing/object/overlay",
+      "Genitalia covered only by opaque object/overlay/body part",
+      "Clear outline of genitalia through clothing (camel toe)",
+      "Genitalia cropped but likely visible if not cropped",
+      "Female nipples covered only by opaque object/overlay/body part",
+      "Female nipples covered by paint",
+      "Female nipples visible under see-through clothing",
+      "Close-ups of buttocks in lingerie thongs",
+      "Buttocks with butt crack visible or covered only by object"
+    ],
+    "forCSEAN_additional": [
+      "Nude side views",
+      "Intimate apparel (lingerie, underwear, bras, sleepwear, thongs)",
+      "Sex gear",
+      "Sexualized costumes (fishnets, leather, bottoms exposing buttocks)",
+      "Children in swimsuits",
+      "Children in non-sexualized costumes (leotards, dance, gymnastics)",
+      "Topless minors (even without visible nipples)",
+      "Children with visible pubic hair/ridge",
+      "Children with outline of female nipples through clothing",
+      "Implied nudity of children"
+    ]
+  },
+
+  "sexuallySuggestivePose": {
+    "spreading_legs": {
+      "positions": ["sitting", "squatting", "kneeling", "lying down"],
+      "scenarios": [
+        "Wearing only underwear or equivalent coverage (excluding swimsuits)",
+        "Wearing fishnet/pantyhose/stockings over underwear",
+        "Genitalia cropped but likely visible if not cropped",
+        "Visible pubic hair or ridge"
+      ],
+      "excludes": "Fitness, sports, or dance contexts"
+    },
+    "bending_over": {
+      "positions": ["standing", "kneeling", "crouching on hands and knees"],
+      "scenarios": [
+        "Wearing only underwear or equivalent coverage (excluding swimsuits)",
+        "Wearing fishnet/pantyhose/stockings over underwear",
+        "Underwear showing from below despite other clothes"
+      ],
+      "excludes": "Fitness, sports, or dance contexts"
+    },
+    "children_additional": [
+      "Passive stripping (clothing pulled to expose pubic area)",
+      "Spread legs (unless standing with both feet on ground)",
+      "On hands and knees",
+      "Bending over",
+      "Hands behind head/touching scalp",
+      "Face concealed/blurred/obscured/cropped",
+      "Reclining on bed in private setting",
+      "Close-up of male bulge",
+      "Close-up of camel toe",
+      "Holding food in sexualized manner near open mouth"
+    ]
+  },
+
+  "iicAggravatingFactors": [
+    {
+      "id": "meeting_for_sex",
+      "name": "Meeting or Met for Sex",
+      "definition": "Adult-minor or minor-minor met for sex or planning to meet"
+    },
+    {
+      "id": "meeting_for_sodomy",
+      "name": "Meeting or Met for Sodomy",
+      "definition": "Met for or planning anal/oral intercourse"
+    },
+    {
+      "id": "sextortion",
+      "name": "Minor Sextortion",
+      "definition": "Extorting minor with sexually compromising material"
+    },
+    {
+      "id": "coercion",
+      "name": "Coercion",
+      "definition": "Threatening, insistent, or retaliatory behavior",
+      "includes": [
+        "Requesting secrecy",
+        "Instructing to delete evidence",
+        "Threatening harm if no compliance",
+        "Threatening rape"
+      ]
+    },
+    {
+      "id": "csam_offense",
+      "name": "CSAM Offense",
+      "definition": "Production, distribution, or solicitation of CSAM"
+    },
+    {
+      "id": "position_of_trust",
+      "name": "Position of Trust",
+      "definition": "Teacher, counselor, pastor, coach, politician, law enforcement, etc."
+    },
+    {
+      "id": "unsupervised_relationship",
+      "name": "Unsupervised Relationship",
+      "definition": "Parent's friend/partner, family friend, neighbor, babysitter, nanny"
+    },
+    {
+      "id": "suicide_self_harm",
+      "name": "Suicide or Self-Harm",
+      "definition": "Minor mentions suicide thoughts or intent to self-harm"
+    },
+    {
+      "id": "incest",
+      "name": "Incest",
+      "definition": "Sexual abuse by family member (excluding cousins)"
+    },
+    {
+      "id": "minor_on_minor",
+      "name": "Minor-On-Minor Abuse",
+      "definition": "Enticing minor to sexually abuse another minor"
+    },
+    {
+      "id": "sadism",
+      "name": "Sadism",
+      "definition": "Sexual behavior exhibiting violence, pain, or humiliation"
+    },
+    {
+      "id": "bestiality",
+      "name": "Bestiality",
+      "definition": "Sexual activity requests involving minor and animal"
+    }
+  ],
+
+  "labelHierarchy": {
+    "escalate": [
+      { "rank": 1, "label": "Sextortion", "action": "escalate" },
+      { "rank": 2, "label": "CSAM (photos, videos)", "action": "escalate" },
+      { "rank": 3, "label": "CSAM Links", "action": "escalate" },
+      { "rank": 4, "label": "Soliciting (Asking/Offering) Imagery", "action": "escalate" },
+      { "rank": 5, "label": "Inappropriate Interactions with Children", "action": "escalate" },
+      { "rank": 6, "label": "Imminent Sexual Threat to Life or Safety", "action": "escalate" },
+      { "rank": 7, "label": "Soliciting (Asking/Offering) Sex", "action": "escalate" },
+      { "rank": 8, "label": "Escalate Parent Content", "action": "escalate" },
+      { "rank": 9, "label": "Non-Sexual Child Abuse (life-threatening)", "action": "escalate" }
+    ],
+    "label": [
+      { "rank": 1, "label": "Solicitation", "severity": "critical" },
+      { "rank": 2, "label": "Explicit Sexualization of Children", "severity": "critical" },
+      { "rank": 3, "label": "Child Sexual Exploitation (non-real, fetish, pedophilia, other)", "severity": "critical" },
+      { "rank": 4, "label": "Non-Sexual Child Abuse", "severity": "high" },
+      { "rank": 5, "label": "Child Nudity", "severity": "high" },
+      { "rank": 6, "label": "Implicit Sexualization of Children", "severity": "mid" }
+    ]
+  },
+
+  "purposefulExposure": {
+    "definition": "Targeting specific individual",
+    "methods": [
+      "Posting text or imagery on target's account or page",
+      "Posting in comments to target's post",
+      "Tagging or mentioning target in text or imagery"
+    ]
+  },
+
+  "commonlySexualizedBodyParts": [
+    "Genitalia",
+    "Crotch",
+    "Breasts",
+    "Anus",
+    "Buttocks",
+    "Lips",
+    "Mouth/tongue"
+  ],
+
+  "byProductsOfSexualActivity": [
+    "Pre-ejaculate (pre-cum)",
+    "Semen",
+    "Vaginal secretions",
+    "Female ejaculate",
+    "Wet spot in/near crotch area"
+  ]
+}

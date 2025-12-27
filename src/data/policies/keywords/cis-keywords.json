@@ -1,0 +1,256 @@
+{
+  "policyId": "cis",
+  "policyName": "Credible Intent of Suicide",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+  "isEscalationPolicy": true,
+
+  "explicitIntentPhrases": {
+    "critical": [
+      { "phrase": "I am going to kill myself", "type": "present_future", "language": "en" },
+      { "phrase": "vou me matar", "type": "present_future", "language": "pt" },
+      { "phrase": "I will commit suicide", "type": "present_future", "language": "en" },
+      { "phrase": "vou cometer suicídio", "type": "present_future", "language": "pt" },
+      { "phrase": "I will end my life", "type": "present_future", "language": "en" },
+      { "phrase": "vou acabar com minha vida", "type": "present_future", "language": "pt" },
+      { "phrase": "ending my life", "type": "present_future", "language": "en" },
+      { "phrase": "acabando com minha vida", "type": "present_future", "language": "pt" },
+      { "phrase": "I am leaving this world forever", "type": "present_future", "language": "en" },
+      { "phrase": "this is the last day of my life", "type": "present_future", "language": "en" },
+      { "phrase": "este é o último dia da minha vida", "type": "present_future", "language": "pt" },
+      { "phrase": "now is the time to leave this miserable world", "type": "present_future", "language": "en" },
+      { "phrase": "going to kill myself", "type": "present_future", "language": "en" },
+      { "phrase": "I will shoot myself", "type": "present_future", "language": "en" },
+      { "phrase": "vou me atirar", "type": "present_future", "language": "pt" },
+      { "phrase": "I am loading the gun", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "this is my last post", "type": "present_future", "language": "en" },
+      { "phrase": "este é meu último post", "type": "present_future", "language": "pt" }
+    ],
+    "attemptInProgress": [
+      { "phrase": "I took pills", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "tomei comprimidos", "type": "attempt_in_progress", "language": "pt" },
+      { "phrase": "I've taken pills", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "I have taken pills", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "I just took pills", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "I've drunk poison", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "bebi veneno", "type": "attempt_in_progress", "language": "pt" },
+      { "phrase": "I consumed bleach", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "I am slitting my veins", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "estou cortando meus pulsos", "type": "attempt_in_progress", "language": "pt" },
+      { "phrase": "I am drinking the poison", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "I don't want to wake up", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "não quero acordar", "type": "attempt_in_progress", "language": "pt" },
+      { "phrase": "will I die in my sleep", "type": "attempt_in_progress", "language": "en" },
+      { "phrase": "I did something horrible which is irreversible", "type": "attempt_in_progress", "language": "en" }
+    ]
+  },
+
+  "capabilityIndicators": {
+    "methods": [
+      { "method": "pills", "variations": ["sleeping pills", "medication", "meds", "overdose", "comprimidos", "remédios"], "language": "en/pt" },
+      { "method": "gun", "variations": ["shoot myself", "gun to my head", "arma", "atirar"], "language": "en/pt" },
+      { "method": "hanging", "variations": ["hang myself", "noose", "enforcamento", "me enforcar", "corda"], "language": "en/pt" },
+      { "method": "jumping", "variations": ["jump off", "top of a building", "bridge", "pular", "prédio", "ponte"], "language": "en/pt" },
+      { "method": "cutting", "variations": ["slit my veins", "cut my wrists", "bleed out", "cortar pulsos", "sangrar"], "language": "en/pt" },
+      { "method": "poison", "variations": ["drink poison", "bleach", "pesticide", "veneno", "água sanitária"], "language": "en/pt" },
+      { "method": "drowning", "variations": ["drown myself", "me afogar"], "language": "en/pt" },
+      { "method": "suffocation", "variations": ["suffocate", "sufocar", "asfixiar"], "language": "en/pt" },
+      { "method": "car", "variations": ["head on with another car", "drive into", "crash my car"], "language": "en" }
+    ],
+    "visualIndicators": [
+      "Image of gun",
+      "Handful of pills",
+      "Noose",
+      "Deep vertical cuts to forearm",
+      "Video of ingesting pills",
+      "Video of consuming liquid",
+      "Standing on ledge/bridge/building"
+    ]
+  },
+
+  "imminenceIndicators": {
+    "explicitTimeframes": [
+      { "phrase": "within the hour", "language": "en" },
+      { "phrase": "dentro de uma hora", "language": "pt" },
+      { "phrase": "today", "language": "en" },
+      { "phrase": "hoje", "language": "pt" },
+      { "phrase": "tonight", "language": "en" },
+      { "phrase": "esta noite", "language": "pt" },
+      { "phrase": "this morning", "language": "en" },
+      { "phrase": "esta manhã", "language": "pt" },
+      { "phrase": "now", "language": "en" },
+      { "phrase": "agora", "language": "pt" },
+      { "phrase": "right now", "language": "en" },
+      { "phrase": "2nite", "language": "en" },
+      { "phrase": "tonite", "language": "en" },
+      { "phrase": "in a few hours", "language": "en" },
+      { "phrase": "daqui a pouco", "language": "pt" }
+    ],
+    "inferredImminence": [
+      { "phrase": "this is the last story I will post", "language": "en" },
+      { "phrase": "esta é a última história que vou postar", "language": "pt" },
+      { "phrase": "my last night on this earth", "language": "en" },
+      { "phrase": "minha última noite nesta terra", "language": "pt" },
+      { "phrase": "this pain won't be here come tomorrow", "language": "en" },
+      { "phrase": "I love everyone who ever loved me", "context": "farewell with action", "language": "en" },
+      { "phrase": "goodbye everyone", "context": "with action", "language": "en" },
+      { "phrase": "adeus a todos", "context": "with action", "language": "pt" },
+      { "phrase": "I can't do it anymore", "context": "with action/method", "language": "en" },
+      { "phrase": "não aguento mais", "context": "with action/method", "language": "pt" }
+    ]
+  },
+
+  "suicideNoteIndicators": {
+    "explicitPhrases": [
+      { "phrase": "suicide note", "language": "en" },
+      { "phrase": "carta de suicídio", "language": "pt" },
+      { "phrase": "nota de suicídio", "language": "pt" },
+      { "phrase": "suicide letter", "language": "en" },
+      { "phrase": "goodbye note", "language": "en" },
+      { "phrase": "nota de despedida", "language": "pt" },
+      { "phrase": "goodbye letter", "language": "en" },
+      { "phrase": "carta de despedida", "language": "pt" },
+      { "phrase": "my last words", "language": "en" },
+      { "phrase": "minhas últimas palavras", "language": "pt" },
+      { "phrase": "end it all", "language": "en" },
+      { "phrase": "acabar com tudo", "language": "pt" }
+    ],
+    "emotionalIndicators": [
+      "thanking individuals",
+      "saying goodbye to loved ones",
+      "asking for forgiveness",
+      "expressing guilt",
+      "expressing shame",
+      "giving away possessions",
+      "withdrawal from others",
+      "social alienation",
+      "feeling like a burden",
+      "burdensomeness",
+      "I'm sorry for everything",
+      "desculpa por tudo",
+      "forgive me",
+      "me perdoe",
+      "take care of [person/pet]",
+      "cuide de",
+      "you'll be better without me",
+      "vocês vão ficar melhor sem mim"
+    ]
+  },
+
+  "indirectIntentPhrases": {
+    "historical": [
+      { "phrase": "I tried to kill myself", "type": "historical", "note": "Past tense - do NOT escalate", "language": "en" },
+      { "phrase": "tentei me matar", "type": "historical", "note": "Past tense - do NOT escalate", "language": "pt" },
+      { "phrase": "I tried to end it all last night", "type": "historical", "language": "en" },
+      { "phrase": "a few weeks ago I tried", "type": "historical", "language": "en" },
+      { "phrase": "semanas atrás eu tentei", "type": "historical", "language": "pt" }
+    ],
+    "conditional": [
+      { "phrase": "if I killed myself", "type": "conditional", "note": "Conditional - do NOT escalate", "language": "en" },
+      { "phrase": "se eu me matasse", "type": "conditional", "note": "Conditional - do NOT escalate", "language": "pt" },
+      { "phrase": "no one would notice if I", "type": "conditional", "language": "en" },
+      { "phrase": "ninguém notaria se eu", "type": "conditional", "language": "pt" },
+      { "phrase": "might or might not", "type": "conditional", "language": "en" },
+      { "phrase": "say it back or else", "type": "conditional", "language": "en" }
+    ],
+    "aspirational_ideation": [
+      { "phrase": "I wish I could die", "type": "aspirational", "note": "Wishful - do NOT escalate", "language": "en" },
+      { "phrase": "queria morrer", "type": "aspirational", "note": "Wishful - do NOT escalate", "language": "pt" },
+      { "phrase": "I want to die", "type": "aspirational", "language": "en" },
+      { "phrase": "quero morrer", "type": "aspirational", "language": "pt" },
+      { "phrase": "I don't want to live", "type": "aspirational", "language": "en" },
+      { "phrase": "não quero viver", "type": "aspirational", "language": "pt" },
+      { "phrase": "I feel like dying", "type": "aspirational", "language": "en" },
+      { "phrase": "what I'm waiting for is that I die", "type": "aspirational", "language": "en" },
+      { "phrase": "hopefully it will be over", "type": "aspirational", "language": "en" }
+    ]
+  },
+
+  "memeHumorIndicators": {
+    "humorousContextSignals": [
+      { "signal": "😫🤣", "note": "Laughing emoji combination" },
+      { "signal": "OMG just gonna KMS", "note": "Casual internet slang" },
+      { "signal": "lol", "context": "After serious statement" },
+      { "signal": "lmao", "context": "After serious statement" },
+      { "signal": "haha", "context": "After serious statement" },
+      { "signal": "jk", "meaning": "just kidding" },
+      { "signal": "bruh", "context": "Casual context" }
+    ],
+    "hyperbolicPatterns": [
+      { "pattern": "do [number] flips", "example": "jump off a bridge and do 3 flips", "language": "en" },
+      { "pattern": "into confetti", "example": "blow my brains out into confetti", "language": "en" },
+      { "pattern": "that [activity] was so [adjective]", "example": "That test was so hard I'm going to blow my brains out", "language": "en" },
+      { "pattern": "I'm so [emotion] I could die", "example": "I'm so bored I could die", "language": "en" },
+      { "pattern": "sports team reference", "example": "The eagles want me to hang myself", "language": "en" }
+    ],
+    "memeImagerySignals": [
+      "Meme format/template",
+      "Cartoon imagery",
+      "Known meme character",
+      "Impact font text",
+      "Humorous juxtaposition",
+      "Reaction image"
+    ]
+  },
+
+  "safeguardedIndicators": [
+    { "phrase": "police are with", "language": "en" },
+    { "phrase": "polícia está com", "language": "pt" },
+    { "phrase": "ambulance are with", "language": "en" },
+    { "phrase": "ambulância está com", "language": "pt" },
+    { "phrase": "EMS arrived", "language": "en" },
+    { "phrase": "going to the hospital", "language": "en" },
+    { "phrase": "indo para o hospital", "language": "pt" },
+    { "phrase": "police were on scene", "language": "en" },
+    { "phrase": "called 911", "language": "en" },
+    { "phrase": "called 112", "language": "eu" },
+    { "phrase": "called 190", "language": "pt-br" },
+    { "phrase": "is with police and is okay", "language": "en" },
+    { "phrase": "family and the ambulance are with", "language": "en" },
+    { "phrase": "is being helped", "language": "en" },
+    { "phrase": "está sendo ajudado", "language": "pt" }
+  ],
+
+  "normalBehaviorIndicators": [
+    "Posting additional unrelated content",
+    "Engaging with comments normally",
+    "Responding to friends",
+    "Posting memes/jokes after",
+    "Commenting on news/entertainment",
+    "Reacting to posts without distress"
+  ],
+
+  "helpReceivedIndicators": [
+    { "phrase": "I'm okay now", "language": "en" },
+    { "phrase": "estou bem agora", "language": "pt" },
+    { "phrase": "I got help", "language": "en" },
+    { "phrase": "consegui ajuda", "language": "pt" },
+    { "phrase": "I'm safe", "language": "en" },
+    { "phrase": "estou seguro", "language": "pt" },
+    { "phrase": "feeling better", "language": "en" },
+    { "phrase": "me sentindo melhor", "language": "pt" },
+    { "phrase": "talked to someone", "language": "en" },
+    { "phrase": "conversei com alguém", "language": "pt" },
+    { "phrase": "going to get help", "language": "en" },
+    { "phrase": "vou buscar ajuda", "language": "pt" },
+    { "phrase": "thank you for checking on me", "language": "en" },
+    { "phrase": "obrigado por se preocupar", "language": "pt" }
+  ],
+
+  "escalationDecisionMatrix": {
+    "escalateToIRT": {
+      "standardContent": "ALL 3 criteria met (Intent + Capability + Imminence)",
+      "suicideNote": "2 of 3 criteria met"
+    },
+    "doNotEscalate": [
+      "Historical/past tense statements",
+      "Conditional statements",
+      "Aspirational/ideation only",
+      "Meme imagery present",
+      "Humorous/hyperbolic context",
+      "Normal behavior since post",
+      "Help received confirmed",
+      "User safeguarded confirmed"
+    ]
+  }
+}

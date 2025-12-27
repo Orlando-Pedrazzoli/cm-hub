@@ -1,0 +1,499 @@
+{
+  "id": "bh",
+  "name": "Bullying and Harassment",
+  "shortName": "BH",
+  "description": "Policy protecting users from bullying and harassment, with tiered protections based on user status (public/private) and age (adult/minor).",
+  "color": "#F59E0B",
+  "icon": "ShieldAlert",
+  "ready": true,
+
+  "corePrinciple": "Bullying and harassment prevent people from feeling safe and respected. We distinguish between public figures and private individuals to allow discussion and critical commentary while protecting vulnerable users. Minors receive heightened protection regardless of user status.",
+
+  "exclusions": [
+    "Individuals part of designated organizations under DOI policy",
+    "Individuals who died prior to 1900"
+  ],
+
+  "userCategories": {
+    "publicFigure": {
+      "definition": "Someone who engages with established public credentials and can influence large groups",
+      "criteria": [
+        "Heads of State",
+        "Members of executive/legislative branches at state, national, or supranational level",
+        "Political candidates (up to 30 days after election if not elected)",
+        "People with 1M+ followers on any social media account",
+        "People mentioned by name in 5+ news articles within last 2 years"
+      ],
+      "note": "Minors under 13 don't qualify as public figures"
+    },
+    "limitedScopePublicFigure": {
+      "definition": "Public figure whose primary fame is limited to activism, journalism, or involuntary means",
+      "note": "If broader fame exists (e.g., both actor and activist), does not qualify"
+    },
+    "involuntaryPublicFigure": {
+      "definition": "Individuals who qualify as public figures but have not engaged with their fame",
+      "exception": "Unless accused of criminal activity in context of incident that led to fame"
+    },
+    "privateIndividual": {
+      "definition": "Someone who does not act in public context and is not of public interest"
+    }
+  },
+
+  "tiers": {
+    "tier1": {
+      "name": "Universal Protections for Everyone",
+      "targets": "All users (public and private, adult and minor)",
+      "attacks": [
+        {
+          "id": "unwanted_contact",
+          "name": "Unwanted Contact",
+          "types": ["Repeated", "Sexually harassing", "Directed at large number without prior solicitation"],
+          "action": "label"
+        },
+        {
+          "id": "calls_for_ssi",
+          "name": "Calls for Self-Injury or Suicide",
+          "definition": "Calls for self-injury or suicide of specific individual or group",
+          "action": "label"
+        },
+        {
+          "id": "attacks_sexual_assault_victims",
+          "name": "Attacks Based on Sexual Assault/Exploitation/Harassment/Domestic Abuse Experience",
+          "action": "label"
+        },
+        {
+          "id": "intent_sexual_activity",
+          "name": "Statements of Intent to Engage in Sexual Activity",
+          "definition": "Statements of intent or advocating to engage in sexual activity",
+          "action": "label"
+        },
+        {
+          "id": "severe_sexualized_commentary",
+          "name": "Severe Sexualized Commentary",
+          "definition": "Expressions of sexual arousal OR expressions imposing sexual activity on target",
+          "action": "label"
+        },
+        {
+          "id": "derogatory_sexualized_imagery",
+          "name": "Derogatory Sexualized Photoshop or Drawings",
+          "action": "label"
+        },
+        {
+          "id": "derogatory_sexual_activity_terms",
+          "name": "Attacks Through Derogatory Terms Related to Sexual Activity",
+          "examples": ["whore", "slut"],
+          "action": "label"
+        },
+        {
+          "id": "violent_tragedy_denial",
+          "name": "Claims That Violent Tragedy Did Not Occur",
+          "action": "label"
+        },
+        {
+          "id": "crisis_actor_claims",
+          "name": "Claims Individuals Are Lying About Being Victims",
+          "types": ["Acting/pretending to be victim", "Paid/employed to mislead"],
+          "action": "label"
+        },
+        {
+          "id": "doxxing_threats",
+          "name": "Threats to Release Private Information",
+          "types": ["Phone number", "Residential address", "Email address", "Medical records"],
+          "action": "label"
+        },
+        {
+          "id": "calls_for_bullying",
+          "name": "Calls for or Statements of Intent to Bully/Harass",
+          "action": "label"
+        },
+        {
+          "id": "bodily_functions_degradation",
+          "name": "Degradation During Bodily Functions",
+          "definition": "Degrades individuals depicted menstruating, urinating, vomiting, or defecating",
+          "action": "label"
+        }
+      ],
+      "purposefulExposureRequired": [
+        {
+          "id": "calls_for_death",
+          "name": "Calls for Death or Medical Condition",
+          "definition": "Calls for death and statements in favor of contracting/developing medical condition",
+          "note": "For adult public figures, requires purposeful exposure",
+          "action": "label"
+        },
+        {
+          "id": "death_mocking",
+          "name": "Celebration or Mocking of Death/Medical Condition",
+          "note": "For adult public figures, requires purposeful exposure",
+          "action": "label"
+        },
+        {
+          "id": "sti_claims",
+          "name": "Claims About Sexually Transmitted Infections",
+          "note": "For adult public figures, requires purposeful exposure",
+          "action": "label"
+        },
+        {
+          "id": "physical_appearance_inferiority",
+          "name": "Statements of Inferiority About Physical Appearance",
+          "note": "For adult public figures, requires purposeful exposure",
+          "action": "label"
+        }
+      ]
+    },
+    "tier2": {
+      "name": "Additional Protections for Minors, Private Adults, Limited Scope Public Figures",
+      "targets": ["All minors (private/public)", "Private adults", "Limited scope public figures"],
+      "attacks": [
+        {
+          "id": "sexual_activity_claims",
+          "name": "Claims About Sexual Activity",
+          "exception": "Except criminal allegations against adults (NCST)",
+          "action": "label"
+        },
+        {
+          "id": "sexualizing_adult",
+          "name": "Content Sexualizing Another Adult",
+          "note": "Minors covered under CSEAN policy",
+          "action": "label"
+        }
+      ],
+      "purposefulExposureRequired": [
+        {
+          "id": "dehumanizing_comparisons",
+          "name": "Dehumanizing Comparisons",
+          "types": [
+            "Animals/insects culturally perceived as inferior",
+            "Bacteria, viruses, microbes, diseases",
+            "Inanimate objects (trash, filth, feces)"
+          ],
+          "note": "For minor public figures, requires purposeful exposure",
+          "action": "label"
+        },
+        {
+          "id": "manipulated_physical_features",
+          "name": "Content Highlighting Physical Characteristics",
+          "definition": "Manipulated to highlight, circle, or negatively draw attention to specific features",
+          "action": "label"
+        },
+        {
+          "id": "ranking_appearance",
+          "name": "Content Ranking Based on Appearance/Traits",
+          "action": "label"
+        },
+        {
+          "id": "physical_bullying_degradation",
+          "name": "Content Degrading Physically Bullied Individuals",
+          "exception": "Except fight-sport contexts",
+          "action": "label"
+        }
+      ]
+    },
+    "tier3": {
+      "name": "Additional Protections for Private Minors, Private Adults, Minor Involuntary Public Figures",
+      "targets": ["Private minors", "Private adults (self-reported)", "Minor involuntary public figures"],
+      "attacks": [
+        {
+          "id": "targeted_cursing",
+          "name": "Targeted Cursing",
+          "action": "label"
+        },
+        {
+          "id": "romantic_orientation_claims",
+          "name": "Claims About Romantic Involvement, Sexual Orientation, Gender Identity",
+          "action": "label"
+        },
+        {
+          "id": "exclusion_statements",
+          "name": "Exclusion Statements",
+          "definition": "Calls for action, statements of intent, aspirational/conditional statements, statements supporting exclusion",
+          "action": "label"
+        },
+        {
+          "id": "negative_character_claims",
+          "name": "Negative Character or Ability Claims",
+          "exception": "Except criminal allegations and business reviews against adults",
+          "action": "label"
+        },
+        {
+          "id": "contempt_disgust",
+          "name": "Expressions of Contempt, Disgust, or Rejecting Existence",
+          "exception": "Except criminal allegations against adults",
+          "action": "label"
+        }
+      ],
+      "selfReportRequired": [
+        {
+          "id": "first_person_bullying",
+          "name": "First-Person Voice Bullying",
+          "definition": "Content expressed in first person but posted by different individual",
+          "action": "label"
+        },
+        {
+          "id": "unwanted_manipulated_imagery",
+          "name": "Unwanted Manipulated Imagery",
+          "action": "label"
+        },
+        {
+          "id": "appearance_comparison",
+          "name": "Comparison to Others Based on Physical Appearance",
+          "action": "label"
+        },
+        {
+          "id": "religious_identity_claims",
+          "name": "Claims About Religious Identity or Blasphemy",
+          "exception": "Except in at-risk countries (apply VI policy)",
+          "action": "label"
+        },
+        {
+          "id": "non_inferior_animal_comparison",
+          "name": "Comparisons to Non-Inferior Animals",
+          "examples": ["tiger", "lion"],
+          "action": "label"
+        },
+        {
+          "id": "neutral_positive_physical",
+          "name": "Neutral or Positive Physical Descriptions",
+          "action": "label"
+        },
+        {
+          "id": "non_negative_character",
+          "name": "Non-Negative Character or Ability Claims",
+          "action": "label"
+        },
+        {
+          "id": "lack_sexual_activity_terms",
+          "name": "Attacks Through Derogatory Terms Related to Lack of Sexual Activity",
+          "action": "label"
+        }
+      ]
+    },
+    "tier4": {
+      "name": "Additional Protections for Private Minors Only",
+      "targets": ["Private minors only"],
+      "attacks": [
+        {
+          "id": "criminal_allegations_minor",
+          "name": "Allegations About Criminal or Illegal Behavior",
+          "action": "label"
+        },
+        {
+          "id": "physical_bullying_video_non_condemning",
+          "name": "Videos of Physical Bullying (Non-Condemning Context)",
+          "action": "label"
+        },
+        {
+          "id": "physical_bullying_video_condemning",
+          "name": "Videos of Physical Bullying (Condemning Context)",
+          "action": "label"
+        },
+        {
+          "id": "female_gendered_cursing",
+          "name": "Derogatory Terms Related to Female-Gendered Cursing",
+          "action": "label"
+        }
+      ]
+    }
+  },
+
+  "nameFaceMatch": {
+    "definition": "Combination of 3 features (3 primary OR 2 primary + 1 secondary) between reported photo and reporter's photos",
+    "primaryFeatures": [
+      "Nose", "Lips/Smile", "Hairline", "Mole/Birthmark", "Ears",
+      "Jawline/Chin", "Shape of eyes", "Forehead", "Face-cut",
+      "Eyebrows (Men)", "Teeth"
+    ],
+    "secondaryFeatures": [
+      "Piercings/Tattoos/Braces", "Accessories (Glasses/Shades)",
+      "Clothing", "Shape of beard", "Hairstyle", "Eyebrows (Women)", "Scars"
+    ]
+  },
+
+  "purposefulExposure": {
+    "definition": "When poster either tags the public figure in content OR posts comment directly on public figure's own post or page"
+  },
+
+  "unwantedContact": {
+    "signals": [
+      "Recipient states contact is unwanted or requests it stop",
+      "Recipient expresses discomfort, disgust, or displeasure",
+      "Recipient threatens negative site functionality action",
+      "Recipient has taken action to prevent contact (unfriending, blocking, reporting)",
+      "Recipient does not respond or stops responding"
+    ],
+    "repeatedDefinition": {
+      "withResponse": "4+ times after recipient expresses clear desire to stop",
+      "noResponse": "6+ times in same thread",
+      "stoppedResponding": "6+ times after they stopped responding"
+    },
+    "sexuallyHarassing": {
+      "definition": "Content that is both unwanted by recipient AND sexual in nature",
+      "includes": [
+        "Content sexualizing an adult",
+        "Severe sexualized commentary",
+        "Attacks based on sexual assault experience",
+        "Derogatory terms related to sexual activity",
+        "Statements of intent to engage in sexual activity",
+        "Mention/implication of fetish"
+      ]
+    }
+  },
+
+  "physicalBullying": {
+    "includes": [
+      "Violence of any severity against person(s)",
+      "Alteration of appearance while unconscious/asleep",
+      "Depictions of fights between minors"
+    ],
+    "excludes": [
+      "Fight-sport context (martial arts with pads, uniforms, referees)",
+      "Life-threatening events (covered under VGC)",
+      "Mutual fighting between adults",
+      "Videos depicting accidents"
+    ],
+    "degradingSignals": [
+      "Laughter (hahaha)",
+      "Negative character/ability claims",
+      "Positive reinforcement (he deserved that)",
+      "Encouraging distribution (Like, share, tag friends)",
+      "Mocking"
+    ]
+  },
+
+  "allowances": [
+    {
+      "id": "criminal_allegations",
+      "description": "Criminal allegations against adults, even with negative character claims, contempt, or disgust",
+      "action": "no_action"
+    },
+    {
+      "id": "fight_sport",
+      "description": "Videos of physical bullying in fight-sport context (martial arts)",
+      "action": "no_action"
+    },
+    {
+      "id": "medical_fitness",
+      "description": "Content describing sexualized body parts in medical or fitness context",
+      "action": "no_action"
+    },
+    {
+      "id": "condemning",
+      "description": "Content shared in condemning contexts",
+      "action": "no_action"
+    },
+    {
+      "id": "doi_targets",
+      "description": "Attacks targeting DOI members or individuals who died prior to 1900",
+      "action": "no_action"
+    },
+    {
+      "id": "endearing",
+      "description": "Bullying attacks in endearing context, except with Name/Face match to reporter",
+      "action": "no_action"
+    }
+  ],
+
+  "endearingContext": {
+    "definition": "Content potentially qualifying as attack but shared with positive/endearing intent",
+    "indicators": [
+      "Positive character or ability claim",
+      "Positive physical description",
+      "Positive relationship claim (expression of love/friendship)",
+      "Term of praise",
+      "Positive emojis",
+      "Possessive pronouns (That's my hoe!)"
+    ],
+    "behavioralIndicators": [
+      "Target and responsible are friends on Facebook or follow each other on Instagram",
+      "Target and responsible share mutual friends (FB) or >20 common followers (IG)",
+      "Content has not been user reported"
+    ]
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "label": "Sexualized Harassment", "severity": "critical" },
+    { "rank": 2, "label": "Calls for Death, SSI, or Medical Condition", "severity": "critical" },
+    { "rank": 3, "label": "Claims About Sexual Activity, Romantic Involvement, Gender Identity", "severity": "high" },
+    { "rank": 4, "label": "Violent Tragedies", "severity": "high" },
+    { "rank": 5, "label": "Negative Comparison to Animals/Inanimate Objects", "severity": "high" },
+    { "rank": 6, "label": "Negative Physical Description", "severity": "mid" },
+    { "rank": 7, "label": "Targeted and Female Gendered Cursing", "severity": "mid" },
+    { "rank": 8, "label": "Negative Character/Contempt/Exclusion", "severity": "mid" },
+    { "rank": 9, "label": "Physical Bullying", "severity": "mid" },
+    { "rank": 10, "label": "Non-Negative Comparison/Claims/Descriptions", "severity": "low" },
+    { "rank": 11, "label": "Other", "severity": "low" },
+    { "rank": 12, "label": "Repeated Unwanted Contact", "severity": "low", "messagingOnly": true }
+  ],
+
+  "complexObjects": {
+    "subjectElements": {
+      "pages": ["Title", "Description", "Cover Photo", "Profile Photo"],
+      "groups": ["Title", "Description", "Cover Photo", "Pinned Post/Rules", "Membership Questions"],
+      "events": ["Title", "Description", "Cover Photo", "Pinned Post"],
+      "profiles": ["Name/Username/Alias", "Profile Photo", "Cover Photo", "Bio", "Email", "Education"]
+    },
+    "specialEnforcement": {
+      "noNameFaceMatchRequired": [
+        "Calls for death or medical condition",
+        "Statement of intent for sexual activity",
+        "Claims about STIs",
+        "Sexualizing another adult",
+        "Targeted cursing",
+        "Statements of inferiority about physical appearance",
+        "Claims about religious identity",
+        "Expressions of contempt/disgust",
+        "Female-gendered cursing (minors only)",
+        "Negative character/ability claims",
+        "First-person voice bullying (if targets multiple individuals)"
+      ]
+    },
+    "schoolAccountReview": {
+      "criteria": "<2k followers targeting minors",
+      "violatingKeywords": [
+        "Gossip", "confessions", "tea", "rumor", "hot takes",
+        "Fight", "brawl", "fade",
+        "Exposing", "opps", "opponents",
+        "Bop", "hoe", "gay", "ugly", "chopped", "goof", "bleeder",
+        "Ranking", "lacking", "smash & pass", "ship"
+      ]
+    }
+  },
+
+  "messaging": {
+    "p2pMessaging": {
+      "description": "Private 1:1 and group chat threads",
+      "repeatedUnwantedContact": "Applies in 1:1 threads only"
+    },
+    "businessMessaging": {
+      "description": "Threads where businesses/pages communicate with users",
+      "repeatedUnwantedContact": "Does not apply",
+      "exclusions": [
+        "Business-related interactions",
+        "Order/tracking updates",
+        "Feedback on products/services",
+        "Standalone emoji responses after business interaction"
+      ]
+    },
+    "communityMessaging": {
+      "description": "Public, large group messaging threads",
+      "enforcement": "Standard content moderation, no exceptions"
+    },
+    "broadcastChannels": {
+      "description": "One-to-many communication channels",
+      "enforcement": "Standard content moderation"
+    },
+    "additionalP2PProtections": [
+      "Claims about sexual activity (all targets)",
+      "Claims about STIs (all targets)",
+      "Dehumanizing comparisons (all targets)",
+      "Content highlighting physical characteristics (all targets)",
+      "Statements of inferiority about physical appearance (all targets)",
+      "Content ranking on appearance/traits (all targets)",
+      "Content sexualizing another adult (all targets)",
+      "Content degrading physically bullied individuals (all targets)",
+      "Celebration/mocking of death/medical condition (all targets)",
+      "Targeted cursing (all targets)",
+      "Calls for death or low severity violence (all targets)"
+    ]
+  }
+}

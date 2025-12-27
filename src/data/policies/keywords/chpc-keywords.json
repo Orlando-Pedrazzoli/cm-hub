@@ -1,0 +1,382 @@
+{
+  "policyId": "chpc",
+  "policyName": "Coordinating Harm and Promoting Crime",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "harmAgainstAnimalsSignals": {
+    "physicalHarmIndicators": {
+      "actions": [
+        { "term": "kicking", "type": "harm" },
+        { "term": "beating", "type": "harm" },
+        { "term": "stabbing", "type": "harm" },
+        { "term": "crushing", "type": "harm" },
+        { "term": "rough handling", "type": "harm" },
+        { "term": "torture", "type": "harm" },
+        { "term": "abuse", "type": "harm" },
+        { "term": "killing", "type": "death" },
+        { "term": "starving", "type": "neglect" },
+        { "term": "abandoning", "type": "neglect" }
+      ],
+      "coordinationSignals": [
+        "share your animal abuse videos",
+        "I'm looking to hire someone that can kill",
+        "I want to buy tools for",
+        "anyone needs tools for",
+        "Live video of harm",
+        "Was Live video of harm"
+      ]
+    },
+    "stagedAnimalFights": {
+      "explicitMentions": [
+        { "term": "cockfighting", "language": "en" },
+        { "term": "rinha de galo", "language": "pt" },
+        { "term": "dogfighting", "language": "en" },
+        { "term": "rinha de cachorro", "language": "pt" },
+        { "term": "animal VS animal", "pattern": true },
+        { "term": "animal X animal", "pattern": true }
+      ],
+      "stagedIndicators": [
+        "event",
+        "winner",
+        "champion",
+        "tournament",
+        "betting",
+        "gambling",
+        "odds",
+        "breeder",
+        "breeding for fighting",
+        "fighting stock",
+        "gamefowl",
+        "pit bull fighting"
+      ],
+      "visualIndicators": [
+        "stage",
+        "ring",
+        "pit",
+        "crowd cheering",
+        "audience watching",
+        "people encouraging"
+      ],
+      "tradeIndicators": [
+        "for sale",
+        "selling",
+        "buying",
+        "breeding",
+        "metal claws",
+        "fighting accessories",
+        "performance supplements"
+      ],
+      "moneyEmojis": ["💰", "💵", "💴", "💶", "💷", "🤑"]
+    },
+    "fakeRescueIndicators": {
+      "primary": [
+        "multiple camera angles",
+        "discovered by chance",
+        "using stick or machete (no proper equipment)",
+        "placing animals close together"
+      ],
+      "secondary": [
+        "no explanation for rescue",
+        "no professional care after"
+      ],
+      "animalHandlingEquipment": [
+        "snare poles",
+        "heavy gloves",
+        "trap cages",
+        "animal control equipment"
+      ]
+    },
+    "allowedContextIndicators": [
+      "condemnation",
+      "awareness",
+      "educational",
+      "hunting",
+      "fishing",
+      "food preparation",
+      "religious sacrifice",
+      "pest control",
+      "vermin",
+      "mercy killing",
+      "euthanasia",
+      "bullfighting"
+    ]
+  },
+
+  "harmAgainstPropertySignals": {
+    "vandalismTerms": {
+      "en": ["vandalism", "vandalize", "damage property", "destroy property", "graffiti", "spray paint", "key car", "egg house", "break windows", "smash", "deface"],
+      "pt": ["vandalismo", "vandalizar", "danificar propriedade", "destruir propriedade", "pichar", "quebrar janelas", "esmagar", "desfigurar"]
+    },
+    "theftTerms": {
+      "en": ["steal", "rob", "shoplift", "loot", "burglary", "theft", "stolen goods", "fence goods", "how to shoplift", "breaking and entering"],
+      "pt": ["roubar", "furtar", "saquear", "roubo", "furto", "bens roubados", "como furtar", "arrombamento"]
+    },
+    "coordinationSignals": [
+      "I'm looking for someone that can",
+      "hire services to",
+      "how to shoplift",
+      "how to break into",
+      "stolen goods for sale",
+      "selling stolen",
+      "buying stolen",
+      "share your shoplifting videos"
+    ]
+  },
+
+  "outingRiskTerminology": {
+    "philippines": {
+      "drugRelated": [
+        { "term": "pusher", "type": "drug_dealer" },
+        { "term": "drug pusher", "type": "drug_dealer" },
+        { "term": "user", "type": "drug_user" },
+        { "term": "drug user", "type": "drug_user" },
+        { "term": "adik", "type": "drug_addict" },
+        { "term": "drug adik", "type": "drug_addict" },
+        { "term": "drug lord", "type": "drug_dealer" },
+        { "term": "narco", "type": "drug_dealer" },
+        { "term": "narcos", "type": "drug_dealer" }
+      ],
+      "politicalGroups": [
+        { "term": "CPP", "fullName": "Community Party of the Philippines" },
+        { "term": "NPA", "fullName": "New People's Army" },
+        { "term": "NDFP", "fullName": "National Democratic Front of the Philippines" },
+        { "term": "CTG", "fullName": "Communist Terrorist Group" },
+        { "term": "CTFG", "fullName": "Communist Terrorist Front Group" }
+      ]
+    },
+    "lgbtqiaTerms": {
+      "en": ["gay", "lesbian", "bisexual", "transgender", "trans", "queer", "LGBTQ", "LGBTQIA+", "homosexual", "same-sex", "coming out"],
+      "arabic": ["مثلي", "لوطي", "شاذ"],
+      "urdu": ["مخنث", "ہجڑا"],
+      "pt": ["gay", "lésbica", "bissexual", "transgênero", "trans", "queer", "homossexual"]
+    },
+    "pakistan": {
+      "healthWorkers": ["vaccine worker", "polio worker", "health worker", "vaccination team"],
+      "religious": ["Ahmadi", "Ahmadiya", "Qadiyani", "احمدی", "قادیانی"]
+    },
+    "india": {
+      "mukhbir": ["mukhbir", "मुखबिर", "informant", "spy"],
+      "interfaith": ["interfaith couple", "love jihad", "interfaith marriage", "अंतरधार्मिक विवाह"]
+    },
+    "myanmar": {
+      "groups": [
+        { "term": "PDF", "fullName": "People's Defence Force" },
+        { "term": "CRPH", "fullName": "Committee Representing Pyidaungsu Hluttaw" },
+        { "term": "NUG", "fullName": "National Unity Government" },
+        { "term": "ERO", "fullName": "Ethnic Resistance Organizations" },
+        { "term": "dalan", "meaning": "informant/collaborator" }
+      ]
+    },
+    "latinAmerica": {
+      "lideresSociales": ["líderes sociales", "líder social", "social leader", "community leader"],
+      "undocumentedImmigrants": ["indocumentado", "sin papeles", "undocumented", "illegal immigrant", "ilegal"]
+    },
+    "ethiopia": {
+      "terms": ["spy", "agent", "traitor", "informant", "ስለላ", "ከዳተኛ"]
+    },
+    "drc": {
+      "terms": ["Rwandaphone", "Rwandan", "Banyamulenge", "Tutsi", "long nose", "tutsiness"],
+      "localTerms": ["inyenzi", "inzoka"]
+    },
+    "iran": {
+      "bahai": ["Baha'i", "Bahai", "بهائی"]
+    },
+    "religiousConversion": {
+      "terms": ["convert", "converted", "apostasy", "apostate", "atheist", "atheism", "blasphemy", "blasphemer", "kafir", "murtad", "كافر", "مرتد"]
+    },
+    "sexWork": {
+      "en": ["sex worker", "prostitute", "escort", "client of sex worker"],
+      "arabic": ["عاهرة", "زانية", "بائعة هوى"],
+      "pt": ["prostituta", "profissional do sexo", "garota de programa"]
+    }
+  },
+
+  "viralChallengesSignals": {
+    "highRisk": {
+      "characteristics": [
+        "flammable fluids on self/others",
+        "pointing firearms at self/others",
+        "throwing flammable substances",
+        "throwing sharp objects at others",
+        "airway blockage",
+        "restricted breathing",
+        "severe burns",
+        "severe wounds",
+        "life-threatening"
+      ],
+      "knownChallenges": [
+        { "name": "Fire Challenge", "description": "Pouring flammable liquid and igniting" },
+        { "name": "Blackout Challenge", "description": "Self-strangulation to point of unconsciousness" },
+        { "name": "Choking Game", "description": "Self-strangulation for euphoria" },
+        { "name": "Tide Pod Challenge", "description": "Ingesting laundry detergent pods" },
+        { "name": "Skull Breaker Challenge", "description": "Tripping someone mid-jump" }
+      ],
+      "note": "Blue Whale Challenge covered under SSI policy"
+    },
+    "midRisk": {
+      "exhaustiveList": [
+        "driving with half body outside vehicle",
+        "driving while standing",
+        "jumping at height >1 story",
+        "jumping at height >10ft/3m",
+        "skating at height >1 story",
+        "rollerblading at height >1 story",
+        "cycling at height >1 story",
+        "handling lit flammable substances",
+        "throwing lit flammable substances",
+        "handling explosives",
+        "throwing explosives",
+        "throwing sharp objects"
+      ]
+    },
+    "professionalContextIndicators": [
+      "F1",
+      "Formula 1",
+      "NASCAR",
+      "professional sports",
+      "college sports",
+      "school sports",
+      "emergency vehicle",
+      "law enforcement",
+      "military",
+      "skate park",
+      "competition",
+      "professional stunt",
+      "film set",
+      "TV production",
+      "martial arts demonstration",
+      "national park climbing"
+    ]
+  },
+
+  "communicableDiseases": {
+    "coveredDiseases": [
+      { "name": "COVID-19", "alternateTerms": ["Coronavirus", "2019 Novel Coronavirus", "2019-ncov", "Wuhan Coronavirus", "corona"] },
+      { "name": "HIV/AIDS", "alternateTerms": ["HIV", "AIDS", "human immunodeficiency virus"] },
+      { "name": "Ebola", "alternateTerms": ["Ebola virus", "EVD"] },
+      { "name": "Tuberculosis", "alternateTerms": ["TB", "tuberc"] }
+    ],
+    "deliberateSpreadIndicators": [
+      "intentionally infect",
+      "spread on purpose",
+      "deliberately infect",
+      "infect others",
+      "give them COVID",
+      "spread the virus intentionally",
+      "cough on people",
+      "spit on people"
+    ],
+    "notDeliberate": [
+      "accidentally spread",
+      "unintentionally infected",
+      "remorse",
+      "regret",
+      "didn't know I was sick",
+      "sorry for spreading"
+    ]
+  },
+
+  "voterInterferenceSignals": {
+    "misrepresentation": {
+      "dates": ["voting day is", "election date changed to", "polls close at", "wrong date"],
+      "locations": ["polling station moved", "vote at", "wrong address"],
+      "methods": ["you can only vote by", "must vote in person", "mail voting not allowed"],
+      "eligibility": ["you can't vote if", "only [group] can vote", "you need [document] to vote"],
+      "counting": ["your vote won't count", "votes from [area] not counted", "if you voted before, this vote won't count"]
+    },
+    "voterFraud": {
+      "buyingSelling": ["sell your vote", "buy your vote", "pay for votes", "cash for vote", "gift for voting"],
+      "illegalParticipation": ["vote twice", "use someone else's ID", "fake voter registration", "steal ballots"]
+    },
+    "allowedContent": [
+      "your vote doesn't matter",
+      "elections are rigged",
+      "don't bother voting",
+      "boycott the vote",
+      "vote for [party] won't count"
+    ]
+  },
+
+  "swattingSignals": {
+    "indicators": [
+      "swat",
+      "swatting",
+      "call the police on",
+      "send police to",
+      "fake emergency call",
+      "hoax call to police",
+      "armed response to",
+      "report hostage situation"
+    ],
+    "gamingContext": [
+      "stream snipe",
+      "doxx and swat",
+      "get them raided"
+    ]
+  },
+
+  "allowedContextIndicators": {
+    "condemnation": [
+      "this is wrong",
+      "don't do this",
+      "never do",
+      "shame on",
+      "disgusting behavior",
+      "animal cruelty",
+      "stop this",
+      "report this"
+    ],
+    "awarenessRaising": [
+      "be aware",
+      "warning",
+      "alert",
+      "please share to raise awareness",
+      "this is what's happening",
+      "citizen journalism",
+      "news coverage"
+    ],
+    "educational": [
+      "educational",
+      "academic",
+      "research",
+      "study",
+      "debate",
+      "discuss legality",
+      "should this be legal"
+    ],
+    "redemption": [
+      "I regret",
+      "I'm sorry I",
+      "I apologize",
+      "I was wrong to",
+      "I've changed",
+      "never again",
+      "learned my lesson"
+    ]
+  },
+
+  "complexObjectKeywords": {
+    "animalFighting": [
+      "cockfighting",
+      "dogfighting",
+      "animal fighting",
+      "fighting ring",
+      "pit fights",
+      "gamecock",
+      "fighting dogs"
+    ],
+    "theft": [
+      "shoplifting tips",
+      "how to steal",
+      "theft tutorials",
+      "boosting",
+      "five finger discount"
+    ],
+    "vandalism": [
+      "vandalism crew",
+      "tagging",
+      "property destruction"
+    ]
+  }
+}

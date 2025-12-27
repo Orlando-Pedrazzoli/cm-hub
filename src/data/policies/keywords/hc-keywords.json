@@ -1,0 +1,430 @@
+{
+  "policyId": "hc",
+  "policyName": "Hateful Conduct",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "slurs": {
+    "race": {
+      "black_people": [
+        { "term": "nigger", "variations": ["nigga", "nig", "nigg", "n1gger", "n1gga", "n*gger"], "severity": "critical" },
+        { "term": "jigaboo", "variations": [], "severity": "critical" },
+        { "term": "porchmonkey", "variations": ["porch monkey", "porch-monkey", "porck-monkey", "porckmonkey"], "severity": "critical" },
+        { "term": "tição", "variations": [], "severity": "critical", "language": "pt" },
+        { "term": "coon", "variations": [], "severity": "critical", "caveats": "Can also mean raccoon" },
+        { "term": "darkie", "variations": ["darky"], "severity": "critical" },
+        { "term": "sambo", "variations": [], "severity": "critical" },
+        { "term": "spook", "variations": [], "severity": "high", "caveats": "Can also mean ghost/spy" }
+      ],
+      "asian_people": [
+        { "term": "chink", "variations": ["chinko", "chinky"], "severity": "critical" },
+        { "term": "gook", "variations": [], "severity": "critical", "subcategory": "Korean people" },
+        { "term": "slant eye", "variations": ["slant-eye", "slanteye", "slanty-eye", "slantyeye"], "severity": "critical" },
+        { "term": "zipperhead", "variations": [], "severity": "critical" },
+        { "term": "comedores de morcego", "variations": ["come morcego", "comedoras de morcego", "comer morcego"], "severity": "critical", "language": "pt", "subcategory": "Chinese people" }
+      ],
+      "hispanic_people": [
+        { "term": "spic", "variations": ["spick", "spik"], "severity": "critical" },
+        { "term": "wetback", "variations": [], "severity": "critical" },
+        { "term": "beaner", "variations": [], "severity": "critical" }
+      ],
+      "white_people": [
+        { "term": "cracker", "variations": [], "severity": "high", "caveats": "Can also mean food item" },
+        { "term": "honky", "variations": ["honkey", "honkie"], "severity": "high" }
+      ]
+    },
+    "sexual_orientation": {
+      "gay_people": [
+        { "term": "faggot", "variations": ["fag", "faggit", "fagget", "fagat", "phagot", "phaggot"], "severity": "critical" },
+        { "term": "fudge packer", "variations": ["fudgepacker"], "severity": "critical" },
+        { "term": "batty-bwoy", "variations": ["batty-man", "batty boy", "batty-boy", "battyman", "battyboy"], "severity": "critical" },
+        { "term": "baitola", "variations": ["baitolagem"], "severity": "critical", "language": "pt" },
+        { "term": "boiola", "variations": ["boyola"], "severity": "critical", "language": "pt" },
+        { "term": "biba", "variations": ["bibinha"], "severity": "critical", "language": "pt" },
+        { "term": "morde fronha", "variations": [], "severity": "critical", "language": "pt" },
+        { "term": "pederasta", "variations": [], "severity": "critical", "language": "pt" },
+        { "term": "queima-rosca", "variations": [], "severity": "critical", "language": "pt" },
+        { "term": "marica", "variations": ["maricas", "maricona", "maricones", "maricón", "marik", "marika", "marico", "maricon", "mariquinha"], "severity": "critical", "language": "es/pt", "caveats": "Place in Brazil; In Colombia/Venezuela may mean 'dude' or 'friend'" },
+        { "term": "poofter", "variations": [], "severity": "critical" }
+      ],
+      "lesbians": [
+        { "term": "dyke", "variations": [], "severity": "critical", "caveats": "'Dykes on Bikes' allowed; can mean trench/ditch; can be surname" },
+        { "term": "machorra", "variations": [], "severity": "critical", "language": "es" },
+        { "term": "caminhoneira", "variations": [], "severity": "critical", "language": "pt", "caveats": "Can also mean woman truck driver" },
+        { "term": "mulher-macho", "variations": [], "severity": "critical", "language": "pt" },
+        { "term": "sapatão", "variations": ["sapata"], "severity": "critical", "language": "pt", "caveats": "Could be place name 'Ponta da Sapata'" }
+      ]
+    },
+    "religious_affiliation": {
+      "muslims": [
+        { "term": "muzzrat", "variations": ["muzrat", "muzzrats", "musrat"], "severity": "critical" },
+        { "term": "mussy", "variations": ["musie", "mussie", "muzzies", "muzzy"], "severity": "critical" },
+        { "term": "goat fucker", "variations": ["goatfucker", "goat humper", "goathumper", "goat shagger", "goat shagging"], "severity": "critical" },
+        { "term": "sand monkey", "variations": ["sand-monkey", "sandmonkey"], "severity": "critical" },
+        { "term": "towelhead", "variations": ["towel-head"], "severity": "critical" },
+        { "term": "raghead", "variations": ["rag-head"], "severity": "critical" }
+      ],
+      "jewish_people": [
+        { "term": "kike", "variations": [], "severity": "critical" },
+        { "term": "jewbag", "variations": [], "severity": "critical" },
+        { "term": "heeb", "variations": ["hebe"], "severity": "critical" }
+      ]
+    },
+    "gender_identity": {
+      "transgender": [
+        { "term": "tranny", "variations": [], "severity": "critical" },
+        { "term": "travec", "variations": ["traveco"], "severity": "critical", "language": "pt" },
+        { "term": "shemale", "variations": ["she-male"], "severity": "critical" }
+      ]
+    },
+    "ethnicity": {
+      "various": [
+        { "term": "xingondo", "variations": [], "severity": "critical", "language": "pt", "subcategory": "Ethnic groups from Center/North Mozambique: Senna, Macua, Ndau" }
+      ]
+    },
+    "disability": {
+      "disabled_people": [
+        { "term": "capper", "variations": [], "severity": "critical" },
+        { "term": "retard", "variations": ["retarded", "tard"], "severity": "critical" }
+      ]
+    }
+  },
+
+  "proxies": {
+    "jewish_people": [
+      { "term": "Zionist", "context": "Treat as Jewish when: parent content calls out Jewish/Israeli people + hateful attack; allegations of controlling financial/political/media (except Israel/West Bank/Gaza); T1 comparisons to rats/pathogens, insults about dirtiness, harm statements, mocking disease" }
+    ],
+    "muslim_people": [
+      { "term": "Mohammed", "variations": ["Ahmed", "Abdul"], "context": "Treat as Muslim when: content compares to pigs OR claims sexual relations with goats/pigs" }
+    ],
+    "qpc_migrants": [
+      { "term": "invaders", "context": "Treat as QPC when: immigration context present (reference to immigrants/migrants/refugees OR immigration/migration/asylum terms)" }
+    ],
+    "general": [
+      { "term": "brown people", "context": "Proxy for race/ethnicity" },
+      { "term": "skittles", "context": "Sometimes used as proxy for refugees/migrants" }
+    ]
+  },
+
+  "keywords": {
+    "tier1_dehumanizing_animals": {
+      "critical": [
+        { "term": "cockroach", "context": "dehumanizing - insect", "language": "en" },
+        { "term": "barata", "context": "desumanizante - inseto", "language": "pt" },
+        { "term": "locust", "context": "dehumanizing - insect", "language": "en" },
+        { "term": "gafanhoto", "context": "desumanizante - inseto", "language": "pt" },
+        { "term": "ape", "context": "dehumanizing - animal (especially Black people)", "language": "en" },
+        { "term": "macaco", "context": "desumanizante - animal", "language": "pt" },
+        { "term": "monkey", "context": "dehumanizing - animal", "language": "en" },
+        { "term": "rat", "context": "dehumanizing - animal (especially Jewish people)", "language": "en" },
+        { "term": "rato", "context": "desumanizante - animal", "language": "pt" },
+        { "term": "pig", "context": "dehumanizing - animal (especially Muslim people)", "language": "en" },
+        { "term": "porco", "context": "desumanizante - animal", "language": "pt" },
+        { "term": "worm", "context": "dehumanizing - animal", "language": "en" },
+        { "term": "verme", "context": "desumanizante - animal", "language": "pt" },
+        { "term": "snake", "context": "dehumanizing - animal", "language": "en" },
+        { "term": "cobra", "context": "desumanizante - animal", "language": "pt" },
+        { "term": "parasite", "context": "dehumanizing - animal", "language": "en" },
+        { "term": "parasita", "context": "desumanizante - animal", "language": "pt" }
+      ]
+    },
+    "tier1_dehumanizing_pathogens": {
+      "critical": [
+        { "term": "disease", "context": "dehumanizing - pathogen", "language": "en" },
+        { "term": "doença", "context": "desumanizante - patógeno", "language": "pt" },
+        { "term": "virus", "context": "dehumanizing - pathogen", "language": "en" },
+        { "term": "vírus", "context": "desumanizante - patógeno", "language": "pt" },
+        { "term": "plague", "context": "dehumanizing - pathogen", "language": "en" },
+        { "term": "praga", "context": "desumanizante - patógeno", "language": "pt" },
+        { "term": "cancer", "context": "dehumanizing - pathogen", "language": "en" },
+        { "term": "câncer", "context": "desumanizante - patógeno", "language": "pt" },
+        { "term": "bacteria", "context": "dehumanizing - pathogen", "language": "en" },
+        { "term": "bactéria", "context": "desumanizante - patógeno", "language": "pt" },
+        { "term": "infection", "context": "dehumanizing - pathogen", "language": "en" },
+        { "term": "infecção", "context": "desumanizante - patógeno", "language": "pt" }
+      ]
+    },
+    "tier1_dehumanizing_subhuman": {
+      "critical": [
+        { "term": "savage", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "selvagem", "context": "desumanizante - sub-humano", "language": "pt" },
+        { "term": "barbarian", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "bárbaro", "context": "desumanizante - sub-humano", "language": "pt" },
+        { "term": "devil", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "diabo", "context": "desumanizante - sub-humano", "language": "pt" },
+        { "term": "demon", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "demônio", "context": "desumanizante - sub-humano", "language": "pt" },
+        { "term": "monster", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "monstro", "context": "desumanizante - sub-humano", "language": "pt" },
+        { "term": "ogre", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "vampire", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "vampiro", "context": "desumanizante - sub-humano", "language": "pt" },
+        { "term": "cannibal", "context": "dehumanizing - subhuman", "language": "en" },
+        { "term": "canibal", "context": "desumanizante - sub-humano", "language": "pt" }
+      ]
+    },
+    "tier1_violent_criminals": {
+      "critical": [
+        { "term": "terrorist", "context": "violent criminal allegation", "language": "en" },
+        { "term": "terrorista", "context": "alegação de criminoso violento", "language": "pt" },
+        { "term": "murderer", "context": "violent criminal allegation", "language": "en" },
+        { "term": "assassino", "context": "alegação de criminoso violento", "language": "pt" },
+        { "term": "killer", "context": "violent criminal allegation", "language": "en" },
+        { "term": "rapist", "context": "sexual criminal allegation", "language": "en" },
+        { "term": "estuprador", "context": "alegação de criminoso sexual", "language": "pt" },
+        { "term": "pedophile", "context": "sexual criminal allegation", "language": "en" },
+        { "term": "pedófilo", "context": "alegação de criminoso sexual", "language": "pt" },
+        { "term": "child molester", "context": "sexual criminal allegation", "language": "en" },
+        { "term": "wife beater", "context": "violent criminal allegation", "language": "en" }
+      ]
+    },
+    "tier1_harm_statements": {
+      "critical": [
+        { "term": "should die", "context": "harm statement", "language": "en" },
+        { "term": "devem morrer", "context": "declaração de dano", "language": "pt" },
+        { "term": "hope they die", "context": "harm statement", "language": "en" },
+        { "term": "espero que morram", "context": "declaração de dano", "language": "pt" },
+        { "term": "kill themselves", "context": "harm statement - suicide", "language": "en" },
+        { "term": "se matem", "context": "declaração de dano - suicídio", "language": "pt" },
+        { "term": "get AIDS", "context": "harm statement - disease", "language": "en" },
+        { "term": "peguem AIDS", "context": "declaração de dano - doença", "language": "pt" },
+        { "term": "experience earthquake", "context": "harm statement - natural disaster", "language": "en" }
+      ]
+    },
+    "tier1_holocaust_denial": {
+      "critical": [
+        { "term": "Holocaust didn't happen", "context": "Holocaust denial", "language": "en" },
+        { "term": "Holocausto não aconteceu", "context": "negação do Holocausto", "language": "pt" },
+        { "term": "Holohoax", "context": "Holocaust denial", "language": "en" },
+        { "term": "Holocaust is a lie", "context": "Holocaust denial", "language": "en" },
+        { "term": "Holocaust was fake", "context": "Holocaust denial", "language": "en" },
+        { "term": "6 thousand not 6 million", "context": "Holocaust denial - number", "language": "en" },
+        { "term": "Jews exaggerated", "context": "Holocaust denial - exaggeration claim", "language": "en" }
+      ]
+    },
+    "tier1_jewish_control": {
+      "critical": [
+        { "term": "Jews control the banks", "context": "harmful stereotype", "language": "en" },
+        { "term": "judeus controlam os bancos", "context": "estereótipo prejudicial", "language": "pt" },
+        { "term": "Jews own the media", "context": "harmful stereotype", "language": "en" },
+        { "term": "judeus controlam a mídia", "context": "estereótipo prejudicial", "language": "pt" },
+        { "term": "Jews rule the world", "context": "harmful stereotype", "language": "en" },
+        { "term": "judeus dominam o mundo", "context": "estereótipo prejudicial", "language": "pt" }
+      ]
+    },
+    "tier2_character_insults": {
+      "high": [
+        { "term": "greedy", "context": "character insult", "language": "en" },
+        { "term": "ganancioso", "context": "insulto de caráter", "language": "pt" },
+        { "term": "dishonest", "context": "character insult", "language": "en" },
+        { "term": "desonesto", "context": "insulto de caráter", "language": "pt" },
+        { "term": "coward", "context": "character insult", "language": "en" },
+        { "term": "covarde", "context": "insulto de caráter", "language": "pt" },
+        { "term": "drug dealer", "context": "character insult - basic criminality", "language": "en" },
+        { "term": "traficante", "context": "insulto de caráter - criminalidade básica", "language": "pt" },
+        { "term": "thief", "context": "character insult - basic criminality", "language": "en" },
+        { "term": "ladrão", "context": "insulto de caráter - criminalidade básica", "language": "pt" },
+        { "term": "slutty", "context": "character insult - sexual immorality", "language": "en" },
+        { "term": "vagabunda", "context": "insulto de caráter - imoralidade sexual", "language": "pt" },
+        { "term": "promiscuous", "context": "character insult - sexual immorality", "language": "en" }
+      ]
+    },
+    "tier2_mental_insults": {
+      "high": [
+        { "term": "stupid", "context": "mental insult", "language": "en" },
+        { "term": "estúpido", "context": "insulto mental", "language": "pt" },
+        { "term": "idiot", "context": "mental insult", "language": "en" },
+        { "term": "idiota", "context": "insulto mental", "language": "pt" },
+        { "term": "dumb", "context": "mental insult", "language": "en" },
+        { "term": "burro", "context": "insulto mental", "language": "pt" },
+        { "term": "retarded", "context": "mental insult", "language": "en" },
+        { "term": "mentally ill", "context": "mental insult (exception: gender/SO)", "language": "en" },
+        { "term": "doente mental", "context": "insulto mental (exceção: gênero/OS)", "language": "pt" }
+      ]
+    },
+    "tier2_other_insults": {
+      "high": [
+        { "term": "worthless", "context": "other insult", "language": "en" },
+        { "term": "inútil", "context": "outro insulto", "language": "pt" },
+        { "term": "useless", "context": "other insult", "language": "en" },
+        { "term": "ugly", "context": "other insult", "language": "en" },
+        { "term": "feio", "context": "outro insulto", "language": "pt" },
+        { "term": "dirty", "context": "other insult", "language": "en" },
+        { "term": "sujo", "context": "outro insulto", "language": "pt" },
+        { "term": "filthy", "context": "other insult", "language": "en" },
+        { "term": "imundo", "context": "outro insulto", "language": "pt" },
+        { "term": "scum", "context": "other insult", "language": "en" },
+        { "term": "escória", "context": "outro insulto", "language": "pt" },
+        { "term": "trash", "context": "other insult", "language": "en" },
+        { "term": "lixo", "context": "outro insulto", "language": "pt" },
+        { "term": "piece of shit", "context": "other insult", "language": "en" },
+        { "term": "pedaço de merda", "context": "outro insulto", "language": "pt" }
+      ]
+    },
+    "tier2_disgust": {
+      "high": [
+        { "term": "disgusting", "context": "expression of disgust", "language": "en" },
+        { "term": "nojento", "context": "expressão de repugnância", "language": "pt" },
+        { "term": "make me vomit", "context": "expression of disgust", "language": "en" },
+        { "term": "me dá vontade de vomitar", "context": "expressão de repugnância", "language": "pt" },
+        { "term": "makes me sick", "context": "expression of disgust", "language": "en" },
+        { "term": "me dá nojo", "context": "expressão de repugnância", "language": "pt" },
+        { "term": "vile", "context": "expression of disgust", "language": "en" },
+        { "term": "vil", "context": "expressão de repugnância", "language": "pt" },
+        { "term": "repulsive", "context": "expression of disgust", "language": "en" },
+        { "term": "repugnante", "context": "expressão de repugnância", "language": "pt" }
+      ]
+    },
+    "tier2_exclusion": {
+      "high": [
+        { "term": "no X allowed", "context": "general exclusion", "language": "en" },
+        { "term": "X não permitido", "context": "exclusão geral", "language": "pt" },
+        { "term": "kick out", "context": "general exclusion", "language": "en" },
+        { "term": "expulsar", "context": "exclusão geral", "language": "pt" },
+        { "term": "world without", "context": "general exclusion", "language": "en" },
+        { "term": "mundo sem", "context": "exclusão geral", "language": "pt" },
+        { "term": "keep the race pure", "context": "general exclusion - racial purity", "language": "en" },
+        { "term": "manter a raça pura", "context": "exclusão geral - pureza racial", "language": "pt" },
+        { "term": "should not vote", "context": "political exclusion", "language": "en" },
+        { "term": "não devem votar", "context": "exclusão política", "language": "pt" },
+        { "term": "imprison", "context": "political exclusion", "language": "en" },
+        { "term": "prender", "context": "exclusão política", "language": "pt" },
+        { "term": "do not rent to", "context": "economic exclusion", "language": "en" },
+        { "term": "não alugo para", "context": "exclusão econômica", "language": "pt" },
+        { "term": "should not be given loans", "context": "economic exclusion", "language": "en" }
+      ]
+    },
+    "tier2_cursing": {
+      "high": [
+        { "term": "fuck the", "context": "targeted cursing", "language": "en" },
+        { "term": "fucking", "context": "targeted cursing (when combined with PC)", "language": "en" },
+        { "term": "suck my dick", "context": "targeted cursing - sexual engagement", "language": "en" },
+        { "term": "chupa meu pau", "context": "insulto direcionado - engajamento sexual", "language": "pt" },
+        { "term": "kiss my ass", "context": "targeted cursing - sexual engagement", "language": "en" },
+        { "term": "beija minha bunda", "context": "insulto direcionado - engajamento sexual", "language": "pt" },
+        { "term": "eat shit", "context": "targeted cursing - sexual engagement", "language": "en" },
+        { "term": "coma merda", "context": "insulto direcionado - engajamento sexual", "language": "pt" }
+      ]
+    }
+  },
+
+  "protectedCharacteristicsIndicators": {
+    "religious_clothing": [
+      "hijab", "niqab", "burqa", "keffiyeh", "taqiyah", "turban", "abaya", "thobe", "shalwar kameez",
+      "monk robes", "priest collar", "nun habit", "kippah", "yarmulke", "shtreimel", "tallit", "tzitzit"
+    ],
+    "religious_symbols": [
+      "Star of David", "Cross", "Crescent", "Om", "Aum", "Wheel of Dharma", "Hamsa", "Menorah",
+      "Hanukiah", "Torah", "Quran", "Bible", "Kabba", "prayer rug", "rosary beads", "Khanda"
+    ],
+    "sexual_orientation_indicators": [
+      "rainbow flag", "rainbow colors", "🏳️‍🌈", "👨‍❤️‍👨", "👩‍❤️‍👩", "pride", "LGBTQ", "LGBT"
+    ],
+    "gender_identity_indicators": [
+      "trans flag", "🏳️‍⚧️", "transgender", "non-binary", "gender fluid", "trans woman", "trans man"
+    ],
+    "disability_symbols": [
+      "wheelchair symbol", "♿", "disability ribbon", "white cane", "hearing aid symbol"
+    ],
+    "disease_symbols": [
+      "AIDS ribbon", "red ribbon", "cancer ribbon", "awareness ribbon"
+    ]
+  },
+
+  "emojiSignals": {
+    "dehumanizing": [
+      { "emoji": "🐒", "meaning": "monkey - dehumanizing Black people" },
+      { "emoji": "🦍", "meaning": "gorilla - dehumanizing Black people" },
+      { "emoji": "🐀", "meaning": "rat - dehumanizing Jewish people" },
+      { "emoji": "🐷", "meaning": "pig - dehumanizing Muslim people" },
+      { "emoji": "🐖", "meaning": "pig - dehumanizing Muslim people" },
+      { "emoji": "🪳", "meaning": "cockroach - dehumanizing" },
+      { "emoji": "🦠", "meaning": "microbe - dehumanizing (pathogen)" },
+      { "emoji": "🐍", "meaning": "snake - dehumanizing" }
+    ],
+    "harm_statements": [
+      { "emoji": "💀", "meaning": "death - may indicate harm statement" },
+      { "emoji": "☠️", "meaning": "skull crossbones - may indicate harm statement" },
+      { "emoji": "⚰️", "meaning": "coffin - may indicate harm statement" },
+      { "emoji": "🔥", "meaning": "fire - may indicate harm statement" }
+    ],
+    "religious_indicators": [
+      { "emoji": "✡️", "meaning": "Star of David - Jewish" },
+      { "emoji": "☪️", "meaning": "Crescent - Muslim" },
+      { "emoji": "✝️", "meaning": "Cross - Christian" },
+      { "emoji": "🕉️", "meaning": "Om - Hindu" },
+      { "emoji": "☸️", "meaning": "Wheel of Dharma - Buddhist" },
+      { "emoji": "🕌", "meaning": "Mosque - Muslim" },
+      { "emoji": "🕍", "meaning": "Synagogue - Jewish" },
+      { "emoji": "⛪", "meaning": "Church - Christian" }
+    ],
+    "identity_indicators": [
+      { "emoji": "🏳️‍🌈", "meaning": "Rainbow flag - LGBTQ+" },
+      { "emoji": "🏳️‍⚧️", "meaning": "Trans flag - Transgender" },
+      { "emoji": "👨‍❤️‍👨", "meaning": "Gay couple" },
+      { "emoji": "👩‍❤️‍👩", "meaning": "Lesbian couple" },
+      { "emoji": "♿", "meaning": "Disability" }
+    ]
+  },
+
+  "allowableContextSignals": {
+    "mocking_condemning": [
+      "I can't believe", "it's wrong to call", "don't call me", "I am not a", "stop calling people",
+      "não me chame de", "não é certo chamar", "é errado chamar"
+    ],
+    "discussing_reporting": [
+      "do you think it's acceptable", "is it okay to say", "someone called me",
+      "they said", "overheard", "reported for saying",
+      "você acha aceitável", "alguém me chamou de", "ouvi dizerem"
+    ],
+    "self_referential_pronouns": [
+      "I am", "I'm", "we are", "we're", "us", "myself", "ourselves",
+      "eu sou", "nós somos", "me", "nos"
+    ],
+    "explicitly_positive": [
+      "best friends", "love you", "beautiful", "smart", "great to see you", "happy birthday",
+      "melhores amigos", "te amo", "lindo", "inteligente", "feliz aniversário"
+    ]
+  },
+
+  "nonViolatingContexts": [
+    "attacking concepts not people",
+    "behavioral statements about actions",
+    "statements of superiority without intellectual inferiority claims",
+    "gender/sex exclusion from commonly limited spaces",
+    "gender-based military/law enforcement/teaching exclusion",
+    "sexual orientation + religious belief job exclusion",
+    "romantic break-up context expressions",
+    "mental illness allegations based on gender/sexual orientation",
+    "personal relationship/marriage/adoption preferences",
+    "boycotts of products/businesses",
+    "'go home' statements",
+    "personal voting preferences",
+    "insults about weakness/physical strength",
+    "insults about sinning/general immorality",
+    "insults about ability to perform specific task",
+    "denying PC group exists",
+    "disputing historical events (except Holocaust)"
+  ],
+
+  "dalitMenialLaborSignals": [
+    "toilet", "toilets", "banheiro", "banheiros",
+    "cleaner", "cleaners", "faxineiro", "faxineiros",
+    "filth", "filthy", "sujeira", "imundo",
+    "sewage", "esgoto",
+    "scavenging", "catador",
+    "feces", "fezes",
+    "Harpic"
+  ],
+
+  "blackfaceSignals": {
+    "required": [
+      "Darkened face visible",
+      "Lighter skin visible (neck, arm, around eyes)"
+    ],
+    "exaggerated_features_2_required": [
+      "Bulging eyes",
+      "Oversized lips"
+    ]
+  }
+}

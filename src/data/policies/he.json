@@ -1,0 +1,737 @@
+{
+  "id": "he",
+  "name": "Human Exploitation",
+  "shortName": "HE",
+  "description": "In an effort to disrupt and prevent offline harm, we remove content that facilitates or coordinates the exploitation of humans, including human trafficking (the business of depriving someone of liberty for profit) and human smuggling. Human trafficking relies on deception, force, and coercion, and degrades humans by depriving them of their freedom while economically or materially benefiting others.",
+  "color": "#DC2626",
+  "icon": "Users",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "human_trafficking",
+      "name": "Human Trafficking",
+      "description": "Content that recruits, facilitates, or exploits people through various forms of human trafficking",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "minor_sex_trafficking",
+          "name": "Minor Sex Trafficking",
+          "description": "Any commercial sexual activity involving a minor (under 18), with or without force, fraud, or coercion",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Recruiting minors for commercial sex",
+            "Offering minors for paid sexual services",
+            "Job ads for sex work targeting minors"
+          ],
+          "conditions": ["Minor involved (under 18)", "Commercial sexual activity", "No force/fraud/coercion required for minors"]
+        },
+        {
+          "id": "adult_sex_trafficking",
+          "name": "Adult Sex Trafficking",
+          "description": "Commercial sexual activity involving adults through force, fraud, or coercion",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Recruiting adults for sex work through threats",
+            "Offering adults for commercial sex via coercion",
+            "False promises of legitimate work leading to sex trafficking"
+          ],
+          "conditions": ["Adult involved", "Commercial sexual activity", "Force, fraud, OR coercion present"]
+        },
+        {
+          "id": "third_party_commercial_sex",
+          "name": "Third-Party Commercial Sexual Activity (CCSA)",
+          "description": "Third party recruits, facilitates, or benefits from commercial sexual activity of adults without force/fraud/coercion",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Pimp offering escort services",
+            "Recruiting for adult commercial sex work",
+            "Brothel advertising availability of workers",
+            "Third party offering adults for paid sexual services"
+          ],
+          "conditions": ["Third party involved", "Commercial sexual activity", "Adults", "No force/fraud/coercion (otherwise = Sex Trafficking)"]
+        },
+        {
+          "id": "sale_children_illegal_adoption",
+          "name": "Sale of Children or Illegal Adoptions",
+          "description": "Soliciting or offering children (born or unborn) for sale or adoption without legal process",
+          "action": "label",
+          "examples": [
+            "Offering baby for sale",
+            "Seeking to buy unborn child",
+            "Adoption without mention of legal process"
+          ],
+          "conditions": ["Child (born or unborn)", "Sale or adoption context", "No mention of legal process", "2+ indicators (pregnancy details, price, contact, location)"]
+        },
+        {
+          "id": "orphanage_trafficking",
+          "name": "Orphanage Trafficking and Voluntourism",
+          "description": "Exploiting children through orphanages for trafficking purposes",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Recruiting children for fake orphanages",
+            "Exploiting orphanage voluntourism"
+          ],
+          "conditions": ["Orphanage context", "Exploitation purpose"]
+        },
+        {
+          "id": "forced_marriages",
+          "name": "Forced Marriages",
+          "description": "Marriage without consent of one or both parties, including child marriages",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Soliciting minors for marriage",
+            "Recruiting adults for child marriages",
+            "Marriage where party cannot leave or refuse"
+          ],
+          "conditions": ["Marriage context", "Lack of consent OR minor involved"]
+        },
+        {
+          "id": "labor_exploitation",
+          "name": "Labor Exploitation",
+          "description": "Exploiting people for labor through force, fraud, or coercion with explicit or primary indicators",
+          "action": "label",
+          "examples": [
+            "Job with illegal practices explicitly mentioned",
+            "Passport confiscation for cross-border work",
+            "Employer controls worker income",
+            "Excessively low or no salary",
+            "Palm oil plantation recruitment (specific criteria)"
+          ],
+          "conditions": ["1 explicit indicator OR 2 primary indicators OR 1 primary + 1 secondary indicator"]
+        },
+        {
+          "id": "labor_abuse",
+          "name": "Labor Abuse",
+          "description": "Exploiting people for labor through unfair or harmful means without force/fraud/coercion",
+          "action": "label",
+          "examples": [
+            "Unrealistic compensation promises",
+            "Guaranteeing employment in unskilled job",
+            "Stressing urgency to apply"
+          ],
+          "conditions": ["1 primary indicator OR 2 secondary indicators"]
+        },
+        {
+          "id": "domestic_servitude",
+          "name": "Domestic Servitude",
+          "description": "Trafficking for domestic work inside private homes through force, fraud, coercion, or deception",
+          "action": "label",
+          "examples": [
+            "Recruiting maids with visitor visa instead of work contract",
+            "Offering domestic helpers for sale",
+            "Bypassing labor regulations for domestic workers"
+          ],
+          "conditions": ["Domestic helper context", "Exploitation indicators"]
+        },
+        {
+          "id": "domestic_helpers_recruitment",
+          "name": "Domestic Helpers Recruitment",
+          "description": "Recruiting domestic helpers lacking signals of exploitation",
+          "action": "label",
+          "examples": [
+            "Job posting for domestic helper in private home",
+            "Seeking domestic workers without exploitation signals"
+          ],
+          "conditions": ["Recruitment for domestic helper", "Private home", "No explicit exploitation signals"]
+        },
+        {
+          "id": "organ_trafficking",
+          "name": "Non-Regenerative Organ Trafficking",
+          "description": "Recruiting, facilitating, or exploiting people for organ trafficking",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Offering kidney for sale with price",
+            "Soliciting people to sell organs",
+            "Stating intention to sell others' organs"
+          ],
+          "conditions": ["Non-regenerative organ", "Commercial context (not donation)", "Not joking context"]
+        },
+        {
+          "id": "organ_offer_own",
+          "name": "Offering Own Organs",
+          "description": "Content offering one's own non-regenerative organs for sale",
+          "action": "label",
+          "examples": [
+            "I want to sell my kidney",
+            "Offering my organ with financial difficulties mentioned"
+          ],
+          "conditions": ["Own organ offered", "Plus factors: financial difficulty, age, medical info, compensation, location, contact"]
+        },
+        {
+          "id": "forced_criminality",
+          "name": "Forced Criminal Activity",
+          "description": "Forcing people to commit crimes (begging, drug trafficking, etc.)",
+          "action": "label",
+          "escalate": true,
+          "examples": [
+            "Forcing children to beg",
+            "Coercing people into drug trafficking",
+            "Recruiting minors for criminal activity"
+          ],
+          "conditions": ["Criminal activity", "Force/coercion (not required for minors)"]
+        },
+        {
+          "id": "child_soldiers",
+          "name": "Use of Child Soldiers",
+          "description": "Recruiting minors into armed groups",
+          "action": "label",
+          "examples": [
+            "Recruiting minors for armed groups",
+            "Imagery of child soldiers with praise",
+            "Advertising recruiting centers for minors"
+          ],
+          "conditions": ["Minor (under 18)", "Armed group (not state military academy)", "Recruitment/promotion"]
+        },
+        {
+          "id": "temporary_marriages",
+          "name": "Temporary Marriages",
+          "description": "Recruiting for temporary marriages without exchange for money",
+          "action": "label",
+          "examples": [
+            "Recruiting for mut'ah marriages",
+            "Sigheh marriage recruitment"
+          ],
+          "conditions": ["Temporary/time-bound marriage", "Recruitment context", "No money exchange mentioned"]
+        },
+        {
+          "id": "high_risk_locations",
+          "name": "Jobs in High-Risk Locations",
+          "description": "Job offers in known trafficking hotspot locations",
+          "action": "label",
+          "examples": [
+            "Job in Bavet, Cambodia",
+            "Work opportunity in Poipet",
+            "Employment in Myawaddy, Myanmar"
+          ],
+          "conditions": ["Job offer in: Cambodia (Bavet, Pailin, Poipet), Laos (Bokeo), Myanmar (Myawaddy)"]
+        }
+      ]
+    },
+    {
+      "id": "human_smuggling",
+      "name": "Human Smuggling",
+      "description": "Procurement or facilitation of irregular cross-border entry for financial gain",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "offer_smuggling",
+          "name": "Offers to Provide/Facilitate Smuggling",
+          "description": "Content offering or facilitating human smuggling services",
+          "action": "label",
+          "examples": [
+            "Offering to help cross border illegally",
+            "Smuggling services between countries",
+            "Fake travel documents for border crossing"
+          ],
+          "conditions": ["1 explicit indicator OR 2 primary indicators OR 1 primary + 1 secondary indicator"]
+        },
+        {
+          "id": "ask_smuggling",
+          "name": "Asks for Smuggling Services",
+          "description": "Content requesting human smuggling services",
+          "action": "label",
+          "examples": [
+            "Looking for someone to help cross border illegally",
+            "Seeking smuggling services",
+            "Asking for coyote contact"
+          ],
+          "conditions": ["Soliciting cross-border smuggling OR illegal crossing explicitly mentioned"]
+        }
+      ]
+    },
+    {
+      "id": "allowed_content",
+      "name": "Allowed Content",
+      "description": "Content that does not violate Human Exploitation policies",
+      "severity": "none",
+      "subcategories": [
+        {
+          "id": "awareness_condemnation",
+          "name": "Awareness/Condemnation",
+          "description": "Condemning, raising awareness, or news reporting on human exploitation issues",
+          "action": "no_action",
+          "examples": [
+            "Civil society campaigns against trafficking",
+            "Personal survivor stories",
+            "News reporting on exploitation"
+          ],
+          "conditions": ["Condemns OR raises awareness OR news reporting"]
+        },
+        {
+          "id": "personal_safety_asylum",
+          "name": "Personal Safety and Asylum Information",
+          "description": "Asking for or sharing information about border crossing safety, asylum, or leaving a country",
+          "action": "no_action",
+          "examples": [
+            "How to seek asylum in EU",
+            "Safety tips for border crossing",
+            "Legal ways to leave country"
+          ],
+          "conditions": ["Personal safety info OR asylum seeking OR legal immigration info"]
+        },
+        {
+          "id": "legal_adoption",
+          "name": "Legal Adoption Process",
+          "description": "Adoption content with explicit mention of legal process",
+          "action": "no_action",
+          "examples": [
+            "Seeking legal advice from adoption agency",
+            "Court proceedings for adoption",
+            "Licensed child welfare agency inquiry"
+          ],
+          "conditions": ["Adoption context", "Legal process explicitly mentioned"]
+        },
+        {
+          "id": "organ_donation_legitimate",
+          "name": "Legitimate Organ Donation",
+          "description": "Non-exploitative organ donation through official registers or fundraising",
+          "action": "no_action",
+          "examples": [
+            "Living donor registry information",
+            "Fundraising for organ transplant operation",
+            "Official organ donation process"
+          ],
+          "conditions": ["Official donor register OR fundraising for transplant"]
+        },
+        {
+          "id": "organ_jokes",
+          "name": "Organ Selling Jokes",
+          "description": "Humorous content about selling organs",
+          "action": "no_action",
+          "examples": [
+            "I'll sell my kidney to afford concert tickets",
+            "Selling an organ for the new PlayStation"
+          ],
+          "conditions": ["Clearly humorous/satirical context", "No actual intent"]
+        },
+        {
+          "id": "victim_support",
+          "name": "Victim Support Services",
+          "description": "Offering help or resources to exploitation victims",
+          "action": "no_action",
+          "examples": [
+            "Hotline information for trafficking victims",
+            "Shelter resources for exploitation survivors"
+          ],
+          "conditions": ["Support services offered", "Escaping exploitation context"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "minor_sex_trafficking",
+      "label": "HE > Human Trafficking > Minor Sex Trafficking",
+      "path": ["Human Exploitation", "Human Trafficking", "Minor Sex Trafficking"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "adult_sex_trafficking",
+      "label": "HE > Human Trafficking > Sex Trafficking",
+      "path": ["Human Exploitation", "Human Trafficking", "Sex Trafficking"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "ccsa",
+      "label": "HE > Human Trafficking > Coordinated Commercial Sexual Activity",
+      "path": ["Human Exploitation", "Human Trafficking", "CCSA"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "organ_trafficking",
+      "label": "HE > Human Trafficking > Organ Trafficking",
+      "path": ["Human Exploitation", "Human Trafficking", "Organ Trafficking"],
+      "action": "escalate",
+      "severity": "critical",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "child_selling",
+      "label": "HE > Human Trafficking > Child Selling/Illegal Adoption",
+      "path": ["Human Exploitation", "Human Trafficking", "Child Selling"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "child_soldiers",
+      "label": "HE > Human Trafficking > Child Soldiers",
+      "path": ["Human Exploitation", "Human Trafficking", "Child Soldiers"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "labor_exploitation",
+      "label": "HE > Human Trafficking > Labor Exploitation",
+      "path": ["Human Exploitation", "Human Trafficking", "Labor Exploitation"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "domestic_servitude",
+      "label": "HE > Human Trafficking > Domestic Servitude",
+      "path": ["Human Exploitation", "Human Trafficking", "Domestic Servitude"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "domestic_helpers",
+      "label": "HE > Human Trafficking > Domestic Helpers",
+      "path": ["Human Exploitation", "Human Trafficking", "Domestic Helpers"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "temporary_marriages",
+      "label": "HE > Human Trafficking > Temporary Marriages",
+      "path": ["Human Exploitation", "Human Trafficking", "Temporary Marriages"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "smuggling_facilitate",
+      "label": "HE > Human Smuggling > Facilitate/Offer Services",
+      "path": ["Human Exploitation", "Human Smuggling", "Facilitate"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 11
+    },
+    {
+      "id": "smuggling_ask",
+      "label": "HE > Human Smuggling > Ask for Services",
+      "path": ["Human Exploitation", "Human Smuggling", "Ask for Services"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 12
+    }
+  ],
+
+  "forceFraudCoercion": {
+    "force": {
+      "description": "Use or threatened use of physical violence, assault, restraint or confinement",
+      "examples": [
+        "Violence or threats of violence",
+        "Sexual abuse or assault",
+        "Handcuffing, physical restraint",
+        "Isolation in a locked room"
+      ]
+    },
+    "fraud": {
+      "description": "Intentional misrepresentation for obtaining something of value",
+      "examples": [
+        "False or unrealistic promises about work/living conditions",
+        "Withholding promised wages",
+        "Guaranteeing visa or employment"
+      ]
+    },
+    "coercion": {
+      "description": "Threats of serious harm or restraint to make person believe failure to act would result in harm",
+      "examples": [
+        "Threats against victim or family",
+        "Threats of deportation or law enforcement",
+        "Confiscation of identity documents",
+        "Withholding of drugs",
+        "Threats to expose engagement in commercial sex"
+      ]
+    }
+  },
+
+  "laborIndicators": {
+    "explicit": {
+      "description": "One explicit indicator = Labor Exploitation",
+      "indicators": [
+        "Explicit mention of bypassing labor regulations",
+        "Job stated as illegal / needing illegal workers",
+        "Offering to help 'escape' current employer for fee",
+        "Palm oil plantation recruitment (cross-border without visa, by individual, recruiting couples/families)",
+        "Employer controls worker's income",
+        "Excessively low or no salary",
+        "Requiring loan from employer to secure job",
+        "Cross-border job + passport surrender demand",
+        "Cross-border job + visitor visa instead of work visa",
+        "ECNR in job advertisement",
+        "Guaranteeing visa (100% guaranteed)"
+      ]
+    },
+    "primary": {
+      "description": "2 primary OR 1 primary + 1 secondary = Labor Exploitation; 1 primary = Labor Abuse",
+      "indicators": [
+        "No skills required for skilled job",
+        "Guaranteeing employment in skilled job",
+        "Pay fee to be employed (purpose unspecified)",
+        "Targeting minors under 15 for employment",
+        "Living expenses deducted from wages",
+        "Cross-border job + no work permit required",
+        "Cross-border job + free visa offered",
+        "Restricted liberty (allocated housing, employer-controlled mobility)",
+        "Misrepresenting employer/company/government",
+        "Sharing manipulated official documents"
+      ]
+    },
+    "secondary": {
+      "description": "2 secondary = Labor Abuse; 1 primary + 1 secondary = Labor Exploitation",
+      "indicators": [
+        "Guaranteeing employment in unskilled job",
+        "Cannot choose job to perform",
+        "Upfront payment or work to pay off fees",
+        "Language skills not required for skilled job",
+        "Stressing urgency to apply / scarcity of jobs",
+        "No contract mentioned",
+        "Specific typing speed requirement",
+        "Travel costs covered then deducted from salary",
+        "Informal/anonymous payment (cash only)",
+        "Bonuses unrelated to performance",
+        "Advanced loan offered",
+        "Cross-border + work permit on arrival",
+        "Cross-border + visa within specific timeframe",
+        "Tasks outside job description",
+        "Long hours/overtime expected",
+        "Unrealistic compensation (>$1000/month for unskilled job in low-wage country)",
+        "Unrealistic benefits (free accommodation, flights, utilities)"
+      ]
+    }
+  },
+
+  "smugglingIndicators": {
+    "explicit": {
+      "description": "One explicit indicator = Human Smuggling",
+      "indicators": [
+        "Crossing explicitly mentioned as illegal",
+        "No entry documents required for border crossing",
+        "Fake travel documents for crossing",
+        "Terms: smuggle, smuggling services, secret immigration, illegal migrants/migration/travel/immigration"
+      ]
+    },
+    "primary": {
+      "description": "2 primary OR 1 primary + 1 secondary = Human Smuggling",
+      "indicators": [
+        "Transportation method mentioned (foot, car, boat, lorry, RIB)",
+        "Crossing method/route described",
+        "Route integrity mentioned (guaranteed, safe, secured, avoiding checkpoints)",
+        "Fake/fraudulent documents offered (outside explicit crossing context)",
+        "Guaranteed visas without job offer"
+      ]
+    },
+    "secondary": {
+      "description": "1 primary + 1 secondary = Human Smuggling",
+      "indicators": [
+        "Departure and destination locations (smuggling hubs/hotspots)",
+        "Visual smuggling hints (life jackets, boat, travel documents, road signs)",
+        "Contact method provided (phone, email, messaging apps, DM me)",
+        "Payment discussed (cost, excessive prices, payment method)"
+      ]
+    }
+  },
+
+  "commercialSexualActivity": {
+    "examples": [
+      "Escort services",
+      "Prostitution",
+      "Erotic massage services",
+      "Pornographic activities (recruiting for porn/adult films)",
+      "Live performances of nudity to sexually stimulate audience",
+      "Live streamed sexual activities for money",
+      "Sex chats for money",
+      "Nude photos/videos for money",
+      "Temporary marriage for money"
+    ],
+    "third_party_signals": [
+      "Looking for people to work in commercial sexual activities",
+      "Having other people available for sex",
+      "Mentioning availability of people at brothel",
+      "Mentioning availability + contact details",
+      "Third-party facilitator with people available",
+      "Sexual activity + financial transaction language (rent, for sale, service, booking, rate)"
+    ]
+  },
+
+  "highRiskLocations": [
+    { "country": "Cambodia", "locations": ["Bavet", "Pailin", "Poipet"] },
+    { "country": "Laos", "locations": ["Bokeo"] },
+    { "country": "Myanmar", "locations": ["Myawaddy"] }
+  ],
+
+  "nonRegenerativeOrgans": [
+    "Kidneys",
+    "Livers",
+    "Hearts",
+    "Eyeballs",
+    "Corneas",
+    "Lungs",
+    "Intestines",
+    "Pancreases"
+  ],
+
+  "exceptions": [
+    {
+      "id": "awareness_condemnation",
+      "name": "Awareness/Condemnation",
+      "description": "Content condemning or raising awareness about human exploitation",
+      "appliesTo": ["all"],
+      "action": "no_action"
+    },
+    {
+      "id": "news_reporting",
+      "name": "News Reporting",
+      "description": "Journalistic coverage of human exploitation issues",
+      "appliesTo": ["all"],
+      "action": "no_action"
+    },
+    {
+      "id": "personal_safety_asylum",
+      "name": "Personal Safety/Asylum Information",
+      "description": "Information about border crossing safety, seeking asylum, or leaving a country legally",
+      "appliesTo": ["human_smuggling"],
+      "action": "no_action"
+    },
+    {
+      "id": "legal_adoption",
+      "name": "Legal Adoption Process",
+      "description": "Adoption with explicit mention of legal process (lawyer, court, agency)",
+      "appliesTo": ["sale_children_illegal_adoption"],
+      "action": "no_action"
+    },
+    {
+      "id": "organ_donation_legitimate",
+      "name": "Legitimate Organ Donation",
+      "description": "Official donor registers, fundraising for transplant operations",
+      "appliesTo": ["organ_trafficking"],
+      "action": "no_action"
+    },
+    {
+      "id": "organ_jokes",
+      "name": "Organ Selling Jokes",
+      "description": "Humorous content about selling organs (concert tickets, PlayStation, etc.)",
+      "appliesTo": ["organ_trafficking"],
+      "action": "no_action"
+    },
+    {
+      "id": "victim_support",
+      "name": "Victim Support Services",
+      "description": "Helping people escape exploitation, providing support resources",
+      "appliesTo": ["labor_exploitation", "domestic_servitude"],
+      "action": "no_action"
+    },
+    {
+      "id": "worker_rights_education",
+      "name": "Worker Rights Education",
+      "description": "Content about labor laws, workers' rights, fair labor practices",
+      "appliesTo": ["labor_exploitation", "labor_abuse"],
+      "action": "no_action"
+    },
+    {
+      "id": "state_military_academies",
+      "name": "State Military Academies",
+      "description": "State-related military schools, hunting context",
+      "appliesTo": ["child_soldiers"],
+      "action": "no_action"
+    },
+    {
+      "id": "child_soldier_rehabilitation",
+      "name": "Child Soldier Rehabilitation",
+      "description": "Fundraising for child soldier rehabilitation programs",
+      "appliesTo": ["child_soldiers"],
+      "action": "no_action"
+    },
+    {
+      "id": "fictional_forced_marriage",
+      "name": "Fictional Forced Marriage",
+      "description": "Fictional content depicting forced marriages that doesn't facilitate real-world harm",
+      "appliesTo": ["forced_marriages"],
+      "action": "no_action"
+    },
+    {
+      "id": "forced_marriage_jokes",
+      "name": "Forced Marriage Humor",
+      "description": "Satire, parody, or dark humor about forced marriages",
+      "appliesTo": ["forced_marriages"],
+      "action": "no_action"
+    }
+  ],
+
+  "coordinatedTargetedCampaigns": {
+    "description": "Scam trends that mimic trafficking but are actually fraud/account takeover attempts",
+    "trends": [
+      {
+        "name": "Vietnam Instagram Trend",
+        "indicators": ["Vietnamese text", "Mentions kidneys/children/prostitutes for sale", "ISIS flags/Osama images", "New account (<20 days)", "0 followers", "Empty bio", "Vietnam registration"]
+      },
+      {
+        "name": "Indian Call Boy",
+        "indicators": ["'Call boy/girl' slang", "Escort service mentions", "Redirect to WhatsApp/Telegram", "Originates from India", "Short phrases only"]
+      },
+      {
+        "name": "Sugar Mommy SSA",
+        "indicators": ["'Sugar mummy/daddy' terms", "Amharic/SSA markets", "Multiple emojis", "Dating/marriage context", "Advance fee scam"]
+      },
+      {
+        "name": "Nigeria Massage Scam",
+        "indicators": ["Erotic massage services", "Nigeria location but offering in other countries", "Generic female names", "'Nuru massage', 'body to body massage'"]
+      },
+      {
+        "name": "Korean Sex Party Scam",
+        "indicators": ["Korean scripted language", "Sex party promotion", "Random domain links (xee65.com)", "Spammy redirects", "Part-time job offers"]
+      },
+      {
+        "name": "Korean Escort Trend",
+        "indicators": ["Korean overlay text", "Sexualized photos", "'Choose beautiful woman'", "1:1 reservation", "Deceptive links ('tumez' domains)"]
+      }
+    ],
+    "action": "label_as_ctc",
+    "note": "If minor involved, escalate as MST instead"
+  },
+
+  "glossary": {
+    "human_trafficking": "The business of depriving someone of liberty for profit through force, fraud, or coercion to engage in commercial sex, labor, or other activities against their will",
+    "human_smuggling": "Procurement or facilitation of irregular cross-border entry for financial or material gain of others",
+    "recruits": "Soliciting or targeting individuals for exploitation through force, fraud, coercion, enticement, deception, blackmail, or non-consensual acts",
+    "facilitates": "Coordinating transportation, transfer, harboring of victims before or during exploitation",
+    "exploits": "Offering, selling, or brokering people for any form of trafficking",
+    "commercial_sexual_activity": "Provision of sex act/service for money or anything of value (escort, prostitution, erotic massage, porn, live performances, sex chats, nude photos/videos)",
+    "force": "Use or threatened use of physical violence, assault, restraint, or confinement",
+    "fraud": "Intentional misrepresentation to obtain something of value (false promises, withholding wages, guaranteeing visas)",
+    "coercion": "Threats of serious harm or restraint to compel action (threats to victim/family, deportation threats, document confiscation)",
+    "domestic_servitude": "Trafficking for domestic work (cooking, cleaning, laundry, childminding) through force, fraud, coercion, or deception",
+    "labor_exploitation": "Exploiting people for labor through force, fraud, or coercion, often through deceptive means",
+    "labor_abuse": "Exploiting people for labor through unfair or harmful means without force, fraud, or coercion",
+    "forced_marriage": "Marriage without consent of one or both parties, or where parties cannot leave (includes child marriages). Does NOT include arranged marriages with option to refuse",
+    "temporary_marriage": "Time-bound marriages (mut'ah, sigheh)",
+    "child_soldier": "Person under 18 recruited by or volunteering for military/paramilitary group, including combat, support roles, or sexual abuse",
+    "non_regenerative_organs": "Organs that won't grow back: kidneys, livers, hearts, eyeballs, corneas, lungs, intestines, pancreases",
+    "awareness_raising": "Sharing information to improve understanding of issues, not inciting violence or spreading hate/misinformation",
+    "news_reporting": "Sharing reliable information by news outlets or journalists to increase situational awareness",
+    "imminent": "Has just happened, is about to happen, is happening, or ongoing - within 72 hours"
+  },
+
+  "operationalGuidelines": {
+    "trafficking_stages": ["Recruitment", "Coordination", "Exploitation"],
+    "minor_consent": "Minors cannot consent - content with minor consent signals still violates",
+    "ccsa_vs_st": "CCSA = no force/fraud/coercion; ST = with force/fraud/coercion",
+    "mst_no_force_required": "Minor sex trafficking does not require force/fraud/coercion - minor involvement is sufficient",
+    "third_party_identification": "Look for: third-party pronouns (we, she, they), multiple people offered, plural language, business posting",
+    "age_assessment": "Direct (age mentioned under 18) + Indirect (bio, username, profile image, 'Potential Minor' tag)",
+    "legal_process_negates": "Mention of legal process (lawyer, court, adoption agency) negates child selling violation",
+    "organ_joke_signals": "Humor emojis (😂🤣), reference to buying items by selling organs, flirtatious context",
+    "imminent_threat_criteria": "Must violate HEx policy + imminent (72 hours) + threat to life/safety + identifiable person",
+    "us_escalation": "CCSA and ST in US only = escalate; Non-US = label"
+  }
+}

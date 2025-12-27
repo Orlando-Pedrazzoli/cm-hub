@@ -1,0 +1,510 @@
+{
+  "policyId": "he",
+  "policyName": "Human Exploitation",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "keywords": {
+    "sex_trafficking": {
+      "critical": [
+        { "term": "sex trafficking", "context": "explicit trafficking", "language": "en" },
+        { "term": "tráfico sexual", "context": "tráfico explícito", "language": "pt" },
+        { "term": "child prostitution", "context": "minor sex trafficking", "language": "en" },
+        { "term": "prostituição infantil", "context": "tráfico sexual de menores", "language": "pt" },
+        { "term": "underage escort", "context": "minor sex trafficking", "language": "en" },
+        { "term": "acompanhante menor de idade", "context": "tráfico sexual de menores", "language": "pt" },
+        { "term": "girls available", "context": "third party offering", "language": "en" },
+        { "term": "meninas disponíveis", "context": "oferta de terceiros", "language": "pt" },
+        { "term": "we have girls", "context": "third party offering", "language": "en" },
+        { "term": "temos meninas", "context": "oferta de terceiros", "language": "pt" }
+      ],
+      "high": [
+        { "term": "escort services", "context": "commercial sexual activity", "language": "en" },
+        { "term": "serviços de acompanhante", "context": "atividade sexual comercial", "language": "pt" },
+        { "term": "prostitution", "context": "commercial sexual activity", "language": "en" },
+        { "term": "prostituição", "context": "atividade sexual comercial", "language": "pt" },
+        { "term": "erotic massage", "context": "commercial sexual activity", "language": "en" },
+        { "term": "massagem erótica", "context": "atividade sexual comercial", "language": "pt" },
+        { "term": "call girl", "context": "commercial sex", "language": "en" },
+        { "term": "call boy", "context": "commercial sex - India CTC", "language": "en" },
+        { "term": "brothel", "context": "sex establishment", "language": "en" },
+        { "term": "bordel", "context": "estabelecimento sexual", "language": "pt" },
+        { "term": "sex work job", "context": "recruitment", "language": "en" },
+        { "term": "trabalho sexual", "context": "recrutamento", "language": "pt" }
+      ]
+    },
+    "labor_exploitation": {
+      "critical": [
+        { "term": "bypass labor regulations", "context": "explicit indicator", "language": "en" },
+        { "term": "burlar regulamentações trabalhistas", "context": "indicador explícito", "language": "pt" },
+        { "term": "illegal workers", "context": "explicit indicator", "language": "en" },
+        { "term": "trabalhadores ilegais", "context": "indicador explícito", "language": "pt" },
+        { "term": "surrender passport", "context": "explicit indicator", "language": "en" },
+        { "term": "entregar passaporte", "context": "indicador explícito", "language": "pt" },
+        { "term": "escape your sponsor", "context": "exploitation recruitment", "language": "en" },
+        { "term": "fugir do seu patrocinador", "context": "recrutamento para exploração", "language": "pt" },
+        { "term": "visa guaranteed", "context": "fraud indicator", "language": "en" },
+        { "term": "visto garantido", "context": "indicador de fraude", "language": "pt" },
+        { "term": "100% visa", "context": "fraud indicator", "language": "en" }
+      ],
+      "high": [
+        { "term": "no experience needed", "context": "primary indicator (skilled job)", "language": "en" },
+        { "term": "não precisa experiência", "context": "indicador primário (trabalho qualificado)", "language": "pt" },
+        { "term": "guaranteed employment", "context": "primary indicator", "language": "en" },
+        { "term": "emprego garantido", "context": "indicador primário", "language": "pt" },
+        { "term": "free visa", "context": "primary indicator", "language": "en" },
+        { "term": "visto grátis", "context": "indicador primário", "language": "pt" },
+        { "term": "no work permit needed", "context": "primary indicator", "language": "en" },
+        { "term": "não precisa permissão de trabalho", "context": "indicador primário", "language": "pt" },
+        { "term": "accommodation provided", "context": "may be primary indicator", "language": "en" },
+        { "term": "acomodação fornecida", "context": "pode ser indicador primário", "language": "pt" },
+        { "term": "palm oil plantation", "context": "high-risk sector", "language": "en" },
+        { "term": "plantação de óleo de palma", "context": "setor de alto risco", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "urgent hiring", "context": "secondary indicator", "language": "en" },
+        { "term": "contratação urgente", "context": "indicador secundário", "language": "pt" },
+        { "term": "start immediately", "context": "secondary indicator", "language": "en" },
+        { "term": "comece imediatamente", "context": "indicador secundário", "language": "pt" },
+        { "term": "no contract", "context": "secondary indicator", "language": "en" },
+        { "term": "sem contrato", "context": "indicador secundário", "language": "pt" },
+        { "term": "cash payment only", "context": "secondary indicator", "language": "en" },
+        { "term": "pagamento apenas em dinheiro", "context": "indicador secundário", "language": "pt" },
+        { "term": "long hours", "context": "secondary indicator", "language": "en" },
+        { "term": "longas horas", "context": "indicador secundário", "language": "pt" },
+        { "term": "overtime required", "context": "secondary indicator", "language": "en" },
+        { "term": "horas extras obrigatórias", "context": "indicador secundário", "language": "pt" }
+      ]
+    },
+    "human_smuggling": {
+      "critical": [
+        { "term": "smuggling", "context": "explicit indicator", "language": "en" },
+        { "term": "contrabando de pessoas", "context": "indicador explícito", "language": "pt" },
+        { "term": "smuggling services", "context": "explicit indicator", "language": "en" },
+        { "term": "serviços de contrabando", "context": "indicador explícito", "language": "pt" },
+        { "term": "illegal immigration", "context": "explicit indicator", "language": "en" },
+        { "term": "imigração ilegal", "context": "indicador explícito", "language": "pt" },
+        { "term": "illegal crossing", "context": "explicit indicator", "language": "en" },
+        { "term": "travessia ilegal", "context": "indicador explícito", "language": "pt" },
+        { "term": "secret immigration", "context": "explicit indicator", "language": "en" },
+        { "term": "imigração secreta", "context": "indicador explícito", "language": "pt" },
+        { "term": "coyote", "context": "smuggler slang (US-Mexico)", "language": "en" },
+        { "term": "coiote", "context": "gíria de contrabandista", "language": "pt" }
+      ],
+      "high": [
+        { "term": "cross border", "context": "primary indicator", "language": "en" },
+        { "term": "cruzar fronteira", "context": "indicador primário", "language": "pt" },
+        { "term": "border crossing", "context": "primary indicator", "language": "en" },
+        { "term": "travessia de fronteira", "context": "indicador primário", "language": "pt" },
+        { "term": "fake documents", "context": "primary indicator", "language": "en" },
+        { "term": "documentos falsos", "context": "indicador primário", "language": "pt" },
+        { "term": "guaranteed visa", "context": "primary indicator (no job)", "language": "en" },
+        { "term": "visto garantido", "context": "indicador primário (sem emprego)", "language": "pt" },
+        { "term": "safe route", "context": "primary indicator", "language": "en" },
+        { "term": "rota segura", "context": "indicador primário", "language": "pt" },
+        { "term": "guaranteed passage", "context": "primary indicator", "language": "en" },
+        { "term": "passagem garantida", "context": "indicador primário", "language": "pt" },
+        { "term": "avoid checkpoints", "context": "primary indicator", "language": "en" },
+        { "term": "evitar checkpoints", "context": "indicador primário", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "journey", "context": "secondary indicator", "language": "en" },
+        { "term": "jornada", "context": "indicador secundário", "language": "pt" },
+        { "term": "life jacket", "context": "visual hint", "language": "en" },
+        { "term": "colete salva-vidas", "context": "dica visual", "language": "pt" },
+        { "term": "boat crossing", "context": "transportation", "language": "en" },
+        { "term": "travessia de barco", "context": "transporte", "language": "pt" }
+      ]
+    },
+    "organ_trafficking": {
+      "critical": [
+        { "term": "kidney for sale", "context": "organ trafficking", "language": "en" },
+        { "term": "rim à venda", "context": "tráfico de órgãos", "language": "pt" },
+        { "term": "sell my kidney", "context": "offering own organ", "language": "en" },
+        { "term": "vender meu rim", "context": "oferecendo próprio órgão", "language": "pt" },
+        { "term": "organ trafficking", "context": "explicit trafficking", "language": "en" },
+        { "term": "tráfico de órgãos", "context": "tráfico explícito", "language": "pt" },
+        { "term": "buy kidney", "context": "seeking to purchase", "language": "en" },
+        { "term": "comprar rim", "context": "buscando comprar", "language": "pt" },
+        { "term": "liver for sale", "context": "organ trafficking", "language": "en" },
+        { "term": "fígado à venda", "context": "tráfico de órgãos", "language": "pt" }
+      ],
+      "high": [
+        { "term": "kidney", "context": "non-regenerative organ", "language": "en" },
+        { "term": "rim", "context": "órgão não-regenerativo", "language": "pt" },
+        { "term": "liver", "context": "non-regenerative organ", "language": "en" },
+        { "term": "fígado", "context": "órgão não-regenerativo", "language": "pt" },
+        { "term": "heart", "context": "non-regenerative organ", "language": "en" },
+        { "term": "coração", "context": "órgão não-regenerativo", "language": "pt" },
+        { "term": "cornea", "context": "non-regenerative organ", "language": "en" },
+        { "term": "córnea", "context": "órgão não-regenerativo", "language": "pt" },
+        { "term": "lung", "context": "non-regenerative organ", "language": "en" },
+        { "term": "pulmão", "context": "órgão não-regenerativo", "language": "pt" },
+        { "term": "pancreas", "context": "non-regenerative organ", "language": "en" },
+        { "term": "pâncreas", "context": "órgão não-regenerativo", "language": "pt" }
+      ]
+    },
+    "child_selling_adoption": {
+      "critical": [
+        { "term": "baby for sale", "context": "child selling", "language": "en" },
+        { "term": "bebê à venda", "context": "venda de criança", "language": "pt" },
+        { "term": "sell baby", "context": "child selling", "language": "en" },
+        { "term": "vender bebê", "context": "venda de criança", "language": "pt" },
+        { "term": "buy baby", "context": "child buying", "language": "en" },
+        { "term": "comprar bebê", "context": "compra de criança", "language": "pt" },
+        { "term": "child for adoption", "context": "without legal process", "language": "en" },
+        { "term": "criança para adoção", "context": "sem processo legal", "language": "pt" },
+        { "term": "unborn baby for sale", "context": "child selling", "language": "en" },
+        { "term": "bebê não nascido à venda", "context": "venda de criança", "language": "pt" }
+      ],
+      "high": [
+        { "term": "adoption", "context": "context dependent", "language": "en" },
+        { "term": "adoção", "context": "depende do contexto", "language": "pt" },
+        { "term": "pregnant", "context": "adoption indicator", "language": "en" },
+        { "term": "grávida", "context": "indicador de adoção", "language": "pt" },
+        { "term": "due date", "context": "adoption indicator", "language": "en" },
+        { "term": "data prevista", "context": "indicador de adoção", "language": "pt" }
+      ]
+    },
+    "forced_marriage": {
+      "critical": [
+        { "term": "forced marriage", "context": "explicit forced marriage", "language": "en" },
+        { "term": "casamento forçado", "context": "casamento forçado explícito", "language": "pt" },
+        { "term": "child marriage", "context": "minor marriage", "language": "en" },
+        { "term": "casamento infantil", "context": "casamento de menor", "language": "pt" },
+        { "term": "young bride", "context": "recruitment signal", "language": "en" },
+        { "term": "noiva jovem", "context": "sinal de recrutamento", "language": "pt" },
+        { "term": "marry my niece", "context": "soliciting for minor", "language": "en" },
+        { "term": "casar com minha sobrinha", "context": "solicitação para menor", "language": "pt" }
+      ],
+      "high": [
+        { "term": "bride", "context": "context dependent", "language": "en" },
+        { "term": "noiva", "context": "depende do contexto", "language": "pt" },
+        { "term": "temporary marriage", "context": "mut'ah/sigheh", "language": "en" },
+        { "term": "casamento temporário", "context": "mut'ah/sigheh", "language": "pt" },
+        { "term": "mut'ah", "context": "temporary marriage", "language": "both" },
+        { "term": "sigheh", "context": "temporary marriage", "language": "both" }
+      ]
+    },
+    "domestic_servitude": {
+      "high": [
+        { "term": "maid for sale", "context": "domestic servitude", "language": "en" },
+        { "term": "empregada à venda", "context": "servidão doméstica", "language": "pt" },
+        { "term": "maids to sell", "context": "domestic servitude", "language": "en" },
+        { "term": "empregadas para vender", "context": "servidão doméstica", "language": "pt" },
+        { "term": "domestic helper", "context": "recruitment", "language": "en" },
+        { "term": "ajudante doméstica", "context": "recrutamento", "language": "pt" },
+        { "term": "housemaid", "context": "domestic worker", "language": "en" },
+        { "term": "empregada doméstica", "context": "trabalhadora doméstica", "language": "pt" },
+        { "term": "nanny", "context": "domestic worker", "language": "en" },
+        { "term": "babá", "context": "trabalhadora doméstica", "language": "pt" }
+      ]
+    },
+    "child_soldiers": {
+      "critical": [
+        { "term": "child soldier", "context": "explicit child soldiers", "language": "en" },
+        { "term": "criança soldado", "context": "crianças soldados explícito", "language": "pt" },
+        { "term": "join armed group", "context": "recruitment", "language": "en" },
+        { "term": "juntar-se a grupo armado", "context": "recrutamento", "language": "pt" },
+        { "term": "minor fighters", "context": "child soldiers", "language": "en" },
+        { "term": "combatentes menores", "context": "crianças soldados", "language": "pt" },
+        { "term": "young warrior", "context": "glorifying child soldier", "language": "en" },
+        { "term": "jovem guerreiro", "context": "glorificando criança soldado", "language": "pt" }
+      ]
+    },
+    "forced_criminality": {
+      "high": [
+        { "term": "forced begging", "context": "forced criminal activity", "language": "en" },
+        { "term": "mendicância forçada", "context": "atividade criminal forçada", "language": "pt" },
+        { "term": "forced drug trafficking", "context": "forced criminal activity", "language": "en" },
+        { "term": "tráfico de drogas forçado", "context": "atividade criminal forçada", "language": "pt" }
+      ]
+    },
+    "high_risk_locations": {
+      "critical": [
+        { "term": "Bavet", "context": "Cambodia trafficking hotspot", "language": "both" },
+        { "term": "Pailin", "context": "Cambodia trafficking hotspot", "language": "both" },
+        { "term": "Poipet", "context": "Cambodia trafficking hotspot", "language": "both" },
+        { "term": "Bokeo", "context": "Laos trafficking hotspot", "language": "both" },
+        { "term": "Myawaddy", "context": "Myanmar trafficking hotspot", "language": "both" }
+      ]
+    }
+  },
+
+  "phrases": {
+    "sex_trafficking_signals": [
+      { "phrase": "girls for sale", "severity": "critical", "language": "en" },
+      { "phrase": "meninas à venda", "severity": "critical", "language": "pt" },
+      { "phrase": "we have escorts available", "severity": "critical", "language": "en" },
+      { "phrase": "temos acompanhantes disponíveis", "severity": "critical", "language": "pt" },
+      { "phrase": "high school girls", "severity": "critical", "language": "en" },
+      { "phrase": "meninas do ensino médio", "severity": "critical", "language": "pt" },
+      { "phrase": "young girls available", "severity": "critical", "language": "en" },
+      { "phrase": "jovens disponíveis", "severity": "critical", "language": "pt" }
+    ],
+    "labor_exploitation_signals": [
+      { "phrase": "no papers needed", "severity": "high", "language": "en" },
+      { "phrase": "não precisa de documentos", "severity": "high", "language": "pt" },
+      { "phrase": "we keep your passport", "severity": "critical", "language": "en" },
+      { "phrase": "ficamos com seu passaporte", "severity": "critical", "language": "pt" },
+      { "phrase": "black job", "severity": "critical", "language": "en" },
+      { "phrase": "trabalho ilegal", "severity": "critical", "language": "pt" },
+      { "phrase": "salary deducted for accommodation", "severity": "high", "language": "en" },
+      { "phrase": "salário descontado para acomodação", "severity": "high", "language": "pt" }
+    ],
+    "smuggling_signals": [
+      { "phrase": "I can take you across", "severity": "critical", "language": "en" },
+      { "phrase": "posso te levar para o outro lado", "severity": "critical", "language": "pt" },
+      { "phrase": "cross the border safely", "severity": "high", "language": "en" },
+      { "phrase": "cruzar a fronteira com segurança", "severity": "high", "language": "pt" },
+      { "phrase": "no documents required", "severity": "high", "language": "en" },
+      { "phrase": "sem documentos necessários", "severity": "high", "language": "pt" }
+    ],
+    "organ_trafficking_signals": [
+      { "phrase": "I am desperate for money", "severity": "high", "language": "en" },
+      { "phrase": "estou desesperado por dinheiro", "severity": "high", "language": "pt" },
+      { "phrase": "healthy kidney available", "severity": "critical", "language": "en" },
+      { "phrase": "rim saudável disponível", "severity": "critical", "language": "pt" },
+      { "phrase": "blood type", "severity": "mid", "language": "en" },
+      { "phrase": "tipo sanguíneo", "severity": "mid", "language": "pt" }
+    ]
+  },
+
+  "excludedTerms": [
+    "organ donation",
+    "doação de órgãos",
+    "donor registry",
+    "registro de doadores",
+    "transplant fundraising",
+    "arrecadação para transplante",
+    "adoption agency",
+    "agência de adoção",
+    "legal adoption",
+    "adoção legal",
+    "court proceedings",
+    "processo judicial",
+    "lawyer",
+    "advogado",
+    "asylum",
+    "asilo",
+    "refugee",
+    "refugiado",
+    "military academy",
+    "academia militar",
+    "awareness",
+    "conscientização",
+    "condemnation",
+    "condenação",
+    "news report",
+    "reportagem",
+    "survivor story",
+    "história de sobrevivente",
+    "victim support",
+    "apoio à vítima",
+    "hotline",
+    "linha de apoio",
+    "shelter",
+    "abrigo",
+    "rehabilitation",
+    "reabilitação"
+  ],
+
+  "contextSignals": {
+    "positive_violation": [
+      "for sale",
+      "à venda",
+      "available",
+      "disponível",
+      "we have",
+      "temos",
+      "contact me",
+      "entre em contato",
+      "DM me",
+      "manda DM",
+      "price",
+      "preço",
+      "payment",
+      "pagamento",
+      "guaranteed",
+      "garantido",
+      "no papers",
+      "sem documentos",
+      "no visa needed",
+      "não precisa de visto",
+      "passport surrender",
+      "entregar passaporte",
+      "illegal",
+      "ilegal",
+      "bypass regulations",
+      "burlar regulamentações"
+    ],
+    "negative_exception": [
+      "awareness",
+      "conscientização",
+      "condemn",
+      "condenar",
+      "news",
+      "notícia",
+      "report",
+      "reportagem",
+      "survivor",
+      "sobrevivente",
+      "victim support",
+      "apoio à vítima",
+      "legal process",
+      "processo legal",
+      "adoption agency",
+      "agência de adoção",
+      "court",
+      "tribunal",
+      "lawyer",
+      "advogado",
+      "asylum",
+      "asilo",
+      "refugee",
+      "refugiado",
+      "military academy",
+      "academia militar",
+      "rehabilitation",
+      "reabilitação",
+      "joke",
+      "piada",
+      "concert tickets",
+      "ingressos de show",
+      "PlayStation",
+      "fundraising",
+      "arrecadação"
+    ]
+  },
+
+  "organJokeSignals": [
+    { "emoji": "😂", "meaning": "laughing - joke context" },
+    { "emoji": "🤣", "meaning": "rolling laughing - joke context" },
+    { "emoji": "😅", "meaning": "nervous laugh - joke context" },
+    { "emoji": "😜", "meaning": "winking - joke context" },
+    { "emoji": "🤪", "meaning": "zany - joke context" },
+    { "emoji": "😆", "meaning": "laughing - joke context" },
+    { "emoji": "😭", "meaning": "crying (hyperbole) - joke context" },
+    { "emoji": "😹", "meaning": "cat laughing - joke context" },
+    { "phrase": "concert tickets", "context": "joke about affording" },
+    { "phrase": "PlayStation", "context": "joke about affording" },
+    { "phrase": "concert", "context": "joke about affording" },
+    { "phrase": "university", "context": "joke about paying for" }
+  ],
+
+  "emojiSignals": {
+    "smuggling_indicators": [
+      { "emoji": "🚗", "meaning": "car - transportation" },
+      { "emoji": "🚐", "meaning": "van - transportation" },
+      { "emoji": "🚛", "meaning": "truck - transportation" },
+      { "emoji": "🛥️", "meaning": "boat - transportation" },
+      { "emoji": "⛵", "meaning": "sailboat - transportation" },
+      { "emoji": "✈️", "meaning": "airplane - transportation" },
+      { "emoji": "🚶", "meaning": "walking - on foot" },
+      { "emoji": "🏃", "meaning": "running - on foot" },
+      { "emoji": "🌊", "meaning": "wave - sea crossing" },
+      { "emoji": "🏔️", "meaning": "mountain - terrain crossing" }
+    ],
+    "contact_indicators": [
+      { "emoji": "📞", "meaning": "phone - contact" },
+      { "emoji": "📱", "meaning": "mobile - contact" },
+      { "emoji": "✉️", "meaning": "envelope - email" },
+      { "emoji": "💬", "meaning": "message - DM" },
+      { "emoji": "📩", "meaning": "message - contact" },
+      { "emoji": "👻", "meaning": "ghost - Snapchat" }
+    ],
+    "child_soldier_indicators": [
+      { "emoji": "🦁", "meaning": "lion - glorifying comparison" },
+      { "emoji": "🐯", "meaning": "tiger - glorifying comparison" },
+      { "emoji": "🐻", "meaning": "bear - glorifying comparison" },
+      { "emoji": "⚔️", "meaning": "swords - armed group" },
+      { "emoji": "🔫", "meaning": "gun - armed group" },
+      { "emoji": "💪", "meaning": "strength - praising" },
+      { "emoji": "🙏", "meaning": "prayer - religious praise" }
+    ],
+    "payment_indicators": [
+      { "emoji": "💰", "meaning": "money bag" },
+      { "emoji": "💵", "meaning": "dollar" },
+      { "emoji": "💳", "meaning": "credit card" },
+      { "emoji": "🏦", "meaning": "bank" }
+    ]
+  },
+
+  "ctcTrendSignals": {
+    "indian_call_boy": [
+      "call boy",
+      "call girl",
+      "call boy services",
+      "job call boy",
+      "call girl job",
+      "escort service all India",
+      "WhatsApp",
+      "Telegram"
+    ],
+    "sugar_mommy_ssa": [
+      "sugar mummy",
+      "sugar mommy",
+      "sugar daddy",
+      "sugar mummy agency",
+      "rich sugar mummy",
+      "dating",
+      "marriage"
+    ],
+    "nigeria_massage": [
+      "nuru massage",
+      "body to body massage",
+      "VIP massage",
+      "erotic massage",
+      "sensual massage"
+    ],
+    "korean_sex_party": [
+      "sex party",
+      "part-time job",
+      "full-time job",
+      "xee65.com",
+      "vaa55.com",
+      "ffp88.com"
+    ],
+    "korean_escort": [
+      "choose beautiful woman",
+      "highest ranking women",
+      "1:1 reservation",
+      "tumez"
+    ],
+    "vietnam_instagram": [
+      "kidneys for sale",
+      "children for sale",
+      "buying prostitutes",
+      "ISIS",
+      "Osama Bin Laden"
+    ]
+  },
+
+  "legalProcessTerms": [
+    "lawyer",
+    "advogado",
+    "attorney",
+    "court",
+    "tribunal",
+    "court proceedings",
+    "processo judicial",
+    "adoption agency",
+    "agência de adoção",
+    "social worker",
+    "assistente social",
+    "child welfare agency",
+    "agência de proteção à criança",
+    "legal advice",
+    "aconselhamento jurídico",
+    "adoption registration",
+    "registro de adoção",
+    "home study",
+    "estudo domiciliar",
+    "birth certificate",
+    "certidão de nascimento",
+    "consent to relinquish",
+    "consentimento para entrega",
+    "licensed agency",
+    "agência licenciada"
+  ]
+}

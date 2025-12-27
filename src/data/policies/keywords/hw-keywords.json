@@ -1,0 +1,495 @@
+{
+  "policyId": "hw",
+  "policyName": "Health and Wellness",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "keywords": {
+    "adult_sexual_businesses": {
+      "high": [
+        { "term": "strip club", "context": "adult entertainment", "language": "en" },
+        { "term": "clube de strip", "context": "entretenimento adulto", "language": "pt" },
+        { "term": "adult entertainment", "context": "sexual business", "language": "en" },
+        { "term": "entretenimento adulto", "context": "negócio sexual", "language": "pt" },
+        { "term": "tantra festival", "context": "adult entertainment", "language": "en" },
+        { "term": "festival de tantra", "context": "entretenimento adulto", "language": "pt" },
+        { "term": "tantra retreat", "context": "instructional sexual", "language": "en" },
+        { "term": "retiro de tantra", "context": "serviço sexual instrutivo", "language": "pt" },
+        { "term": "orgasmic therapy", "context": "instructional sexual", "language": "en" },
+        { "term": "terapia orgásmica", "context": "serviço sexual instrutivo", "language": "pt" },
+        { "term": "orgasmic meditation", "context": "adult entertainment", "language": "en" },
+        { "term": "meditação orgásmica", "context": "entretenimento adulto", "language": "pt" },
+        { "term": "erotic show", "context": "adult entertainment", "language": "en" },
+        { "term": "show erótico", "context": "entretenimento adulto", "language": "pt" },
+        { "term": "cuddle party", "context": "adult entertainment", "language": "en" },
+        { "term": "adult arcade", "context": "encounter business", "language": "en" },
+        { "term": "adult cabaret", "context": "encounter business", "language": "en" },
+        { "term": "nude model studio", "context": "encounter business", "language": "en" },
+        { "term": "sex shop", "context": "adult establishment", "language": "en" },
+        { "term": "sex shop", "context": "estabelecimento adulto", "language": "pt" },
+        { "term": "adult shop", "context": "adult establishment", "language": "en" },
+        { "term": "loja adulta", "context": "estabelecimento adulto", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "hostess club", "context": "adult entertainment", "language": "en" },
+        { "term": "host club", "context": "adult entertainment", "language": "en" },
+        { "term": "adult only", "context": "establishment signal", "language": "en" },
+        { "term": "apenas adultos", "context": "sinal de estabelecimento", "language": "pt" }
+      ]
+    },
+    "sex_toys": {
+      "critical": [
+        { "term": "sex toy", "context": "sexual arousal product", "language": "en" },
+        { "term": "brinquedo sexual", "context": "produto de excitação sexual", "language": "pt" },
+        { "term": "sex doll", "context": "sexual arousal product", "language": "en" },
+        { "term": "boneca sexual", "context": "produto de excitação sexual", "language": "pt" },
+        { "term": "dildo", "context": "sex toy", "language": "both" },
+        { "term": "vibrator", "context": "sex toy", "language": "en" },
+        { "term": "vibrador", "context": "brinquedo sexual", "language": "pt" },
+        { "term": "butt plug", "context": "sex toy", "language": "en" },
+        { "term": "plug anal", "context": "brinquedo sexual", "language": "pt" },
+        { "term": "anal beads", "context": "sex toy", "language": "en" },
+        { "term": "bolinhas anais", "context": "brinquedo sexual", "language": "pt" },
+        { "term": "nipple clamps", "context": "sex toy", "language": "en" },
+        { "term": "ball gag", "context": "sex toy", "language": "en" },
+        { "term": "clitoral massager", "context": "sex toy", "language": "en" },
+        { "term": "massageador clitoriano", "context": "brinquedo sexual", "language": "pt" }
+      ],
+      "high": [
+        { "term": "adult toy", "context": "sex toy", "language": "en" },
+        { "term": "pleasure toy", "context": "sex toy", "language": "en" },
+        { "term": "brinquedo de prazer", "context": "brinquedo sexual", "language": "pt" },
+        { "term": "intimate toy", "context": "sex toy", "language": "en" },
+        { "term": "brinquedo íntimo", "context": "brinquedo sexual", "language": "pt" }
+      ]
+    },
+    "erotic_products": {
+      "high": [
+        { "term": "erotic novel", "context": "erotic product", "language": "en" },
+        { "term": "romance erótico", "context": "produto erótico", "language": "pt" },
+        { "term": "erotic story", "context": "erotic product", "language": "en" },
+        { "term": "história erótica", "context": "produto erótico", "language": "pt" },
+        { "term": "erotic costume", "context": "erotic product", "language": "en" },
+        { "term": "fantasia erótica", "context": "produto erótico", "language": "pt" },
+        { "term": "fetish costume", "context": "erotic product", "language": "en" },
+        { "term": "bondage", "context": "erotic product", "language": "both" },
+        { "term": "handcuffs sexual", "context": "erotic product", "language": "en" },
+        { "term": "algemas sexuais", "context": "produto erótico", "language": "pt" }
+      ]
+    },
+    "genital_enhancement": {
+      "critical": [
+        { "term": "penis enlargement", "context": "genital enhancement", "language": "en" },
+        { "term": "aumento peniano", "context": "aumento genital", "language": "pt" },
+        { "term": "breast enlargement", "context": "genital enhancement", "language": "en" },
+        { "term": "aumento de seios", "context": "aumento genital", "language": "pt" },
+        { "term": "butt enlargement", "context": "genital enhancement", "language": "en" },
+        { "term": "aumento de glúteos", "context": "aumento genital", "language": "pt" },
+        { "term": "G-spot augmentation", "context": "cosmetic genital surgery", "language": "en" },
+        { "term": "aumento do ponto G", "context": "cirurgia genital cosmética", "language": "pt" },
+        { "term": "butt lift", "context": "cosmetic surgery", "language": "en" },
+        { "term": "levantamento de glúteos", "context": "cirurgia cosmética", "language": "pt" },
+        { "term": "butt implants", "context": "cosmetic surgery", "language": "en" },
+        { "term": "implantes de glúteos", "context": "cirurgia cosmética", "language": "pt" }
+      ],
+      "high": [
+        { "term": "enlargement cream", "context": "enhancement product", "language": "en" },
+        { "term": "creme de aumento", "context": "produto de aumento", "language": "pt" },
+        { "term": "enlargement pills", "context": "enhancement product", "language": "en" },
+        { "term": "pílulas de aumento", "context": "produto de aumento", "language": "pt" },
+        { "term": "vibrating condom", "context": "enhancement product", "language": "en" },
+        { "term": "camisinha vibratória", "context": "produto de aumento", "language": "pt" }
+      ]
+    },
+    "sexual_arousal_products": {
+      "high": [
+        { "term": "arousal serum", "context": "sexual arousal", "language": "en" },
+        { "term": "sérum de excitação", "context": "excitação sexual", "language": "pt" },
+        { "term": "climax cream", "context": "sexual arousal", "language": "en" },
+        { "term": "creme de clímax", "context": "excitação sexual", "language": "pt" },
+        { "term": "clitoral balm", "context": "sexual arousal", "language": "en" },
+        { "term": "libido enhancer", "context": "sexual arousal", "language": "en" },
+        { "term": "estimulante de libido", "context": "excitação sexual", "language": "pt" },
+        { "term": "sex enhancing", "context": "sexual arousal", "language": "en" },
+        { "term": "masturbation lotion", "context": "sexual arousal", "language": "en" },
+        { "term": "vaginal perfume", "context": "sexual arousal", "language": "en" }
+      ]
+    },
+    "genital_surgeries": {
+      "high": [
+        { "term": "vaginoplasty", "context": "genital surgery", "language": "en" },
+        { "term": "vaginoplastia", "context": "cirurgia genital", "language": "pt" },
+        { "term": "vasectomy", "context": "genital surgery", "language": "en" },
+        { "term": "vasectomia", "context": "cirurgia genital", "language": "pt" },
+        { "term": "circumcision", "context": "genital surgery", "language": "en" },
+        { "term": "circuncisão", "context": "cirurgia genital", "language": "pt" },
+        { "term": "phalloplasty", "context": "genital surgery", "language": "en" },
+        { "term": "faloplastia", "context": "cirurgia genital", "language": "pt" },
+        { "term": "labiaplasty", "context": "cosmetic genital surgery", "language": "en" },
+        { "term": "labioplastia", "context": "cirurgia genital cosmética", "language": "pt" }
+      ]
+    },
+    "reproductive_health": {
+      "high": [
+        { "term": "erectile dysfunction", "context": "sexual disorder", "language": "en" },
+        { "term": "disfunção erétil", "context": "distúrbio sexual", "language": "pt" },
+        { "term": "ED", "context": "erectile dysfunction", "language": "en" },
+        { "term": "premature ejaculation", "context": "sexual disorder", "language": "en" },
+        { "term": "ejaculação precoce", "context": "distúrbio sexual", "language": "pt" },
+        { "term": "HSDD", "context": "sexual disorder", "language": "en" },
+        { "term": "low libido", "context": "sexual disorder", "language": "en" },
+        { "term": "baixa libido", "context": "distúrbio sexual", "language": "pt" },
+        { "term": "menopause relief", "context": "sex-related health", "language": "en" },
+        { "term": "alívio da menopausa", "context": "saúde relacionada ao sexo", "language": "pt" },
+        { "term": "pain during sex", "context": "sex-related health", "language": "en" },
+        { "term": "dor durante o sexo", "context": "saúde relacionada ao sexo", "language": "pt" },
+        { "term": "VFit", "context": "women's health product", "language": "both" },
+        { "term": "yoni steaming", "context": "women's health product", "language": "en" },
+        { "term": "V-steaming", "context": "women's health product", "language": "en" },
+        { "term": "vaginal steaming", "context": "women's health product", "language": "en" }
+      ],
+      "mid": [
+        { "term": "contraceptive", "context": "birth control", "language": "en" },
+        { "term": "contraceptivo", "context": "controle de natalidade", "language": "pt" },
+        { "term": "birth control", "context": "contraceptive", "language": "en" },
+        { "term": "controle de natalidade", "context": "contraceptivo", "language": "pt" },
+        { "term": "condom", "context": "contraceptive", "language": "en" },
+        { "term": "camisinha", "context": "contraceptivo", "language": "pt" },
+        { "term": "preservativo", "context": "contraceptivo", "language": "pt" },
+        { "term": "lubricant", "context": "sexual lubricant", "language": "en" },
+        { "term": "lubrificante", "context": "lubrificante sexual", "language": "pt" },
+        { "term": "lube", "context": "sexual lubricant", "language": "en" },
+        { "term": "pheromone", "context": "arousal inducer", "language": "en" },
+        { "term": "feromônio", "context": "indutor de excitação", "language": "pt" },
+        { "term": "ovulation tracker", "context": "femtech app", "language": "en" },
+        { "term": "rastreador de ovulação", "context": "app femtech", "language": "pt" },
+        { "term": "fertility tracker", "context": "femtech app", "language": "en" },
+        { "term": "rastreador de fertilidade", "context": "app femtech", "language": "pt" },
+        { "term": "pregnancy tracker", "context": "femtech app", "language": "en" },
+        { "term": "rastreador de gravidez", "context": "app femtech", "language": "pt" }
+      ]
+    },
+    "family_planning": {
+      "mid": [
+        { "term": "family planning clinic", "context": "family planning", "language": "en" },
+        { "term": "clínica de planejamento familiar", "context": "planejamento familiar", "language": "pt" },
+        { "term": "IVF", "context": "fertility procedure", "language": "en" },
+        { "term": "FIV", "context": "procedimento de fertilidade", "language": "pt" },
+        { "term": "in vitro fertilization", "context": "fertility procedure", "language": "en" },
+        { "term": "fertilização in vitro", "context": "procedimento de fertilidade", "language": "pt" },
+        { "term": "artificial insemination", "context": "fertility procedure", "language": "en" },
+        { "term": "inseminação artificial", "context": "procedimento de fertilidade", "language": "pt" },
+        { "term": "fertility clinic", "context": "family planning", "language": "en" },
+        { "term": "clínica de fertilidade", "context": "planejamento familiar", "language": "pt" },
+        { "term": "abortion consultation", "context": "abortion service", "language": "en" },
+        { "term": "consulta de aborto", "context": "serviço de aborto", "language": "pt" },
+        { "term": "abortion pill", "context": "abortion service", "language": "en" },
+        { "term": "pílula abortiva", "context": "serviço de aborto", "language": "pt" }
+      ]
+    },
+    "weight_loss": {
+      "high": [
+        { "term": "weight loss", "context": "weight loss product", "language": "en" },
+        { "term": "perda de peso", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "weight loss tea", "context": "weight loss product", "language": "en" },
+        { "term": "chá emagrecedor", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "diet pills", "context": "weight loss product", "language": "en" },
+        { "term": "pílulas de dieta", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "fat burner", "context": "weight loss product", "language": "en" },
+        { "term": "queimador de gordura", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "diet supplement", "context": "weight loss product", "language": "en" },
+        { "term": "suplemento de dieta", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "appetite suppressant", "context": "weight loss product", "language": "en" },
+        { "term": "inibidor de apetite", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "gastric band", "context": "weight loss surgery", "language": "en" },
+        { "term": "banda gástrica", "context": "cirurgia de emagrecimento", "language": "pt" },
+        { "term": "gastric sleeve", "context": "weight loss surgery", "language": "en" },
+        { "term": "manga gástrica", "context": "cirurgia de emagrecimento", "language": "pt" },
+        { "term": "tummy tuck", "context": "weight loss surgery", "language": "en" },
+        { "term": "abdominoplastia", "context": "cirurgia de emagrecimento", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "protein powder", "context": "weight loss product", "language": "en" },
+        { "term": "proteína em pó", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "protein shake", "context": "weight loss product", "language": "en" },
+        { "term": "shake de proteína", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "thermogenic", "context": "weight loss product", "language": "en" },
+        { "term": "termogênico", "context": "produto de emagrecimento", "language": "pt" },
+        { "term": "dietitian clinic", "context": "weight loss service", "language": "en" },
+        { "term": "clínica de nutricionista", "context": "serviço de emagrecimento", "language": "pt" }
+      ]
+    },
+    "skin_products": {
+      "high": [
+        { "term": "skin whitening", "context": "skin whitening", "language": "en" },
+        { "term": "clareamento de pele", "context": "clareamento de pele", "language": "pt" },
+        { "term": "skin bleaching", "context": "skin whitening", "language": "en" },
+        { "term": "branqueamento de pele", "context": "clareamento de pele", "language": "pt" },
+        { "term": "glutathione whitening", "context": "skin whitening", "language": "en" },
+        { "term": "glutationa clareadora", "context": "clareamento de pele", "language": "pt" },
+        { "term": "permanent whitening", "context": "skin whitening", "language": "en" },
+        { "term": "clareamento permanente", "context": "clareamento de pele", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "glutathione", "context": "may be whitening", "language": "en" },
+        { "term": "glutationa", "context": "pode ser clareamento", "language": "pt" },
+        { "term": "anti-aging", "context": "wrinkle treatment", "language": "en" },
+        { "term": "anti-envelhecimento", "context": "tratamento de rugas", "language": "pt" },
+        { "term": "wrinkle treatment", "context": "cosmetic", "language": "en" },
+        { "term": "tratamento de rugas", "context": "cosmético", "language": "pt" },
+        { "term": "botox", "context": "cosmetic procedure", "language": "both" },
+        { "term": "filler", "context": "cosmetic procedure", "language": "en" },
+        { "term": "preenchimento", "context": "procedimento cosmético", "language": "pt" }
+      ]
+    },
+    "cosmetic_procedures": {
+      "high": [
+        { "term": "cosmetic surgery", "context": "cosmetic procedure", "language": "en" },
+        { "term": "cirurgia plástica", "context": "procedimento cosmético", "language": "pt" },
+        { "term": "plastic surgery", "context": "cosmetic procedure", "language": "en" },
+        { "term": "liposuction", "context": "cosmetic procedure", "language": "en" },
+        { "term": "lipoaspiração", "context": "procedimento cosmético", "language": "pt" },
+        { "term": "rhinoplasty", "context": "cosmetic surgery", "language": "en" },
+        { "term": "rinoplastia", "context": "cirurgia cosmética", "language": "pt" },
+        { "term": "breast augmentation", "context": "cosmetic surgery", "language": "en" },
+        { "term": "aumento de seios", "context": "cirurgia cosmética", "language": "pt" },
+        { "term": "hair transplant", "context": "cosmetic surgery", "language": "en" },
+        { "term": "transplante capilar", "context": "cirurgia cosmética", "language": "pt" },
+        { "term": "gender reassignment", "context": "surgery", "language": "en" },
+        { "term": "redesignação de gênero", "context": "cirurgia", "language": "pt" },
+        { "term": "dermal filler", "context": "cosmetic procedure", "language": "en" },
+        { "term": "preenchimento dérmico", "context": "procedimento cosmético", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "microblading", "context": "cosmetic service", "language": "both" },
+        { "term": "permanent makeup", "context": "cosmetic service", "language": "en" },
+        { "term": "maquiagem permanente", "context": "serviço cosmético", "language": "pt" },
+        { "term": "tattoo removal", "context": "cosmetic service", "language": "en" },
+        { "term": "remoção de tatuagem", "context": "serviço cosmético", "language": "pt" },
+        { "term": "chemical peel", "context": "cosmetic procedure", "language": "en" },
+        { "term": "peeling químico", "context": "procedimento cosmético", "language": "pt" },
+        { "term": "micro-needling", "context": "cosmetic procedure", "language": "en" },
+        { "term": "microagulhamento", "context": "procedimento cosmético", "language": "pt" }
+      ]
+    }
+  },
+
+  "phrases": {
+    "sexual_pleasure_focus": [
+      { "phrase": "play with your little friend", "severity": "high", "language": "en" },
+      { "phrase": "do it all night", "severity": "high", "language": "en" },
+      { "phrase": "faça a noite toda", "severity": "high", "language": "pt" },
+      { "phrase": "be the best in bed", "severity": "high", "language": "en" },
+      { "phrase": "seja o melhor na cama", "severity": "high", "language": "pt" },
+      { "phrase": "bedroom satisfaction", "severity": "high", "language": "en" },
+      { "phrase": "satisfação no quarto", "severity": "high", "language": "pt" },
+      { "phrase": "leave them satisfied", "severity": "high", "language": "en" },
+      { "phrase": "deixe-os satisfeitos", "severity": "high", "language": "pt" },
+      { "phrase": "have more sex", "severity": "high", "language": "en" },
+      { "phrase": "tenha mais sexo", "severity": "high", "language": "pt" },
+      { "phrase": "keep the fun going", "severity": "high", "language": "en" },
+      { "phrase": "mantenha a diversão", "severity": "high", "language": "pt" }
+    ],
+    "medical_benefit_focus": [
+      { "phrase": "treat ED", "severity": "mid", "language": "en" },
+      { "phrase": "tratar disfunção erétil", "severity": "mid", "language": "pt" },
+      { "phrase": "fix ED", "severity": "mid", "language": "en" },
+      { "phrase": "last longer in bed", "severity": "mid", "language": "en" },
+      { "phrase": "dure mais na cama", "severity": "mid", "language": "pt" },
+      { "phrase": "climax control", "severity": "mid", "language": "en" },
+      { "phrase": "controle do clímax", "severity": "mid", "language": "pt" },
+      { "phrase": "increase libido", "severity": "mid", "language": "en" },
+      { "phrase": "aumentar libido", "severity": "mid", "language": "pt" },
+      { "phrase": "take back your sex life", "severity": "mid", "language": "en" },
+      { "phrase": "retome sua vida sexual", "severity": "mid", "language": "pt" }
+    ],
+    "negative_self_perception": [
+      { "phrase": "before and after", "severity": "high", "context": "weight loss", "language": "en" },
+      { "phrase": "antes e depois", "severity": "high", "context": "perda de peso", "language": "pt" },
+      { "phrase": "lose weight fast", "severity": "mid", "language": "en" },
+      { "phrase": "perca peso rápido", "severity": "mid", "language": "pt" },
+      { "phrase": "get rid of fat", "severity": "mid", "language": "en" },
+      { "phrase": "elimine a gordura", "severity": "mid", "language": "pt" },
+      { "phrase": "burn belly fat", "severity": "mid", "language": "en" },
+      { "phrase": "queime gordura abdominal", "severity": "mid", "language": "pt" }
+    ]
+  },
+
+  "excludedTerms": [
+    "period tracker",
+    "rastreador de período",
+    "menstrual cycle",
+    "ciclo menstrual",
+    "tampon",
+    "absorvente",
+    "sanitary pad",
+    "menstrual cup",
+    "copo menstrual",
+    "vagisil",
+    "fitness app",
+    "aplicativo de fitness",
+    "pilates",
+    "yoga",
+    "workout",
+    "treino",
+    "skin brightening",
+    "clareamento de manchas",
+    "scar treatment",
+    "tratamento de cicatrizes",
+    "acne treatment",
+    "tratamento de acne",
+    "makeup",
+    "maquiagem",
+    "teeth whitening",
+    "clareamento dental",
+    "toothpaste",
+    "pasta de dente",
+    "shapewear",
+    "cinta modeladora",
+    "corset",
+    "espartilho"
+  ],
+
+  "contextSignals": {
+    "positive_violation": {
+      "sexual_pleasure": [
+        "pleasure",
+        "prazer",
+        "seduction",
+        "sedução",
+        "discreet",
+        "discreto",
+        "satisfy",
+        "satisfazer",
+        "arousal",
+        "excitação",
+        "orgasm",
+        "orgasmo",
+        "climax",
+        "clímax"
+      ],
+      "adult_establishment": [
+        "short-term rental",
+        "aluguel por hora",
+        "hourly",
+        "por hora",
+        "adult only",
+        "apenas adultos",
+        "tantric chair",
+        "cadeira tântrica",
+        "one on one experience",
+        "experiência individual"
+      ],
+      "negative_self_perception": [
+        "before and after",
+        "antes e depois",
+        "side by side",
+        "lado a lado",
+        "transformation",
+        "transformação",
+        "pinched fat",
+        "gordura pinçada",
+        "weight scale",
+        "balança"
+      ]
+    },
+    "negative_exception": [
+      "educational",
+      "educacional",
+      "PSA",
+      "awareness",
+      "conscientização",
+      "documentary",
+      "documentário",
+      "news",
+      "notícia",
+      "fictional",
+      "fictício",
+      "movie",
+      "filme",
+      "period tracking",
+      "rastreamento de período",
+      "menstruation",
+      "menstruação",
+      "fitness",
+      "fitness",
+      "workout",
+      "treino",
+      "pilates",
+      "yoga"
+    ]
+  },
+
+  "emojiSignals": {
+    "sexual_context": [
+      { "emoji": "🍆", "meaning": "eggplant - phallic symbol" },
+      { "emoji": "🍌", "meaning": "banana - phallic symbol" },
+      { "emoji": "🍑", "meaning": "peach - buttocks/sexual" },
+      { "emoji": "💦", "meaning": "water drops - sexual context" },
+      { "emoji": "🔥", "meaning": "fire - sexual/hot" },
+      { "emoji": "😈", "meaning": "devil - sexual/naughty" },
+      { "emoji": "💋", "meaning": "kiss - sexual/romantic" },
+      { "emoji": "👅", "meaning": "tongue - sexual" },
+      { "emoji": "🥒", "meaning": "cucumber - phallic symbol" }
+    ],
+    "weight_loss": [
+      { "emoji": "⚖️", "meaning": "scale - weight" },
+      { "emoji": "📏", "meaning": "ruler - measuring" },
+      { "emoji": "💪", "meaning": "muscle - fitness/weight loss" }
+    ],
+    "cosmetic": [
+      { "emoji": "💉", "meaning": "syringe - injectable" },
+      { "emoji": "✨", "meaning": "sparkles - transformation" }
+    ]
+  },
+
+  "visualSignals": {
+    "sex_toys": [
+      "Dildo shape",
+      "Vibrator shape",
+      "Plug shape",
+      "Beads string",
+      "Clamps",
+      "Doll figure"
+    ],
+    "negative_self_perception": [
+      "Side-by-side body comparison",
+      "Tape measure around waist",
+      "Pinched skin/fat",
+      "Weight scale with numbers",
+      "Shocked expression on scale",
+      "Before/after weight photos",
+      "Zoomed-in wrinkles with circles/arrows"
+    ],
+    "adult_establishment": [
+      "Couple in bed implying service",
+      "Bedroom/hotel room with suggestive imagery",
+      "Tantric chairs/couches"
+    ],
+    "erotic_signals": [
+      "Describing orgasm in text",
+      "Scene in bed",
+      "Taking off clothes",
+      "Sexual taboos"
+    ]
+  },
+
+  "productVsServiceDetermination": {
+    "product_signals": [
+      "100% natural",
+      "No side effects",
+      "We ship everywhere",
+      "Order now",
+      "Free trial",
+      "Product name visible",
+      "Package/container shown"
+    ],
+    "service_signals": [
+      "No clear product visible",
+      "Call to action without product",
+      "Service location mentioned",
+      "Appointment/booking language"
+    ],
+    "rule": "No product text = Adult Sexual Services; Product text present = Adult Sexual Arousal Products"
+  }
+}

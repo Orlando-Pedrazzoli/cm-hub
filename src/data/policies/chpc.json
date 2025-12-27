@@ -1,0 +1,397 @@
+{
+  "id": "chpc",
+  "name": "Coordinating Harm and Promoting Crime",
+  "shortName": "CHPC",
+  "description": "Policy prohibiting facilitation, organization, promotion, or admission to certain criminal or harmful activities targeted at people, businesses, property, or animals.",
+  "color": "#7C3AED",
+  "icon": "Gavel",
+  "ready": true,
+
+  "corePrinciple": "To prevent and disrupt offline harm and copycat behavior, we prohibit coordinating, threatening, supporting, or admitting to certain harmful activities. We allow debate and advocacy for legality of activities, and drawing attention to witnessed harm without coordinating it.",
+
+  "categories": {
+    "harmAgainstAnimals": {
+      "name": "Harm Against Animals",
+      "definition": "Apparently intentional infliction of suffering, neglect leading to endangerment, or killing of animals",
+      "includes": [
+        "Infliction of suffering beyond normal discipline (kicking, beating, stabbing, crushing, rough handling)",
+        "Neglect leading to endangerment by predator, starvation, dehydration, or abandonment",
+        "Killing or death of an animal"
+      ],
+      "excludes": ["Insects are not considered animals under this policy"],
+      "subcategories": [
+        {
+          "id": "physical_harm",
+          "name": "Physical Harm Against Animals",
+          "action": "label",
+          "allowedContexts": [
+            { "context": "Awareness-raising or condemnation", "action": "no_action" },
+            { "context": "Educational or academic purposes", "action": "no_action" },
+            { "context": "Redemption", "action": "no_action" },
+            { "context": "Survival or defense of self/another", "action": "no_action" },
+            { "context": "Fictional or staged settings (except staged fights/fake rescues)", "action": "no_action" },
+            { "context": "Hunting, fishing, or food preparation", "action": "no_action" },
+            { "context": "Religious sacrifice", "action": "no_action" },
+            { "context": "Pests or vermin", "action": "no_action" },
+            { "context": "Mercy killing", "action": "no_action" },
+            { "context": "Bullfighting", "action": "no_action" }
+          ],
+          "indicators": {
+            "indicator1": "Written description or visual depiction of apparently intentional physical harm",
+            "indicator2": [
+              "Supporting or promoting animal abuse",
+              "Requesting/offering services to commit harm",
+              "Intent to buy/sell tools for harming animals",
+              "Written admission to involvement",
+              "Broadcasting Live/Was Live videos of harm",
+              "Content posted in profile/page/group dedicated to promoting harm"
+            ]
+          }
+        },
+        {
+          "id": "staged_animal_fights",
+          "name": "Staged Animal Fights",
+          "definition": "Fights between animals organized or encouraged by humans for entertainment (except bullfighting)",
+          "action": "label",
+          "allowedContexts": [
+            { "context": "Awareness-raising or condemnation", "action": "no_action" },
+            { "context": "Educational or academic purposes", "action": "no_action" },
+            { "context": "Redemption", "action": "no_action" },
+            { "context": "Poster clearly not involved (CCTV, news)", "action": "no_action" }
+          ],
+          "activities": [
+            "Admission to own facility where fight takes place",
+            "Trade of animals for fights by brick & mortar entities",
+            "Trade of accessories/equipment maximizing injuries (metal claws)",
+            "Trade of performance supplements for fighting",
+            "Coordination of betting/gambling on fights",
+            "Breeding animals for fighting purposes",
+            "Participating as audience",
+            "Referring to name of animals involved",
+            "Posting in profiles/objects dedicated to promotion",
+            "Sharing from objects dedicated to promotion"
+          ],
+          "visualIndicators": [
+            "Taking place on stage, ring, or pit",
+            "Presence of crowd of 2+ people",
+            "People cheering and encouraging animals"
+          ]
+        },
+        {
+          "id": "fake_animal_rescues",
+          "name": "Fake Animal Rescues",
+          "definition": "Human intentionally places animal in danger by another animal to rescue it from that situation",
+          "action": "label",
+          "requires": "2 Primary indicators AND 2 Secondary indicators",
+          "primaryIndicators": [
+            "Incident captured from 2+ different camera angles",
+            "Human rescuer appears to discover animal(s) by chance",
+            "Rescuer engages predator without animal handling equipment",
+            "Rescuer places predator and prey close together"
+          ],
+          "secondaryIndicators": [
+            "Absence of written or oral explanation for rescue",
+            "Absence of professional care after rescue"
+          ]
+        }
+      ]
+    },
+    "harmAgainstProperty": {
+      "name": "Harm Against Property",
+      "subcategories": [
+        {
+          "id": "vandalism",
+          "name": "Vandalism",
+          "definition": "Deliberate or intentional damage of public or private property by non-owner",
+          "action": "label",
+          "allowedContexts": [
+            { "context": "Awareness-raising or condemnation", "action": "no_action" },
+            { "context": "Educational or academic purposes", "action": "no_action" },
+            { "context": "Redemption", "action": "no_action" },
+            { "context": "Fictional or staged settings", "action": "no_action" },
+            { "context": "Defense of self or another", "action": "no_action" },
+            { "context": "Protest contexts", "action": "no_action" },
+            { "context": "Graffiti", "action": "no_action" },
+            { "context": "Speaking positively about vandalism by others", "action": "no_action" }
+          ],
+          "examples": ["Burning statue", "Spraying wall", "Keying car", "Egging house", "Breaking windows"],
+          "excludes": "Threats against property that could lead to death/serious injury (covered under VI)"
+        },
+        {
+          "id": "theft",
+          "name": "Theft",
+          "definition": "Taking property belonging to others without consent (stealing, shoplifting, looting)",
+          "action": "label",
+          "activities": [
+            "Threats of theft, robbing, shoplifting, looting",
+            "Intent to buy/sell/exchange/gift stolen goods",
+            "Offer or request services to commit theft",
+            "Instructions/tutorials facilitating theft",
+            "Intent to buy/sell tools for theft"
+          ]
+        }
+      ]
+    },
+    "harmAgainstPeople": {
+      "name": "Harm Against People",
+      "subcategories": [
+        {
+          "id": "outing",
+          "name": "Outing",
+          "definition": "Disclosing person's affiliation to an outing-risk group without consent",
+          "action": "label",
+          "note": "Label EVEN IF shared with condemning or awareness-raising context",
+          "requirements": [
+            "Involuntary: exposure without consent (default to involuntary if unknown)",
+            "Non-public: information not public or widely known (default to non-public if unknown)"
+          ],
+          "identificationMethods": {
+            "explicit": [
+              "Mention of name (first, middle, last, full)",
+              "Imagery depicting individual's face"
+            ],
+            "implicit": [
+              "Context from target or Trusted Partner indicating risk",
+              "Imagery not depicting face (blurred, from back, digitally obscured)",
+              "Mention of relationship",
+              "Mention of education/workplace/occupation/residence",
+              "Physical description",
+              "Ethnicity or religious affiliation",
+              "Civil society organization membership",
+              "Social media handle",
+              "Age"
+            ]
+          }
+        },
+        {
+          "id": "outing_undercover",
+          "name": "Outing Undercover Personnel",
+          "definition": "Exposing undercover status of law enforcement, military, or security personnel",
+          "action": "label",
+          "requires": "Name/face/badge number + any of the following",
+          "additionalRequirements": [
+            "Law enforcement organization (FBI, Metropolitan Police)",
+            "Law enforcement operation (sting operation, gang name)",
+            "Undercover status mention"
+          ]
+        },
+        {
+          "id": "swatting",
+          "name": "Swatting",
+          "definition": "Making hoax call to emergency services to dispatch armed police to particular address",
+          "action": "label",
+          "allowedContexts": [
+            { "context": "Awareness-raising or condemnation", "action": "no_action" },
+            { "context": "Educational or academic purposes", "action": "no_action" },
+            { "context": "Fictional or staged settings", "action": "no_action" },
+            { "context": "Redemption", "action": "no_action" },
+            { "context": "Poster clearly not involved (CCTV, news)", "action": "no_action" }
+          ]
+        },
+        {
+          "id": "high_risk_viral_challenges",
+          "name": "High-Risk Viral Challenges",
+          "definition": "Activities reasonably likely to cause life-threatening injuries or death",
+          "action": "label",
+          "examples": [
+            "Pouring flammable fluids over oneself/others",
+            "Pointing firearms at oneself/others",
+            "Throwing flammable substances or sharp objects at others",
+            "Acts leading to lasting airway blockage",
+            "Restricted breathing capacity",
+            "Severe burns or wounds"
+          ],
+          "enforcement": {
+            "withImagery": "Label even with condemning context",
+            "withoutImagery": { "condemning": "no_action", "other": "label" }
+          },
+          "note": "SSI-specific challenges (Blue Whale) covered under SSI policy"
+        },
+        {
+          "id": "mid_risk_stunts",
+          "name": "Mid-Risk Stunts/Challenges",
+          "definition": "Activities likely to lead to physical injury",
+          "action": "label",
+          "exhaustiveList": [
+            "Driving with half body outside vehicle or while standing",
+            "Jumping/skating/rollerblading/cycling at height >1 story or >10ft/3m",
+            "Handling or throwing lit flammable substances, explosives, or sharp objects"
+          ],
+          "allowedContexts": [
+            { "context": "Awareness-raising or condemning", "action": "no_action" },
+            { "context": "Professional or staged settings", "action": "no_action" }
+          ],
+          "professionalSettings": [
+            "Professional/competitive driving (F1)",
+            "Professional, college, or school sports",
+            "Emergency vehicles on duty",
+            "Law enforcement and military contexts",
+            "Skateboarding in dedicated parks",
+            "Designated performance areas with boundaries",
+            "Professional solo climbing in national parks",
+            "Martial/performance arts by professionals",
+            "Film/TV set stunts"
+          ]
+        },
+        {
+          "id": "communicable_diseases",
+          "name": "Communicable Diseases",
+          "definition": "Active and deliberate spread of communicable diseases",
+          "action": "label",
+          "allowedContexts": [
+            { "context": "Awareness-raising or condemnation of guidance/policy", "action": "no_action" },
+            { "context": "Redemption", "action": "no_action" }
+          ],
+          "coveredDiseases": ["COVID-19", "HIV/AIDS", "Ebola", "Tuberculosis"],
+          "note": "Must be intentional and conscious - not unintentional spread"
+        }
+      ]
+    },
+    "voterCensusInterference": {
+      "name": "Voter and Census Interference",
+      "subcategories": [
+        {
+          "id": "voter_misrepresentation",
+          "name": "Voting Misrepresentation",
+          "action": "label",
+          "types": [
+            "Dates, locations, times, and methods",
+            "Who can vote or qualifications for voting",
+            "Whether a vote will be counted",
+            "What information/materials must be provided to vote"
+          ]
+        },
+        {
+          "id": "voter_fraud",
+          "name": "Voter Fraud",
+          "action": "label",
+          "types": [
+            "Offers to buy/sell votes with cash, gifts, services, goods",
+            "Advocating/instructing/demonstrating intent to illegally participate"
+          ],
+          "illegalVoting": [
+            "Voting twice",
+            "Fabricating voting information",
+            "Fabricating voting eligibility",
+            "Stealing ballots"
+          ]
+        },
+        {
+          "id": "census_misrepresentation",
+          "name": "Census Misrepresentation",
+          "action": "label",
+          "types": [
+            "Dates, locations, times, and methods",
+            "Who can participate",
+            "What information/materials must be provided"
+          ]
+        },
+        {
+          "id": "census_fraud",
+          "name": "Census Fraud",
+          "action": "label",
+          "types": [
+            "Advocating/instructing/demonstrating intent to illegally participate"
+          ],
+          "illegalCensus": [
+            "Misrepresenting household count",
+            "Misrepresenting demographic information (age, race, ethnicity)"
+          ]
+        }
+      ],
+      "allowedContexts": [
+        { "context": "Condemning context", "action": "no_action" },
+        { "context": "Awareness raising", "action": "no_action" },
+        { "context": "News reporting", "action": "no_action" },
+        { "context": "Humorous or satirical", "action": "no_action" }
+      ],
+      "scope": "Elections, official referenda, and official census by national authority"
+    }
+  },
+
+  "outingRiskGroups": {
+    "description": "Groups where affiliation carries associated risk to personal safety",
+    "byCountry": {
+      "philippines": [
+        "Drug dealers and addicts (pusher, user, adik, drug lord, narcos)",
+        "CPP/NPA/NDFP/CTG members or supporters"
+      ],
+      "mena_political": {
+        "countries": ["Egypt", "Libya", "Yemen", "Iraq", "Syria", "Sudan", "South Sudan", "Lebanon"],
+        "group": "Militant or political group affiliation",
+        "exception": "Official government agency or legitimate news source"
+      },
+      "religious_conversion": {
+        "countries": ["Indonesia", "Israel", "Pakistan", "Bangladesh", "Maldives", "Nigeria", "Somalia", "Saudi Arabia", "Palestine", "Egypt", "Bahrain", "Iraq", "Iran", "Jordan", "Kuwait", "Lebanon", "Oman", "Sudan", "Syria", "UAE", "Yemen", "Algeria", "Libya", "Mauritania", "Morocco", "Tunisia", "Western Sahara"],
+        "group": "Religious conversion, apostasy, atheism, or blasphemy"
+      },
+      "lgbtqia": {
+        "mena": ["Bahrain", "Egypt", "Iraq", "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine", "Qatar", "Saudi Arabia", "Sudan", "Syria", "UAE", "Yemen", "Algeria", "Libya", "Mauritania", "Morocco", "Tunisia", "Western Sahara", "Iran"],
+        "franco_ssa": ["Madagascar", "Cote d'Ivoire", "DRC", "Senegal", "Cameroon", "Mali", "Gabon", "Burkina Faso", "Guinea", "Togo", "Republic of Congo", "Niger", "Djibouti", "Burundi", "Chad", "Central African Republic", "Mauritius", "Equatorial Guinea", "Comoros", "Seychelles", "Mauritania"],
+        "anglophone_africa": ["Nigeria", "Ghana", "The Gambia", "Liberia", "Rwanda", "Ethiopia", "Somalia", "Zambia", "Malawi", "Namibia", "Eritrea", "Kenya", "Tanzania", "Uganda", "South Sudan", "Lesotho"],
+        "south_asia": ["Bangladesh", "Pakistan"],
+        "exception": "Protest and activism contexts"
+      },
+      "pakistan": [
+        "Vaccine/polio vaccine/health workers",
+        "Ahmadi, Ahmadiya, or Qadiyani"
+      ],
+      "latin_america": {
+        "lideres_sociales": {
+          "countries": ["Venezuela", "Central America", "Colombia", "Ecuador", "Rest of ESLA"],
+          "exception": "Official government agency or legitimate news source"
+        },
+        "undocumented_immigrants": ["All ESLA markets"]
+      },
+      "myanmar": ["PDF supporters/members", "CRPH supporters/members", "NUG supporters/members", "ERO members", "Military/police/dalan family members"],
+      "india": [
+        "Mukhbir",
+        "Interfaith couples (private individuals only, except legitimate news)"
+      ],
+      "sex_workers": {
+        "countries": ["Bahrain", "Egypt", "Iraq", "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine", "Qatar", "Saudi Arabia", "Sudan", "Syria", "UAE", "Yemen", "Algeria", "Libya", "Mauritania", "Morocco", "Tunisia", "Western Sahara", "Pakistan", "Iran"],
+        "group": "Sex worker or client of sex worker"
+      },
+      "ethiopia": {
+        "group": "Spies, agents, traitors, informants",
+        "exception": "Elected officials and leaders of political/militant groups"
+      },
+      "drc": {
+        "group": "Rwandaphones, Rwandans, Banyamulenge, Tutsis",
+        "physicalCharacteristics": ["long nose", "tutsiness"],
+        "exception": "Elected officials and leaders of political/militant groups"
+      },
+      "iran": ["Baha'i or Bahai"]
+    }
+  },
+
+  "labelHierarchy": [
+    { "rank": 1, "label": "Outing", "severity": "high" },
+    { "rank": 2, "label": "Voter Interference", "severity": "high" },
+    { "rank": 3, "label": "Census Interference", "severity": "high" },
+    { "rank": 4, "label": "High-Risk Viral Challenges", "severity": "high" },
+    { "rank": 5, "label": "Mid-Risk Stunts/Challenges", "severity": "mid" },
+    { "rank": 6, "label": "Harm Against Animals", "severity": "mid" },
+    { "rank": 7, "label": "Harm Against Property", "severity": "mid" },
+    { "rank": 8, "label": "Other Harm Against People", "severity": "mid" }
+  ],
+
+  "glossary": {
+    "admission": "Statement or action acknowledging person engaged in certain conduct (verbal, written, or imagery)",
+    "associate": "Person/group participating in commission of acts (helping, omitting to intervene, contributing to network)",
+    "awareness_raising": "Sharing information to improve understanding of issue with public interest value",
+    "bestiality": "Explicit or implied sexual activity between person(s) and animal(s)",
+    "bullfighting": "Spectator sport of human vs. bull physical fight (not bull vs. bull)",
+    "coordination": "Organizing future activity including creating events",
+    "crushing": "Intentional act of stepping/crushing animal for sexual arousal",
+    "mercy_killing": "Killing severely injured/diseased animals to minimize suffering (not self-caused injury)",
+    "pests_vermin": "Animals commonly believed harmful to human food sources or carriers of human diseases",
+    "promotion": "Speaking positively about, encouraging, or providing instructions for activity",
+    "redemption": "Content shared in context of repentance, apology, atonement, or recognition of bad conduct",
+    "staged_animal_fights": "Fights between animals organized by humans for entertainment (except bullfighting)",
+    "support": "Actions aiding by advocating for, promoting, or providing assistance",
+    "swatting": "Hoax call to emergency services to dispatch armed police to address",
+    "threat": "Statement/visual representing intention, aspiration, or call for act (intent, call for action, advocating, aspirational, conditional)",
+    "vandalism": "Deliberate damage of property by non-owner (excludes threats leading to death/injury)"
+  }
+}

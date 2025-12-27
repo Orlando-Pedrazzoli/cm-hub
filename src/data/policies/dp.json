@@ -1,0 +1,685 @@
+{
+  "id": "dp",
+  "name": "Drugs and Pharmaceuticals",
+  "shortName": "DP",
+  "description": "Policy covering high-risk drugs, non-medical drugs, entheogens, prescription drugs, over-the-counter medication, drug/alcohol addiction treatment, and cannabis/cannabis-derived products.",
+  "color": "#7C3AED",
+  "icon": "Pill",
+  "ready": true,
+
+  "corePrinciple": "Content must NOT facilitate sale, promotion, or coordination of illegal drugs. Different categories have different treatment levels. PSA/educational content and debate about legality/medical merits is allowed.",
+
+  "hierarchy": [
+    "High-Risk Drugs (HRD)",
+    "Non-Medical Drugs (NMD)",
+    "Entheogens",
+    "Prescription Drugs (Rx)",
+    "Over-the-Counter (OTC)",
+    "Drug & Alcohol Addiction Treatment",
+    "Cannabis & Cannabis Derived Products"
+  ],
+
+  "categories": [
+    {
+      "id": "high_risk_drugs",
+      "name": "High-Risk Drugs (HRD)",
+      "description": "Drugs with high potential for misuse, addiction, or serious health risks including overdose",
+      "severity": "critical",
+      "exhaustiveList": true,
+      "drugs": [
+        { "name": "Fentanyl", "forms": ["pill (blue M30)", "powder", "liquid"], "slang": ["M30s", "M-boxes", "Murder 8"] },
+        { "name": "Heroin", "slang": ["Big H", "Brown Sugar", "Crank", "Skag", "Smack", "Tar", "Black Tar"] },
+        { "name": "Cocaine", "slang": ["Crack", "Snow White", "Coke", "Blow", "Bump", "Nose Candy", "Rails", "Snow"] },
+        { "name": "Methamphetamine", "slang": ["Crystal", "Tweak", "Clear", "Crank", "Ice", "Tina", "Meth"] }
+      ],
+      "chemicalPrecursors": [
+        { "name": "Xylazine", "description": "Added/mixed with other drugs" },
+        { "name": "Medetomidine", "description": "Added/mixed with other drugs" },
+        { "name": "Nitazenes", "examples": ["Metonitazene"] }
+      ],
+      "subcategories": [
+        {
+          "id": "hrd_sale",
+          "name": "Buy/Sell/Trade/Donate/Gift/Ask",
+          "action": "label"
+        },
+        {
+          "id": "hrd_promotion",
+          "name": "Coordinates/Speaks Positively/Instructions/Encourages/Admission",
+          "contexts": [
+            { "id": "personal_use_no_context", "action": "label" },
+            { "id": "recovery_context", "action": "label", "condition": "Does not speak positively, encourage, coordinate, or provide instructions" },
+            { "id": "any_other", "action": "label" }
+          ]
+        },
+        {
+          "id": "hrd_paraphernalia",
+          "name": "Sell/Promote Paraphernalia",
+          "action": "label"
+        },
+        {
+          "id": "hrd_merchandise",
+          "name": "Merchandise Depicting HRD",
+          "action": "label"
+        },
+        {
+          "id": "hrd_debate",
+          "name": "Debate Legality/Medical Merits/PSA/News",
+          "action": "no_action"
+        }
+      ],
+      "highRiskSaleSignals": {
+        "formula": "Visible/Stated Drug + (Price OR Quantity OR Contact Info OR Drug Dealer Context)",
+        "priceSignals": ["Numerical pricing", "Currency symbols", "Sale language", "NFS language"],
+        "quantitySignals": ["Mass quantities in bags/boxes", "Block/brick", "Anything not fitting in palm"],
+        "contactSignals": ["Phone number", "Telegram link", "Phone emoji", "Delivery text/emojis", "Cars/pins/map emojis"],
+        "dealerContextSignals": ["Plug", "Trap", "Trap House", "I am the plug", "I da plugg", "Car emojis with drug signals"]
+      }
+    },
+    {
+      "id": "non_medical_drugs",
+      "name": "Non-Medical Drugs (NMD)",
+      "description": "Drugs not used for intended medical purposes or used to achieve a high",
+      "severity": "critical",
+      "exhaustiveList": false,
+      "definition": [
+        "Not used to treat physical or psychological condition",
+        "Not used for legitimate medical purpose",
+        "Not used for intended purpose (e.g., steroids for bodybuilding)",
+        "Used to achieve high or altered mental state",
+        "Includes drug analogs/precursors in purest form"
+      ],
+      "drugCategories": {
+        "opioids": [
+          { "name": "Buprenorphine", "brands": ["Suboxone", "Subutex", "Opana"], "slang": ["Buse", "Oranges", "Sobos", "Strips", "Sub"] },
+          { "name": "Codeine", "slang": ["Captain Cody", "Cody", "Little C", "Schoolboy"] },
+          { "name": "Hydrocodone", "brands": ["Lortab", "Norco", "Vicodin"], "slang": ["Bananas", "Dro", "Fluff", "Hydros", "Vikes"] },
+          { "name": "Tramadol", "brands": ["Ultram"], "slang": ["Chill Pills", "Trammies", "Ultras"] },
+          { "name": "Oxycodone", "brands": ["OxyContin"], "slang": ["30s", "Hillbilly Heroin", "OC", "Oxy", "Percs", "P10s"] },
+          { "name": "Morphine", "brands": ["Duramorph", "MS Contin"], "slang": ["God's Drug", "M", "Miss Emma", "Monkey"] }
+        ],
+        "stimulants": [
+          { "name": "Amphetamine", "brands": ["Adderall", "Dexedrine"], "slang": ["Addies", "Bennies", "Black Beauties", "Speed", "Uppers"] },
+          { "name": "Methylphenidate", "brands": ["Concerta", "Ritalin"], "slang": ["JIF", "MPH", "Vitamin R", "The Smart Drug"] },
+          { "name": "MDMA/Ecstasy", "slang": ["XTC", "E", "Molly", "X"] }
+        ],
+        "depressants": [
+          { "name": "Alprazolam", "brands": ["Xanax"], "slang": ["Bars", "Footballs", "Hulk", "Ladders", "Xan", "Zannies", "Z-Bars"] },
+          { "name": "Diazepam", "brands": ["Valium"], "slang": ["Eggs", "Jellies", "Moggies", "Vallies"] },
+          { "name": "Flunitrazepam", "brands": ["Rohypnol"], "slang": ["Date Rape Drug", "Roofies", "Forget-Me Pill"] },
+          { "name": "Clonazepam", "brands": ["Klonopin"], "slang": ["K", "K-Pin", "Pin", "Super Valium"] }
+        ],
+        "psychedelics": [
+          { "name": "LSD", "slang": ["Acid", "Blotter", "Dots", "Lucy in the Sky", "Purple Haze", "Yellow Sunshine"] },
+          { "name": "DMT", "slang": ["Dimitri", "The Spirit Molecule"] },
+          { "name": "GHB", "slang": ["Date Rape Drug", "G", "Geeb", "Georgia Home Boy", "Liquid X"] },
+          { "name": "Ketamine", "slang": ["Ket", "K", "K-Hold", "Special K", "Super Acid", "Vitamin K"] },
+          { "name": "PCP", "slang": ["Angel", "Angel Dust", "Dust", "Rocket Fuel", "Wet", "Zombie"] }
+        ],
+        "other": [
+          { "name": "Nitrous oxide canisters", "slang": ["Whippets", "Cream chargers", "Nox", "Laughing gas", "Nangs"] },
+          { "name": "Synthetic Cannabis", "slang": ["Spice", "K2", "Bonzai"] },
+          { "name": "Chemical precursors", "examples": ["CAS numbers"] },
+          { "name": "Unidentified pressed pills", "note": "All unidentified pressed pills = NMD (except M30 = HRD)" }
+        ]
+      },
+      "badSupplements": [
+        "Anabolic Steroids", "Dimethazine", "Mebolazine", "SARMs",
+        "Chitosan", "Comfrey", "DHEA", "Ephedra",
+        "Human Growth Hormones (HGH)", "Human Chorionic Gonadotropin (hCG)",
+        "Kratom", "Tengsu", "King Kong Japan", "BPC-157", "GHK-Cu"
+      ],
+      "subcategories": [
+        {
+          "id": "nmd_sale",
+          "name": "Buy/Sell/Trade/Donate/Gift/Ask",
+          "action": "label"
+        },
+        {
+          "id": "nmd_promotion",
+          "name": "Coordinates/Speaks Positively/Instructions/Encourages/Admission",
+          "contexts": [
+            { "id": "personal_use_no_context", "action": "label" },
+            { "id": "recovery_context", "action": "label" },
+            { "id": "any_other", "action": "label" }
+          ]
+        },
+        {
+          "id": "nmd_paraphernalia",
+          "name": "Sell/Promote Paraphernalia",
+          "action": "label"
+        },
+        {
+          "id": "nmd_merchandise",
+          "name": "Merchandise Depicting NMD",
+          "action": "label"
+        },
+        {
+          "id": "nmd_debate",
+          "name": "Debate Legality/Medical Merits/PSA/News",
+          "action": "no_action"
+        }
+      ],
+      "specialRules": [
+        { "rule": "Prescription drug with NO medical context = label as NMD", "exception": "Injectable weight loss treatments always = Rx" },
+        { "rule": "Steroids with medical context (e.g., gender transition) = Rx; bodybuilding context = NMD" },
+        { "rule": "Generic word 'drug' unclear context = label as NMD" }
+      ]
+    },
+    {
+      "id": "entheogens",
+      "name": "Entheogens",
+      "description": "Plant-based drugs used in religious/traditional ceremonies for mind-altering effects",
+      "severity": "high",
+      "exhaustiveList": true,
+      "drugs": [
+        { "name": "Ayahuasca", "slang": ["Aya", "Hoasca", "Yagé"] },
+        { "name": "Peyote", "description": "Cactus-derived" },
+        { "name": "Iboga", "description": "Plant-based" },
+        { "name": "Hallucinogenic Mushrooms", "slang": ["Psilocybin", "Liberty Cap", "Magic Mushrooms", "Shrooms", "Alice", "Boomers", "Caps", "Fungus", "Hongos", "Mushies", "Pizza Toppings"], "strains": ["Penis Envy", "Psilocybe Cubensis", "Golden Teacher", "True Albino Teacher", "Psilocybe Semilanceata (Liberty Caps)", "Psilocybe Cyanescens (Wavy Caps)"] }
+      ],
+      "allowedMushrooms": ["Culinary mushrooms", "Reishi", "Shiitake", "Lion's Mane", "King Trumpet", "Cordyceps", "Turkey Tail", "L-theanine"],
+      "subcategories": [
+        {
+          "id": "enth_sale",
+          "name": "Buy/Sell/Trade/Donate/Gift/Ask",
+          "action": "label"
+        },
+        {
+          "id": "enth_promotion",
+          "name": "Coordinates/Speaks Positively/Instructions/Encourages",
+          "action": "label"
+        },
+        {
+          "id": "enth_admission",
+          "name": "Admission to Personal Use",
+          "action": "label"
+        },
+        {
+          "id": "enth_debate",
+          "name": "Debate Legality/Medical Merits/PSA/News",
+          "action": "no_action"
+        }
+      ],
+      "specialRules": [
+        { "rule": "Ayahuasca retreats, Peyote tours, Psilocybin therapies = promotion of entheogens" }
+      ]
+    },
+    {
+      "id": "prescription_drugs",
+      "name": "Prescription Drugs (Rx)",
+      "description": "Drugs requiring prescription or medical professional to administer",
+      "severity": "high",
+      "definition": "Any drug used to treat medical condition not widely available without prescription or requires trained professional to administer",
+      "examples": [
+        "Birth control (pills, rings, IUDs)",
+        "Vaccines (including COVID-19)",
+        "Medical grade oxygen",
+        "Antibiotics",
+        "Cancer treatment",
+        "Asthma treatment",
+        "Diabetes medication",
+        "Weight loss treatments (Semaglutide, Wegovy, Ozempic, Rybelsus, GLP-1)",
+        "Erectile dysfunction medication (Viagra, Cialis)",
+        "Injectable peptides (except GHK-Cu, BPC-157)"
+      ],
+      "subcategories": [
+        {
+          "id": "rx_sale",
+          "name": "Buy/Sell/Trade/Ask",
+          "contexts": [
+            { "id": "no_special_context", "action": "label" },
+            { "id": "vaccine_price_education", "action": "label" },
+            { "id": "delivery_legitimate_ecommerce", "action": "label" }
+          ]
+        },
+        {
+          "id": "rx_donate_gift",
+          "name": "Donate/Gift",
+          "contexts": [
+            { "id": "no_special_context", "action": "label" },
+            { "id": "crisis_context", "action": "information", "note": "Escalate to Content Policy" }
+          ]
+        },
+        {
+          "id": "rx_promotion",
+          "name": "Promotes/Seeks Information",
+          "contexts": [
+            { "id": "affordability_accessibility_efficacy_medical", "action": "label" },
+            { "id": "abuse_context", "action": "information" },
+            { "id": "discussion_advocacy", "action": "information" }
+          ]
+        },
+        {
+          "id": "rx_consumption",
+          "name": "Admission/Consumption",
+          "action": "label"
+        },
+        {
+          "id": "rx_debate",
+          "name": "Debate Legality/Medical Merits/PSA/News",
+          "action": "no_action"
+        }
+      ],
+      "saleSignals": [
+        "Contact information (phone, email, location, messaging service)",
+        "Ask to be contacted (Follow me, Send number, Call hotline)",
+        "Sale language (Buy me, For sale, Buy now)",
+        "Price listing (product price, consultation fees, subscription fees)",
+        "Delivery mentions (without discount = sale)"
+      ],
+      "promotionSignals": [
+        "Affordability (discounts, insurance, savings cards, delivery discounts)",
+        "Efficacy (comparisons, effectiveness descriptions)",
+        "Accessibility (locations, consultation encouragement)",
+        "Scheduling online doctor visits",
+        "Online pharmacy promotion",
+        "Vaccine information (availability, location, cost)"
+      ],
+      "notPrescriptionDrugs": [
+        "Animal medications (when context is specifically for animals)",
+        "Over-the-Counter drugs",
+        "Pharmacy products not requiring prescription (vitamins, supplements, first-aid, condoms)",
+        "Cosmetic procedures (Botox, Dermal Fillers)"
+      ],
+      "specialRules": [
+        { "rule": "Rx drug with NO medical context = NMD (except injectable weight loss = always Rx)" },
+        { "rule": "Steroids with medical context = Rx; bodybuilding context = NMD" },
+        { "rule": "Ketamine Therapy = Rx; Ketamine drug = NMD" },
+        { "rule": "Injectable peptides = always Rx (except GHK-Cu, BPC-157 = NMD)" },
+        { "rule": "GLP-1 Supplements/Boosters = NOT Rx (allowed)" },
+        { "rule": "Natural Ozempic (no evidence of Rx) = No Action" }
+      ]
+    },
+    {
+      "id": "otc_drugs",
+      "name": "Over-the-Counter Drugs (OTC)",
+      "description": "Non-prescription drugs treating specific exhaustive conditions",
+      "severity": "mid",
+      "exhaustiveConditions": [
+        { "condition": "Aches, Pains, Headaches", "examples": ["Ibuprofen", "Aleve", "Tylenol", "Midol", "Robitussin"] },
+        { "condition": "Fever", "examples": ["Acetaminophen", "Tylenol", "Advil", "Motrin"] },
+        { "condition": "Allergies", "examples": ["Benadryl", "Claritin", "Zyrtec", "Sudafed", "Flonase"] },
+        { "condition": "Stomach Upset", "examples": ["Imodium", "Pepto-Bismol", "Dramamine"] },
+        { "condition": "Skin Rashes and Itching", "examples": ["Hydrocortisone", "Cortaid", "Cortizone 10"] }
+      ],
+      "specialOTC": [
+        { "exact": "Viagra Connect", "note": "Must be exact phrase" },
+        { "exact": "Cialis Together", "note": "Must be exact phrase" }
+      ],
+      "notOTC": [
+        "Plasters/dressings/adhesive bandages",
+        "Topical oils/creams not medical (lotions, beauty products)",
+        "Diet products (protein powder, shakes)",
+        "Vitamins/herbal products not treating exhaustive conditions",
+        "Supplements for conditions not in exhaustive list (e.g., diabetes, fat removal)"
+      ],
+      "subcategories": [
+        {
+          "id": "otc_sale",
+          "name": "Buy/Sell/Trade/Donate/Gift/Ask",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "animal_medicine",
+      "name": "Animal Medicine",
+      "description": "Medicines intended for animal medical purposes",
+      "severity": "mid",
+      "examples": [
+        "Prescription topical medication for animals",
+        "Vaccines and injectables for animals",
+        "Tranquilizers for animals"
+      ],
+      "brands": ["Advocate", "Endectrid", "Advantage", "Frontline Plus", "Bravecto", "Stronghold", "Nexgard", "Drontal"],
+      "notAnimalMedicine": [
+        "Supplements/food with health benefits for animals",
+        "Recovery collars, flea collars",
+        "Chew toys, incubators",
+        "Grooming services, pet walking, boarding, training"
+      ],
+      "subcategories": [
+        {
+          "id": "animal_med_sale",
+          "name": "Buy/Sell/Trade",
+          "action": "label"
+        }
+      ]
+    },
+    {
+      "id": "addiction_treatment",
+      "name": "Drug and Alcohol Addiction Treatment",
+      "description": "Services aimed to help patients cease substance abuse",
+      "severity": "mid",
+      "inScope": [
+        { "type": "Physical Addiction Treatment Center", "description": "In-person drug/alcohol treatment, clinical or non-clinical" },
+        { "type": "Online Addiction Treatment", "description": "Remote treatment via apps, video calls, live chats, online forms" },
+        { "type": "Hotline Addiction Treatment", "description": "Remote assistance via telephone" },
+        { "type": "Mutual Support Group", "description": "Group-based addiction support services" }
+      ],
+      "outOfScope": [
+        "Physical rehabilitation (mobility, post-operative, sports therapy)",
+        "Treatment for non-drug/alcohol addictions (smoking, sex, gambling) unless drug/alcohol also present",
+        "Individual doctor/therapist promoting their services",
+        "Drug Therapy (Ketamine Therapy = Rx)",
+        "Cannabis Addiction Treatment (only HRD, NMD, Rx, Alcohol covered)",
+        "Products that cure/treat addiction",
+        "Degrees/studies in addiction treatment"
+      ],
+      "subcategories": [
+        {
+          "id": "addiction_treatment_promotion",
+          "name": "Promotes Drug/Alcohol Addiction Treatment Services",
+          "action": "label"
+        },
+        {
+          "id": "other_rehab",
+          "name": "Promotes Other Rehabilitation (Not Drug/Alcohol)",
+          "action": "label"
+        },
+        {
+          "id": "addiction_discussion",
+          "name": "Discusses Addiction Without Promoting Service",
+          "action": "no_action"
+        },
+        {
+          "id": "therapist_individual",
+          "name": "Promotes Therapist/Individual (Not Center/Group)",
+          "action": "label"
+        },
+        {
+          "id": "rehab_product",
+          "name": "Rehab-Related Product (No Specific Service)",
+          "action": "no_action"
+        }
+      ],
+      "keywords": {
+        "direct": ["Alcoholics Anonymous (AA)", "Alcoholic", "Alcoholism", "Opioid", "Heroin", "Substance Abuse", "Fentanyl", "Flakka", "Narconon", "Chemical Dependency", "Ecstasy", "Molly", "MDMA"],
+        "generic": ["Recovery", "Addiction", "Addict", "Relapse", "Rehab", "Rehabilitation", "Therapy", "Sobriety", "Treatment", "Sober", "Halfway house", "Inpatient housing", "Sober living homes"]
+      }
+    },
+    {
+      "id": "cannabis",
+      "name": "Cannabis and Cannabis Derived Products",
+      "description": "Marijuana, THC products, CBD products, and hemp products",
+      "severity": "high",
+      "productTypes": {
+        "marijuana_thc": {
+          "description": "Products containing THC (>0.3%) or psychoactive components",
+          "includes": ["Marijuana", "Hash oil", "Weed oil", "Liquid cannabis", "Delta 8", "HHC", "Marijuana seeds", "Cannabis extracts (wax, resin, rosin)"],
+          "slang": ["Cannabis", "420", "710", "Blunt", "Dagga", "Ganja", "Joint", "Pot", "Weed", "Mary Jane", "Kush", "Devil's Lettuce", "Reefer", "Bud", "Herb", "Grass", "Skunk", "Dope", "Flower", "Haze", "Mota", "Porro", "Chronic", "Loud", "Zaza", "Za", "Wax", "OG", "Zip", "Shatter", "Cali", "Quads", "Doobie", "Kief", "Piff", "Cake", "Runtz", "Muhas"],
+          "subcategories": [
+            {
+              "id": "thc_sale",
+              "name": "Buy/Sell/Trade/Donate/Gift/Ask",
+              "contexts": [
+                { "id": "no_special_context", "action": "label" },
+                { "id": "fictional_documentary", "action": "label" }
+              ]
+            },
+            {
+              "id": "thc_promotion",
+              "name": "Coordinates/Speaks Positively/Instructions/Encourages/Admission/Depiction/Consumption",
+              "action": "label"
+            },
+            {
+              "id": "thc_dispensary",
+              "name": "Marijuana Dispensary (No Sale Lead)",
+              "action": "label"
+            },
+            {
+              "id": "thc_paraphernalia",
+              "name": "Buy/Sell/Trade Paraphernalia (No THC Present)",
+              "action": "label"
+            }
+          ]
+        },
+        "cbd": {
+          "description": "Products containing cannabidiol with ≤0.3% THC",
+          "slang": ["Hemp extract oil", "Full-spectrum hemp", "PCR", "CBD oil", "CBD isolate", "CBG"],
+          "prescriptionCBD": ["Cesamet", "Marinol", "Sativex", "Epidiolex"],
+          "subcategories": [
+            {
+              "id": "cbd_ingestible_sale",
+              "name": "Buy/Sell/Trade/Donate/Gift/Ask CBD (Ingestible)",
+              "action": "label"
+            },
+            {
+              "id": "cbd_non_ingestible_sale",
+              "name": "Buy/Sell/Trade/Donate/Gift/Ask CBD (Non-Ingestible)",
+              "contexts": [
+                { "id": "no_special_context", "action": "label" },
+                { "id": "disease_claims", "action": "label" }
+              ]
+            }
+          ]
+        },
+        "hemp": {
+          "description": "Cannabis-derived products with no CBD and ≤0.3% THC",
+          "examples": ["Hemp oil", "Hemp seed oil", "Hemp fiber", "Hemp heart", "Cannabis sativa seed oil"],
+          "subcategories": [
+            {
+              "id": "hemp_sale",
+              "name": "Buy/Sell/Trade/Donate/Gift/Ask Hemp",
+              "contexts": [
+                { "id": "no_special_context", "action": "label" },
+                { "id": "disease_claims", "action": "label" }
+              ]
+            }
+          ]
+        }
+      },
+      "noAction": [
+        "Merchandise depicting cannabis without promoting sale/use",
+        "Debate legality/medical merits/PSA",
+        "Media/news/entertainment/apparel where focus is NOT to sell cannabis",
+        "Employment opportunities in cannabis industry"
+      ],
+      "diseaseClaimsYES": [
+        "Pain relief (any pain claim)",
+        "Arthritis", "Mental illness (anxiety, depression)",
+        "Skin conditions (eczema, psoriasis, acne)",
+        "Improves concentration/focus",
+        "Hair growth/hair loss",
+        "Immune system strengthening",
+        "Impotence/sexual performance"
+      ],
+      "diseaseClaimsNO": [
+        "Good for you (general)",
+        "Joint support",
+        "Skin benefits (moisturizing, cleansing)",
+        "Teeth whitening",
+        "Hair treatment (shininess, dandruff)",
+        "Sleep improvement",
+        "Supplement benefit"
+      ],
+      "consumptionDefinition": "Subject has product on/in mouth, may or may not be inhaling/exhaling. Smoke may or may not be present. Solely holding = depiction (promotion)."
+    }
+  ],
+
+  "saleSignals": {
+    "buySelltrade": [
+      "Product is for sale/trade",
+      "Asking audience to buy or if anyone needs",
+      "Price listing or hinting at price",
+      "Evidence of illicit sale on platform",
+      "Responding to sales offer with intent to purchase",
+      "Product is for delivery",
+      "Encouraging contact with call to action",
+      "Specification of availability"
+    ],
+    "donateGift": [
+      "Product is for donation",
+      "Product is for free without purchase of another good"
+    ],
+    "asking": [
+      "Asking if anyone has for sale/trade",
+      "Asking if anyone has for donation/gift",
+      "Can you get me some...",
+      "Who can tell me where to find..."
+    ],
+    "coordinating": [
+      "Recruiting dealers, drivers",
+      "Coordinating delivery/transportation",
+      "Managing schedules and territories"
+    ],
+    "contactInfo": [
+      "Phone number",
+      "Email address",
+      "Location (city or more specific)",
+      "Messaging service name (Snapchat, Wickr, Kik, WhatsApp, Telegram)",
+      "Messaging indicators (ghost emoji = Snapchat, // = Wickr, SC = Snapchat, t.me = Telegram, wa = WhatsApp)",
+      "Username + messaging service",
+      "Request to be contacted (hit me up, hmu, DM me, number hasn't changed)",
+      "Links to blogs/social media for contact",
+      "QR codes"
+    ]
+  },
+
+  "salesSlangDictionary": [
+    { "term": "Tap in / tapn / tappin / yap in", "meaning": "Contact me for sale" },
+    { "term": "LMK", "meaning": "Let me know" },
+    { "term": "HMU", "meaning": "Hit me up" },
+    { "term": "HML", "meaning": "Hit me low" },
+    { "term": "FWM", "meaning": "Fuck with me / Follow me" },
+    { "term": "GWM", "meaning": "Get with me" },
+    { "term": "Rush me", "meaning": "Contact urgently" },
+    { "term": "OTR / On the road / On deck / Mobile / Pickups / Drops", "meaning": "Delivery method" },
+    { "term": "YKWTD / IYKYK", "meaning": "You know what to do / If you know you know" },
+    { "term": "Plug / Trap", "meaning": "Dealer" },
+    { "term": "Hood pharmacist", "meaning": "Dealer" }
+  ],
+
+  "circumventionSignals": [
+    "Instructing not to post imagery/prices to avoid enforcement",
+    "Instructing to use comments, DMs, or external communication",
+    "Depiction with no context",
+    "Depiction with 'not for sale', 'NFS'",
+    "Depiction with user tagged, no context",
+    "Product shared with unit measurement, no context",
+    "Product shared with location, no context",
+    "Hashtags of product name, no context",
+    "Using codes for price (banknote colors, likes)",
+    "Cannabis/THC or CBD shown with stacks of cash (denominations 20+)"
+  ],
+
+  "recoveryContext": {
+    "criteria": [
+      "Does NOT speak positively, encourage, coordinate, or provide instructions",
+      "AND contains one of: expression of gratitude for surviving, encouragement to stop using, request for help, stories of difficulties/addiction/withdrawal/recovery"
+    ]
+  },
+
+  "psaEducationalContext": {
+    "allowed": [
+      "Inform/raise awareness/discuss drug or effects",
+      "Advocacy for drug legislation",
+      "Public service announcements from official entities",
+      "Speaking negatively about or discouraging drug use"
+    ]
+  },
+
+  "labelHierarchy": [
+    { "id": "hrd_sale", "label": "DP > High-Risk Drugs > Sale", "hierarchyRank": 1 },
+    { "id": "hrd_promotion", "label": "DP > High-Risk Drugs > Promotion/Admission", "hierarchyRank": 2 },
+    { "id": "hrd_paraphernalia", "label": "DP > High-Risk Drugs > Paraphernalia", "hierarchyRank": 3 },
+    { "id": "hrd_merchandise", "label": "DP > High-Risk Drugs > Merchandise", "hierarchyRank": 4 },
+    { "id": "nmd_sale", "label": "DP > Non-Medical Drugs > Sale", "hierarchyRank": 5 },
+    { "id": "nmd_promotion", "label": "DP > Non-Medical Drugs > Promotion/Admission", "hierarchyRank": 6 },
+    { "id": "nmd_paraphernalia", "label": "DP > Non-Medical Drugs > Paraphernalia", "hierarchyRank": 7 },
+    { "id": "nmd_merchandise", "label": "DP > Non-Medical Drugs > Merchandise", "hierarchyRank": 8 },
+    { "id": "enth_sale", "label": "DP > Entheogens > Sale", "hierarchyRank": 9 },
+    { "id": "enth_promotion", "label": "DP > Entheogens > Promotion", "hierarchyRank": 10 },
+    { "id": "enth_admission", "label": "DP > Entheogens > Admission", "hierarchyRank": 11 },
+    { "id": "rx_sale", "label": "DP > Prescription Drugs > Sale", "hierarchyRank": 12 },
+    { "id": "rx_promotion", "label": "DP > Prescription Drugs > Promotion", "hierarchyRank": 13 },
+    { "id": "rx_consumption", "label": "DP > Prescription Drugs > Consumption", "hierarchyRank": 14 },
+    { "id": "otc_sale", "label": "DP > Over-the-Counter > Sale", "hierarchyRank": 15 },
+    { "id": "animal_med_sale", "label": "DP > Animal Medicine > Sale", "hierarchyRank": 16 },
+    { "id": "addiction_treatment_promotion", "label": "DP > Addiction Treatment > Promotion", "hierarchyRank": 17 },
+    { "id": "thc_sale", "label": "DP > Cannabis/THC > Sale", "hierarchyRank": 18 },
+    { "id": "thc_promotion", "label": "DP > Cannabis/THC > Promotion", "hierarchyRank": 19 },
+    { "id": "cbd_sale", "label": "DP > CBD > Sale", "hierarchyRank": 20 },
+    { "id": "hemp_sale", "label": "DP > Hemp > Sale", "hierarchyRank": 21 }
+  ],
+
+  "highRiskSaleFormula": {
+    "requirement": "Visible/Stated Drug + (Price OR Quantity OR Contact Info OR Drug Dealer Context)",
+    "priceSignals": [
+      "Numerical pricing with currency ($, €, etc.)",
+      "Price written in caption or text overlay",
+      "Sale language (For sale, NFS variations)",
+      "Price vs quantity references"
+    ],
+    "quantitySignals": [
+      "Mass quantities in bags or boxes",
+      "Block/brick of drugs (cocaine, etc.)",
+      "Multiple different drug types in one post",
+      "Anything not fitting in palm of hands"
+    ],
+    "contactInfoSignals": [
+      "Phone number",
+      "Telegram link",
+      "Phone emoji",
+      "Text referencing delivery (mobile, on the road)",
+      "Car/pins/map emojis",
+      "Sentences like 'on the road', 'OTR'"
+    ],
+    "drugDealerContextSignals": [
+      "Plug emoji or word",
+      "Trap House references",
+      "Phrases: 'I am the plug', 'I da plugg'",
+      "Car emoji with drug signals"
+    ],
+    "notHighRiskSaleSignals": [
+      "Only one requirement present (drug without sale signal, or sale signal without drug)",
+      "Emojis alone without visible/stated drug",
+      "Quantity not mass (pills in hand, single bottle)",
+      "Pop culture/music/song lyrics only"
+    ]
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": [
+      "High Risk Drugs",
+      "Non Medical Drugs", 
+      "Entheogens",
+      "Prescription Drugs and Over-the-Counter Medication",
+      "Drug and Alcohol Addiction Treatment",
+      "Cannabis and Cannabis Derived Products"
+    ],
+    "usernameReview": {
+      "HRD": "Username with explicit drug reference (cocaine, fentanyl, meth) = label as Sale of HRD",
+      "NMD": "Username with NMD reference = label as Promotion of NMD (check medical context first)",
+      "implicit": "Implicit terms like 'mushrooms' or 'coke' alone = NOT violating without other signals"
+    },
+    "implicitContentRequirements": [
+      "Implicit text/emoji AND one of: Price, Unit quantity, Explicit description of non-medical affect, Context of asking/offering, Contact indicators"
+    ],
+    "circumventionCodes": [
+      "Replacing price with banknote colors",
+      "Number of likes as price code",
+      "NFS (not for sale) with drug imagery",
+      "Product with unit measurement no context",
+      "Product with location no context"
+    ]
+  },
+
+  "glossary": {
+    "high_risk_drugs": "Drugs with high potential for misuse, addiction, or serious health risks including overdose (cocaine, fentanyl, heroin, crystal meth, xylazine, medetomidine, nitazenes)",
+    "non_medical_drugs": "Drugs not used for intended medical purposes or used to achieve a high, including precursor chemicals",
+    "entheogens": "Plant-based drugs used in religious/traditional ceremonies for mind-altering effects",
+    "prescription_drug": "Drug requiring prescription or trained professional to administer",
+    "otc_drug": "Non-prescription drug treating specific exhaustive conditions",
+    "marijuana": "Psychoactive drug from cannabis sativa with THC",
+    "thc_products": "Products containing >0.3% THC",
+    "cbd_products": "Products containing cannabidiol with ≤0.3% THC",
+    "hemp_products": "Cannabis-derived products with no CBD and ≤0.3% THC",
+    "marijuana_dispensary": "Government-regulated location for cannabis purchase",
+    "disease_claims": "Claims product can treat, cure, prevent, mitigate, or diagnose disease",
+    "admission": "Content admitting to ownership or use of product",
+    "promote": "Speaks positively, encourages use, provides instructions, provides info on obtaining",
+    "coordinate": "Organize flow of goods (recruiting, delivery, transportation)"
+  }
+}

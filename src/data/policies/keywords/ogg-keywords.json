@@ -1,0 +1,467 @@
+{
+  "policyId": "ogg",
+  "policyName": "Online Gambling and Games",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "keywords": {
+    "casino_games": {
+      "critical": [
+        { "term": "Fortune Tiger", "context": "slot game - always RMG", "language": "both" },
+        { "term": "Fortune Rabbit", "context": "slot game - always RMG", "language": "both" },
+        { "term": "Fortune Ox", "context": "slot game - always RMG", "language": "both" },
+        { "term": "Fortune Mouse", "context": "slot game - always RMG", "language": "both" },
+        { "term": "Gates of Olympus", "context": "slot game", "language": "both" },
+        { "term": "Sweet Bonanza", "context": "slot game", "language": "both" },
+        { "term": "online casino", "context": "casino gambling", "language": "en" },
+        { "term": "cassino online", "context": "jogo de cassino", "language": "pt" },
+        { "term": "real money slots", "context": "casino gambling", "language": "en" },
+        { "term": "slots com dinheiro real", "context": "jogo de cassino", "language": "pt" },
+        { "term": "win real money", "context": "money OUT signal", "language": "en" },
+        { "term": "ganhe dinheiro real", "context": "sinal de Money OUT", "language": "pt" },
+        { "term": "cash prizes", "context": "money OUT signal", "language": "en" },
+        { "term": "prêmios em dinheiro", "context": "sinal de Money OUT", "language": "pt" }
+      ],
+      "high": [
+        { "term": "casino", "context": "gambling establishment", "language": "en" },
+        { "term": "cassino", "context": "estabelecimento de jogo", "language": "pt" },
+        { "term": "slots", "context": "slot machine game", "language": "both" },
+        { "term": "caça-níqueis", "context": "máquina caça-níqueis", "language": "pt" },
+        { "term": "roulette", "context": "casino game", "language": "en" },
+        { "term": "roleta", "context": "jogo de cassino", "language": "pt" },
+        { "term": "blackjack", "context": "casino card game", "language": "both" },
+        { "term": "craps", "context": "dice casino game", "language": "en" },
+        { "term": "dados", "context": "jogo de dados cassino", "language": "pt" },
+        { "term": "baccarat", "context": "casino card game", "language": "both" },
+        { "term": "jackpot", "context": "big prize/money OUT", "language": "both" },
+        { "term": "spin to win", "context": "slot/roulette mechanic", "language": "en" },
+        { "term": "gire e ganhe", "context": "mecânica de slot/roleta", "language": "pt" },
+        { "term": "scratch card", "context": "instant win game", "language": "en" },
+        { "term": "raspadinha", "context": "jogo instantâneo", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "dice game", "context": "may be casino", "language": "en" },
+        { "term": "jogo de dados", "context": "pode ser cassino", "language": "pt" },
+        { "term": "card game", "context": "context dependent", "language": "en" },
+        { "term": "jogo de cartas", "context": "depende do contexto", "language": "pt" },
+        { "term": "dominoes", "context": "may be casino", "language": "en" },
+        { "term": "dominó", "context": "pode ser cassino", "language": "pt" }
+      ]
+    },
+    "poker_rummy": {
+      "high": [
+        { "term": "poker", "context": "card gambling", "language": "both" },
+        { "term": "pôquer", "context": "jogo de cartas apostas", "language": "pt" },
+        { "term": "Texas Hold'em", "context": "poker variant", "language": "both" },
+        { "term": "Omaha Hi", "context": "poker variant", "language": "both" },
+        { "term": "Omaha Hi-Lo", "context": "poker variant", "language": "both" },
+        { "term": "7-Card Stud", "context": "poker variant", "language": "both" },
+        { "term": "2-7 Triple Draw", "context": "poker variant", "language": "both" },
+        { "term": "5-Card Draw", "context": "poker variant", "language": "both" },
+        { "term": "5-Card Omaha", "context": "poker variant", "language": "both" },
+        { "term": "Badugi", "context": "poker variant", "language": "both" },
+        { "term": "poker chips", "context": "poker gambling", "language": "en" },
+        { "term": "fichas de pôquer", "context": "jogo de pôquer", "language": "pt" },
+        { "term": "rummy", "context": "card game gambling", "language": "en" },
+        { "term": "rummy", "context": "jogo de cartas apostas", "language": "pt" },
+        { "term": "play rummy", "context": "rummy gambling", "language": "en" },
+        { "term": "jogar rummy", "context": "jogo rummy", "language": "pt" },
+        { "term": "win on rummy", "context": "rummy money OUT", "language": "en" }
+      ]
+    },
+    "betting_sports": {
+      "critical": [
+        { "term": "sportsbook", "context": "sports betting platform", "language": "en" },
+        { "term": "apostas esportivas", "context": "plataforma de apostas", "language": "pt" },
+        { "term": "bet now", "context": "betting CTA", "language": "en" },
+        { "term": "aposte agora", "context": "CTA de apostas", "language": "pt" },
+        { "term": "place bet", "context": "betting action", "language": "en" },
+        { "term": "fazer aposta", "context": "ação de apostas", "language": "pt" },
+        { "term": "sports betting", "context": "betting category", "language": "en" },
+        { "term": "apostas esportivas", "context": "categoria de apostas", "language": "pt" }
+      ],
+      "high": [
+        { "term": "betting", "context": "wagering activity", "language": "en" },
+        { "term": "apostas", "context": "atividade de apostas", "language": "pt" },
+        { "term": "bet", "context": "wagering - BOTH IN/OUT", "language": "en" },
+        { "term": "aposta", "context": "apostas - IN/OUT", "language": "pt" },
+        { "term": "odds", "context": "betting odds - BOTH IN/OUT", "language": "en" },
+        { "term": "odds", "context": "probabilidades apostas", "language": "pt" },
+        { "term": "spread", "context": "point spread betting", "language": "en" },
+        { "term": "over/under", "context": "betting type", "language": "en" },
+        { "term": "mais/menos", "context": "tipo de aposta", "language": "pt" },
+        { "term": "parlay", "context": "multi-bet", "language": "en" },
+        { "term": "múltipla", "context": "aposta múltipla", "language": "pt" },
+        { "term": "accumulator", "context": "multi-bet UK", "language": "en" },
+        { "term": "horse racing", "context": "horse race betting", "language": "en" },
+        { "term": "corrida de cavalos", "context": "apostas em cavalos", "language": "pt" },
+        { "term": "virtual sports", "context": "simulated sports betting", "language": "en" },
+        { "term": "esportes virtuais", "context": "apostas simuladas", "language": "pt" },
+        { "term": "e-sports betting", "context": "gaming competition betting", "language": "en" },
+        { "term": "apostas e-sports", "context": "apostas em jogos", "language": "pt" },
+        { "term": "betting exchange", "context": "peer-to-peer betting", "language": "en" },
+        { "term": "Betfair", "context": "betting platform", "language": "both" },
+        { "term": "Bet365", "context": "betting platform", "language": "both" },
+        { "term": "1xBet", "context": "betting platform", "language": "both" }
+      ],
+      "mid": [
+        { "term": "game multi", "context": "multi-game betting", "language": "en" },
+        { "term": "simulated", "context": "virtual sports context", "language": "en" },
+        { "term": "simulado", "context": "contexto de esportes virtuais", "language": "pt" },
+        { "term": "simulated reality", "context": "virtual sports", "language": "en" }
+      ]
+    },
+    "lottery_raffle": {
+      "high": [
+        { "term": "lottery", "context": "lottery gambling", "language": "en" },
+        { "term": "loteria", "context": "jogo de loteria", "language": "pt" },
+        { "term": "lotto", "context": "lottery gambling - IN/OUT", "language": "en" },
+        { "term": "loto", "context": "jogo de loteria", "language": "pt" },
+        { "term": "raffle", "context": "raffle gambling", "language": "en" },
+        { "term": "rifa", "context": "jogo de rifa", "language": "pt" },
+        { "term": "tombola", "context": "lottery type", "language": "both" },
+        { "term": "tômbola", "context": "tipo de loteria", "language": "pt" },
+        { "term": "sweepstakes", "context": "prize draw gambling", "language": "en" },
+        { "term": "sorteio", "context": "jogo de sorteio", "language": "pt" },
+        { "term": "prize draw", "context": "lottery type", "language": "en" },
+        { "term": "sorteio de prêmios", "context": "tipo de loteria", "language": "pt" },
+        { "term": "win big", "context": "lottery/casino signal", "language": "en" },
+        { "term": "ganhe muito", "context": "sinal de loteria/cassino", "language": "pt" },
+        { "term": "mega millions", "context": "US lottery", "language": "both" },
+        { "term": "powerball", "context": "US lottery", "language": "both" }
+      ],
+      "mid": [
+        { "term": "pools", "context": "lottery/betting pool", "language": "en" },
+        { "term": "bolão", "context": "loteria/pool de apostas", "language": "pt" },
+        { "term": "charity raffle", "context": "non-profit lottery", "language": "en" },
+        { "term": "rifa beneficente", "context": "loteria sem fins lucrativos", "language": "pt" }
+      ]
+    },
+    "fantasy_sports": {
+      "high": [
+        { "term": "fantasy sports", "context": "fantasy gambling", "language": "en" },
+        { "term": "fantasy league", "context": "fantasy gambling", "language": "en" },
+        { "term": "liga fantasy", "context": "jogo fantasy", "language": "pt" },
+        { "term": "draft", "context": "fantasy team selection", "language": "en" },
+        { "term": "FanDuel", "context": "fantasy sports platform", "language": "both" },
+        { "term": "DraftKings", "context": "fantasy sports platform", "language": "both" },
+        { "term": "PointsBet", "context": "fantasy/betting platform", "language": "both" },
+        { "term": "virtual team", "context": "fantasy sports", "language": "en" },
+        { "term": "time virtual", "context": "esportes fantasy", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "fantasy", "context": "may be fantasy sports", "language": "en" },
+        { "term": "fantasy", "context": "pode ser esportes fantasy", "language": "pt" },
+        { "term": "fan", "context": "context dependent", "language": "en" }
+      ]
+    },
+    "bingo": {
+      "high": [
+        { "term": "online bingo", "context": "bingo gambling", "language": "en" },
+        { "term": "bingo online", "context": "jogo de bingo", "language": "pt" },
+        { "term": "bingo", "context": "gambling game", "language": "both" },
+        { "term": "bingo for cash", "context": "real money bingo", "language": "en" },
+        { "term": "bingo por dinheiro", "context": "bingo com dinheiro real", "language": "pt" }
+      ]
+    },
+    "social_casino": {
+      "mid": [
+        { "term": "social casino", "context": "simulated gambling", "language": "en" },
+        { "term": "cassino social", "context": "jogo simulado", "language": "pt" },
+        { "term": "free slots", "context": "free casino game", "language": "en" },
+        { "term": "slots grátis", "context": "jogo de cassino grátis", "language": "pt" },
+        { "term": "win coins", "context": "virtual currency (no real value)", "language": "en" },
+        { "term": "ganhe moedas", "context": "moeda virtual (sem valor real)", "language": "pt" },
+        { "term": "virtual chips", "context": "non-monetary", "language": "en" },
+        { "term": "fichas virtuais", "context": "não monetário", "language": "pt" },
+        { "term": "play for fun", "context": "no real money", "language": "en" },
+        { "term": "jogue por diversão", "context": "sem dinheiro real", "language": "pt" }
+      ]
+    },
+    "quiz_trivia": {
+      "mid": [
+        { "term": "quiz for cash", "context": "pay-to-play trivia", "language": "en" },
+        { "term": "quiz por dinheiro", "context": "trivia paga", "language": "pt" },
+        { "term": "trivia game", "context": "context dependent", "language": "en" },
+        { "term": "jogo de trivia", "context": "depende do contexto", "language": "pt" },
+        { "term": "win prizes", "context": "money OUT signal", "language": "en" },
+        { "term": "ganhe prêmios", "context": "sinal de money OUT", "language": "pt" }
+      ]
+    }
+  },
+
+  "moneyInSignals": {
+    "critical": [
+      { "term": "buy-in", "context": "entry fee", "language": "en" },
+      { "term": "entrada", "context": "taxa de entrada", "language": "pt" },
+      { "term": "deposit", "context": "money deposit", "language": "en" },
+      { "term": "depósito", "context": "depósito de dinheiro", "language": "pt" },
+      { "term": "deposit now", "context": "money IN CTA", "language": "en" },
+      { "term": "deposite agora", "context": "CTA de money IN", "language": "pt" },
+      { "term": "pay to play", "context": "paid entry", "language": "en" },
+      { "term": "pague para jogar", "context": "entrada paga", "language": "pt" },
+      { "term": "top up", "context": "add funds", "language": "en" },
+      { "term": "recarregar", "context": "adicionar fundos", "language": "pt" },
+      { "term": "recharge", "context": "add funds", "language": "en" },
+      { "term": "in-app purchases", "context": "app store signal", "language": "en" },
+      { "term": "compras no app", "context": "sinal de app store", "language": "pt" }
+    ],
+    "high": [
+      { "term": "bet", "context": "wager - BOTH IN/OUT", "language": "en" },
+      { "term": "apostar", "context": "aposta - IN/OUT", "language": "pt" },
+      { "term": "wager", "context": "place a bet", "language": "en" },
+      { "term": "apostar", "context": "fazer uma aposta", "language": "pt" },
+      { "term": "pay", "context": "payment", "language": "en" },
+      { "term": "pagar", "context": "pagamento", "language": "pt" },
+      { "term": "pay now", "context": "payment CTA", "language": "en" },
+      { "term": "pague agora", "context": "CTA de pagamento", "language": "pt" },
+      { "term": "spend", "context": "spending money", "language": "en" },
+      { "term": "gastar", "context": "gastar dinheiro", "language": "pt" },
+      { "term": "join", "context": "join paid game", "language": "en" },
+      { "term": "entrar", "context": "entrar em jogo pago", "language": "pt" },
+      { "term": "credit card", "context": "payment method", "language": "en" },
+      { "term": "cartão de crédito", "context": "método de pagamento", "language": "pt" },
+      { "term": "debit card", "context": "payment method", "language": "en" },
+      { "term": "cartão de débito", "context": "método de pagamento", "language": "pt" },
+      { "term": "e-wallet", "context": "digital payment", "language": "en" },
+      { "term": "carteira digital", "context": "pagamento digital", "language": "pt" }
+    ],
+    "payment_systems": [
+      "Venmo", "PayPal", "Gcash", "PIX", "Paytm", "PhonePe", "Google Pay",
+      "Apple Pay", "Samsung Pay", "Skrill", "Neteller", "ecoPayz"
+    ]
+  },
+
+  "moneyOutSignals": {
+    "critical": [
+      { "term": "win real money", "context": "explicit money OUT", "language": "en" },
+      { "term": "ganhe dinheiro real", "context": "money OUT explícito", "language": "pt" },
+      { "term": "cash out", "context": "withdraw winnings", "language": "en" },
+      { "term": "sacar", "context": "retirar ganhos", "language": "pt" },
+      { "term": "withdraw", "context": "withdraw money", "language": "en" },
+      { "term": "retirar", "context": "retirar dinheiro", "language": "pt" },
+      { "term": "jackpot", "context": "big prize", "language": "both" },
+      { "term": "payout", "context": "prize payment", "language": "en" },
+      { "term": "pagamento", "context": "pagamento de prêmio", "language": "pt" }
+    ],
+    "high": [
+      { "term": "win", "context": "winning prize", "language": "en" },
+      { "term": "ganhar", "context": "ganhar prêmio", "language": "pt" },
+      { "term": "prize", "context": "award", "language": "en" },
+      { "term": "prêmio", "context": "prêmio", "language": "pt" },
+      { "term": "award", "context": "prize", "language": "en" },
+      { "term": "premiação", "context": "prêmio", "language": "pt" },
+      { "term": "money back", "context": "refund/prize", "language": "en" },
+      { "term": "dinheiro de volta", "context": "reembolso/prêmio", "language": "pt" },
+      { "term": "gain", "context": "monetary gain", "language": "en" },
+      { "term": "ganho", "context": "ganho monetário", "language": "pt" }
+    ]
+  },
+
+  "bothInOutSignals": [
+    { "term": "bet", "context": "BOTH money IN and OUT", "language": "en" },
+    { "term": "aposta", "context": "AMBOS money IN e OUT", "language": "pt" },
+    { "term": "betting", "context": "BOTH money IN and OUT", "language": "en" },
+    { "term": "apostas", "context": "AMBOS money IN e OUT", "language": "pt" },
+    { "term": "odds", "context": "BOTH money IN and OUT", "language": "en" },
+    { "term": "odds", "context": "AMBOS money IN e OUT", "language": "pt" },
+    { "term": "sportsbook", "context": "BOTH money IN and OUT", "language": "en" },
+    { "term": "lotto", "context": "BOTH money IN and OUT", "language": "en" },
+    { "term": "loteria", "context": "AMBOS money IN e OUT", "language": "pt" }
+  ],
+
+  "freeToPlaySignals": [
+    { "term": "free to play", "context": "NO money IN - priority signal", "language": "en" },
+    { "term": "grátis para jogar", "context": "SEM money IN - sinal prioritário", "language": "pt" },
+    { "term": "play for free", "context": "NO money IN", "language": "en" },
+    { "term": "jogue grátis", "context": "SEM money IN", "language": "pt" },
+    { "term": "no purchase required", "context": "NO money IN", "language": "en" },
+    { "term": "sem compra necessária", "context": "SEM money IN", "language": "pt" },
+    { "term": "free", "context": "may indicate no money IN", "language": "en" },
+    { "term": "grátis", "context": "pode indicar sem money IN", "language": "pt" },
+    { "term": "free game", "context": "NO money IN", "language": "en" },
+    { "term": "jogo grátis", "context": "SEM money IN", "language": "pt" }
+  ],
+
+  "phrases": {
+    "gambling_promotion": [
+      { "phrase": "play now and win", "severity": "critical", "language": "en" },
+      { "phrase": "jogue agora e ganhe", "severity": "critical", "language": "pt" },
+      { "phrase": "deposit and win", "severity": "critical", "language": "en" },
+      { "phrase": "deposite e ganhe", "severity": "critical", "language": "pt" },
+      { "phrase": "bet and win", "severity": "critical", "language": "en" },
+      { "phrase": "aposte e ganhe", "severity": "critical", "language": "pt" },
+      { "phrase": "win jackpot", "severity": "critical", "language": "en" },
+      { "phrase": "ganhe o jackpot", "severity": "critical", "language": "pt" },
+      { "phrase": "spin and win", "severity": "high", "language": "en" },
+      { "phrase": "gire e ganhe", "severity": "high", "language": "pt" },
+      { "phrase": "win big", "severity": "high", "language": "en" },
+      { "phrase": "ganhe muito", "severity": "high", "language": "pt" },
+      { "phrase": "cash prizes", "severity": "high", "language": "en" },
+      { "phrase": "prêmios em dinheiro", "severity": "high", "language": "pt" },
+      { "phrase": "real money", "severity": "high", "language": "en" },
+      { "phrase": "dinheiro real", "severity": "high", "language": "pt" }
+    ],
+    "betting_phrases": [
+      { "phrase": "place your bet", "severity": "critical", "language": "en" },
+      { "phrase": "faça sua aposta", "severity": "critical", "language": "pt" },
+      { "phrase": "bet on", "severity": "high", "language": "en" },
+      { "phrase": "aposte em", "severity": "high", "language": "pt" },
+      { "phrase": "best odds", "severity": "high", "language": "en" },
+      { "phrase": "melhores odds", "severity": "high", "language": "pt" },
+      { "phrase": "live betting", "severity": "high", "language": "en" },
+      { "phrase": "apostas ao vivo", "severity": "high", "language": "pt" }
+    ]
+  },
+
+  "excludedTerms": [
+    "free to play",
+    "grátis para jogar",
+    "play for free",
+    "jogue grátis",
+    "no purchase required",
+    "sem compra necessária",
+    "win coins",
+    "ganhe moedas",
+    "virtual chips",
+    "fichas virtuais",
+    "in-person",
+    "presencial",
+    "brick and mortar",
+    "cassino físico",
+    "Las Vegas casino",
+    "offline poker",
+    "poker offline",
+    "handicapper",
+    "tipster",
+    "odds information",
+    "informação de odds"
+  ],
+
+  "contextSignals": {
+    "positive_rmg": [
+      "deposit",
+      "depósito",
+      "buy-in",
+      "entrada",
+      "withdraw",
+      "sacar",
+      "cash out",
+      "real money",
+      "dinheiro real",
+      "win cash",
+      "ganhe dinheiro",
+      "jackpot",
+      "payout",
+      "pagamento",
+      "credit card",
+      "cartão de crédito",
+      "bank transfer",
+      "transferência bancária",
+      "PIX",
+      "PayPal",
+      "Gcash"
+    ],
+    "positive_scg": [
+      "free to play",
+      "grátis para jogar",
+      "win coins",
+      "ganhe moedas",
+      "virtual chips",
+      "fichas virtuais",
+      "play for fun",
+      "jogue por diversão",
+      "no real money",
+      "sem dinheiro real",
+      "social casino",
+      "cassino social"
+    ],
+    "negative_exception": [
+      "brick and mortar",
+      "cassino físico",
+      "physical casino",
+      "Las Vegas",
+      "in-person",
+      "presencial",
+      "offline",
+      "poker night",
+      "noite de poker",
+      "friends",
+      "amigos",
+      "state lottery",
+      "loteria estadual",
+      "government lottery",
+      "loteria do governo",
+      "official lottery",
+      "loteria oficial"
+    ]
+  },
+
+  "emojiSignals": {
+    "money_emojis": [
+      { "emoji": "🤑", "meaning": "money face - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💰", "meaning": "money bag - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💸", "meaning": "flying money - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💵", "meaning": "dollar bill - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💴", "meaning": "yen bill - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💶", "meaning": "euro bill - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💷", "meaning": "pound bill - real money signal", "context": "assess with IN/OUT" },
+      { "emoji": "💳", "meaning": "credit card - money IN signal", "context": "payment method" },
+      { "emoji": "🏦", "meaning": "bank - financial signal", "context": "deposit/withdrawal" }
+    ],
+    "gambling_emojis": [
+      { "emoji": "🎰", "meaning": "slot machine", "context": "casino game" },
+      { "emoji": "🎲", "meaning": "dice", "context": "gambling/chance" },
+      { "emoji": "🃏", "meaning": "joker card", "context": "card game" },
+      { "emoji": "♠️", "meaning": "spade", "context": "cards/poker" },
+      { "emoji": "♥️", "meaning": "heart", "context": "cards" },
+      { "emoji": "♦️", "meaning": "diamond", "context": "cards" },
+      { "emoji": "♣️", "meaning": "club", "context": "cards" },
+      { "emoji": "🏇", "meaning": "horse racing", "context": "betting" },
+      { "emoji": "⚽", "meaning": "football", "context": "sports betting" },
+      { "emoji": "🏀", "meaning": "basketball", "context": "sports betting" },
+      { "emoji": "🎯", "meaning": "target", "context": "gambling" },
+      { "emoji": "🏆", "meaning": "trophy", "context": "prize/winning" }
+    ]
+  },
+
+  "currencyPatterns": {
+    "symbols": ["$", "€", "£", "¥", "₹", "R$", "₩", "₽", "฿", "A$", "P$"],
+    "codes": ["USD", "EUR", "GBP", "JPY", "INR", "BRL", "KRW", "RUB", "THB", "AUD", "PHP", "BTC"],
+    "crypto": ["Bitcoin", "BTC", "Ethereum", "ETH", "Litecoin", "LTC", "Dogecoin", "DOGE"],
+    "regex_price": "\\b\\d+([.,]\\d{2})?\\s*[$€£¥₹₩]|[$€£¥₹₩]\\s*\\d+([.,]\\d{2})?\\b"
+  },
+
+  "gameTypeClassification": {
+    "rmg": {
+      "description": "Real Money Gambling: Online + Money IN + Money OUT",
+      "action": "label",
+      "path": "Gambling and Games > Yes > Yes"
+    },
+    "scg": {
+      "description": "Social Casino Games: Online + May have Money IN + NO Money OUT (or no real value)",
+      "action": "label",
+      "path": "Gambling and Games > Yes > No OR Gambling and Games > No > No"
+    },
+    "f2p_gambling": {
+      "description": "Free-to-Play with Gambling Context: Online + NO Money IN + Money OUT",
+      "action": "label",
+      "path": "Gambling and Games > No > Yes"
+    },
+    "f2p_clean": {
+      "description": "Free-to-Play without Gambling: Online + NO Money IN + NO/Virtual Money OUT",
+      "action": "no_action",
+      "path": "None"
+    },
+    "state_lottery": {
+      "description": "Official State Lottery: By authorized government entity",
+      "action": "special_attention",
+      "path": "None (carve-out)"
+    },
+    "brick_mortar": {
+      "description": "Physical Casino: NOT online",
+      "action": "no_action",
+      "path": "None"
+    }
+  }
+}

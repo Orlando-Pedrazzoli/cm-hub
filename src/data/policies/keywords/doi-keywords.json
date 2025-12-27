@@ -1,0 +1,326 @@
+{
+  "policyId": "doi",
+  "policyName": "Dangerous Organizations and Individuals",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "prominentTerroristFigures": [
+    { "name": "Hassan Nasrallah", "org": "Hezbollah", "role": "Lebanese leader", "status": "deceased" },
+    { "name": "Ismail Haniyeh", "org": "Hamas", "role": "Palestinian leader", "status": "deceased" },
+    { "name": "Yahya Sinwar", "org": "Hamas", "role": "Chairman of Political Bureau", "status": "deceased" },
+    { "name": "Osama bin Laden", "org": "Al-Qaeda", "role": "Founder and first general emir", "status": "deceased" },
+    { "name": "Qasem Soleimani", "org": "IRGC-Qods Force", "role": "Commander", "status": "deceased" },
+    { "name": "Burhan Wani", "org": "Hizbul Mujahideen", "role": "Leader", "status": "deceased" },
+    { "name": "Ahmed Yassin", "org": "Hamas", "role": "Founder/spiritual leader", "status": "deceased" },
+    { "name": "Naim Qasim", "org": "Hezbollah", "role": "Secretary General (since Oct 2024)" },
+    { "name": "Khadim Hussain Rizvi", "org": "TLP", "role": "Founder and Amir", "status": "deceased" },
+    { "name": "Abdul-Malik al-Houthi", "org": "Houthis", "role": "Second/current leader" },
+    { "name": "Saad Hussain Rizvi", "org": "TLP", "role": "Second Ameer" },
+    { "name": "Abu Mohammad al-Jolani", "org": "HTS", "role": "Former rebel commander, now Syrian president", "spdAllowed": true },
+    { "name": "Abu Obaida", "org": "Hamas (Qassam Brigades)", "role": "Official spokesman" },
+    { "name": "Abdullah Öcalan", "org": "PKK", "role": "Founding member", "aliases": ["Apo"] },
+    { "name": "Abu Mahdi Al-Muhandis", "org": "IRGC", "role": "Advisor to Soleimani", "status": "deceased" },
+    { "name": "Khaled Mashal", "org": "Hamas", "role": "Former political bureau chief" },
+    { "name": "Mohammad Yaqoob", "org": "Taliban", "role": "Deputy leader, acting defense minister", "aliases": ["Mullah Yaqoob"] },
+    { "name": "Mohamed Hamdan Dagalo", "org": "RSF", "role": "Commander of Rapid Support Forces" },
+    { "name": "Yahya Sarea", "org": "Houthis", "role": "Military Spokesperson" },
+    { "name": "Abu Bakr al-Baghdadi", "org": "ISIS", "role": "Leader", "status": "deceased" },
+    { "name": "Patrick Crusius", "event": "El Paso Walmart Shooting (2019)", "role": "Perpetrator" },
+    { "name": "Hafiz Saeed", "org": "Lashkar-e-Taiba", "role": "Known leader" },
+    { "name": "Mohammed Ali al-Houthi", "org": "Houthis", "role": "President of Revolutionary Committee" },
+    { "name": "Sirajuddin Haqqani", "org": "Taliban/Haqqani Network", "role": "Deputy leader, acting interior minister" },
+    { "name": "Hossein Salami", "org": "IRGC", "role": "Commander-in-chief (2019-2025)", "status": "deceased" }
+  ],
+
+  "prominentHateFigures": [
+    { "name": "Tommy Robinson", "description": "British anti-Islam campaigner, far-right activist" },
+    { "name": "Dylann Roof", "event": "Charleston church shooting", "description": "White supremacist, neo-Nazi mass murderer" },
+    { "name": "Sneako", "description": "Misogynistic and racist American content creator" },
+    { "name": "Enrique Tarrio", "org": "Proud Boys", "role": "Current leader" },
+    { "name": "David Duke", "org": "KKK", "role": "Former Grand Wizard, politician, neo-Nazi" },
+    { "name": "Varg Vikernes", "org": "Norwegian Heathen Front", "description": "Runs band Burzum" },
+    { "name": "Nicholas Fuentes", "org": "Groyper movement", "description": "Far-right pundit promoting white supremacy, antisemitism" },
+    { "name": "Habib Bahar bin Smith", "org": "Prophet's Defender Council", "description": "Indonesian preacher, founder" },
+    { "name": "Benito Mussolini", "org": "National Fascist Party", "role": "Dictator of Fascist Italy" }
+  ],
+
+  "prominentCriminalFigures": [
+    { "name": "Joaquín Guzmán", "org": "Sinaloa Cartel", "aliases": ["El Chapo"], "role": "Former leader" },
+    { "name": "Ismael Zambada", "org": "Sinaloa Cartel", "aliases": ["El Mayo"], "role": "Top leader" },
+    { "name": "Ovidio Guzmán López", "org": "Sinaloa Cartel", "role": "High-ranking member" },
+    { "name": "Nemesio Oseguera Cervantes", "org": "CJNG", "aliases": ["El Mencho"], "role": "Top leader" },
+    { "name": "Audias Flores Silva", "org": "CJNG", "aliases": ["El Jardinero"], "role": "Alleged leader" },
+    { "name": "Ricardo Ruiz Velasco", "org": "CJNG", "aliases": ["Doble R"], "role": "Regional leader" },
+    { "name": "Ricardo Gonzalez", "org": "Cartel Del Noreste", "aliases": ["El Ricky"], "role": "Leader" },
+    { "name": "José Antonio Yépez Ortiz", "org": "Santa Rosa de Lima Cartel", "aliases": ["El Marro"], "role": "Leader" },
+    { "name": "Lawrence Bishnoi", "org": "Bishnoi gang", "description": "Indian gangster" },
+    { "name": "Durlabh Kashyap", "description": "Indian gangster from Ujjain", "aliases": ["Kohinoor"], "status": "deceased" },
+    { "name": "Pablo Escobar", "org": "Medellín Cartel", "role": "Founder and leader", "status": "deceased" },
+    { "name": "Iván Archivaldo Guzmán Salazar", "org": "Sinaloa Cartel", "role": "Ringleader, drug trafficking" }
+  ],
+
+  "terroristOrganizations": [
+    { "name": "Al-Qaeda", "description": "Pan-Islamist militant organization, Sunni jihadist" },
+    { "name": "ISIS", "aliases": ["Islamic State", "ISIL", "Daesh"], "description": "Transnational Salafi jihadist group" },
+    { "name": "Taliban", "aliases": ["Islamic Emirate of Afghanistan"], "description": "Afghan political and militant movement" },
+    { "name": "Hezbollah", "description": "Lebanese Shia Islamist political party and paramilitary group" },
+    { "name": "Hamas", "aliases": ["Islamic Resistance Movement"], "description": "Palestinian nationalist Sunni Islamist organization" },
+    { "name": "Boko Haram", "aliases": ["Jamā'at Ahl as-Sunnah lid-Da'wah wa'l-Jihād"], "description": "Nigerian jihadist militant group" },
+    { "name": "Lashkar-e-Taiba", "description": "Pakistani Islamist Salafi jihadist organization" },
+    { "name": "PKK", "aliases": ["Kurdistan Workers' Party"], "description": "Kurdish militant organization" },
+    { "name": "ELN", "aliases": ["National Liberation Army"], "description": "Colombian guerrilla army" },
+    { "name": "Jemaah Islamiyah", "description": "Southeast Asian Islamist militant group" },
+    { "name": "IRGC", "aliases": ["Islamic Revolutionary Guard Corps"], "description": "Branch of Iranian Armed Forces" },
+    { "name": "Hizbul Mujahideen", "description": "Pro-Pakistani militant organization in Kashmir" },
+    { "name": "TLP", "aliases": ["Tehreek-e-Labbaik Pakistan"], "description": "Far-right Islamist political party" },
+    { "name": "Houthis", "aliases": ["Ansar Allah"], "description": "Yemeni Zaydi Shia Islamist political and military organization" },
+    { "name": "RSF", "aliases": ["Rapid Support Forces"], "description": "Sudanese paramilitary force" }
+  ],
+
+  "hateOrganizations": [
+    { "name": "Ku Klux Klan", "aliases": ["KKK", "Klan"], "description": "American Protestant-led white supremacist hate group" },
+    { "name": "Aryan Nations", "description": "North American antisemitic, neo-Nazi white supremacist group" },
+    { "name": "NSM", "aliases": ["National Socialist Movement"], "description": "Neo-Nazi organization based in US" },
+    { "name": "Aryan Brotherhood", "description": "Neo-Nazi prison gang and organized crime syndicate" },
+    { "name": "White Lives Matter", "description": "White supremacist phrase/organization (neo-Nazi)" },
+    { "name": "American Nazi Party", "description": "American neo-Nazi political party" },
+    { "name": "National Socialist German Workers' Party", "aliases": ["Nazi Party", "NSDAP"], "description": "German far-right political party 1920-1945" },
+    { "name": "National Fascist Party", "aliases": ["Partito Nazionale Fascista"], "description": "Italian fascist party founded by Mussolini" },
+    { "name": "National Alliance", "description": "White supremacist, neo-Nazi political organization" },
+    { "name": "Proud Boys", "description": "American far-right, neo-fascist militant organization" },
+    { "name": "Hindu Raksha Dal", "description": "Hindu extremist organization in India" },
+    { "name": "EDL", "aliases": ["English Defence League"], "description": "British far-right Islamophobic organization" }
+  ],
+
+  "criminalOrganizations": [
+    { "name": "Sinaloa Cartel", "aliases": ["CDS", "Cartel de Sinaloa"], "description": "Mexican drug cartel" },
+    { "name": "CJNG", "aliases": ["Jalisco New Generation Cartel"], "description": "Mexican cartel known for extreme violence" },
+    { "name": "CDN", "aliases": ["Cartel de Noreste"], "description": "Remnant of Los Zetas cartel" },
+    { "name": "La Familia Michoacana", "description": "Mexican drug cartel based in Michoacán" },
+    { "name": "Santa Rosa de Lima Cartel", "aliases": ["CSRL"], "description": "Mexican cartel primarily based in Guanajuato" },
+    { "name": "Tijuana Cartel", "description": "Mexican drug cartel based in Tijuana" },
+    { "name": "Juarez Cartel", "aliases": ["La Linea"], "description": "Mexican drug cartel in Chihuahua" },
+    { "name": "Los Zetas", "description": "Mexican criminal syndicate" },
+    { "name": "Gulf Cartel", "aliases": ["Cartel del Golfo"], "description": "Mexican drug cartel" },
+    { "name": "PCC", "aliases": ["Primeiro Comando da Capital"], "description": "Brazilian transnational criminal organization" },
+    { "name": "Comando Vermelho", "aliases": ["Red Command"], "description": "Brazilian criminal organization in Rio" },
+    { "name": "Norteños", "description": "Latino street gangs in northern California" }
+  ],
+
+  "violenceInducingEntities": {
+    "militarizedSocialMovements": [
+      { "name": "Boogaloo", "description": "Calls for civic violence/civil war" },
+      { "name": "Oathkeepers", "description": "Militia network" },
+      { "name": "III%ers", "aliases": ["Three Percenters"], "description": "Militia movement" }
+    ],
+    "conspiracyNetworks": [
+      { "name": "QAnon", "description": "Violence inducing conspiracy network using coded messages" }
+    ],
+    "hateBannedEntities": [
+      { "description": "Entities with repeated hateful conduct not rising to Tier 1" }
+    ]
+  },
+
+  "inherentlyViolatingSymbols": [
+    { "name": "Swastika", "org": "Nazi/Neo-Nazi", "note": "Exception: Hindu/Buddhist religious context" },
+    { "name": "Sonnenrad", "aliases": ["Black Sun"], "org": "Nazi/Neo-Nazi" },
+    { "name": "SS Bolts", "aliases": ["Sig Runes", "Double Sig Runes"], "org": "Nazi" },
+    { "name": "Totenkopf", "aliases": ["Death's Head"], "org": "Nazi SS" },
+    { "name": "Celtic Cross", "org": "White supremacist", "note": "Context-specific" },
+    { "name": "Hammer and Sword", "org": "Nazi" },
+    { "name": "Triskele", "org": "White supremacist" }
+  ],
+
+  "contextSpecificSymbols": [
+    { "name": "1488", "meaning": "Nazi slogan (14 words + HH)" },
+    { "name": "88", "meaning": "HH = Heil Hitler" },
+    { "name": "14", "meaning": "14 words white supremacist slogan" },
+    { "name": "RAHOWA", "meaning": "Racial Holy War" },
+    { "name": "WPWW", "meaning": "White Pride World Wide" },
+    { "name": "Blood and Honour", "org": "Neo-Nazi network" },
+    { "name": "Combat 18", "aliases": ["C18"], "meaning": "1 and 8 = AH (Adolf Hitler)" },
+    { "name": "Pepe the Frog", "note": "Context-specific - can be hate symbol when used with other signals" }
+  ],
+
+  "terroristSymbols": [
+    {
+      "name": "ISIS Flag",
+      "description": "Black flag with white Arabic text (shahada) and seal",
+      "rules": {
+        "fullFlag": "violating",
+        "topPartOnly": "NOT violating (shahada is religious statement)",
+        "bottomPartOnly": "NOT violating (Muhammad's ring/stamp)",
+        "bothPartsVisible": "violating",
+        "colorVariations": "still violating",
+        "translations": "violating if exact same meaning"
+      }
+    },
+    { "name": "Al-Qaeda flag", "description": "Black flag with white Arabic text" },
+    { "name": "Taliban flag", "description": "White flag with black shahada" },
+    { "name": "Hezbollah flag", "description": "Yellow flag with green Arabic text and fist holding rifle" },
+    { "name": "Hamas flag", "description": "Green flag with white Arabic text" },
+    { "name": "PKK flag", "description": "Red star on yellow/green background" },
+    { "name": "IRGC logo", "description": "Fist holding rifle with globe" }
+  ],
+
+  "hateOrgSymbols": [
+    { "name": "KKK hood/robe", "description": "White pointed hood and robe" },
+    { "name": "Burning cross", "org": "KKK" },
+    { "name": "Aryan Nations logo", "description": "Crown and sword symbol" },
+    { "name": "NSM logo", "description": "Othala rune in diamond" },
+    { "name": "Aryan Brotherhood symbols", "description": "Shamrock with 666, AB letters" },
+    { "name": "Proud Boys logo", "description": "Laurel wreath with rooster" },
+    { "name": "Nazi eagle", "aliases": ["Reichsadler"], "description": "Eagle clutching swastika" },
+    { "name": "Iron Cross", "note": "Context-specific - German military vs Nazi" }
+  ],
+
+  "criminalOrgSymbols": [
+    { "name": "Sinaloa Cartel imagery", "description": "Various logos and territorial markers" },
+    { "name": "CJNG logo", "description": "CJNG letters with imagery" },
+    { "name": "Los Zetas logo", "description": "Z with imagery" },
+    { "name": "Gulf Cartel symbols", "description": "CDG letters" },
+    { "name": "PCC symbols", "description": "1533 (letters P C C)" },
+    { "name": "Comando Vermelho", "description": "CV letters" }
+  ],
+
+  "hateSlogans": {
+    "critical": [
+      { "slogan": "Heil Hitler", "variations": ["HH", "88"] },
+      { "slogan": "Sieg Heil", "meaning": "Hail Victory" },
+      { "slogan": "14 Words", "meaning": "We must secure the existence of our people and a future for white children" },
+      { "slogan": "1488", "meaning": "14 words + HH" },
+      { "slogan": "White Power" },
+      { "slogan": "Blood and Soil", "german": "Blut und Boden" },
+      { "slogan": "Jews will not replace us" },
+      { "slogan": "RAHOWA", "meaning": "Racial Holy War" },
+      { "slogan": "Gas the Jews" },
+      { "slogan": "Six million wasn't enough" },
+      { "slogan": "Day of the Rope" }
+    ],
+    "contextSpecific": [
+      { "slogan": "It's okay to be white", "note": "Context needed" },
+      { "slogan": "All Lives Matter", "note": "Context needed - can be counter-BLM hate" },
+      { "slogan": "Blue Lives Matter", "note": "Context needed" }
+    ]
+  },
+
+  "terroristSlogans": {
+    "critical": [
+      { "slogan": "Allahu Akbar", "note": "Only violating in explicit terrorism context" },
+      { "slogan": "Death to America", "note": "Context needed" },
+      { "slogan": "Death to Israel", "note": "Context needed" },
+      { "slogan": "Khilafah", "meaning": "Caliphate - ISIS context" },
+      { "slogan": "Baqiya", "meaning": "Remaining - ISIS" },
+      { "slogan": "From the river to the sea", "note": "Context-specific" }
+    ]
+  },
+
+  "codedLanguage": {
+    "boogaloo": [
+      { "term": "Boogaloo", "meaning": "Civil war/violent uprising" },
+      { "term": "Big Igloo", "meaning": "Boogaloo" },
+      { "term": "Big Luau", "meaning": "Boogaloo" },
+      { "term": "Boog", "meaning": "Boogaloo" },
+      { "term": "Hawaiian shirts", "meaning": "Boogaloo identifier" }
+    ],
+    "qanon": [
+      { "term": "WWG1WGA", "meaning": "Where We Go One We Go All" },
+      { "term": "The Storm", "meaning": "QAnon event" },
+      { "term": "The Great Awakening", "meaning": "QAnon belief" },
+      { "term": "Trust the Plan", "meaning": "QAnon phrase" },
+      { "term": "Q Drop", "meaning": "QAnon message" }
+    ],
+    "proudBoys": [
+      { "term": "POYB", "meaning": "Proud Of Your Boy" },
+      { "term": "Uhuru", "meaning": "Proud Boys chant" }
+    ],
+    "wilayat": {
+      "term": "Wilayat",
+      "arabic": "ولاية",
+      "meaning": "Province - ISIS territorial claim",
+      "violatingIf": [
+        "Wilayat logo created by ISIS/media wing",
+        "Clear explicit terrorism context",
+        "Original statements from designated media wing"
+      ],
+      "notViolating": "Common usage in North Africa (Wilayat Algeria/Tunisia/Morocco)"
+    }
+  },
+
+  "emojiSignals": {
+    "positive_reference": {
+      "emojis": ["👍", "❤️", "😍", "🫶"],
+      "withDOI": "References violation"
+    },
+    "violence_glorification": {
+      "emojis": ["💣", "🗡", "🎯", "💀", "🧨", "💉", "🔫", "🔪"],
+      "withDOI": "Glorification violation"
+    },
+    "condemning": {
+      "emojis": ["👎", "🚫", "🤮", "❌"],
+      "withDOI": "May indicate condemnation - check context"
+    }
+  },
+
+  "salesSlangForMemorabilia": {
+    "signals": [
+      "For sale",
+      "WTS (want to sell)",
+      "DM for price",
+      "Link in bio",
+      "Shop now",
+      "Available",
+      "In stock"
+    ],
+    "note": "Sale of DOI memorabilia = Other Support"
+  },
+
+  "violatingViolentEvents": {
+    "examples": [
+      { "name": "Christchurch Mosque Shooting", "year": 2019, "location": "New Zealand", "perpetrator": "Brenton Tarrant" },
+      { "name": "El Paso Walmart Shooting", "year": 2019, "location": "Texas, USA", "perpetrator": "Patrick Crusius" },
+      { "name": "Charleston Church Shooting", "year": 2015, "location": "South Carolina, USA", "perpetrator": "Dylann Roof" },
+      { "name": "Pittsburgh Synagogue Shooting", "year": 2018, "location": "Pennsylvania, USA" },
+      { "name": "Oklahoma City Bombing", "year": 1995, "location": "Oklahoma, USA", "perpetrator": "Timothy McVeigh" },
+      { "name": "January 6 Capitol Attack", "year": 2021, "location": "Washington DC, USA" },
+      { "name": "9/11 Attacks", "year": 2001, "location": "USA", "org": "Al-Qaeda" },
+      { "name": "2002 Bali Bombings", "year": 2002, "location": "Indonesia", "org": "Jemaah Islamiyah" },
+      { "name": "Marjory Stoneman Douglas Shooting", "year": 2018, "location": "Parkland, Florida, USA" }
+    ],
+    "perpetratorContentRules": {
+      "alwaysViolating": [
+        "First-person POV footage from attack",
+        "Content posted during/immediately after attack by perpetrator",
+        "Manifesto",
+        "Attack plans",
+        "Goodbye/suicide notes"
+      ],
+      "thirdPartyViolating": "Moment of attack on VISIBLE victims",
+      "thirdPartyAllowed": "Moment of attack without visible victims (may still be Graphic Violence)"
+    }
+  },
+
+  "allowedExceptions": {
+    "fiction": {
+      "examples": ["Movies", "TV shows", "Video games", "Cartoons", "Music videos", "Song lyrics"],
+      "requirement": "Must not contain RGSR",
+      "burden": "On user to prove not representing actual DOI"
+    },
+    "historicalReenactment": {
+      "requirement": "Must not contain RGSR",
+      "allowed": ["Reenactment + ambiguous caption", "Informative/educational", "Condemning"]
+    },
+    "memorabilia": {
+      "informative": "Allowed (This was my grandfather's helmet)",
+      "sale": "Violating - Other Support"
+    },
+    "newsReporting": {
+      "requirements": [
+        "Editorial intervention by news outlet",
+        "No glorification or incitement",
+        "Does not amplify DOI messages",
+        "Outlet not affiliated to DOI"
+      ]
+    }
+  }
+}

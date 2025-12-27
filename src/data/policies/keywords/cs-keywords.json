@@ -1,0 +1,300 @@
+{
+  "policyId": "cs",
+  "policyName": "Cybersecurity",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "legitimateMetaURLs": [
+    "facebook.com",
+    "instagram.com",
+    "whatsapp.com",
+    "threads.com",
+    "fb.me",
+    "fb.com",
+    "messenger.com",
+    "meta.com",
+    "oculus.com",
+    "fbcdn.net",
+    "whatsapp.net",
+    "facebook-hardware.com",
+    "cdninstagram.com",
+    "wa.me"
+  ],
+
+  "phishingSignals": {
+    "critical": [
+      { "term": "account suspended", "context": "phishing message", "language": "en" },
+      { "term": "conta suspensa", "context": "phishing message", "language": "pt" },
+      { "term": "account blocked", "context": "phishing message", "language": "en" },
+      { "term": "conta bloqueada", "context": "phishing message", "language": "pt" },
+      { "term": "verify your account", "context": "phishing message", "language": "en" },
+      { "term": "verifique sua conta", "context": "phishing message", "language": "pt" },
+      { "term": "confirm your identity", "context": "phishing message", "language": "en" },
+      { "term": "confirme sua identidade", "context": "phishing message", "language": "pt" },
+      { "term": "unusual activity detected", "context": "phishing message", "language": "en" },
+      { "term": "atividade incomum detectada", "context": "phishing message", "language": "pt" },
+      { "term": "security alert", "context": "phishing message", "language": "en" },
+      { "term": "alerta de segurança", "context": "phishing message", "language": "pt" },
+      { "term": "login attempt from new device", "context": "phishing message", "language": "en" },
+      { "term": "your page was flagged", "context": "phishing message", "language": "en" },
+      { "term": "sua página foi sinalizada", "context": "phishing message", "language": "pt" },
+      { "term": "policy violation", "context": "phishing message", "language": "en" },
+      { "term": "violação de política", "context": "phishing message", "language": "pt" },
+      { "term": "submit an appeal", "context": "phishing with fake appeal link", "language": "en" },
+      { "term": "envie um recurso", "context": "phishing with fake appeal link", "language": "pt" },
+      { "term": "profile shows signs of irregularity", "context": "phishing message", "language": "en" },
+      { "term": "access is limited", "context": "phishing message", "language": "en" },
+      { "term": "permanently disabled", "context": "phishing message", "language": "en" },
+      { "term": "desativada permanentemente", "context": "phishing message", "language": "pt" },
+      { "term": "click here to restore", "context": "phishing CTA", "language": "en" },
+      { "term": "clique aqui para restaurar", "context": "phishing CTA", "language": "pt" },
+      { "term": "violation of the Corporate policies", "context": "official phishing sample", "language": "en" },
+      { "term": "could cause profile damage", "context": "official phishing sample", "language": "en" },
+      { "term": "temporarily limit your access for 30 days", "context": "official phishing sample", "language": "en" },
+      { "term": "going against our Page Policy", "context": "official phishing sample", "language": "en" },
+      { "term": "distribution will be limited", "context": "official phishing sample", "language": "en" },
+      { "term": "flagged repeatedly", "context": "official phishing sample", "language": "en" },
+      { "term": "if you believe your Page was flagged by mistake", "context": "official phishing sample", "language": "en" }
+    ],
+    "officialPhishingSamples": [
+      {
+        "sample": "Your profile shows signs of irregularity due to a violation of the Corporate policies and services established in 2023 due to prior notice and you continue to violate it intentionally, which could cause profile damage. Your access is limited for 30 days or permanently. To review current restrictions and file an appeal, please proceed as follows: https://url.zip/[code]",
+        "signals": ["irregularity", "violation", "access limited", "file an appeal", "suspicious URL"]
+      },
+      {
+        "sample": "Your Page was flagged for going against our Page Policy, which includes restrictions around sharing, distributing or promoting content inauthentically... If you believe your Page was flagged by mistake, you can submit an appeal at here: https://bio.link/support_help_[numbers]",
+        "signals": ["page flagged", "page policy", "submit appeal", "suspicious bio.link URL"]
+      }
+    ],
+    "fakeMetaDomains": [
+      { "pattern": "faceb00k", "note": "Zero instead of 'o'" },
+      { "pattern": "facebok", "note": "Missing 'o'" },
+      { "pattern": "facebookk", "note": "Extra 'k'" },
+      { "pattern": "facebook-support", "note": "Fake support subdomain" },
+      { "pattern": "facebook-help", "note": "Fake help subdomain" },
+      { "pattern": "fb-security", "note": "Fake security domain" },
+      { "pattern": "instagrarn", "note": "'rn' instead of 'm'" },
+      { "pattern": "lnstagram", "note": "Lowercase L instead of 'I'" },
+      { "pattern": "instagramm", "note": "Extra 'm'" },
+      { "pattern": "meta-support", "note": "Fake Meta support" },
+      { "pattern": "whatsap", "note": "Missing 'p'" },
+      { "pattern": "whatssapp", "note": "Extra letters" },
+      { "pattern": "url.zip", "note": "Suspicious short URL" },
+      { "pattern": "bio.link", "note": "Link in bio service (check context)" }
+    ]
+  },
+
+  "socialEngineeringSignals": {
+    "securityQuestions": [
+      { "question": "mother's maiden name", "language": "en" },
+      { "question": "nome de solteira da mãe", "language": "pt" },
+      { "question": "grandmother's maiden name", "language": "en" },
+      { "question": "relative's middle name", "language": "en" },
+      { "question": "first car make and model", "language": "en" },
+      { "question": "seu primeiro carro", "language": "pt" },
+      { "question": "favorite pizza toppings", "language": "en" },
+      { "question": "favorite movie", "language": "en" },
+      { "question": "filme favorito", "language": "pt" },
+      { "question": "elementary school", "language": "en" },
+      { "question": "escola primária", "language": "pt" },
+      { "question": "middle school", "language": "en" },
+      { "question": "high school", "language": "en" },
+      { "question": "pet's name", "language": "en" },
+      { "question": "nome do pet", "language": "pt" },
+      { "question": "street you grew up on", "language": "en" },
+      { "question": "cidade onde nasceu", "language": "pt" }
+    ],
+    "credentialRequests": [
+      { "term": "give me your password", "language": "en" },
+      { "term": "me dê sua senha", "language": "pt" },
+      { "term": "share your login", "language": "en" },
+      { "term": "compartilhe seu login", "language": "pt" },
+      { "term": "recovery code", "language": "en" },
+      { "term": "código de recuperação", "language": "pt" },
+      { "term": "send me your credentials", "language": "en" },
+      { "term": "2FA code", "language": "en" },
+      { "term": "código 2FA", "language": "pt" },
+      { "term": "verification code", "language": "en" },
+      { "term": "código de verificação", "language": "pt" }
+    ]
+  },
+
+  "hackingKeywords": {
+    "critical": [
+      { "term": "hack account", "context": "hacking service", "language": "en" },
+      { "term": "hackear conta", "context": "hacking service", "language": "pt" },
+      { "term": "hack Facebook", "context": "hacking service", "language": "en" },
+      { "term": "hack Instagram", "context": "hacking service", "language": "en" },
+      { "term": "hack WhatsApp", "context": "hacking service", "language": "en" },
+      { "term": "hack email", "context": "hacking service", "language": "en" },
+      { "term": "spy on", "context": "spyware service", "language": "en" },
+      { "term": "espionar", "context": "spyware service", "language": "pt" },
+      { "term": "clone phone", "context": "spyware service", "language": "en" },
+      { "term": "clonar celular", "context": "spyware service", "language": "pt" },
+      { "term": "monitoring app", "context": "spyware service", "language": "en" },
+      { "term": "app de monitoramento", "context": "spyware service", "language": "pt" },
+      { "term": "location tracker", "context": "unauthorized tracking", "language": "en" },
+      { "term": "rastreador de localização", "context": "unauthorized tracking", "language": "pt" },
+      { "term": "track someone's phone", "context": "unauthorized tracking", "language": "en" },
+      { "term": "installation on other device not required", "context": "spyware signal", "language": "en" },
+      { "term": "sem instalação no dispositivo", "context": "spyware signal", "language": "pt" },
+      { "term": "access partner's phone", "context": "unauthorized access", "language": "en" },
+      { "term": "cheating partner's phone", "context": "unauthorized access", "language": "en" },
+      { "term": "celular do parceiro", "context": "unauthorized access", "language": "pt" },
+      { "term": "ethical hacking course", "context": "hacking training", "language": "en" },
+      { "term": "curso de hacking", "context": "hacking training", "language": "pt" },
+      { "term": "become a master hacker", "context": "hacking promotion", "language": "en" },
+      { "term": "hire hacking services", "context": "hacking service", "language": "en" },
+      { "term": "web defacement", "context": "hacking activity", "language": "en" },
+      { "term": "DDoS attack", "context": "denial of service", "language": "en" },
+      { "term": "denial of service", "context": "attack service", "language": "en" }
+    ],
+    "hackingPlatforms": [
+      { "term": "@hire_hackingservices", "platform": "Telegram" },
+      { "term": "hacker for hire", "context": "service offering" },
+      { "term": "hacking services", "context": "service offering" },
+      { "term": "serviços de hacking", "context": "service offering", "language": "pt" }
+    ]
+  },
+
+  "malwareSignals": {
+    "fileExtensions": [
+      { "ext": ".exe", "risk": "critical", "note": "Windows executable" },
+      { "ext": ".apk", "risk": "critical", "note": "Android package" },
+      { "ext": ".zip", "risk": "high", "note": "Archive - may contain malware" },
+      { "ext": ".rar", "risk": "high", "note": "Archive - may contain malware" },
+      { "ext": ".doc", "risk": "mid", "note": "May contain macros" },
+      { "ext": ".docm", "risk": "high", "note": "Macro-enabled document" },
+      { "ext": ".pdf", "risk": "mid", "note": "May contain scripts" },
+      { "ext": ".js", "risk": "high", "note": "JavaScript file" },
+      { "ext": ".vbs", "risk": "critical", "note": "VBScript" },
+      { "ext": ".bat", "risk": "critical", "note": "Batch file" },
+      { "ext": ".cmd", "risk": "critical", "note": "Command file" },
+      { "ext": ".scr", "risk": "critical", "note": "Screensaver (executable)" },
+      { "ext": ".msi", "risk": "high", "note": "Windows installer" },
+      { "ext": ".dll", "risk": "critical", "note": "Dynamic link library" }
+    ],
+    "suspiciousURLPatterns": [
+      { "pattern": "export=download", "note": "Google Drive download" },
+      { "pattern": "download&id=", "note": "Google Drive direct download" },
+      { "pattern": "/download/", "note": "Direct download path" },
+      { "pattern": "?download=", "note": "Download parameter" }
+    ],
+    "malwareTerms": [
+      { "term": "ransomware", "context": "malware type" },
+      { "term": "keylogger", "context": "spyware type" },
+      { "term": "trojan", "context": "malware type" },
+      { "term": "RAT", "context": "Remote Access Trojan" },
+      { "term": "rootkit", "context": "malware type" },
+      { "term": "backdoor", "context": "malware type" },
+      { "term": "botnet", "context": "malware network" },
+      { "term": "cryptominer", "context": "unauthorized mining" }
+    ]
+  },
+
+  "signalJammingKeywords": {
+    "high": [
+      { "term": "cell phone jammer", "language": "en" },
+      { "term": "bloqueador de celular", "language": "pt" },
+      { "term": "signal jammer", "language": "en" },
+      { "term": "bloqueador de sinal", "language": "pt" },
+      { "term": "GPS jammer", "language": "en" },
+      { "term": "WiFi jammer", "language": "en" },
+      { "term": "drone jammer", "language": "en" },
+      { "term": "descrambler", "language": "en" },
+      { "term": "signal interceptor", "language": "en" },
+      { "term": "interceptador de sinal", "language": "pt" },
+      { "term": "block phone calls", "language": "en" },
+      { "term": "bloquear chamadas", "language": "pt" },
+      { "term": "IMSI catcher", "language": "en" },
+      { "term": "Stingray device", "language": "en" }
+    ]
+  },
+
+  "leakedDataSignals": {
+    "high": [
+      { "term": "leaked passwords", "language": "en" },
+      { "term": "senhas vazadas", "language": "pt" },
+      { "term": "leaked accounts", "language": "en" },
+      { "term": "contas vazadas", "language": "pt" },
+      { "term": "data breach", "language": "en" },
+      { "term": "vazamento de dados", "language": "pt" },
+      { "term": "combo list", "context": "leaked credentials list" },
+      { "term": "database dump", "language": "en" },
+      { "term": "login credentials dump", "language": "en" },
+      { "term": "verified accounts login details", "language": "en" },
+      { "term": "fresh logs", "context": "stolen credentials" },
+      { "term": "fullz", "context": "complete personal data" }
+    ]
+  },
+
+  "spywareApps": {
+    "knownSpyware": [
+      { "name": "mSpy", "type": "monitoring app" },
+      { "name": "FlexiSpy", "type": "monitoring app" },
+      { "name": "Cocospy", "type": "monitoring app" },
+      { "name": "Spyic", "type": "monitoring app" },
+      { "name": "uMobix", "type": "monitoring app" },
+      { "name": "eyeZy", "type": "monitoring app" },
+      { "name": "Hoverwatch", "type": "monitoring app" },
+      { "name": "XNSPY", "type": "monitoring app" },
+      { "name": "SpyBubble", "type": "monitoring app" },
+      { "name": "Highster Mobile", "type": "monitoring app" }
+    ],
+    "signals": [
+      "monitor text messages",
+      "track calls",
+      "view social media",
+      "GPS location tracking",
+      "remote camera access",
+      "keylogger",
+      "screen recording",
+      "hidden app",
+      "stealth mode"
+    ]
+  },
+
+  "contactMethods": {
+    "suspiciousPatterns": [
+      { "term": "DM for hacking", "context": "service solicitation" },
+      { "term": "contact on Telegram", "context": "moving off-platform" },
+      { "term": "Wickr", "context": "encrypted messaging for illicit" },
+      { "term": "t.me/", "context": "Telegram link" },
+      { "term": "Discord", "context": "check context" }
+    ]
+  },
+
+  "callsToAction": {
+    "phishing": [
+      "click here to verify",
+      "clique aqui para verificar",
+      "confirm your account now",
+      "confirme sua conta agora",
+      "restore access",
+      "restaurar acesso",
+      "appeal here",
+      "recorra aqui",
+      "secure your account",
+      "proteja sua conta"
+    ],
+    "malware": [
+      "download now",
+      "baixe agora",
+      "install this app",
+      "instale este app",
+      "click to download",
+      "clique para baixar",
+      "free download",
+      "download grátis"
+    ]
+  },
+
+  "benignExceptions": [
+    { "context": "Security awareness training", "allowed": true },
+    { "context": "Cybersecurity news reporting", "allowed": true },
+    { "context": "Academic discussion of vulnerabilities", "allowed": true },
+    { "context": "Bug bounty programs", "allowed": true },
+    { "context": "Legitimate security software", "allowed": true },
+    { "context": "Condemnation of cybercrime (without functional links)", "allowed": true }
+  ]
+}

@@ -1,0 +1,668 @@
+{
+  "policyId": "dp",
+  "policyName": "Drugs and Pharmaceuticals",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "drugEmojis": {
+    "marijuana_thc": {
+      "implicit": [
+        { "emoji": "🍁", "meaning": "marijuana leaf" },
+        { "emoji": "🍃", "meaning": "marijuana leaf" },
+        { "emoji": "🌿", "meaning": "marijuana plant" },
+        { "emoji": "🌳", "meaning": "marijuana tree" },
+        { "emoji": "🌲", "meaning": "marijuana tree" },
+        { "emoji": "🌴", "meaning": "marijuana tree" },
+        { "emoji": "🔈", "meaning": "marijuana (loud)" },
+        { "emoji": "🚬", "meaning": "smoking joint" },
+        { "emoji": "🥦", "meaning": "marijuana (broccoli)" },
+        { "emoji": "🍫", "meaning": "cannabis edibles" },
+        { "emoji": "🍭", "meaning": "cannabis edibles" },
+        { "emoji": "💨", "meaning": "smoking joint/cannabis" },
+        { "emoji": "🦍", "meaning": "gorilla glue strain" },
+        { "emoji": "🎂", "meaning": "cake strain" },
+        { "emoji": "🍰", "meaning": "cake strain" },
+        { "emoji": "⭐️", "meaning": "marijuana" },
+        { "emoji": "☘️", "meaning": "marijuana" },
+        { "emoji": "🍀", "meaning": "marijuana" },
+        { "emoji": "🌱", "meaning": "marijuana seedling" },
+        { "emoji": "😗💨", "meaning": "smoking cannabis" },
+        { "emoji": "😤", "meaning": "smoking" },
+        { "emoji": "🍊", "meaning": "orange strain" },
+        { "emoji": "🥭", "meaning": "mango strain" },
+        { "emoji": "🥬", "meaning": "marijuana (lettuce)" },
+        { "emoji": "❄️", "meaning": "frosty marijuana (also cocaine/meth)" },
+        { "emoji": "🅿️", "meaning": "marijuana (also Percocet)" },
+        { "emoji": "🔋", "meaning": "marijuana battery/cart" },
+        { "emoji": "🍇", "meaning": "grape strain" },
+        { "emoji": "🍋", "meaning": "lemon strain" },
+        { "emoji": "🍒", "meaning": "cherry strain" },
+        { "emoji": "🍌", "meaning": "banana strain" },
+        { "emoji": "💪🏾", "meaning": "strong marijuana" },
+        { "emoji": "⛽", "meaning": "high grade marijuana (gas)" },
+        { "emoji": "🚀", "meaning": "high potency" },
+        { "emoji": "🔥", "meaning": "high grade / fire" },
+        { "emoji": "🎱", "meaning": "1/8th oz marijuana (needs price/quantity signal)" },
+        { "emoji": "🍯", "meaning": "cannabis wax" },
+        { "emoji": "🍪", "meaning": "cannabis edibles" },
+        { "emoji": "🌬", "meaning": "smoking cannabis" },
+        { "emoji": "⚗️", "meaning": "bong" },
+        { "emoji": "🛒", "meaning": "vape cartridges (cart)" },
+        { "emoji": "✂️", "meaning": "chop it up (sale indicator)" },
+        { "emoji": "🥜", "meaning": "cannabis seeds (Sub-Saharan Africa only)" }
+      ]
+    },
+    "high_risk_drugs": {
+      "implicit": [
+        { "emoji": "Ⓜ️", "meaning": "fentanyl (M30)" },
+        { "emoji": "〽️", "meaning": "fentanyl" },
+        { "emoji": "Ⓜ️📦", "meaning": "fentanyl box" },
+        { "emoji": "❄️", "meaning": "cocaine/meth" },
+        { "emoji": "💎", "meaning": "cocaine/meth (crystal)" },
+        { "emoji": "🎱", "meaning": "cocaine (8 ball - no price signal)" },
+        { "emoji": "☃️", "meaning": "cocaine (snowman)" },
+        { "emoji": "🌨", "meaning": "cocaine (snow)" },
+        { "emoji": "🔑", "meaning": "cocaine (key)" },
+        { "emoji": "🍚", "meaning": "cocaine/meth (rice/white)" },
+        { "emoji": "🤧", "meaning": "cocaine (sniffing)" },
+        { "emoji": "🥥", "meaning": "cocaine" },
+        { "emoji": "⛷", "meaning": "cocaine (skiing)" },
+        { "emoji": "🏂", "meaning": "cocaine (skiing)" },
+        { "emoji": "🧊", "meaning": "meth (ice)" },
+        { "emoji": "👃🏻", "meaning": "cocaine (snorting)" },
+        { "emoji": "🐟", "meaning": "cocaine (fish scale)" },
+        { "emoji": "🐠", "meaning": "cocaine (fish scale)" },
+        { "emoji": "🧱", "meaning": "cocaine (brick)" },
+        { "emoji": "🦜", "meaning": "cocaine (North America/Mexico only - bird)" },
+        { "emoji": "👱🏼‍♀️", "meaning": "cocaine (North America/Mexico only - white girl)" },
+        { "emoji": "💉", "meaning": "heroin/steroids" },
+        { "emoji": "🎯", "meaning": "heroin (hit the target)" },
+        { "emoji": "🐉", "meaning": "heroin (dragon)" },
+        { "emoji": "🐎", "meaning": "heroin (horse)" },
+        { "emoji": "🏔", "meaning": "meth (mountain)" },
+        { "emoji": "💦", "meaning": "meth (Vietnamese market only)" },
+        { "emoji": "💧", "meaning": "meth (Vietnamese market only)" },
+        { "emoji": "🌊", "meaning": "meth (Vietnamese market only)" },
+        { "emoji": "👹", "meaning": "meth (Sub-Saharan Africa only)" }
+      ]
+    },
+    "non_medical_drugs": {
+      "implicit": [
+        { "emoji": "🥧", "meaning": "large amount of drugs to distribute" },
+        { "emoji": "🅿️", "meaning": "Percocet" },
+        { "emoji": "🫐", "meaning": "opioid pill (blue)" },
+        { "emoji": "🔵", "meaning": "opioid pill (blue)" },
+        { "emoji": "🖤", "meaning": "ecstasy/MDMA" },
+        { "emoji": "⚡️", "meaning": "ecstasy/MDMA" },
+        { "emoji": "☣️", "meaning": "ecstasy/MDMA" },
+        { "emoji": "🤯", "meaning": "ecstasy/MDMA" },
+        { "emoji": "🍬", "meaning": "ecstasy/MDMA" },
+        { "emoji": "🤤", "meaning": "ecstasy/MDMA" },
+        { "emoji": "🍭❌", "meaning": "ecstasy/MDMA" },
+        { "emoji": "😤💎", "meaning": "snorting MDMA" },
+        { "emoji": "🐬", "meaning": "type of ecstasy pill (dolphin)" },
+        { "emoji": "🎈", "meaning": "funky balls (Vietnamese only)" },
+        { "emoji": "⚽", "meaning": "funky balls (Vietnamese only)" },
+        { "emoji": "💣", "meaning": "funky balls (Vietnamese only)" },
+        { "emoji": "🧠", "meaning": "DMT" },
+        { "emoji": "🧟", "meaning": "xylazine / being high" },
+        { "emoji": "🥇", "meaning": "amphetamine (Sub-Saharan Africa only)" },
+        { "emoji": "🍍", "meaning": "Xanax (Sub-Saharan Africa only)" },
+        { "emoji": "💊", "meaning": "pills (HRD/NMD/Rx)" },
+        { "emoji": "🔥🌈🌌🌠👽", "meaning": "psychedelic products" }
+      ]
+    },
+    "entheogens": {
+      "implicit": [
+        { "emoji": "🍄", "meaning": "magic mushrooms/shrooms" },
+        { "emoji": "🍄‍🟫", "meaning": "magic mushrooms" },
+        { "emoji": "🍫", "meaning": "chocolate shrooms" }
+      ]
+    },
+    "pharmaceutical": {
+      "implicit": [
+        { "emoji": "🍼", "meaning": "codeine/promethazine (lean)" },
+        { "emoji": "🍼🍇", "meaning": "codeine/promethazine (grape lean)" },
+        { "emoji": "🐢", "meaning": "codeine/promethazine" },
+        { "emoji": "🤮", "meaning": "codeine/promethazine" },
+        { "emoji": "🥤", "meaning": "codeine/promethazine (cup)" },
+        { "emoji": "🟢", "meaning": "codeine/promethazine" },
+        { "emoji": "🔮", "meaning": "cough syrup (purple)" },
+        { "emoji": "💜", "meaning": "cough syrup (purple lean)" },
+        { "emoji": "🚂", "meaning": "Tramadol (train)" },
+        { "emoji": "🚌", "meaning": "Xanax (bus/bars)" },
+        { "emoji": "🐝", "meaning": "Xanax" },
+        { "emoji": "🦭", "meaning": "Xanax" }
+      ]
+    },
+    "quality_indicators": {
+      "implicit": [
+        { "emoji": "💯", "meaning": "good quality" },
+        { "emoji": "✌", "meaning": "good quality" },
+        { "emoji": "👌", "meaning": "good quality" },
+        { "emoji": "🔞", "meaning": "good quality" },
+        { "emoji": "🤝", "meaning": "good quality" },
+        { "emoji": "⬆️", "meaning": "to get high" }
+      ]
+    },
+    "sale_indicators": {
+      "explicit": [
+        { "emoji": "💵", "meaning": "banknote sale indicator" },
+        { "emoji": "💴", "meaning": "banknote sale indicator" },
+        { "emoji": "💸", "meaning": "banknote sale indicator" },
+        { "emoji": "💷", "meaning": "banknote sale indicator" },
+        { "emoji": "💶", "meaning": "banknote sale indicator" },
+        { "emoji": "🚅", "meaning": "available for purchase" },
+        { "emoji": "🚁", "meaning": "available for purchase" },
+        { "emoji": "🛒", "meaning": "available for purchase" },
+        { "emoji": "🔄", "meaning": "willing to exchange/swap" },
+        { "emoji": "👀", "meaning": "looking for product" },
+        { "emoji": "🔌", "meaning": "plug/dealer connection" },
+        { "emoji": "💱", "meaning": "product for sale" },
+        { "emoji": "💳", "meaning": "product for sale" },
+        { "emoji": "💰", "meaning": "product for sale" },
+        { "emoji": "💲", "meaning": "product for sale" },
+        { "emoji": "🤑", "meaning": "product for sale" },
+        { "emoji": "🤙", "meaning": "call this number" },
+        { "emoji": "🚗💨", "meaning": "mobile/can deliver" },
+        { "emoji": "🚛", "meaning": "delivery" },
+        { "emoji": "🚘", "meaning": "mobile/delivery" },
+        { "emoji": "🚌", "meaning": "mobile/delivery" },
+        { "emoji": "📲", "meaning": "contact/available" },
+        { "emoji": "📱", "meaning": "contact/available" },
+        { "emoji": "📦", "meaning": "product available" },
+        { "emoji": "🚚", "meaning": "delivery" },
+        { "emoji": "📥", "meaning": "contact" },
+        { "emoji": "📩", "meaning": "contact" },
+        { "emoji": "📨", "meaning": "contact" },
+        { "emoji": "💌", "meaning": "contact" },
+        { "emoji": "🛫", "meaning": "shipping" },
+        { "emoji": "🛬", "meaning": "shipping" },
+        { "emoji": "✈", "meaning": "shipping" },
+        { "emoji": "✈️", "meaning": "shipping" },
+        { "emoji": "🗣", "meaning": "contact" },
+        { "emoji": "☎", "meaning": "call" },
+        { "emoji": "📞", "meaning": "call" },
+        { "emoji": "📳", "meaning": "call" },
+        { "emoji": "👇", "meaning": "link below" },
+        { "emoji": "👉", "meaning": "link/direction" },
+        { "emoji": "🎟️", "meaning": "available" },
+        { "emoji": "📬", "meaning": "postal delivery" },
+        { "emoji": "🆓", "meaning": "free delivery" }
+      ],
+      "implicit": [
+        { "emoji": "🏠", "meaning": "dealer location" },
+        { "emoji": "📍", "meaning": "dealer location" },
+        { "emoji": "⛽️", "meaning": "dealer (North America/Mexico only)" },
+        { "emoji": "🐣", "meaning": "drug trafficking" },
+        { "emoji": "🐥", "meaning": "drug trafficking" },
+        { "emoji": "🌾", "meaning": "currency (LATAM/Iberia/Vietnam)" },
+        { "emoji": "🥔", "meaning": "money (Vietnamese only)" },
+        { "emoji": "🍠", "meaning": "money (Vietnamese only)" },
+        { "emoji": "🦈", "meaning": "money (Vietnamese only)" }
+      ]
+    }
+  },
+
+  "highRiskDrugSlang": {
+    "fentanyl": {
+      "critical": [
+        { "term": "M30s", "context": "fentanyl pill identifier", "language": "en" },
+        { "term": "M-boxes", "context": "fentanyl", "language": "en" },
+        { "term": "Murder 8", "context": "fentanyl slang", "language": "en" },
+        { "term": "Apache", "context": "fentanyl slang", "language": "en" },
+        { "term": "China Girl", "context": "fentanyl slang", "language": "en" },
+        { "term": "China White", "context": "fentanyl/heroin slang", "language": "en" },
+        { "term": "Dance Fever", "context": "fentanyl slang", "language": "en" },
+        { "term": "Goodfella", "context": "fentanyl slang", "language": "en" },
+        { "term": "Jackpot", "context": "fentanyl slang", "language": "en" },
+        { "term": "TNT", "context": "fentanyl slang", "language": "en" },
+        { "term": "Friend", "context": "fentanyl slang", "language": "en" },
+        { "term": "Tango and Cash", "context": "fentanyl slang", "language": "en" }
+      ]
+    },
+    "heroin": {
+      "critical": [
+        { "term": "Big H", "context": "heroin slang", "language": "en" },
+        { "term": "Brown Sugar", "context": "heroin slang", "language": "en" },
+        { "term": "Skag", "context": "heroin slang", "language": "en" },
+        { "term": "Smack", "context": "heroin slang", "language": "en" },
+        { "term": "Tar", "context": "heroin slang", "language": "en" },
+        { "term": "Black Tar", "context": "heroin slang", "language": "en" },
+        { "term": "Horse", "context": "heroin slang", "language": "en" },
+        { "term": "Junk", "context": "heroin slang", "language": "en" },
+        { "term": "Dope", "context": "heroin slang", "language": "en" },
+        { "term": "White Girl", "context": "heroin/cocaine slang", "language": "en" },
+        { "term": "White Horse", "context": "heroin slang", "language": "en" },
+        { "term": "Dragon", "context": "heroin slang", "language": "en" },
+        { "term": "The Dragon", "context": "heroin slang", "language": "en" },
+        { "term": "Mexican Brown", "context": "heroin slang", "language": "en" },
+        { "term": "Mexican Mud", "context": "heroin slang", "language": "en" },
+        { "term": "Black", "context": "heroin slang", "language": "en" },
+        { "term": "Black Pearl", "context": "heroin slang", "language": "en" },
+        { "term": "Black Stuff", "context": "heroin slang", "language": "en" },
+        { "term": "Black Eagle", "context": "heroin slang", "language": "en" },
+        { "term": "Boy", "context": "heroin slang", "language": "en" },
+        { "term": "Brown", "context": "heroin slang", "language": "en" },
+        { "term": "Brown Crystal", "context": "heroin slang", "language": "en" },
+        { "term": "Brown Rhine", "context": "heroin slang", "language": "en" },
+        { "term": "Brown Tape", "context": "heroin slang", "language": "en" },
+        { "term": "H", "context": "heroin slang", "language": "en" },
+        { "term": "He", "context": "heroin slang", "language": "en" },
+        { "term": "Mexican Horse", "context": "heroin slang", "language": "en" },
+        { "term": "Mud", "context": "heroin slang", "language": "en" },
+        { "term": "Number 3", "context": "heroin slang", "language": "en" },
+        { "term": "Number 4", "context": "heroin slang", "language": "en" },
+        { "term": "Number 8", "context": "heroin slang", "language": "en" },
+        { "term": "Sack", "context": "heroin slang", "language": "en" },
+        { "term": "Scat", "context": "heroin slang", "language": "en" },
+        { "term": "Skunk", "context": "heroin slang", "language": "en" },
+        { "term": "Snow", "context": "heroin/cocaine slang", "language": "en" },
+        { "term": "Snowball", "context": "heroin slang", "language": "en" },
+        { "term": "White", "context": "heroin slang", "language": "en" },
+        { "term": "White Nurse", "context": "heroin slang", "language": "en" },
+        { "term": "White Lady", "context": "heroin slang", "language": "en" },
+        { "term": "White Boy", "context": "heroin slang", "language": "en" },
+        { "term": "White Stuff", "context": "heroin slang", "language": "en" }
+      ]
+    },
+    "cocaine": {
+      "critical": [
+        { "term": "Coke", "context": "cocaine slang", "language": "en" },
+        { "term": "Blow", "context": "cocaine slang", "language": "en" },
+        { "term": "Snow", "context": "cocaine slang", "language": "en" },
+        { "term": "Crack", "context": "cocaine slang", "language": "en" },
+        { "term": "Rails", "context": "cocaine slang", "language": "en" },
+        { "term": "Bump", "context": "cocaine slang", "language": "en" },
+        { "term": "Nose Candy", "context": "cocaine slang", "language": "en" },
+        { "term": "Powder", "context": "cocaine slang", "language": "en" },
+        { "term": "Rock", "context": "crack cocaine slang", "language": "en" },
+        { "term": "Flake", "context": "cocaine slang", "language": "en" },
+        { "term": "Snow White", "context": "cocaine slang", "language": "en" },
+        { "term": "Big C", "context": "cocaine slang", "language": "en" },
+        { "term": "Dust", "context": "cocaine slang", "language": "en" },
+        { "term": "Line", "context": "cocaine slang", "language": "en" },
+        { "term": "Pearl", "context": "cocaine slang", "language": "en" },
+        { "term": "Aunt", "context": "cocaine slang", "language": "en" },
+        { "term": "Aunt Nora", "context": "cocaine slang", "language": "en" },
+        { "term": "Batman", "context": "cocaine slang", "language": "en" },
+        { "term": "Bazulco", "context": "cocaine slang", "language": "en" },
+        { "term": "Bernice", "context": "cocaine slang", "language": "en" },
+        { "term": "Bernie", "context": "cocaine slang", "language": "en" },
+        { "term": "Big Rush", "context": "cocaine slang", "language": "en" },
+        { "term": "C", "context": "cocaine slang", "language": "en" },
+        { "term": "Candy", "context": "cocaine slang", "language": "en" },
+        { "term": "Charlie", "context": "cocaine slang", "language": "en" },
+        { "term": "Coca", "context": "cocaine slang", "language": "en" },
+        { "term": "Colombia", "context": "cocaine slang", "language": "en" },
+        { "term": "Gringa", "context": "cocaine slang", "language": "en" },
+        { "term": "Hubba", "context": "cocaine slang", "language": "en" },
+        { "term": "She", "context": "cocaine slang", "language": "en" },
+        { "term": "Stardust", "context": "cocaine slang", "language": "en" },
+        { "term": "Stash", "context": "cocaine slang", "language": "en" }
+      ]
+    },
+    "methamphetamine": {
+      "critical": [
+        { "term": "Meth", "context": "methamphetamine", "language": "en" },
+        { "term": "Crystal", "context": "meth slang", "language": "en" },
+        { "term": "Crystal Meth", "context": "methamphetamine", "language": "en" },
+        { "term": "Ice", "context": "meth slang", "language": "en" },
+        { "term": "Tina", "context": "meth slang", "language": "en" },
+        { "term": "Tweak", "context": "meth slang", "language": "en" },
+        { "term": "Crank", "context": "meth slang", "language": "en" },
+        { "term": "Glass", "context": "meth slang", "language": "en" },
+        { "term": "Go Fast", "context": "meth slang", "language": "en" },
+        { "term": "Speed", "context": "meth/amphetamine slang", "language": "en" },
+        { "term": "Clear", "context": "meth slang", "language": "en" },
+        { "term": "Chalk", "context": "meth slang", "language": "en" },
+        { "term": "Christina", "context": "meth slang", "language": "en" },
+        { "term": "Cookies", "context": "meth slang", "language": "en" },
+        { "term": "Cotton Candy", "context": "meth slang", "language": "en" },
+        { "term": "Dunk", "context": "meth slang", "language": "en" },
+        { "term": "Fire", "context": "meth slang", "language": "en" },
+        { "term": "Gak", "context": "meth slang", "language": "en" },
+        { "term": "Garbage", "context": "meth slang", "language": "en" },
+        { "term": "Go-Go Juice", "context": "meth slang", "language": "en" },
+        { "term": "No Doze", "context": "meth slang", "language": "en" },
+        { "term": "No Stop", "context": "meth slang", "language": "en" },
+        { "term": "Pookie", "context": "meth slang", "language": "en" },
+        { "term": "Rocket Fuel", "context": "meth slang", "language": "en" },
+        { "term": "Scooby Snacks", "context": "meth slang", "language": "en" },
+        { "term": "Trash", "context": "meth slang", "language": "en" },
+        { "term": "Wash", "context": "meth slang", "language": "en" },
+        { "term": "White Cross", "context": "meth slang", "language": "en" }
+      ]
+    }
+  },
+
+  "nonMedicalDrugSlang": {
+    "opioids": {
+      "high": [
+        { "term": "Perc", "context": "Percocet/oxycodone", "language": "en" },
+        { "term": "Percs", "context": "Percocet/oxycodone", "language": "en" },
+        { "term": "P10s", "context": "Percocet 10mg", "language": "en" },
+        { "term": "RP10s", "context": "oxycodone", "language": "en" },
+        { "term": "Oxy", "context": "oxycodone", "language": "en" },
+        { "term": "OC", "context": "OxyContin", "language": "en" },
+        { "term": "Oxycotton", "context": "OxyContin", "language": "en" },
+        { "term": "30s", "context": "oxycodone 30mg", "language": "en" },
+        { "term": "Hillbilly Heroin", "context": "oxycodone", "language": "en" },
+        { "term": "Norcos", "context": "hydrocodone", "language": "en" },
+        { "term": "Hydros", "context": "hydrocodone", "language": "en" },
+        { "term": "Vikes", "context": "Vicodin", "language": "en" },
+        { "term": "Trammies", "context": "Tramadol", "language": "en" },
+        { "term": "Lean", "context": "codeine/promethazine", "language": "en" },
+        { "term": "Purple Drank", "context": "codeine/promethazine", "language": "en" },
+        { "term": "Sizzurp", "context": "codeine/promethazine", "language": "en" },
+        { "term": "Dirty Sprite", "context": "codeine/promethazine", "language": "en" }
+      ]
+    },
+    "stimulants": {
+      "high": [
+        { "term": "Addies", "context": "Adderall", "language": "en" },
+        { "term": "Addy", "context": "Adderall", "language": "en" },
+        { "term": "Bennies", "context": "amphetamine", "language": "en" },
+        { "term": "Black Beauties", "context": "amphetamine", "language": "en" },
+        { "term": "Uppers", "context": "stimulants", "language": "en" },
+        { "term": "Molly", "context": "MDMA", "language": "en" },
+        { "term": "XTC", "context": "ecstasy", "language": "en" },
+        { "term": "E", "context": "ecstasy (context needed)", "language": "en" },
+        { "term": "X", "context": "ecstasy (context needed)", "language": "en" },
+        { "term": "Biker's Coffee", "context": "meth", "language": "en" }
+      ]
+    },
+    "depressants": {
+      "high": [
+        { "term": "Xanny", "context": "Xanax", "language": "en" },
+        { "term": "Xan", "context": "Xanax", "language": "en" },
+        { "term": "Zannies", "context": "Xanax", "language": "en" },
+        { "term": "Zanbars", "context": "Xanax", "language": "en" },
+        { "term": "Z-Bars", "context": "Xanax", "language": "en" },
+        { "term": "Bars", "context": "Xanax", "language": "en" },
+        { "term": "Hulk", "context": "green Xanax", "language": "en" },
+        { "term": "Ladders", "context": "Xanax", "language": "en" },
+        { "term": "Footballs", "context": "Xanax/other pills", "language": "en" },
+        { "term": "Benzos", "context": "benzodiazepines", "language": "en" },
+        { "term": "Roofies", "context": "Rohypnol", "language": "en" },
+        { "term": "Date Rape Drug", "context": "Rohypnol/GHB", "language": "en" },
+        { "term": "Vallies", "context": "Valium", "language": "en" },
+        { "term": "K-Pin", "context": "Klonopin", "language": "en" }
+      ]
+    },
+    "psychedelics": {
+      "high": [
+        { "term": "Acid", "context": "LSD", "language": "en" },
+        { "term": "Blotter", "context": "LSD", "language": "en" },
+        { "term": "Tabs", "context": "LSD", "language": "en" },
+        { "term": "Stamps", "context": "LSD", "language": "en" },
+        { "term": "Lucy", "context": "LSD", "language": "en" },
+        { "term": "Purple Haze", "context": "LSD", "language": "en" },
+        { "term": "Dots", "context": "LSD", "language": "en" },
+        { "term": "Ket", "context": "ketamine", "language": "en" },
+        { "term": "Special K", "context": "ketamine", "language": "en" },
+        { "term": "Vitamin K", "context": "ketamine", "language": "en" },
+        { "term": "K-Hold", "context": "ketamine", "language": "en" },
+        { "term": "DMT", "context": "dimethyltryptamine", "language": "en" },
+        { "term": "Dimitri", "context": "DMT", "language": "en" },
+        { "term": "Spirit Molecule", "context": "DMT", "language": "en" },
+        { "term": "Angel Dust", "context": "PCP", "language": "en" },
+        { "term": "Wet", "context": "PCP", "language": "en" },
+        { "term": "G", "context": "GHB", "language": "en" },
+        { "term": "Liquid X", "context": "GHB", "language": "en" },
+        { "term": "Georgia Home Boy", "context": "GHB", "language": "en" }
+      ]
+    },
+    "other": {
+      "high": [
+        { "term": "Whippets", "context": "nitrous oxide", "language": "en" },
+        { "term": "Nangs", "context": "nitrous oxide", "language": "en" },
+        { "term": "Cream chargers", "context": "nitrous oxide", "language": "en" },
+        { "term": "Laughing gas", "context": "nitrous oxide", "language": "en" },
+        { "term": "Spice", "context": "synthetic cannabis", "language": "en" },
+        { "term": "K2", "context": "synthetic cannabis", "language": "en" },
+        { "term": "Bonzai", "context": "synthetic cannabis", "language": "en" },
+        { "term": "Bath Salts", "context": "synthetic cathinones", "language": "en" },
+        { "term": "Flakka", "context": "synthetic cathinones", "language": "en" },
+        { "term": "Kratom", "context": "bad supplement", "language": "en" },
+        { "term": "Tengsu", "context": "bad supplement", "language": "en" }
+      ]
+    }
+  },
+
+  "entheogenSlang": {
+    "high": [
+      { "term": "Shrooms", "context": "magic mushrooms", "language": "en" },
+      { "term": "cogumelos", "context": "cogumelos mágicos", "language": "pt" },
+      { "term": "Magic Mushrooms", "context": "psilocybin mushrooms", "language": "en" },
+      { "term": "Mushies", "context": "magic mushrooms", "language": "en" },
+      { "term": "Boomers", "context": "magic mushrooms", "language": "en" },
+      { "term": "Caps", "context": "magic mushrooms", "language": "en" },
+      { "term": "Hongos", "context": "magic mushrooms", "language": "es" },
+      { "term": "Pizza Toppings", "context": "magic mushrooms", "language": "en" },
+      { "term": "Alice", "context": "magic mushrooms", "language": "en" },
+      { "term": "Liberty Cap", "context": "psilocybe semilanceata", "language": "en" },
+      { "term": "Wavy Caps", "context": "psilocybe cyanescens", "language": "en" },
+      { "term": "Penis Envy", "context": "mushroom strain", "language": "en" },
+      { "term": "Golden Teacher", "context": "mushroom strain", "language": "en" },
+      { "term": "Aya", "context": "ayahuasca", "language": "en" },
+      { "term": "Hoasca", "context": "ayahuasca", "language": "en" },
+      { "term": "Yagé", "context": "ayahuasca", "language": "es" },
+      { "term": "P. Cubensis", "context": "psilocybe cubensis", "language": "en" }
+    ]
+  },
+
+  "cannabisSlang": {
+    "marijuana_thc": {
+      "high": [
+        { "term": "Weed", "context": "marijuana", "language": "en" },
+        { "term": "erva", "context": "maconha", "language": "pt" },
+        { "term": "maconha", "context": "marijuana", "language": "pt" },
+        { "term": "Pot", "context": "marijuana", "language": "en" },
+        { "term": "Ganja", "context": "marijuana", "language": "en" },
+        { "term": "Mary Jane", "context": "marijuana", "language": "en" },
+        { "term": "Kush", "context": "marijuana strain", "language": "en" },
+        { "term": "Bud", "context": "marijuana", "language": "en" },
+        { "term": "Herb", "context": "marijuana", "language": "en" },
+        { "term": "Grass", "context": "marijuana", "language": "en" },
+        { "term": "Dope", "context": "marijuana/drugs", "language": "en" },
+        { "term": "Reefer", "context": "marijuana", "language": "en" },
+        { "term": "Chronic", "context": "high quality marijuana", "language": "en" },
+        { "term": "Loud", "context": "strong marijuana", "language": "en" },
+        { "term": "Zaza", "context": "exotic marijuana", "language": "en" },
+        { "term": "Za", "context": "exotic marijuana", "language": "en" },
+        { "term": "Gas", "context": "high quality marijuana", "language": "en" },
+        { "term": "Fire", "context": "high quality marijuana", "language": "en" },
+        { "term": "420", "context": "marijuana culture", "language": "en" },
+        { "term": "710", "context": "cannabis oil (OIL upside down)", "language": "en" },
+        { "term": "Blunt", "context": "marijuana cigar", "language": "en" },
+        { "term": "Joint", "context": "marijuana cigarette", "language": "en" },
+        { "term": "Doobie", "context": "marijuana cigarette", "language": "en" },
+        { "term": "Spliff", "context": "marijuana cigarette", "language": "en" },
+        { "term": "Flower", "context": "marijuana bud", "language": "en" },
+        { "term": "Nug", "context": "marijuana bud", "language": "en" },
+        { "term": "Runtz", "context": "marijuana strain", "language": "en" },
+        { "term": "Cake", "context": "marijuana strain", "language": "en" },
+        { "term": "Muhas", "context": "marijuana vape brand", "language": "en" },
+        { "term": "Wax", "context": "cannabis concentrate", "language": "en" },
+        { "term": "Shatter", "context": "cannabis concentrate", "language": "en" },
+        { "term": "Dabs", "context": "cannabis concentrate", "language": "en" },
+        { "term": "Kief", "context": "cannabis trichomes", "language": "en" },
+        { "term": "Hash", "context": "cannabis resin", "language": "en" },
+        { "term": "Delta 8", "context": "THC variant", "language": "en" },
+        { "term": "Δ8", "context": "Delta-8 THC", "language": "en" },
+        { "term": "HHC", "context": "hexahydrocannabinol", "language": "en" },
+        { "term": "Cart", "context": "vape cartridge", "language": "en" },
+        { "term": "Carts", "context": "vape cartridges", "language": "en" },
+        { "term": "Edibles", "context": "cannabis food", "language": "en" },
+        { "term": "Mota", "context": "marijuana (Spanish)", "language": "es" },
+        { "term": "Porro", "context": "joint (Spanish)", "language": "es" },
+        { "term": "Churro", "context": "joint (Spanish)", "language": "es" },
+        { "term": "Skunk", "context": "strong marijuana", "language": "en" },
+        { "term": "Haze", "context": "marijuana strain type", "language": "en" },
+        { "term": "OG", "context": "original gangster strain", "language": "en" },
+        { "term": "Cali", "context": "California weed", "language": "en" },
+        { "term": "Quads", "context": "AAAA grade marijuana", "language": "en" },
+        { "term": "Piff", "context": "high quality marijuana", "language": "en" },
+        { "term": "Dagga", "context": "marijuana (South African)", "language": "en" }
+      ]
+    },
+    "cbd": {
+      "mid": [
+        { "term": "CBD", "context": "cannabidiol", "language": "en" },
+        { "term": "CBD oil", "context": "cannabidiol oil", "language": "en" },
+        { "term": "CBD isolate", "context": "pure CBD", "language": "en" },
+        { "term": "CBG", "context": "cannabigerol", "language": "en" },
+        { "term": "Full spectrum", "context": "CBD type", "language": "en" },
+        { "term": "PCR", "context": "phytocannabinoid-rich", "language": "en" },
+        { "term": "Hemp extract", "context": "CBD product", "language": "en" }
+      ]
+    },
+    "hemp": {
+      "mid": [
+        { "term": "Hemp", "context": "hemp plant", "language": "en" },
+        { "term": "Hemp oil", "context": "hemp product", "language": "en" },
+        { "term": "Hemp seed oil", "context": "hemp product", "language": "en" },
+        { "term": "Hemp heart", "context": "hemp product", "language": "en" },
+        { "term": "Hemp fiber", "context": "hemp product", "language": "en" },
+        { "term": "Cáñamo", "context": "hemp (Spanish)", "language": "es" },
+        { "term": "Cannabis sativa seed oil", "context": "hemp product", "language": "en" }
+      ]
+    }
+  },
+
+  "salesSlang": {
+    "contact": {
+      "critical": [
+        { "term": "Tap in", "context": "contact me for sale", "language": "en" },
+        { "term": "tapn", "context": "contact me for sale", "language": "en" },
+        { "term": "tappin", "context": "contact me for sale", "language": "en" },
+        { "term": "yap in", "context": "contact me for sale", "language": "en" },
+        { "term": "HMU", "context": "hit me up", "language": "en" },
+        { "term": "Hit me up", "context": "contact me", "language": "en" },
+        { "term": "me chama", "context": "me contata", "language": "pt" },
+        { "term": "HML", "context": "hit me low", "language": "en" },
+        { "term": "LMK", "context": "let me know", "language": "en" },
+        { "term": "FWM", "context": "fuck with me / follow me", "language": "en" },
+        { "term": "GWM", "context": "get with me", "language": "en" },
+        { "term": "Rush me", "context": "contact urgently", "language": "en" },
+        { "term": "DM me", "context": "direct message", "language": "en" },
+        { "term": "Inbox me", "context": "message me", "language": "en" },
+        { "term": "Link in bio", "context": "contact in profile", "language": "en" }
+      ]
+    },
+    "dealer": {
+      "critical": [
+        { "term": "Plug", "context": "drug dealer/connection", "language": "en" },
+        { "term": "The plug", "context": "drug dealer", "language": "en" },
+        { "term": "I am the plug", "context": "I am dealer", "language": "en" },
+        { "term": "I da plug", "context": "I am dealer", "language": "en" },
+        { "term": "Trap", "context": "drug house/dealer", "language": "en" },
+        { "term": "Trap house", "context": "drug dealing location", "language": "en" },
+        { "term": "Hood pharmacist", "context": "drug dealer", "language": "en" },
+        { "term": "Connect", "context": "drug connection", "language": "en" },
+        { "term": "Pusher", "context": "drug dealer", "language": "en" }
+      ]
+    },
+    "delivery": {
+      "high": [
+        { "term": "OTR", "context": "on the road (delivery)", "language": "en" },
+        { "term": "On the road", "context": "mobile delivery", "language": "en" },
+        { "term": "On deck", "context": "available/ready", "language": "en" },
+        { "term": "Mobile", "context": "can deliver", "language": "en" },
+        { "term": "Pickups", "context": "can pick up", "language": "en" },
+        { "term": "Drops", "context": "delivery method", "language": "en" },
+        { "term": "Ship worldwide", "context": "international delivery", "language": "en" },
+        { "term": "Discreet shipping", "context": "hidden delivery", "language": "en" }
+      ]
+    },
+    "availability": {
+      "high": [
+        { "term": "YKWTD", "context": "you know what to do", "language": "en" },
+        { "term": "IYKYK", "context": "if you know you know", "language": "en" },
+        { "term": "Needs", "context": "have product available", "language": "en" },
+        { "term": "In stock", "context": "available", "language": "en" },
+        { "term": "Fresh batch", "context": "new supply", "language": "en" },
+        { "term": "Just landed", "context": "new supply arrived", "language": "en" },
+        { "term": "NFS", "context": "not for sale (often circumvention)", "language": "en" },
+        { "term": "Not for sale", "context": "circumvention signal", "language": "en" }
+      ]
+    }
+  },
+
+  "prescriptionBrands": {
+    "weightLoss": [
+      "Semaglutide", "Wegovy", "Ozempic", "Rybelsus", "GLP-1", "Saxenda", "Contrave", "Qsymia"
+    ],
+    "painOpioids": [
+      "OxyContin", "Percocet", "Vicodin", "Norco", "Lortab", "Ultram", "Demerol", "Dilaudid", "Opana", "Suboxone", "Subutex", "MS Contin", "Duramorph"
+    ],
+    "stimulants": [
+      "Adderall", "Dexedrine", "Ritalin", "Concerta", "Vyvanse", "Focalin", "Desoxyn"
+    ],
+    "depressants": [
+      "Xanax", "Valium", "Klonopin", "Ativan", "Halcion", "Librium", "Ambien", "Lunesta", "Sonata"
+    ],
+    "antidepressants": [
+      "Paxil", "Prozac", "Zoloft", "Lexapro", "Celexa", "Effexor", "Cymbalta", "Wellbutrin"
+    ],
+    "erectile": [
+      "Viagra", "Cialis", "Sildenafil", "Tadalafil"
+    ],
+    "prescriptionCBD": [
+      "Cesamet", "Marinol", "Sativex", "Epidiolex"
+    ]
+  },
+
+  "otcConditions": [
+    "aches", "pains", "headache", "headaches", "fever", "allergy", "allergies",
+    "stomach upset", "heartburn", "acid reflux", "nausea", "vomiting", "diarrhea",
+    "constipation", "stomach pain", "motion sickness", "skin rash", "itching"
+  ],
+
+  "messagingIndicators": {
+    "services": [
+      { "term": "Snapchat", "indicator": "ghost emoji, SC" },
+      { "term": "Wickr", "indicator": "// symbol" },
+      { "term": "Telegram", "indicator": "t.me" },
+      { "term": "WhatsApp", "indicator": "wa" },
+      { "term": "Signal", "indicator": "Signal" },
+      { "term": "Kik", "indicator": "Kik" }
+    ],
+    "visual": [
+      { "term": "QR Code", "context": "contact method" },
+      { "term": "Bitmoji", "context": "Snapchat indicator" }
+    ]
+  },
+
+  "visualIdentifiers": {
+    "fentanyl": {
+      "description": "Blue pill with M imprint on one side and 30 on the other (M30)",
+      "forms": ["pill", "powder", "liquid"]
+    },
+    "oxycodone": {
+      "description": "Round blue or white pills, often with RP stamp, K stamp, or M523",
+      "varieties": ["Percocet (pink, K stamp)", "OxyContin (various colors)"]
+    },
+    "xanax": {
+      "description": "Bar-shaped pills (ladders), green (hulk), white, yellow (school bus)",
+      "shapes": ["bars", "footballs"]
+    },
+    "lsd": {
+      "description": "Paper blotters with designs, liquid drops",
+      "forms": ["blotter paper", "liquid", "gel tabs"]
+    },
+    "cannabis": {
+      "description": "Green plant matter, dried flower buds, pre-rolled joints",
+      "concentrates": ["golden/yellow wax", "shatter (glass-like)", "oil"]
+    },
+    "cocaine": {
+      "description": "White powder, often in bags or on surfaces, bricks",
+      "forms": ["powder", "rock (crack)", "brick"]
+    },
+    "methamphetamine": {
+      "description": "Crystal/glass shards, white powder",
+      "forms": ["crystals", "powder"]
+    }
+  }
+}

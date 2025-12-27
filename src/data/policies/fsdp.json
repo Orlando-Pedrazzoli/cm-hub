@@ -1,0 +1,672 @@
+{
+  "id": "fsdp",
+  "name": "Fraud, Scam, and Deceptive Practices",
+  "shortName": "FSDP",
+  "description": "We protect users and businesses from being deceived out of money, property or personal information. We remove content that purposefully employs deceptive means - willful misrepresentation, stolen information, exaggerated claims - to scam or defraud users for commercial or financial gain.",
+  "color": "#DC2626",
+  "icon": "AlertTriangle",
+  "ready": true,
+
+  "corePrinciple": "Content must NOT facilitate or offer fraudulent goods/services, coordinate fraudulent activities, or use deceptive tactics to scam users for commercial/financial gain. Awareness raising and condemnation of fraud is allowed.",
+
+  "categories": [
+    {
+      "id": "fake_documents",
+      "name": "Fake, Forged, Counterfeit or Stolen Documents",
+      "description": "False, altered, misleading or inauthentic documents for defrauding third parties",
+      "severity": "critical",
+      "action": "label",
+      "requiresSignals": {
+        "all": ["solicitation_creation_sale_purchase_trade", "document_type", "legitimacy_signal"]
+      },
+      "documentTypes": [
+        "Identification documents (Government IDs, Passports, Driver's licenses, Visas, Green cards, Work permits, License plates)",
+        "Official documents (Business documents, Utility bills, Pay slips, Birth/Death/Marriage certificates, Medical certificates, Vaccine certificates, Military certificates)",
+        "Financial documents (Cheques, Invoices, Receipts, Bank statements)",
+        "Currency (Fake money, Banknotes, Bills)",
+        "Vouchers/Coupons (Modified or inauthentic vouchers)",
+        "Educational documents (Fake diplomas, Degrees, Transcripts, Professional certificates, TOEFL, IELTS, GRE, GMAT)"
+      ],
+      "legitimacySignals": [
+        "Informal payment (unofficial channels, personal accounts, digital apps)",
+        "Avoiding regular requirement (obtain license without exam, visa without application)",
+        "Suspicious production language (produce, create, make, edit documents)",
+        "Inauthentic claims (could pass as real)",
+        "Authenticity claims (100% original, authentic, real and registered, scannable)",
+        "License reinstatement (suspended, cancelled, revoked)",
+        "Redacted information in sale context",
+        "Bulk documents (multiple unrelated document types)",
+        "Cheap currency purchase (£150 = £1,000)",
+        "Counterfeiting imagery (stacks with rubber bands, gloves, examination against light)",
+        "Counterfeit terminology (frozen dollar, G5, A+++, Grade A notes)",
+        "Currency features (holograms, watermarks, security threads)",
+        "Counterfeiting tools (Photoshop, scanners, printers, laminators, Teslin paper)"
+      ],
+      "exceptions": [
+        "Documents/currency examination and authentication services",
+        "Forensic document authentication courses",
+        "Passport/ID size photo services",
+        "Awareness on risks of forging documents",
+        "Spotting fake currency apps/tools",
+        "Legitimate prop cash with distinguishing features (FOR MOTION PICTURE PURPOSES)"
+      ]
+    },
+    {
+      "id": "fake_goods_services",
+      "name": "Fake, Forged or Stolen Goods and Services",
+      "description": "Physical or digital products created through deceptive means",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "carding",
+          "name": "Fake, Forged or Stolen Financial Instruments",
+          "description": "Credit/debit/prepaid cards used for unauthorized purchases",
+          "action": "label",
+          "signals": [
+            "Carding keywords (dumps, cc, cashout, clone card)",
+            "Images of multiple cards stacked/fanned",
+            "Blank white cards with chip and handwritten info",
+            "Photos of goods/receipts from carding",
+            "Multiple credit/debit card numbers",
+            "Working proof (items purchased, receipts, balances)",
+            "Creation devices imagery",
+            "Carding tutorials",
+            "Buy/sell/trade of account balances"
+          ]
+        },
+        {
+          "id": "fake_reviews",
+          "name": "Fake Reviews",
+          "description": "Ratings/reviews that artificially manipulate product reception",
+          "action": "label",
+          "conditions": [
+            "Solicitation, creation, sale, purchase or trade of reviews",
+            "Reviews in exchange for monetary/non-monetary compensation",
+            "Incentivizing reviews with discount, refund, free item"
+          ],
+          "exceptions": [
+            "Chances to win prizes for surveys/feedback",
+            "Compensated product testers sharing genuine experiences",
+            "Legitimate affiliate marketing with reviews",
+            "Standard loyalty/referral program rewards",
+            "Reviews with clear disclosure of incentives"
+          ]
+        },
+        {
+          "id": "stolen_goods",
+          "name": "Stolen Goods and Services",
+          "description": "Physical or digital products with self-disclosure of being stolen",
+          "action": "label",
+          "conditions": ["Self-disclosure of 'stolen' present"]
+        }
+      ]
+    },
+    {
+      "id": "manipulated_devices",
+      "name": "Devices and Subscriptions Manipulated or Used Unauthorized",
+      "description": "Improper use of devices/subscriptions deviating from intended use",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "types": [
+        {
+          "id": "unauthorized_streaming",
+          "name": "Unauthorized Streaming Devices/Services",
+          "examples": ["IPTV", "Kodi", "Alphasat", "AzAmerica", "BTV", "Cinebox", "Duosat", "FlujoTV", "MagisTV", "MXQ", "Nazabox", "Tocomsat"]
+        },
+        {
+          "id": "jailbroken_devices",
+          "name": "Jailbroken and Loaded Devices",
+          "examples": [
+            "Firestick + (All channels, Fully loaded, Jailbroken, Updated)",
+            "Jailbroken Apple TV/Chromecast",
+            "Jailbroken Android boxes",
+            "Modified video game consoles"
+          ]
+        },
+        {
+          "id": "silenced_airtags",
+          "name": "Silenced Apple AirTags",
+          "signals": ["speaker disabled/removed", "silent/silenced", "mute/muted", "modified", "cracked", "hacked"]
+        },
+        {
+          "id": "modified_measuring",
+          "name": "Modified Measuring Devices",
+          "examples": ["Energy meters", "Water meters", "Vehicle meters (odometers, radar detectors)", "Smart meters"]
+        },
+        {
+          "id": "login_credentials",
+          "name": "Unauthorized Login Credentials",
+          "examples": ["Netflix", "Spotify", "YouTube Premium", "ChatGPT", "Adobe Creative Cloud", "Digital news publications"]
+        }
+      ],
+      "unauthorizedSignals": [
+        "Name obfuscation (Ntflix, Dsney, D1sn3y)",
+        "Informal communication (WhatsApp, gmail for purchases)",
+        "Informal payment (social media payments, Zelle, CashApp, crypto)",
+        "Private/shared accounts references",
+        "Technical support/warranty offers"
+      ]
+    },
+    {
+      "id": "pii_fraud",
+      "name": "Personally Identifiable Information (PII) Fraud",
+      "description": "Solicitation, sale, purchase or trade of PII",
+      "severity": "critical",
+      "action": "label",
+      "piiTypes": [
+        "National identification numbers (SSN, Passport Numbers, ITINs)",
+        "Government IDs of law enforcement/military",
+        "Civil registry records (marriage, birth, death)",
+        "Immigration documents (green cards, work permits, visas)",
+        "Driver's licenses, license plates",
+        "Credit Privacy Number (CPN)",
+        "Digital identity (passwords, pins, codes)",
+        "Social media/messaging accounts",
+        "Gig accounts (Uber, Lyft, DoorDash)"
+      ],
+      "otherPersonalInfo": [
+        "Financial records (bank accounts, credit/debit card info)",
+        "Private phone numbers, emails, addresses",
+        "Medical/psychological/biometric records",
+        "School IDs with name + photo + ID number"
+      ],
+      "exceptions": ["PII of fictional characters"]
+    },
+    {
+      "id": "cheating_products",
+      "name": "Products and Services Enabling Cheating",
+      "description": "Products helping users cheat on exams in deceptive manner",
+      "severity": "high",
+      "action": "label",
+      "types": [
+        "Exam proxy services (taking exams on behalf of user)",
+        "Future exam papers or answer sheets (NOT past exams)",
+        "Products enabling passing drug tests unauthorized",
+        "Devices enabling cheating (hidden speakers, earphones)",
+        "Services writing term papers/thesis/essays",
+        "Grade alteration services"
+      ],
+      "exceptions": ["Past exams or answer keys", "Exam prep courses, study aids, flashcards"]
+    },
+    {
+      "id": "money_muling",
+      "name": "Money Muling",
+      "description": "Victims unknowingly participating in money laundering via their accounts",
+      "severity": "critical",
+      "action": "label",
+      "indicators": [
+        "Quick money in exchange for using bank account",
+        "Employment for accepting/transferring money to third parties",
+        "Digital payment accounts (PayPal, CashApp, Venmo, Zelle, Bitcoin, Chime)"
+      ]
+    },
+    {
+      "id": "money_laundering",
+      "name": "Money Laundering",
+      "description": "Disguising origin of illegally obtained money",
+      "severity": "critical",
+      "action": "label",
+      "indicators": [
+        "SWIFT transfers (MT799, MT102, MT101, MT103, GPI)",
+        "Seeking bank accounts for receipt/transfer of cash",
+        "Terms: Loaders, Rippers, Flashers, Receivers in financial context"
+      ]
+    },
+    {
+      "id": "loan_fraud",
+      "name": "Loan Fraud and Scam",
+      "description": "Offering guaranteed loans to deceive victims out of money/PII",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "primaryIndicators": [
+        "Guarantee or near-guarantee of loan approval",
+        "Requiring advance fee to obtain loan"
+      ],
+      "implicitGuarantee": "Loan approved without credit rating, collateral, or financial documentation",
+      "secondaryIndicators": [
+        "Lack of terms and conditions (only contact details)",
+        "Unrealistic claims (immediate loan forgiveness, debt cancellation)",
+        "Urgency (offer expires shortly)",
+        "Instructions to bypass banking controls",
+        "Poor spelling or grammar"
+      ]
+    },
+    {
+      "id": "gambling_fraud",
+      "name": "Gambling Fraud and Scam",
+      "description": "Deceptive real money gambling services",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "gambling_guarantee",
+          "name": "Guarantee of Result or Winning",
+          "action": "label"
+        },
+        {
+          "id": "gambling_rigged",
+          "name": "Implying Rigged Outcome",
+          "action": "label"
+        },
+        {
+          "id": "match_fixing",
+          "name": "Match Fixing Solicitation",
+          "action": "label"
+        },
+        {
+          "id": "social_casino",
+          "name": "Social Casino Games (No Real Money)",
+          "action": "information",
+          "description": "Games simulating gambling with no real money opportunity"
+        }
+      ],
+      "secondaryIndicators": [
+        "Match tips, coupon photos, money photos",
+        "Screenshots of betting sites",
+        "Happy clients screenshots"
+      ],
+      "notGuarantee": ["free spin", "sign up bonus", "in app credit/token", "giveaway credit"]
+    },
+    {
+      "id": "investment_fraud",
+      "name": "Investment or Financial Fraud and Scam",
+      "description": "Deceptive investment opportunities",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "guaranteed_returns",
+          "name": "Guaranteed or Risk-Free Returns",
+          "action": "label"
+        },
+        {
+          "id": "pyramid_scheme",
+          "name": "Returns Based on Recruitment",
+          "action": "label",
+          "description": "Compensation based on recruiting others"
+        },
+        {
+          "id": "get_rich_quick",
+          "name": "Get Rich Quick / Small to Large Investment",
+          "action": "label"
+        },
+        {
+          "id": "known_scam_trends",
+          "name": "Known Investment Scam Trends",
+          "action": "label",
+          "examples": ["Dabba trading"]
+        },
+        {
+          "id": "money_flip",
+          "name": "Money/Cash Flip",
+          "action": "label",
+          "description": "Turn small sum into large through flipping/trick"
+        }
+      ],
+      "secondaryIndicators": [
+        "Binary trading, Forex trading, Cryptocurrency opportunities",
+        "Depictions of cash or large bank balances",
+        "High value items (expensive cars, planes, jewelry)",
+        "Wealthy lifestyle items (properties, beaches)",
+        "Successful trade positions",
+        "Happy clients congratulatory messages"
+      ]
+    },
+    {
+      "id": "charity_fraud",
+      "name": "Charity Fraud and Scam",
+      "description": "Deceptive charitable donation requests",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "p4pExemption": true,
+      "requiredConditions": [
+        "Claiming to collect money for charitable causes",
+        "Claims donation is urgent",
+        "Includes bank accounts/card details/payment details",
+        "AND one of: bank transfer/gift cards only, specific sum only, requests PII"
+      ],
+      "secondaryIndicators": [
+        "Undernourished children imagery",
+        "Relatives needing surgery imagery",
+        "Key info in different font/size/color",
+        "Photoshopped information",
+        "Urgency to send money (tomorrow, this week)"
+      ]
+    },
+    {
+      "id": "romance_fraud",
+      "name": "Romance Fraud and Scam",
+      "description": "Establishing online romantic relationships to defraud",
+      "severity": "high",
+      "action": "label",
+      "primaryIndicators": [
+        "Seeking non-sexual companionship",
+        "Offering or asking for money in exchange"
+      ],
+      "romanticSignals": [
+        "Terms of endearment (baby, my love, darling)",
+        "Romantic aspirations (I long to meet you)",
+        "Romantic goals (looking for life partner)"
+      ],
+      "secondaryIndicators": [
+        "Testimonies of receiving money",
+        "Money emojis (🤑💵💸💰)",
+        "Romance emojis (🥰😘💝🔥❤️)",
+        "Images of stacks of money",
+        "Sugar Daddy/Mommy/Baby terminology",
+        "Yahoo Boy terminology",
+        "Claims of wealth seeking someone to spoil"
+      ]
+    },
+    {
+      "id": "established_business_fraud",
+      "name": "Established Business/Entity Fraud and Scam",
+      "description": "Falsely claiming to represent established business",
+      "severity": "critical",
+      "action": "label",
+      "condition": "Falsely represents established entity AND violates another fraud/scam section",
+      "establishedEntities": [
+        "Government departments or agencies",
+        "Multinational businesses or organizations",
+        "Businesses with offices in 2+ regions",
+        "Businesses with national-level services/goods"
+      ],
+      "note": "Small local businesses NOT considered established"
+    },
+    {
+      "id": "government_grant_fraud",
+      "name": "Government Grant Fraud and Scam",
+      "description": "False promises of money from government grants",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "unrealisticClaims": [
+        "No application necessary",
+        "Claim within short period (less than 1 day)",
+        "Money paid out in short period",
+        "Money can be spent any way",
+        "Source is international aid programme"
+      ]
+    },
+    {
+      "id": "spiritual_fraud",
+      "name": "Tangible, Spiritual or Illuminati Fraud and Scam",
+      "description": "Offering tangible rewards for spiritual/cult membership",
+      "severity": "high",
+      "action": "label",
+      "primaryIndicators": [
+        "Membership in association, cult, religious sect (Illuminati Brotherhood)",
+        "Using black magic, spells, magical items (lucky charms, amulets, potions, magic wallet)"
+      ]
+    },
+    {
+      "id": "insurance_fraud",
+      "name": "Insurance Fraud and Scam (Ghost Broking)",
+      "description": "Offering false, heavily discounted insurance",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "primaryIndicators": [
+        "Request for up-front fee (admin fee, deposit)",
+        "Promises 30%+ savings vs conventional providers"
+      ],
+      "secondaryIndicators": [
+        "Photos of happy customers",
+        "Purchased insurance deals screenshots",
+        "Photoshopped insurance options with prices"
+      ]
+    },
+    {
+      "id": "job_fraud",
+      "name": "Job Fraud and Scam",
+      "description": "Deceptive job opportunities",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "primaryIndicators": [
+        "Deceptive job opportunity (Temu, Shein, Walmart, Shopee without verified page)",
+        "Get Rich Quick job opportunity",
+        "Vague job opportunity (no company name + unclear requirements)",
+        "No job information, just references vacancy",
+        "WFH but job implies cannot WFH (WFH cleaner, WFH driver)",
+        "Salary offered in advance",
+        "Job guaranteed (100% guaranteed)",
+        "Advance fee before job granted"
+      ],
+      "secondaryIndicators": [
+        "Proof of payment (bank transfer, wage slip)",
+        "Unrelated images (woman posing for data entry job)",
+        "Significantly larger salary than expected",
+        "Generic search for 15+ employees"
+      ],
+      "exceptions": ["Workforce agencies", "Job fairs"]
+    },
+    {
+      "id": "debt_relief_fraud",
+      "name": "Debt Relief and Credit Repair Fraud Scam",
+      "description": "Guaranteeing debt elimination or credit repair",
+      "severity": "high",
+      "action": "label",
+      "verifiedExemption": true,
+      "primaryIndicators": [
+        "Delete/eliminate debt or reduce by amount in set time",
+        "Stop/delete all debt collections or lawsuits",
+        "Forgive debt through 'new government program'",
+        "Delete credit info from reports or create new 'credit identity'"
+      ]
+    },
+    {
+      "id": "giveaway_fraud",
+      "name": "Giveaway Fraud and Scam",
+      "description": "Guaranteed reward requiring suspicious actions",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "giveaway_offsite",
+          "name": "Register at Off-site Link",
+          "action": "label"
+        },
+        {
+          "id": "giveaway_pii",
+          "name": "Share PII",
+          "action": "label"
+        },
+        {
+          "id": "giveaway_contact",
+          "name": "Contact via Private Message",
+          "action": "label"
+        },
+        {
+          "id": "giveaway_no_action",
+          "name": "No Action Required",
+          "action": "label"
+        },
+        {
+          "id": "giveaway_engagement",
+          "name": "On-platform Engagement Only",
+          "action": "information"
+        }
+      ],
+      "secondaryIndicators": ["Temporary or expiring offer"]
+    },
+    {
+      "id": "advance_fee_fraud",
+      "name": "Advance Fee Fraud and Scam",
+      "description": "Falsely promises money for up-front payment",
+      "severity": "high",
+      "action": "label",
+      "secondaryIndicators": [
+        "Greater returns promised",
+        "Large amount of money can be claimed",
+        "Claims to help reach stardom or wealth"
+      ]
+    },
+    {
+      "id": "misleading_health",
+      "name": "Misleading Health Practices",
+      "description": "False or misleading health claims or guarantees",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "life_threatening_cure",
+          "name": "Cure for Life-Threatening Conditions",
+          "action": "label",
+          "conditions": ["Diabetes", "Herpes", "Thyroid", "Psoriasis", "Ebola", "Cancer", "Autism", "Alzheimer's", "Parkinson's", "ALS", "HIV"]
+        },
+        {
+          "id": "non_life_threatening_instant",
+          "name": "Instant Cure for Non-Life-Threatening Conditions",
+          "action": "label",
+          "conditions": ["Scars", "Skin tags", "Moles", "Eczema", "Rosacea", "Varicose veins", "Arthritis", "Alopecia"],
+          "requirement": "Promise of instant or immediate effect"
+        },
+        {
+          "id": "specific_results_time",
+          "name": "Specific Results in Specific Time (No Disclaimer)",
+          "action": "label",
+          "examples": [
+            "Lose 5 lbs/week",
+            "Lose 25 lbs in 25 days",
+            "Lose 5 inches off waist in 20 days"
+          ],
+          "notViolating": [
+            "Specific result without specific time (Lose 5 lbs)",
+            "Specific time without specific result (Get fit in two months)",
+            "With qualifying statement (Lose UP TO 5 lbs/week)",
+            "With disclaimer (Your results may vary)",
+            "Non-numeric results (Get skinny!)"
+          ]
+        },
+        {
+          "id": "clickbait_health",
+          "name": "Click-bait Tactics / Sensational Language",
+          "action": "label",
+          "signals": [
+            "tip, trick, secret, solution, truth, miracle",
+            "100% cure, guaranteed cure, eliminate",
+            "shocking, crazy, amazing, reveals, hidden",
+            "wild, unbelievable, fantastic, unimaginable",
+            "Doctors don't want you to know"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "condemnation_awareness",
+      "name": "Condemnation and Awareness Raising",
+      "description": "Discussing fraud without promoting or revealing sensitive info",
+      "severity": "none",
+      "action": "no_action",
+      "conditions": [
+        "Condemning fraud/scam activities",
+        "Raising awareness or educating others",
+        "Does NOT reveal PII, future exam papers, or login credentials"
+      ]
+    }
+  ],
+
+  "solicitationSignals": {
+    "solicitation_creation": [
+      "Looking for XYZ", "Who wants XYZ?", "Anyone selling XYZ?",
+      "Need XYZ", "Paying top $$$ for XYZ",
+      "Tap in", "tappn", "tapin", "hit me", "hmu",
+      "Product/service + contact method (phone, email)"
+    ],
+    "sale_purchase": [
+      "For sale", "On sale", "Buy it now",
+      "Payment references",
+      "Price mentions",
+      "Payment methods (PayPal, CashApp, Venmo, Zelle, Bitcoin, gift cards)",
+      "Money emojis (🤑💵💶💸💷💴💰)",
+      "Promotions (discounts, special deals)",
+      "Scarcity (limited-time, limited availability)",
+      "Shipping/delivery mentions",
+      "Social proof (satisfied customers, transaction screenshots)"
+    ],
+    "trade": [
+      "trade for", "swap with",
+      "Desired trade item mentioned"
+    ]
+  },
+
+  "secondaryAbuseFacilitators": {
+    "contact_requests": [
+      "Message me", "email me", "inbox for details",
+      "Contact emojis (📲📤📩)",
+      "Link in bio",
+      "Third party contact details"
+    ],
+    "pii_requests": [
+      "Sign up with your ID",
+      "Register with passport",
+      "Respond with ID info"
+    ]
+  },
+
+  "labelHierarchy": [
+    { "id": "fake_documents", "label": "FSDP > Fake, Forged, Counterfeit or Stolen Documents", "hierarchyRank": 1 },
+    { "id": "carding", "label": "FSDP > Fake Financial Instruments (Carding)", "hierarchyRank": 2 },
+    { "id": "fake_reviews", "label": "FSDP > Fake Reviews", "hierarchyRank": 3 },
+    { "id": "stolen_goods", "label": "FSDP > Stolen Goods and Services", "hierarchyRank": 4 },
+    { "id": "manipulated_devices", "label": "FSDP > Devices & Subscriptions Manipulated", "hierarchyRank": 5 },
+    { "id": "pii_fraud", "label": "FSDP > PII or Other Personal Information", "hierarchyRank": 6 },
+    { "id": "cheating_products", "label": "FSDP > Products & Services Enabling Cheating", "hierarchyRank": 7 },
+    { "id": "money_muling", "label": "FSDP > Money Muling", "hierarchyRank": 8 },
+    { "id": "money_laundering", "label": "FSDP > Money Laundering", "hierarchyRank": 9 },
+    { "id": "loan_fraud", "label": "FSDP > Loan Fraud and Scam", "hierarchyRank": 10 },
+    { "id": "gambling_fraud", "label": "FSDP > Gambling Fraud and Scam", "hierarchyRank": 11 },
+    { "id": "investment_fraud", "label": "FSDP > Investment or Financial Fraud and Scam", "hierarchyRank": 12 },
+    { "id": "charity_fraud", "label": "FSDP > Charity Fraud and Scam", "hierarchyRank": 13 },
+    { "id": "romance_fraud", "label": "FSDP > Romance Fraud and Scam", "hierarchyRank": 14 },
+    { "id": "established_business_fraud", "label": "FSDP > Established Business/Entity Fraud", "hierarchyRank": 15 },
+    { "id": "government_grant_fraud", "label": "FSDP > Government Grant Fraud and Scam", "hierarchyRank": 16 },
+    { "id": "spiritual_fraud", "label": "FSDP > Tangible, Spiritual or Illuminati Fraud", "hierarchyRank": 17 },
+    { "id": "insurance_fraud", "label": "FSDP > Insurance Fraud and Scam", "hierarchyRank": 18 },
+    { "id": "job_fraud", "label": "FSDP > Job Fraud and Scam", "hierarchyRank": 19 },
+    { "id": "debt_relief_fraud", "label": "FSDP > Debt Relief and Credit Repair Fraud", "hierarchyRank": 20 },
+    { "id": "giveaway_fraud", "label": "FSDP > Giveaway Fraud and Scam", "hierarchyRank": 21 },
+    { "id": "advance_fee_fraud", "label": "FSDP > Advance Fee Fraud and Scam", "hierarchyRank": 22 },
+    { "id": "misleading_health", "label": "FSDP > Misleading Health Practices", "hierarchyRank": 23 },
+    { "id": "misleading_health_weightloss", "label": "FSDP > Misleading Health > Weight Loss Context", "hierarchyRank": 24 }
+  ],
+
+  "exceptions": [
+    { "id": "verified_signal", "description": "Content posted by entity with 'Verified' signal (for certain fraud types)" },
+    { "id": "p4p_fundraiser", "description": "Person for Person (P4P) Fundraiser" },
+    { "id": "condemnation", "description": "Condemning fraud and scam activities" },
+    { "id": "awareness", "description": "Raising awareness or educating others about fraud" },
+    { "id": "prop_cash", "description": "Legitimate prop cash with distinguishing features" },
+    { "id": "auth_services", "description": "Document/currency authentication services" },
+    { "id": "past_exams", "description": "Past exams or answer keys (not future)" },
+    { "id": "product_testers", "description": "Legitimate product testers with genuine experiences" },
+    { "id": "internet_service", "description": "Offering internet service with bundled streaming" }
+  ],
+
+  "glossary": {
+    "fraud_scam": "Generating financial/personal benefit from others' money, goods or PII obtained through deceptive means",
+    "commercial_financial_gain": "Act involving fraud where outcome is taking money, property, or anything of monetary/physical value",
+    "real_money": "Currency that can buy goods/services in real world (USD, Euro, Bitcoin) - NOT in-game only currency",
+    "social_casino_games": "Simulated gambling games with no opportunity to win real money",
+    "established_business": "Business operating at national level+ (government, multinational, offices in 2+ regions)",
+    "tangible_rewards": "Money, goods, or services with monetary value (cash, digital payments, crypto, goods, services)",
+    "pii": "Information that uniquely identifies an individual",
+    "on_platform_engagement": "Likes, shares, follows, comments, reactions, views, clicks, hashtag use on Facebook/Instagram",
+    "betting_manipulation": "Collusion to manipulate gamble outcome to win wagers",
+    "sensationalist_language": "Exaggerated health claims using words like miracle, secret, shocking, guaranteed cure"
+  },
+
+  "cardingKeywords": [
+    "dumps", "cc", "cvv", "fullz", "bins", "cashout", "clone card", "carded", "carder", "card cloning",
+    "credit card hack", "bank logs", "cc live", "cc fresh", "dumps+pin", "track1", "track2"
+  ],
+
+  "operationalGuidelines": {
+    "verifiedExemptions": [
+      "Loan Fraud", "Charity Fraud", "Government Grant Fraud", "Insurance Fraud", "Job Fraud", "Debt Relief Fraud", "Manipulated Devices"
+    ],
+    "requiresOneSignalInContent": "At least one signal must be present in Content in Review",
+    "contextCanConfirm": "Signals from parent/context can confirm violation if related to content",
+    "weightLossSpecificResults": "Specific numeric result + specific numeric time = violation; either alone = no violation"
+  }
+}

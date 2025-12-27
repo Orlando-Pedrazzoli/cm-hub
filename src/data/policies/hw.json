@@ -1,0 +1,1008 @@
+{
+  "id": "hw",
+  "name": "Health and Wellness",
+  "shortName": "HW",
+  "description": "Meta allows sexual and reproductive health products/services if focused on health and wellness (not sexual pleasure/enhancement) and targeted appropriately (18+). We protect vulnerable groups from negative self-perception by restricting weight loss, cosmetic procedures, and health supplements content.",
+  "color": "#EC4899",
+  "icon": "Heart",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "adult_sexual_businesses",
+      "name": "Adult Sexual Businesses",
+      "description": "Services appealing to erotic or sexual appetites for sexual arousal or stimulation",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "adult_entertainment",
+          "name": "Adult Entertainment Businesses",
+          "description": "Live performances or displays of nudity to sexually stimulate audience",
+          "action": "label",
+          "examples": [
+            "Strip clubs",
+            "Tantra festivals/retreats/classes",
+            "Host/hostess clubs",
+            "Erotic shows and expos",
+            "Cuddle parties",
+            "Sacred snuggle parties",
+            "Tickle parties",
+            "Oming/orgasmic meditation"
+          ],
+          "conditions": ["Live performance/display", "Nudity or sexual stimulation intent"]
+        },
+        {
+          "id": "adult_encounter_businesses",
+          "name": "Adult Sexual Encounter Businesses",
+          "description": "Businesses offering sexual encounters between individuals",
+          "action": "label",
+          "examples": [
+            "Adult arcades",
+            "Adult cabarets",
+            "Adult movie theaters",
+            "Nude model studios"
+          ],
+          "conditions": ["Regular offering of sexual encounters", "Sex-related purposes"]
+        },
+        {
+          "id": "adult_establishments",
+          "name": "Adult Establishments",
+          "description": "Physical premises offering experiences related to adult sexual pleasure",
+          "action": "label",
+          "examples": [
+            "Hotels/motels with emphasis on sex",
+            "Adult sex shops",
+            "Establishments selling sexual arousal products"
+          ],
+          "conditions": ["Physical premises", "Sexual pleasure/fantasy focus"]
+        },
+        {
+          "id": "instructional_sexual_services",
+          "name": "Instructional Sexual Services",
+          "description": "Services providing instruction on sexual techniques or experiences",
+          "action": "label",
+          "examples": [
+            "Tantric services",
+            "Orgasmic therapy",
+            "Tantric retreats for orgasmic therapy"
+          ],
+          "conditions": ["Instructional context", "Sexual pleasure focus"]
+        },
+        {
+          "id": "adult_establishments_solicitation",
+          "name": "Adult Establishments with Sexual Solicitation",
+          "description": "Adult establishments offering sexual activities",
+          "action": "information",
+          "examples": [
+            "Hotels offering sexual services",
+            "Establishments with sexual solicitation indicators"
+          ],
+          "conditions": ["Adult establishment", "Sexual solicitation signals"]
+        }
+      ]
+    },
+    {
+      "id": "sexual_arousal_products",
+      "name": "Sexual Arousal Products",
+      "description": "Products focused on stimulating sexual pleasure or increasing sexual arousal",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "sex_toys",
+          "name": "Sex Toys",
+          "description": "Objects used to stimulate genitals or anus",
+          "action": "label",
+          "examples": [
+            "Dildo",
+            "Genital vibrators",
+            "Clitoral massagers",
+            "Butt plugs",
+            "Anal beads",
+            "Nipple clamps",
+            "Ball gag",
+            "Open mouth gag",
+            "Sex dolls"
+          ],
+          "conditions": ["Product designed for genital/anal stimulation"]
+        },
+        {
+          "id": "erotic_novels",
+          "name": "Erotic Novels/Products",
+          "description": "Products of adult-oriented nature with erotic themes",
+          "action": "label",
+          "examples": [
+            "Erotic novels",
+            "Erotic poems",
+            "Erotic stories",
+            "Erotic costumes"
+          ],
+          "conditions": ["Adult-oriented", "Erotic/sensual themes", "Describing orgasm, pleasure, sexual acts"]
+        },
+        {
+          "id": "genital_enhancement_products",
+          "name": "Non-Surgical Genital Enhancement Products",
+          "description": "Products for enlargement or enhancement of genitals without surgery",
+          "action": "label",
+          "examples": [
+            "Penis enlargement creams/pills",
+            "Breast/butt/hip enlargement topical creams or pills",
+            "Vibrating condoms",
+            "Fake hymen products"
+          ],
+          "conditions": ["Non-surgical", "Genital/body enlargement focus"]
+        },
+        {
+          "id": "sexual_desire_products",
+          "name": "Sexual Desire/Arousal Products",
+          "description": "Products primarily focused on stimulating sexual desire or arousal",
+          "action": "label",
+          "examples": [
+            "Sex-enhancing chocolates",
+            "Massage oil for sexual pleasure",
+            "Arousal serum",
+            "Climax cream",
+            "Clitoral balm",
+            "Masturbation lotion",
+            "Libido-enhancing products"
+          ],
+          "conditions": ["Primary focus on sexual pleasure/arousal"]
+        },
+        {
+          "id": "sex_toys_no_context",
+          "name": "Sex Toys with No Clear Context",
+          "description": "Depiction of sex toys without clear buy/sell/promote intent",
+          "action": "label",
+          "examples": [
+            "Image of sex toy with no text",
+            "Sex toy photo without commercial indicators"
+          ],
+          "conditions": ["Sex toy depicted", "No clear intent signals"]
+        }
+      ]
+    },
+    {
+      "id": "genital_surgeries",
+      "name": "Genital Surgeries",
+      "description": "Cosmetic and medical surgeries involving genitals",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "cosmetic_genital_surgeries",
+          "name": "Cosmetic Genital Surgeries",
+          "description": "Surgeries for cosmetic purposes only",
+          "action": "label",
+          "examples": [
+            "G-spot augmentation",
+            "Penis enlargement surgery",
+            "Butt lift",
+            "Butt implants"
+          ],
+          "conditions": ["Cosmetic purpose only", "Genital/butt area"]
+        },
+        {
+          "id": "adult_genital_surgeries",
+          "name": "Adult Genital Surgeries",
+          "description": "Medical surgeries involving pelvic organs",
+          "action": "label",
+          "examples": [
+            "Adult male circumcision",
+            "Vaginoplasty",
+            "Vasectomy",
+            "Phalloplasty"
+          ],
+          "conditions": ["Medical procedure", "Pelvic region", "Label even without sexual pleasure focus"]
+        },
+        {
+          "id": "genital_surgery_sexual_focus",
+          "name": "Genital Surgery with Sexual Pleasure Focus",
+          "description": "Genital surgeries focused on sexual pleasure enhancement",
+          "action": "label",
+          "examples": [
+            "Vaginoplasty for enhanced sexual experience",
+            "Circumcision for sexual pleasure",
+            "Vaginal tightening for sexual benefit"
+          ],
+          "conditions": ["Genital surgery", "Sexual pleasure focus"]
+        }
+      ]
+    },
+    {
+      "id": "reproductive_health",
+      "name": "Reproductive Health Products",
+      "description": "Products and services for reproductive health and wellness",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "sexual_disorders",
+          "name": "Sexual Reproductive Disorders Products",
+          "description": "Products addressing sexual disorders",
+          "action": "label",
+          "examples": [
+            "Erectile dysfunction (ED) products",
+            "Premature ejaculation (PE) products",
+            "Hypoactive Sexual Desire Disorder (HSDD) products"
+          ],
+          "conditions": ["Addresses sexual disorder", "Medical benefit focus"]
+        },
+        {
+          "id": "sex_related_health",
+          "name": "Sex-Related Health Products",
+          "description": "Products for sex-related health issues",
+          "action": "label",
+          "examples": [
+            "Pain relief during sex products",
+            "Menopause effects products",
+            "VFit products",
+            "V-Steaming/Yoni steaming products"
+          ],
+          "conditions": ["Sex-related health issue", "Medical benefit focus"]
+        },
+        {
+          "id": "contraceptives",
+          "name": "Contraceptives",
+          "description": "Birth control products",
+          "action": "label",
+          "examples": [
+            "Birth control pills",
+            "Condoms (male/female)",
+            "Vaginal rings",
+            "Diaphragm",
+            "Cervical cap",
+            "Birth control sponge",
+            "Spermicide"
+          ],
+          "conditions": ["Pregnancy prevention purpose"]
+        },
+        {
+          "id": "lube",
+          "name": "Lubricants",
+          "description": "Lubricants for sexual activity",
+          "action": "label",
+          "examples": [
+            "Sexual lubricant",
+            "Vaginal dryness lubricant"
+          ],
+          "conditions": ["Lubricant for sexual activity", "Not car lube"]
+        },
+        {
+          "id": "pheromones",
+          "name": "Pheromones",
+          "description": "Products inducing sexual arousal in others",
+          "action": "label",
+          "examples": [
+            "Pheromone perfume",
+            "Pheromone spray"
+          ],
+          "conditions": ["Induces sexual arousal"]
+        },
+        {
+          "id": "femtech_apps",
+          "name": "Women's Reproductive Health Apps",
+          "description": "Apps for fertility, pregnancy, ovulation tracking",
+          "action": "label",
+          "examples": [
+            "Femtech apps",
+            "Ovulation tracker",
+            "Pregnancy progress tracker",
+            "Fertility tracking apps"
+          ],
+          "conditions": ["Reproductive health tracking", "Pregnancy/fertility focus"]
+        },
+        {
+          "id": "reproductive_sexual_focus",
+          "name": "Reproductive Health with Sexual Focus",
+          "description": "Reproductive health products focused on sexual pleasure",
+          "action": "label",
+          "examples": [
+            "ED medication with sexual pleasure signals",
+            "Products with 'bedroom satisfaction' claims"
+          ],
+          "conditions": ["Reproductive health product", "Sexual pleasure focus"]
+        },
+        {
+          "id": "reproductive_phallic_yonic",
+          "name": "Reproductive Health with Phallic/Yonic Objects",
+          "description": "Reproductive health products containing genital representations",
+          "action": "label",
+          "examples": [
+            "ED ad with banana/cucumber imagery",
+            "Vaginal product with yonic shapes"
+          ],
+          "conditions": ["Reproductive health product", "Phallic or yonic objects present"]
+        }
+      ]
+    },
+    {
+      "id": "family_planning",
+      "name": "Family Planning Services",
+      "description": "Services for controlling family size and birth intervals",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "family_planning_clinics",
+          "name": "Family Planning Clinics",
+          "description": "Clinics offering family planning services",
+          "action": "label",
+          "examples": [
+            "Family planning clinic promotion",
+            "Contraception clinic"
+          ],
+          "conditions": ["Family planning service promotion"]
+        },
+        {
+          "id": "ivf_procedures",
+          "name": "IVF and Artificial Insemination",
+          "description": "Fertility procedures",
+          "action": "label",
+          "examples": [
+            "In Vitro Fertilization (IVF)",
+            "Artificial insemination procedures"
+          ],
+          "conditions": ["Fertility procedure promotion"]
+        },
+        {
+          "id": "fertility_awareness",
+          "name": "Fertility Awareness",
+          "description": "Fertility awareness services",
+          "action": "label",
+          "examples": [
+            "Fertility awareness programs",
+            "Fertility consultation"
+          ],
+          "conditions": ["Fertility awareness promotion"]
+        },
+        {
+          "id": "abortion_services",
+          "name": "Abortion Services",
+          "description": "Abortion-related services",
+          "action": "label",
+          "examples": [
+            "Abortion consultation",
+            "Abortion pill reversal treatment"
+          ],
+          "conditions": ["Abortion service promotion"]
+        }
+      ]
+    },
+    {
+      "id": "sex_education",
+      "name": "Sex Education",
+      "description": "Education about sex and sexuality",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "sex_ed_pleasure_focus",
+          "name": "Sex Education with Pleasure Focus",
+          "description": "Sex education focused on sexual pleasure",
+          "action": "label",
+          "examples": [
+            "Course on enhancing sexual pleasure",
+            "Article about maximizing orgasms"
+          ],
+          "conditions": ["Sex education", "Sexual pleasure focus"]
+        },
+        {
+          "id": "sex_ed_health_focus",
+          "name": "Sex Education without Pleasure Focus",
+          "description": "Sex education focused on health, not pleasure",
+          "action": "no_action",
+          "examples": [
+            "Safe sex education",
+            "STI prevention education",
+            "Reproductive health education"
+          ],
+          "conditions": ["Sex education", "Health focus", "No sexual pleasure focus"]
+        }
+      ]
+    },
+    {
+      "id": "weight_loss",
+      "name": "Weight Loss Products/Services",
+      "description": "Products and services for weight change",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "weight_loss_negative_self",
+          "name": "Weight Loss with Negative Self-Perception",
+          "description": "Weight loss content with body-shaming tactics",
+          "action": "label",
+          "examples": [
+            "Side-by-side before/after weight comparison",
+            "Pinched fat/cellulite imagery",
+            "Weight scale with shocked expression",
+            "Tape measure around waist comparison"
+          ],
+          "conditions": ["Weight loss product/service", "Negative self-perception signals"]
+        },
+        {
+          "id": "weight_loss_products",
+          "name": "Weight Loss Products/Services",
+          "description": "Weight loss products without negative signals",
+          "action": "label",
+          "examples": [
+            "Weight loss teas",
+            "Diet pills",
+            "Diet supplements",
+            "Protein powders/bars/shakes",
+            "Thermogenic products",
+            "Dietitian clinics",
+            "Gastric band surgery",
+            "Tummy tuck",
+            "Gastric sleeve"
+          ],
+          "conditions": ["Weight loss product/service", "No negative self-perception"]
+        }
+      ]
+    },
+    {
+      "id": "skin_products",
+      "name": "Skin Products",
+      "description": "Skin whitening and treatment products",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "skin_whitening_negative",
+          "name": "Skin Whitening with Negative Self-Perception",
+          "description": "Skin whitening promoting ideal skin color",
+          "action": "label",
+          "examples": [
+            "Topical skin bleaching products",
+            "Before/after skin whitening comparison"
+          ],
+          "conditions": ["Skin whitening", "Negative self-perception", "Promotes ideal skin color"]
+        },
+        {
+          "id": "glutathione_whitening",
+          "name": "Non-Injectable Glutathione for Whitening",
+          "description": "Glutathione products for skin whitening",
+          "action": "label",
+          "examples": [
+            "Glutathione tablets for skin whitening",
+            "Glutathione gummies for permanent whitening"
+          ],
+          "conditions": ["Non-injectable glutathione", "Skin whitening claim"]
+        },
+        {
+          "id": "glutathione_health",
+          "name": "Non-Injectable Glutathione for Health",
+          "description": "Glutathione for health benefits, not whitening",
+          "action": "label",
+          "examples": [
+            "Glutathione for skin elasticity",
+            "Glutathione for liver function"
+          ],
+          "conditions": ["Non-injectable glutathione", "Health benefit claim", "No whitening claim"]
+        },
+        {
+          "id": "wrinkles_negative",
+          "name": "Wrinkles Treatment with Negative Self-Perception",
+          "description": "Anti-aging with negative self-perception tactics",
+          "action": "label",
+          "examples": [
+            "Side-by-side wrinkle comparison",
+            "Zoomed-in circles/arrows on wrinkles"
+          ],
+          "conditions": ["Wrinkle treatment", "Negative self-perception signals"]
+        }
+      ]
+    },
+    {
+      "id": "cosmetic_procedures",
+      "name": "Cosmetic Procedures/Surgeries",
+      "description": "Procedures to alter appearance",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "gender_reassignment",
+          "name": "Gender Reassignment Surgeries",
+          "description": "Surgeries altering physical characteristics to match identified gender",
+          "action": "label",
+          "examples": [
+            "Gender reassignment surgery promotion",
+            "Transgender surgical procedures"
+          ],
+          "conditions": ["Gender reassignment surgery"]
+        },
+        {
+          "id": "general_cosmetic",
+          "name": "General Cosmetic Procedures/Surgeries",
+          "description": "Cosmetic procedures not involving genitals",
+          "action": "label",
+          "examples": [
+            "Abdominoplasty",
+            "Blepharoplasty",
+            "Rhinoplasty",
+            "Rhytidectomy",
+            "Hair restoration surgery",
+            "Dermal fillers",
+            "Botox",
+            "Dental implants",
+            "Hair implants",
+            "Chemical peels",
+            "Micro-needling",
+            "Laser treatments",
+            "Liposuction",
+            "Breast augmentation/reduction"
+          ],
+          "conditions": ["Cosmetic procedure/surgery", "Appearance alteration purpose"]
+        },
+        {
+          "id": "cosmetic_testimonials",
+          "name": "Cosmetic Procedure Testimonials",
+          "description": "Personal accounts of cosmetic procedures",
+          "action": "label",
+          "examples": [
+            "Positive testimonial about rhinoplasty",
+            "Sharing side effects of procedure"
+          ],
+          "conditions": ["Testimonial", "Cosmetic procedure admission"]
+        },
+        {
+          "id": "cosmetic_services",
+          "name": "Cosmetic Services",
+          "description": "Non-surgical cosmetic services",
+          "action": "label",
+          "examples": [
+            "Microblading",
+            "Skin piercings",
+            "Permanent tattoo services",
+            "Permanent makeup tattoo"
+          ],
+          "conditions": ["Cosmetic service", "Semi-permanent or permanent"]
+        }
+      ]
+    },
+    {
+      "id": "allowed_content",
+      "name": "Allowed Content",
+      "description": "Content that does not violate Health and Wellness policies",
+      "severity": "none",
+      "subcategories": [
+        {
+          "id": "psa_awareness",
+          "name": "PSA/Awareness/Educational Content",
+          "description": "Reproductive/sexual health awareness in informational context",
+          "action": "no_action",
+          "examples": [
+            "Prostate cancer routine check-up",
+            "Breast cancer screening PSA",
+            "STI awareness campaign"
+          ],
+          "conditions": ["Informational/educational", "Documentary/PSA/news/advocacy context"]
+        },
+        {
+          "id": "family_planning_educational",
+          "name": "Family Planning Educational",
+          "description": "Educational material about family planning without promotion",
+          "action": "no_action",
+          "examples": [
+            "Article explaining family planning options",
+            "Documentary about fertility"
+          ],
+          "conditions": ["Educational", "No direct promotion"]
+        },
+        {
+          "id": "womens_hygiene",
+          "name": "Women's Hygiene Products",
+          "description": "Feminine hygiene products",
+          "action": "no_action",
+          "examples": [
+            "Tampons",
+            "Sanitary pads",
+            "Menstrual cups",
+            "PH balance washes",
+            "Vaginal deodorant"
+          ],
+          "conditions": ["Feminine hygiene", "Not reproductive health"]
+        },
+        {
+          "id": "menstruation_tracking",
+          "name": "Menstruation Tracking Apps",
+          "description": "Apps for period tracking (not pregnancy/fertility)",
+          "action": "no_action",
+          "examples": [
+            "Period tracking app",
+            "Menstrual cycle app"
+          ],
+          "conditions": ["Menstruation tracking only", "Not fertility/pregnancy focus"]
+        },
+        {
+          "id": "lingerie_no_nudity",
+          "name": "Lingerie/Swimwear without Nudity",
+          "description": "Underwear/swimwear without sexual content",
+          "action": "no_action",
+          "examples": [
+            "Lingerie advertisement",
+            "Swimwear promotion"
+          ],
+          "conditions": ["No nudity", "No sexualized poses", "No focus on sexualized body parts"]
+        },
+        {
+          "id": "fitness_apps",
+          "name": "Fitness Apps/Services",
+          "description": "Workout and fitness services",
+          "action": "no_action",
+          "examples": [
+            "Pilates classes",
+            "Yoga apps",
+            "Workout programs with before/after"
+          ],
+          "conditions": ["Fitness focus", "Not weight loss primary goal"]
+        },
+        {
+          "id": "skin_brightening",
+          "name": "Skin Brightening Products",
+          "description": "Products for even complexion, not whitening",
+          "action": "no_action",
+          "examples": [
+            "Scar treatment",
+            "Acne treatment",
+            "Dark spot treatment"
+          ],
+          "conditions": ["Treats discoloration", "Does not change natural skin color"]
+        },
+        {
+          "id": "general_cosmetics",
+          "name": "General Cosmetic Products",
+          "description": "Makeup and skincare products",
+          "action": "no_action",
+          "examples": [
+            "Makeup",
+            "Face primer",
+            "Creams and serums",
+            "Hair products"
+          ],
+          "conditions": ["Cosmetic product", "Not procedure/surgery"]
+        },
+        {
+          "id": "dental_products",
+          "name": "Dental Products",
+          "description": "Teeth and oral care products",
+          "action": "no_action",
+          "examples": [
+            "Teeth whitening products",
+            "Toothpaste",
+            "Mouthwash"
+          ],
+          "conditions": ["Dental/oral care"]
+        },
+        {
+          "id": "shapewear",
+          "name": "Shapewear",
+          "description": "Body shaping garments",
+          "action": "no_action",
+          "examples": [
+            "Corsets",
+            "Body shapers"
+          ],
+          "conditions": ["Shapewear/garment", "Even with before/after"]
+        },
+        {
+          "id": "fictional_documentary",
+          "name": "Fictional/Documentary Context",
+          "description": "Content in fictional or documentary context",
+          "action": "no_action",
+          "examples": [
+            "Documentary about adult industry",
+            "Movie with weight loss theme"
+          ],
+          "conditions": ["Fictional OR documentary context"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "adult_sexual_solicitation",
+      "label": "HW > Adult Sexual Businesses > Sexual Solicitation",
+      "path": ["Health and Wellness", "Adult Products", "Sexual Solicitation"],
+      "action": "information",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "adult_sexual_businesses",
+      "label": "HW > Adult Sexual Businesses",
+      "path": ["Health and Wellness", "Adult Products", "Sexual Businesses"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "sexual_arousal_products",
+      "label": "HW > Sexual Arousal Products",
+      "path": ["Health and Wellness", "Adult Products", "Sexual Arousal"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "cosmetic_genital_surgeries",
+      "label": "HW > Cosmetic Genital Surgeries",
+      "path": ["Health and Wellness", "Genital Surgeries", "Cosmetic"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "adult_genital_surgeries",
+      "label": "HW > Adult Genital Surgeries",
+      "path": ["Health and Wellness", "Genital Surgeries", "Adult"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "reproductive_health",
+      "label": "HW > Reproductive Health Products",
+      "path": ["Health and Wellness", "Reproductive Health"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "family_planning",
+      "label": "HW > Family Planning",
+      "path": ["Health and Wellness", "Family Planning"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "weight_loss_negative",
+      "label": "HW > Weight Loss > Negative Self-Perception",
+      "path": ["Health and Wellness", "Weight Loss", "Negative Self Image"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "weight_loss_products",
+      "label": "HW > Weight Loss > Products/Services",
+      "path": ["Health and Wellness", "Weight Loss", "Products"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "skin_whitening",
+      "label": "HW > Skin Whitening",
+      "path": ["Health and Wellness", "Skin Products", "Whitening"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    },
+    {
+      "id": "cosmetic_negative",
+      "label": "HW > Cosmetic > Negative Self-Perception",
+      "path": ["Health and Wellness", "Cosmetic", "Negative Self Image"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 11
+    },
+    {
+      "id": "cosmetic_surgeries",
+      "label": "HW > Cosmetic Procedures/Surgeries",
+      "path": ["Health and Wellness", "Cosmetic", "Procedures"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 12
+    }
+  ],
+
+  "negativeSelfPerceptionSignals": {
+    "weight_loss": [
+      "Side-by-side before/after weight comparison",
+      "Video transformation showing weight loss",
+      "Tape measure around waist comparison",
+      "Pinched fat/cellulite in any body area",
+      "Weight scale showing numbers with shocked expression",
+      "Testimonials making people feel bad about appearance"
+    ],
+    "skin": [
+      "Before/after skin whitening comparison",
+      "Promotion of permanent skin whitening (implies white is ideal)",
+      "Side-by-side wrinkle treatment comparison",
+      "Zoomed-in/close-up with circles/arrows on wrinkles"
+    ],
+    "general": [
+      "Content that mocks or discredits certain body types",
+      "Content that idealizes or denigrates certain body types",
+      "Exploiting insecurities to conform to beauty standards",
+      "Implying there is a perfect body type or appearance"
+    ]
+  },
+
+  "sexualPleasureSignals": [
+    "Play with your little friend",
+    "Do it all night",
+    "Leaving me breathless",
+    "Be the best in bed",
+    "Keep the fun going",
+    "Bedroom satisfaction",
+    "Leave them satisfied",
+    "Have more sex",
+    "Enjoying our time in the bedroom",
+    "How often are you climaxing",
+    "Enjoying intimacy",
+    "Get it up",
+    "Turn it on"
+  ],
+
+  "medicalBenefitSignals": [
+    "Treat ED",
+    "Fix ED",
+    "ED affects more than just you",
+    "Increase sexual ability",
+    "Take back your sex life",
+    "Get hard",
+    "Get hard results",
+    "Go longer",
+    "Last longer",
+    "Last longer in bed",
+    "Treat early climax",
+    "Climax control",
+    "Get your bedroom endurance back",
+    "Rise to the occasion",
+    "Increase sexual drive",
+    "Increase libido",
+    "Low libido can be frustrating"
+  ],
+
+  "adultEstablishmentSignals": [
+    "Short-term rentals (hourly, by the minute)",
+    "Adult Only phrase",
+    "Sexualized image in bedroom/hotel",
+    "Call to action with no clear product",
+    "Pleasure",
+    "Seduction",
+    "Discreet",
+    "Tantric chairs/couch",
+    "Deals available",
+    "Discount",
+    "One on one experience",
+    "Total discreet",
+    "Women are waiting for you",
+    "Adult massage in hotel rooms"
+  ],
+
+  "phalicYonicObjects": {
+    "phallic": ["Cigar", "Pencil", "Banana", "Cucumber", "Wine bottle", "Tree", "Skyscraper", "Snake", "Hammer"],
+    "yonic": ["Mandarine", "Fig", "Peach", "Papaya", "Flower", "Shell", "Cave shapes"]
+  },
+
+  "exceptions": [
+    {
+      "id": "psa_educational",
+      "name": "PSA/Educational Content",
+      "description": "Reproductive/sexual health awareness in informational, educational, documentary, advocacy, news, or PSA context",
+      "appliesTo": ["reproductive_health", "family_planning"],
+      "action": "no_action"
+    },
+    {
+      "id": "womens_hygiene",
+      "name": "Women's Hygiene Products",
+      "description": "Tampons, pads, menstrual cups, PH washes, vaginal deodorant",
+      "appliesTo": ["reproductive_health"],
+      "action": "no_action"
+    },
+    {
+      "id": "menstruation_tracking",
+      "name": "Menstruation Tracking Only",
+      "description": "Period tracking apps without fertility/pregnancy focus",
+      "appliesTo": ["femtech_apps"],
+      "action": "no_action"
+    },
+    {
+      "id": "family_planning_educational",
+      "name": "Family Planning Educational",
+      "description": "Educational material without direct promotion",
+      "appliesTo": ["family_planning"],
+      "action": "no_action"
+    },
+    {
+      "id": "sex_ed_no_pleasure",
+      "name": "Sex Education without Pleasure Focus",
+      "description": "Health-focused sex education",
+      "appliesTo": ["sex_education"],
+      "action": "no_action"
+    },
+    {
+      "id": "lingerie_no_nudity",
+      "name": "Lingerie/Swimwear without Nudity",
+      "description": "Underwear/swimwear without nudity or sexualized poses",
+      "appliesTo": ["sexual_arousal_products"],
+      "action": "no_action"
+    },
+    {
+      "id": "fitness_apps",
+      "name": "Fitness Apps/Classes",
+      "description": "Pilates, yoga, workout apps even with before/after",
+      "appliesTo": ["weight_loss"],
+      "action": "no_action"
+    },
+    {
+      "id": "skin_brightening",
+      "name": "Skin Brightening (not whitening)",
+      "description": "Scar, acne, dark spot treatment - treats discoloration, doesn't change skin color",
+      "appliesTo": ["skin_whitening_negative"],
+      "action": "no_action"
+    },
+    {
+      "id": "general_cosmetics",
+      "name": "General Cosmetic Products",
+      "description": "Makeup, creams, serums, hair products",
+      "appliesTo": ["cosmetic_procedures"],
+      "action": "no_action"
+    },
+    {
+      "id": "dental_products",
+      "name": "Dental Products",
+      "description": "Teeth whitening, toothpaste, mouthwash",
+      "appliesTo": ["general_cosmetic"],
+      "action": "no_action"
+    },
+    {
+      "id": "shapewear",
+      "name": "Shapewear",
+      "description": "Corsets, body shapers even with before/after",
+      "appliesTo": ["weight_loss"],
+      "action": "no_action"
+    },
+    {
+      "id": "fictional_documentary",
+      "name": "Fictional/Documentary Context",
+      "description": "Movies, TV shows, documentaries about health topics",
+      "appliesTo": ["all"],
+      "action": "no_action"
+    },
+    {
+      "id": "not_negative_self_perception",
+      "name": "Allowed Before/After Content",
+      "description": "Animations, cartoons, medical diagrams; product application shown; incremental changes over time; testimonials without body shaming",
+      "appliesTo": ["weight_loss", "skin_products", "cosmetic_procedures"],
+      "action": "no_action"
+    }
+  ],
+
+  "glossary": {
+    "sexual_pleasure": "Physical sexual satisfaction and enjoyment from sexual acts",
+    "adult_sexual_business": "Any service appealing to erotic or sexual appetites for sexual arousal or stimulation",
+    "adult_entertainment_business": "Live performance or display of nudity to sexually stimulate audience (strip clubs, tantra festivals, erotic shows)",
+    "adult_sexual_encounter_business": "Businesses offering sexual encounters (adult arcades, adult cabarets, adult movie theaters, nude model studios)",
+    "adult_establishment": "Physical premises offering adult sexual pleasure experiences (hotels with sex emphasis, adult sex shops)",
+    "sexual_arousal_products": "Products focused on stimulating sexual pleasure or increasing arousal (sex toys, genital enhancement, erotic products)",
+    "sex_toys": "Objects to stimulate genitals or anus (dildo, vibrators, butt plugs, anal beads, nipple clamps, sex dolls)",
+    "erotic_products": "Adult-oriented products with erotic themes (erotic novels, poems, costumes)",
+    "non_surgical_genital_enhancement": "Products for enlargement without surgery (penis/breast/butt creams and pills)",
+    "cosmetic_genital_surgery": "Surgery for cosmetic purposes (G-spot augmentation, penis enlargement, butt lift)",
+    "adult_genital_surgery": "Surgical procedure involving pelvic organs (circumcision, vaginoplasty, vasectomy, phalloplasty)",
+    "erectile_dysfunction": "Medical disorder - inability to get/keep erection for intercourse",
+    "premature_ejaculation": "Ejaculation happening sooner than desired during sex",
+    "hsdd": "Hypoactive Sexual Desire Disorder - female sexual disorder with low/no sex drive",
+    "contraceptives": "Birth control products (pills, condoms, vaginal rings, diaphragm, spermicide)",
+    "lube": "Lubricant for sexual activity to reduce friction",
+    "pheromones": "Substances inducing sexual arousal in others",
+    "femtech_apps": "Technology for women's health (menstrual cycles, pregnancy, fertility, menopause tracking)",
+    "phallic": "Object resembling male penis (cigar, pencil, banana, skyscraper, snake)",
+    "yonic": "Object resembling female genitals (vulva/vagina shapes)",
+    "negative_self_perception": "Content reinforcing negative body images, exploiting insecurities, implying ideal body type",
+    "skin_whitening": "Products permanently lightening skin (bleaching)",
+    "skin_brightening": "Products for even complexion treating discoloration (does NOT change skin color)",
+    "weight_loss_products": "Products marketed for weight loss (fat burners, diet supplements, herbal teas)",
+    "weight_loss_services": "Services for weight loss (dietitian clinics, gastric band, tummy tuck, gastric sleeve)",
+    "cosmetic_procedures": "Elective procedures to change appearance (abdominoplasty, rhinoplasty, botox, fillers, liposuction)",
+    "gender_reassignment_surgery": "Surgical procedures altering physical characteristics to match identified gender"
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "Adult Products and Reproductive Health > Health & Wellbeing",
+    "sexual_pleasure_vs_medical": "If signals for BOTH sexual pleasure AND medical benefit present, classify as medical benefit focus",
+    "product_vs_service": "No text indicating product = Adult Sexual Services; Text indicating product = Adult Sexual Arousal Products",
+    "age_gate": "All reproductive health, family planning, weight loss, cosmetic products/services must target 18+",
+    "negative_self_perception_rule": "Content must not imply or attempt to generate negative self-perception to promote health products",
+    "fictional_documentary_exception": "Fictional/documentary context generally exempts content from policy",
+    "before_after_allowed": "Fitness apps, shapewear, animations, medical diagrams, incremental changes = allowed even with before/after"
+  }
+}

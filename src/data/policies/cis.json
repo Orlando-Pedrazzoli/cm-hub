@@ -1,0 +1,297 @@
+{
+  "id": "cis",
+  "name": "Credible Intent of Suicide",
+  "shortName": "CIS",
+  "description": "Escalation criteria for content containing credible intent of suicide to Incident Response Team (IRT). Requires holistic review of user activity and specific criteria to be met.",
+  "color": "#DC2626",
+  "icon": "AlertTriangle",
+  "ready": true,
+  "isEscalationPolicy": true,
+
+  "corePrinciple": "Content containing credible intent of suicide is escalated to Incident Response Team (IRT) when ALL THREE criteria are met: Explicit Intent, Specific Capability, and Imminence (<24 hours). For suicide notes, only 2 of 3 criteria required.",
+
+  "escalationCriteria": {
+    "description": "ALL THREE criteria must be met for escalation to IRT (except suicide notes which require 2 of 3)",
+    "criteria": [
+      {
+        "id": "explicit_intent",
+        "name": "Explicit Intent of Suicide",
+        "description": "Present or future tense statement where user explicitly expresses intent to take their own life OR suicide attempt in progress",
+        "types": [
+          {
+            "id": "attempt_in_progress",
+            "name": "Suicide Attempt in Progress",
+            "definition": "Content explicitly conveys user is in process of taking their own life or has already inflicted harm with intention of taking their own life",
+            "examples": [
+              "I took 100 sleeping pills. I don't want to wake up.",
+              "I've drunk all of the poison and I'm ending my life",
+              "I did something horrible, which is irreversible and now I'm leaving [with video of pills being consumed]",
+              "can someone Please help me i've taken 30mg of xanax and didn't feel nothing, will I die in my sleep? ill take more."
+            ]
+          },
+          {
+            "id": "present_future_statement",
+            "name": "Present or Future Statement",
+            "definition": "User explicitly states they are going to/will take their own life",
+            "examples": [
+              "I am going to kill myself",
+              "I will commit suicide",
+              "I will shoot myself, I am loading the gun",
+              "This is the last day of my life",
+              "Ending my life",
+              "I am leaving this world forever",
+              "Now is the time to leave this miserable world"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capability",
+        "name": "Specific Capability",
+        "description": "Explicit statements or visual depiction of lethal method/means to complete suicide attempt",
+        "types": [
+          {
+            "id": "written_capability",
+            "name": "Written Statement of Method",
+            "definition": "Explicit statements indicating the lethal method/means by which user intends to take their own life",
+            "examples": [
+              "I have taken enough pills to be dead within the hour",
+              "In the next hour I'm going to shoot myself in the head with my gun",
+              "I've made a noose so that I can hang myself this morning",
+              "I am at the top of a building and am going to jump off now",
+              "I am slitting my veins open with a blade",
+              "I am drinking the poison to end it all"
+            ]
+          },
+          {
+            "id": "visual_capability",
+            "name": "Visual Depiction of Method",
+            "definition": "Real-life visual depiction of lethal method/means in suicide attempt context",
+            "examples": [
+              "Image of the gun",
+              "A handful of pills",
+              "The noose to be used",
+              "Deep vertical cuts to the forearm",
+              "Video showing user ingesting multiple pills"
+            ]
+          }
+        ],
+        "notCapability": [
+          "'I overdosed' with no other SSI context",
+          "'I'm about to overdose on allergy pills'",
+          "'Kinda wanna overdose tonight' posted with image of energy drink"
+        ]
+      },
+      {
+        "id": "imminence",
+        "name": "Imminence (<24 hours)",
+        "description": "Specific time for user's preparatory plan that is less than 24 hours into the future",
+        "types": [
+          {
+            "id": "explicit_imminence",
+            "name": "Explicit Imminence",
+            "definition": "Explicit statements describing when (time within 24 hours) user intends to take their own life",
+            "examples": [
+              "I have taken enough pills to be dead within the next hour",
+              "I'm overdosing today ending my own life",
+              "Going to shoot myself tonight",
+              "I'm about to put the gun to my head and end it all",
+              "Going to kill myself now",
+              "2nite will b my last nite"
+            ]
+          },
+          {
+            "id": "inferred_imminence",
+            "name": "Inferred Imminence",
+            "definition": "Statements with inferred imminence suggesting action is happening now or very soon",
+            "examples": [
+              "Well here's to my last night on this earth. I have taken a lot of pills.",
+              "This pain won't be here come tomorrow. I have been cutting myself and soon, will bleed out.",
+              "This is the last story I will post",
+              "I just took 3 bottles of pills I love everyone who ever loved me",
+              "Going to drink all of this, goodbye [with video of pesticide]"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  "suicideNotes": {
+    "description": "For suicide notes, only 2 of 3 escalation criteria required",
+    "definition": "Content containing phrase 'suicide note/letter' or 'goodbye note/letter' OR has 1+ indicators",
+    "indicators": [
+      "Long, expressive language with suicide context",
+      "User thanking individuals",
+      "Saying goodbye to loved ones",
+      "Asking for forgiveness",
+      "Expressing guilt/shame",
+      "Language indicating giving away possessions",
+      "Withdrawal from others",
+      "Social alienation or low belonging",
+      "Burdensomeness"
+    ],
+    "stressfulEventsWithAdmission": [
+      "Mental health episodes",
+      "Loss of family members",
+      "New job/life changes"
+    ],
+    "note": "Posts with stressful events must contain 'suicide admission' to qualify",
+    "examples": [
+      "This is a suicide note. I will be gone by the time you read this.",
+      "This is the suicide letter to all of you",
+      "My goodbye note to end it all",
+      "I'm done with living. I even made sure I took enough meds to put me to sleep. I'm done with having people trying to do everything in their power just to hurt me. I'd rather be dead than to keep dealing with everyone's god dam spiteful shit",
+      "I will leave, not who will not notice, everyone will be happy that I will not be there, don't worry, I will delete Instagram in the evening and open up my veins"
+    ]
+  },
+
+  "indirectIntent": {
+    "description": "Content that should NOT be escalated - does not meet explicit intent criteria",
+    "types": [
+      {
+        "id": "historical",
+        "name": "Historical/Past Tense Statements",
+        "definition": "User recounting past suicide attempt or referencing past suicidal thoughts",
+        "examples": [
+          "I tried to end it all last night",
+          "A few weeks ago I tried to kill myself",
+          "I tried to kill myself last night"
+        ]
+      },
+      {
+        "id": "conditional",
+        "name": "Conditional Statements",
+        "definition": "User threatening to take their own life only if certain criteria are met",
+        "examples": [
+          "I might or might not die tonight because I took 2 pills which were expired",
+          "No one would even notice if I killed myself",
+          "good morning, say it back or else i hang myself tonight"
+        ]
+      },
+      {
+        "id": "aspirational_ideation",
+        "name": "Aspirational/Ideation Statements",
+        "definition": "User expressing desire using 'feel', 'want', 'wish', 'can' but not certain",
+        "examples": [
+          "What I'm waiting for is that I die",
+          "I don't want life anymore",
+          "I am in a bad mood, I wish I could die and nothing else",
+          "I wish I could do it, I wish I could kill myself",
+          "I'm gonna just take alot of random stuff and hopefully it will be over"
+        ]
+      }
+    ]
+  },
+
+  "memeHumor": {
+    "description": "Content that should NOT be escalated - meme or humorous context",
+    "types": [
+      {
+        "id": "meme_imagery",
+        "name": "Meme Imagery",
+        "definition": "Humorous image, video, text, gif etc involving creative reproduction meant to be humorous"
+      },
+      {
+        "id": "humorous",
+        "name": "Humorous Statements",
+        "definition": "Content meant as joke based on context, reacting to humorous situation",
+        "examples": [
+          "On the way to hang myself😫🤣",
+          "The eagles (sports team) want me to hang myself. Today they'll get what they want",
+          "OMG just gonna KMS",
+          "That test was so hard I'm going to blow my brains out now",
+          "I'm so bored I could die"
+        ]
+      },
+      {
+        "id": "hyperbolic",
+        "name": "Hyperbolic Statements",
+        "definition": "Threat that is sarcastic and/or deliberately exaggerated",
+        "examples": [
+          "I'm going to jump off a bridge and do 3 flips",
+          "I'm about to blow my brains out into confetti"
+        ]
+      }
+    ]
+  },
+
+  "doNotEscalateIf": {
+    "normalBehavior": {
+      "description": "User's behavior is 'normal' since time of post",
+      "indicators": [
+        "Posting additional content not showing threat escalating",
+        "Responding on content not containing suicidal threats",
+        "Responding on suicidal post in manner not escalating threat"
+      ]
+    },
+    "helpReceived": {
+      "description": "User confirmed receiving help OR not intending to end life",
+      "verification": [
+        "Comments on reported post",
+        "Subsequent posts by user",
+        "Friends post on user's timeline"
+      ]
+    },
+    "safeguarded": {
+      "description": "Another user confirmed LE or paramedics have safeguarded user",
+      "examples": [
+        "The police were on scene when I was on the phone to them",
+        "A friend just informed me X is with police and is okay",
+        "I have a friend working CPD today directly called him. They were headed right up with EMS",
+        "X called 112 she going to the hospital now",
+        "The police are helping X now",
+        "Hey everyone X's family and the ambulance are with X"
+      ],
+      "note": "If LE contacted but no indication user safeguarded, still escalate to IRT"
+    }
+  },
+
+  "holisticReview": {
+    "description": "Assess job holistically, paying close attention to recent activity widget and post comments",
+    "lookFor": [
+      "Indicators of intent/capability/imminence (escalate to IRT)",
+      "Indicators of NOT intending (humor, exaggeration, trolling) - do NOT escalate"
+    ],
+    "recentActivityWidget": "Mark content as 'Relevant' for IRT (appears blue when hovering, red when marked)"
+  },
+
+  "minorConsiderations": {
+    "description": "Check if minors are involved",
+    "check": "Predicted age field in 'responsible' widget",
+    "fallback": "If age field empty, default to adult unless evidence suggests otherwise",
+    "minor": "User < 18 years of age",
+    "adult": "User >= 18 years of age"
+  },
+
+  "irtRejectionReasons": {
+    "invalidThreat": {
+      "description": "Escalated content does not contain suicidal threat",
+      "types": ["Historical statements", "Conditional statements", "Ideation/aspirational with NO explicit intent"]
+    },
+    "memeHumor": {
+      "description": "Escalated content contains meme imagery, exaggerative/humorous/hyperbolic statements"
+    }
+  },
+
+  "decisionTree": [
+    { "step": 1, "question": "Is this content a suicide note?", "ifYes": "Follow suicide notes criteria (2 of 3)", "ifNo": "Continue" },
+    { "step": 2, "question": "Has user explicitly conveyed suicide attempt in progress?", "ifYes": "Intent = YES", "ifUncertain": "Continue" },
+    { "step": 3, "question": "Has user explicitly conveyed they are going to end life by suicide?", "ifYes": "Explicit Intent", "ifNo": "Check for indirect intent (do not escalate)" },
+    { "step": 4, "question": "Is there mention of specific method/means?", "ifYes": "Capability = YES", "ifNo": "Capability = NO" },
+    { "step": 5, "question": "Is there specific time <24 hours?", "ifYes": "Imminence = YES", "ifNo": "Imminence = NO" },
+    { "step": 6, "question": "Is user's behavior 'normal' since post?", "ifYes": "Do NOT escalate", "ifNo": "Continue" },
+    { "step": 7, "question": "Has user confirmed help received or no intent?", "ifYes": "Do NOT escalate", "ifNo": "Continue" },
+    { "step": 8, "question": "Has another user confirmed user is safeguarded?", "ifYes": "Do NOT escalate", "ifNo": "Escalate to IRT" }
+  ],
+
+  "glossary": {
+    "explicit_intent": "Present or future tense statement where user explicitly expresses intent to take their own life or suicide attempt in progress",
+    "indirect_intent": "Historical, conditional, wishful, humorous, or hyperbolic suicidal statements - NOT escalated",
+    "capability": "Explicit statements or visual depiction of lethal method/means in suicide context",
+    "imminence": "Specific time for preparatory plan less than 24 hours into future",
+    "suicide_note": "Content containing 'suicide note/letter', 'goodbye note/letter' or specific emotional indicators",
+    "safeguarded": "User has been confirmed to be with law enforcement or paramedics",
+    "IRT": "Incident Response Team (formerly Law Enforcement Response Team - LERT)"
+  }
+}

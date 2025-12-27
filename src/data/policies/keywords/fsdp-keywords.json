@@ -1,0 +1,469 @@
+{
+  "policyId": "fsdp",
+  "policyName": "Fraud, Scam, and Deceptive Practices",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "solicitationLanguage": {
+    "direct": {
+      "critical": [
+        { "term": "Looking for", "context": "solicitation", "language": "en" },
+        { "term": "Procurando", "context": "solicitação", "language": "pt" },
+        { "term": "Who wants", "context": "solicitation", "language": "en" },
+        { "term": "Quem quer", "context": "solicitação", "language": "pt" },
+        { "term": "Anyone selling", "context": "solicitation", "language": "en" },
+        { "term": "Alguém vendendo", "context": "solicitação", "language": "pt" },
+        { "term": "Need XYZ", "context": "solicitation", "language": "en" },
+        { "term": "Preciso de", "context": "solicitação", "language": "pt" },
+        { "term": "Tap in", "context": "solicitation slang", "language": "en" },
+        { "term": "tappn", "context": "solicitation slang", "language": "en" },
+        { "term": "tapin", "context": "solicitation slang", "language": "en" },
+        { "term": "hit me", "context": "solicitation slang", "language": "en" },
+        { "term": "hmu", "context": "hit me up - solicitation", "language": "en" },
+        { "term": "DM me", "context": "solicitation", "language": "en" },
+        { "term": "lmk", "context": "let me know - solicitation", "language": "en" },
+        { "term": "Paying top $$$", "context": "solicitation", "language": "en" }
+      ]
+    },
+    "sales": {
+      "high": [
+        { "term": "For sale", "context": "sales language", "language": "en" },
+        { "term": "À venda", "context": "linguagem de vendas", "language": "pt" },
+        { "term": "On sale", "context": "sales language", "language": "en" },
+        { "term": "Em promoção", "context": "linguagem de vendas", "language": "pt" },
+        { "term": "Buy it now", "context": "sales language", "language": "en" },
+        { "term": "Compre agora", "context": "linguagem de vendas", "language": "pt" },
+        { "term": "Shop now", "context": "sales language", "language": "en" },
+        { "term": "Limited time offer", "context": "scarcity - sales", "language": "en" },
+        { "term": "Oferta por tempo limitado", "context": "escassez - vendas", "language": "pt" },
+        { "term": "Free shipping", "context": "shipping signal", "language": "en" },
+        { "term": "Frete grátis", "context": "sinal de envio", "language": "pt" }
+      ]
+    },
+    "trade": {
+      "mid": [
+        { "term": "trade for", "context": "trade language", "language": "en" },
+        { "term": "trocar por", "context": "linguagem de troca", "language": "pt" },
+        { "term": "swap with", "context": "trade language", "language": "en" }
+      ]
+    }
+  },
+
+  "paymentMethods": {
+    "critical": [
+      { "term": "PayPal", "context": "payment method", "language": "en" },
+      { "term": "CashApp", "context": "payment method", "language": "en" },
+      { "term": "Cash App", "context": "payment method", "language": "en" },
+      { "term": "MoneyGram", "context": "payment method", "language": "en" },
+      { "term": "Western Union", "context": "payment method", "language": "en" },
+      { "term": "Venmo", "context": "payment method", "language": "en" },
+      { "term": "Zelle", "context": "payment method", "language": "en" },
+      { "term": "Paytm", "context": "payment method", "language": "en" },
+      { "term": "PhonePe", "context": "payment method", "language": "en" },
+      { "term": "Bitcoin", "context": "crypto payment", "language": "en" },
+      { "term": "Apple Pay", "context": "payment method", "language": "en" },
+      { "term": "Chime", "context": "payment method", "language": "en" },
+      { "term": "gift cards", "context": "payment method", "language": "en" },
+      { "term": "cartões presente", "context": "método de pagamento", "language": "pt" },
+      { "term": "GCASH", "context": "payment method - Philippines", "language": "en" },
+      { "term": "PIX", "context": "payment method - Brazil", "language": "pt" },
+      { "term": "CoinBase", "context": "crypto payment", "language": "en" },
+      { "term": "cryptocurrency", "context": "crypto payment", "language": "en" },
+      { "term": "criptomoeda", "context": "pagamento cripto", "language": "pt" }
+    ]
+  },
+
+  "cardingKeywords": {
+    "critical": [
+      { "term": "dumps", "context": "carding - stolen card data", "language": "en" },
+      { "term": "cc", "context": "carding - credit card", "language": "en" },
+      { "term": "cvv", "context": "carding - card verification", "language": "en" },
+      { "term": "fullz", "context": "carding - complete identity", "language": "en" },
+      { "term": "bins", "context": "carding - bank identification numbers", "language": "en" },
+      { "term": "cashout", "context": "carding - withdraw stolen funds", "language": "en" },
+      { "term": "clone card", "context": "carding - cloned card", "language": "en" },
+      { "term": "cartão clonado", "context": "carding - cartão clonado", "language": "pt" },
+      { "term": "carded", "context": "carding - using stolen card", "language": "en" },
+      { "term": "carder", "context": "carding - person who cards", "language": "en" },
+      { "term": "bank logs", "context": "carding - stolen bank access", "language": "en" },
+      { "term": "cc live", "context": "carding - active card", "language": "en" },
+      { "term": "cc fresh", "context": "carding - new stolen card", "language": "en" },
+      { "term": "dumps+pin", "context": "carding - card data with PIN", "language": "en" },
+      { "term": "track1", "context": "carding - magnetic stripe data", "language": "en" },
+      { "term": "track2", "context": "carding - magnetic stripe data", "language": "en" }
+    ]
+  },
+
+  "counterfeitCurrencySignals": {
+    "critical": [
+      { "term": "frozen dollar", "context": "counterfeit terminology", "language": "en" },
+      { "term": "dólar congelado", "context": "terminologia falsificação", "language": "pt" },
+      { "term": "second series notes", "context": "counterfeit terminology", "language": "en" },
+      { "term": "G5", "context": "counterfeit grade", "language": "en" },
+      { "term": "A+++", "context": "counterfeit grade", "language": "en" },
+      { "term": "A1 banknotes", "context": "counterfeit grade", "language": "en" },
+      { "term": "Grade A notes", "context": "counterfeit grade", "language": "en" },
+      { "term": "AAA", "context": "counterfeit grade", "language": "en" },
+      { "term": "clone paper", "context": "counterfeit material", "language": "en" },
+      { "term": "undetectable", "context": "counterfeit quality claim", "language": "en" },
+      { "term": "indetectável", "context": "alegação de qualidade falsificação", "language": "pt" },
+      { "term": "prop money", "context": "counterfeit disguise (check context)", "language": "en" },
+      { "term": "pass UV test", "context": "counterfeit verification", "language": "en" },
+      { "term": "pass pen test", "context": "counterfeit verification", "language": "en" }
+    ]
+  },
+
+  "counterfeitCouponTerms": {
+    "high": [
+      { "term": "Overage", "context": "coupon fraud term", "language": "en" },
+      { "term": "Qpon", "context": "coupon fraud term", "language": "en" },
+      { "term": "Q-Pon", "context": "coupon fraud term", "language": "en" },
+      { "term": "Inserts", "context": "coupon fraud term", "language": "en" },
+      { "term": "Nsert", "context": "coupon fraud term", "language": "en" },
+      { "term": "Clips", "context": "coupon fraud term", "language": "en" },
+      { "term": "Clippings", "context": "coupon fraud term", "language": "en" },
+      { "term": "Q Bundle", "context": "coupon fraud term", "language": "en" },
+      { "term": "Coupon fairy", "context": "coupon fraud facilitator", "language": "en" },
+      { "term": "Coupon Unicorn", "context": "coupon fraud facilitator", "language": "en" },
+      { "term": "Glittering", "context": "coupon fraud term", "language": "en" },
+      { "term": "Glitching", "context": "coupon fraud term", "language": "en" },
+      { "term": "Penny Shopping", "context": "coupon fraud term", "language": "en" }
+    ]
+  },
+
+  "moneyLaunderingTerms": {
+    "critical": [
+      { "term": "SWIFT", "context": "money transfer - laundering context", "language": "en" },
+      { "term": "MT799", "context": "SWIFT message type - laundering", "language": "en" },
+      { "term": "MT102", "context": "SWIFT message type - laundering", "language": "en" },
+      { "term": "MT101", "context": "SWIFT message type - laundering", "language": "en" },
+      { "term": "MT103", "context": "SWIFT message type - laundering", "language": "en" },
+      { "term": "GPI", "context": "Global Payments Initiative - laundering", "language": "en" },
+      { "term": "Loaders", "context": "money laundering term", "language": "en" },
+      { "term": "Rippers", "context": "money laundering term", "language": "en" },
+      { "term": "Flashers", "context": "money laundering term", "language": "en" },
+      { "term": "Receivers", "context": "money laundering term", "language": "en" },
+      { "term": "Mandate", "context": "money laundering term", "language": "en" },
+      { "term": "USDT receiver", "context": "crypto laundering", "language": "en" }
+    ]
+  },
+
+  "unauthorizedStreamingServices": {
+    "high": [
+      { "term": "IPTV", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Kodi", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Alphasat", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Athomics", "context": "unauthorized streaming", "language": "en" },
+      { "term": "AzAmerica", "context": "unauthorized streaming", "language": "en" },
+      { "term": "AzBox", "context": "unauthorized streaming", "language": "en" },
+      { "term": "BTV", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Cinebox", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Duosat", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Evolutionbox", "context": "unauthorized streaming", "language": "en" },
+      { "term": "FlujoTV", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Freesky", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Gigabox", "context": "unauthorized streaming", "language": "en" },
+      { "term": "MagisTV", "context": "unauthorized streaming", "language": "en" },
+      { "term": "MXQ", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Nazabox", "context": "unauthorized streaming", "language": "en" },
+      { "term": "Tocomsat", "context": "unauthorized streaming", "language": "en" }
+    ]
+  },
+
+  "jailbrokenDeviceSignals": {
+    "high": [
+      { "term": "Jailbroken", "context": "modified device", "language": "en" },
+      { "term": "Fully loaded", "context": "modified device", "language": "en" },
+      { "term": "FL", "context": "fully loaded abbreviation", "language": "en" },
+      { "term": "Loaded", "context": "modified device", "language": "en" },
+      { "term": "Firestick +", "context": "modified firestick", "language": "en" },
+      { "term": "All channels", "context": "modified device claim", "language": "en" },
+      { "term": "Firestick Addon", "context": "modified firestick", "language": "en" },
+      { "term": "Firestick subscription", "context": "unauthorized subscription", "language": "en" },
+      { "term": "Firestick Update", "context": "modified firestick", "language": "en" },
+      { "term": "Updated", "context": "modified device (context)", "language": "en" },
+      { "term": "Upgraded", "context": "modified device (context)", "language": "en" }
+    ]
+  },
+
+  "silencedAirtagSignals": {
+    "critical": [
+      { "term": "speaker disabled", "context": "silenced AirTag", "language": "en" },
+      { "term": "speaker removed", "context": "silenced AirTag", "language": "en" },
+      { "term": "silent AirTag", "context": "silenced AirTag", "language": "en" },
+      { "term": "silenced AirTag", "context": "silenced AirTag", "language": "en" },
+      { "term": "mute AirTag", "context": "silenced AirTag", "language": "en" },
+      { "term": "muted AirTag", "context": "silenced AirTag", "language": "en" },
+      { "term": "modified AirTag", "context": "silenced AirTag", "language": "en" },
+      { "term": "cracked AirTag", "context": "silenced AirTag", "language": "en" },
+      { "term": "hacked AirTag", "context": "silenced AirTag", "language": "en" }
+    ]
+  },
+
+  "investmentFraudSignals": {
+    "critical": [
+      { "term": "guaranteed returns", "context": "investment scam signal", "language": "en" },
+      { "term": "retornos garantidos", "context": "sinal de golpe de investimento", "language": "pt" },
+      { "term": "risk-free", "context": "investment scam signal", "language": "en" },
+      { "term": "sem risco", "context": "sinal de golpe de investimento", "language": "pt" },
+      { "term": "get rich quick", "context": "investment scam signal", "language": "en" },
+      { "term": "fique rico rápido", "context": "sinal de golpe de investimento", "language": "pt" },
+      { "term": "double your money", "context": "investment scam signal", "language": "en" },
+      { "term": "dobre seu dinheiro", "context": "sinal de golpe de investimento", "language": "pt" },
+      { "term": "money flip", "context": "money flip scam", "language": "en" },
+      { "term": "cash flip", "context": "cash flip scam", "language": "en" },
+      { "term": "money multiplication", "context": "money flip scam", "language": "en" },
+      { "term": "multiplicação de dinheiro", "context": "golpe de multiplicação", "language": "pt" },
+      { "term": "Dabba trading", "context": "known investment scam", "language": "en" },
+      { "term": "Binary trading", "context": "investment opportunity (context)", "language": "en" },
+      { "term": "Forex trading", "context": "investment opportunity (context)", "language": "en" }
+    ]
+  },
+
+  "romanceFraudSignals": {
+    "high": [
+      { "term": "Sugar Daddy", "context": "romance scam term", "language": "en" },
+      { "term": "Sugar Mommy", "context": "romance scam term", "language": "en" },
+      { "term": "Sugar Baby", "context": "romance scam term", "language": "en" },
+      { "term": "Feet Baby", "context": "romance scam term", "language": "en" },
+      { "term": "Yahoo Boy", "context": "romance scam term", "language": "en" },
+      { "term": "looking to spoil", "context": "romance scam signal", "language": "en" },
+      { "term": "someone to treat", "context": "romance scam signal", "language": "en" },
+      { "term": "allowance", "context": "romance scam signal (context)", "language": "en" },
+      { "term": "financial support", "context": "romance scam signal (context)", "language": "en" }
+    ]
+  },
+
+  "spiritualFraudSignals": {
+    "high": [
+      { "term": "Illuminati Brotherhood", "context": "spiritual fraud", "language": "en" },
+      { "term": "Irmandade Illuminati", "context": "fraude espiritual", "language": "pt" },
+      { "term": "Join the Illuminati", "context": "spiritual fraud", "language": "en" },
+      { "term": "black magic", "context": "spiritual fraud", "language": "en" },
+      { "term": "magia negra", "context": "fraude espiritual", "language": "pt" },
+      { "term": "magic wallet", "context": "spiritual fraud", "language": "en" },
+      { "term": "carteira mágica", "context": "fraude espiritual", "language": "pt" },
+      { "term": "lucky charm", "context": "spiritual fraud", "language": "en" },
+      { "term": "money spell", "context": "spiritual fraud", "language": "en" },
+      { "term": "wealth spell", "context": "spiritual fraud", "language": "en" },
+      { "term": "amulet", "context": "spiritual fraud", "language": "en" },
+      { "term": "potion", "context": "spiritual fraud", "language": "en" }
+    ]
+  },
+
+  "jobFraudSignals": {
+    "high": [
+      { "term": "guaranteed job", "context": "job scam signal", "language": "en" },
+      { "term": "emprego garantido", "context": "sinal de golpe de emprego", "language": "pt" },
+      { "term": "100% guaranteed job", "context": "job scam signal", "language": "en" },
+      { "term": "salary in advance", "context": "job scam signal", "language": "en" },
+      { "term": "salário adiantado", "context": "sinal de golpe de emprego", "language": "pt" },
+      { "term": "WFH cleaner", "context": "impossible WFH job", "language": "en" },
+      { "term": "WFH driver", "context": "impossible WFH job", "language": "en" },
+      { "term": "WFH cook", "context": "impossible WFH job", "language": "en" },
+      { "term": "WFH nurse", "context": "impossible WFH job", "language": "en" },
+      { "term": "packing products from home", "context": "impossible WFH job", "language": "en" },
+      { "term": "no experience necessary", "context": "job scam signal (context)", "language": "en" },
+      { "term": "Make money watching videos", "context": "get rich quick job", "language": "en" },
+      { "term": "Earn money just by", "context": "get rich quick job", "language": "en" }
+    ]
+  },
+
+  "deceptiveJobCompanies": {
+    "high": [
+      { "term": "Temu", "context": "deceptive if not verified page", "language": "en" },
+      { "term": "Shein", "context": "deceptive if not verified page", "language": "en" },
+      { "term": "Walmart", "context": "deceptive if not verified page", "language": "en" },
+      { "term": "Shopee", "context": "deceptive if not verified page", "language": "en" }
+    ]
+  },
+
+  "misleadingHealthSignals": {
+    "sensationalist": {
+      "critical": [
+        { "term": "miracle cure", "context": "sensationalist health", "language": "en" },
+        { "term": "cura milagrosa", "context": "saúde sensacionalista", "language": "pt" },
+        { "term": "secret cure", "context": "sensationalist health", "language": "en" },
+        { "term": "cura secreta", "context": "saúde sensacionalista", "language": "pt" },
+        { "term": "doctors don't want you to know", "context": "sensationalist health", "language": "en" },
+        { "term": "médicos não querem que você saiba", "context": "saúde sensacionalista", "language": "pt" },
+        { "term": "100% cure", "context": "sensationalist health", "language": "en" },
+        { "term": "guaranteed cure", "context": "sensationalist health", "language": "en" },
+        { "term": "cura garantida", "context": "saúde sensacionalista", "language": "pt" },
+        { "term": "eliminate disease", "context": "sensationalist health", "language": "en" },
+        { "term": "shocking secret", "context": "sensationalist health", "language": "en" },
+        { "term": "amazing discovery", "context": "sensationalist health", "language": "en" },
+        { "term": "hidden truth", "context": "sensationalist health", "language": "en" },
+        { "term": "revealed secret", "context": "sensationalist health", "language": "en" }
+      ]
+    },
+    "lifeThreatening": {
+      "high": [
+        { "term": "cure diabetes", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "curar diabetes", "context": "alegação de cura fatal", "language": "pt" },
+        { "term": "cure cancer", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "curar câncer", "context": "alegação de cura fatal", "language": "pt" },
+        { "term": "cure HIV", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "cure autism", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "cure Alzheimer", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "cure Parkinson", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "cure herpes", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "cure psoriasis", "context": "life-threatening cure claim", "language": "en" },
+        { "term": "cure ALS", "context": "life-threatening cure claim", "language": "en" }
+      ]
+    },
+    "weightLoss": {
+      "high": [
+        { "term": "lose X lbs/week", "context": "specific weight loss claim", "language": "en" },
+        { "term": "perder X kg/semana", "context": "alegação específica de perda de peso", "language": "pt" },
+        { "term": "lose X pounds in X days", "context": "specific weight loss claim", "language": "en" },
+        { "term": "lost X inches in X days", "context": "specific weight loss claim", "language": "en" }
+      ]
+    }
+  },
+
+  "loanFraudSignals": {
+    "high": [
+      { "term": "guaranteed loan", "context": "loan scam signal", "language": "en" },
+      { "term": "empréstimo garantido", "context": "sinal de golpe de empréstimo", "language": "pt" },
+      { "term": "loan approval guaranteed", "context": "loan scam signal", "language": "en" },
+      { "term": "no credit check", "context": "loan scam signal", "language": "en" },
+      { "term": "sem consulta de crédito", "context": "sinal de golpe de empréstimo", "language": "pt" },
+      { "term": "no collateral needed", "context": "loan scam signal", "language": "en" },
+      { "term": "advance fee for loan", "context": "loan scam signal", "language": "en" },
+      { "term": "loan forgiveness", "context": "loan scam signal (context)", "language": "en" },
+      { "term": "immediate relief", "context": "loan scam signal (context)", "language": "en" }
+    ]
+  },
+
+  "cheatingProductSignals": {
+    "high": [
+      { "term": "exam proxy", "context": "cheating service", "language": "en" },
+      { "term": "test-taking service", "context": "cheating service", "language": "en" },
+      { "term": "take your exam", "context": "cheating service", "language": "en" },
+      { "term": "fazer sua prova", "context": "serviço de trapaça", "language": "pt" },
+      { "term": "leaked exam", "context": "cheating - future exams", "language": "en" },
+      { "term": "prova vazada", "context": "trapaça - provas futuras", "language": "pt" },
+      { "term": "upcoming exam answers", "context": "cheating - future exams", "language": "en" },
+      { "term": "pass drug test", "context": "cheating product", "language": "en" },
+      { "term": "synthetic urine", "context": "cheating product", "language": "en" },
+      { "term": "thesis writing service", "context": "academic cheating", "language": "en" },
+      { "term": "essay writing service", "context": "academic cheating", "language": "en" },
+      { "term": "grade alteration", "context": "academic fraud", "language": "en" }
+    ]
+  },
+
+  "emojiSignals": {
+    "money": [
+      { "emoji": "🤑", "meaning": "money face - financial context" },
+      { "emoji": "💵", "meaning": "dollar bill - financial context" },
+      { "emoji": "💶", "meaning": "euro bill - financial context" },
+      { "emoji": "💸", "meaning": "money with wings - financial context" },
+      { "emoji": "💷", "meaning": "pound bill - financial context" },
+      { "emoji": "💴", "meaning": "yen bill - financial context" },
+      { "emoji": "💰", "meaning": "money bag - financial context" },
+      { "emoji": "💲", "meaning": "dollar sign - financial context" }
+    ],
+    "romance": [
+      { "emoji": "🥰", "meaning": "smiling with hearts - romance context" },
+      { "emoji": "😘", "meaning": "kiss face - romance context" },
+      { "emoji": "💝", "meaning": "heart with ribbon - romance context" },
+      { "emoji": "💏", "meaning": "couple kissing - romance context" },
+      { "emoji": "🔥", "meaning": "fire - hot/romance context" },
+      { "emoji": "🎁", "meaning": "gift - romance/scam context" },
+      { "emoji": "❤️", "meaning": "red heart - romance context" },
+      { "emoji": "🔞", "meaning": "no minors - adult romance context" }
+    ],
+    "contact": [
+      { "emoji": "📲", "meaning": "mobile phone - contact request" },
+      { "emoji": "📤", "meaning": "outbox - contact request" },
+      { "emoji": "📩", "meaning": "envelope with arrow - contact request" }
+    ]
+  },
+
+  "documentFraudTerms": {
+    "authenticity": {
+      "high": [
+        { "term": "100% original", "context": "fake authenticity claim", "language": "en" },
+        { "term": "100% authentic", "context": "fake authenticity claim", "language": "en" },
+        { "term": "real and registered", "context": "fake authenticity claim", "language": "en" },
+        { "term": "registered from database", "context": "fake authenticity claim", "language": "en" },
+        { "term": "valid & secure", "context": "fake authenticity claim", "language": "en" },
+        { "term": "scannable", "context": "fake document claim", "language": "en" },
+        { "term": "escaneável", "context": "alegação de documento falso", "language": "pt" },
+        { "term": "pass verification", "context": "fake document claim", "language": "en" }
+      ]
+    },
+    "production": {
+      "high": [
+        { "term": "produce documents", "context": "document fraud", "language": "en" },
+        { "term": "produzir documentos", "context": "fraude de documentos", "language": "pt" },
+        { "term": "create documents", "context": "document fraud", "language": "en" },
+        { "term": "criar documentos", "context": "fraude de documentos", "language": "pt" },
+        { "term": "make documents", "context": "document fraud", "language": "en" },
+        { "term": "edit documents", "context": "document fraud", "language": "en" },
+        { "term": "anyone needs documents", "context": "document fraud", "language": "en" }
+      ]
+    },
+    "bypass": {
+      "high": [
+        { "term": "without exam", "context": "bypass requirement", "language": "en" },
+        { "term": "sem exame", "context": "burlar requisito", "language": "pt" },
+        { "term": "without application", "context": "bypass requirement", "language": "en" },
+        { "term": "without attending", "context": "bypass requirement", "language": "en" },
+        { "term": "reinstate license", "context": "license fraud", "language": "en" },
+        { "term": "suspended license", "context": "license fraud", "language": "en" },
+        { "term": "revoked license", "context": "license fraud", "language": "en" }
+      ]
+    }
+  },
+
+  "giveawayFraudSignals": {
+    "high": [
+      { "term": "claim your prize", "context": "giveaway scam", "language": "en" },
+      { "term": "reivindique seu prêmio", "context": "golpe de sorteio", "language": "pt" },
+      { "term": "you've been selected", "context": "giveaway scam", "language": "en" },
+      { "term": "você foi selecionado", "context": "golpe de sorteio", "language": "pt" },
+      { "term": "congratulations you won", "context": "giveaway scam", "language": "en" },
+      { "term": "parabéns você ganhou", "context": "golpe de sorteio", "language": "pt" },
+      { "term": "claim within 24 hours", "context": "urgency - giveaway scam", "language": "en" },
+      { "term": "offer expires", "context": "urgency - giveaway scam", "language": "en" },
+      { "term": "register to claim", "context": "giveaway scam", "language": "en" }
+    ]
+  },
+
+  "debtReliefFraudSignals": {
+    "high": [
+      { "term": "eliminate debt", "context": "debt relief scam", "language": "en" },
+      { "term": "eliminar dívida", "context": "golpe de alívio de dívida", "language": "pt" },
+      { "term": "delete debt", "context": "debt relief scam", "language": "en" },
+      { "term": "stop all collections", "context": "debt relief scam", "language": "en" },
+      { "term": "new credit identity", "context": "credit repair scam", "language": "en" },
+      { "term": "nova identidade de crédito", "context": "golpe de reparo de crédito", "language": "pt" },
+      { "term": "remove from credit report", "context": "credit repair scam", "language": "en" },
+      { "term": "new government program debt", "context": "debt relief scam", "language": "en" }
+    ]
+  },
+
+  "coldStartPhrases": {
+    "mid": [
+      { "term": "Nice to meet you", "context": "cold start - scam signal", "language": "en" },
+      { "term": "Prazer em conhecer", "context": "início frio - sinal de golpe", "language": "pt" },
+      { "term": "My name is", "context": "cold start - scam signal", "language": "en" },
+      { "term": "Meu nome é", "context": "início frio - sinal de golpe", "language": "pt" },
+      { "term": "Thank you for accepting", "context": "cold start - scam signal", "language": "en" },
+      { "term": "Obrigado por aceitar", "context": "início frio - sinal de golpe", "language": "pt" },
+      { "term": "Where are you from", "context": "cold start - scam signal", "language": "en" }
+    ]
+  },
+
+  "platformChangeRequests": {
+    "mid": [
+      { "term": "message me on WhatsApp", "context": "platform change - scam signal", "language": "en" },
+      { "term": "me mande no WhatsApp", "context": "mudança de plataforma - sinal de golpe", "language": "pt" },
+      { "term": "contact on Telegram", "context": "platform change - scam signal", "language": "en" },
+      { "term": "move to Skype", "context": "platform change - scam signal", "language": "en" },
+      { "term": "talk on Hangout", "context": "platform change - scam signal", "language": "en" }
+    ]
+  }
+}

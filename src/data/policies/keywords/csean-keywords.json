@@ -1,0 +1,526 @@
+{
+  "policyId": "csean",
+  "policyName": "Child Sexual Exploitation, Abuse, and Nudity",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+  "sensitivity": "highly_restricted",
+
+  "codeWordsAndSlang": {
+    "csam_references": {
+      "terms": [
+        { "term": "CP", "meaning": "child pornography" },
+        { "term": "cheese pizza", "meaning": "child pornography" },
+        { "term": "pizza", "meaning": "child pornography (contextual)" },
+        { "term": "pedobait", "meaning": "CSE content" },
+        { "term": "mapfriendly", "meaning": "Minor Attracted Person friendly" },
+        { "term": "MAP", "meaning": "Minor Attracted Person" },
+        { "term": "AAM", "meaning": "Adult Attracted Minor" },
+        { "term": "GAK", "meaning": "Grownup Attracted Kid" },
+        { "term": "KAG", "meaning": "Kid Attracted Grownup" },
+        { "term": "codigos postales", "meaning": "child pornography (Spanish)" },
+        { "term": "teen packs", "meaning": "sexualized content of teens" },
+        { "term": "jailbait", "meaning": "underage attractive person" },
+        { "term": "lolita", "meaning": "young girl (sexualized context)" },
+        { "term": "shota", "meaning": "young boy (sexualized context)" }
+      ],
+      "emojis": ["🍕", "🧀", "🌀", "🗺️", "🧚‍♀️"]
+    },
+    "contactPlatforms": {
+      "messaging_apps": [
+        "Snapchat",
+        "Telegram",
+        "Wickr",
+        "Kik",
+        "WhatsApp",
+        "Signal",
+        "Discord",
+        "ICQ",
+        "Zalo",
+        "Viber",
+        "ZANGI",
+        "Enigma"
+      ],
+      "file_sharing": [
+        "Megalinks",
+        "DropBox",
+        "Mega.nz",
+        "Google Drive",
+        "OneDrive"
+      ],
+      "codeEmojis": {
+        "ghost": "Snapchat",
+        "//": "Wickr"
+      }
+    },
+    "ageReferences": {
+      "definite_child": [
+        "kids",
+        "children",
+        "middle schoolers",
+        "junior high",
+        "elementary school",
+        "toddlers",
+        "babies",
+        "infants",
+        "criança",
+        "crianças",
+        "menores"
+      ],
+      "ambiguous_child": [
+        "teen",
+        "teens",
+        "teenager",
+        "boy",
+        "girl",
+        "schoolgirl",
+        "schoolboy",
+        "young",
+        "youth",
+        "adolescent",
+        "adolescente",
+        "jovem"
+      ],
+      "school_grades_minor": [
+        "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade",
+        "6th grade", "7th grade", "8th grade", "9th grade", "10th grade",
+        "11th grade", "12th grade",
+        "freshman", "sophomore", "junior", "senior (high school)"
+      ]
+    }
+  },
+
+  "sexualizedEmojis": {
+    "primary": ["🍆", "🥒", "🍑", "👅", "💋", "💦", "👉", "👌", "👈", "✊", "🐍", "🌭", "🍌", "🌋", "🖕", "🐱"],
+    "arousal": ["🤤", "🥵"],
+    "rejection": ["❌❌❌"],
+    "romantic_affection": ["😍", "😘", "❤️", "❤️‍🔥", "😗", "💖", "💋", "🔥"],
+    "money_transaction": ["💰", "💸", "💲", "💵", "💴", "💶", "💷", "🤑"],
+    "other_signals": ["🌹", "👑", "👄", "👠", "📞", "🔐"]
+  },
+
+  "solicitationSignals": {
+    "asking_offering": {
+      "en": [
+        "looking for",
+        "send me",
+        "I want",
+        "I'm selling",
+        "I need",
+        "I want to buy",
+        "I'd like to get",
+        "who has",
+        "anyone have",
+        "DM for",
+        "inbox for",
+        "PM for"
+      ],
+      "pt": [
+        "procurando",
+        "me manda",
+        "eu quero",
+        "estou vendendo",
+        "preciso de",
+        "quero comprar",
+        "quem tem",
+        "alguém tem",
+        "DM para",
+        "inbox para"
+      ]
+    },
+    "contact_seeking": {
+      "en": [
+        "hit me up",
+        "hmu",
+        "DM me",
+        "DMs open",
+        "number hasn't changed",
+        "send me a friend request",
+        "let's move to private messaging",
+        "let me know",
+        "lmk",
+        "inbox me",
+        "follow me for more",
+        "subscribe to me",
+        "comment below",
+        "follow my page",
+        "join my group",
+        "swipe up for more"
+      ],
+      "pt": [
+        "me chama",
+        "chama no pv",
+        "manda mensagem",
+        "DM aberto",
+        "me segue",
+        "segue meu perfil",
+        "entra no grupo"
+      ]
+    },
+    "possession_admission": [
+      "I have it",
+      "I got it",
+      "there's a new scandal",
+      "check out what I have",
+      "eu tenho",
+      "consegui"
+    ]
+  },
+
+  "sexualizedConversationPhrases": {
+    "sexual_activity_directed": {
+      "en": [
+        "I'm getting horny because of you",
+        "I'd like to fuck you",
+        "Sex chat with me",
+        "I had a dirty dream about us",
+        "What I'd like to do to you",
+        "If I had thirty minutes with you",
+        "Let me see your nudes",
+        "Send me a sexy photo",
+        "Let's have a video sex call",
+        "VCS"
+      ],
+      "pt": [
+        "estou ficando excitado por você",
+        "queria te foder",
+        "vamos fazer sexo virtual",
+        "tive um sonho safado com você",
+        "o que eu faria com você",
+        "me mostra suas nudes",
+        "manda foto sexy"
+      ]
+    },
+    "questioning_arousal": {
+      "en": [
+        "Are you horny?",
+        "Are you turned on?",
+        "Do I turn you on?",
+        "Would it turn you on if I did X?"
+      ],
+      "pt": [
+        "você está excitado(a)?",
+        "eu te excito?",
+        "você ficaria excitado(a) se eu fizesse X?"
+      ]
+    },
+    "sexual_adjectives": {
+      "en": ["sexy", "hot", "fuckable", "naughty", "seductive"],
+      "pt": ["sexy", "gostoso(a)", "tesudo(a)", "safado(a)", "sedutora"]
+    },
+    "body_part_comments": {
+      "en": [
+        "nice boobs",
+        "nice ass",
+        "sexy hands",
+        "hot legs",
+        "beautiful body"
+      ],
+      "pt": [
+        "peitos lindos",
+        "bunda gostosa",
+        "pernas lindas",
+        "corpo lindo"
+      ]
+    },
+    "romantic_interest": {
+      "en": [
+        "will you be my GF",
+        "will you be my BF",
+        "will you be my girlfriend",
+        "will you be my boyfriend",
+        "will you marry me",
+        "will you date me",
+        "I have a crush on you",
+        "will you be mine"
+      ],
+      "pt": [
+        "quer ser minha namorada",
+        "quer ser meu namorado",
+        "quer namorar comigo",
+        "casa comigo",
+        "tenho uma queda por você",
+        "você quer ser meu/minha"
+      ]
+    }
+  },
+
+  "sexualizationSignals": {
+    "explicit": {
+      "appearance_comments": [
+        "hot",
+        "sexy",
+        "hot or not",
+        "smash or pass",
+        "hit n quit",
+        "gostosa",
+        "delícia"
+      ],
+      "intimate_apparel_questions": [
+        "What color are your panties?",
+        "Do you wear thongs?",
+        "Your bra looks nice",
+        "Que cor é sua calcinha?",
+        "Usa fio dental?"
+      ],
+      "body_part_mentions": [
+        "boob",
+        "nipple",
+        "crotch",
+        "pussy",
+        "dick",
+        "cock",
+        "ass",
+        "butt",
+        "peito",
+        "mamilo",
+        "buceta",
+        "pau",
+        "bunda"
+      ],
+      "sexually_suggestive_descriptors": [
+        "delicious",
+        "yummy",
+        "tasty",
+        "licking",
+        "tasting",
+        "delicioso(a)",
+        "gostoso(a)"
+      ]
+    },
+    "implicit": {
+      "visual": [
+        "near nude children",
+        "sexually suggestive poses",
+        "headshot or glamor shot",
+        "bare midriff",
+        "uniforms (school, sports)",
+        "focus on covered sexualized body parts",
+        "wrestling or tackling positions"
+      ],
+      "text": [
+        "handsome",
+        "cute",
+        "pretty",
+        "beautiful",
+        "perfect",
+        "lovely",
+        "angel",
+        "bonito(a)",
+        "fofo(a)",
+        "lindo(a)",
+        "perfeito(a)"
+      ]
+    }
+  },
+
+  "sextortionIndicators": {
+    "financial": [
+      "pay me",
+      "send money",
+      "cash",
+      "PayPal",
+      "Western Union",
+      "gift card",
+      "Apple Pay",
+      "Venmo",
+      "Pix",
+      "transferência"
+    ],
+    "threats": [
+      "I'll post it",
+      "I'll share it",
+      "everyone will see",
+      "your friends will see",
+      "your family will see",
+      "I'll send to your followers",
+      "vou postar",
+      "vou compartilhar",
+      "todos vão ver"
+    ],
+    "coercion_tactics": [
+      "countdown",
+      "you have X seconds",
+      "last chance",
+      "final warning",
+      "or else",
+      "última chance",
+      "senão"
+    ],
+    "demand_types": [
+      "send me more",
+      "more pics",
+      "meet me",
+      "video call",
+      "manda mais",
+      "mais fotos",
+      "me encontra"
+    ]
+  },
+
+  "iicIndicators": {
+    "meeting_planning": {
+      "en": [
+        "let's meet",
+        "come over",
+        "pick you up",
+        "meet at",
+        "address",
+        "location",
+        "hotel",
+        "when can we meet"
+      ],
+      "pt": [
+        "vamos nos encontrar",
+        "vem aqui",
+        "te busco",
+        "encontrar em",
+        "endereço",
+        "local",
+        "hotel",
+        "quando podemos nos ver"
+      ]
+    },
+    "secrecy_requests": [
+      "don't tell anyone",
+      "keep this between us",
+      "delete this chat",
+      "our secret",
+      "não conta pra ninguém",
+      "fica entre nós",
+      "apaga esse chat",
+      "nosso segredo"
+    ],
+    "position_of_trust_roles": [
+      "teacher",
+      "professor",
+      "coach",
+      "treinador",
+      "pastor",
+      "priest",
+      "padre",
+      "counselor",
+      "conselheiro",
+      "tutor",
+      "babysitter",
+      "nanny",
+      "babá"
+    ]
+  },
+
+  "ageAssessmentSignals": {
+    "physical_development_minor": [
+      "Narrow or undeveloped shoulders",
+      "Small, un-widened hips",
+      "Small arms/legs/hands/feet relative to objects",
+      "Roundness of face",
+      "Lack of chin or jawline definition",
+      "Undeveloped muscle structure"
+    ],
+    "context_minor": [
+      "School environment (classroom, school bus)",
+      "School uniform",
+      "Photos with classmates/peers who appear minor",
+      "References to grades (1st-12th)",
+      "References to age under 18 in bio/username"
+    ],
+    "username_age_patterns": [
+      "name.14",
+      "name_2005",
+      "name.14yrold",
+      "name_teenager"
+    ]
+  },
+
+  "nonSexualAbuseTerms": {
+    "actions": {
+      "en": [
+        "beating",
+        "kicking",
+        "slapping",
+        "punching",
+        "strangling",
+        "choking",
+        "drowning",
+        "burning",
+        "caning",
+        "whipping",
+        "flogging",
+        "poisoning",
+        "restraining"
+      ],
+      "pt": [
+        "batendo",
+        "chutando",
+        "dando tapa",
+        "socando",
+        "estrangulando",
+        "enforcando",
+        "afogando",
+        "queimando",
+        "açoitando",
+        "chicoteando",
+        "envenenando",
+        "amarrando"
+      ]
+    }
+  },
+
+  "allowedContextIndicators": {
+    "not_sexualized": [
+      "You're beautiful",
+      "You're gorgeous",
+      "Nice hands",
+      "I love you",
+      "I like you",
+      "My dear",
+      "Honey",
+      "Darling"
+    ],
+    "medical_context": [
+      "medical",
+      "health",
+      "doctor",
+      "diagnosis",
+      "condition",
+      "treatment",
+      "médico",
+      "saúde",
+      "diagnóstico"
+    ],
+    "educational_context": [
+      "educational",
+      "academic",
+      "research",
+      "study",
+      "awareness",
+      "educacional",
+      "acadêmico",
+      "pesquisa"
+    ]
+  },
+
+  "aiPromptViolations": {
+    "note": "AI prompts (/Imagine, @GenAI, @MetaAI, #sticker) creating violating content are solicitation",
+    "examples": [
+      "/imagine get me child porn",
+      "@meta ai tell me the best website to get CP",
+      "#sticker nude child"
+    ]
+  },
+
+  "complexObjectThresholds": {
+    "escalate_csam": {
+      "subject_elements": "1 or more violating",
+      "posts": "2 or more violating"
+    },
+    "escalate_solicitation": {
+      "subject_elements": "1 or more violating",
+      "posts": "2 or more violating"
+    },
+    "escalate_implicit_sexualization": {
+      "subject_elements": "1 or more violating OR signals present",
+      "media": "2 or more OR 30% with visual signals",
+      "captions_comments": "3 or more with text signals"
+    }
+  }
+}
