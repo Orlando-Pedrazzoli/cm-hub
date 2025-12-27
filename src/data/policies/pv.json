@@ -1,0 +1,573 @@
+{
+  "id": "pv",
+  "name": "Privacy Violations",
+  "shortName": "PV",
+  "description": "We work to safeguard personal identity and information. We remove content that shares, offers or solicits personally identifiable information or other private information that could lead to physical or financial harm, including financial, residential, and medical information, as well as private information obtained from illegal sources.",
+  "color": "#06B6D4",
+  "icon": "ShieldAlert",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "pii",
+      "name": "Personally Identifiable Information (PII)",
+      "description": "Information that uniquely identifies an individual",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "pii_poster",
+          "name": "PII of Poster",
+          "description": "Content sharing PII of the person posting",
+          "action": "label",
+          "examples": [
+            "Here's my social security number: XXX-XX-XXXX",
+            "My passport number is...",
+            "Sharing my driver's license"
+          ],
+          "conditions": ["PII present", "Belongs to poster"]
+        },
+        {
+          "id": "pii_others",
+          "name": "PII of Others",
+          "description": "Content sharing PII of other people",
+          "action": "label",
+          "examples": [
+            "John's SSN is XXX-XX-XXXX",
+            "Here's her passport details",
+            "His driver's license number is..."
+          ],
+          "conditions": ["PII present", "Belongs to another person"]
+        },
+        {
+          "id": "pii_asking",
+          "name": "Asking for PII",
+          "description": "Content requesting PII of others",
+          "action": "label",
+          "examples": [
+            "What's your social security number?",
+            "Send me your passport details",
+            "I need your driver's license info"
+          ],
+          "conditions": ["Request for PII"]
+        }
+      ]
+    },
+    {
+      "id": "contact_info",
+      "name": "Personal Contact Information",
+      "description": "Personal phone numbers and email addresses",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "contact_sharing_others",
+          "name": "Sharing Contact Info of Others",
+          "description": "Sharing personal contact information of others without consent",
+          "action": "label",
+          "examples": [
+            "Her phone number is 555-1234",
+            "Contact him at john.doe@email.com",
+            "Here's her personal cell number"
+          ],
+          "conditions": ["Contact info of another person", "Not for charitable/missing persons/business purposes", "No consent established"]
+        },
+        {
+          "id": "contact_sharing_charitable",
+          "name": "Sharing for Charitable/Missing Persons",
+          "description": "Contact info shared for charitable causes, finding missing people/animals, or business contact",
+          "action": "no_action",
+          "examples": [
+            "If you find this missing dog, call 555-1234",
+            "Contact the charity at donations@org.com",
+            "For business inquiries: sales@company.com"
+          ],
+          "conditions": ["Charitable purpose OR missing persons/animals OR business contact", "No indication of non-consent"]
+        },
+        {
+          "id": "contact_public",
+          "name": "Public Contact Information",
+          "description": "Contact information made public by the individual",
+          "action": "no_action",
+          "examples": [
+            "Contact info from public website",
+            "Published business contact"
+          ],
+          "conditions": ["Made public by the individual"]
+        },
+        {
+          "id": "contact_asking_own",
+          "name": "Asking for Own Contact Info",
+          "description": "Asking others for their own contact information",
+          "action": "no_action",
+          "examples": [
+            "Can you give me your phone number?",
+            "What's your email?"
+          ],
+          "conditions": ["Asking for person's own contact info"]
+        },
+        {
+          "id": "contact_asking_others",
+          "name": "Asking for Third Party Contact Info",
+          "description": "Asking for contact information of third parties",
+          "action": "label",
+          "examples": [
+            "What's John's phone number?",
+            "Give me her email address",
+            "I need his contact info"
+          ],
+          "conditions": ["Asking for third party contact info"]
+        }
+      ]
+    },
+    {
+      "id": "residential",
+      "name": "Residential Information",
+      "description": "Private residential addresses and safe house information",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "full_address",
+          "name": "Full Private Residential Address",
+          "description": "Sharing complete private residential addresses including building name or map pins",
+          "action": "label",
+          "examples": [
+            "She lives at 123 Main Street, Apt 4B, City",
+            "His address is [full address with map pin]",
+            "Here's where they live [complete address]"
+          ],
+          "conditions": ["Full residential address", "Not for charitable/missing persons/business", "Not official residence of high-ranking official"]
+        },
+        {
+          "id": "full_address_charitable",
+          "name": "Full Address for Charitable/Missing Persons",
+          "description": "Full address shared for charitable causes or finding missing people/animals",
+          "action": "no_action",
+          "conditions": ["Charitable purpose OR missing persons/animals OR business"]
+        },
+        {
+          "id": "full_address_official",
+          "name": "Official Residence of Public Official",
+          "description": "Official residence or embassy of high-ranking public official",
+          "action": "no_action",
+          "conditions": ["Official publicly-owned residence", "High-ranking public official"]
+        },
+        {
+          "id": "partial_address_protest",
+          "name": "Partial Address in Protest/Surveillance Context",
+          "description": "Partial address shared in context of organizing protests or surveillance",
+          "action": "label",
+          "examples": [
+            "Let's protest at their house on Oak Street",
+            "They live in [neighborhood], let's go there",
+            "[Map pin] - meet here to watch their house"
+          ],
+          "conditions": ["Protest/surveillance context", "Street OR city<50k OR postal code OR map pin"]
+        },
+        {
+          "id": "residence_imagery",
+          "name": "Imagery of Private Residence",
+          "description": "External imagery of private residence with identifying information when resident objects",
+          "action": "label",
+          "conditions": [
+            "Location identified (street/city<50k/postal/map pin)",
+            "Single-family home OR unit number identified",
+            "Resident identified",
+            "Resident objects",
+            "Not focus of news story (unless protest context)"
+          ]
+        },
+        {
+          "id": "asking_residential",
+          "name": "Asking for Residential Information",
+          "description": "Requesting private residential information of others",
+          "action": "label",
+          "examples": [
+            "Where does she live?",
+            "What's his home address?",
+            "Can someone tell me where they live?"
+          ],
+          "conditions": ["Request for residential info", "Not official residence of high-ranking official"]
+        },
+        {
+          "id": "safe_house",
+          "name": "Safe House Information",
+          "description": "Exposing information about safe houses",
+          "action": "label",
+          "examples": [
+            "The women's shelter is at [address]",
+            "Here's an image of the safe house",
+            "The refuge is in [neighborhood]",
+            "The residents of the safe house are [names]"
+          ],
+          "conditions": ["Safe house address/images/identifiable location/resident identity", "Safe house not actively promoting its facility"]
+        }
+      ]
+    },
+    {
+      "id": "financial",
+      "name": "Financial Information",
+      "description": "Personal and organizational financial information",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "personal_financial",
+          "name": "Personal Financial Information",
+          "description": "Non-public financial records, bank accounts with security codes, payment info with login details, credit/debit card info with security codes",
+          "action": "label",
+          "examples": [
+            "His bank account is XXXX with PIN 1234",
+            "Her credit card number is XXXX exp XX/XX CVV XXX",
+            "Here are their non-public financial records",
+            "PayPal login: email + password"
+          ],
+          "conditions": ["Personal financial info", "Non-public", "Contains security codes/PINs/passwords"]
+        },
+        {
+          "id": "business_financial",
+          "name": "Business Financial Information",
+          "description": "Non-public financial information of business organizations",
+          "action": "label",
+          "examples": [
+            "Company's internal financial records",
+            "Corporate bank account with PIN",
+            "Non-public business financial statements"
+          ],
+          "conditions": ["Business financial info", "Non-public", "Not shared by organization itself", "Not through public reporting requirements"]
+        }
+      ]
+    },
+    {
+      "id": "medical",
+      "name": "Medical Information",
+      "description": "Medical, psychological, biometric, or genetic/hereditary information from official sources",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "medical_records",
+          "name": "Medical Records of Others",
+          "description": "Sharing or asking for medical information from official medical records",
+          "action": "label",
+          "examples": [
+            "Here's John's medical records showing his HIV status",
+            "Her psychiatric evaluation says...",
+            "His genetic test results show...",
+            "Biometric data from medical records"
+          ],
+          "conditions": ["Medical/psychological/biometric/genetic info", "From medical records or official documents", "About others"]
+        }
+      ]
+    },
+    {
+      "id": "hacked_sources",
+      "name": "Information from Hacked Sources",
+      "description": "Content from hacked sources regardless of target being public or private figure",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "hacked_content",
+          "name": "Hacked Content",
+          "description": "Content claimed or confirmed to come from hacked sources",
+          "action": "label",
+          "examples": [
+            "Here's data from the [company] hack",
+            "Leaked from hacked servers",
+            "Got this from hacking their account"
+          ],
+          "conditions": ["Poster claims content is hacked OR confirmed from hacked source"]
+        }
+      ]
+    },
+    {
+      "id": "personal_attributes",
+      "name": "Personal Attributes",
+      "description": "Sharing, asking for, or implying knowledge of personal attributes",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "sharing_attributes",
+          "name": "Sharing/Asking for Personal Attributes",
+          "description": "Content sharing or asking for personal attributes of a user or user's family (on-platform only)",
+          "action": "label",
+          "examples": [
+            "John is HIV positive",
+            "She's a convicted felon",
+            "What's his sexual orientation?",
+            "Is she Muslim?"
+          ],
+          "conditions": ["On-platform content", "Shares or asks for personal attributes", "About specific user/family"]
+        },
+        {
+          "id": "mentioning_attributes",
+          "name": "Mentioning/Referencing Attributes",
+          "description": "Content mentioning or referencing personal attributes without sharing, asking for, or implying knowledge",
+          "action": "no_action",
+          "examples": [
+            "Meet seniors",
+            "Gay dating online",
+            "Girls are the future",
+            "Services to clean up criminal records"
+          ],
+          "conditions": ["Generic mention", "Not about specific user", "Not implying knowledge"]
+        }
+      ]
+    },
+    {
+      "id": "implying_knowledge",
+      "name": "Implying Knowledge of Private Information",
+      "description": "Content implying knowledge of private information or personal attributes (on-platform only)",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "implying_pii",
+          "name": "Implying Knowledge of PII",
+          "description": "Content implying knowledge of user's PII",
+          "action": "label",
+          "examples": [
+            "Your credit card number ending in 7528 has been compromised",
+            "Does your social security number begin with 638?"
+          ],
+          "conditions": ["Implies possession of PII", "Targets specific user"]
+        },
+        {
+          "id": "implying_financial",
+          "name": "Implying Knowledge of Financial Info",
+          "description": "Content implying knowledge of user's financial information or vulnerable financial status",
+          "action": "label",
+          "examples": [
+            "Welfare checks not covering your expenses?",
+            "You are bankrupt... but don't worry",
+            "Rebuild your low credit score today!",
+            "Are you unemployed and in need of cash?"
+          ],
+          "conditions": ["Implies knowledge of financial status", "Targets specific user"]
+        },
+        {
+          "id": "implying_medical",
+          "name": "Implying Knowledge of Medical Info",
+          "description": "Content implying knowledge of user's medical information from official records",
+          "action": "label",
+          "examples": [
+            "Do you have Alzheimer's?",
+            "Treat your ADHD today!",
+            "Use this medication to treat symptoms of your arthritis",
+            "Don't skip this video if you're suffering from depression"
+          ],
+          "conditions": ["Implies knowledge of medical condition", "Targets specific user"]
+        },
+        {
+          "id": "implying_attributes",
+          "name": "Implying Knowledge of Personal Attributes",
+          "description": "Content implying knowledge of user's personal attributes",
+          "action": "label",
+          "examples": [
+            "Are you between 18-25 years of age?",
+            "Are you LGBT?",
+            "Are you a man living in...?",
+            "Criminal record holding you back?",
+            "Are you Christian?",
+            "If your name is Peter, then you are eligible"
+          ],
+          "conditions": ["Implies knowledge of personal attribute", "Targets specific user"]
+        },
+        {
+          "id": "implying_voting",
+          "name": "Implying Knowledge of Voting Status",
+          "description": "Content implying knowledge of user's voting history or registration",
+          "action": "label",
+          "examples": [
+            "Your vote has not been counted",
+            "Records show you haven't requested a ballot",
+            "Official records show your voter registration is incomplete",
+            "Public data indicates you voted in 2018, but not 2015"
+          ],
+          "conditions": ["Implies knowledge of voting status", "Targets specific user"]
+        },
+        {
+          "id": "health_psa",
+          "name": "Health-Related PSA",
+          "description": "Health PSA with direct/conditional questions (allowed exception)",
+          "action": "no_action",
+          "examples": [
+            "Are you suffering from cancer?",
+            "Want to understand your cancer diagnosis?",
+            "If you're worried about your symptoms, go see your doctor"
+          ],
+          "conditions": ["Health-related PSA", "Raises awareness/educates", "Direct or conditional question format"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "hacked_sources",
+      "label": "Privacy > Information from Hacked Sources",
+      "path": ["Privacy Violations", "Information from Hacked Sources"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "pii",
+      "label": "Privacy > PII, Contact or Residential Information",
+      "path": ["Privacy Violations", "PII/Contact/Residential"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "financial",
+      "label": "Privacy > Financial Information",
+      "path": ["Privacy Violations", "Financial Information"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "medical",
+      "label": "Privacy > Medical Information",
+      "path": ["Privacy Violations", "Medical Information"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "personal_attributes",
+      "label": "Privacy > Personal Attributes",
+      "path": ["Privacy Violations", "Personal Attributes"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 5
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "publicly_available",
+      "name": "Publicly Available Information",
+      "description": "Information already publicly available through legitimate sources (5+ news outlets, court records, press releases, professional licenses, sex offender registries). Does NOT include data broker sites, deeds, real estate listings, police reports",
+      "appliesTo": ["pii", "contact_info", "financial", "medical"],
+      "action": "no_action",
+      "note": "Does NOT apply to residential information policy"
+    },
+    {
+      "id": "private_messages",
+      "name": "Private Messages",
+      "description": "Sharing or asking for private information in private messages",
+      "appliesTo": ["pii", "contact_info", "residential", "financial", "medical"],
+      "action": "no_action"
+    },
+    {
+      "id": "fictional_characters",
+      "name": "Fictional Characters",
+      "description": "Private information belonging to fictional characters from books, movies, etc.",
+      "appliesTo": ["pii", "contact_info", "residential", "financial", "medical"],
+      "action": "no_action"
+    },
+    {
+      "id": "charitable_missing",
+      "name": "Charitable Causes / Missing Persons",
+      "description": "Contact info or addresses shared to promote charitable causes, facilitate finding missing people/animals, or contact business/service providers",
+      "appliesTo": ["contact_info", "residential"],
+      "action": "no_action"
+    },
+    {
+      "id": "official_residence",
+      "name": "Official Residence of High-Ranking Public Official",
+      "description": "Official publicly-owned residences provided to heads of state, government ministers, governors, mayors, ambassadors, consuls, and other high-ranking officials",
+      "appliesTo": ["residential"],
+      "action": "no_action"
+    },
+    {
+      "id": "business_financial_public",
+      "name": "Public Business Financial Information",
+      "description": "Business financial info shared by organization itself or through public reporting requirements (stock exchange filings, regulatory agencies)",
+      "appliesTo": ["financial"],
+      "action": "no_action"
+    },
+    {
+      "id": "generic_attribute_mentions",
+      "name": "Generic Attribute Mentions",
+      "description": "Mentioning attributes without implying knowledge of specific users (e.g., 'Meet seniors', 'Gay dating online')",
+      "appliesTo": ["personal_attributes", "implying_knowledge"],
+      "action": "no_action"
+    },
+    {
+      "id": "health_psa",
+      "name": "Health-Related PSA",
+      "description": "Public Service Announcements about health issues using direct or conditional questions",
+      "appliesTo": ["implying_knowledge"],
+      "action": "no_action"
+    },
+    {
+      "id": "voting_encouragement",
+      "name": "Voting Encouragement",
+      "description": "Generic voting encouragement without implying knowledge of specific user's voting status",
+      "appliesTo": ["implying_knowledge"],
+      "action": "no_action",
+      "examples": ["Are you ready to vote?", "Find your polling place", "Do your part, vote early!"]
+    },
+    {
+      "id": "financial_education",
+      "name": "Financial Educational Content",
+      "description": "Generic financial education without implying knowledge of user's financial status",
+      "appliesTo": ["implying_knowledge"],
+      "action": "no_action",
+      "examples": ["Check out these welfare resources", "Dealing with bankruptcy?", "Check your credit score"]
+    },
+    {
+      "id": "not_pii_items",
+      "name": "Items Not Considered PII",
+      "description": "Student ID numbers, boarding passes, photos without ID numbers",
+      "appliesTo": ["pii"],
+      "action": "no_action"
+    },
+    {
+      "id": "generic_business_emails",
+      "name": "Generic Business Emails",
+      "description": "Generic company emails (contact@, info@, help@) are not personal contact info",
+      "appliesTo": ["contact_info"],
+      "action": "no_action"
+    },
+    {
+      "id": "news_residence_focus",
+      "name": "Residence as News Story Focus",
+      "description": "Residence depicted because it's focus of news story (event, sale, value, court proceeding) - except protest context",
+      "appliesTo": ["residential"],
+      "action": "no_action"
+    }
+  ],
+
+  "glossary": {
+    "pii": "Personally Identifiable Information - information that uniquely identifies an individual including: national ID numbers, SSN, passport numbers, government IDs, civil registry records, immigration documents, driver's licenses, license plates, digital identity passwords",
+    "personal_contact_info": "Personal phone numbers, personal and work email addresses. Social media handles are NOT personal contact info. Generic company emails (contact@, info@, help@) are NOT personal contact info",
+    "personal_attributes": "Age, criminal record, ethnicity, financial attributes, gender identity, health attributes, membership in trade union, name, race, religious identity, religious affiliation, sexual orientation, voting status",
+    "financial_attributes": "Information describing vulnerable financial status: public benefits/welfare, bankruptcy, bad credit scores, unemployment status",
+    "health_attributes": "Information describing health status including mental health, illnesses, disability, medical conditions",
+    "medical_conditions": "Serious disease, illness, injury, genetic/congenital defect, or biological/psychological condition outside normal age-appropriate variation. Includes miscarriage, stillbirth, pregnancy complications. Does NOT include common cold, sore throat, minor cuts",
+    "safe_house": "Temporary residence offering support to vulnerable people - women's, refugees', witness protection, asylum-seekers' safe houses",
+    "hacked_vs_leaked": "Hacked = intentionally accessed digital data without authorization. Leaked = shared with third party without permission by someone with valid access",
+    "publicly_available": "Info from: 5+ news outlets, organization's own financial disclosures, court records (unless sealed), professional/business licenses, sex offender registries, government press releases. NOT: data brokers, deeds, real estate listings, police reports",
+    "implying_knowledge": "Suggesting or hinting at topics/concepts related to user without explicitly stating - typically with indirect language, hints, implicit cues. In paid content, perceived as advertiser having user information",
+    "criminal_record": "Information about crimes person has allegedly or actually committed",
+    "voting_status": "Voting history, registration status, how/if they voted, voting process (absentee vs polling)",
+    "trade_union": "Legal entity of employees with common interest",
+    "gender_identity": "Person's concept of self as male, female, combination, or neither - can differ from sex assigned at birth",
+    "sexual_orientation": "Sexual identity in relation to gender attracted to: heterosexual, homosexual, bisexual, etc.",
+    "ethnicity": "People identifying with each other based on common ancestral, social, cultural, or national experience",
+    "single_family_home": "Residence with own identifiable front door/gate, OR takes up entire stand-alone building, OR unit singled out as belonging to specific person/family"
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "Follow order of labels in UDT: Hacked Sources > PII/Contact/Residential > Financial > Medical > Personal Attributes",
+    "indicator_requirement": "1 primary indicator + 1 secondary indicator = violating (unless specified otherwise)",
+    "name_face_match": "Required to establish that person is the affected party",
+    "consent_indicators": "Lack of consent: affected person objects OR reports content. Consent: assumption of familiarity, claim of consent on behalf of person",
+    "identity_document_rule": "Violating image needs: identifiable name + ID number (unless ID belongs to public figure or easily identifiable person)",
+    "pii_of_dead": "Still violating - can lead to identity theft",
+    "condemnation_exception": "Does NOT apply to PII - sharing PII can cause harm regardless of intent",
+    "aggregated_info": "Multiple sources aggregated on platform is NOT 'publicly available'",
+    "news_published_info": "Info from non-public sources published by news outlets = publicly available",
+    "residential_city_threshold": "City/neighborhood only counts as identifier if <50,000 residents",
+    "protest_context": "Stricter rules apply - even partial address with any identifier is violating"
+  }
+}

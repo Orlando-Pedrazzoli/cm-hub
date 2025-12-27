@@ -1,0 +1,222 @@
+{
+  "id": "psl",
+  "name": "Profanity and Sexualized Language",
+  "shortName": "PSL",
+  "description": "Profanities are often viewed as culturally impolite, crude, or offensive. Even when used in common or non-sexual contexts, sexually derived or sexualized profanities can be inappropriate, especially for minors. We aim to protect teenagers from exposure to such language while allowing some profanity in limited cases for artistic contexts and other benign usage.",
+  "color": "#8B5CF6",
+  "icon": "MessageCircleWarning",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "sexually_vulgar_language",
+      "name": "Sexually Vulgar Language",
+      "description": "Phrases or words that are anatomically or sexually derived",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "targeting_individuals",
+          "name": "Targeting Identifiable Individuals",
+          "description": "Sexually vulgar language directed at specific identifiable individuals",
+          "action": "information",
+          "examples": [
+            "Suck my dick @username",
+            "Fuck you [person's name]",
+            "You're such a pussy [tagged person]"
+          ],
+          "conditions": ["Sexually vulgar term used", "Directed at identifiable individual"]
+        },
+        {
+          "id": "targeting_protected_characteristics",
+          "name": "Targeting Based on Protected Characteristics",
+          "description": "Sexually vulgar language targeting individuals or groups based on protected characteristics",
+          "action": "information",
+          "examples": [
+            "Fuck all [protected group]",
+            "Those [protected group] are all pussies"
+          ],
+          "conditions": ["Sexually vulgar term used", "Targets protected characteristic group"]
+        },
+        {
+          "id": "sexual_solicitation_context",
+          "name": "Sexual Solicitation/Explicit Context",
+          "description": "Sexually vulgar language used in context of sexual solicitation or when sexually explicit/suggestive",
+          "action": "information",
+          "examples": [
+            "DM me to suck my dick",
+            "Looking for someone to fuck tonight",
+            "Want to see my cock?"
+          ],
+          "conditions": ["Sexually vulgar term", "Sexual solicitation or explicit/suggestive context"]
+        },
+        {
+          "id": "general_context",
+          "name": "Any Other Context",
+          "description": "Sexually vulgar language in general contexts not covered above",
+          "action": "label",
+          "examples": [
+            "This is fucking amazing",
+            "What a dick move",
+            "Holy shit this sucks",
+            "That's some bullshit"
+          ],
+          "conditions": ["Sexually vulgar term present", "Not targeting individuals or protected groups", "Not sexual solicitation"]
+        },
+        {
+          "id": "commercial_music",
+          "name": "Commercial Music",
+          "description": "Sexually vulgar language in commercial music",
+          "action": "no_action",
+          "examples": [
+            "Song lyrics containing profanity",
+            "Music video with explicit language",
+            "Commercial rap/hip-hop with profanity"
+          ],
+          "conditions": ["Commercial music context", "Profanity is part of artistic expression"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "vulgar_targeting_individual",
+      "label": "PSL > Sexually Vulgar > Targeting Individual",
+      "path": ["Profanity and Sexualized Language", "Sexually Vulgar Language", "Targeting Identifiable Individuals"],
+      "action": "information",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "vulgar_targeting_protected",
+      "label": "PSL > Sexually Vulgar > Targeting Protected Characteristics",
+      "path": ["Profanity and Sexualized Language", "Sexually Vulgar Language", "Targeting Protected Characteristics"],
+      "action": "information",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "vulgar_sexual_solicitation",
+      "label": "PSL > Sexually Vulgar > Sexual Solicitation Context",
+      "path": ["Profanity and Sexualized Language", "Sexually Vulgar Language", "Sexual Solicitation Context"],
+      "action": "information",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "vulgar_general",
+      "label": "PSL > Sexually Vulgar > General Context",
+      "path": ["Profanity and Sexualized Language", "Sexually Vulgar Language", "Any Other Context"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 4
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "commercial_music",
+      "name": "Commercial Music",
+      "description": "Sexually vulgar language appearing in commercial music productions",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action"
+    },
+    {
+      "id": "condemnation",
+      "name": "Condemnation",
+      "description": "Content condemning the use of sexually vulgar language",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action"
+    },
+    {
+      "id": "educational",
+      "name": "Educational or Awareness Raising",
+      "description": "Content sharing or discussing information for educational purposes or to improve understanding of an issue with public interest value",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action"
+    },
+    {
+      "id": "news_reporting",
+      "name": "News Reporting",
+      "description": "Sharing reliable information from news outlets, journalists, with aim to increase situational awareness about events",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action"
+    },
+    {
+      "id": "health_context",
+      "name": "Health Context",
+      "description": "Content discussing, informing, or educating about health-related issues such as human anatomy or disease",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action"
+    },
+    {
+      "id": "fully_censored",
+      "name": "Fully Censored",
+      "description": "Words that are fully starred, bleeped, silenced, or blurred out",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action",
+      "examples": ["f***", "s***", "[BLEEP]", "fully silenced audio"]
+    },
+    {
+      "id": "acronyms",
+      "name": "Acronyms",
+      "description": "Acronyms that could stand for vulgar words but don't spell the word itself",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action",
+      "examples": ["WTF", "FML", "AF", "STFU"]
+    },
+    {
+      "id": "proper_names",
+      "name": "Proper Names / Brands",
+      "description": "Names of person, group, location, event, brand, or media title that happen to spell the same as vulgar words",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action",
+      "examples": ["Dick (name)", "FCUK (brand)"]
+    },
+    {
+      "id": "single_letters",
+      "name": "Single Letters",
+      "description": "Single letters that could be initials",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action",
+      "examples": ["Lil B", "S Motors"]
+    },
+    {
+      "id": "emojis_only",
+      "name": "Emojis Only",
+      "description": "Vulgar sentiment expressed only through emojis",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action",
+      "examples": ["🖕"]
+    },
+    {
+      "id": "non_sexually_vulgar",
+      "name": "Non-Sexually Vulgar Profanity",
+      "description": "Words that are profane but not sexually derived are not covered under this policy",
+      "appliesTo": ["sexually_vulgar_language"],
+      "action": "no_action",
+      "note": "Refer to Bullying & Harassment and Hateful Conduct policies if targeted"
+    }
+  ],
+
+  "glossary": {
+    "sexually_vulgar_phrases_words": "Phrases or words that are anatomically or sexually derived (e.g., suck my balls, eat my dick, blow my cock, dick, fuck, pussy, motherfucker, cocksucker). Designated through marketized lists",
+    "awareness_raising": "Sharing, discussing or reporting information to improve understanding of an issue with public interest value. Should not aim to incite violence, spread hate or misinformation. Includes citizen journalism",
+    "health_context": "Content shared to discuss, inform, or educate about health-related issues such as human anatomy or disease (anorexia, dermatological conditions, cancer)",
+    "news_reporting": "Sharing reliable information from news outlets, journalists to increase situational awareness about events. Subject to editorial standards, does not glorify or incite hostility",
+    "partially_obfuscated": "Variations like 'f**k' where part of the word is visible - these STILL qualify as vulgar",
+    "fully_censored": "Fully starred (****), bleeped, silenced, or blurred - these do NOT qualify as vulgar",
+    "misspelled_variations": "Intentional misspellings like 'fack' still qualify as sexually vulgar",
+    "combined_words": "Multi-word phrases written as single word (suckmydick) should be treated as the phrase (suck my dick)",
+    "split_words": "Single vulgar words split into two (mother fucker) should be read as one word (motherfucker)"
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "1) Targeting individuals, 2) Targeting protected characteristics, 3) Sexual solicitation context, 4) General context",
+    "variations_that_qualify": "Spelled incorrectly (fack), Partially obfuscated (f**k with some letters visible), Combined phrases (suckmydick), Split words (mother fucker)",
+    "variations_that_dont_qualify": "Proper names/brands, Fully censored (****), Acronyms (WTF, FML, AF), Single letters, Emojis only (🖕)",
+    "non_marketized_languages": "For markets without designated list, leverage English list as reference with appropriate translations",
+    "marketized_lists": "Markets with existing designated lists should refer exclusively to their market-specific exhaustive list",
+    "policy_wide_exceptions": "Always check for: Condemnation, Educational/Awareness, News reporting, Health context, Commercial music"
+  }
+}

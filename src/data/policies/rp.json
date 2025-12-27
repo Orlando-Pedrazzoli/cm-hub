@@ -1,0 +1,718 @@
+{
+  "id": "rp",
+  "name": "Recalled Products",
+  "shortName": "RP",
+  "description": "Keeping people safe is our top priority. To help prevent harm to people, we don't allow the sale of recalled products on our platform.",
+  "color": "#EF4444",
+  "icon": "AlertTriangle",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "buy_sell_trade",
+      "name": "Buy, Sell, or Trade Recalled Products",
+      "description": "Content that attempts to buy, sell, or trade recalled products",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "sell_no_context",
+          "name": "Selling - No Special Context",
+          "description": "Attempting to sell recalled products without special context",
+          "action": "label",
+          "examples": [
+            "Selling my Fisher Price Rock n Play sleeper",
+            "Baby walker for sale, great condition",
+            "Drop side crib available, $50"
+          ],
+          "conditions": ["Recalled product depicted or mentioned", "Intent to sell present"]
+        },
+        {
+          "id": "sell_with_price_educational",
+          "name": "Selling - Price in Educational Context",
+          "description": "Listing price of recalled item even in explicit education or discussion context",
+          "action": "label",
+          "examples": [
+            "These recalled Rock n Play sleepers used to sell for $60",
+            "Discussion about why these $200 Peloton Tread+ were recalled"
+          ],
+          "conditions": ["Recalled product mentioned", "Price listed", "Educational/discussion context"]
+        },
+        {
+          "id": "sell_ecommerce_delivery",
+          "name": "Selling - E-commerce with Delivery",
+          "description": "Legitimate e-commerce businesses offering delivery of recalled products",
+          "action": "label",
+          "examples": [
+            "Shop now - Fisher Price sleeper with free shipping",
+            "Order your inclined baby sleeper - delivery available"
+          ],
+          "conditions": ["Recalled product", "E-commerce business", "Delivery offered"]
+        },
+        {
+          "id": "buy_no_context",
+          "name": "Buying/Asking - No Special Context",
+          "description": "Asking to buy or requesting recalled products",
+          "action": "label",
+          "examples": [
+            "Looking for a Rock n Play sleeper for my baby",
+            "Anyone selling a drop side crib?",
+            "WTB baby walker"
+          ],
+          "conditions": ["Recalled product mentioned", "Intent to buy/acquire"]
+        },
+        {
+          "id": "trade_no_context",
+          "name": "Trading - No Special Context",
+          "description": "Attempting to trade recalled products",
+          "action": "label",
+          "examples": [
+            "Will trade my inclined sleeper for a pack n play",
+            "Swap: Peloton Tread for regular treadmill"
+          ],
+          "conditions": ["Recalled product mentioned", "Intent to trade/exchange"]
+        },
+        {
+          "id": "fictional_documentary",
+          "name": "Fictional or Documentary Context",
+          "description": "Recalled products shown in fictional or documentary content",
+          "action": "no_action",
+          "examples": [
+            "Documentary about the Fisher Price recall",
+            "Movie scene showing vintage baby equipment",
+            "News report about CPSC recalls"
+          ],
+          "conditions": ["Fictional content", "Documentary/educational purpose", "No sales intent"]
+        }
+      ]
+    },
+    {
+      "id": "donate_gift",
+      "name": "Donate or Gift Recalled Products",
+      "description": "Content that attempts to donate or gift recalled products",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "donate_no_context",
+          "name": "Donating - No Special Context",
+          "description": "Attempting to donate recalled products for free",
+          "action": "label",
+          "examples": [
+            "Free baby walker to anyone who needs it",
+            "Giving away my Rock n Play sleeper",
+            "Free to good home: inclined baby sleeper"
+          ],
+          "conditions": ["Recalled product", "Intent to donate/give away"]
+        },
+        {
+          "id": "gift_no_context",
+          "name": "Gifting - No Special Context",
+          "description": "Offering recalled products as gifts",
+          "action": "label",
+          "examples": [
+            "Baby shower gift: brand new inclined sleeper",
+            "Here's a crib bumper set for the new parents"
+          ],
+          "conditions": ["Recalled product", "Intent to gift"]
+        },
+        {
+          "id": "donate_fictional_documentary",
+          "name": "Fictional or Documentary Context",
+          "description": "Donation/gifting in fictional or documentary content",
+          "action": "no_action",
+          "examples": [
+            "Documentary showing donation centers refusing recalled items",
+            "Fiction depicting gift exchange"
+          ],
+          "conditions": ["Fictional/documentary context"]
+        }
+      ]
+    },
+    {
+      "id": "promote",
+      "name": "Promote Recalled Products",
+      "description": "Content that promotes or encourages use of recalled products",
+      "severity": "mid",
+      "subcategories": [
+        {
+          "id": "speak_positively",
+          "name": "Speaking Positively",
+          "description": "Speaking positively about a recalled product",
+          "action": "label",
+          "examples": [
+            "The Rock n Play was the best baby product ever",
+            "I loved my Peloton Tread+, so sad it's recalled",
+            "These inclined sleepers are amazing for newborns"
+          ],
+          "conditions": ["Recalled product mentioned", "Positive sentiment expressed"]
+        },
+        {
+          "id": "encourage_use",
+          "name": "Encouraging Use",
+          "description": "Encouraging the use of recalled products",
+          "action": "label",
+          "examples": [
+            "You should definitely get an inclined sleeper for your baby",
+            "Baby walkers are great for development, ignore the recall",
+            "Crib bumpers are fine, the warnings are overblown"
+          ],
+          "conditions": ["Recalled product", "Encouragement to use"]
+        },
+        {
+          "id": "how_to_obtain",
+          "name": "How to Obtain",
+          "description": "Providing information about how recalled products can be obtained",
+          "action": "label",
+          "examples": [
+            "You can still find Rock n Play sleepers on marketplace",
+            "Here's where to get baby walkers despite the recall",
+            "Check thrift stores for these recalled items"
+          ],
+          "conditions": ["Recalled product", "Information on obtaining"]
+        },
+        {
+          "id": "information_instructions",
+          "name": "Information and Instructions",
+          "description": "Providing information about or instructions for use of recalled products (educational)",
+          "action": "no_action",
+          "examples": [
+            "The Rock n Play was recalled due to infant deaths",
+            "Here's how to check if your IKEA dresser is recalled",
+            "CPSC information about the Peloton recall"
+          ],
+          "conditions": ["Educational/informational purpose", "No promotion of use"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "sell_recalled",
+      "label": "Recalled Products > Buy/Sell/Trade > Selling",
+      "path": ["Recalled Products", "Buy/Sell/Trade", "Selling"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "buy_recalled",
+      "label": "Recalled Products > Buy/Sell/Trade > Buying/Asking",
+      "path": ["Recalled Products", "Buy/Sell/Trade", "Buying"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "trade_recalled",
+      "label": "Recalled Products > Buy/Sell/Trade > Trading",
+      "path": ["Recalled Products", "Buy/Sell/Trade", "Trading"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "donate_recalled",
+      "label": "Recalled Products > Donate/Gift > Donating",
+      "path": ["Recalled Products", "Donate/Gift", "Donating"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "gift_recalled",
+      "label": "Recalled Products > Donate/Gift > Gifting",
+      "path": ["Recalled Products", "Donate/Gift", "Gifting"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "promote_positive",
+      "label": "Recalled Products > Promote > Speaking Positively",
+      "path": ["Recalled Products", "Promote", "Speaking Positively"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "promote_encourage",
+      "label": "Recalled Products > Promote > Encouraging Use",
+      "path": ["Recalled Products", "Promote", "Encouraging Use"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "promote_obtain",
+      "label": "Recalled Products > Promote > How to Obtain",
+      "path": ["Recalled Products", "Promote", "How to Obtain"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 8
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "fictional_content",
+      "name": "Fictional Content",
+      "description": "Content created based on imagination rather than fact (movies, TV shows, cartoons, video games, comic books, music videos, song lyrics)",
+      "appliesTo": ["buy_sell_trade", "donate_gift"],
+      "action": "no_action"
+    },
+    {
+      "id": "documentary_content",
+      "name": "Documentary Content",
+      "description": "Non-fictional content intended to document reality, primarily for instruction, education, or maintaining a historical record",
+      "appliesTo": ["buy_sell_trade", "donate_gift"],
+      "action": "no_action"
+    },
+    {
+      "id": "educational_information",
+      "name": "Educational Information",
+      "description": "Providing information about recalled products and instructions for identifying them without encouraging use or explaining how to obtain",
+      "appliesTo": ["promote"],
+      "action": "no_action"
+    },
+    {
+      "id": "news_reporting",
+      "name": "News Reporting",
+      "description": "News coverage about recalls, CPSC announcements, safety warnings",
+      "appliesTo": ["buy_sell_trade", "donate_gift", "promote"],
+      "action": "no_action"
+    },
+    {
+      "id": "recall_awareness",
+      "name": "Recall Awareness Campaigns",
+      "description": "Content warning about recalled products or promoting recall awareness",
+      "appliesTo": ["promote"],
+      "action": "no_action"
+    }
+  ],
+
+  "recalledProductsList": {
+    "baby_sleep_products": [
+      {
+        "name": "Inclined Baby Sleepers and Inclined Sleeper Accessories",
+        "brand": "Any",
+        "description": "Products with inclined sleep surface greater than 10 degrees for infants up to 1 year. Also referred to as rockers, bassinets, nappers, nests, pods, loungers, docks, soothing seats, bouncers, gliders, soothers, swings",
+        "model": "All"
+      },
+      {
+        "name": "Drop Side Cribs",
+        "brand": "Any",
+        "description": "Crib where side rail moves up and down on tracks",
+        "model": "All"
+      },
+      {
+        "name": "Crib Bumpers",
+        "brand": "Any",
+        "description": "All crib bumpers including padded bumpers, vinyl bumper guards, vertical crib slat covers. Exception: non-padded mesh crib liners are NOT recalled",
+        "model": "All"
+      },
+      {
+        "name": "Baby Walkers",
+        "brand": "Any",
+        "description": "All baby walkers",
+        "model": "All"
+      },
+      {
+        "name": "Baby Self-Feeding Pillows",
+        "brand": "Any",
+        "description": "All baby self-feeding pillows and hands-free baby bottle feeders",
+        "model": "All"
+      },
+      {
+        "name": "Boppy Newborn Loungers",
+        "brand": "The Boppy Company",
+        "description": "Boppy Original, Preferred, and Pottery Barn Kids versions",
+        "model": "All colors and patterns"
+      }
+    ],
+    "fisher_price": [
+      {
+        "name": "Laugh and Learn Musical Learning Chair",
+        "brand": "Fisher Price",
+        "model": "All"
+      },
+      {
+        "name": "Tissue Box Toy with 3-in-1 SnugaPuppy Activity Centers",
+        "brand": "Fisher Price",
+        "model": "HLV78"
+      },
+      {
+        "name": "Brunch & Go Stroller Toys",
+        "brand": "Fisher Price",
+        "model": "HGB85"
+      }
+    ],
+    "furniture": [
+      {
+        "name": "IKEA MALM Chests and Dressers",
+        "brand": "IKEA",
+        "description": "3-drawer, 4-drawer, 5-drawer, and 6-drawer models in various colors",
+        "model": "All MALM models"
+      },
+      {
+        "name": "Other IKEA Recalled Dressers",
+        "brand": "IKEA",
+        "description": "ANEBODA, ASKEDAL, ARUP, BIALITT, BOKSTA, BRIMNES (recessed frame), EDLAND, ENGAN, HUDDAL, HOPEN, HURDAL, PS 2012, KULLEN, LEKSVIK, MAMMUT, MANDAL, NORNAS, NYVOLL, OPPLAND, RAKKE, ROBIN, STOCKHOLM, STUVA, TARVA (recessed frame), TROFAST, TRYSIL, UNDREDAL, VISDALEN, HEMNES (3 and 6 drawer with lip on bottom)",
+        "model": "Various"
+      },
+      {
+        "name": "Lane Cedar Chest / Virginia Maid Cedar Chest",
+        "brand": "The Lane Company",
+        "description": "Manufactured between 1912 and 1987",
+        "model": "All from that period"
+      },
+      {
+        "name": "Angel Line Bunk Beds with Angled Ladders",
+        "brand": "Northern Lights Enterprises",
+        "model": "Fremont 71210-21/49/67, Creston 71230-21/49/75, Brandon 71420-21/75"
+      }
+    ],
+    "exercise_equipment": [
+      {
+        "name": "Peloton Tread and Tread+ Treadmills",
+        "brand": "Peloton",
+        "model": "All"
+      },
+      {
+        "name": "Nautilus Treadmills",
+        "brand": "Nautilus Inc.",
+        "model": "T616, T618"
+      },
+      {
+        "name": "BowFlex Dumbbells",
+        "brand": "Johnson Health Tech Trading",
+        "model": "Model 552 (52.5 LB), Model 1090 (90 LB)"
+      }
+    ],
+    "electric_vehicles": [
+      {
+        "name": "Onewheel Electric Skateboards",
+        "brand": "Future Motion Inc.",
+        "model": "All models"
+      },
+      {
+        "name": "Apollo Phantom Electric Scooters",
+        "brand": "Apollo Imports Inc.",
+        "model": "All"
+      },
+      {
+        "name": "Swagway Self-Balancing Scooters/Hoverboards",
+        "brand": "Swagway LLC",
+        "model": "All"
+      },
+      {
+        "name": "Tesla Cyberquad for Kids",
+        "brand": "Radio Flyer Inc.",
+        "model": "914"
+      },
+      {
+        "name": "Gyroor C3 e-bikes",
+        "brand": "Gyroor",
+        "model": "Battery 10S4P"
+      }
+    ],
+    "kitchen_appliances": [
+      {
+        "name": "Cosori Air Fryers",
+        "brand": "Atekcity Corporation",
+        "model": "Multiple models CP158, CP137, CS158, CAF-P581, CO137, CO158, CP258"
+      },
+      {
+        "name": "Insignia Air Fryers and Ovens",
+        "brand": "Best Buy",
+        "model": "NS-AF32DBK9, NS-AF32MBK9, NS-AF50MBK9, NS-AF53DSS0, NS-AF53MSS0, NS-AF55DBK9, NS-AFO6DBK1, NS-AFO6DSS1"
+      },
+      {
+        "name": "PowerXL Vortex Dual-Basket Air Fryers",
+        "brand": "Empower Brands",
+        "model": "DUAF-10, DUAF-005"
+      },
+      {
+        "name": "BlendJet 2 Portable Blenders",
+        "brand": "BlendJet Inc.",
+        "description": "Serial numbers 5201-5542",
+        "model": "Various colors"
+      },
+      {
+        "name": "Calphalon Stainless Steel Kettles",
+        "brand": "Calphalon Corp.",
+        "model": "4302"
+      }
+    ],
+    "toys_children": [
+      {
+        "name": "Sky Dancers Flying Dolls",
+        "brand": "Galoob Toys Inc.",
+        "model": "All models"
+      },
+      {
+        "name": "MagnaMan Magnetic Toy Figures",
+        "brand": "Mega Brands America Inc.",
+        "model": "Various model numbers"
+      },
+      {
+        "name": "Zen Magnets and Neoballs Magnets",
+        "brand": "Zen Magnets LLC",
+        "model": "All"
+      },
+      {
+        "name": "Baby Shark Bath Toys",
+        "brand": "Zuru LLC",
+        "model": "Robo Alive Junior full-size and mini"
+      },
+      {
+        "name": "Kidoozie Play Tents and Playhouses",
+        "brand": "Epoch Everlasting Play",
+        "model": "Ice Castle, Medieval Castle, My Clubhouse, Pirate Den, Pop Up Theater, Princess Hideaway, Royal Castle"
+      },
+      {
+        "name": "Balloon Blowing Kits",
+        "brand": "Any",
+        "description": "Toys with solvent mixture and plastic straws for blowing",
+        "model": "All"
+      }
+    ],
+    "other_hazards": [
+      {
+        "name": "Pointed Lawn Darts",
+        "brand": "Any",
+        "description": "Lawn darts with pointed/sharpened/spiked tips",
+        "model": "All"
+      },
+      {
+        "name": "Hair Dryers without Immersion Protection",
+        "brand": "Any",
+        "description": "Hair dryers without immersion-protection device",
+        "model": "All"
+      },
+      {
+        "name": "Jequirity Beans",
+        "brand": "Any",
+        "description": "Any item made from or including jequirity beans",
+        "model": "All"
+      },
+      {
+        "name": "Relight Candles",
+        "brand": "Any",
+        "description": "Candles that spontaneously relight after being blown out",
+        "model": "All"
+      },
+      {
+        "name": "Thanos Infinity Gauntlet Oven Mitts",
+        "brand": "Marvel",
+        "model": "All"
+      }
+    ],
+    "wearables_electronics": [
+      {
+        "name": "Fitbit Ionic Smartwatches",
+        "brand": "Fitbit",
+        "model": "All colors"
+      },
+      {
+        "name": "Pixy Flying Camera Battery",
+        "brand": "Snap LLC",
+        "description": "Lithium-ion battery for Pixy cameras",
+        "model": "Yellow"
+      },
+      {
+        "name": "Atomi Smart Heaters",
+        "brand": "Atomi Smart",
+        "model": "Tower AT1323/1481/1520/1632, Tabletop AT1482/1521, Wall AT1635"
+      }
+    ],
+    "bed_rails": [
+      {
+        "name": "Drive DeVilbiss Bed Assist Handles and Rails",
+        "brand": "Drive DeVilbiss Healthcare",
+        "model": "15064, 15062, RTL15073, RTL15063-ADJ"
+      },
+      {
+        "name": "Endurance Hand Bed Rails",
+        "brand": "Essential Medical Supply Inc.",
+        "model": "All"
+      },
+      {
+        "name": "Carex Brand Adult Portable Bed Rails",
+        "brand": "Compass Health Brands",
+        "model": "All"
+      },
+      {
+        "name": "Medline Bed Assist Bar",
+        "brand": "Medline Industries",
+        "model": "MDS6800BA, MDS6800BAH"
+      }
+    ],
+    "strollers_carriers": [
+      {
+        "name": "Maclaren Umbrella Strollers",
+        "brand": "Maclaren USA",
+        "description": "Single and double umbrella strollers sold prior to November 2009",
+        "model": "Pre-Nov 2009"
+      },
+      {
+        "name": "Valco Baby Snap Duo Trend Strollers",
+        "brand": "Valco Baby",
+        "model": "7884, 7885, 7886 / N9938, N9939, N9872, N0001"
+      },
+      {
+        "name": "Infantino SlingRider and Wendy Bellissimo Slings",
+        "brand": "Infantino LLC",
+        "model": "All"
+      },
+      {
+        "name": "Kid Comfort Child Carriers",
+        "brand": "Deuter USA",
+        "model": "3621221, 3621321, 3621121 with production codes 0123, 1223, 0423"
+      }
+    ],
+    "bikes_bicycles": [
+      {
+        "name": "woom ORIGINAL Bicycles",
+        "brand": "woom Bikes USA",
+        "model": "woom 1, 1 Plus, 2, 3, 4, 5, 6"
+      },
+      {
+        "name": "Marin Mountain Bikes",
+        "brand": "Marin Mountain Bikes Inc.",
+        "model": "20 Model Year 2021 models"
+      },
+      {
+        "name": "Trek Allant+ 7 with Tektro Brakes",
+        "brand": "Trek Bicycle Corporation",
+        "model": "Allant+ 7, 7 Lowstep, 7S, 7S Stagger"
+      },
+      {
+        "name": "NextGen Children's Bicycles",
+        "brand": "Flat River Group",
+        "model": "HolaBelle NextGen 10/12/16/20 inch"
+      },
+      {
+        "name": "Scout Kid's Bike Helmets",
+        "brand": "Retrospec",
+        "model": "XS and S sizes, various colors"
+      }
+    ],
+    "appliances": [
+      {
+        "name": "Whirlpool Hotpoint and Indesit Washing Machines",
+        "brand": "Whirlpool",
+        "model": "All"
+      },
+      {
+        "name": "Dehumidifiers",
+        "brand": "Kenmore, GE, SoleusAir, Norpole, Seabreeze (Gree)",
+        "model": "Various"
+      },
+      {
+        "name": "ZLINE Gas Ranges",
+        "brand": "ZLINE Kitchen and Bath",
+        "model": "RG30, RGS-30, RGB-30, RG36, RGS-36, RGB-36"
+      },
+      {
+        "name": "MaxKare Electric Blankets",
+        "brand": "Shenzhen Yumo",
+        "model": "HB18A-7284-1, HB18A-8490-2, HB18A-6284-1"
+      }
+    ],
+    "steamers_irons": [
+      {
+        "name": "My Little Steamer and My Little Steamer Go Mini",
+        "brand": "Ingenious Designs (Joy/JM)",
+        "model": "Various colors"
+      },
+      {
+        "name": "Steamfast/Vornado/Sharper Image Handheld Steamers",
+        "brand": "Vornado Air",
+        "model": "SF-425, SF-435, SF-440, SF-445, SF-447, VS-410, SI-428"
+      },
+      {
+        "name": "Steamfast Travel Steam Irons",
+        "brand": "Vornado Air",
+        "model": "SF-717, SF-720, SF-727"
+      },
+      {
+        "name": "BLACK+DECKER Easy Garment Steamers",
+        "brand": "Empower Brands",
+        "model": "HGS011F, HGS011S, HGS011, HGS011T"
+      }
+    ],
+    "pools": [
+      {
+        "name": "Polygroup Above-Ground Pools 48+ inches",
+        "brand": "Polygroup (Summer Waves, Summer Escapes, Funsicle, Sand n Sun, Blue Wave)",
+        "description": "With compression straps over vertical support legs",
+        "model": "48 inch and taller"
+      },
+      {
+        "name": "Bestway Above-Ground Pools 48+ inches",
+        "brand": "Bestway (Power Steel, Steel Pro, Coleman)",
+        "description": "With compression straps over vertical support legs",
+        "model": "48 inch and taller"
+      }
+    ],
+    "miscellaneous": [
+      {
+        "name": "Bumbo Baby Seats",
+        "brand": "Bumbo International",
+        "description": "Without restraint belt",
+        "model": "All without belt"
+      },
+      {
+        "name": "Shrek Forever After 3D Collectible Glasses",
+        "brand": "McDonald's",
+        "model": "Shrek, Fiona, Puss n' Boots, Donkey designs"
+      },
+      {
+        "name": "Aflac Promotional Doctor Duck",
+        "brand": "Communicorp",
+        "model": "6 inch plush"
+      },
+      {
+        "name": "YETI Soft Coolers and Gear Cases",
+        "brand": "YETI Coolers",
+        "model": "Hopper M30 1.0/2.0, M20 Backpack, SideKick Dry"
+      },
+      {
+        "name": "Contigo Kids Cleanable Water Bottles",
+        "brand": "Contigo USA",
+        "description": "Black spout base and black spout cover models",
+        "model": "Black spout models"
+      },
+      {
+        "name": "Pillowfort Weighted Blankets",
+        "brand": "Target Corporation",
+        "model": "097-02-0140, 0148, 0361, 0363, 0364, 1603, 3904, 3905"
+      }
+    ]
+  },
+
+  "glossary": {
+    "recalled_products": "Goods or items that have been removed from the market by the manufacturer or regulatory authorities due to safety concerns, defects, or other issues that could pose a risk to consumers",
+    "cpsc": "U.S. Consumer Product Safety Commission - independent agency that protects the public from unreasonable risks of serious injury or death from consumer products",
+    "inclined_baby_sleepers": "Products with inclined sleep surface greater than 10 degrees intended for infants up to 1 year. Also called rockers, bassinets, nappers, nests, pods, loungers, docks, soothing seats, bouncers, gliders, soothers",
+    "crib_bumpers": "Fabric pads designed to surround interior sides of crib. Includes padded bumpers, vinyl bumper guards, vertical crib slat covers. Non-padded mesh liners are NOT banned",
+    "drop_side_cribs": "Crib where side rail moves up and down on tracks for easier access",
+    "fictional_content": "Content created based on imagination rather than fact - movies, TV shows, cartoons, video games, comic books, music videos, song lyrics",
+    "documentary": "Non-fictional content intended to document reality, primarily for instruction, education, or maintaining historical record",
+    "promote": "Content that speaks positively, encourages use, provides information/instructions, or provides information on how to obtain",
+    "coordinates": "Any attempt to organize the flow of goods",
+    "code_word": "Phrase or number used for secrecy or convenience instead of usual name",
+    "admission": "Content that admits to ownership or use of a product",
+    "brick_and_mortar": "Legitimate business with: professional website link, physical location with hours/address, verified Facebook/Instagram as business"
+  },
+
+  "operationalGuidelines": {
+    "scope": "Only enforce on products specifically listed in the protocol. Products are added when reported by regulators to Meta",
+    "hierarchy": "1) Buy/Sell/Trade, 2) Donate/Gift, 3) Promote (positive speech, encourage use, how to obtain)",
+    "intent_signals": "Product for sale/trade mentioned, price listed or hinted, delivery offered, contact info provided, call to action (shop now/buy now), specification of availability",
+    "fictional_exception": "No action for movies, TV shows, cartoons, video games, comic books, music videos, song lyrics, documentaries",
+    "educational_exception": "No action for information ABOUT recalls, how to identify recalled products, safety warnings. VIOLATING if explains how to obtain",
+    "nothing_for_sale_claim": "Users may write 'nothing for sale' but if other sale indicators present, content is still violating",
+    "ikea_special_rules": "MALM all models recalled. BRIMNES/TARVA: only recalled if recessed lower frame. HEMNES: 8-drawer NOT recalled, 3 and 6 drawer only if lip on bottom frame. HEMNES 3-drawer with mirror ALWAYS recalled"
+  }
+}

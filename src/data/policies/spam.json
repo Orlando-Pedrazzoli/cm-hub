@@ -1,0 +1,552 @@
+{
+  "id": "spam",
+  "name": "Spam",
+  "shortName": "SPAM",
+  "description": "We do not allow content that is designed to deceive, mislead, or overwhelm users in order to artificially increase viewership. This content detracts from people's ability to engage authentically on our platforms and can threaten the security, stability and usability of our services.",
+  "color": "#F59E0B",
+  "icon": "Mail",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "engagement_abuse_sale",
+      "name": "Engagement Abuse & Sale",
+      "description": "Content that claims to deliver, attempts to attain, or asks for artificial engagement or buying, selling, renting or exchanging site privileges, or Meta Assets or product features",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "sell_engagement",
+          "name": "Selling Engagement",
+          "description": "Offering to sell likes, comments, shares, follows, or views",
+          "action": "label",
+          "examples": [
+            "Who needs an extra 10k followers?",
+            "Likes, shares, follows available. DM",
+            "If you want cheap followers, DM me",
+            "I can connect you to someone that can give you 10k likes in a day for a reasonable price"
+          ],
+          "conditions": ["Offers engagement for sale", "Lists prices or hints at pricing", "Encourages contact for engagement services"]
+        },
+        {
+          "id": "buy_engagement",
+          "name": "Buying Engagement",
+          "description": "Requesting to purchase likes, comments, shares, follows, or views",
+          "action": "label",
+          "examples": [
+            "Buying Page Posts advertising my account, Price Negotiable",
+            "Responding to sales offer with clear intent to purchase",
+            "Negotiating or inquiring about price for engagement"
+          ],
+          "conditions": ["Requests to buy engagement", "Negotiates prices for engagement"]
+        },
+        {
+          "id": "sell_meta_assets",
+          "name": "Selling Meta Assets",
+          "description": "Offering to sell Facebook/Instagram accounts, Pages, Groups, or Ad Accounts",
+          "action": "label",
+          "examples": [
+            "Admin role in group for sale to highest bidder, DM serious offers only",
+            "Selling my Instagram account with 50k followers",
+            "Facebook Page for sale, 100k followers"
+          ],
+          "conditions": ["Offers Meta assets for sale", "Lists or hints at price for accounts/pages/groups"]
+        },
+        {
+          "id": "buy_meta_assets",
+          "name": "Buying Meta Assets",
+          "description": "Requesting to purchase Facebook/Instagram accounts, Pages, Groups, or admin positions",
+          "action": "label",
+          "examples": [
+            "I want to buy your Instagram account",
+            "I want to buy a Page with 10k followers",
+            "Looking to purchase Facebook Group admin position"
+          ],
+          "conditions": ["Requests to buy Meta assets", "Inquires about purchasing accounts/pages/groups"]
+        },
+        {
+          "id": "sell_site_privileges",
+          "name": "Selling Site Privileges",
+          "description": "Offering to sell admin/moderator roles or account takedown/restoration services",
+          "action": "label",
+          "examples": [
+            "Admin role in group for sale",
+            "Page admin positions available for purchase",
+            "I can get your account restored for a fee"
+          ],
+          "conditions": ["Offers site privileges for sale", "Offers takedown/restoration services"]
+        },
+        {
+          "id": "exchange_meta_assets",
+          "name": "Exchanging Meta Assets",
+          "description": "Trading one Meta asset for another",
+          "action": "label",
+          "examples": [
+            "I want to trade my Facebook 100k followers account for a Threads page with 10k followers"
+          ],
+          "conditions": ["Proposes trading Meta assets"]
+        },
+        {
+          "id": "engagement_for_engagement_violating",
+          "name": "Disproportionate Engagement Exchange",
+          "description": "Offering more engagement than requested or more than a single user can deliver",
+          "action": "label",
+          "examples": [
+            "Anyone who shares my Page will receive 50 shares",
+            "If you like my picture, I will like one of yours 10 times",
+            "To gain 100 likes in your post, like this photo and share it in 3 groups"
+          ],
+          "conditions": ["Offered engagement exceeds requested engagement", "Offered engagement cannot be performed by single account"]
+        },
+        {
+          "id": "exchange_money_for_engagement",
+          "name": "Money for Engagement Exchange",
+          "description": "Offering money or monetary equivalents in exchange for engagement",
+          "action": "label",
+          "examples": [
+            "If you like my post, I'll send you $5!",
+            "$100 to anyone who follows me and refers 3 friends to follow!",
+            "Everyone who follows my account will get a magazine every month!"
+          ],
+          "conditions": ["Offers money/monetary value for engagement", "Condition is public-facing engagement"]
+        },
+        {
+          "id": "exchange_goods_for_engagement",
+          "name": "Goods for Engagement Exchange",
+          "description": "Offering items of monetary value in exchange for engagement",
+          "action": "label",
+          "examples": [
+            "Everyone who follows my account will get an iPhone!",
+            "Free iPhone for anyone who likes, comments, and shares my newest Reel",
+            "I will give away newest Teslas for anyone who share my reel 10 times"
+          ],
+          "conditions": ["Offers goods of monetary value for engagement", "Reward has clear monetary value"]
+        },
+        {
+          "id": "giveaway_money_engagement",
+          "name": "Cash/Crypto Giveaway for Engagement",
+          "description": "Giveaway offering cash, cryptocurrency, or precious metals requiring engagement to enter",
+          "action": "label",
+          "examples": [
+            "On Friday I'm raffling off $100. Everyone who follows my account will be entered",
+            "Everyone who likes this post will be entered to win 5 Etherium!",
+            "Like and share for a chance to win gold coins"
+          ],
+          "conditions": ["Entry requires engagement", "Prize is cash/crypto/precious metals"]
+        },
+        {
+          "id": "engagement_gating",
+          "name": "Engagement Gating",
+          "description": "Requiring public engagement before accessing promised content",
+          "action": "label",
+          "examples": [
+            "Before seeing a celebrity's shocking video, you need to like and share this post",
+            "Like and follow to see an exclusive video of Disney star X",
+            "If you mention me I'll send you a free video of pandas eating bamboo"
+          ],
+          "conditions": ["Requires public engagement to access content", "Content is specific and currently existing", "Offered solely to those who engage"]
+        },
+        {
+          "id": "fake_functionality",
+          "name": "Non-Existent Functionality",
+          "description": "Promising Meta features that do not exist in exchange for engagement",
+          "action": "label",
+          "examples": [
+            "Get a dislike button!",
+            "How to see who views your Instagram",
+            "Boost who sees you in the algorithm",
+            "Mass delete followers on Instagram",
+            "View who doesn't follow you back on Instagram"
+          ],
+          "conditions": ["Promises non-existent Meta feature", "Offers fake functionality for engagement"]
+        }
+      ]
+    },
+    {
+      "id": "deceptive_links",
+      "name": "Deceptive Links",
+      "description": "Sharing of deceptive or misleading URLs that deceive or mislead users",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "cloaking",
+          "name": "Cloaking",
+          "description": "Presenting different content to Meta's integrity systems than to users",
+          "action": "label",
+          "examples": [
+            "Link shows benign content to systems but violating content to users",
+            "URL that changes destination based on viewer"
+          ],
+          "conditions": ["Different content shown to systems vs users", "Intentional circumvention of policies"]
+        },
+        {
+          "id": "misleading_link",
+          "name": "Misleading Link",
+          "description": "Link that promises one type of content but delivers something substantially different",
+          "action": "label",
+          "examples": [
+            "Post promises pictures of cute animals but leads to pornography",
+            "Post promises football news but leads to purely political content",
+            "Video content shows play button but takes to unrelated website"
+          ],
+          "conditions": ["Subject/topic significantly different from advertised", "Link fails to deliver promised content"]
+        },
+        {
+          "id": "deceptive_redirect",
+          "name": "Deceptive Redirect Behavior",
+          "description": "Websites requiring action before showing content with domain change or automatic redirect",
+          "action": "label",
+          "examples": [
+            "Site requires captcha then redirects to different domain",
+            "Click here to continue then URL changes completely",
+            "Automatic redirect to substantially different domain"
+          ],
+          "conditions": ["Required action before viewing content", "Domain changes after action", "Automatic redirect to different domain"]
+        },
+        {
+          "id": "like_share_gating",
+          "name": "Like/Share-Gating",
+          "description": "Landing pages requiring engagement before accessing content",
+          "action": "label",
+          "examples": [
+            "Share our Facebook page in order to see the video",
+            "Like our page to unlock the content",
+            "Follow us on Instagram to access the article"
+          ],
+          "conditions": ["Landing page requires engagement", "Must like/share/follow to access content"]
+        },
+        {
+          "id": "deceptive_platform_functionality",
+          "name": "Deceptive Platform Functionality",
+          "description": "Mimicking Meta features that don't work to get users to follow a link",
+          "action": "label",
+          "examples": [
+            "Fake play button on image preview linking to external site",
+            "Image pretending to be Facebook live video",
+            "Fake Facebook photo album preview",
+            "Mimicking Like button that doesn't work"
+          ],
+          "conditions": ["Mimics Meta feature that doesn't exist", "Purpose is to deceive into clicking link"]
+        },
+        {
+          "id": "deceptive_landing_page",
+          "name": "Deceptive Landing Page Functionality",
+          "description": "Websites with misleading UI causing accidental traffic",
+          "action": "label",
+          "examples": [
+            "Pop-ups/unders generating accidental clicks",
+            "Clickjacking",
+            "Trapping with irrelevant pop-ups when trying to leave"
+          ],
+          "conditions": ["Misleading user interface", "Generates accidental traffic", "Uses deceptive tactics like trapping"]
+        },
+        {
+          "id": "domain_impersonation",
+          "name": "Landing Page or Domain Impersonation",
+          "description": "Websites impersonating well-known brands through typos, misspellings, or similar tactics",
+          "action": "label",
+          "examples": [
+            "faceb00k.com",
+            "amaz0n.com",
+            "facebookstore.com/metacoin",
+            "bbc.com-latest-news.xyz",
+            "FOXNNEWs.us",
+            "amazon-customerservice.com showing Amazon logo"
+          ],
+          "conditions": ["Domain mimics official website name", "Uses typos/misspellings/obfuscation", "Content impersonates known brand with unrelated URL"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "engagement_sale_privileges",
+      "label": "Spam > Engagement Abuse > Selling Site Privileges/Engagement",
+      "path": ["Spam", "Engagement Abuse & Sale", "Selling Site Privileges or Engagement"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "engagement_gating",
+      "label": "Spam > Engagement Abuse > Engagement Gating",
+      "path": ["Spam", "Engagement Abuse & Sale", "Engagement Gating"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "fake_functionality",
+      "label": "Spam > Engagement Abuse > Non-Existent Functionality",
+      "path": ["Spam", "Engagement Abuse & Sale", "Non-Existent Functionality"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "deceptive_misleading_link",
+      "label": "Spam > Deceptive Links > Misleading Link",
+      "path": ["Spam", "Deceptive Links", "Misleading Link"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "deceptive_like_share_gating",
+      "label": "Spam > Deceptive Links > Like/Share-Gating",
+      "path": ["Spam", "Deceptive Links", "Like/Share-Gating"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "deceptive_platform_func",
+      "label": "Spam > Deceptive Links > Deceptive Platform Functionality",
+      "path": ["Spam", "Deceptive Links", "Deceptive Platform Functionality"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "deceptive_domain_impersonation",
+      "label": "Spam > Deceptive Links > Domain Impersonation",
+      "path": ["Spam", "Deceptive Links", "Landing Page or Domain Impersonation"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "deceptive_cloaking",
+      "label": "Spam > Deceptive Links > Cloaking",
+      "path": ["Spam", "Deceptive Links", "Cloaking"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "deceptive_redirect",
+      "label": "Spam > Deceptive Links > Deceptive Redirect",
+      "path": ["Spam", "Deceptive Links", "Deceptive Redirect Behavior"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "deceptive_landing_page",
+      "label": "Spam > Deceptive Links > Deceptive Landing Page",
+      "path": ["Spam", "Deceptive Links", "Deceptive Landing Page Functionality"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 10
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "cross_promotion",
+      "name": "Cross Promotion",
+      "description": "Cross promotion that is not triggered by payment to a third party",
+      "appliesTo": ["engagement_abuse_sale"],
+      "action": "no_action"
+    },
+    {
+      "id": "admin_transfer_interest",
+      "name": "Admin Transfer Based on Interest",
+      "description": "Transferring admin or moderation responsibilities for a page or group to another user based on their interest in the page or group, rather than an exchange of value",
+      "appliesTo": ["engagement_abuse_sale"],
+      "action": "no_action"
+    },
+    {
+      "id": "branded_content",
+      "name": "Branded Content",
+      "description": "Posting or sharing clearly identified Branded Content with proper disclosure (#ad, #sponsored, etc.)",
+      "appliesTo": ["engagement_abuse_sale"],
+      "action": "no_action"
+    },
+    {
+      "id": "parallel_engagement",
+      "name": "Parallel Engagement for Engagement",
+      "description": "Simple likes-for-likes, shares-for-shares, or follows-for-follows that are symmetrical and achievable by a single user",
+      "appliesTo": ["engagement_for_engagement_violating"],
+      "action": "no_action",
+      "examples": ["Like my post and I'll like yours", "Follow for follow"]
+    },
+    {
+      "id": "free_items_no_value",
+      "name": "Free Items Without Monetary Value",
+      "description": "Offering free items that have no monetary value (wallpapers, love, admiration, etc.)",
+      "appliesTo": ["exchange_money_for_engagement", "exchange_goods_for_engagement"],
+      "action": "no_action",
+      "examples": ["If you follow our company, you can get our company logo desktop wallpaper", "Everyone who shares my content will receive my love and admiration!"]
+    },
+    {
+      "id": "giveaway_gift_cards",
+      "name": "Gift Card Giveaways",
+      "description": "Giveaways offering gift cards or in-game currencies (not cash/crypto/precious metals) for engagement",
+      "appliesTo": ["giveaway_money_engagement"],
+      "action": "no_action",
+      "examples": ["Everyone that shares my post will be entered to win a $50 Amazon Gift Card"]
+    },
+    {
+      "id": "future_content_promise",
+      "name": "Future Content Promises",
+      "description": "General promises to create future posts in response to engagement",
+      "appliesTo": ["engagement_gating"],
+      "action": "no_action",
+      "examples": ["Remember to like and subscribe to see my new videos as soon as they come out!"]
+    },
+    {
+      "id": "dm_access",
+      "name": "DM Access to Content",
+      "description": "Content requiring users to DM for access without additional public engagement requirement",
+      "appliesTo": ["engagement_gating"],
+      "action": "no_action",
+      "examples": ["I'll send a video to anyone who sends me a DM"]
+    },
+    {
+      "id": "creator_subscriptions",
+      "name": "Creator Subscriptions",
+      "description": "Premium subscription to content from creators",
+      "appliesTo": ["engagement_gating"],
+      "action": "no_action"
+    },
+    {
+      "id": "group_membership_questions",
+      "name": "Group Membership Questions",
+      "description": "Facebook Group membership questions",
+      "appliesTo": ["engagement_gating"],
+      "action": "no_action"
+    },
+    {
+      "id": "real_functionality",
+      "name": "Real Platform Functionality",
+      "description": "Content about features that actually exist on Meta platforms",
+      "appliesTo": ["fake_functionality"],
+      "action": "no_action",
+      "examples": ["View who you don't follow back on Instagram", "Hide posts from certain friends on Facebook"]
+    },
+    {
+      "id": "wishful_statements",
+      "name": "Wishful Statements",
+      "description": "Wishful statements about desired features without offering them",
+      "appliesTo": ["fake_functionality"],
+      "action": "no_action",
+      "examples": ["I wish Threads had a dislike button!"]
+    },
+    {
+      "id": "link_error_page",
+      "name": "Error Pages / Disabled Links",
+      "description": "Links that have been disabled or are no longer active (404 errors, error messages starting with 4xx or 5xx)",
+      "appliesTo": ["deceptive_links"],
+      "action": "no_action"
+    },
+    {
+      "id": "ig_story_preview",
+      "name": "IG Story Previews",
+      "description": "Play buttons for IG Story Previews that link to video elsewhere on platform",
+      "appliesTo": ["deceptive_platform_functionality"],
+      "action": "no_action"
+    },
+    {
+      "id": "screenshot_play_button",
+      "name": "Screenshot Play Buttons",
+      "description": "Play buttons in screenshots of imagery where content references it's a screenshot/still image",
+      "appliesTo": ["deceptive_platform_functionality"],
+      "action": "no_action"
+    },
+    {
+      "id": "non_linked_play_button",
+      "name": "Non-Linked Play Buttons",
+      "description": "Play buttons in images that do not cause a user to follow a link when clicked",
+      "appliesTo": ["deceptive_platform_functionality"],
+      "action": "no_action"
+    },
+    {
+      "id": "regional_domains",
+      "name": "Regional Domains",
+      "description": "Different regional domains for the same company (amazon.com, amazon.co.uk, amazon.de)",
+      "appliesTo": ["domain_impersonation"],
+      "action": "no_action"
+    },
+    {
+      "id": "featured_brands",
+      "name": "Featured Brands on Other Sites",
+      "description": "Brands shown on legitimate aggregator sites (reddit showing CNN content, Amazon showing Apple products)",
+      "appliesTo": ["domain_impersonation"],
+      "action": "no_action"
+    },
+    {
+      "id": "similar_topic_links",
+      "name": "Similar Topic Links",
+      "description": "Links leading to related content within the same broader genre",
+      "appliesTo": ["misleading_link"],
+      "action": "no_action",
+      "examples": ["Post promises football news, link offers general sports news", "Post promises cute animals, link shows only cute cats"]
+    },
+    {
+      "id": "same_brand_different_product",
+      "name": "Same Brand Different Product",
+      "description": "On-platform shows one product, landing page shows different product from same brand",
+      "appliesTo": ["misleading_link"],
+      "action": "no_action",
+      "examples": ["On-platform shows bottle of shampoo, off-platform shows same brand hair oil"]
+    },
+    {
+      "id": "condemning_spam",
+      "name": "Condemning Spam",
+      "description": "Spam shared in context of clear condemnation (without functional violating links)",
+      "appliesTo": ["engagement_abuse_sale", "deceptive_links"],
+      "action": "no_action"
+    },
+    {
+      "id": "giveaway_without_engagement",
+      "name": "Giveaway Without Engagement Requirement",
+      "description": "Giveaways that do not require engagement to enter",
+      "appliesTo": ["giveaway_money_engagement"],
+      "action": "no_action",
+      "examples": ["You won $10,000 worth of government covid assistance", "Free rental assistance for all residents"]
+    },
+    {
+      "id": "third_party_messaging",
+      "name": "Third Party Messaging Apps",
+      "description": "Requiring users to message back using third party apps (Signal, LINE, iMessage)",
+      "appliesTo": ["engagement_abuse_sale"],
+      "action": "no_action",
+      "examples": ["Add me on LINE and send a message to @abcde"]
+    }
+  ],
+
+  "glossary": {
+    "engagement": "On Facebook or Instagram includes likes, shares, follows, comments, reactions, views, clicks, or use of specific hashtags",
+    "public_facing_engagement": "Engagement visible to third-parties including follows, comments, likes, shares, etc.",
+    "site_privileges": "Access to special permissions such as admin and moderator roles for Groups or Pages, or access to entire accounts or profiles",
+    "meta_asset": "Any Facebook, Instagram, Threads or WhatsApp entity including accounts, Pages, Groups, Additional Profiles, Events, Business Manager Accounts",
+    "giveaway": "A contest or raffle where individual entrants are not guaranteed to receive the reward promised, but rather have a chance to win",
+    "exchange": "A simple offer (If you do X, I'll give you Y) where if the reader performs some action, they are promised to receive a specific reward",
+    "money": "Formal medium of exchange including fiat currency (USD, GBP, CNY) or cryptocurrency (Bitcoin, DogeCoin). Gift cards are NOT considered monetary equivalents",
+    "monetary_value": "Something easily exchangeable for money. Gift cards, phones, cars, food, cryptocurrency have monetary value. Intangibles (love, respect), coupons, loans do NOT",
+    "branded_content": "Organic content featuring or influenced by a business partner for an exchange of value, clearly identified with #ad, #sponsored, 'presented by', or banner ad",
+    "cloaking": "Any attempt to circumvent content policies by presenting different off-platform content to Meta's integrity systems vs users",
+    "misleading_link": "Link that promises one type of content but delivers something substantially different",
+    "deceptive_redirect_behavior": "Websites requiring action to view content where domain changes after action, or automatic redirect to different domain",
+    "like_share_gating": "Requiring engagement (likes, shares, follows) to gain access to content. Must be specific, existing content offered solely to those who engage",
+    "deceptive_platform_functionality": "Mimicking Meta features that do not work (fake play buttons, Like buttons, polls) to get users to follow a link",
+    "deceptive_landing_page_functionality": "Websites with misleading UI causing accidental traffic (pop-ups, clickjacking, trapping)",
+    "domain_impersonation": "Off-platform landing page pretending to be reputable brand using typos, misspellings, or similar tactics",
+    "very_high_frequency_activity": "Activity that is unusually high-speed and significant outlier from norm, may be scripted or designed to overwhelm",
+    "moderately_high_frequency_activity": "Rate of activity not significantly anomalous but repetitive, irrelevant or potentially unwanted",
+    "unwanted_contact": "Contact where recipient doesn't want to be contacted by sender or has taken action to prevent contact",
+    "repetitive_contact": "Repeated engagement between users often without consent, including same content multiple times or similar content with variations"
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "1) Soliciting purchase/sale/exchange of engagement or privileges, 2) Engagement Gating, 3) Fake Functionality, 4) Deceptive Links (Misleading > Like/Share-gating > Deceptive Platform > Domain Impersonation)",
+    "link_review": "Do not click on URLs, only review them. Review website screenshots when available. Error pages (4xx, 5xx, blank, captcha, login required) are NOT violations",
+    "engagement_threshold": "Simple engagement-for-engagement (like-for-like) is allowed unless offered engagement exceeds requested OR cannot be performed by single account",
+    "giveaway_rule": "Giveaways require BOTH: 1) Entry condition is engagement AND 2) Prize is cash/crypto/precious metals. Gift cards and in-game currency are NOT violations",
+    "exchange_rule": "Exchanges require BOTH: 1) Condition is engagement AND 2) Reward has monetary value. Coupons, discounts, loans do NOT have monetary value",
+    "misleading_link_threshold": "Subject/topic must be SIGNIFICANTLY different. Same genre/broader category is NOT violating",
+    "impersonation_signals": "Look for typos (faceb00k), misspellings, obfuscation in URL, brand logos on unrelated domains",
+    "messaging_notes": "Sending messages at high frequency is NOT mass activity violation. Third-party app messaging requests are NOT violating"
+  }
+}

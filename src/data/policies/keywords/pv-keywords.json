@@ -1,0 +1,504 @@
+{
+  "policyId": "pv",
+  "policyName": "Privacy Violations",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "keywords": {
+    "pii_documents": {
+      "critical": [
+        { "term": "social security number", "context": "US national ID", "language": "en" },
+        { "term": "número de seguro social", "context": "ID nacional EUA", "language": "pt" },
+        { "term": "SSN", "context": "US national ID abbreviation", "language": "both" },
+        { "term": "passport number", "context": "travel document ID", "language": "en" },
+        { "term": "número do passaporte", "context": "ID de documento de viagem", "language": "pt" },
+        { "term": "driver's license number", "context": "government ID", "language": "en" },
+        { "term": "número da carteira de motorista", "context": "ID governamental", "language": "pt" },
+        { "term": "número da CNH", "context": "ID governamental Brasil", "language": "pt" },
+        { "term": "CPF", "context": "Brazilian national ID", "language": "pt" },
+        { "term": "RG", "context": "Brazilian identity document", "language": "pt" },
+        { "term": "NIF", "context": "Portuguese tax ID", "language": "pt" },
+        { "term": "national insurance number", "context": "UK national ID", "language": "en" },
+        { "term": "NHS number", "context": "UK health service ID", "language": "en" },
+        { "term": "green card number", "context": "US immigration document", "language": "en" },
+        { "term": "número do green card", "context": "documento de imigração EUA", "language": "pt" },
+        { "term": "visa number", "context": "immigration document", "language": "en" },
+        { "term": "número do visto", "context": "documento de imigração", "language": "pt" },
+        { "term": "work permit number", "context": "work authorization", "language": "en" },
+        { "term": "número da autorização de trabalho", "context": "autorização de trabalho", "language": "pt" },
+        { "term": "ITIN", "context": "US tax ID for non-residents", "language": "both" },
+        { "term": "birth certificate number", "context": "civil registry", "language": "en" },
+        { "term": "número da certidão de nascimento", "context": "registro civil", "language": "pt" },
+        { "term": "marriage certificate number", "context": "civil registry", "language": "en" },
+        { "term": "número da certidão de casamento", "context": "registro civil", "language": "pt" }
+      ],
+      "high": [
+        { "term": "government ID", "context": "official identification", "language": "en" },
+        { "term": "documento de identidade", "context": "identificação oficial", "language": "pt" },
+        { "term": "identity document", "context": "official identification", "language": "en" },
+        { "term": "military ID", "context": "armed forces identification", "language": "en" },
+        { "term": "identidade militar", "context": "identificação das forças armadas", "language": "pt" },
+        { "term": "police badge number", "context": "law enforcement ID", "language": "en" },
+        { "term": "número do distintivo policial", "context": "ID de aplicação da lei", "language": "pt" },
+        { "term": "license plate", "context": "vehicle identification", "language": "en" },
+        { "term": "placa do carro", "context": "identificação veicular", "language": "pt" },
+        { "term": "immigration papers", "context": "immigration documents", "language": "en" },
+        { "term": "documentos de imigração", "context": "documentos de imigração", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "ID number", "context": "generic identification number", "language": "en" },
+        { "term": "número de identificação", "context": "número de identificação genérico", "language": "pt" },
+        { "term": "document number", "context": "generic document reference", "language": "en" },
+        { "term": "número do documento", "context": "referência genérica de documento", "language": "pt" }
+      ]
+    },
+    "digital_identity": {
+      "critical": [
+        { "term": "password is", "context": "sharing password", "language": "en" },
+        { "term": "senha é", "context": "compartilhando senha", "language": "pt" },
+        { "term": "PIN code", "context": "personal identification number", "language": "en" },
+        { "term": "código PIN", "context": "número de identificação pessoal", "language": "pt" },
+        { "term": "login credentials", "context": "account access info", "language": "en" },
+        { "term": "credenciais de login", "context": "info de acesso à conta", "language": "pt" },
+        { "term": "account password", "context": "account access", "language": "en" },
+        { "term": "senha da conta", "context": "acesso à conta", "language": "pt" },
+        { "term": "security code", "context": "authentication code", "language": "en" },
+        { "term": "código de segurança", "context": "código de autenticação", "language": "pt" }
+      ],
+      "high": [
+        { "term": "email password", "context": "email account access", "language": "en" },
+        { "term": "senha do email", "context": "acesso à conta de email", "language": "pt" },
+        { "term": "social media password", "context": "social account access", "language": "en" },
+        { "term": "senha das redes sociais", "context": "acesso às redes sociais", "language": "pt" },
+        { "term": "Netflix password", "context": "streaming account", "language": "both" },
+        { "term": "Instagram password", "context": "social media account", "language": "both" },
+        { "term": "Facebook password", "context": "social media account", "language": "both" }
+      ]
+    },
+    "contact_information": {
+      "high": [
+        { "term": "phone number is", "context": "sharing phone number", "language": "en" },
+        { "term": "número de telefone é", "context": "compartilhando telefone", "language": "pt" },
+        { "term": "cell number", "context": "mobile phone", "language": "en" },
+        { "term": "número do celular", "context": "telefone móvel", "language": "pt" },
+        { "term": "personal email", "context": "personal email address", "language": "en" },
+        { "term": "email pessoal", "context": "endereço de email pessoal", "language": "pt" },
+        { "term": "work email", "context": "work email address", "language": "en" },
+        { "term": "email do trabalho", "context": "endereço de email do trabalho", "language": "pt" },
+        { "term": "contact her at", "context": "sharing contact", "language": "en" },
+        { "term": "contact him at", "context": "sharing contact", "language": "en" },
+        { "term": "contate ela em", "context": "compartilhando contato", "language": "pt" },
+        { "term": "contate ele em", "context": "compartilhando contato", "language": "pt" },
+        { "term": "reach them at", "context": "sharing contact", "language": "en" }
+      ],
+      "mid": [
+        { "term": "phone number", "context": "context dependent", "language": "en" },
+        { "term": "número de telefone", "context": "depende do contexto", "language": "pt" },
+        { "term": "email address", "context": "context dependent", "language": "en" },
+        { "term": "endereço de email", "context": "depende do contexto", "language": "pt" }
+      ]
+    },
+    "residential_information": {
+      "critical": [
+        { "term": "home address", "context": "residential address", "language": "en" },
+        { "term": "endereço residencial", "context": "endereço de casa", "language": "pt" },
+        { "term": "lives at", "context": "sharing residence", "language": "en" },
+        { "term": "mora em", "context": "compartilhando residência", "language": "pt" },
+        { "term": "where they live", "context": "asking for address", "language": "en" },
+        { "term": "onde mora", "context": "perguntando endereço", "language": "pt" },
+        { "term": "their house is at", "context": "sharing address", "language": "en" },
+        { "term": "a casa dele é em", "context": "compartilhando endereço", "language": "pt" },
+        { "term": "a casa dela é em", "context": "compartilhando endereço", "language": "pt" },
+        { "term": "apartment number", "context": "specific unit", "language": "en" },
+        { "term": "número do apartamento", "context": "unidade específica", "language": "pt" }
+      ],
+      "high": [
+        { "term": "street address", "context": "residential info", "language": "en" },
+        { "term": "endereço da rua", "context": "info residencial", "language": "pt" },
+        { "term": "postal code", "context": "location identifier", "language": "en" },
+        { "term": "CEP", "context": "código postal Brasil", "language": "pt" },
+        { "term": "código postal", "context": "identificador de localização", "language": "pt" },
+        { "term": "zip code", "context": "US postal code", "language": "en" },
+        { "term": "building name", "context": "residential building", "language": "en" },
+        { "term": "nome do prédio", "context": "edifício residencial", "language": "pt" },
+        { "term": "unit number", "context": "apartment unit", "language": "en" },
+        { "term": "número da unidade", "context": "unidade do apartamento", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "address", "context": "context dependent", "language": "en" },
+        { "term": "endereço", "context": "depende do contexto", "language": "pt" },
+        { "term": "neighborhood", "context": "location identifier (cities <50k)", "language": "en" },
+        { "term": "bairro", "context": "identificador de localização", "language": "pt" }
+      ]
+    },
+    "safe_house": {
+      "critical": [
+        { "term": "safe house address", "context": "exposing safe house", "language": "en" },
+        { "term": "endereço do abrigo", "context": "expondo abrigo", "language": "pt" },
+        { "term": "women's shelter location", "context": "domestic violence shelter", "language": "en" },
+        { "term": "localização do abrigo de mulheres", "context": "abrigo de violência doméstica", "language": "pt" },
+        { "term": "refuge address", "context": "safe house", "language": "en" },
+        { "term": "endereço do refúgio", "context": "casa segura", "language": "pt" },
+        { "term": "witness protection location", "context": "protected location", "language": "en" },
+        { "term": "localização da proteção a testemunhas", "context": "localização protegida", "language": "pt" },
+        { "term": "asylum seeker house", "context": "refugee housing", "language": "en" },
+        { "term": "casa de refugiados", "context": "moradia de refugiados", "language": "pt" }
+      ],
+      "high": [
+        { "term": "shelter location", "context": "may be safe house", "language": "en" },
+        { "term": "localização do abrigo", "context": "pode ser casa segura", "language": "pt" },
+        { "term": "safe house", "context": "protected residence", "language": "en" },
+        { "term": "casa segura", "context": "residência protegida", "language": "pt" },
+        { "term": "refuge", "context": "protected residence", "language": "en" },
+        { "term": "refúgio", "context": "residência protegida", "language": "pt" }
+      ]
+    },
+    "financial_information": {
+      "critical": [
+        { "term": "bank account number", "context": "financial info", "language": "en" },
+        { "term": "número da conta bancária", "context": "info financeira", "language": "pt" },
+        { "term": "credit card number", "context": "payment info", "language": "en" },
+        { "term": "número do cartão de crédito", "context": "info de pagamento", "language": "pt" },
+        { "term": "debit card number", "context": "payment info", "language": "en" },
+        { "term": "número do cartão de débito", "context": "info de pagamento", "language": "pt" },
+        { "term": "CVV", "context": "card security code", "language": "both" },
+        { "term": "card security code", "context": "payment security", "language": "en" },
+        { "term": "código de segurança do cartão", "context": "segurança de pagamento", "language": "pt" },
+        { "term": "expiration date", "context": "card validity (with card number)", "language": "en" },
+        { "term": "data de validade", "context": "validade do cartão", "language": "pt" },
+        { "term": "PayPal login", "context": "payment account access", "language": "both" },
+        { "term": "bank PIN", "context": "bank security code", "language": "en" },
+        { "term": "senha do banco", "context": "código de segurança bancário", "language": "pt" },
+        { "term": "financial records", "context": "non-public financial docs", "language": "en" },
+        { "term": "registros financeiros", "context": "docs financeiros não públicos", "language": "pt" }
+      ],
+      "high": [
+        { "term": "bank statement", "context": "financial document", "language": "en" },
+        { "term": "extrato bancário", "context": "documento financeiro", "language": "pt" },
+        { "term": "account balance", "context": "financial info", "language": "en" },
+        { "term": "saldo da conta", "context": "info financeira", "language": "pt" },
+        { "term": "routing number", "context": "US bank routing", "language": "en" },
+        { "term": "IBAN", "context": "international bank account", "language": "both" },
+        { "term": "SWIFT code", "context": "bank identifier", "language": "both" }
+      ]
+    },
+    "medical_information": {
+      "critical": [
+        { "term": "medical records", "context": "official medical documents", "language": "en" },
+        { "term": "prontuário médico", "context": "documentos médicos oficiais", "language": "pt" },
+        { "term": "medical history", "context": "health records", "language": "en" },
+        { "term": "histórico médico", "context": "registros de saúde", "language": "pt" },
+        { "term": "psychiatric evaluation", "context": "mental health record", "language": "en" },
+        { "term": "avaliação psiquiátrica", "context": "registro de saúde mental", "language": "pt" },
+        { "term": "diagnosis report", "context": "medical diagnosis", "language": "en" },
+        { "term": "laudo de diagnóstico", "context": "diagnóstico médico", "language": "pt" },
+        { "term": "HIV status", "context": "medical condition", "language": "en" },
+        { "term": "status de HIV", "context": "condição médica", "language": "pt" },
+        { "term": "genetic test results", "context": "genetic info", "language": "en" },
+        { "term": "resultados de teste genético", "context": "info genética", "language": "pt" },
+        { "term": "biometric data", "context": "biometric info", "language": "en" },
+        { "term": "dados biométricos", "context": "info biométrica", "language": "pt" }
+      ],
+      "high": [
+        { "term": "lab results", "context": "medical test results", "language": "en" },
+        { "term": "resultados de exames", "context": "resultados de testes médicos", "language": "pt" },
+        { "term": "prescription", "context": "medical prescription", "language": "en" },
+        { "term": "receita médica", "context": "prescrição médica", "language": "pt" },
+        { "term": "mental health records", "context": "psychological records", "language": "en" },
+        { "term": "registros de saúde mental", "context": "registros psicológicos", "language": "pt" }
+      ]
+    },
+    "hacked_sources": {
+      "critical": [
+        { "term": "hacked data", "context": "illegally obtained data", "language": "en" },
+        { "term": "dados hackeados", "context": "dados obtidos ilegalmente", "language": "pt" },
+        { "term": "from the hack", "context": "hacked source", "language": "en" },
+        { "term": "do hack", "context": "fonte hackeada", "language": "pt" },
+        { "term": "hacked from", "context": "hacked source", "language": "en" },
+        { "term": "hackeado de", "context": "fonte hackeada", "language": "pt" },
+        { "term": "stolen database", "context": "hacked data", "language": "en" },
+        { "term": "banco de dados roubado", "context": "dados hackeados", "language": "pt" },
+        { "term": "data breach", "context": "compromised data", "language": "en" },
+        { "term": "vazamento de dados", "context": "dados comprometidos", "language": "pt" },
+        { "term": "hacked server", "context": "compromised server", "language": "en" },
+        { "term": "servidor hackeado", "context": "servidor comprometido", "language": "pt" }
+      ],
+      "high": [
+        { "term": "leaked data", "context": "may be hacked (context dependent)", "language": "en" },
+        { "term": "dados vazados", "context": "pode ser hackeado (depende do contexto)", "language": "pt" },
+        { "term": "dump", "context": "data dump from breach", "language": "en" },
+        { "term": "compromised", "context": "may indicate hack", "language": "en" },
+        { "term": "comprometido", "context": "pode indicar hack", "language": "pt" }
+      ]
+    },
+    "personal_attributes": {
+      "high": [
+        { "term": "criminal record", "context": "personal attribute", "language": "en" },
+        { "term": "ficha criminal", "context": "atributo pessoal", "language": "pt" },
+        { "term": "antecedentes criminais", "context": "atributo pessoal", "language": "pt" },
+        { "term": "convicted of", "context": "criminal record", "language": "en" },
+        { "term": "condenado por", "context": "ficha criminal", "language": "pt" },
+        { "term": "sexual orientation", "context": "personal attribute", "language": "en" },
+        { "term": "orientação sexual", "context": "atributo pessoal", "language": "pt" },
+        { "term": "religious belief", "context": "personal attribute", "language": "en" },
+        { "term": "crença religiosa", "context": "atributo pessoal", "language": "pt" },
+        { "term": "political affiliation", "context": "personal attribute", "language": "en" },
+        { "term": "filiação política", "context": "atributo pessoal", "language": "pt" },
+        { "term": "union member", "context": "trade union membership", "language": "en" },
+        { "term": "membro do sindicato", "context": "filiação sindical", "language": "pt" }
+      ],
+      "mid": [
+        { "term": "is LGBT", "context": "sexual orientation attribute", "language": "en" },
+        { "term": "é LGBT", "context": "atributo de orientação sexual", "language": "pt" },
+        { "term": "is gay", "context": "sexual orientation", "language": "en" },
+        { "term": "é gay", "context": "orientação sexual", "language": "pt" },
+        { "term": "is Muslim", "context": "religious identity", "language": "en" },
+        { "term": "é muçulmano", "context": "identidade religiosa", "language": "pt" },
+        { "term": "is Christian", "context": "religious identity", "language": "en" },
+        { "term": "é cristão", "context": "identidade religiosa", "language": "pt" }
+      ]
+    },
+    "implying_knowledge_financial": {
+      "critical": [
+        { "term": "your bankruptcy", "context": "implying knowledge of financial status", "language": "en" },
+        { "term": "sua falência", "context": "implicando conhecimento de status financeiro", "language": "pt" },
+        { "term": "your welfare check", "context": "implying knowledge of benefits", "language": "en" },
+        { "term": "seu benefício social", "context": "implicando conhecimento de benefícios", "language": "pt" },
+        { "term": "your bad credit", "context": "implying knowledge of credit", "language": "en" },
+        { "term": "seu crédito ruim", "context": "implicando conhecimento de crédito", "language": "pt" },
+        { "term": "your low credit score", "context": "implying knowledge of credit", "language": "en" },
+        { "term": "sua pontuação de crédito baixa", "context": "implicando conhecimento de crédito", "language": "pt" },
+        { "term": "you are bankrupt", "context": "implying knowledge", "language": "en" },
+        { "term": "você está falido", "context": "implicando conhecimento", "language": "pt" },
+        { "term": "you are unemployed", "context": "implying knowledge of employment", "language": "en" },
+        { "term": "você está desempregado", "context": "implicando conhecimento de emprego", "language": "pt" }
+      ],
+      "high": [
+        { "term": "are you bankrupt", "context": "implying knowledge question", "language": "en" },
+        { "term": "você está falido", "context": "pergunta implicando conhecimento", "language": "pt" },
+        { "term": "receiving welfare", "context": "implying knowledge of benefits", "language": "en" },
+        { "term": "recebendo benefícios", "context": "implicando conhecimento de benefícios", "language": "pt" }
+      ]
+    },
+    "implying_knowledge_health": {
+      "critical": [
+        { "term": "your cancer", "context": "implying knowledge of health", "language": "en" },
+        { "term": "seu câncer", "context": "implicando conhecimento de saúde", "language": "pt" },
+        { "term": "your diabetes", "context": "implying knowledge of health", "language": "en" },
+        { "term": "sua diabetes", "context": "implicando conhecimento de saúde", "language": "pt" },
+        { "term": "your depression", "context": "implying knowledge of mental health", "language": "en" },
+        { "term": "sua depressão", "context": "implicando conhecimento de saúde mental", "language": "pt" },
+        { "term": "your ADHD", "context": "implying knowledge of condition", "language": "en" },
+        { "term": "seu TDAH", "context": "implicando conhecimento de condição", "language": "pt" },
+        { "term": "treat your condition", "context": "implying knowledge of health", "language": "en" },
+        { "term": "tratar sua condição", "context": "implicando conhecimento de saúde", "language": "pt" }
+      ],
+      "high": [
+        { "term": "do you have", "context": "health question (context dependent)", "language": "en" },
+        { "term": "você tem", "context": "pergunta de saúde (depende do contexto)", "language": "pt" },
+        { "term": "are you suffering from", "context": "health knowledge question", "language": "en" },
+        { "term": "você está sofrendo de", "context": "pergunta de conhecimento de saúde", "language": "pt" }
+      ]
+    },
+    "implying_knowledge_voting": {
+      "critical": [
+        { "term": "your vote has not been counted", "context": "implying voting status", "language": "en" },
+        { "term": "seu voto não foi contado", "context": "implicando status de voto", "language": "pt" },
+        { "term": "records show you haven't voted", "context": "implying voting history", "language": "en" },
+        { "term": "registros mostram que você não votou", "context": "implicando histórico de voto", "language": "pt" },
+        { "term": "your voter registration is incomplete", "context": "implying registration status", "language": "en" },
+        { "term": "seu registro eleitoral está incompleto", "context": "implicando status de registro", "language": "pt" },
+        { "term": "data indicates you voted", "context": "implying voting history", "language": "en" },
+        { "term": "dados indicam que você votou", "context": "implicando histórico de voto", "language": "pt" }
+      ]
+    },
+    "protest_surveillance": {
+      "high": [
+        { "term": "protest at their house", "context": "protest context", "language": "en" },
+        { "term": "protestar na casa deles", "context": "contexto de protesto", "language": "pt" },
+        { "term": "watch their house", "context": "surveillance context", "language": "en" },
+        { "term": "vigiar a casa deles", "context": "contexto de vigilância", "language": "pt" },
+        { "term": "meet at their residence", "context": "protest organization", "language": "en" },
+        { "term": "encontrar na residência deles", "context": "organização de protesto", "language": "pt" },
+        { "term": "stake out", "context": "surveillance", "language": "en" },
+        { "term": "ficar de tocaia", "context": "vigilância", "language": "pt" },
+        { "term": "gather outside their home", "context": "protest at residence", "language": "en" },
+        { "term": "reunir fora da casa deles", "context": "protesto na residência", "language": "pt" }
+      ]
+    }
+  },
+
+  "phrases": {
+    "sharing_pii": [
+      { "phrase": "here's their SSN", "severity": "critical", "language": "en" },
+      { "phrase": "aqui está o CPF dele", "severity": "critical", "language": "pt" },
+      { "phrase": "passport number is", "severity": "critical", "language": "en" },
+      { "phrase": "número do passaporte é", "severity": "critical", "language": "pt" },
+      { "phrase": "driver's license shows", "severity": "critical", "language": "en" },
+      { "phrase": "a carteira de motorista mostra", "severity": "critical", "language": "pt" },
+      { "phrase": "login credentials are", "severity": "critical", "language": "en" },
+      { "phrase": "as credenciais de login são", "severity": "critical", "language": "pt" }
+    ],
+    "sharing_contact": [
+      { "phrase": "her number is", "severity": "high", "language": "en" },
+      { "phrase": "o número dela é", "severity": "high", "language": "pt" },
+      { "phrase": "his phone is", "severity": "high", "language": "en" },
+      { "phrase": "o telefone dele é", "severity": "high", "language": "pt" },
+      { "phrase": "reach them at", "severity": "high", "language": "en" },
+      { "phrase": "contact them at", "severity": "high", "language": "en" },
+      { "phrase": "email her at", "severity": "high", "language": "en" },
+      { "phrase": "mande email para ela em", "severity": "high", "language": "pt" }
+    ],
+    "sharing_address": [
+      { "phrase": "they live at", "severity": "critical", "language": "en" },
+      { "phrase": "eles moram em", "severity": "critical", "language": "pt" },
+      { "phrase": "her address is", "severity": "critical", "language": "en" },
+      { "phrase": "o endereço dela é", "severity": "critical", "language": "pt" },
+      { "phrase": "his house is at", "severity": "critical", "language": "en" },
+      { "phrase": "a casa dele fica em", "severity": "critical", "language": "pt" },
+      { "phrase": "where she lives", "severity": "high", "language": "en" },
+      { "phrase": "onde ela mora", "severity": "high", "language": "pt" }
+    ],
+    "asking_private_info": [
+      { "phrase": "what's their address", "severity": "high", "language": "en" },
+      { "phrase": "qual o endereço deles", "severity": "high", "language": "pt" },
+      { "phrase": "where do they live", "severity": "high", "language": "en" },
+      { "phrase": "onde eles moram", "severity": "high", "language": "pt" },
+      { "phrase": "what's her phone number", "severity": "high", "language": "en" },
+      { "phrase": "qual o telefone dela", "severity": "high", "language": "pt" },
+      { "phrase": "send me their SSN", "severity": "critical", "language": "en" },
+      { "phrase": "manda o CPF deles", "severity": "critical", "language": "pt" }
+    ],
+    "hacked_claims": [
+      { "phrase": "got this from hacking", "severity": "critical", "language": "en" },
+      { "phrase": "consegui isso hackeando", "severity": "critical", "language": "pt" },
+      { "phrase": "from the data breach", "severity": "critical", "language": "en" },
+      { "phrase": "do vazamento de dados", "severity": "critical", "language": "pt" },
+      { "phrase": "leaked from", "severity": "high", "language": "en" },
+      { "phrase": "vazado de", "severity": "high", "language": "pt" },
+      { "phrase": "stolen from their server", "severity": "critical", "language": "en" },
+      { "phrase": "roubado do servidor deles", "severity": "critical", "language": "pt" }
+    ]
+  },
+
+  "excludedTerms": [
+    "student ID",
+    "ID de estudante",
+    "boarding pass",
+    "cartão de embarque",
+    "contact@",
+    "info@",
+    "help@",
+    "support@",
+    "sales@",
+    "social media handle",
+    "nome de usuário",
+    "publicly available",
+    "disponível publicamente",
+    "court records",
+    "registros judiciais",
+    "press release",
+    "comunicado de imprensa",
+    "news report",
+    "reportagem",
+    "fictional character",
+    "personagem fictício",
+    "charitable cause",
+    "causa beneficente",
+    "missing person",
+    "pessoa desaparecida",
+    "missing pet",
+    "animal perdido",
+    "official residence",
+    "residência oficial",
+    "embassy",
+    "embaixada",
+    "Are you ready to vote",
+    "Find your polling place",
+    "Check your credit score",
+    "Learn about voter registration"
+  ],
+
+  "contextSignals": {
+    "positive_violation": [
+      "without consent",
+      "sem consentimento",
+      "exposed",
+      "exposto",
+      "doxxed",
+      "doxxing",
+      "leaked",
+      "vazado",
+      "hacked",
+      "hackeado",
+      "stolen",
+      "roubado",
+      "protest at",
+      "protestar em",
+      "watch their",
+      "vigiar",
+      "surveillance",
+      "vigilância",
+      "records show you",
+      "registros mostram que você",
+      "data indicates you",
+      "dados indicam que você",
+      "your bankruptcy",
+      "sua falência",
+      "your welfare",
+      "seu benefício",
+      "your condition",
+      "sua condição",
+      "treat your",
+      "tratar seu"
+    ],
+    "negative_exception": [
+      "missing person",
+      "pessoa desaparecida",
+      "missing pet",
+      "animal perdido",
+      "charitable",
+      "beneficente",
+      "donation",
+      "doação",
+      "business contact",
+      "contato comercial",
+      "publicly available",
+      "disponível publicamente",
+      "news outlet",
+      "veículo de notícias",
+      "court records",
+      "registros judiciais",
+      "official residence",
+      "residência oficial",
+      "embassy",
+      "embaixada",
+      "fictional",
+      "fictício",
+      "movie",
+      "filme",
+      "book",
+      "livro",
+      "PSA",
+      "health awareness",
+      "conscientização de saúde",
+      "vote now",
+      "vote já",
+      "register to vote",
+      "registre-se para votar"
+    ]
+  },
+
+  "piiPatterns": {
+    "ssn": "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+    "cpf": "\\b\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}\\b",
+    "phone_us": "\\b\\d{3}[-.]?\\d{3}[-.]?\\d{4}\\b",
+    "phone_br": "\\b\\(?\\d{2}\\)?\\s?\\d{4,5}[-.]?\\d{4}\\b",
+    "email": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+    "credit_card": "\\b(?:\\d{4}[-\\s]?){3}\\d{4}\\b",
+    "cvv": "\\bCVV:?\\s?\\d{3,4}\\b",
+    "passport": "\\b[A-Z]{1,2}\\d{6,9}\\b",
+    "postal_code_us": "\\b\\d{5}(?:-\\d{4})?\\b",
+    "postal_code_br": "\\b\\d{5}-?\\d{3}\\b"
+  }
+}

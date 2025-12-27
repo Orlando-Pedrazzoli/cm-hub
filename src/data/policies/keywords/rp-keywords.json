@@ -1,0 +1,504 @@
+{
+  "policyId": "rp",
+  "policyName": "Recalled Products",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "keywords": {
+    "baby_sleep_products": {
+      "critical": [
+        { "term": "inclined sleeper", "context": "recalled baby sleep product", "language": "en" },
+        { "term": "inclined baby sleeper", "context": "recalled baby sleep product", "language": "en" },
+        { "term": "berço inclinado", "context": "produto de bebê recalled", "language": "pt" },
+        { "term": "rock n play", "context": "Fisher Price recalled sleeper", "language": "both" },
+        { "term": "rock and play", "context": "Fisher Price recalled sleeper", "language": "both" },
+        { "term": "drop side crib", "context": "recalled crib type", "language": "en" },
+        { "term": "berço com grade móvel", "context": "tipo de berço recalled", "language": "pt" },
+        { "term": "crib bumper", "context": "recalled crib accessory", "language": "en" },
+        { "term": "crib bumpers", "context": "recalled crib accessory", "language": "en" },
+        { "term": "protetor de berço", "context": "acessório de berço recalled", "language": "pt" },
+        { "term": "baby walker", "context": "recalled baby product", "language": "en" },
+        { "term": "andador de bebê", "context": "produto de bebê recalled", "language": "pt" },
+        { "term": "andador infantil", "context": "produto de bebê recalled", "language": "pt" },
+        { "term": "boppy lounger", "context": "recalled baby lounger", "language": "both" },
+        { "term": "boppy newborn lounger", "context": "recalled baby lounger", "language": "both" },
+        { "term": "baby self-feeding pillow", "context": "recalled feeding product", "language": "en" },
+        { "term": "almofada de alimentação", "context": "produto de alimentação recalled", "language": "pt" },
+        { "term": "hands-free bottle feeder", "context": "recalled feeding product", "language": "en" },
+        { "term": "mamadeira mãos livres", "context": "produto de alimentação recalled", "language": "pt" }
+      ],
+      "high": [
+        { "term": "baby rocker", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "cadeira de balanço bebê", "context": "pode ser sleeper inclinado", "language": "pt" },
+        { "term": "baby napper", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "baby nest", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "ninho de bebê", "context": "pode ser sleeper inclinado", "language": "pt" },
+        { "term": "baby pod", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "baby lounger", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "baby dock", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "soothing seat", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "baby bouncer", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "cadeira vibratória", "context": "pode ser sleeper inclinado", "language": "pt" },
+        { "term": "baby glider", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "baby soother", "context": "may be inclined sleeper", "language": "en" },
+        { "term": "infantino sling", "context": "recalled infant sling", "language": "both" },
+        { "term": "slingrider", "context": "recalled Infantino sling", "language": "both" },
+        { "term": "wendy bellissimo sling", "context": "recalled infant sling", "language": "both" }
+      ],
+      "mid": [
+        { "term": "bassinet", "context": "check if inclined", "language": "en" },
+        { "term": "moisés", "context": "verificar se inclinado", "language": "pt" },
+        { "term": "baby swing", "context": "check if inclined sleeper", "language": "en" },
+        { "term": "balanço de bebê", "context": "verificar se sleeper inclinado", "language": "pt" }
+      ]
+    },
+    "fisher_price": {
+      "critical": [
+        { "term": "laugh and learn chair", "context": "recalled Fisher Price product", "language": "en" },
+        { "term": "musical learning chair", "context": "recalled Fisher Price product", "language": "en" },
+        { "term": "cadeira musical fisher price", "context": "produto Fisher Price recalled", "language": "pt" },
+        { "term": "snugapuppy tissue box", "context": "recalled Fisher Price toy", "language": "en" },
+        { "term": "snugapuppy activity center", "context": "recalled Fisher Price product", "language": "en" },
+        { "term": "brunch and go stroller", "context": "recalled Fisher Price toy", "language": "en" },
+        { "term": "brunch & go stroller", "context": "recalled Fisher Price toy", "language": "en" }
+      ],
+      "high": [
+        { "term": "fisher price HLV78", "context": "recalled model number", "language": "both" },
+        { "term": "fisher price HGB85", "context": "recalled model number", "language": "both" }
+      ]
+    },
+    "ikea_furniture": {
+      "critical": [
+        { "term": "ikea malm", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "malm dresser", "context": "recalled IKEA dresser", "language": "en" },
+        { "term": "cômoda malm", "context": "cômoda IKEA recalled", "language": "pt" },
+        { "term": "malm chest", "context": "recalled IKEA chest", "language": "en" },
+        { "term": "ikea brimnes", "context": "recalled IKEA dresser (check frame)", "language": "both" },
+        { "term": "ikea tarva", "context": "recalled IKEA dresser (check frame)", "language": "both" },
+        { "term": "ikea hemnes 3 drawer", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea hemnes 6 drawer", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "hemnes mirror dresser", "context": "always recalled", "language": "en" },
+        { "term": "ikea kullen", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea stuva", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea trofast", "context": "recalled IKEA dresser", "language": "both" }
+      ],
+      "high": [
+        { "term": "ikea aneboda", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea hopen", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea mammut", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea leksvik", "context": "recalled IKEA dresser", "language": "both" },
+        { "term": "ikea trysil", "context": "recalled IKEA dresser", "language": "both" }
+      ],
+      "mid": [
+        { "term": "ikea dresser", "context": "may be recalled model", "language": "en" },
+        { "term": "cômoda ikea", "context": "pode ser modelo recalled", "language": "pt" },
+        { "term": "ikea chest of drawers", "context": "may be recalled model", "language": "en" }
+      ]
+    },
+    "exercise_equipment": {
+      "critical": [
+        { "term": "peloton tread", "context": "recalled treadmill", "language": "both" },
+        { "term": "peloton tread+", "context": "recalled treadmill", "language": "both" },
+        { "term": "peloton treadmill", "context": "recalled treadmill", "language": "both" },
+        { "term": "esteira peloton", "context": "esteira recalled", "language": "pt" },
+        { "term": "nautilus t616", "context": "recalled treadmill model", "language": "both" },
+        { "term": "nautilus t618", "context": "recalled treadmill model", "language": "both" },
+        { "term": "bowflex 552", "context": "recalled dumbbell", "language": "both" },
+        { "term": "bowflex 1090", "context": "recalled dumbbell", "language": "both" },
+        { "term": "bowflex dumbbell", "context": "recalled adjustable dumbbell", "language": "both" },
+        { "term": "halter bowflex", "context": "halter recalled", "language": "pt" }
+      ]
+    },
+    "electric_vehicles": {
+      "critical": [
+        { "term": "onewheel", "context": "recalled electric skateboard", "language": "both" },
+        { "term": "one wheel skateboard", "context": "recalled electric skateboard", "language": "en" },
+        { "term": "skate elétrico onewheel", "context": "skate elétrico recalled", "language": "pt" },
+        { "term": "apollo phantom scooter", "context": "recalled electric scooter", "language": "both" },
+        { "term": "patinete apollo phantom", "context": "patinete recalled", "language": "pt" },
+        { "term": "swagway hoverboard", "context": "recalled hoverboard", "language": "both" },
+        { "term": "swagway scooter", "context": "recalled self-balancing scooter", "language": "both" },
+        { "term": "tesla cyberquad kids", "context": "recalled kids ATV", "language": "both" },
+        { "term": "cyberquad for kids", "context": "recalled kids ATV", "language": "both" },
+        { "term": "radio flyer cyberquad", "context": "recalled kids ATV", "language": "both" },
+        { "term": "gyroor c3 ebike", "context": "recalled e-bike", "language": "both" },
+        { "term": "gyroor c3 e-bike", "context": "recalled e-bike", "language": "both" }
+      ],
+      "high": [
+        { "term": "swagway", "context": "recalled hoverboard brand", "language": "both" },
+        { "term": "future motion", "context": "Onewheel manufacturer", "language": "both" }
+      ]
+    },
+    "kitchen_appliances": {
+      "critical": [
+        { "term": "cosori air fryer", "context": "recalled air fryer", "language": "both" },
+        { "term": "fritadeira cosori", "context": "fritadeira recalled", "language": "pt" },
+        { "term": "insignia air fryer", "context": "recalled air fryer", "language": "both" },
+        { "term": "fritadeira insignia", "context": "fritadeira recalled", "language": "pt" },
+        { "term": "powerxl air fryer", "context": "recalled air fryer", "language": "both" },
+        { "term": "powerxl dual basket", "context": "recalled air fryer", "language": "both" },
+        { "term": "blendjet 2", "context": "recalled portable blender", "language": "both" },
+        { "term": "blendjet", "context": "recalled portable blender", "language": "both" },
+        { "term": "liquidificador blendjet", "context": "liquidificador recalled", "language": "pt" },
+        { "term": "calphalon kettle", "context": "recalled kettle model 4302", "language": "both" },
+        { "term": "chaleira calphalon", "context": "chaleira recalled", "language": "pt" }
+      ],
+      "high": [
+        { "term": "cosori CP158", "context": "recalled model", "language": "both" },
+        { "term": "cosori CP137", "context": "recalled model", "language": "both" },
+        { "term": "insignia NS-AF", "context": "recalled model prefix", "language": "both" }
+      ]
+    },
+    "toys": {
+      "critical": [
+        { "term": "sky dancers", "context": "recalled flying doll", "language": "both" },
+        { "term": "galoob sky dancers", "context": "recalled flying doll", "language": "both" },
+        { "term": "magnaman", "context": "recalled magnetic toy", "language": "both" },
+        { "term": "zen magnets", "context": "recalled magnet set", "language": "both" },
+        { "term": "neoballs", "context": "recalled magnet set", "language": "both" },
+        { "term": "buckyballs", "context": "recalled magnet set", "language": "both" },
+        { "term": "buckycubes", "context": "recalled magnet set", "language": "both" },
+        { "term": "baby shark bath toy", "context": "recalled bath toy", "language": "both" },
+        { "term": "robo alive baby shark", "context": "recalled bath toy", "language": "both" },
+        { "term": "kidoozie tent", "context": "recalled play tent", "language": "both" },
+        { "term": "kidoozie playhouse", "context": "recalled playhouse", "language": "both" },
+        { "term": "balloon blowing kit", "context": "recalled toy", "language": "en" },
+        { "term": "kit de balão", "context": "brinquedo recalled", "language": "pt" },
+        { "term": "thanos oven mitt", "context": "recalled Marvel product", "language": "both" },
+        { "term": "thanos gauntlet mitt", "context": "recalled Marvel product", "language": "both" },
+        { "term": "luva de forno thanos", "context": "produto Marvel recalled", "language": "pt" }
+      ],
+      "high": [
+        { "term": "fao schwarz robot", "context": "recalled wood toy", "language": "both" },
+        { "term": "fao schwarz sensory board", "context": "recalled wood toy", "language": "both" },
+        { "term": "blues clues ride on", "context": "recalled ride-on toy", "language": "both" },
+        { "term": "monti kids push toy", "context": "recalled wooden push toy", "language": "both" }
+      ]
+    },
+    "furniture_other": {
+      "critical": [
+        { "term": "lane cedar chest", "context": "recalled chest 1912-1987", "language": "both" },
+        { "term": "virginia maid cedar chest", "context": "recalled chest 1912-1987", "language": "both" },
+        { "term": "baú de cedro lane", "context": "baú recalled", "language": "pt" },
+        { "term": "angel line bunk bed", "context": "recalled bunk bed", "language": "both" },
+        { "term": "beliche angel line", "context": "beliche recalled", "language": "pt" },
+        { "term": "ace bayou bean bag", "context": "recalled bean bag chair", "language": "both" },
+        { "term": "puff ace bayou", "context": "puff recalled", "language": "pt" }
+      ]
+    },
+    "bed_rails": {
+      "critical": [
+        { "term": "drive devilbiss bed rail", "context": "recalled bed rail", "language": "both" },
+        { "term": "endurance bed rail", "context": "recalled bed rail", "language": "both" },
+        { "term": "carex bed rail", "context": "recalled bed rail", "language": "both" },
+        { "term": "medline bed rail", "context": "recalled bed rail", "language": "both" },
+        { "term": "grade de cama adulto", "context": "grade de cama recalled", "language": "pt" },
+        { "term": "bed assist bar", "context": "recalled bed assist product", "language": "en" },
+        { "term": "barra de apoio cama", "context": "barra de apoio recalled", "language": "pt" }
+      ]
+    },
+    "wearables": {
+      "critical": [
+        { "term": "fitbit ionic", "context": "recalled smartwatch", "language": "both" },
+        { "term": "relógio fitbit ionic", "context": "smartwatch recalled", "language": "pt" },
+        { "term": "hulovox robe", "context": "recalled children's robe", "language": "both" },
+        { "term": "roupão hulovox", "context": "roupão infantil recalled", "language": "pt" },
+        { "term": "scout helmet retrospec", "context": "recalled bike helmet", "language": "both" },
+        { "term": "capacete scout retrospec", "context": "capacete recalled", "language": "pt" }
+      ]
+    },
+    "bikes": {
+      "critical": [
+        { "term": "woom bike", "context": "recalled children's bike", "language": "both" },
+        { "term": "woom bicycle", "context": "recalled children's bike", "language": "both" },
+        { "term": "bicicleta woom", "context": "bicicleta recalled", "language": "pt" },
+        { "term": "marin mountain bike 2021", "context": "recalled bike model year", "language": "both" },
+        { "term": "trek allant tektro", "context": "recalled bike with Tektro brakes", "language": "both" },
+        { "term": "nextgen bicycle", "context": "recalled children's bike", "language": "both" },
+        { "term": "holabelle nextgen", "context": "recalled children's bike", "language": "both" }
+      ]
+    },
+    "appliances": {
+      "critical": [
+        { "term": "whirlpool hotpoint", "context": "recalled washing machine", "language": "both" },
+        { "term": "whirlpool indesit", "context": "recalled washing machine", "language": "both" },
+        { "term": "zline gas range", "context": "recalled gas range", "language": "both" },
+        { "term": "fogão zline", "context": "fogão recalled", "language": "pt" },
+        { "term": "maxkare electric blanket", "context": "recalled electric blanket", "language": "both" },
+        { "term": "cobertor elétrico maxkare", "context": "cobertor recalled", "language": "pt" },
+        { "term": "atomi smart heater", "context": "recalled heater", "language": "both" },
+        { "term": "aquecedor atomi", "context": "aquecedor recalled", "language": "pt" }
+      ],
+      "high": [
+        { "term": "gree dehumidifier", "context": "recalled dehumidifier", "language": "both" },
+        { "term": "kenmore dehumidifier", "context": "recalled dehumidifier", "language": "both" },
+        { "term": "ge dehumidifier", "context": "recalled dehumidifier", "language": "both" },
+        { "term": "soleusair dehumidifier", "context": "recalled dehumidifier", "language": "both" },
+        { "term": "desumidificador", "context": "may be recalled model", "language": "pt" }
+      ]
+    },
+    "steamers": {
+      "critical": [
+        { "term": "my little steamer", "context": "recalled handheld steamer", "language": "both" },
+        { "term": "steamfast handheld", "context": "recalled steamer", "language": "both" },
+        { "term": "vornado steamer", "context": "recalled steamer", "language": "both" },
+        { "term": "sharper image steamer", "context": "recalled steamer", "language": "both" },
+        { "term": "black decker steamer HGS011", "context": "recalled steamer model", "language": "both" },
+        { "term": "vaporizador black decker", "context": "vaporizador recalled", "language": "pt" }
+      ]
+    },
+    "pools": {
+      "critical": [
+        { "term": "summer waves pool 48", "context": "recalled above-ground pool", "language": "both" },
+        { "term": "funsicle pool 48", "context": "recalled above-ground pool", "language": "both" },
+        { "term": "bestway pool 48", "context": "recalled above-ground pool", "language": "both" },
+        { "term": "coleman power steel pool", "context": "recalled above-ground pool", "language": "both" },
+        { "term": "piscina de armação 48", "context": "piscina recalled", "language": "pt" }
+      ],
+      "high": [
+        { "term": "above ground pool compression straps", "context": "recalled pool design", "language": "en" },
+        { "term": "polygroup pool", "context": "may be recalled model", "language": "both" }
+      ]
+    },
+    "strollers_carriers": {
+      "critical": [
+        { "term": "maclaren umbrella stroller", "context": "recalled pre-2009 strollers", "language": "both" },
+        { "term": "carrinho maclaren", "context": "carrinho recalled", "language": "pt" },
+        { "term": "valco baby snap duo", "context": "recalled stroller", "language": "both" },
+        { "term": "deuter kid comfort", "context": "recalled child carrier", "language": "both" },
+        { "term": "mochila deuter kid comfort", "context": "mochila porta-bebê recalled", "language": "pt" }
+      ]
+    },
+    "other_hazards": {
+      "critical": [
+        { "term": "pointed lawn dart", "context": "banned product", "language": "en" },
+        { "term": "jogo de dardos pontiagudo", "context": "produto banido", "language": "pt" },
+        { "term": "jequirity bean", "context": "toxic bean - banned", "language": "en" },
+        { "term": "semente de jequiriti", "context": "semente tóxica banida", "language": "pt" },
+        { "term": "relight candle", "context": "banned candle type", "language": "en" },
+        { "term": "vela que reacende", "context": "tipo de vela banida", "language": "pt" },
+        { "term": "trick candle", "context": "may be banned relight type", "language": "en" },
+        { "term": "hair dryer no immersion protection", "context": "banned hair dryer type", "language": "en" },
+        { "term": "secador sem proteção imersão", "context": "tipo de secador banido", "language": "pt" },
+        { "term": "bumbo without belt", "context": "recalled Bumbo seat", "language": "en" },
+        { "term": "bumbo sem cinto", "context": "assento Bumbo recalled", "language": "pt" }
+      ]
+    },
+    "miscellaneous": {
+      "critical": [
+        { "term": "shrek glasses mcdonalds", "context": "recalled collectible glasses", "language": "both" },
+        { "term": "copos shrek mcdonalds", "context": "copos colecionáveis recalled", "language": "pt" },
+        { "term": "aflac doctor duck", "context": "recalled promotional plush", "language": "both" },
+        { "term": "yeti hopper m30", "context": "recalled soft cooler", "language": "both" },
+        { "term": "yeti hopper m20", "context": "recalled soft cooler", "language": "both" },
+        { "term": "yeti sidekick dry", "context": "recalled gear case", "language": "both" },
+        { "term": "contigo kids bottle black spout", "context": "recalled water bottle", "language": "both" },
+        { "term": "garrafa contigo kids", "context": "garrafa recalled", "language": "pt" },
+        { "term": "pillowfort weighted blanket", "context": "recalled weighted blanket", "language": "both" },
+        { "term": "cobertor pesado pillowfort", "context": "cobertor recalled", "language": "pt" },
+        { "term": "pixy camera battery", "context": "recalled lithium battery", "language": "both" },
+        { "term": "bateria pixy camera", "context": "bateria recalled", "language": "pt" },
+        { "term": "upp ebike battery", "context": "recalled e-bike battery", "language": "both" },
+        { "term": "mag battery pack quad lock", "context": "recalled battery pack", "language": "both" }
+      ]
+    }
+  },
+
+  "phrases": {
+    "sale_intent": [
+      { "phrase": "for sale recalled", "severity": "critical", "language": "en" },
+      { "phrase": "à venda recalled", "severity": "critical", "language": "pt" },
+      { "phrase": "selling rock n play", "severity": "critical", "language": "en" },
+      { "phrase": "vendendo rock n play", "severity": "critical", "language": "pt" },
+      { "phrase": "baby walker for sale", "severity": "critical", "language": "en" },
+      { "phrase": "andador de bebê à venda", "severity": "critical", "language": "pt" },
+      { "phrase": "inclined sleeper for sale", "severity": "critical", "language": "en" },
+      { "phrase": "crib bumper for sale", "severity": "critical", "language": "en" },
+      { "phrase": "protetor de berço à venda", "severity": "critical", "language": "pt" },
+      { "phrase": "drop side crib for sale", "severity": "critical", "language": "en" },
+      { "phrase": "ikea malm for sale", "severity": "critical", "language": "en" },
+      { "phrase": "cômoda malm à venda", "severity": "critical", "language": "pt" },
+      { "phrase": "peloton tread for sale", "severity": "critical", "language": "en" },
+      { "phrase": "onewheel for sale", "severity": "critical", "language": "en" },
+      { "phrase": "cosori air fryer for sale", "severity": "critical", "language": "en" }
+    ],
+    "buy_intent": [
+      { "phrase": "looking for rock n play", "severity": "critical", "language": "en" },
+      { "phrase": "procurando rock n play", "severity": "critical", "language": "pt" },
+      { "phrase": "wtb baby walker", "severity": "critical", "language": "en" },
+      { "phrase": "quero comprar andador", "severity": "critical", "language": "pt" },
+      { "phrase": "anyone selling inclined sleeper", "severity": "critical", "language": "en" },
+      { "phrase": "need crib bumper", "severity": "high", "language": "en" },
+      { "phrase": "preciso protetor berço", "severity": "high", "language": "pt" },
+      { "phrase": "where to buy peloton tread", "severity": "critical", "language": "en" },
+      { "phrase": "onde comprar onewheel", "severity": "critical", "language": "pt" }
+    ],
+    "donate_gift": [
+      { "phrase": "free baby walker", "severity": "critical", "language": "en" },
+      { "phrase": "andador grátis", "severity": "critical", "language": "pt" },
+      { "phrase": "giving away rock n play", "severity": "critical", "language": "en" },
+      { "phrase": "free inclined sleeper", "severity": "critical", "language": "en" },
+      { "phrase": "doando berço inclinado", "severity": "critical", "language": "pt" },
+      { "phrase": "free crib bumper", "severity": "critical", "language": "en" },
+      { "phrase": "protetor de berço grátis", "severity": "critical", "language": "pt" }
+    ],
+    "promote_use": [
+      { "phrase": "rock n play is safe", "severity": "high", "language": "en" },
+      { "phrase": "ignore the recall", "severity": "high", "language": "en" },
+      { "phrase": "ignora o recall", "severity": "high", "language": "pt" },
+      { "phrase": "recall is overblown", "severity": "high", "language": "en" },
+      { "phrase": "o recall é exagero", "severity": "high", "language": "pt" },
+      { "phrase": "still use my", "severity": "mid", "language": "en" },
+      { "phrase": "ainda uso meu", "severity": "mid", "language": "pt" }
+    ]
+  },
+
+  "excludedTerms": [
+    "recall notice",
+    "aviso de recall",
+    "recall warning",
+    "alerta de recall",
+    "cpsc recall",
+    "recalled due to",
+    "foi recolhido devido",
+    "safety recall",
+    "recall de segurança",
+    "check if recalled",
+    "verificar se tem recall",
+    "recall announced",
+    "recall anunciado",
+    "documentary",
+    "documentário",
+    "news report",
+    "reportagem",
+    "mesh crib liner",
+    "forro de berço mesh",
+    "non-padded mesh",
+    "mesh não acolchoado",
+    "hemnes 8 drawer",
+    "hemnes 8 gavetas"
+  ],
+
+  "contextSignals": {
+    "positive": [
+      "for sale",
+      "à venda",
+      "selling",
+      "vendendo",
+      "buy",
+      "comprar",
+      "trade",
+      "trocar",
+      "swap",
+      "exchange",
+      "free",
+      "grátis",
+      "giveaway",
+      "doação",
+      "donate",
+      "doar",
+      "gift",
+      "presente",
+      "price",
+      "preço",
+      "$",
+      "R$",
+      "€",
+      "dm me",
+      "me chama",
+      "contact",
+      "contato",
+      "delivery",
+      "entrega",
+      "shipping",
+      "frete",
+      "available",
+      "disponível",
+      "pickup",
+      "retirada",
+      "obo",
+      "best offer",
+      "negociável",
+      "great condition",
+      "ótimo estado",
+      "like new",
+      "como novo",
+      "works perfectly",
+      "funciona perfeitamente",
+      "still works",
+      "ainda funciona",
+      "love my",
+      "adoro meu",
+      "best product",
+      "melhor produto",
+      "recommend",
+      "recomendo",
+      "where to find",
+      "onde encontrar",
+      "how to get",
+      "como conseguir"
+    ],
+    "negative": [
+      "recall",
+      "recalled",
+      "recolhido",
+      "cpsc",
+      "warning",
+      "aviso",
+      "danger",
+      "perigo",
+      "unsafe",
+      "inseguro",
+      "hazard",
+      "risco",
+      "death",
+      "morte",
+      "injury",
+      "lesão",
+      "documentary",
+      "documentário",
+      "news",
+      "notícia",
+      "report",
+      "relatório",
+      "article",
+      "artigo",
+      "education",
+      "educação",
+      "awareness",
+      "conscientização",
+      "fiction",
+      "ficção",
+      "movie",
+      "filme",
+      "tv show",
+      "série",
+      "how to check",
+      "como verificar",
+      "is yours recalled",
+      "o seu tem recall",
+      "refund",
+      "reembolso",
+      "return",
+      "devolução"
+    ]
+  },
+
+  "modelNumbers": {
+    "fisher_price": ["HLV78", "HGB85"],
+    "cosori": ["CP158-AF", "CP137-AF", "CS158-AF", "CAF-P581", "CO137-AF", "CO158-AF", "CP258-AF"],
+    "insignia": ["NS-AF32DBK9", "NS-AF32MBK9", "NS-AF50MBK9", "NS-AF53DSS0", "NS-AF55DBK9", "NS-AFO6DBK1"],
+    "powerxl": ["DUAF-10", "DUAF-005"],
+    "nautilus": ["T616", "T618"],
+    "bowflex": ["552", "1090"],
+    "zline": ["RG30", "RGS-30", "RGB-30", "RG36", "RGS-36", "RGB-36"],
+    "radio_flyer": ["914"],
+    "calphalon": ["4302"],
+    "drive_devilbiss": ["15064", "15062", "RTL15073", "RTL15063-ADJ"],
+    "medline": ["MDS6800BA", "MDS6800BAH"],
+    "black_decker": ["HGS011F", "HGS011S", "HGS011", "HGS011T"],
+    "atomi": ["AT1323", "AT1481", "AT1520", "AT1632", "AT1482", "AT1521", "AT1635"],
+    "deuter": ["3621221", "3621321", "3621121"],
+    "valco": ["7884", "7885", "7886", "N9938", "N9939", "N9872", "N0001"]
+  }
+}

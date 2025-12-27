@@ -1,0 +1,435 @@
+{
+  "policyId": "psl",
+  "policyName": "Profanity and Sexualized Language",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-24",
+
+  "keywords": {
+    "english": {
+      "critical": [
+        { "term": "suck my dick", "context": "sexually vulgar phrase", "language": "en" },
+        { "term": "suck my balls", "context": "sexually vulgar phrase", "language": "en" },
+        { "term": "suck my tits", "context": "sexually vulgar phrase", "language": "en" },
+        { "term": "eat my dick", "context": "sexually vulgar phrase", "language": "en" },
+        { "term": "blow my cock", "context": "sexually vulgar phrase", "language": "en" },
+        { "term": "kiss my ass", "context": "sexually vulgar phrase", "language": "en" },
+        { "term": "motherfucker", "context": "sexually vulgar word", "language": "en" },
+        { "term": "cocksucker", "context": "sexually vulgar word", "language": "en" }
+      ],
+      "high": [
+        { "term": "dick", "context": "sexually vulgar word", "language": "en" },
+        { "term": "dickhead", "context": "sexually vulgar variation", "language": "en" },
+        { "term": "dickwad", "context": "sexually vulgar variation", "language": "en" },
+        { "term": "fuck", "context": "sexually vulgar word", "language": "en" },
+        { "term": "fucker", "context": "sexually vulgar variation", "language": "en" },
+        { "term": "fuckhead", "context": "sexually vulgar variation", "language": "en" },
+        { "term": "pussy", "context": "sexually vulgar word", "language": "en" },
+        { "term": "cock", "context": "sexually vulgar word", "language": "en" },
+        { "term": "bollocks", "context": "sexually vulgar word", "language": "en" },
+        { "term": "whore", "context": "sexually vulgar word", "language": "en" },
+        { "term": "ho", "context": "sexually vulgar variation of whore", "language": "en" },
+        { "term": "hoe", "context": "sexually vulgar variation of whore", "language": "en" },
+        { "term": "twat", "context": "sexually vulgar word", "language": "en" },
+        { "term": "jerkoff", "context": "sexually vulgar word", "language": "en" },
+        { "term": "weiner", "context": "sexually vulgar word", "language": "en" },
+        { "term": "screw", "context": "sexually vulgar word (context dependent)", "language": "en" }
+      ],
+      "mid": [
+        { "term": "fack", "context": "misspelled variation of fuck", "language": "en" },
+        { "term": "fuk", "context": "misspelled variation of fuck", "language": "en" },
+        { "term": "fvck", "context": "obfuscated variation of fuck", "language": "en" },
+        { "term": "f*ck", "context": "partially obfuscated - STILL violating", "language": "en" },
+        { "term": "f**k", "context": "partially obfuscated - STILL violating", "language": "en" },
+        { "term": "sh*t", "context": "partially obfuscated - STILL violating", "language": "en" },
+        { "term": "p*ssy", "context": "partially obfuscated - STILL violating", "language": "en" },
+        { "term": "d*ck", "context": "partially obfuscated - STILL violating", "language": "en" },
+        { "term": "c*ck", "context": "partially obfuscated - STILL violating", "language": "en" },
+        { "term": "suckmydick", "context": "combined phrase - treat as suck my dick", "language": "en" },
+        { "term": "mother fucker", "context": "split word - treat as motherfucker", "language": "en" },
+        { "term": "cock sucker", "context": "split word - treat as cocksucker", "language": "en" }
+      ]
+    },
+    "portuguese_brazilian": {
+      "critical": [
+        { "term": "chupa meu pau", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "chupa minhas bolas", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "chupa meus peitos", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "chupa o meu caralho", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "chupa minha rola", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "mama meus peitos", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "come meu pau", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "beija minha bunda", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "beija o meu cu", "context": "sexually vulgar phrase", "language": "pt" },
+        { "term": "filho da puta", "context": "sexually vulgar word (motherfucker)", "language": "pt" },
+        { "term": "chupador de rola", "context": "sexually vulgar word (cocksucker)", "language": "pt" }
+      ],
+      "high": [
+        { "term": "pau", "context": "sexually vulgar word (dick)", "language": "pt" },
+        { "term": "pinto", "context": "sexually vulgar word (dick)", "language": "pt" },
+        { "term": "caralho", "context": "sexually vulgar word (dick)", "language": "pt" },
+        { "term": "rola", "context": "sexually vulgar word (dick)", "language": "pt" },
+        { "term": "cacete", "context": "sexually vulgar word (dick)", "language": "pt" },
+        { "term": "fuder", "context": "sexually vulgar word (fuck)", "language": "pt" },
+        { "term": "foda", "context": "sexually vulgar word (fuck)", "language": "pt" },
+        { "term": "foder", "context": "sexually vulgar word (fuck)", "language": "pt" },
+        { "term": "buceta", "context": "sexually vulgar word (pussy)", "language": "pt" },
+        { "term": "pepeca", "context": "sexually vulgar word (pussy)", "language": "pt" },
+        { "term": "ppk", "context": "sexually vulgar abbreviation (pussy)", "language": "pt" },
+        { "term": "puta", "context": "sexually vulgar word (whore)", "language": "pt" },
+        { "term": "putinha", "context": "sexually vulgar word (whore)", "language": "pt" },
+        { "term": "prostituta", "context": "sexually vulgar word", "language": "pt" },
+        { "term": "vagabunda", "context": "sexually vulgar word", "language": "pt" },
+        { "term": "bolas", "context": "sexually vulgar word (balls)", "language": "pt" },
+        { "term": "testículos", "context": "anatomical term (context dependent)", "language": "pt" }
+      ]
+    },
+    "spanish_latam": {
+      "critical": [
+        { "term": "chúpame el pene", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "chúpame las bolas", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "chúpame las tetas", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "chúpame el pito", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "chúpame la pija", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "mamar la verga", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "chúpame la verga", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "cómete mi pene", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "bésame el culo", "context": "sexually vulgar phrase", "language": "es" },
+        { "term": "hijo de puta", "context": "sexually vulgar word (motherfucker)", "language": "es" },
+        { "term": "chupa pijas", "context": "sexually vulgar word (cocksucker)", "language": "es" }
+      ],
+      "high": [
+        { "term": "pene", "context": "sexually vulgar/anatomical word (dick)", "language": "es" },
+        { "term": "pito", "context": "sexually vulgar word (dick)", "language": "es" },
+        { "term": "verga", "context": "sexually vulgar word (dick)", "language": "es" },
+        { "term": "chota", "context": "sexually vulgar word (dick)", "language": "es" },
+        { "term": "poronga", "context": "sexually vulgar word (dick)", "language": "es" },
+        { "term": "mondá", "context": "sexually vulgar word (dick)", "language": "es" },
+        { "term": "pinga", "context": "sexually vulgar word (dick)", "language": "es" },
+        { "term": "puta", "context": "sexually vulgar word (whore)", "language": "es" },
+        { "term": "puto", "context": "sexually vulgar word", "language": "es" },
+        { "term": "chocha", "context": "sexually vulgar word (pussy)", "language": "es" },
+        { "term": "chocho", "context": "sexually vulgar word (pussy)", "language": "es" },
+        { "term": "chichi", "context": "sexually vulgar word (pussy)", "language": "es" },
+        { "term": "follar", "context": "sexually vulgar word (fuck)", "language": "es" },
+        { "term": "culear", "context": "sexually vulgar word (fuck)", "language": "es" },
+        { "term": "culiar", "context": "sexually vulgar word (fuck)", "language": "es" },
+        { "term": "pichar", "context": "sexually vulgar word (fuck)", "language": "es" },
+        { "term": "zorra", "context": "sexually vulgar word (whore)", "language": "es" },
+        { "term": "perra", "context": "sexually vulgar word (whore)", "language": "es" },
+        { "term": "golfa", "context": "sexually vulgar word (whore)", "language": "es" },
+        { "term": "ramera", "context": "sexually vulgar word (whore)", "language": "es" },
+        { "term": "care verga", "context": "sexually vulgar word", "language": "es" },
+        { "term": "care mondá", "context": "sexually vulgar word", "language": "es" }
+      ]
+    },
+    "hindi_hinglish": {
+      "critical": [
+        { "term": "mera lauda chus", "context": "sexually vulgar phrase (suck my dick)", "language": "hi" },
+        { "term": "मेरा लौड़ा चूस", "context": "sexually vulgar phrase (suck my dick)", "language": "hi" },
+        { "term": "mera lund kha", "context": "sexually vulgar phrase (eat my dick)", "language": "hi" },
+        { "term": "मेरा लंड खा", "context": "sexually vulgar phrase (eat my dick)", "language": "hi" },
+        { "term": "meri gaand chumo", "context": "sexually vulgar phrase (kiss my ass)", "language": "hi" },
+        { "term": "मेरी गांड चूमो", "context": "sexually vulgar phrase (kiss my ass)", "language": "hi" },
+        { "term": "madarchod", "context": "sexually vulgar word (motherfucker)", "language": "hi" },
+        { "term": "मादरचोद", "context": "sexually vulgar word (motherfucker)", "language": "hi" },
+        { "term": "bhenchod", "context": "sexually vulgar word (sisterfucker)", "language": "hi" },
+        { "term": "भेनचोद", "context": "sexually vulgar word (sisterfucker)", "language": "hi" }
+      ],
+      "high": [
+        { "term": "lund", "context": "sexually vulgar word (dick)", "language": "hi" },
+        { "term": "लंड", "context": "sexually vulgar word (dick)", "language": "hi" },
+        { "term": "lauda", "context": "sexually vulgar word (dick)", "language": "hi" },
+        { "term": "लौड़ा", "context": "sexually vulgar word (dick)", "language": "hi" },
+        { "term": "chut", "context": "sexually vulgar word (pussy)", "language": "hi" },
+        { "term": "चूत", "context": "sexually vulgar word (pussy)", "language": "hi" },
+        { "term": "chutiya", "context": "sexually vulgar word", "language": "hi" },
+        { "term": "चूतिया", "context": "sexually vulgar word", "language": "hi" },
+        { "term": "randi", "context": "sexually vulgar word (whore)", "language": "hi" },
+        { "term": "रंडी", "context": "sexually vulgar word (whore)", "language": "hi" },
+        { "term": "bhosdike", "context": "sexually vulgar word", "language": "hi" },
+        { "term": "भोसड़ीके", "context": "sexually vulgar word", "language": "hi" },
+        { "term": "chodna", "context": "sexually vulgar word (fuck)", "language": "hi" },
+        { "term": "चोदना", "context": "sexually vulgar word (fuck)", "language": "hi" },
+        { "term": "mc", "context": "abbreviation for madarchod", "language": "hi" },
+        { "term": "bc", "context": "abbreviation for bhenchod", "language": "hi" },
+        { "term": "bsdk", "context": "abbreviation for bhosdike", "language": "hi" }
+      ]
+    },
+    "vietnamese": {
+      "critical": [
+        { "term": "bú cặc tao", "context": "sexually vulgar phrase (suck my dick)", "language": "vi" },
+        { "term": "ăn cặc tao đi", "context": "sexually vulgar phrase (eat my dick)", "language": "vi" },
+        { "term": "hôn đít tao đi", "context": "sexually vulgar phrase (kiss my ass)", "language": "vi" },
+        { "term": "địt mẹ mày", "context": "sexually vulgar phrase (motherfucker)", "language": "vi" },
+        { "term": "đụ mẹ mày", "context": "sexually vulgar phrase (motherfucker)", "language": "vi" }
+      ],
+      "high": [
+        { "term": "cặc", "context": "sexually vulgar word (dick)", "language": "vi" },
+        { "term": "buồi", "context": "sexually vulgar word (dick)", "language": "vi" },
+        { "term": "cu", "context": "sexually vulgar word (dick)", "language": "vi" },
+        { "term": "lồn", "context": "sexually vulgar word (pussy)", "language": "vi" },
+        { "term": "bím", "context": "sexually vulgar word (pussy)", "language": "vi" },
+        { "term": "địt", "context": "sexually vulgar word (fuck)", "language": "vi" },
+        { "term": "đụ", "context": "sexually vulgar word (fuck)", "language": "vi" },
+        { "term": "chịch", "context": "sexually vulgar word (fuck)", "language": "vi" },
+        { "term": "đĩ", "context": "sexually vulgar word (whore)", "language": "vi" },
+        { "term": "cave", "context": "sexually vulgar word (whore)", "language": "vi" },
+        { "term": "điếm", "context": "sexually vulgar word (whore)", "language": "vi" },
+        { "term": "vãi lồn", "context": "sexually vulgar exclamation", "language": "vi" },
+        { "term": "vãi cặc", "context": "sexually vulgar exclamation", "language": "vi" }
+      ]
+    },
+    "indonesian": {
+      "critical": [
+        { "term": "isep kontol", "context": "sexually vulgar phrase (suck dick)", "language": "id" },
+        { "term": "makan kontol", "context": "sexually vulgar phrase (eat dick)", "language": "id" },
+        { "term": "cium pantat", "context": "sexually vulgar phrase (kiss ass)", "language": "id" }
+      ],
+      "high": [
+        { "term": "kontol", "context": "sexually vulgar word (dick)", "language": "id" },
+        { "term": "titit", "context": "sexually vulgar word (dick)", "language": "id" },
+        { "term": "memek", "context": "sexually vulgar word (pussy)", "language": "id" },
+        { "term": "ngentot", "context": "sexually vulgar word (fuck)", "language": "id" },
+        { "term": "lonte", "context": "sexually vulgar word (whore)", "language": "id" },
+        { "term": "toket", "context": "sexually vulgar word (tits)", "language": "id" },
+        { "term": "toge", "context": "sexually vulgar word (tits)", "language": "id" }
+      ]
+    },
+    "filipino": {
+      "critical": [
+        { "term": "chupain mo", "context": "sexually vulgar phrase (suck)", "language": "fil" },
+        { "term": "tsupain mo", "context": "sexually vulgar phrase (suck)", "language": "fil" },
+        { "term": "halikan mo puwet ko", "context": "sexually vulgar phrase (kiss my ass)", "language": "fil" },
+        { "term": "putangina mo", "context": "sexually vulgar phrase (motherfucker)", "language": "fil" }
+      ],
+      "high": [
+        { "term": "tite", "context": "sexually vulgar word (dick)", "language": "fil" },
+        { "term": "titi", "context": "sexually vulgar word (dick)", "language": "fil" },
+        { "term": "burat", "context": "sexually vulgar word (dick)", "language": "fil" },
+        { "term": "puki", "context": "sexually vulgar word (pussy)", "language": "fil" },
+        { "term": "puke", "context": "sexually vulgar word (pussy)", "language": "fil" },
+        { "term": "pekpek", "context": "sexually vulgar word (pussy)", "language": "fil" },
+        { "term": "puta", "context": "sexually vulgar word (whore)", "language": "fil" },
+        { "term": "pokpok", "context": "sexually vulgar word (whore)", "language": "fil" },
+        { "term": "kantot", "context": "sexually vulgar word (fuck)", "language": "fil" },
+        { "term": "kantutin", "context": "sexually vulgar word (fuck)", "language": "fil" },
+        { "term": "hindot", "context": "sexually vulgar word (fuck)", "language": "fil" },
+        { "term": "putragis", "context": "sexually vulgar word", "language": "fil" },
+        { "term": "punyeta", "context": "sexually vulgar word", "language": "fil" }
+      ]
+    },
+    "arabic": {
+      "critical": [
+        { "term": "مص عيري", "context": "sexually vulgar phrase (suck my dick)", "language": "ar" },
+        { "term": "اكل زبي", "context": "sexually vulgar phrase (eat my cock)", "language": "ar" },
+        { "term": "تبوس طيزي", "context": "sexually vulgar phrase (kiss my ass)", "language": "ar" },
+        { "term": "ابن المنيوكة", "context": "sexually vulgar phrase (motherfucker)", "language": "ar" },
+        { "term": "كس امك", "context": "sexually vulgar phrase", "language": "ar" }
+      ],
+      "high": [
+        { "term": "عير", "context": "sexually vulgar word (dick)", "language": "ar" },
+        { "term": "زب", "context": "sexually vulgar word (dick/cock)", "language": "ar" },
+        { "term": "كس", "context": "sexually vulgar word (pussy)", "language": "ar" },
+        { "term": "نيك", "context": "sexually vulgar word (sex/fuck)", "language": "ar" },
+        { "term": "شرموطة", "context": "sexually vulgar word (whore)", "language": "ar" },
+        { "term": "قحبة", "context": "sexually vulgar word (whore)", "language": "ar" },
+        { "term": "عاهرة", "context": "sexually vulgar word (whore)", "language": "ar" },
+        { "term": "منيوك", "context": "sexually vulgar word (fuckhead)", "language": "ar" }
+      ]
+    },
+    "chinese_mandarin": {
+      "critical": [
+        { "term": "吸屌", "context": "sexually vulgar phrase (suck dick)", "language": "zh" },
+        { "term": "吸蛋", "context": "sexually vulgar phrase (suck balls)", "language": "zh" },
+        { "term": "吃屌", "context": "sexually vulgar phrase (eat dick)", "language": "zh" },
+        { "term": "幹你娘", "context": "sexually vulgar phrase (motherfucker)", "language": "zh" },
+        { "term": "肏你媽", "context": "sexually vulgar phrase (motherfucker)", "language": "zh" },
+        { "term": "操你娘", "context": "sexually vulgar phrase (motherfucker)", "language": "zh" }
+      ],
+      "high": [
+        { "term": "屌", "context": "sexually vulgar word (dick)", "language": "zh" },
+        { "term": "雞雞", "context": "sexually vulgar word (dick)", "language": "zh" },
+        { "term": "肉棒", "context": "sexually vulgar word (dick)", "language": "zh" },
+        { "term": "屄", "context": "sexually vulgar word (pussy)", "language": "zh" },
+        { "term": "逼", "context": "sexually vulgar word (pussy)", "language": "zh" },
+        { "term": "雞掰", "context": "sexually vulgar word (pussy)", "language": "zh" },
+        { "term": "幹", "context": "sexually vulgar word (fuck)", "language": "zh" },
+        { "term": "操", "context": "sexually vulgar word (fuck)", "language": "zh" },
+        { "term": "婊子", "context": "sexually vulgar word (whore)", "language": "zh" },
+        { "term": "蕩婦", "context": "sexually vulgar word (whore)", "language": "zh" },
+        { "term": "口交", "context": "sexually vulgar word (oral sex)", "language": "zh" },
+        { "term": "吹簫", "context": "sexually vulgar word (blow job)", "language": "zh" }
+      ]
+    }
+  },
+
+  "phrases": {
+    "targeting_phrases": [
+      { "phrase": "fuck you", "severity": "high", "language": "en" },
+      { "phrase": "vai se fuder", "severity": "high", "language": "pt" },
+      { "phrase": "vete a la mierda", "severity": "high", "language": "es" },
+      { "phrase": "suck my", "severity": "critical", "language": "en" },
+      { "phrase": "chupa meu", "severity": "critical", "language": "pt" },
+      { "phrase": "chúpame", "severity": "critical", "language": "es" },
+      { "phrase": "eat my", "severity": "critical", "language": "en" },
+      { "phrase": "come meu", "severity": "critical", "language": "pt" },
+      { "phrase": "blow my", "severity": "critical", "language": "en" },
+      { "phrase": "kiss my ass", "severity": "critical", "language": "en" },
+      { "phrase": "beija meu cu", "severity": "critical", "language": "pt" }
+    ],
+    "general_profanity": [
+      { "phrase": "what the fuck", "severity": "high", "language": "en" },
+      { "phrase": "que porra", "severity": "high", "language": "pt" },
+      { "phrase": "qué mierda", "severity": "high", "language": "es" },
+      { "phrase": "holy fuck", "severity": "high", "language": "en" },
+      { "phrase": "fucking hell", "severity": "high", "language": "en" },
+      { "phrase": "puta que pariu", "severity": "high", "language": "pt" }
+    ]
+  },
+
+  "excludedTerms": [
+    "WTF",
+    "FML",
+    "AF",
+    "STFU",
+    "LMFAO",
+    "GTFO",
+    "****",
+    "f***",
+    "s***",
+    "[BLEEP]",
+    "🖕",
+    "Dick (name)",
+    "Dick Cheney",
+    "Dick Van Dyke",
+    "Moby Dick",
+    "FCUK",
+    "Lil B",
+    "cock (rooster context)",
+    "galo (rooster in Portuguese)",
+    "pussy (cat context)",
+    "gata (cat in Portuguese)",
+    "balls (sports context)",
+    "bolas (sports in Portuguese)",
+    "screw (hardware context)",
+    "parafuso"
+  ],
+
+  "contextSignals": {
+    "positive_targeting": [
+      "@",
+      "you",
+      "você",
+      "tu",
+      "he",
+      "she",
+      "they",
+      "ele",
+      "ela",
+      "eles",
+      "[name]",
+      "that guy",
+      "esse cara",
+      "this person",
+      "essa pessoa"
+    ],
+    "positive_sexual_context": [
+      "dm me",
+      "me chama",
+      "looking for",
+      "procurando",
+      "want to",
+      "quero",
+      "tonight",
+      "hoje à noite",
+      "hookup",
+      "sexo",
+      "nude",
+      "nudes",
+      "send pics",
+      "manda foto"
+    ],
+    "negative_exceptions": [
+      "song",
+      "música",
+      "lyrics",
+      "letra",
+      "album",
+      "álbum",
+      "artist",
+      "artista",
+      "rapper",
+      "hip hop",
+      "rock",
+      "news",
+      "notícia",
+      "report",
+      "relatório",
+      "documentary",
+      "documentário",
+      "education",
+      "educação",
+      "health",
+      "saúde",
+      "anatomy",
+      "anatomia",
+      "condemn",
+      "condenar",
+      "against",
+      "contra",
+      "wrong",
+      "errado"
+    ]
+  },
+
+  "obfuscationPatterns": {
+    "partial_censoring": [
+      "f*ck",
+      "f**k",
+      "f***",
+      "fu*k",
+      "fuc*",
+      "sh*t",
+      "s**t",
+      "sh**",
+      "d*ck",
+      "d**k",
+      "di*k",
+      "c*ck",
+      "c**k",
+      "p*ssy",
+      "p**sy",
+      "pu**y",
+      "a**",
+      "a*s"
+    ],
+    "letter_substitution": [
+      "fvck",
+      "fück",
+      "fúck",
+      "fμck",
+      "fцck",
+      "sh1t",
+      "shît",
+      "shít",
+      "d1ck",
+      "díck",
+      "c0ck",
+      "cøck",
+      "pvssy",
+      "püssy",
+      "a$$"
+    ],
+    "misspellings": [
+      "fack",
+      "fuk",
+      "fukk",
+      "phuck",
+      "shiit",
+      "shyt",
+      "dikk",
+      "pusy",
+      "pussi"
+    ]
+  }
+}

@@ -1,0 +1,632 @@
+{
+  "id": "orgs",
+  "name": "Other Restricted Goods and Services",
+  "shortName": "ORGS",
+  "description": "To encourage safety and deter potentially harmful activities, we prohibit attempts by individuals, manufacturers, and retailers to purchase, sell, raffle, gift, transfer or trade certain goods and services on our platform. We allow debate or advocacy for changes to regulations of goods and services covered in this policy.",
+  "color": "#DC2626",
+  "icon": "Ban",
+  "ready": true,
+
+  "categories": [
+    {
+      "id": "endangered_species",
+      "name": "Endangered and Protected Species",
+      "description": "Content related to poaching, buying, selling, or trading of endangered species and their parts",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "buy_sell_endangered",
+          "name": "Buy/Sell/Trade Endangered Species",
+          "description": "Attempting to buy, sell, trade, donate, gift, ask for, coordinate, promote or encourage poaching of endangered species and their parts",
+          "action": "label",
+          "examples": [
+            "Ivory for sale",
+            "Looking to buy tiger parts",
+            "Elephant tusks available",
+            "Rhino horn trade"
+          ],
+          "conditions": ["Endangered species or parts depicted/mentioned", "Intent to buy/sell/trade/donate/gift"]
+        },
+        {
+          "id": "instructions_endangered",
+          "name": "Instructions for Endangered Products",
+          "description": "Providing instructions on how to use or make products from endangered species or their parts",
+          "action": "label",
+          "examples": [
+            "How to prepare ivory products",
+            "Making medicine from rhino horn",
+            "Processing elephant tusks"
+          ],
+          "conditions": ["Instructions for use or production", "From endangered species parts"]
+        },
+        {
+          "id": "admission_poaching",
+          "name": "Admission of Poaching",
+          "description": "Admitting to poaching, buying or trading endangered species by poster or their associates",
+          "action": "label",
+          "examples": [
+            "I just bought elephant ivory",
+            "We traded pangolin scales yesterday",
+            "My friend hunted a tiger"
+          ],
+          "conditions": ["Admission by poster or associates", "Poaching/buying/trading endangered species"]
+        },
+        {
+          "id": "coordinating_poaching",
+          "name": "Coordinating/Threatening/Supporting Poaching",
+          "description": "Content coordinating, threatening, or supporting poaching of endangered species",
+          "action": "information",
+          "examples": [
+            "Let's organize a hunt for rhinos",
+            "Meet here to collect ivory",
+            "I support poaching as a livelihood"
+          ],
+          "conditions": ["Coordination OR threat OR support", "Poaching activity"]
+        },
+        {
+          "id": "depiction_poaching_no_context",
+          "name": "Depiction of Poaching Without Context",
+          "description": "Depicting poaching or endangered species byproducts with no other context",
+          "action": "label",
+          "examples": [
+            "Photo of ivory with no caption",
+            "Image of rhino horn with location tag only",
+            "Video of poached animal parts"
+          ],
+          "conditions": ["Depiction of poaching or byproducts", "No additional context"]
+        },
+        {
+          "id": "non_sanctioned_environment",
+          "name": "Endangered Species in Non-Sanctioned Environment",
+          "description": "Endangered species depicted in non-natural, non-sanctioned contexts",
+          "action": "label",
+          "examples": [
+            "Monkey dressed in human clothing",
+            "Exotic animal kept as pet inside private home",
+            "Endangered bird in cage at someone's house"
+          ],
+          "conditions": ["Endangered species", "Non-sanctioned environment", "Not zoo/sanctuary/circus/natural habitat"]
+        },
+        {
+          "id": "fictional_documentary_advocacy",
+          "name": "Fictional/Documentary/Advocacy Context",
+          "description": "Endangered species content in fictional, documentary, or advocacy context",
+          "action": "no_action",
+          "examples": [
+            "Documentary about elephant conservation",
+            "Movie scene with tigers",
+            "WWF campaign against poaching"
+          ],
+          "conditions": ["Fictional OR documentary OR advocacy context"]
+        }
+      ]
+    },
+    {
+      "id": "non_endangered_animals",
+      "name": "Non-Endangered Animals",
+      "description": "Sales, trades, adoptions, and products from non-endangered animals",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "peer_to_peer_sale",
+          "name": "Peer-to-Peer Animal Sales",
+          "description": "Individual selling live non-endangered animals directly to another individual",
+          "action": "label",
+          "examples": [
+            "Puppies for sale, DM me",
+            "Kittens available, pickup at my house",
+            "Selling my parrot, best offer"
+          ],
+          "conditions": ["Live non-endangered animal", "Peer-to-peer sale", "Not brick-and-mortar/breeder"]
+        },
+        {
+          "id": "religious_offering_sale",
+          "name": "Animal Sale for Religious Offering",
+          "description": "Selling animals for religious sacrifice or offering purposes",
+          "action": "label",
+          "examples": [
+            "Doves for sale for religious festival",
+            "Goats available for Eid sacrifice",
+            "Chickens for ritual purposes"
+          ],
+          "conditions": ["Animal sale", "Religious offering context"]
+        },
+        {
+          "id": "livestock_sale",
+          "name": "Livestock Sale",
+          "description": "Attempting to buy, sell, or trade livestock",
+          "action": "label",
+          "examples": [
+            "Cattle for sale",
+            "Selling pigs",
+            "Chickens available for farm"
+          ],
+          "conditions": ["Livestock (cattle, pigs, chickens, goats, sheep, horses, ducks, buffaloes)"]
+        },
+        {
+          "id": "brick_and_mortar_sale",
+          "name": "Brick-and-Mortar Animal Sales",
+          "description": "Animal sales by legitimate businesses, breeders, or shelters",
+          "action": "label",
+          "examples": [
+            "Pet store puppies for sale",
+            "Registered breeder with kittens",
+            "Shelter adoption event"
+          ],
+          "conditions": ["Legitimate brick-and-mortar entity OR breeder OR shelter"]
+        },
+        {
+          "id": "lost_pet_reward",
+          "name": "Lost Pet Reward",
+          "description": "Offering reward for lost pets",
+          "action": "no_action",
+          "examples": [
+            "$500 reward for lost dog",
+            "Help find my cat, reward offered"
+          ],
+          "conditions": ["Lost pet", "Reward offered"]
+        },
+        {
+          "id": "adoption_rehoming",
+          "name": "Animal Adoption/Rehoming",
+          "description": "Adopting, donating, rehoming, gifting, or asking for live non-endangered animals including rehoming fees",
+          "action": "label",
+          "examples": [
+            "Free puppies to good home",
+            "Looking to adopt a cat",
+            "Rehoming fee $100 for kitten",
+            "Dog needs new family"
+          ],
+          "conditions": ["Adoption/rehoming/donation/gift context", "Live non-endangered animal"]
+        },
+        {
+          "id": "animal_parts",
+          "name": "Animal Parts and Products",
+          "description": "Buying, selling, or trading animal teeth, horns, organs, limbs, carcasses, taxidermy, feces, or dog/cat products",
+          "action": "label",
+          "examples": [
+            "Deer antlers for sale",
+            "Taxidermy services",
+            "Dog fur products",
+            "Animal organs available"
+          ],
+          "conditions": ["Animal parts (teeth, horns, organs, limbs, carcasses, taxidermy, feces)", "OR any dog/cat product"]
+        },
+        {
+          "id": "raw_animal_products",
+          "name": "Raw Animal Products for Consumption",
+          "description": "Raw meat, fish, eggs, or unpasteurized dairy intended for human consumption",
+          "action": "label",
+          "examples": [
+            "Fresh raw meat for sale",
+            "Unpasteurized milk available",
+            "Raw eggs from my farm",
+            "Fresh fish, uncooked"
+          ],
+          "conditions": ["Raw/unprocessed meat/fish/eggs", "OR unpasteurized dairy", "For human consumption"]
+        }
+      ]
+    },
+    {
+      "id": "historic_artifacts",
+      "name": "Historic Artifacts",
+      "description": "Archaeological discoveries, antiquities, mummified remains, ancient manuscripts",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "buy_sell_artifacts",
+          "name": "Buy/Sell/Trade Historic Artifacts",
+          "description": "Attempting to buy, sell, trade, donate, gift or ask for historic artifacts",
+          "action": "label",
+          "examples": [
+            "Ancient coins for sale",
+            "Pharaonic artifacts available",
+            "Looking to buy Assyrian relics",
+            "Mummy parts for trade",
+            "Ancient scrolls for sale"
+          ],
+          "conditions": ["Historic artifact (archaeological, antiquity, mummy, ancient manuscript)", "Intent to buy/sell/trade/donate/gift"]
+        }
+      ]
+    },
+    {
+      "id": "hazardous_goods",
+      "name": "Hazardous Goods and Materials",
+      "description": "Industrial grade poisons, chemicals, radioactive materials, and other hazardous substances",
+      "severity": "high",
+      "subcategories": [
+        {
+          "id": "explosives_weapons_context",
+          "name": "Explosives in Weapons Context",
+          "description": "Explosive substances used in weapons context",
+          "action": "information",
+          "examples": [
+            "Explosives for making weapons",
+            "Bomb-making materials"
+          ],
+          "conditions": ["Explosive substance", "Weapons context"]
+        },
+        {
+          "id": "hazardous_general",
+          "name": "Hazardous Materials - General",
+          "description": "Industrial grade poisons, chemicals, corrosives, flammables, radioactive materials",
+          "action": "label",
+          "examples": [
+            "Industrial pesticides for sale",
+            "Liquid mercury available",
+            "Sulfuric acid for sale",
+            "Gasoline in bulk",
+            "Roundup herbicide for sale",
+            "Cyanide available"
+          ],
+          "conditions": ["Hazardous material", "Intent to buy/sell/trade/donate/gift"]
+        }
+      ]
+    },
+    {
+      "id": "human_body_parts_fluids",
+      "name": "Human Body Parts and Bodily Fluids",
+      "description": "Human organs, body parts, blood, and other bodily fluids",
+      "severity": "critical",
+      "subcategories": [
+        {
+          "id": "depiction_fluids_no_sale",
+          "name": "Depiction of Human Waste/Fluids Without Sale",
+          "description": "Depicting human waste and bodily fluids without sales context",
+          "action": "information",
+          "examples": [
+            "Image of blood without sale context",
+            "Video showing bodily fluids"
+          ],
+          "conditions": ["Human waste/bodily fluids depicted", "No sales context"]
+        },
+        {
+          "id": "organ_trafficking",
+          "name": "Non-Regenerative Organ Trafficking",
+          "description": "Buying, selling, or trading non-regenerative organs (excluding legitimate donation/transplant)",
+          "action": "information",
+          "examples": [
+            "Kidney for sale",
+            "Looking to buy a liver",
+            "Heart available for trade"
+          ],
+          "conditions": ["Non-regenerative organ", "Trafficking context", "Not legitimate donation/transplant"]
+        },
+        {
+          "id": "body_parts_other",
+          "name": "Other Body Parts",
+          "description": "Buying, selling, trading body parts other than non-regenerative organs",
+          "action": "label",
+          "examples": [
+            "Selling fingernails",
+            "Pubic hair for sale",
+            "Body parts available"
+          ],
+          "conditions": ["Body parts (excluding non-regenerative organs, hair products/wigs)"]
+        },
+        {
+          "id": "fluid_donation",
+          "name": "Fluid Donation",
+          "description": "Donations of human fluids such as semen or blood plasma",
+          "action": "no_action",
+          "examples": [
+            "Blood donation drive",
+            "Sperm donation clinic",
+            "Plasma donation center"
+          ],
+          "conditions": ["Donation context", "Human fluids (blood, semen, plasma)"]
+        },
+        {
+          "id": "fluid_exchange_sale",
+          "name": "Fluid Exchange or Sale",
+          "description": "Exchange or sale of human fluids",
+          "action": "label",
+          "examples": [
+            "Selling breast milk",
+            "Sperm for sale, not donation",
+            "Blood for exchange"
+          ],
+          "conditions": ["Human fluids", "Sale/exchange context (not donation)"]
+        }
+      ]
+    },
+    {
+      "id": "fictional_context",
+      "name": "Sales in Fictional Context",
+      "description": "Fictional or documentary depictions of restricted goods sales",
+      "severity": "low",
+      "subcategories": [
+        {
+          "id": "fictional_body_parts",
+          "name": "Fictional Body Parts/Fluids",
+          "description": "Fictional depictions of buying/selling body parts or fluids",
+          "action": "label",
+          "examples": [
+            "Movie scene selling organs",
+            "TV show about black market body parts"
+          ],
+          "conditions": ["Fictional/documentary context", "Human body parts/fluids"]
+        },
+        {
+          "id": "fictional_artifacts",
+          "name": "Fictional Historic Artifacts",
+          "description": "Fictional depictions of artifact trade",
+          "action": "no_action",
+          "conditions": ["Fictional/documentary context", "Historic artifacts"]
+        },
+        {
+          "id": "fictional_hazardous",
+          "name": "Fictional Hazardous Materials",
+          "description": "Fictional depictions of hazardous materials trade",
+          "action": "no_action",
+          "conditions": ["Fictional/documentary context", "Hazardous materials"]
+        }
+      ]
+    }
+  ],
+
+  "labelHierarchy": [
+    {
+      "id": "endangered_buy_sell",
+      "label": "ORGS > Endangered Species > Buy/Sell/Trade",
+      "path": ["Other RGS", "Endangered Species", "Buying/Selling Endangered Species"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 1
+    },
+    {
+      "id": "endangered_admission_poaching",
+      "label": "ORGS > Endangered Species > Admission or Depiction of Poaching",
+      "path": ["Other RGS", "Endangered Species", "Admission or Depiction of Poaching"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 2
+    },
+    {
+      "id": "endangered_non_sanctioned",
+      "label": "ORGS > Endangered Species > Non-Sanctioned Environment",
+      "path": ["Other RGS", "Endangered Species", "Non-Sanctioned Environment"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 3
+    },
+    {
+      "id": "non_endangered_p2p",
+      "label": "ORGS > Non-Endangered Animals > Peer-to-Peer Sales",
+      "path": ["Other RGS", "Non-Endangered Animals", "Peer-to-Peer Live Non-Endangered Animals"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 4
+    },
+    {
+      "id": "non_endangered_brick_mortar",
+      "label": "ORGS > Non-Endangered Animals > Brick-and-Mortar Sales",
+      "path": ["Other RGS", "Non-Endangered Animals", "Brick and Mortar Live Non-Endangered Animals"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 5
+    },
+    {
+      "id": "non_endangered_raw_livestock",
+      "label": "ORGS > Non-Endangered Animals > Raw Meat/Livestock",
+      "path": ["Other RGS", "Non-Endangered Animals", "Raw Meat/Livestock"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 6
+    },
+    {
+      "id": "non_endangered_adoption",
+      "label": "ORGS > Non-Endangered Animals > Animal Adoption",
+      "path": ["Other RGS", "Non-Endangered Animals", "Animal Adoption"],
+      "action": "label",
+      "severity": "mid",
+      "hierarchyRank": 7
+    },
+    {
+      "id": "body_parts_fluids",
+      "label": "ORGS > Body Parts & Fluids",
+      "path": ["Other RGS", "Body Parts & Fluids"],
+      "action": "label",
+      "severity": "critical",
+      "hierarchyRank": 8
+    },
+    {
+      "id": "historic_artifacts",
+      "label": "ORGS > Historical Artifacts",
+      "path": ["Other RGS", "Historical Artifacts"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 9
+    },
+    {
+      "id": "hazardous_goods",
+      "label": "ORGS > Hazardous Goods and Materials",
+      "path": ["Other RGS", "Hazardous Goods and Materials"],
+      "action": "label",
+      "severity": "high",
+      "hierarchyRank": 10
+    }
+  ],
+
+  "exceptions": [
+    {
+      "id": "fictional_documentary_advocacy",
+      "name": "Fictional/Documentary/Advocacy Context",
+      "description": "Content in movies, TV shows, documentaries, cartoons, video games, comic books, music videos, or advocacy campaigns",
+      "appliesTo": ["endangered_species", "historic_artifacts", "hazardous_goods"],
+      "action": "no_action"
+    },
+    {
+      "id": "sanctioned_environments",
+      "name": "Endangered Animals in Sanctioned Environments",
+      "description": "Zoos, sanctuaries, circus, natural habitat, or animals accidentally inside home (not kept as pet)",
+      "appliesTo": ["endangered_species"],
+      "action": "no_action"
+    },
+    {
+      "id": "lost_pet_reward",
+      "name": "Lost Pet Rewards",
+      "description": "Offering rewards for finding lost pets",
+      "appliesTo": ["non_endangered_animals"],
+      "action": "no_action"
+    },
+    {
+      "id": "processed_meat",
+      "name": "Processed Meat/Fish",
+      "description": "Smoked, salted, cured, dried, canned meat/fish (salami, jerky, prosciutto, etc.)",
+      "appliesTo": ["non_endangered_animals"],
+      "action": "no_action"
+    },
+    {
+      "id": "pet_supplies",
+      "name": "Pet Food and Supplies",
+      "description": "Pet food (not live animals), pet supplies, and processed animal byproducts",
+      "appliesTo": ["non_endangered_animals"],
+      "action": "no_action"
+    },
+    {
+      "id": "fluid_donation",
+      "name": "Human Fluid Donation",
+      "description": "Blood, plasma, or semen donations in legitimate donation context",
+      "appliesTo": ["human_body_parts_fluids"],
+      "action": "no_action"
+    },
+    {
+      "id": "hair_products",
+      "name": "Human Hair Products",
+      "description": "Extensions, wigs, and other hair products made from human hair",
+      "appliesTo": ["human_body_parts_fluids"],
+      "action": "no_action"
+    },
+    {
+      "id": "replica_artifacts",
+      "name": "Replica Artifacts",
+      "description": "Replicas of ancient objects, or items created after 1500 AD",
+      "appliesTo": ["historic_artifacts"],
+      "action": "no_action"
+    },
+    {
+      "id": "modern_memorabilia",
+      "name": "Modern Memorabilia",
+      "description": "Items from modern retail or memorabilia stores, even if characterized as old",
+      "appliesTo": ["historic_artifacts"],
+      "action": "no_action"
+    },
+    {
+      "id": "non_industrial_hazardous",
+      "name": "Non-Industrial Hazardous Materials",
+      "description": "Consumer-grade products: bug sprays, pest control services, manure fertilizer, pink Himalayan salt, cured meat with nitrites, asbestos property mentions",
+      "appliesTo": ["hazardous_goods"],
+      "action": "no_action"
+    },
+    {
+      "id": "awareness_condemnation",
+      "name": "Awareness/Condemnation",
+      "description": "Content raising awareness or condemning the sale of restricted items",
+      "appliesTo": ["non_endangered_animals", "endangered_species"],
+      "action": "no_action"
+    },
+    {
+      "id": "depiction_no_sale",
+      "name": "Depiction Without Sale Signals",
+      "description": "Depiction of historic artifacts without any buy/sell/trade signals",
+      "appliesTo": ["historic_artifacts"],
+      "action": "no_action"
+    }
+  ],
+
+  "endangeredSpeciesList": {
+    "always_protected": [
+      "Marine turtles",
+      "Primates (bonobos, chimpanzees, gorillas, monkeys, orangutans, slow loris)",
+      "Bears (Asiatic black bears, giant pandas, sloth bears, sun bears)",
+      "Cetaceans (dolphins, porpoises, whales)",
+      "Otters (European river otters, giant otters, California sea otters)",
+      "Elephants",
+      "Rhinoceros",
+      "Wild cats (cheetahs, jaguars, leopards, lions, ocelots, tigers)",
+      "Sharks (great white, basking, whale sharks, smalltooth sawfish)",
+      "Pangolins",
+      "Tibetan antelopes",
+      "Seahorses",
+      "Corals (elkhorn, staghorn)",
+      "Birds (African grey parrots, falcons, eagles, helmeted hornbills)",
+      "Reptiles (ploughshare tortoises, Iranian spotted newt, Indian rock pythons, endangered iguanas)"
+    ],
+    "reference": "CITES Appendix I - https://checklist.cites.org/#/en"
+  },
+
+  "hazardousMaterialsList": {
+    "pesticides": [
+      "Altacor", "Benevia", "Boral", "Elatus", "Evidence", "Finale",
+      "Fox / Fox XPro", "Furadan", "Glyphosate / Glifosato", "Peg E Mat",
+      "Premio", "Regent", "Reglone", "Roundup / Randap", "Sniper",
+      "Targa Max", "Tordon", "Trigard", "Verdadero", "Vertimec",
+      "Xeque Mate", "Zapp QI"
+    ],
+    "chemicals": [
+      "DDT (Dichlorodiphenyltrichloroethane)",
+      "Aldicarb",
+      "Liquid mercury",
+      "Formic acid",
+      "Sulphuric acid",
+      "Hydrochloric acid",
+      "Nitric acid",
+      "Asbestos",
+      "Cyanide",
+      "Chloroform",
+      "Carbon tetrachloride",
+      "Methanol/methyl alcohol sanitizers",
+      "Sodium nitrite (pure form)",
+      "Sodium nitrate (pure form)"
+    ],
+    "flammables": [
+      "Gasoline/petrol (industrial)",
+      "Diesel (industrial)",
+      "Kerosene (industrial)",
+      "Used motor/engine oil"
+    ],
+    "identifiers": [
+      "Radioactive symbol",
+      "Skull and crossbones",
+      "Corrosive symbol",
+      "Flammable symbol",
+      "Oxidizer symbol"
+    ]
+  },
+
+  "glossary": {
+    "poaching": "The illegal trafficking and killing of wildlife animals",
+    "endangered_species": "Type of organism threatened by extinction, listed in CITES Appendix I",
+    "historic_artifacts": "Rare items of significant historical, cultural or scientific value: archaeological discoveries, antiquities, mummified remains, ancient scrolls/manuscripts",
+    "antiquities": "Items from ancient civilizations (Middle East, North Africa, Turkey, Mediterranean, Sub-Saharan Africa, South Asia)",
+    "ancient": "Items before year 1500 or with explicit reference to being ancient or connected to past civilizations. Does NOT include replicas or items from modern retail",
+    "archaeological_discoveries": "Items uncovered during excavations of historical sites - artifacts, human remains, documents, fossils",
+    "non_regenerative_organs": "Organs that won't grow back: kidneys, livers, hearts, eyeballs, corneas, lungs, intestines, pancreases",
+    "human_fluids": "Blood, urine, sweat, breast milk, sperm (also called 'baby in a bag' or 'raw children')",
+    "livestock": "Domesticated animals raised in agriculture: buffaloes, cattle, chickens, ducks, horses, goats, pigs, sheep",
+    "raw_animal_products": "Uncooked meat, fish, eggs, or unpasteurized dairy products",
+    "processed_meat": "Smoked, salted, cured, dried, canned meat (salami, jerky, prosciutto, bacon, hot dogs, etc.)",
+    "sanctioned_environment": "Natural habitat, zoos, sanctuaries, circus, or educational programs",
+    "non_sanctioned_environment": "Private homes (as pets), dressed in human clothing, or other unnatural contexts",
+    "brick_and_mortar": "Legitimate business with: professional website, physical location, business identification, verified status, or breeding license",
+    "peer_to_peer": "Sale between unlicensed individuals, typically with personal pronouns, informal language, meetup locations",
+    "hazardous_materials": "Industrial grade: toxic, corrosive, flammable, radioactive, or otherwise harmful to health/environment",
+    "fictional_content": "Movies, TV shows, cartoons, video games, comic books, music videos, song lyrics",
+    "documentary": "Non-fictional content to document reality for instruction, education, or historical record",
+    "promote": "Speaking positively, encouraging use, providing instructions, or information on how to obtain",
+    "coordinate": "Any attempt to organize flow of goods - recruiting dealers/drivers, ensuring transportation"
+  },
+
+  "operationalGuidelines": {
+    "hierarchy": "Follow decision tree order for multiple violations",
+    "intent_signals": "For sale/FS, Looking to buy/LTB, Trade/Swap, Donate, Gift, Negotiable, Serious buyers only, Price listed, Contact info, DM me",
+    "endangered_reference": "Use CITES Appendix I for species identification",
+    "ancient_threshold": "Before year 1500 or 16th century. Use Google search to verify civilization dates",
+    "industrial_grade": "Products intended for industrial use, not consumer-grade items from grocery stores",
+    "brick_mortar_signals": "Business name/logo, physical storefront, professional tone, business contact info, breeding license",
+    "peer_to_peer_signals": "Personal pronouns (I, me, my), meetup locations, no business name, informal language",
+    "code_circumvention": "Depictions with no context, location tags only, hashtags only, banknote color codes for prices, 'nothing for sale' disclaimers with other sale indicators",
+    "non_sanctioned_signals": "Inside private home as pet, wearing human clothing, smoking, being held by humans without sanctuary context"
+  }
+}
