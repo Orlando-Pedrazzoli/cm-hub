@@ -10,6 +10,7 @@ import { AnalysisResult } from "@/components/analyzer/AnalysisResult";
 import { HistoryList } from "@/components/history/HistoryList";
 import { PolicyList } from "@/components/policies/PolicyList";
 import { SettingsPanel } from "@/components/settings/SettingsPanel";
+import { ClarificationsTab } from "@/components/clarifications/ClarificationsTab";
 import { Brain, Shield, Sparkles, Zap, CheckCircle, AlertTriangle } from "lucide-react";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
     isAnalyzing,
     analysisError,
     analyze,
-    clearResult,
+    resetAnalysis,
   } = useAppStore();
 
   const inputRef = useRef<AnalyzerInputRef>(null);
@@ -35,11 +36,9 @@ export default function Home() {
   };
 
   const handleNewAnalysis = useCallback(() => {
-    // Clear the result
-    clearResult();
-    // Trigger input clear
+    resetAnalysis();
     setShouldClearInput(true);
-  }, [clearResult]);
+  }, [resetAnalysis]);
 
   const handleInputCleared = useCallback(() => {
     setShouldClearInput(false);
@@ -49,6 +48,8 @@ export default function Home() {
 
   const renderContent = () => {
     switch (activeTab) {
+      case "clarifications":
+        return <ClarificationsTab />;
       case "history":
         return <HistoryList />;
       case "policies":

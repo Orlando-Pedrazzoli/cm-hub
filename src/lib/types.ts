@@ -525,7 +525,7 @@ export interface AnalysisHistoryItem {
 // ============================================
 // UI TYPES
 // ============================================
-export type TabType = "analyzer" | "history" | "policies" | "settings" | "help";
+export type TabType = "analyzer" | "clarifications" | "history" | "policies" | "settings" | "help";
 
 export interface TabConfig {
   id: TabType;

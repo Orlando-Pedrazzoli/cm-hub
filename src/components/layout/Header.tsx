@@ -4,29 +4,30 @@ import { useAppStore } from "@/lib/store";
 import { TabType } from "@/lib/types";
 import { Tabs } from "@/components/ui/Tabs";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Shield, Brain, History, BookOpen, Settings, Menu } from "lucide-react";
+import { 
+  Brain, 
+  History, 
+  BookOpen, 
+  Settings, 
+  Lightbulb 
+} from "lucide-react";
 
 const tabs = [
   { id: "analyzer", label: "Analyzer", icon: <Brain className="w-4 h-4" /> },
-  { id: "history", label: "Historico", icon: <History className="w-4 h-4" /> },
+  { id: "clarifications", label: "Clarificações", icon: <Lightbulb className="w-4 h-4" /> },
+  { id: "history", label: "Histórico", icon: <History className="w-4 h-4" /> },
   { id: "policies", label: "Policies", icon: <BookOpen className="w-4 h-4" /> },
   { id: "settings", label: "Settings", icon: <Settings className="w-4 h-4" /> },
 ];
 
 export function Header() {
-  const { activeTab, setActiveTab, sidebarOpen, setSidebarOpen, history } = useAppStore();
+  const { activeTab, setActiveTab, history } = useAppStore();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
       <div className="flex items-center justify-between px-4 py-3">
+        {/* Left - Logo & Title */}
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors lg:hidden"
-          >
-            <Menu className="w-5 h-5" />
-          </button>
-
           <div className="flex items-center gap-3">
             <img
               src="/accenture-logo.svg"
@@ -40,6 +41,7 @@ export function Header() {
           </div>
         </div>
 
+        {/* Center - Tabs (Desktop) */}
         <div className="hidden md:block">
           <Tabs
             tabs={tabs}
@@ -48,11 +50,12 @@ export function Header() {
           />
         </div>
 
+        {/* Right - Theme & Status */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
           {history.length > 0 && (
             <span className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded-full text-xs">
-              {history.length} analises
+              {history.length} análises
             </span>
           )}
           <span className="hidden sm:inline-block px-2 py-1 bg-green-500/20 text-green-600 dark:text-green-400 rounded-full text-xs font-medium">
@@ -64,6 +67,7 @@ export function Header() {
         </div>
       </div>
 
+      {/* Mobile Tabs */}
       <div className="md:hidden px-4 pb-3 overflow-x-auto">
         <Tabs
           tabs={tabs}
@@ -74,3 +78,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;

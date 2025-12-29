@@ -1,7 +1,7 @@
 // ============================================
 // CM POLICY HUB - ZUSTAND STORE
 // State management completo com suporte para Enhanced AI Analysis
-// v3.0.2
+// v3.0.3 - Fixed TabType
 // ============================================
 
 import { create } from "zustand";
@@ -15,6 +15,7 @@ import {
   DetectedExceptions,
   VIChecks,
   ConfidenceBreakdown,
+  TabType,  // ← IMPORTAR TabType
 } from "./types";
 import { analyzeContent, mergeWithAIAnalysis } from "./analyzer";
 
@@ -117,9 +118,9 @@ interface AppState {
   removeFromHistory: (id: string) => void;
   clearHistory: () => void;
   
-  // Active UI state
-  activeTab: "analyzer" | "history" | "policies" | "settings";
-  setActiveTab: (tab: "analyzer" | "history" | "policies" | "settings") => void;
+  // Active UI state - USAR TabType
+  activeTab: TabType;
+  setActiveTab: (tab: TabType) => void;
   selectedPolicy: PolicyId | null;
   setSelectedPolicy: (policy: PolicyId | null) => void;
   
@@ -437,9 +438,9 @@ export const useAppStore = create<AppState>()(
         })),
       clearHistory: () => set({ history: [] }),
 
-      // Active UI state
+      // Active UI state - AGORA USA TabType
       activeTab: "analyzer",
-      setActiveTab: (tab) => set({ activeTab: tab }),
+      setActiveTab: (tab: TabType) => set({ activeTab: tab }),
       selectedPolicy: null,
       setSelectedPolicy: (policy) => set({ selectedPolicy: policy }),
 
@@ -608,7 +609,7 @@ export const appActions = {
   addToHistory: (result: AnalysisResult) => 
     useAppStore.getState().addToHistory(result),
   clearHistory: () => useAppStore.getState().clearHistory(),
-  setActiveTab: (tab: AppState["activeTab"]) => 
+  setActiveTab: (tab: TabType) => 
     useAppStore.getState().setActiveTab(tab),
 };
 
