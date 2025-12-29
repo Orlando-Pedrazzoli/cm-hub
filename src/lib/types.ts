@@ -136,8 +136,29 @@ export interface DetectedExceptions {
   hasMedicalContext: boolean;
   hasFamilyContext: boolean;
   
+  // SSIED / ED specific
+  hasRecoveryContext: boolean;
+  hasAwarenessContext: boolean;
+  
+  // RGS / Commercial specific
+  hasBrickAndMortar: boolean;
+  
+  // DOI / HC specific
+  hasReligiousContext: boolean;
+  hasFictionalContext: boolean;
+  
   // List of all detected
   detected: string[];
+}
+
+// ============================================
+// CONFIDENCE BREAKDOWN
+// ============================================
+export interface ConfidenceBreakdown {
+  keywordMatch: number;
+  contextAnalysis: number;
+  aiAdjustment: number;
+  exceptionPenalty?: number;
 }
 
 // ============================================
@@ -172,11 +193,7 @@ export interface AnalysisResult {
   
   // Confidence score
   confidence: number;
-  confidenceBreakdown: {
-    keywordMatch: number;
-    contextAnalysis: number;
-    aiAdjustment: number;
-  };
+  confidenceBreakdown: ConfidenceBreakdown;
   
   // Policy-specific checks
   checks: PolicyChecks;

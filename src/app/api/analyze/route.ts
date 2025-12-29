@@ -1,12 +1,24 @@
 // ============================================
-// CM POLICY HUB - ANALYZE API ROUTE
+// CM POLICY HUB - ENHANCED ANALYZE API ROUTE
 // Endpoint de análise com Gemini AI
-// Segue EXATAMENTE a Decision Tree
-// v3.1.0 - Fixed truncation issues
+// Usa pré-análise + context injection para ~95% precisão
+// v4.0.0
 // ============================================
 
 import { GoogleGenAI } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
+import buildEnhancedPrompt, {
+  PreAnalysisContext,
+  SSIEDPreChecks,
+  BHPreChecks,
+} from "@/lib/enhanced-prompt-builder";
+import {
+  PolicyId,
+  Severity,
+  KeywordMatch,
+  VIChecks,
+  DetectedExceptions,
+} from "@/lib/types";
 
 // ============================================
 // TYPES
@@ -20,7 +32,6 @@ interface AnalyzeRequestBody {
   };
 }
 
-// Response that follows decision tree exactly
 interface DecisionTreeResponse {
   action: "no_action" | "escalate" | "label";
   decisionPath: string[];
@@ -33,110 +44,551 @@ interface DecisionTreeResponse {
 }
 
 // ============================================
-// BUILD DECISION TREE PROMPT
+// COMPREHENSIVE KEYWORD DATABASE
+// Organized by policy and severity
 // ============================================
 
-function buildDecisionTreePrompt(text: string): string {
-  return `You are an expert content moderator. Analyze the text and follow the decision tree to determine the correct action.
+interface KeywordEntry {
+  term: string;
+  policy: PolicyId;
+  category: string;
+  severity: Severity;
+  language?: "pt" | "en" | "multi";
+  aliases?: string[];
+  requiresContext?: boolean;
+}
 
-## DECISION TREE
+const KEYWORDS_DATABASE: KeywordEntry[] = [
+  // ============================================
+  // VI - Violence and Incitement
+  // ============================================
+  // High Severity Violence (Lethal)
+  { term: "kill", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "matar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "assassinar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "shoot", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "atirar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "meter bala", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "stab", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "esfaquear", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "facada", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "hang", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "enforcar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "burn alive", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "queimar vivo", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "drown", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "afogar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "strangle", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "estrangular", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "poison", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "envenenar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "decapitate", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "decapitar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "degolar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "dismember", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "desmembrar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "lynch", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "linchar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "massacre", policy: "vi", category: "HSV", severity: "critical", language: "multi" },
+  { term: "massacrar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "run over", policy: "vi", category: "HSV", severity: "critical", language: "en" },
+  { term: "atropelar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "fuzilar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "explodir", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  { term: "mutilar", policy: "vi", category: "HSV", severity: "critical", language: "pt" },
+  
+  // HSV Proxy Language (Brazilian)
+  { term: "cpf cancelado", policy: "vi", category: "HSV_Proxy", severity: "critical", language: "pt" },
+  { term: "cancelar cpf", policy: "vi", category: "HSV_Proxy", severity: "critical", language: "pt" },
+  { term: "dar um fim", policy: "vi", category: "HSV_Proxy", severity: "critical", language: "pt" },
+  { term: "mandar pro caixão", policy: "vi", category: "HSV_Proxy", severity: "critical", language: "pt" },
+  { term: "eliminar", policy: "vi", category: "HSV_Proxy", severity: "critical", language: "pt" },
+  
+  // Calls for Death
+  { term: "death to", policy: "vi", category: "Calls_for_Death", severity: "critical", language: "en" },
+  { term: "morte a", policy: "vi", category: "Calls_for_Death", severity: "critical", language: "pt" },
+  { term: "morte aos", policy: "vi", category: "Calls_for_Death", severity: "critical", language: "pt" },
+  
+  // Mid Severity Violence (Serious Injury)
+  { term: "punch", policy: "vi", category: "MSV", severity: "high", language: "en" },
+  { term: "socar", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  { term: "soco", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  { term: "kick", policy: "vi", category: "MSV", severity: "high", language: "en" },
+  { term: "chutar", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  { term: "beat", policy: "vi", category: "MSV", severity: "high", language: "en" },
+  { term: "bater", policy: "vi", category: "MSV", severity: "high", language: "pt", requiresContext: true },
+  { term: "surra", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  { term: "espancar", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  { term: "arrebentar", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  { term: "partir a cara", policy: "vi", category: "MSV", severity: "high", language: "pt" },
+  
+  // Low Severity Violence (Minor Harm)
+  { term: "slap", policy: "vi", category: "LSV", severity: "mid", language: "en" },
+  { term: "tapa", policy: "vi", category: "LSV", severity: "mid", language: "pt" },
+  { term: "push", policy: "vi", category: "LSV", severity: "mid", language: "en", requiresContext: true },
+  { term: "empurrar", policy: "vi", category: "LSV", severity: "mid", language: "pt" },
+  { term: "spit", policy: "vi", category: "LSV", severity: "mid", language: "en" },
+  { term: "cuspir", policy: "vi", category: "LSV", severity: "mid", language: "pt" },
+  
+  // Armaments
+  { term: "gun", policy: "vi", category: "Armament", severity: "high", language: "en", requiresContext: true },
+  { term: "arma", policy: "vi", category: "Armament", severity: "high", language: "pt", requiresContext: true },
+  { term: "pistola", policy: "vi", category: "Armament", severity: "high", language: "pt", requiresContext: true },
+  { term: "fuzil", policy: "vi", category: "Armament", severity: "high", language: "pt" },
+  { term: "3oitão", policy: "vi", category: "Armament", severity: "high", language: "pt" },
+  { term: "38tão", policy: "vi", category: "Armament", severity: "high", language: "pt" },
+  { term: "knife", policy: "vi", category: "Armament", severity: "high", language: "en", requiresContext: true },
+  { term: "faca", policy: "vi", category: "Armament", severity: "high", language: "pt", requiresContext: true },
+  { term: "facão", policy: "vi", category: "Armament", severity: "high", language: "pt" },
+  { term: "bomb", policy: "vi", category: "Armament", severity: "critical", language: "en" },
+  { term: "bomba", policy: "vi", category: "Armament", severity: "critical", language: "pt", requiresContext: true },
+  { term: "explosivo", policy: "vi", category: "Armament", severity: "critical", language: "pt" },
+  { term: "molotov", policy: "vi", category: "Armament", severity: "critical", language: "multi" },
+  
+  // High Risk Persons
+  { term: "jornalista", policy: "vi", category: "HRP", severity: "mid", language: "pt", requiresContext: true },
+  { term: "journalist", policy: "vi", category: "HRP", severity: "mid", language: "en", requiresContext: true },
+  { term: "policial", policy: "vi", category: "HRP", severity: "mid", language: "pt", requiresContext: true },
+  { term: "police", policy: "vi", category: "HRP", severity: "mid", language: "en", requiresContext: true },
+  { term: "presidente", policy: "vi", category: "HRP", severity: "mid", language: "pt", requiresContext: true },
+  { term: "president", policy: "vi", category: "HRP", severity: "mid", language: "en", requiresContext: true },
+  
+  // High Risk Locations
+  { term: "escola", policy: "vi", category: "HRL", severity: "mid", language: "pt", requiresContext: true },
+  { term: "school", policy: "vi", category: "HRL", severity: "mid", language: "en", requiresContext: true },
+  { term: "igreja", policy: "vi", category: "HRL", severity: "mid", language: "pt", requiresContext: true },
+  { term: "church", policy: "vi", category: "HRL", severity: "mid", language: "en", requiresContext: true },
+  { term: "hospital", policy: "vi", category: "HRL", severity: "mid", language: "multi", requiresContext: true },
+  
+  // ============================================
+  // SSIED - Suicide, Self-Injury, Eating Disorders
+  // ============================================
+  // Suicide - Explicit Intent
+  { term: "kill myself", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "en" },
+  { term: "kms", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "multi" },
+  { term: "me matar", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "pt" },
+  { term: "vou me matar", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "pt" },
+  { term: "quero me matar", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "pt" },
+  { term: "suicide", policy: "ssied", category: "Suicide_Explicit", severity: "critical", language: "en", requiresContext: true },
+  { term: "suicídio", policy: "ssied", category: "Suicide_Explicit", severity: "critical", language: "pt", requiresContext: true },
+  { term: "end my life", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "en" },
+  { term: "acabar com minha vida", policy: "ssied", category: "Suicide_Intent", severity: "critical", language: "pt" },
+  
+  // Suicide - Methods
+  { term: "hang myself", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "en" },
+  { term: "me enforcar", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "pt" },
+  { term: "overdose", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "multi" },
+  { term: "tomar pílulas", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "pt" },
+  { term: "jump off", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "en" },
+  { term: "pular de", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "pt" },
+  { term: "pular da ponte", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "pt" },
+  { term: "shoot myself", policy: "ssied", category: "Suicide_Method", severity: "critical", language: "en" },
+  
+  // Suicide - Ideation
+  { term: "want to die", policy: "ssied", category: "Suicide_Ideation", severity: "high", language: "en" },
+  { term: "wanna die", policy: "ssied", category: "Suicide_Ideation", severity: "high", language: "en" },
+  { term: "quero morrer", policy: "ssied", category: "Suicide_Ideation", severity: "high", language: "pt" },
+  { term: "wish I was dead", policy: "ssied", category: "Suicide_Ideation", severity: "high", language: "en" },
+  { term: "queria estar morto", policy: "ssied", category: "Suicide_Ideation", severity: "high", language: "pt" },
+  
+  // Suicide - Incitement
+  { term: "kill yourself", policy: "ssied", category: "Suicide_Incitement", severity: "critical", language: "en" },
+  { term: "kys", policy: "ssied", category: "Suicide_Incitement", severity: "critical", language: "multi" },
+  { term: "mata-te", policy: "ssied", category: "Suicide_Incitement", severity: "critical", language: "pt" },
+  { term: "se mata", policy: "ssied", category: "Suicide_Incitement", severity: "critical", language: "pt" },
+  
+  // Self-Injury
+  { term: "cutting", policy: "ssied", category: "Self_Injury", severity: "high", language: "en" },
+  { term: "cut myself", policy: "ssied", category: "Self_Injury", severity: "high", language: "en" },
+  { term: "me cortar", policy: "ssied", category: "Self_Injury", severity: "high", language: "pt" },
+  { term: "self-harm", policy: "ssied", category: "Self_Injury", severity: "high", language: "en" },
+  { term: "automutilação", policy: "ssied", category: "Self_Injury", severity: "high", language: "pt" },
+  { term: "autolesão", policy: "ssied", category: "Self_Injury", severity: "high", language: "pt" },
+  { term: "razor", policy: "ssied", category: "SI_Means", severity: "high", language: "en", requiresContext: true },
+  { term: "gilete", policy: "ssied", category: "SI_Means", severity: "high", language: "pt", requiresContext: true },
+  { term: "lâmina", policy: "ssied", category: "SI_Means", severity: "high", language: "pt", requiresContext: true },
+  
+  // Eating Disorders - Explicit
+  { term: "anorexia", policy: "ssied", category: "ED_Explicit", severity: "high", language: "multi", requiresContext: true },
+  { term: "bulimia", policy: "ssied", category: "ED_Explicit", severity: "high", language: "multi", requiresContext: true },
+  { term: "pica", policy: "ssied", category: "ED_Explicit", severity: "high", language: "multi", requiresContext: true },
+  { term: "purging", policy: "ssied", category: "ED_Behavior", severity: "high", language: "en" },
+  { term: "purgar", policy: "ssied", category: "ED_Behavior", severity: "high", language: "pt" },
+  { term: "starving myself", policy: "ssied", category: "ED_Behavior", severity: "high", language: "en" },
+  { term: "passar fome", policy: "ssied", category: "ED_Behavior", severity: "high", language: "pt", requiresContext: true },
+  
+  // ED Promotion Signals (CRITICAL)
+  { term: "thinspo", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "thinspiration", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "bonespo", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "meanspo", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "proana", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "pro-ana", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "promia", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "pro-mia", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "edtips", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "anatips", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  { term: "anabuddy", policy: "ssied", category: "ED_Coordination", severity: "critical", language: "multi" },
+  { term: "anagoals", policy: "ssied", category: "ED_Promotion", severity: "critical", language: "multi" },
+  
+  // Viral Events
+  { term: "blue whale", policy: "ssied", category: "Viral_Event", severity: "critical", language: "multi" },
+  { term: "baleia azul", policy: "ssied", category: "Viral_Event", severity: "critical", language: "pt" },
+  { term: "momo challenge", policy: "ssied", category: "Viral_Event", severity: "critical", language: "multi" },
+  { term: "jonathan galindo", policy: "ssied", category: "Viral_Event", severity: "critical", language: "multi" },
+  
+  // ============================================
+  // BH - Bullying and Harassment
+  // ============================================
+  // Calls for Death/SSI
+  { term: "kill yourself", policy: "bh", category: "Calls_for_Death", severity: "critical", language: "en" },
+  { term: "mata-te", policy: "bh", category: "Calls_for_Death", severity: "critical", language: "pt" },
+  { term: "hope you die", policy: "bh", category: "Calls_for_Death", severity: "critical", language: "en" },
+  { term: "espero que morra", policy: "bh", category: "Calls_for_Death", severity: "critical", language: "pt" },
+  
+  // Sexualized Harassment
+  { term: "whore", policy: "bh", category: "Sexual_Harassment", severity: "high", language: "en" },
+  { term: "puta", policy: "bh", category: "Sexual_Harassment", severity: "high", language: "pt" },
+  { term: "slut", policy: "bh", category: "Sexual_Harassment", severity: "high", language: "en" },
+  { term: "vadia", policy: "bh", category: "Sexual_Harassment", severity: "high", language: "pt" },
+  
+  // Dehumanizing Comparisons
+  { term: "are rats", policy: "bh", category: "Dehumanizing", severity: "high", language: "en" },
+  { term: "são ratos", policy: "bh", category: "Dehumanizing", severity: "high", language: "pt" },
+  { term: "are cockroaches", policy: "bh", category: "Dehumanizing", severity: "high", language: "en" },
+  { term: "são baratas", policy: "bh", category: "Dehumanizing", severity: "high", language: "pt" },
+  { term: "trash", policy: "bh", category: "Dehumanizing", severity: "high", language: "en", requiresContext: true },
+  { term: "lixo", policy: "bh", category: "Dehumanizing", severity: "high", language: "pt", requiresContext: true },
+  
+  // Physical Description Attacks
+  { term: "ugly", policy: "bh", category: "Physical_Attack", severity: "mid", language: "en" },
+  { term: "feio", policy: "bh", category: "Physical_Attack", severity: "mid", language: "pt" },
+  { term: "feia", policy: "bh", category: "Physical_Attack", severity: "mid", language: "pt" },
+  { term: "fat", policy: "bh", category: "Physical_Attack", severity: "mid", language: "en", requiresContext: true },
+  { term: "gordo", policy: "bh", category: "Physical_Attack", severity: "mid", language: "pt", requiresContext: true },
+  { term: "gorda", policy: "bh", category: "Physical_Attack", severity: "mid", language: "pt", requiresContext: true },
+  
+  // Character Attacks
+  { term: "stupid", policy: "bh", category: "Character_Attack", severity: "mid", language: "en" },
+  { term: "idiota", policy: "bh", category: "Character_Attack", severity: "mid", language: "pt" },
+  { term: "imbecil", policy: "bh", category: "Character_Attack", severity: "mid", language: "pt" },
+  { term: "retard", policy: "bh", category: "Character_Attack", severity: "high", language: "en" },
+  { term: "retardado", policy: "bh", category: "Character_Attack", severity: "high", language: "pt" },
+  
+  // ============================================
+  // HC - Hateful Conduct
+  // ============================================
+  { term: "should all die", policy: "hc", category: "Harm_Statement", severity: "critical", language: "en" },
+  { term: "deviam morrer", policy: "hc", category: "Harm_Statement", severity: "critical", language: "pt" },
+  { term: "são animais", policy: "hc", category: "Dehumanizing", severity: "critical", language: "pt" },
+  { term: "are animals", policy: "hc", category: "Dehumanizing", severity: "critical", language: "en" },
+  { term: "holocaust didn't happen", policy: "hc", category: "Holocaust_Denial", severity: "critical", language: "en" },
+  
+  // ============================================
+  // CSEAN - Child Safety
+  // ============================================
+  { term: "csam", policy: "csean", category: "CSAM", severity: "critical", language: "multi" },
+  { term: "cheese pizza", policy: "csean", category: "CSAM_Code", severity: "critical", language: "en" },
+  { term: "cp", policy: "csean", category: "CSAM_Code", severity: "critical", language: "multi", requiresContext: true },
+  { term: "pedo", policy: "csean", category: "Pedophilia", severity: "critical", language: "multi" },
+  { term: "map pride", policy: "csean", category: "Pedophilia", severity: "critical", language: "en" },
+  { term: "novinha", policy: "csean", category: "Minor_Reference", severity: "high", language: "pt", requiresContext: true },
+];
 
-### PHASE 1: MAIN ACTION
-1. No Action - Content does not violate any policy
-2. Escalate - Content requires immediate escalation
-3. Label - Content violates a policy
+// ============================================
+// TEXT UTILITIES
+// ============================================
 
----
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
 
-### IF "No Action":
-- No - No Action, Benign
-- No Action, Implicit Sexualization of Children
-- No - DOI Social & Political Discourse Context
-- No - No Action, Missing Self-Reporting
+function hasWord(text: string, word: string): boolean {
+  const norm = normalize(text);
+  const w = normalize(word);
+  if (w.includes(" ")) {
+    return norm.includes(w);
+  }
+  return new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(norm);
+}
 
----
+function detectLanguage(text: string): "pt" | "en" | "multi" {
+  const ptPatterns = /\b(você|voce|não|nao|está|são|também|porque|já|obrigado|olá|boa|bom)\b/i;
+  const enPatterns = /\b(the|is|are|was|have|has|will|would|could|hello|thank|please)\b/i;
+  
+  const hasPt = ptPatterns.test(text);
+  const hasEn = enPatterns.test(text);
+  
+  if (hasPt && hasEn) return "multi";
+  if (hasPt) return "pt";
+  return "en";
+}
 
-### IF "Escalate":
+// ============================================
+// KEYWORD DETECTION
+// ============================================
 
-**Child Exploitation:** Sextortion | CSAM | CSAM Links | Soliciting Imagery | IIC | Imminent Threat | Non-Sexual Abuse
+function findKeywords(text: string): KeywordMatch[] {
+  const found: KeywordMatch[] = [];
+  const processedTerms = new Set<string>();
 
-**Human Trafficking:** Imminent Threat | Minor Sex Trafficking | Sex Trafficking | Organ Trafficking | Other
+  KEYWORDS_DATABASE.forEach((kw) => {
+    if (processedTerms.has(kw.term)) return;
+    
+    if (hasWord(text, kw.term)) {
+      found.push({
+        term: kw.term,
+        policy: kw.policy,
+        category: kw.category,
+        severity: kw.severity,
+        requiresContext: kw.requiresContext,
+      });
+      processedTerms.add(kw.term);
+    }
+  });
 
-**Threatening:** Dangerous Individuals/Orgs | Other | Potentially Credible Rape
+  // Sort by severity
+  const severityOrder: Record<Severity, number> = {
+    critical: 0,
+    high: 1,
+    mid: 2,
+    low: 3,
+    info: 4,
+  };
 
-**Suicide:** Graphic/Promotion | Admission (CIS - Credible Intent of Suicide)
+  return found.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
+}
 
----
+// ============================================
+// EXCEPTION DETECTION
+// ============================================
 
-### IF "Label":
+function detectExceptions(text: string): DetectedExceptions {
+  const lower = text.toLowerCase();
+  const detected: string[] = [];
 
-**SSIED (Suicide, Self-Injury, Eating Disorders)**
-- Suicide: Promotion | Graphic | Mocking | Admission | Narratives
-- Self-Injury: Promotion | Graphic | Mocking | Admission | Narratives  
-- Eating Disorder: Promotion | Graphic | Mocking | Admission | Recovery
+  const checks = {
+    hasSelfDefense: /\b(defesa|defender|proteger|self.?defense|legítima defesa)\b/i.test(lower),
+    hasRedemption: /\b(arrependo|desculpa|perdão|sorry|regret|me arrependo)\b/i.test(lower),
+    hasCondemning: /\b(é errado|não se deve|condenamos|wrong|condemn|vergonha)\b/i.test(lower),
+    hasHypothetical: /\b(se eu fosse|imagine|ficção|filme|série|jogo|game|movie|fiction|hipotético)\b/i.test(lower),
+    hasEducational: /\b(educação|ensino|academic|education|study|universidade|escola)\b/i.test(lower),
+    hasNewsReporting: /\b(notícia|reportagem|news|report|journalism|jornal|g1|folha)\b/i.test(lower),
+    hasArtisticContext: /\b(arte|artístico|música|letra|artistic|lyrics|poesia|poema)\b/i.test(lower),
+    hasSatire: /\b(sátira|ironia|piada|satire|joke|parody|meme|comédia)\b/i.test(lower),
+    hasEndearingContext: /\b(meu amor|querido|amigo|brincadeira|friend|dear|carinho)\b/i.test(lower),
+    hasCriminalAllegation: /\b(polícia|tribunal|police|court|lawsuit|processo|crime)\b/i.test(lower),
+    hasBusinessReview: /\b(review|avaliação|estrelas|stars|serviço|atendimento)\b/i.test(lower),
+    hasFightSportContext: /\b(mma|ufc|boxe|boxing|luta|fight|wrestling|jiu.?jitsu)\b/i.test(lower),
+    hasMedicalContext: /\b(médico|medicina|doctor|medical|health|hospital|tratamento)\b/i.test(lower),
+    hasFamilyContext: /\b(filho|filha|bebé|família|son|daughter|baby|family|mãe|pai)\b/i.test(lower),
+    hasRecoveryContext: /\b(recuperação|recovery|superando|overcame|em tratamento|sobriety)\b/i.test(lower),
+    hasAwarenessContext: /\b(conscientização|awareness|prevenção|prevention|ajuda|help)\b/i.test(lower),
+    hasBrickAndMortar: /\b(loja|store|shop|site oficial|official|retail)\b/i.test(lower),
+    hasReligiousContext: /\b(ramadan|quaresma|jejum religioso|religious|oração|prayer)\b/i.test(lower),
+    hasFictionalContext: /\b(filme|movie|série|series|tv show|novela|livro|book|jogo|game)\b/i.test(lower),
+  };
 
-**VGC (Violent and Graphic Content)**
-- Sadistic Remarks
-- Mutilated Humans: Dismemberment | Burned | Throat Slitting | Visible Innards
-- Violence/Brutality: Capital Punishment | Violent Death | Brutality
-- Human Gore: Objects piercing | Bleeding | Bodily Fluids | Dead body
-- Animal: Mutilated | Brutality | Suffering
+  // Collect detected exceptions
+  if (checks.hasSelfDefense) detected.push("Self-defense");
+  if (checks.hasRedemption) detected.push("Redemption");
+  if (checks.hasCondemning) detected.push("Condemning");
+  if (checks.hasHypothetical) detected.push("Hypothetical/Fiction");
+  if (checks.hasEducational) detected.push("Educational");
+  if (checks.hasNewsReporting) detected.push("News Reporting");
+  if (checks.hasArtisticContext) detected.push("Artistic Context");
+  if (checks.hasSatire) detected.push("Satire/Humor");
+  if (checks.hasEndearingContext) detected.push("Endearing Context");
+  if (checks.hasCriminalAllegation) detected.push("Criminal Allegation");
+  if (checks.hasBusinessReview) detected.push("Business Review");
+  if (checks.hasFightSportContext) detected.push("Fight/Sport Context");
+  if (checks.hasMedicalContext) detected.push("Medical Context");
+  if (checks.hasFamilyContext) detected.push("Family Context");
+  if (checks.hasRecoveryContext) detected.push("Recovery Context");
+  if (checks.hasAwarenessContext) detected.push("Awareness/Prevention");
+  if (checks.hasBrickAndMortar) detected.push("Brick-and-Mortar");
+  if (checks.hasReligiousContext) detected.push("Religious Context");
+  if (checks.hasFictionalContext) detected.push("Fictional Context");
 
-**VI (Violence and Incitement)**
-- Election Violence
-- High-severity: Threats | Admissions | Calls for death
-- Mid-severity: Threats | Admissions
-- Low-severity
-- Weapons to HRL
-- Other: Services | Weapon instructions | Explosive instructions
+  return { ...checks, detected };
+}
 
-**WAE (Weapons, Ammunition, Explosives)**
-- Commercial: Machine gun/3D | Firearms | Explosives | Bladed | Non-lethal
-- Non-Commercial (P2P sale)
+// ============================================
+// POLICY-SPECIFIC CHECKS
+// ============================================
 
-**TA (Tobacco and Alcohol)**
-- Tobacco: Sale P2P | Promotion | Consumption
-- Alcohol: Sale P2P | Promotion | Consumption
-- ENDS/Vape: Sale P2P | Promotion
+function performVIChecks(text: string, keywords: KeywordMatch[]): VIChecks {
+  const viKeywords = keywords.filter((k) => k.policy === "vi");
+  
+  const hasTarget = /\b(te|você|tu|you|him|her|them|ele|ela|eles)\b/i.test(text) || 
+                   /[A-Z][a-záàâãéèêíïóôõöúç]{2,}/.test(text) ||
+                   /@\w+/.test(text);
+  const hasIntent = /\b(vou|vamos|gonna|will|going to|irei|farei)\b/i.test(text);
+  const hasTiming = /\b(amanhã|hoje|às?\s*\d|daqui\s+a|tomorrow|today|tonight|agora|now)\b/i.test(text);
+  const hasArmament = viKeywords.some((k) => k.category === "Armament") ||
+                      /\b(arma|faca|pistola|gun|knife|weapon|espingarda|rifle)\b/i.test(text);
+  const hasLocation = /\b(escola|trabalho|casa|escritório|school|work|home|office|igreja|church)\b/i.test(text);
+  const hasMethod = viKeywords.some((k) => 
+    ["HSV", "HSV_Proxy", "MSV", "Calls_for_Death"].includes(k.category)
+  );
+  
+  const isCredibleThreat = hasTarget && hasIntent && hasMethod && 
+                          (hasTiming || hasArmament || hasLocation);
 
-**BH (Bullying and Harassment)**
-- Sexualized | Calls for death | Physical description | Character attacks
+  return { 
+    hasTarget, 
+    hasIntent, 
+    hasTiming, 
+    hasArmament, 
+    hasLocation, 
+    hasMethod, 
+    isCredibleThreat,
+  };
+}
 
-**HC (Hateful Conduct)**
-- Dehumanizing | Harm statements | Slurs | Exclusion
+function performSSIEDChecks(text: string, keywords: KeywordMatch[]): SSIEDPreChecks {
+  const ssiedKeywords = keywords.filter((k) => k.policy === "ssied");
+  
+  const hasSuicideContent = ssiedKeywords.some((k) => 
+    k.category.startsWith("Suicide_")
+  );
+  const hasSelfInjuryContent = ssiedKeywords.some((k) => 
+    k.category.startsWith("Self_Injury") || k.category.startsWith("SI_")
+  );
+  const hasEDContent = ssiedKeywords.some((k) => 
+    k.category.startsWith("ED_")
+  );
+  
+  const hasPromotionSignals = ssiedKeywords.some((k) => 
+    k.category === "ED_Promotion" || k.category === "ED_Coordination" || k.category === "Suicide_Incitement"
+  );
+  
+  const hasViralEvent = ssiedKeywords.some((k) => k.category === "Viral_Event");
+  
+  // CIS Detection
+  const cisHasExplicitIntent = ssiedKeywords.some((k) => 
+    k.category === "Suicide_Intent" || k.category === "Suicide_Method"
+  ) || /\b(vou me matar|i will kill myself|going to end it|this is goodbye|suicide note|carta de suicídio)\b/i.test(text);
+  
+  const cisHasCapability = ssiedKeywords.some((k) => 
+    k.category === "Suicide_Method"
+  ) || /\b(pílulas|pills|arma|gun|corda|rope|ponte|bridge|prédio|building|veneno|poison)\b/i.test(text);
+  
+  const cisHasImminence = /\b(agora|now|hoje|today|tonight|esta noite|amanhã|tomorrow|daqui a pouco|soon)\b/i.test(text);
+  
+  const isCIS = cisHasExplicitIntent && cisHasCapability && cisHasImminence;
+  
+  // ED Signal Type
+  let edSignalType: SSIEDPreChecks["edSignalType"] = "none";
+  if (hasPromotionSignals) edSignalType = "promotion";
+  else if (hasEDContent) edSignalType = "context";
+  else if (/\b(dieta|diet|emagrecer|weight loss|fitness)\b/i.test(text)) edSignalType = "benign";
 
-**Other:** CSEAN | ASE | FSDP | SPAM | CYBER | PV | DP | HW | OGG
+  return {
+    hasSuicideContent,
+    hasSelfInjuryContent,
+    hasEDContent,
+    cisHasExplicitIntent,
+    cisHasCapability,
+    cisHasImminence,
+    isCIS,
+    hasPromotionSignals,
+    hasViralEvent,
+    edSignalType,
+  };
+}
 
----
+function performBHChecks(text: string, keywords: KeywordMatch[]): BHPreChecks {
+  const hasTarget = /\b(te|você|@\w+|tu|seu|sua|you|your)\b/i.test(text);
+  
+  let targetType: BHPreChecks["targetType"] = "unknown";
+  if (/\b(presidente|ministro|celebridade|president|celebrity|famoso|1M|milhão de seguidores)\b/i.test(text)) {
+    targetType = "public_figure";
+  } else if (/\b(ativista|jornalista|activist|journalist)\b/i.test(text)) {
+    targetType = "lspf";
+  } else if (/\b(criança|menor|filho|kid|child|minor)\b/i.test(text)) {
+    targetType = "private_minor";
+  } else if (hasTarget) {
+    targetType = "private_adult";
+  }
 
-## ESCALATION CRITERIA
+  const hasPurposefulExposure = /@\w+/.test(text);
+  
+  // Determine attack type and tier
+  const bhKeywords = keywords.filter((k) => k.policy === "bh");
+  let attackType: string | null = null;
+  let tier: BHPreChecks["tier"] = null;
+  
+  if (bhKeywords.some(k => k.category === "Calls_for_Death")) {
+    attackType = "Calls for death";
+    tier = 1;
+  } else if (bhKeywords.some(k => k.category === "Sexual_Harassment")) {
+    attackType = "Sexualized harassment";
+    tier = 1;
+  } else if (bhKeywords.some(k => k.category === "Dehumanizing")) {
+    attackType = "Dehumanizing comparison";
+    tier = 2;
+  } else if (bhKeywords.some(k => k.category === "Physical_Attack")) {
+    attackType = "Negative physical description";
+    tier = 2;
+  } else if (bhKeywords.some(k => k.category === "Character_Attack")) {
+    attackType = "Negative character claim";
+    tier = 3;
+  }
 
-ALWAYS ESCALATE for:
-- CSAM (any)
-- Credible threats: Target + Intent + Method + (Timing OR Armament OR Location)
-- Sextortion
-- Suicide CIS: Explicit intent + Capability (method) + Imminence (<24h)
+  return {
+    hasTarget,
+    targetType,
+    hasPurposefulExposure,
+    attackType,
+    tier,
+  };
+}
 
----
+// ============================================
+// BUILD PRE-ANALYSIS CONTEXT
+// ============================================
 
-## TEXT TO ANALYZE
-"""
-${text}
-"""
-
-## RESPONSE FORMAT
-Respond with ONLY valid JSON:
-
-{
-  "action": "no_action" | "escalate" | "label",
-  "decisionPath": ["Action", "Category", "Subcategory"],
-  "terminalNodeId": "unique_node_id",
-  "fullLabel": "Action > Category > Subcategory",
-  "confidence": 85,
-  "reasoning": "Brief explanation (1-2 sentences).",
-  "shouldEscalate": false,
-  "escalationReason": "Only if escalating"
-}`;
+function buildPreAnalysisContext(text: string): PreAnalysisContext {
+  const detectedKeywords = findKeywords(text);
+  const exceptions = detectExceptions(text);
+  const language = detectLanguage(text);
+  
+  // Determine candidate policies from keywords
+  const policyCounts: Record<PolicyId, number> = {} as Record<PolicyId, number>;
+  detectedKeywords.forEach(kw => {
+    policyCounts[kw.policy] = (policyCounts[kw.policy] || 0) + 1;
+    // Weight critical keywords more
+    if (kw.severity === "critical") {
+      policyCounts[kw.policy] += 2;
+    }
+  });
+  
+  const candidatePolicies = Object.entries(policyCounts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([policy]) => policy as PolicyId);
+  
+  const primaryCandidate = candidatePolicies[0] || null;
+  
+  // Perform policy-specific checks
+  const viChecks = performVIChecks(text, detectedKeywords);
+  const ssiedChecks = performSSIEDChecks(text, detectedKeywords);
+  const bhChecks = performBHChecks(text, detectedKeywords);
+  
+  return {
+    text,
+    detectedKeywords,
+    candidatePolicies,
+    primaryCandidate,
+    exceptions,
+    viChecks,
+    ssiedChecks,
+    bhChecks,
+    language,
+  };
 }
 
 // ============================================
@@ -146,7 +598,6 @@ Respond with ONLY valid JSON:
 function isJSONComplete(jsonStr: string): boolean {
   try {
     const parsed = JSON.parse(jsonStr);
-    // Check required fields exist and are complete
     return (
       typeof parsed.action === "string" &&
       Array.isArray(parsed.decisionPath) &&
@@ -196,25 +647,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // PHASE 1: Pre-Analysis
+    const preAnalysis = buildPreAnalysisContext(text);
+    
+    // Check for immediate escalations (CIS)
+    if (preAnalysis.ssiedChecks?.isCIS) {
+      console.log("⚠️ CIS detected in pre-analysis - will likely escalate");
+    }
+    
+    // PHASE 2: Build Enhanced Prompt
+    const prompt = buildEnhancedPrompt(preAnalysis);
+
     // Initialize Gemini
     const ai = new GoogleGenAI({ apiKey });
 
-    // Build prompt
-    const prompt = buildDecisionTreePrompt(text);
-
-    // Call Gemini with increased token limit
+    // Call Gemini
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         temperature: 0.1,
-        maxOutputTokens: 4096, // Increased from 2048
+        maxOutputTokens: 4096,
       },
     });
 
     let responseText = response.text || "";
 
-    // Remove markdown code blocks if present
+    // Remove markdown code blocks
     responseText = responseText
       .replace(/^```json\s*/i, '')
       .replace(/^```\s*/i, '')
@@ -225,7 +684,7 @@ export async function POST(request: NextRequest) {
     const jsonMatch = responseText.match(/\{[\s\S]*\}/);
     
     if (!jsonMatch) {
-      console.error("Invalid Gemini response - no JSON found:", responseText.substring(0, 200));
+      console.error("Invalid Gemini response - no JSON found:", responseText.substring(0, 300));
       return NextResponse.json(
         {
           error: "Resposta inválida da IA - não foi possível extrair JSON",
@@ -237,7 +696,7 @@ export async function POST(request: NextRequest) {
 
     const jsonStr = jsonMatch[0];
 
-    // Validate JSON is complete
+    // Validate JSON completeness
     if (!isJSONComplete(jsonStr)) {
       console.error("Invalid Gemini response - JSON incomplete:", jsonStr.substring(0, 300));
       return NextResponse.json(
@@ -264,9 +723,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate and sanitize response
+    // Validate action
+    const validatedAction = ["escalate", "label", "no_action"].includes(analysis.action) 
+      ? analysis.action 
+      : "no_action";
+
+    // Build validated response
     const validatedAnalysis: DecisionTreeResponse = {
-      action: validateAction(analysis.action),
+      action: validatedAction as "no_action" | "escalate" | "label",
       decisionPath: Array.isArray(analysis.decisionPath) ? analysis.decisionPath : [],
       terminalNodeId: String(analysis.terminalNodeId || "unknown"),
       fullLabel: String(analysis.fullLabel || "Unknown"),
@@ -279,16 +743,27 @@ export async function POST(request: NextRequest) {
     // Calculate processing time
     const processingTime = Date.now() - startTime;
 
-    // Return response
+    // Return enhanced response
     return NextResponse.json({
       success: true,
       analysis: validatedAnalysis,
+      preAnalysis: {
+        keywords: preAnalysis.detectedKeywords,
+        candidatePolicies: preAnalysis.candidatePolicies,
+        primaryCandidate: preAnalysis.primaryCandidate,
+        exceptions: preAnalysis.exceptions.detected,
+        viChecks: preAnalysis.viChecks,
+        ssiedChecks: preAnalysis.ssiedChecks,
+        bhChecks: preAnalysis.bhChecks,
+        language: preAnalysis.language,
+      },
       processingTime,
       debug: options.includeDebugInfo
         ? {
             promptLength: prompt.length,
             responseLength: responseText?.length || 0,
             model: "gemini-2.5-flash",
+            preAnalysisTime: "included",
           }
         : undefined,
     });
@@ -298,7 +773,7 @@ export async function POST(request: NextRequest) {
     const errorMessage =
       error instanceof Error ? error.message : "Erro desconhecido na análise";
     
-    // Check for specific Gemini errors
+    // Handle specific Gemini errors
     if (errorMessage.includes("SAFETY")) {
       return NextResponse.json(
         {
@@ -330,17 +805,6 @@ export async function POST(request: NextRequest) {
 }
 
 // ============================================
-// HELPER FUNCTIONS
-// ============================================
-
-function validateAction(action: string): "no_action" | "escalate" | "label" {
-  if (action === "escalate" || action === "label" || action === "no_action") {
-    return action;
-  }
-  return "no_action";
-}
-
-// ============================================
 // GET - Health check
 // ============================================
 
@@ -348,9 +812,12 @@ export async function GET() {
   return NextResponse.json({
     status: "ok",
     service: "CM Policy Hub Analysis API",
-    version: "3.1.0",
+    version: "4.0.0",
     features: {
-      decisionTree: true,
+      enhancedPrompt: true,
+      preAnalysis: true,
+      contextInjection: true,
+      policySpecificGlossary: true,
       aiModel: "gemini-2.5-flash",
       maxTokens: 4096,
     },
