@@ -1,11 +1,23 @@
 // ============================================
-// CM POLICY HUB - ENHANCED PROMPT BUILDER
+// CM POLICY HUB - ENHANCED PROMPT BUILDER v2.0
 // Sistema de geração de prompts dinâmicos para Gemini AI
-// Com context injection baseado em pre-analysis
-// v1.0.0
+// AGORA COM INJEÇÃO DE DADOS REAIS DOS JSONs
 // ============================================
 
 import { KeywordMatch, PolicyId, DetectedExceptions, VIChecks } from "./types";
+import { 
+  buildCompletePolicyContext, 
+  getPolicyData,
+  extractGlossaryForPrompt,
+  extractLabelHierarchyForPrompt,
+  extractExceptionsForPrompt,
+  extractOperationalGuidelinesForPrompt,
+  extractEscalationCriteriaForPrompt,
+  extractViolenceSeverityForPrompt,
+  extractBHTiersForPrompt,
+  extractUserCategoriesForPrompt,
+  extractEDSignalsForPrompt,
+} from "./policy-loader";
 
 // ============================================
 // TYPES
@@ -45,42 +57,7 @@ export interface BHPreChecks {
 }
 
 // ============================================
-// POLICY-SPECIFIC GLOSSARIES (from JSON files)
-// ============================================
-
-const VI_GLOSSARY = {
-  high_severity_violence: `Violence likely to be LETHAL. Includes: stab, shoot, kill, hang, poison, stone, hit+weapon, choke, dismember, whip/cane, burn, drown, FGM, run over, strangle, suffocate, decapitate, lynch, massacre. Proxy language: "CPF cancelado", "send to morgue", "won't breathe again", "JFK him".`,
-  mid_severity_violence: `Violence likely to cause SERIOUS INJURY (punch equivalent or higher). Includes: punch, kick, gag, hit, beat, headbutt, bite, stomp.`,
-  low_severity_violence: `Violence likely to cause MINOR HARM (lower than punch). Includes: pinch, push, shove, drag, slap, spit, trip, pull/yank hair.`,
-  credibility_signals: `Makes threat credible: bounty/payment demand, spelled-out address, OR 2+ of: location, specific timing, method.`,
-  target: `Person, animal, object, or place that is aim of attack. Valid: living persons, deceased (if violence victim or PC-based), groups based on PC, places (city or smaller).`,
-  high_risk_person: `Heads of state, candidates, ambassadors, law enforcement, witnesses, journalists, activists, homeless, healthcare workers, Zionists, foreigners.`,
-  high_risk_location: `Places of worship, educational facilities, workplaces of HRP, election sites, locations affiliated with PC groups.`,
-};
-
-const SSIED_GLOSSARY = {
-  cis_criteria: `Credible Intent of Suicide requires ALL THREE: (1) Explicit Intent - statement of intent, attempt in progress, or suicide note; (2) Specific Capability - method/means mentioned or depicted; (3) Imminence - plans <24 hours.`,
-  ssi_context: `Determined by visual, written, or verbal indicators: cuts on inner wrist, tied noose, statements like 'kms', ED hashtags.`,
-  ed_context: `Established by ED signals (thinspo, proana), focused body part imagery, or promotional signals with weight loss content.`,
-  graphic_self_injury: `Unhealed cuts as primary subject, skin not covering wound, blood/scabs visible, active self-injury, means depicted.`,
-  ed_promotion_signals: `thinspo, bonespo, meanspo, proana, promia, edtips, anabuddy, anagoals - these are CRITICAL violations.`,
-  recovery_context: `Clear statement that user has or is healing from past attempt/injury/disorder - this is an EXCEPTION.`,
-  extreme_weight_loss: `<1200 cal/day, fasting 24+ hours, rapid loss >2 lbs/week, calling for children <13 to engage in unsupervised weight loss.`,
-};
-
-const BH_GLOSSARY = {
-  public_figure: `Someone with established public credentials: heads of state, members of executive/legislative branches, candidates (up to 30 days after election), 1M+ followers, mentioned in 5+ news articles in 2 years.`,
-  limited_scope_pf: `Public figure whose fame is limited to activism, journalism, or involuntary means only.`,
-  purposeful_exposure: `Poster tags the public figure OR posts comment directly on their post/page.`,
-  name_face_match: `3 features match: 3 primary OR 2 primary + 1 secondary. Primary: nose, lips, hairline, mole, ears, jawline, eye shape, forehead, face-cut, eyebrows (men), teeth.`,
-  tier1_attacks: `Universal: unwanted contact, calls for SSI, attacks based on sexual assault, statements of sexual intent, severe sexualized commentary, doxxing threats.`,
-  tier2_attacks: `For minors/private/LSPF: claims about sexual activity, sexualizing adults, dehumanizing comparisons.`,
-  tier3_attacks: `For private (self-report): targeted cursing, romantic/gender claims, exclusion, negative character.`,
-  tier4_attacks: `For private minors only: criminal allegations, physical bullying videos, female-gendered cursing.`,
-};
-
-// ============================================
-// EXCEPTION DESCRIPTIONS
+// EXCEPTION DESCRIPTIONS (fallback)
 // ============================================
 
 const EXCEPTION_DESCRIPTIONS: Record<string, string> = {
@@ -106,68 +83,74 @@ const EXCEPTION_DESCRIPTIONS: Record<string, string> = {
 };
 
 // ============================================
-// BUILD ENHANCED PROMPT
+// BUILD ENHANCED PROMPT - MAIN FUNCTION
 // ============================================
 
 export function buildEnhancedPrompt(context: PreAnalysisContext): string {
-  const { text, detectedKeywords, candidatePolicies, primaryCandidate, exceptions, viChecks, ssiedChecks, bhChecks, language } = context;
+  const { 
+    text, 
+    detectedKeywords, 
+    candidatePolicies, 
+    primaryCandidate, 
+    exceptions, 
+    viChecks, 
+    ssiedChecks, 
+    bhChecks, 
+    language 
+  } = context;
 
-  // Start with base instruction
-  let prompt = `You are an expert content moderator for Meta platforms. Analyze the following text and determine the correct moderation action.
-
-## YOUR TASK
-Follow the decision tree EXACTLY. Do not skip steps. Consider ALL context.
-
-## LANGUAGE
-The content appears to be in ${language === "pt" ? "Portuguese" : language === "en" ? "English" : "multiple languages"}.
-
-`;
+  // Start with system instruction
+  let prompt = buildSystemInstruction(language);
 
   // Add pre-analysis results
   prompt += buildPreAnalysisSection(context);
 
-  // Add policy-specific section based on candidate
+  // ====== CRITICAL: INJECT REAL POLICY DATA ======
   if (primaryCandidate) {
-    prompt += buildPolicySpecificSection(primaryCandidate, context);
+    prompt += buildRealPolicyDataSection(primaryCandidate, candidatePolicies);
+  } else if (candidatePolicies.length > 0) {
+    // If no primary, inject data for top 2 candidates
+    prompt += buildRealPolicyDataSection(candidatePolicies[0], candidatePolicies.slice(0, 2));
   }
 
-  // Add decision tree
-  prompt += buildDecisionTreeSection(primaryCandidate);
-
-  // Add escalation criteria
-  prompt += buildEscalationSection(primaryCandidate, context);
+  // Add Chain-of-Thought instructions
+  prompt += buildChainOfThoughtSection();
 
   // Add the text to analyze
-  prompt += `
-## TEXT TO ANALYZE
-"""
-${text}
-"""
+  prompt += buildTextSection(text);
 
-## RESPONSE FORMAT
-Respond with ONLY valid JSON (no markdown, no explanation):
+  // Add response format
+  prompt += buildResponseFormatSection();
 
-{
-  "action": "no_action" | "escalate" | "label",
-  "decisionPath": ["Action", "Category", "Subcategory", "..."],
-  "terminalNodeId": "unique_node_id",
-  "fullLabel": "Action > Category > Subcategory > ...",
-  "confidence": 0-100,
-  "reasoning": "2-3 sentences explaining your decision, referencing specific policy criteria.",
-  "shouldEscalate": true | false,
-  "escalationReason": "Only if escalating - explain which criteria were met"
-}
-
-## CRITICAL RULES
-1. If CIS criteria are met (Intent + Capability + Imminence <24h), ALWAYS escalate
-2. If exception applies, action is "no_action" UNLESS severity is critical
-3. Consider the PRE-ANALYSIS keywords and checks - they are accurate
-4. When unsure between severities, default to HIGHER severity
-5. When unsure if target is valid, default to VALID target
-6. Proxy language (like "CPF cancelado") counts as high-severity violence
-`;
+  // Add critical rules
+  prompt += buildCriticalRulesSection(context);
 
   return prompt;
+}
+
+// ============================================
+// BUILD SYSTEM INSTRUCTION
+// ============================================
+
+function buildSystemInstruction(language: string): string {
+  return `You are an EXPERT content moderator for Meta platforms (Facebook, Instagram, WhatsApp).
+
+## YOUR ROLE
+You must analyze content and determine the EXACT moderation action based on Meta's Community Standards.
+You have access to COMPLETE policy definitions below. Use them EXACTLY as written.
+
+## LANGUAGE DETECTED
+Content appears to be in: ${language === "pt" ? "PORTUGUESE" : language === "en" ? "ENGLISH" : "MULTIPLE LANGUAGES"}
+
+## ANALYSIS APPROACH
+1. Read the PRE-ANALYSIS section (keywords already detected)
+2. Study the COMPLETE POLICY DATA section carefully
+3. Follow CHAIN-OF-THOUGHT reasoning
+4. Apply the LABEL HIERARCHY in order
+5. Check ALL EXCEPTIONS before deciding
+6. Output your decision in the specified JSON format
+
+`;
 }
 
 // ============================================
@@ -175,361 +158,343 @@ Respond with ONLY valid JSON (no markdown, no explanation):
 // ============================================
 
 function buildPreAnalysisSection(context: PreAnalysisContext): string {
-  const { detectedKeywords, exceptions, viChecks, ssiedChecks, bhChecks } = context;
+  const { detectedKeywords, exceptions, viChecks, ssiedChecks, bhChecks, candidatePolicies } = context;
 
-  let section = `## PRE-ANALYSIS RESULTS (Already verified - use this information)
+  let section = `## PRE-ANALYSIS RESULTS
+These keywords and checks have been verified. Use this information in your analysis.
 
 `;
 
-  // Keywords found
+  // Candidate policies
+  if (candidatePolicies.length > 0) {
+    section += `### Candidate Policies (by keyword match)\n`;
+    section += `${candidatePolicies.map(p => p.toUpperCase()).join(", ")}\n\n`;
+  }
+
+  // Keywords found - grouped by severity
   if (detectedKeywords.length > 0) {
-    section += `### Detected Keywords (${detectedKeywords.length} found)
-`;
-    const criticalKw = detectedKeywords.filter(k => k.severity === "critical");
-    const highKw = detectedKeywords.filter(k => k.severity === "high");
-    const otherKw = detectedKeywords.filter(k => k.severity !== "critical" && k.severity !== "high");
+    section += `### Detected Keywords (${detectedKeywords.length} total)\n`;
+    
+    const critical = detectedKeywords.filter(k => k.severity === "critical");
+    const high = detectedKeywords.filter(k => k.severity === "high");
+    const mid = detectedKeywords.filter(k => k.severity === "mid");
+    const low = detectedKeywords.filter(k => k.severity === "low" || k.severity === "info");
 
-    if (criticalKw.length > 0) {
-      section += `⚠️ CRITICAL: ${criticalKw.map(k => `"${k.term}" (${k.category})`).join(", ")}\n`;
+    if (critical.length > 0) {
+      section += `🔴 **CRITICAL**: ${critical.map(k => `"${k.term}" [${k.policy.toUpperCase()}/${k.category}]`).join(", ")}\n`;
     }
-    if (highKw.length > 0) {
-      section += `🔴 HIGH: ${highKw.map(k => `"${k.term}" (${k.category})`).join(", ")}\n`;
+    if (high.length > 0) {
+      section += `🟠 **HIGH**: ${high.map(k => `"${k.term}" [${k.policy.toUpperCase()}/${k.category}]`).join(", ")}\n`;
     }
-    if (otherKw.length > 0) {
-      section += `🟡 OTHER: ${otherKw.map(k => `"${k.term}" (${k.category})`).join(", ")}\n`;
+    if (mid.length > 0) {
+      section += `🟡 **MID**: ${mid.map(k => `"${k.term}" [${k.policy.toUpperCase()}/${k.category}]`).join(", ")}\n`;
+    }
+    if (low.length > 0) {
+      section += `🟢 **LOW**: ${low.map(k => `"${k.term}" [${k.policy.toUpperCase()}]`).join(", ")}\n`;
     }
     section += "\n";
   } else {
     section += `### Detected Keywords: None found\n\n`;
   }
 
-  // Exceptions detected
+  // Potential exceptions
   if (exceptions.detected.length > 0) {
-    section += `### Potential Exceptions Detected
-`;
+    section += `### Potential Exceptions Detected\n`;
+    section += `⚠️ These contexts MAY negate a violation - verify against policy exceptions:\n`;
     exceptions.detected.forEach(exc => {
       const desc = EXCEPTION_DESCRIPTIONS[exc.toLowerCase().replace(/[^a-z]/g, "_")] || exc;
-      section += `- ${exc}: ${desc}\n`;
+      section += `- **${exc}**: ${desc}\n`;
     });
     section += "\n";
   }
 
   // VI-specific checks
   if (viChecks) {
-    section += `### Violence Escalation Check
-| Criterion | Status |
-|-----------|--------|
-| Target Identified | ${viChecks.hasTarget ? "✅ YES" : "❌ NO"} |
-| Intent/Statement | ${viChecks.hasIntent ? "✅ YES" : "❌ NO"} |
-| Method Specified | ${viChecks.hasMethod ? "✅ YES" : "❌ NO"} |
-| Timing (<24h) | ${viChecks.hasTiming ? "✅ YES" : "❌ NO"} |
-| Armament Present | ${viChecks.hasArmament ? "✅ YES" : "❌ NO"} |
-| Location (HRL) | ${viChecks.hasLocation ? "✅ YES" : "❌ NO"} |
-
-**Credible Threat Formula**: Target + Intent + Method + (Timing OR Armament OR Location)
-**Result**: ${viChecks.isCredibleThreat ? "⚠️ CREDIBLE THREAT - CONSIDER ESCALATION" : "Not credible"}
-
-`;
+    section += `### Violence Credibility Assessment\n`;
+    section += `| Element | Present |\n`;
+    section += `|---------|--------|\n`;
+    section += `| Target | ${viChecks.hasTarget ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Statement of Intent | ${viChecks.hasIntent ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Method | ${viChecks.hasMethod ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Timing (<24h) | ${viChecks.hasTiming ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Armament | ${viChecks.hasArmament ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Location (HRL) | ${viChecks.hasLocation ? "✅ YES" : "❌ NO"} |\n\n`;
+    
+    section += `**Escalation Formula**: Target + Intent + Method + (Timing OR Armament OR Location)\n`;
+    section += `**Assessment**: ${viChecks.isCredibleThreat ? "⚠️ CREDIBLE THREAT - EVALUATE FOR ESCALATION" : "Does not meet credibility threshold"}\n\n`;
   }
 
-  // SSIED-specific checks
+  // SSIED/CIS-specific checks
   if (ssiedChecks) {
-    section += `### SSIED / CIS Check
-| Criterion | Status |
-|-----------|--------|
-| Suicide Content | ${ssiedChecks.hasSuicideContent ? "✅ YES" : "❌ NO"} |
-| Self-Injury Content | ${ssiedChecks.hasSelfInjuryContent ? "✅ YES" : "❌ NO"} |
-| ED Content | ${ssiedChecks.hasEDContent ? "✅ YES" : "❌ NO"} |
-| CIS: Explicit Intent | ${ssiedChecks.cisHasExplicitIntent ? "✅ YES" : "❌ NO"} |
-| CIS: Capability/Method | ${ssiedChecks.cisHasCapability ? "✅ YES" : "❌ NO"} |
-| CIS: Imminence (<24h) | ${ssiedChecks.cisHasImminence ? "✅ YES" : "❌ NO"} |
-| Promotion Signals | ${ssiedChecks.hasPromotionSignals ? "✅ YES" : "❌ NO"} |
-| Viral Event Reference | ${ssiedChecks.hasViralEvent ? "✅ YES" : "❌ NO"} |
-
-**CIS Formula**: Explicit Intent + Capability + Imminence (all 3 required)
-**CIS Result**: ${ssiedChecks.isCIS ? "⚠️ CIS DETECTED - MUST ESCALATE" : "Not CIS"}
-**ED Signal Type**: ${ssiedChecks.edSignalType}
-
-`;
+    section += `### SSIED / CIS Assessment\n`;
+    section += `| Element | Present |\n`;
+    section += `|---------|--------|\n`;
+    section += `| Suicide Content | ${ssiedChecks.hasSuicideContent ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Self-Injury Content | ${ssiedChecks.hasSelfInjuryContent ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| ED Content | ${ssiedChecks.hasEDContent ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| CIS: Explicit Intent | ${ssiedChecks.cisHasExplicitIntent ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| CIS: Capability/Method | ${ssiedChecks.cisHasCapability ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| CIS: Imminence (<24h) | ${ssiedChecks.cisHasImminence ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Promotion Signals | ${ssiedChecks.hasPromotionSignals ? "✅ YES" : "❌ NO"} |\n\n`;
+    
+    section += `**CIS Formula**: Explicit Intent + Capability + Imminence (ALL THREE required)\n`;
+    section += `**CIS Assessment**: ${ssiedChecks.isCIS ? "🚨 CIS DETECTED - MUST ESCALATE" : "Not CIS"}\n`;
+    section += `**ED Signal Type**: ${ssiedChecks.edSignalType.toUpperCase()}\n\n`;
   }
 
   // BH-specific checks
   if (bhChecks) {
-    section += `### Bullying & Harassment Check
-| Criterion | Status |
-|-----------|--------|
-| Target Identified | ${bhChecks.hasTarget ? "✅ YES" : "❌ NO"} |
-| Target Type | ${bhChecks.targetType} |
-| Purposeful Exposure | ${bhChecks.hasPurposefulExposure ? "✅ YES" : "❌ NO"} |
-| Attack Type | ${bhChecks.attackType || "Unknown"} |
-| Applicable Tier | ${bhChecks.tier || "Unknown"} |
-
-`;
+    section += `### Bullying & Harassment Assessment\n`;
+    section += `| Element | Value |\n`;
+    section += `|---------|-------|\n`;
+    section += `| Target Identified | ${bhChecks.hasTarget ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Target Type | ${bhChecks.targetType.replace(/_/g, " ").toUpperCase()} |\n`;
+    section += `| Purposeful Exposure | ${bhChecks.hasPurposefulExposure ? "✅ YES" : "❌ NO"} |\n`;
+    section += `| Attack Type | ${bhChecks.attackType || "Unknown"} |\n`;
+    section += `| Applicable Tier | ${bhChecks.tier || "TBD"} |\n\n`;
   }
 
   return section;
 }
 
 // ============================================
-// BUILD POLICY-SPECIFIC SECTION
+// BUILD REAL POLICY DATA SECTION
+// This is the CRITICAL fix - injects actual JSON data
 // ============================================
 
-function buildPolicySpecificSection(policy: PolicyId, context: PreAnalysisContext): string {
-  let section = `## POLICY-SPECIFIC GUIDANCE: ${policy.toUpperCase()}
+function buildRealPolicyDataSection(primaryPolicy: PolicyId, allCandidates: PolicyId[]): string {
+  let section = `## COMPLETE POLICY DATA
+⚠️ USE THESE EXACT DEFINITIONS AND CRITERIA FOR YOUR ANALYSIS ⚠️
 
 `;
 
-  switch (policy) {
-    case "vi":
-      section += `### Violence and Incitement (VI) - Key Definitions
+  // Always include primary policy with full context
+  const primaryData = getPolicyData(primaryPolicy);
+  if (primaryData) {
+    section += `### PRIMARY POLICY: ${primaryData.name} (${primaryData.shortName})\n`;
+    section += `${primaryData.description}\n\n`;
 
-${Object.entries(VI_GLOSSARY).map(([key, val]) => `**${key.replace(/_/g, " ").toUpperCase()}**: ${val}`).join("\n\n")}
+    // Inject glossary (CRITICAL for accurate analysis)
+    const glossary = extractGlossaryForPrompt(primaryData);
+    if (glossary) {
+      section += glossary;
+    }
 
-### VI Severity Classification
-- **HIGH SEVERITY (HSV)**: Lethal violence - ALWAYS label unless exception applies
-- **MID SEVERITY (MSV)**: Serious injury - Label if credible or against private individuals
-- **LOW SEVERITY (LSV)**: Minor harm - Label only against children, private individuals with name/face match, or PC groups
+    // Inject label hierarchy (for correct labeling)
+    const hierarchy = extractLabelHierarchyForPrompt(primaryData);
+    if (hierarchy) {
+      section += hierarchy;
+    }
 
-### VI Label Hierarchy (use in order)
-1. Escalate > Threatening > Other (if credible threat formula met)
-2. Label > VI > Election Violence
-3. Label > VI > High-severity violence > Threats/Admissions/Calls for death
-4. Label > VI > Mid-severity violence > Threats/Admissions
-5. Label > VI > Low-severity violence
-6. Label > VI > Bringing weapons to HRL
-7. Label > VI > Other > Instructions (weapons/explosives)
+    // Inject exceptions (to avoid false positives)
+    const exceptions = extractExceptionsForPrompt(primaryData);
+    if (exceptions) {
+      section += exceptions;
+    }
 
-`;
-      break;
+    // Inject operational guidelines
+    const guidelines = extractOperationalGuidelinesForPrompt(primaryData);
+    if (guidelines) {
+      section += guidelines;
+    }
 
-    case "ssied":
-    case "cis":
-      section += `### Suicide, Self-Injury & Eating Disorders (SSIED) - Key Definitions
+    // Inject escalation criteria
+    const escalation = extractEscalationCriteriaForPrompt(primaryData);
+    if (escalation) {
+      section += escalation;
+    }
 
-${Object.entries(SSIED_GLOSSARY).map(([key, val]) => `**${key.replace(/_/g, " ").toUpperCase()}**: ${val}`).join("\n\n")}
+    // Policy-specific data
+    if (primaryPolicy === "vi") {
+      const severity = extractViolenceSeverityForPrompt(primaryData);
+      if (severity) {
+        section += severity;
+      }
+    }
 
-### SSIED Label Hierarchy (use in order)
-**SUICIDE:**
-1. Escalate > Suicide > Graphic/Promotion (if CIS criteria met)
-2. Escalate > Suicide > Admission (if CIS criteria met)
-3. Label > SSIED > Suicide > Promotion > Encourage/coordinate/instruct
-4. Label > SSIED > Suicide > Promotion > Speaks Positively
-5. Label > SSIED > Suicide > Graphic Content
-6. Label > SSIED > Suicide > Mocking
-7. Label > SSIED > Suicide > Admission
-8. Label > SSIED > Suicide > Reference or Narratives
+    if (primaryPolicy === "bh") {
+      const tiers = extractBHTiersForPrompt(primaryData);
+      if (tiers) {
+        section += tiers;
+      }
+      const userCats = extractUserCategoriesForPrompt(primaryData);
+      if (userCats) {
+        section += userCats;
+      }
+    }
 
-**SELF-INJURY:**
-1. Label > SSIED > Self-Injury > Promotion
-2. Label > SSIED > Self-Injury > Graphic Content
-3. Label > SSIED > Self-Injury > Mocking
-4. Label > SSIED > Self-Injury > Admission
-5. Label > SSIED > Self-Injury > Recovery with Imagery
+    if (primaryPolicy === "ssied" || primaryPolicy === "cis") {
+      const edSignals = extractEDSignalsForPrompt(primaryData);
+      if (edSignals) {
+        section += edSignals;
+      }
+    }
+  }
 
-**EATING DISORDERS:**
-1. Label > SSIED > Eating Disorder > Yes > Promotion (if ED context)
-2. Label > SSIED > Eating Disorder > Yes > Graphic Content
-3. Label > SSIED > Eating Disorder > Yes > Mocking
-4. Label > SSIED > Eating Disorder > Yes > Admission
-5. Label > SSIED > Eating Disorder > Yes > Recovery
-6. Label > SSIED > Eating Disorder > No > Promotion (extreme weight loss)
-7. Label > SSIED > Eating Disorder > No > Admission
-
-### ED Signal Classification
-- **PROMOTION SIGNALS** (CRITICAL - always violate): thinspo, bonespo, meanspo, proana, promia, edtips, anabuddy
-- **CONTEXT SIGNALS** (need additional indicators): anorexia, bulimia, binge, purge, thigh gap, goal weight
-- **BENIGN SIGNALS** (usually No Action): #goals, fitspo, diet, flat stomach, recovery hashtags
-
-`;
-      break;
-
-    case "bh":
-      section += `### Bullying and Harassment (BH) - Key Definitions
-
-${Object.entries(BH_GLOSSARY).map(([key, val]) => `**${key.replace(/_/g, " ").toUpperCase()}**: ${val}`).join("\n\n")}
-
-### BH Tier System
-**TIER 1** (Universal - applies to ALL users):
-- Calls for death, SSI, or medical condition
-- Sexualized harassment
-- Attacks based on sexual assault experience
-- Statements of intent for sexual activity
-- Doxxing threats
-
-**TIER 2** (Minors, Private Adults, Limited Scope PF):
-- Claims about sexual activity
-- Sexualizing another adult
-- Dehumanizing comparisons (animals, objects)
-- Manipulated imagery highlighting features
-
-**TIER 3** (Private Individuals - requires self-report for some):
-- Targeted cursing
-- Romantic/gender identity claims
-- Exclusion statements
-- Negative character claims
-
-**TIER 4** (Private Minors ONLY):
-- Criminal allegations
-- Physical bullying videos
-- Female-gendered cursing
-
-### BH Label Hierarchy
-1. Label > BH > Sexualized Harassment
-2. Label > BH > Calls for death, SSI, or medical condition
-3. Label > BH > Claims about sexual activity
-4. Label > BH > Violent Tragedies
-5. Label > BH > Negative comparison to animals/objects
-6. Label > BH > Negative physical description
-7. Label > BH > Targeted cursing
-8. Label > BH > Negative character/contempt/exclusion
-9. Label > BH > Physical bullying
-
-`;
-      break;
-
-    default:
-      section += `No specific guidance loaded for ${policy}. Use general decision tree.\n\n`;
+  // Add secondary candidates (abbreviated)
+  const secondaryCandidates = allCandidates.filter(c => c !== primaryPolicy).slice(0, 2);
+  if (secondaryCandidates.length > 0) {
+    section += `\n### SECONDARY POLICIES (may also apply)\n\n`;
+    
+    secondaryCandidates.forEach(policyId => {
+      const policyData = getPolicyData(policyId);
+      if (policyData) {
+        section += `**${policyData.name} (${policyData.shortName})**\n`;
+        section += `${policyData.description}\n`;
+        
+        // Just add glossary for secondary policies
+        const glossary = extractGlossaryForPrompt(policyData);
+        if (glossary) {
+          section += glossary;
+        }
+        section += "\n";
+      }
+    });
   }
 
   return section;
 }
 
 // ============================================
-// BUILD DECISION TREE SECTION
+// BUILD CHAIN-OF-THOUGHT SECTION
 // ============================================
 
-function buildDecisionTreeSection(primaryCandidate: PolicyId | null): string {
-  let section = `## DECISION TREE
+function buildChainOfThoughtSection(): string {
+  return `## CHAIN-OF-THOUGHT ANALYSIS
+Follow these steps IN ORDER:
 
-### PHASE 1: MAIN ACTION
-Choose ONE:
-1. **No Action** - Content does not violate any policy
-2. **Escalate** - Content requires immediate escalation (CIS, CSAM, credible threats)
-3. **Label** - Content violates a policy
+### STEP 1: Content Understanding
+- What is the content saying/showing?
+- Who is the target (if any)?
+- What is the intent?
 
----
+### STEP 2: Keyword Verification
+- Review the detected keywords
+- Do they match the content context?
+- Are there false positives (medical, news, satire)?
 
-### IF "No Action" - Choose the specific reason:
-- No - No Action, Benign (content is harmless)
-- No Action, Implicit Sexualization of Children (borderline but not explicit)
-- No - DOI Social & Political Discourse Context (political speech exception)
-- No - No Action, Missing Self-Reporting (BH requires self-report)
+### STEP 3: Policy Match
+- Which policy best matches the violation?
+- Check the GLOSSARY definitions
+- Verify against CATEGORIES
 
----
+### STEP 4: Severity Assessment
+- What severity level applies?
+- Use the definitions from the policy data
+- When unsure, default to HIGHER severity
 
-### IF "Escalate" - Select escalation type:
+### STEP 5: Exception Check
+- Does ANY exception apply?
+- Check EVERY exception listed
+- If exception applies → likely No Action
 
-**Child Exploitation:**
-- Sextortion | CSAM | CSAM Links | Soliciting Imagery | IIC | Imminent Threat | Non-Sexual Abuse
+### STEP 6: Label Selection
+- Follow the LABEL HIERARCHY in order
+- Select the FIRST matching label
+- Include the full decision path
 
-**Human Trafficking:**
-- Imminent Threat | Minor Sex Trafficking | Sex Trafficking | Organ Trafficking | Other
+### STEP 7: Escalation Check
+- Does this meet ESCALATION criteria?
+- CIS, CSAM, Credible Threats → ALWAYS escalate
+- Check the specific escalation rules
 
-**Threatening (VI):**
-- Dangerous Individuals/Orgs | Other | Potentially Credible Rape
-
-**Suicide (SSIED):**
-- Graphic/Promotion (CIS) | Admission (CIS)
-
----
-
-### IF "Label" - Navigate to correct category:
-
-`;
-
-  // Add simplified label tree based on candidate
-  if (primaryCandidate === "vi" || !primaryCandidate) {
-    section += `**Violence and Incitement (VI):**
-- Election Violence
-- High-severity violence > Threats | Admissions | Calls for death
-- Mid-severity violence > Threats | Admissions
-- Low-severity violence
-- Bringing weapons to HRL or THRL
-- Other Violence > Services | Weapons instructions | Explosive instructions | GBV glorification
+### STEP 8: Final Decision
+- Synthesize all steps
+- State your action: escalate, label, or no_action
+- Provide reasoning
 
 `;
-  }
-
-  if (primaryCandidate === "ssied" || primaryCandidate === "cis" || !primaryCandidate) {
-    section += `**SSIED (Suicide, Self-Injury, Eating Disorders):**
-- Suicide > Promotion | Graphic Content | Mocking | Admission | Reference/Narratives
-- Self-Injury > Promotion | Graphic Content | Mocking | Admission | Recovery
-- Eating Disorder > Yes/No > Promotion | Graphic | Mocking | Admission | Recovery
-
-`;
-  }
-
-  if (primaryCandidate === "bh" || !primaryCandidate) {
-    section += `**Bullying and Harassment (BH):**
-- Sexualized Harassment
-- Calls for death, SSI, or medical condition
-- Claims about sexual activity, romantic involvement, gender identity
-- Violent Tragedies
-- Negative comparison to animals/objects
-- Negative physical description
-- Targeted cursing
-- Negative character/contempt/exclusion
-- Physical bullying
-- Other
-
-`;
-  }
-
-  if (primaryCandidate === "hc" || !primaryCandidate) {
-    section += `**Hateful Conduct (HC):**
-- T1: Dehumanizing comparisons | Harm statements | Harmful stereotypes | Mocking hate crimes
-- T2: Character insults | Mental insults | Other insults | Disgust | Cursing | Exclusion
-- Slur (with or without special context)
-
-`;
-  }
-
-  return section;
 }
 
 // ============================================
-// BUILD ESCALATION SECTION
+// BUILD TEXT SECTION
 // ============================================
 
-function buildEscalationSection(primaryCandidate: PolicyId | null, context: PreAnalysisContext): string {
-  let section = `## ESCALATION CRITERIA
-
-### ALWAYS ESCALATE FOR:
-1. **CSAM** - Any child sexual abuse material
-2. **Credible Violence Threats** - Target + Intent + Method + (Timing OR Armament OR Location)
-3. **Sextortion** - Sexual extortion involving minors
-4. **CIS (Credible Intent of Suicide)** - Explicit intent + Capability + Imminence (<24h)
-
-### DO NOT ESCALATE FOR:
-- Content >1 month old
-- Calls for action against adult public figures (even high-risk)
-- Threats with physically impossible methods ("when pigs fly")
-- Kidnapping without additional HSV + escalation criteria
-- Fictional content without captions meeting criteria
+function buildTextSection(text: string): string {
+  return `## TEXT TO ANALYZE
+\`\`\`
+${text}
+\`\`\`
 
 `;
+}
 
-  // Add specific criteria based on checks
+// ============================================
+// BUILD RESPONSE FORMAT SECTION
+// ============================================
+
+function buildResponseFormatSection(): string {
+  return `## RESPONSE FORMAT
+Respond with ONLY valid JSON. No markdown code blocks. No explanation outside JSON.
+
+{
+  "action": "no_action" | "escalate" | "label",
+  "primaryPolicy": "policy_id",
+  "primaryPolicyName": "Full Policy Name",
+  "decisionPath": ["Action", "Policy", "Category", "Subcategory", "..."],
+  "terminalNodeId": "unique_id_from_label_hierarchy",
+  "fullLabel": "Action > Policy > Category > ...",
+  "confidence": 0-100,
+  "reasoning": "2-3 sentences explaining your Chain-of-Thought reasoning. Reference specific policy criteria, glossary definitions, and why exceptions do or do not apply.",
+  "shouldEscalate": true | false,
+  "escalationReason": "If escalating: explain EXACTLY which criteria were met (e.g., 'CIS: Intent + Method + Imminence all present')",
+  "exceptionsConsidered": ["exception1", "exception2"],
+  "exceptionApplied": "exception_name or null"
+}
+
+`;
+}
+
+// ============================================
+// BUILD CRITICAL RULES SECTION
+// ============================================
+
+function buildCriticalRulesSection(context: PreAnalysisContext): string {
+  let rules = `## CRITICAL RULES
+
+### ALWAYS DO:
+1. Use EXACT definitions from the GLOSSARY - do not paraphrase
+2. Follow LABEL HIERARCHY in order - select FIRST matching label
+3. Check ALL exceptions before deciding
+4. Default to HIGHER severity when unsure
+5. Default to VALID target when unsure
+6. Recognize proxy language (e.g., "CPF cancelado" = death threat)
+
+### NEVER DO:
+1. Skip exception checking
+2. Use labels not in the hierarchy
+3. Escalate without meeting ALL criteria
+4. Ignore detected keywords
+5. Make assumptions not supported by policy data
+
+### ESCALATION RULES:
+`;
+
+  // Add context-specific escalation reminders
   if (context.viChecks?.isCredibleThreat) {
-    section += `### ⚠️ CREDIBLE THREAT DETECTED
-Based on pre-analysis, this content MAY meet escalation criteria for violence.
-Verify: Target (${context.viChecks.hasTarget ? "✓" : "?"}) + Intent (${context.viChecks.hasIntent ? "✓" : "?"}) + Method (${context.viChecks.hasMethod ? "✓" : "?"}) + (Timing/Armament/Location)
-
-`;
+    rules += `⚠️ **CREDIBLE THREAT DETECTED**: Verify Target + Intent + Method + (Timing/Armament/Location)\n`;
   }
 
   if (context.ssiedChecks?.isCIS) {
-    section += `### ⚠️ CIS DETECTED
-Based on pre-analysis, this content MEETS CIS escalation criteria.
-- Explicit Intent: ✓
-- Capability/Method: ✓
-- Imminence (<24h): ✓
-**YOU MUST ESCALATE THIS CONTENT**
-
-`;
+    rules += `🚨 **CIS DETECTED**: If Intent + Capability + Imminence are confirmed → MUST ESCALATE\n`;
   }
 
-  return section;
+  rules += `
+### MUST ESCALATE:
+- CIS (Credible Intent of Suicide): Intent + Capability + Imminence (<24h)
+- CSAM: Any child sexual abuse material
+- Credible Violence: Target + Intent + Method + (Timing OR Armament OR Location)
+- Sextortion involving minors
+
+### DO NOT ESCALATE:
+- Content >1 month old
+- Fictional content without real-world indicators
+- Calls for action against adult public figures (even high-risk)
+- Threats with impossible methods ("when pigs fly")
+
+`;
+
+  return rules;
 }
 
 // ============================================
