@@ -1,0 +1,1217 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "totalClarifications": 113,
+    "lastUpdated": "2025-12-30",
+    "description": "Official policy clarifications for CM Policy Hub AI analysis - Portuguese market"
+  },
+  "clarifications": {
+    "SSIED": [
+      {
+        "id": "SSIED-001",
+        "source": "#2",
+        "policy": "SSIED",
+        "subPolicy": "Self-Injury",
+        "keywords": ["comer vidro", "vidro"],
+        "content": "comer vidro",
+        "decision": "Label → SSIED → Self-Injury",
+        "rationale": "\"Comer vidro\" = Self-Injury (não Suicide) quando não há indicadores adicionais de suicídio",
+        "rule": "Autolesão específica sem contexto suicida = Self-Injury"
+      },
+      {
+        "id": "SSIED-002",
+        "source": "#4",
+        "policy": "SSIED",
+        "subPolicy": "Promotion",
+        "keywords": ["matem se todos", "matem-se", "suicídio coletivo"],
+        "content": "matem se todos",
+        "decision": "Label → SSIED → Promotion",
+        "rationale": "Sem alvo específico = SSIED Promotion (não BH)",
+        "rule": "Chamadas para SSI SEM alvo específico → SSIED Promotion"
+      },
+      {
+        "id": "SSIED-003",
+        "source": "#5",
+        "policy": "BH",
+        "subPolicy": "Calls for SSI",
+        "keywords": ["é melhor se matar", "mata-te", "suicida-te"],
+        "content": "é melhor se matar",
+        "decision": "Label → BH → Calls for SSI",
+        "rationale": "COM alvo específico = BH (não SSIED)",
+        "rule": "Chamadas para SSI COM alvo específico → BH"
+      },
+      {
+        "id": "SSIED-004",
+        "source": "#7",
+        "policy": "SSIED",
+        "subPolicy": "Admission",
+        "keywords": ["vou me suicidar", "vou suicidar", "suicidar agora"],
+        "content": "vou me suicidar agora",
+        "decision": "Label → SSIED → Admission (NÃO CIS/Escalate)",
+        "rationale": "Sem método específico = Admission, não Crisis in Suicidality",
+        "rule": "Intent + Timing SEM método/capability = Admission (não escalar)"
+      },
+      {
+        "id": "SSIED-005",
+        "source": "#20",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["morte", "morrer", "inevitável", "natural"],
+        "content": "Morte como inevitabilidade natural",
+        "decision": "No Action",
+        "rationale": "Discussão filosófica sobre morte como parte natural da vida",
+        "rule": "Morte como inevitabilidade natural ≠ conteúdo SSI"
+      },
+      {
+        "id": "SSIED-006",
+        "source": "#24",
+        "policy": "SSIED",
+        "subPolicy": "Suicide Reference",
+        "keywords": ["suicídio", "acabar", "não aguento"],
+        "content": "Declarações vagas potencialmente suicidas",
+        "decision": "Label → SSIED → Suicide Reference",
+        "rationale": "Muito vago para Admission mas suficiente para Reference",
+        "rule": "Declarações vagas sobre suicídio = Suicide Reference"
+      },
+      {
+        "id": "SSIED-007",
+        "source": "#43",
+        "policy": "SSIED",
+        "subPolicy": "CIS",
+        "keywords": ["suicídio", "método", "agora", "hoje"],
+        "content": "Crisis in Suicidality criteria",
+        "decision": "Escalate → CIS",
+        "rationale": "CIS requer: Intent + Timing + Capability específica",
+        "rule": "TODOS os 3 elementos necessários para CIS: Intent + Timing + Method/Capability"
+      },
+      {
+        "id": "SSIED-008",
+        "source": "#44-45",
+        "policy": "SSIED",
+        "subPolicy": "Imagery",
+        "keywords": ["tentativa", "suicídio", "notícia", "imagem"],
+        "content": "Tentativa de suicídio em imagem/vídeo",
+        "decision": "COM notícia = Sensational | SEM notícia = Imagery Depicting",
+        "rationale": "Contexto de notícia altera a classificação",
+        "rule": "Tentativa suicídio: +notícia=Sensational, -notícia=Imagery Depicting"
+      },
+      {
+        "id": "SSIED-009",
+        "source": "#46",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["atira-te ao mar", "atira", "mar"],
+        "content": "atira-te ao mar",
+        "decision": "No Action",
+        "rationale": "Expressão idiomática - não há certeza que leva à morte",
+        "rule": "\"Atira-te ao mar\" = expressão idiomática, NÃO é call for SSI"
+      },
+      {
+        "id": "SSIED-010",
+        "source": "#59",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["suicídio", "menção"],
+        "content": "Menção de suicídio sem detalhes",
+        "decision": "Ignore (No Action)",
+        "rationale": "Menção de suicídio SEM detalhes suficientes não viola Suicide References",
+        "rule": "Simples menção ≠ Suicide Reference (requer mais contexto)"
+      },
+      {
+        "id": "SSIED-011",
+        "source": "#60",
+        "policy": "SSIED",
+        "subPolicy": "Suicide Reference",
+        "keywords": ["suicídio", "vago", "referência"],
+        "content": "Declarações vagas sobre suicídio",
+        "decision": "Label → SSIED → Suicide Reference",
+        "rationale": "Muito vago para Admission, MAS vago o suficiente para Reference",
+        "rule": "Zona cinzenta: vago demais para Admission = Reference"
+      },
+      {
+        "id": "SSIED-012",
+        "source": "#87",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["compulsão alimentar", "comer", "compulsivo"],
+        "content": "compulsão alimentar",
+        "decision": "No Action",
+        "rationale": "Termo com múltiplos significados - requer contexto adicional",
+        "rule": "\"Compulsão alimentar\" NÃO é automaticamente Eating Disorder"
+      },
+      {
+        "id": "SSIED-013",
+        "source": "#88",
+        "policy": "SSIED",
+        "subPolicy": "Weight Loss Comparison",
+        "keywords": ["perdi", "quilos", "kg", "peso"],
+        "content": "E já se foram mais de 15Kg",
+        "decision": "Label → SSIED → ED → Side-by-side Weight Comparison",
+        "rationale": "Distinção: Extreme Weight Loss (métodos) vs F&D (promessas) vs simples menção",
+        "rule": "Menção de perda de peso sem timeframe/método = Weight Comparison"
+      },
+      {
+        "id": "SSIED-014",
+        "source": "#89",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["imagem", "suicídio"],
+        "content": "Imagens sem indicadores SSI adicionais",
+        "decision": "No Action",
+        "rationale": "Imagens SEM indicadores adicionais assumidas como SSI imagery básica",
+        "rule": "Imagem SSI sem indicadores adicionais = assumir imagery (não graphic)"
+      },
+      {
+        "id": "SSIED-015",
+        "source": "#90",
+        "policy": "SSIED",
+        "subPolicy": "Extreme Weight Loss",
+        "keywords": ["desafio", "perder", "dias", "kg"],
+        "content": "Desafio para perder 12kg em 30 dias",
+        "decision": "Label → SSIED → ED → Extreme weight loss (promotional)",
+        "rationale": "12kg/30 dias = ~2.8kg/semana, excede limite de 0.9kg/semana",
+        "rule": "Metas >0.9kg/semana em contexto promocional = Extreme weight loss"
+      }
+    ],
+    "BH": [
+      {
+        "id": "BH-001",
+        "source": "#11",
+        "policy": "BH",
+        "subPolicy": "Incitement to self-harm",
+        "keywords": ["corta-te", "faz mal a ti", "autolesão"],
+        "content": "Incitação a autolesão COM alvo",
+        "decision": "Label → BH",
+        "rationale": "Incitação a autolesão COM alvo específico = BH (não SSIED)",
+        "rule": "Incitação SSI + alvo específico → BH"
+      },
+      {
+        "id": "BH-002",
+        "source": "#12",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["amantes", "caso", "traição"],
+        "content": "amantes",
+        "decision": "No Action - Missing self-report",
+        "rationale": "Alegação sem self-report não viola",
+        "rule": "\"Amantes\" sem self-report = No Action"
+      },
+      {
+        "id": "BH-003",
+        "source": "#16",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["ataque", "alvo"],
+        "content": "Ataque a alvo não identificável",
+        "decision": "No Action",
+        "rationale": "Sem alvo identificável, não há quem proteger",
+        "rule": "Ataque sem alvo identificável = No Action"
+      },
+      {
+        "id": "BH-004",
+        "source": "#17",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["caráter", "negativo"],
+        "content": "Negative character sem self-report",
+        "decision": "No Action - Missing self-report",
+        "rationale": "Alegação de caráter negativo requer self-report",
+        "rule": "Negative character claim sem self-report = No Action"
+      },
+      {
+        "id": "BH-005",
+        "source": "#18",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["figura pública", "exposição"],
+        "content": "Figura pública sem purposeful exposure",
+        "decision": "No Action",
+        "rationale": "FP sem exposição intencional não viola BH",
+        "rule": "Figura pública requer purposeful exposure para violar"
+      },
+      {
+        "id": "BH-006",
+        "source": "#28",
+        "policy": "BH",
+        "subPolicy": "Label",
+        "keywords": ["cara feia", "feio", "aparência"],
+        "content": "cara feia + alvo identificável",
+        "decision": "Label → BH",
+        "rationale": "Alvo identificável + ataque físico = viola sem self-report",
+        "rule": "\"Cara feia\" + alvo identificável = Label (não precisa self-report)"
+      },
+      {
+        "id": "BH-007",
+        "source": "#29",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["cabra", "adulto"],
+        "content": "Cabra para adulto",
+        "decision": "No Action",
+        "rationale": "\"Cabra\" só viola quando dirigido a menor",
+        "rule": "\"Cabra\" para adulto = No Action (só viola vs menor)"
+      },
+      {
+        "id": "BH-008",
+        "source": "#30",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["indireto", "ataque"],
+        "content": "Ataques indiretos",
+        "decision": "No Action",
+        "rationale": "Ataques indiretos não contam para BH",
+        "rule": "Ataques INDIRETOS não violam BH"
+      },
+      {
+        "id": "BH-009",
+        "source": "#31",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["carinhoso", "amor", "brincadeira"],
+        "content": "Ataque + contexto carinhoso",
+        "decision": "No Action",
+        "rationale": "Contexto carinhoso/endearing anula o ataque",
+        "rule": "Ataque com contexto carinhoso = No Action"
+      },
+      {
+        "id": "BH-010",
+        "source": "#32",
+        "policy": "PSL",
+        "subPolicy": "Profanity",
+        "keywords": ["ataque", "profanity"],
+        "content": "Ataques BH sem self-report",
+        "decision": "Verificar Profanity",
+        "rationale": "Se BH não aplica por falta de self-report, verificar PSL",
+        "rule": "Ataque sem self-report → verificar se Profanity aplica"
+      },
+      {
+        "id": "BH-011",
+        "source": "#33",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["beijar", "beijo"],
+        "content": "Beijar",
+        "decision": "No Action",
+        "rationale": "\"Beijar\" sozinho não constitui atividade sexual",
+        "rule": "\"Beijar\" isolado ≠ sexual activity claim"
+      },
+      {
+        "id": "BH-012",
+        "source": "#34",
+        "policy": "BH",
+        "subPolicy": "Physical bullying",
+        "keywords": ["bullying", "menor", "físico"],
+        "content": "Physical bullying vs menores",
+        "decision": "Label → BH",
+        "rationale": "Bullying físico contra menores não precisa de further degrading",
+        "rule": "Physical bullying vs menor = viola SEM further degrading"
+      },
+      {
+        "id": "BH-013",
+        "source": "#35",
+        "policy": "BH",
+        "subPolicy": "Dehumanizing comparison",
+        "keywords": ["macaco", "animal", "comparação"],
+        "content": "Macaco",
+        "decision": "Label → BH → Dehumanizing comparison",
+        "rationale": "\"Macaco\" = comparação desumanizante a animal",
+        "rule": "\"Macaco\" = comparação desumanizante"
+      },
+      {
+        "id": "BH-014",
+        "source": "#38",
+        "policy": "BH",
+        "subPolicy": "Mere call out",
+        "keywords": ["call out", "expor"],
+        "content": "Mere call out",
+        "decision": "Move HC → BH",
+        "rationale": "\"Mere call out\" move conteúdo de HC para BH",
+        "rule": "Mere call out = BH (não HC)"
+      },
+      {
+        "id": "BH-015",
+        "source": "#39",
+        "policy": "BH",
+        "subPolicy": "Sexualized harassment",
+        "keywords": ["gigolo", "prostituto"],
+        "content": "Gigolo",
+        "decision": "Label → BH → Sexualized harassment",
+        "rationale": "\"Gigolo\" = assédio sexualizado",
+        "rule": "\"Gigolo\" = sexualized harassment"
+      },
+      {
+        "id": "BH-016",
+        "source": "#40-41",
+        "policy": "BH",
+        "subPolicy": "Dehumanizing comparison",
+        "keywords": ["gado", "cadelinha", "animal"],
+        "content": "Comparações a animais (gado, cadelinha)",
+        "decision": "Label → BH → Dehumanizing comparison",
+        "rationale": "Comparações a animais = desumanizante",
+        "rule": "\"Gado\", \"cadelinha\" = comparação desumanizante"
+      },
+      {
+        "id": "BH-017",
+        "source": "#47",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["pai", "familiar", "reporter"],
+        "content": "Ataque ao pai do reporter",
+        "decision": "No Action - Missing self-report",
+        "rationale": "Ataque a familiar do reporter (não o próprio) = alvo diferente",
+        "rule": "Ataque a FAMILIAR do reporter ≠ ataque ao reporter"
+      },
+      {
+        "id": "BH-018",
+        "source": "#48",
+        "policy": "BH",
+        "subPolicy": "Negative physical description",
+        "keywords": ["porco", "gordo"],
+        "content": "porco",
+        "decision": "Label → BH → Negative physical description",
+        "rationale": "\"Porco\" = termo clarificado como descrição física negativa",
+        "rule": "\"Porco\" = negative physical description (não comparação animal)"
+      },
+      {
+        "id": "BH-019",
+        "source": "#49",
+        "policy": "BH",
+        "subPolicy": "Targeted cursing",
+        "keywords": ["esterco", "merda"],
+        "content": "esterco",
+        "decision": "Label → BH → Cursing (com self-report)",
+        "rationale": "\"Esterco\" = variação de \"merda\"",
+        "rule": "\"Esterco\" + self-report = targeted cursing"
+      },
+      {
+        "id": "BH-020",
+        "source": "#50",
+        "policy": "BH",
+        "subPolicy": "Claims sexual orientation",
+        "keywords": ["rabolho", "gay", "orientação"],
+        "content": "rabolho",
+        "decision": "Label → BH → Claims about sexual orientation",
+        "rationale": "\"Rabolho\" = proxy para alegação sobre orientação sexual",
+        "rule": "\"Rabolho\" = sexual orientation claim"
+      },
+      {
+        "id": "BH-021",
+        "source": "#55",
+        "policy": "BH",
+        "subPolicy": "Negative character",
+        "keywords": ["palhaço", "idiota", "estúpido"],
+        "content": "Palhaço",
+        "decision": "Label → BH → Negative character",
+        "rationale": "\"Palhaço\" = alegação de caráter negativo",
+        "rule": "\"Palhaço\" = negative character claim"
+      },
+      {
+        "id": "BH-022",
+        "source": "#56",
+        "policy": "BH",
+        "subPolicy": "Claims sexual activity",
+        "keywords": ["sexo", "faz sexo", "atividade sexual"],
+        "content": "tu fazes sexo sempre que queres",
+        "decision": "Label → BH → Claims about sexual activity",
+        "rationale": "Alegação sobre atividade sexual para indivíduo privado",
+        "rule": "Alegações de atividade sexual = BH claims"
+      },
+      {
+        "id": "BH-023",
+        "source": "#57",
+        "policy": "BH",
+        "subPolicy": "Sexualizing content",
+        "keywords": ["rabuda", "corpo", "sexualizar"],
+        "content": "aí está uma RABUDA",
+        "decision": "Label → BH → Claims about sexual activity",
+        "rationale": "Sexualizar PDITI enfatizando parte do corpo sexualizada",
+        "rule": "Enfatizar partes sexualizadas = BH sexual claims"
+      },
+      {
+        "id": "BH-024",
+        "source": "#58",
+        "policy": "BH",
+        "subPolicy": "Calls for SSI",
+        "keywords": ["mata-te", "suicida-te", "morre"],
+        "content": "SSIED vs BH - chamadas SSI com alvo",
+        "decision": "Label → BH → Calls for death/SSI",
+        "rationale": "Declarações SSI dirigidas a ALVO ESPECÍFICO = BH",
+        "rule": "SSI + alvo específico = BH (não SSIED)"
+      },
+      {
+        "id": "BH-025",
+        "source": "#63",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["carinhoso", "endearing", "amor"],
+        "content": "Ataque potencial com contexto carinhoso",
+        "decision": "No Action - Missing Self-Report",
+        "rationale": "Contexto carinhoso estabelecido + sem self-report",
+        "rule": "Contexto carinhoso anula ataque (exceto com self-report)"
+      },
+      {
+        "id": "BH-026",
+        "source": "#64",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["sexy", "hot", "naughty", "gostosa"],
+        "content": "Adjetivos sexualizados (sexy, hot, naughty)",
+        "decision": "No Action - Missing Self-Report",
+        "rationale": "Positive physical description - adjetivos não descrevem partes não-regenerativas",
+        "rule": "Adjetivos sexualizados sem self-report = No Action"
+      },
+      {
+        "id": "BH-027",
+        "source": "#75",
+        "policy": "BH",
+        "subPolicy": "Negative character",
+        "keywords": ["palhaço", "atrasado mental"],
+        "content": "palhaço e atrasado mental",
+        "decision": "Label → BH → Negative Character",
+        "rationale": "Negative character claim + self-report",
+        "rule": "Múltiplos ataques de caráter + self-report = viola"
+      },
+      {
+        "id": "BH-028",
+        "source": "#76",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["delícia", "gostoso", "gostosa"],
+        "content": "Delícia",
+        "decision": "Ignore - Missing Self-Report",
+        "rationale": "Positive physical description sem self-report",
+        "rule": "\"Delícia\" = positive physical, requer self-report"
+      },
+      {
+        "id": "BH-029",
+        "source": "#81",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["vergonha", "morre"],
+        "content": "uma mulher só vai usar uma pouca vergonha dessa / Morre mesmo",
+        "decision": "No Action",
+        "rationale": "Possíveis ataques MAS sem alvo específico identificável",
+        "rule": "Ataques sem alvo identificável = No Action"
+      },
+      {
+        "id": "BH-030",
+        "source": "#82",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["máscara", "Deus", "indireto"],
+        "content": "podes tirar a Máscara / Vá com Deus",
+        "decision": "No Action",
+        "rationale": "Temos alvo MAS não temos ataque direto",
+        "rule": "Ataques INDIRETOS não violam BH mesmo com self-report"
+      },
+      {
+        "id": "BH-031",
+        "source": "#83",
+        "policy": "BH",
+        "subPolicy": "Calls for death",
+        "keywords": ["óbito", "acabassem", "morrer"],
+        "content": "Ahahahah outro, seria tão bom se todos acabassem em óbito",
+        "decision": "Label → BH → Calls for death/SSI",
+        "rationale": "Alvo identificável via pronomes + contexto adicional",
+        "rule": "Pronomes + detalhes identificadores = alvo estabelecido"
+      },
+      {
+        "id": "BH-032",
+        "source": "#84",
+        "policy": "BH",
+        "subPolicy": "Non-Negative Comparison",
+        "keywords": ["namoro", "pego", "minha"],
+        "content": "Namoro/Pego/Já é minha",
+        "decision": "Label → BH → Non-Negative Comparison",
+        "rationale": "Em dúvida adulto/menor → DEFAULT TO MINOR",
+        "rule": "Dúvida idade → assumir MENOR"
+      },
+      {
+        "id": "BH-033",
+        "source": "#85",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["luta", "adultos", "briga"],
+        "content": "Adultos a lutar sem conteúdo degradante",
+        "decision": "No Action",
+        "rationale": "Physical bullying adultos REQUER further degrading context",
+        "rule": "Adultos lutando sem degradação adicional = No Action"
+      },
+      {
+        "id": "BH-034",
+        "source": "#86",
+        "policy": "BH",
+        "subPolicy": "Negative character",
+        "keywords": ["bozo", "palhaço", "corda"],
+        "content": "You lost bozo. Go find yourself a rope",
+        "decision": "Label → BH → Negative Character",
+        "rationale": "Ataque direto (bozo=palhaço) + self-report",
+        "rule": "Ataque direto + self-report = viola (indireto ignorado)"
+      }
+    ],
+    "VI": [
+      {
+        "id": "VI-001",
+        "source": "#6",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["criminoso", "crime", "status"],
+        "content": "Status criminal MAS sem intent/call to action",
+        "decision": "No Action",
+        "rationale": "Status criminal sozinho não viola VI",
+        "rule": "Status criminal SEM intent/call to action = No Action"
+      },
+      {
+        "id": "VI-002",
+        "source": "#14-15",
+        "policy": "VI",
+        "subPolicy": "Advocacy HSV",
+        "keywords": ["criminoso", "matar", "violência"],
+        "content": "Advocating HSV vs criminoso",
+        "decision": "Só viola com statement of intent OU call for action",
+        "rationale": "Advocacy contra criminoso requer declaração explícita",
+        "rule": "HSV vs criminoso requer: Intent statement OU Call to action"
+      },
+      {
+        "id": "VI-003",
+        "source": "#25",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["parent", "status", "criminoso"],
+        "content": "Status criminal no parent + statement no reported",
+        "decision": "No Action (só viola com intent/call to action)",
+        "rationale": "Referência a status criminal sem ação = não viola",
+        "rule": "Status criminal em parent SEM call to action no reported = No Action"
+      },
+      {
+        "id": "VI-004",
+        "source": "#26",
+        "policy": "Escalate",
+        "subPolicy": "Credible Threat",
+        "keywords": ["alvo", "matar", "agora", "timing"],
+        "content": "Target + HSV + Intent + Timing",
+        "decision": "ESCALAR",
+        "rationale": "Todos os elementos de ameaça credível presentes",
+        "rule": "Target + HSV + Intent + Timing = ESCALAR IMEDIATAMENTE"
+      },
+      {
+        "id": "VI-005",
+        "source": "#27",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["pau", "dar um pau", "live"],
+        "content": "vou dar um pau (em Live)",
+        "decision": "No Action",
+        "rationale": "Sem warning signs adicionais = não viola",
+        "rule": "\"Vou dar um pau\" em Live SEM warning signs = No Action"
+      },
+      {
+        "id": "VI-006",
+        "source": "#42",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["traficante", "droga", "criminoso"],
+        "content": "Traficante",
+        "decision": "Traficante ≠ status criminal",
+        "rationale": "Traficante só conta como HSV ou predador sexual, não status criminal",
+        "rule": "Traficante NÃO é status criminal (apenas HSV ou predador sexual)"
+      },
+      {
+        "id": "VI-007",
+        "source": "#52",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["vou-te matar", "matar", "transcrição"],
+        "content": "vou-te matar (em transcrição de vídeo)",
+        "decision": "No Action",
+        "rationale": "Protocolo Video Operational Guidelines - sem warning signs",
+        "rule": "Ameaça em transcrição SEM warning signs = No Action"
+      },
+      {
+        "id": "VI-008",
+        "source": "#91",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["tiro", "resolveria"],
+        "content": "E pensar que só um tiro resolveria tudo",
+        "decision": "No Action",
+        "rationale": "HSV + alvo no parent MAS sem VALID STATEMENT",
+        "rule": "HSV presente SEM statement válido (intent/call/advocacy) = No Action"
+      },
+      {
+        "id": "VI-009",
+        "source": "#92",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["guerra", "morrer", "viver"],
+        "content": "amigos isso é uma guerra, alguém tem que morrer para que outros vivam",
+        "decision": "No Action",
+        "rationale": "EXCEÇÃO: Referência neutra a outcome OU advisory warning",
+        "rule": "Referência neutra/warning SEM ameaça = No Action"
+      },
+      {
+        "id": "VI-010",
+        "source": "#93",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["míssil", "acabar", "violência doméstica"],
+        "content": "Um míssil resolvia os problemas do Brasil fácil...",
+        "decision": "No Action",
+        "rationale": "Termos com DUPLO SIGNIFICADO requerem contexto + valid statement",
+        "rule": "Termos ambíguos SEM contexto claro de violência = No Action"
+      },
+      {
+        "id": "VI-011",
+        "source": "#94",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["passo por cima", "caminho"],
+        "content": "passo por cima sem olhar do lado",
+        "decision": "No Action",
+        "rationale": "Não é claro que violência está envolvida",
+        "rule": "Termos onde violência não é clara = consultar market terms"
+      }
+    ],
+    "PSL": [
+      {
+        "id": "PSL-001",
+        "source": "#13",
+        "policy": "PSL",
+        "subPolicy": "Profanity",
+        "keywords": ["filha da puta", "puta"],
+        "content": "Filha da puta sem self-report",
+        "decision": "Label → PSL → Profanity",
+        "rationale": "Sem self-report = Profanity (não BH)",
+        "rule": "\"Filha da puta\" sem self-report = Profanity"
+      },
+      {
+        "id": "PSL-002",
+        "source": "#19",
+        "policy": "PSL",
+        "subPolicy": "Profanity",
+        "keywords": ["videos das putas", "puta"],
+        "content": "Videos das putas",
+        "decision": "Label → PSL → Profanity",
+        "rationale": "Sem alvo específico = apenas Profanity",
+        "rule": "\"Puta\" sem alvo = Profanity"
+      },
+      {
+        "id": "PSL-003",
+        "source": "#51",
+        "policy": "PSL",
+        "subPolicy": "Profanity",
+        "keywords": ["puta", "ataque", "sem alvo"],
+        "content": "Ataque BH sem alvo identificável",
+        "decision": "Label → Profanity",
+        "rationale": "Ataque BH SEM alvo → apenas Profanity para termos como \"puta\"",
+        "rule": "BH sem alvo identificável → verificar Profanity"
+      }
+    ],
+    "ANSA": [
+      {
+        "id": "ANSA-001",
+        "source": "#21",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["mamilos", "contorno", "roupa"],
+        "content": "Contorno de mamilos através de roupa",
+        "decision": "No Action",
+        "rationale": "Contorno visível através de roupa não viola",
+        "rule": "Contorno de mamilos através de roupa = No Action"
+      },
+      {
+        "id": "ANSA-002",
+        "source": "#22",
+        "policy": "ANSA",
+        "subPolicy": "Hierarchy",
+        "keywords": ["múltiplas", "violações", "hierarquia"],
+        "content": "Vídeo com múltiplas violações",
+        "decision": "Aplicar violação mais alta",
+        "rationale": "Oral sex > nudez em hierarquia",
+        "rule": "Múltiplas violações ANSA → aplicar label MAIS ALTA"
+      },
+      {
+        "id": "ANSA-003",
+        "source": "#36",
+        "policy": "ANSA",
+        "subPolicy": "N/A",
+        "keywords": ["encontros sexuais", "negócio", "promoção"],
+        "content": "Promoção de negócio de encontros sexuais",
+        "decision": "Label → ANSA (não SSPX)",
+        "rationale": "Promoção de negócio sexual = ANSA",
+        "rule": "Negócio de encontros sexuais = ANSA"
+      },
+      {
+        "id": "ANSA-004",
+        "source": "#37",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["triste geração", "trend", "arte"],
+        "content": "Trend Triste Geração",
+        "decision": "No Action",
+        "rationale": "Real-world art trend",
+        "rule": "Trend \"Triste Geração\" = arte do mundo real"
+      },
+      {
+        "id": "ANSA-005",
+        "source": "#68",
+        "policy": "ANSA",
+        "subPolicy": "Crotch/Buttocks Focus",
+        "keywords": ["nádegas", "underwear", "foco"],
+        "content": "Foco em nádegas em underwear",
+        "decision": "Label → ANSA → Crotch/Buttocks Focus",
+        "rationale": "Foco em nádegas em roupa interior ≠ menção de encontro sexual",
+        "rule": "Foco buttocks em underwear = ANSA (não SSPX)"
+      },
+      {
+        "id": "ANSA-006",
+        "source": "#79",
+        "policy": "ANSA",
+        "subPolicy": "Focus",
+        "keywords": ["erotic dance", "buttocks", "hierarquia"],
+        "content": "Erotic dance vs Focus - hierarquia",
+        "decision": "Label → ANSA → Crotch/Buttocks Focus",
+        "rationale": "HIERARQUIA: Buttocks Focus > Erotic Dancing",
+        "rule": "Focus > Dancing em hierarquia ANSA"
+      },
+      {
+        "id": "ANSA-007",
+        "source": "#102-104",
+        "policy": "ANSA",
+        "subPolicy": "Focus",
+        "keywords": ["múltiplas violações", "foco"],
+        "content": "Múltiplas violações ANSA",
+        "decision": "Label → ANSA → Focus on crotch/buttocks/breasts",
+        "rationale": "HIERARQUIA ANSA - aplicar label mais alta",
+        "rule": "Focus > outras violações na hierarquia"
+      },
+      {
+        "id": "ANSA-008",
+        "source": "#105",
+        "policy": "ANSA",
+        "subPolicy": "Sex-related activity",
+        "keywords": ["erotic dance", "grinding", "pelvis"],
+        "content": "Erotic dancing, pelvis-thrusting, grinding, shaking buttocks",
+        "decision": "Label → ANSA → Sex-related activity",
+        "rationale": "Erotic dancing = Sex-related activity",
+        "rule": "Erotic dance/grinding/pelvis thrust = Sex-related activity"
+      },
+      {
+        "id": "ANSA-009",
+        "source": "#106",
+        "policy": "ANSA",
+        "subPolicy": "Focus",
+        "keywords": ["revealing clothes", "foco"],
+        "content": "Revealing clothes + Focus (2 violações)",
+        "decision": "Label → ANSA → Focus on crotch/buttocks/breasts",
+        "rationale": "HIERARQUIA: Focus > Revealing clothes",
+        "rule": "Focus > Revealing em hierarquia"
+      },
+      {
+        "id": "ANSA-010",
+        "source": "#107",
+        "policy": "ANSA",
+        "subPolicy": "Near nudity",
+        "keywords": ["near nudity", "genitália", "contorno"],
+        "content": "Múltiplas + contorno genitália masculina",
+        "decision": "Label → ANSA → Near nudity",
+        "rationale": "HIERARQUIA: Near nudity > Focus > Revealing",
+        "rule": "Contorno genitália masculina = Near nudity"
+      },
+      {
+        "id": "ANSA-011",
+        "source": "#110",
+        "policy": "ANSA",
+        "subPolicy": "Revealing clothing",
+        "keywords": ["revealing", "roupa", "pose"],
+        "content": "Múltiplos labels (solicitation, deceptive, pose)",
+        "decision": "Label → ANSA → Revealing clothing",
+        "rationale": "Per hierarquia, Revealing clothing correto - NÃO é sexually suggestive pose",
+        "rule": "Verificar hierarquia antes de aplicar label"
+      },
+      {
+        "id": "ANSA-012",
+        "source": "#111",
+        "policy": "ANSA",
+        "subPolicy": "Focus",
+        "keywords": ["dancing", "buttocks", "foco"],
+        "content": "Dancing com foco em nádegas",
+        "decision": "Label → ANSA → Focus on buttocks",
+        "rationale": "HIERARQUIA: Buttocks Focus > Sex-related activity (dancing)",
+        "rule": "Focus sempre supera dancing na hierarquia"
+      }
+    ],
+    "HC": [
+      {
+        "id": "HC-001",
+        "source": "#2",
+        "policy": "HC",
+        "subPolicy": "Slur",
+        "keywords": ["slur", "mas", "fixe"],
+        "content": "É SLUR mas é fixe",
+        "decision": "Label → HC → Slur",
+        "rationale": "\"Mas\" adversativo anula o positivo",
+        "rule": "SLUR + \"mas\" + contexto positivo = ainda viola (adversativo anula)"
+      },
+      {
+        "id": "HC-002",
+        "source": "#23",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["muitos", "PC", "maioria"],
+        "content": "Muitos [PC]",
+        "decision": "No Action",
+        "rationale": "\"Muitos\" não estabelece maioria",
+        "rule": "\"Muitos [PC]\" ≠ generalização (não estabelece maioria)"
+      },
+      {
+        "id": "HC-003",
+        "source": "#108",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["vai para a tua terra", "terra", "exclusão"],
+        "content": "vai para a tua terra",
+        "decision": "No Action",
+        "rationale": "Requer menção CLARA de Protected Characteristic",
+        "rule": "Sem PC explícita = decisão enviesada/No Action"
+      },
+      {
+        "id": "HC-004",
+        "source": "#109",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["viado"],
+        "content": "viado",
+        "decision": "No Action",
+        "rationale": "\"Viado\" é apenas codeword/proxy - NÃO está em slur lists",
+        "rule": "\"Viado\" = proxy/codeword, não slur (atualização)"
+      }
+    ],
+    "DOI": [
+      {
+        "id": "DOI-001",
+        "source": "#3",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["hitler", "triste realidade", "político"],
+        "content": "Hitler + triste realidade",
+        "decision": "No Action",
+        "rationale": "Discurso político condenatório sobre figura histórica",
+        "rule": "Hitler + contexto condenatório = discurso político permitido"
+      }
+    ],
+    "ASE": [
+      {
+        "id": "ASE-001",
+        "source": "#8-9",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["NCST", "alegação", "criminal"],
+        "content": "Alegação criminal de NCST",
+        "decision": "No Action",
+        "rationale": "Alegação criminal por si só não viola",
+        "rule": "Alegação criminal de NCST = No Action"
+      },
+      {
+        "id": "ASE-002",
+        "source": "#61",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["NCST", "statement"],
+        "content": "NCST sem declaração",
+        "decision": "Ignore (No Action)",
+        "rationale": "Sem statements de partilhar/oferecer/pedir/ameaçar + sem advocacy",
+        "rule": "NCST requer: statement OU advocacy OU threat"
+      },
+      {
+        "id": "ASE-003",
+        "source": "#65",
+        "policy": "ASE",
+        "subPolicy": "NCII Harassment",
+        "keywords": ["intimate imagery", "nudez", "vingança"],
+        "content": "Imagem íntima + nudez + targeting + contexto vingativo",
+        "decision": "Label → ASE → NCII Harassment",
+        "rationale": "Intimate Imagery (setting privado) + Nudez + Target + Vengeful Context",
+        "rule": "Private setting + nudity + target + vengeful = NCII Harassment"
+      },
+      {
+        "id": "ASE-004",
+        "source": "#66",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["NCST", "threat", "intent"],
+        "content": "Sem ameaça/intent/calls/advocacy/mocking de NCST",
+        "decision": "No Action - Benign",
+        "rationale": "NCST contexto requer elementos específicos",
+        "rule": "NCST contexto SEM threat/intent/calls/advocacy/mocking = No Action"
+      },
+      {
+        "id": "ASE-005",
+        "source": "#72",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["vazou", "vídeo", "jovem"],
+        "content": "VAZOU MAIS O VÍDEO DESSA JOVEM",
+        "decision": "Ignore - Benign",
+        "rationale": "Sem contexto de private intimate imagery",
+        "rule": "Menção de leak SEM intimate imagery context = No Action"
+      },
+      {
+        "id": "ASE-006",
+        "source": "#73",
+        "policy": "ASE",
+        "subPolicy": "NCST Threat",
+        "keywords": ["vou violar", "música", "alvo"],
+        "content": "vou violar (música) + alvo",
+        "decision": "Label → ASE → NCST Threat",
+        "rationale": "Statement of intent + target = NCST Threat",
+        "rule": "Intent + target = NCST Threat (mesmo em música)"
+      },
+      {
+        "id": "ASE-007",
+        "source": "#74",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["violação", "neutro", "condenar"],
+        "content": "Declaração neutra/condenatória sobre violação",
+        "decision": "Ignore - Benign",
+        "rationale": "Sem threat + neutral/condemning statement",
+        "rule": "Menção de rape em contexto condenatório = No Action"
+      }
+    ],
+    "CSE": [
+      {
+        "id": "CSE-001",
+        "source": "#10",
+        "policy": "CSE",
+        "subPolicy": "Abuse",
+        "keywords": ["menor", "vítima", "abuso"],
+        "content": "Abuso quando vítima era menor",
+        "decision": "Escalate → CSE (não ASE)",
+        "rationale": "Vítima era menor na altura = CSE",
+        "rule": "Vítima era menor → CSE (não ASE)"
+      },
+      {
+        "id": "CSE-002",
+        "source": "#53",
+        "policy": "CSE",
+        "subPolicy": "IIC",
+        "keywords": ["menor", "violação", "solicitar"],
+        "content": "Pedir para ser violado por menor",
+        "decision": "Escalate → CSE → Inappropriate Interactions With Children (IIC)",
+        "rationale": "Solicitar atividade sexual com menor = IIC",
+        "rule": "Solicitar sexo a/com menor = Escalate CSE IIC"
+      }
+    ],
+    "HE": [
+      {
+        "id": "HE-001",
+        "source": "#54",
+        "policy": "HE",
+        "subPolicy": "Minor Sex Trafficking",
+        "keywords": ["menor", "dinheiro", "sexo"],
+        "content": "Pedir a menor para violar em troca de dinheiro",
+        "decision": "Escalate → Human Trafficking → Minor Sex Trafficking",
+        "rationale": "Atividade sexual comercial com menor",
+        "rule": "Sexo + menor + dinheiro = Minor Sex Trafficking"
+      },
+      {
+        "id": "HE-002",
+        "source": "#67",
+        "policy": "HE",
+        "subPolicy": "Coordinated Commercial Sexual Activity",
+        "keywords": ["terceiro", "facilita", "sexual comercial"],
+        "content": "Terceiro facilita atividade sexual comercial com adultos",
+        "decision": "Label → HE → Coordinated Commercial Sexual Activity",
+        "rationale": "Third party facilita/beneficia de atividade sexual comercial",
+        "rule": "Facilitar/beneficiar de sexo comercial = HE"
+      }
+    ],
+    "SSPX": [
+      {
+        "id": "SSPX-001",
+        "source": "#62",
+        "policy": "SSPX",
+        "subPolicy": "Sexual Solicitation",
+        "keywords": ["violado", "quero ser"],
+        "content": "Eu quero ser violado",
+        "decision": "Label → SSPX → Sexual Solicitation",
+        "rationale": "Apesar de contexto NCST, agora é SSPX (atualização)",
+        "rule": "Solicitação sexual mesmo com contexto NCST = SSPX"
+      },
+      {
+        "id": "SSPX-002",
+        "source": "#71",
+        "policy": "SSPX",
+        "subPolicy": "Sexual Solicitation",
+        "keywords": ["xxxvideos", "nude"],
+        "content": "xxxvideos + informação de interação",
+        "decision": "Label → SSPX → Sexual Solicitation",
+        "rationale": "Sexual encounter slang + interaction info",
+        "rule": "Sexual term + interaction info = Sexual Solicitation"
+      },
+      {
+        "id": "SSPX-003",
+        "source": "#80",
+        "policy": "SSPX",
+        "subPolicy": "Sexual Solicitation",
+        "keywords": ["nude", "follow"],
+        "content": "nicolettesheanude + follow",
+        "decision": "Label → SSPX → Sexual Solicitation",
+        "rationale": "Mention of sexual encounter (nude) + interaction info (follow)",
+        "rule": "Nude mention + interaction = Sexual Solicitation"
+      }
+    ],
+    "RGS": [
+      {
+        "id": "RGS-001",
+        "source": "#69",
+        "policy": "RGS",
+        "subPolicy": "Alcohol Consumption",
+        "keywords": ["shot", "vinho", "cerveja", "beber"],
+        "content": "Beber líquido desconhecido de copo típico",
+        "decision": "Label → RGS → Alcohol Consumption",
+        "rationale": "Líquido desconhecido em recipiente de álcool = assumir álcool",
+        "rule": "Shot glass/wine glass/beer mug = presumir álcool"
+      },
+      {
+        "id": "RGS-002",
+        "source": "#70",
+        "policy": "RGS",
+        "subPolicy": "Tobacco Depiction",
+        "keywords": ["tabaco", "cigarro", "fumar"],
+        "content": "Tabaco sem consumo ativo",
+        "decision": "Label → RGS → Tobacco Depiction",
+        "rationale": "Depiction sem consumo = label diferente",
+        "rule": "Tabaco visível SEM consumo = Tobacco Depiction"
+      }
+    ],
+    "FD": [
+      {
+        "id": "FD-001",
+        "source": "#77",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["património", "doar", "giveaway"],
+        "content": "doar parte do meu patrimônio",
+        "decision": "Ignore - Benign",
+        "rationale": "\"Património\" NÃO é considerado dinheiro para Giveaway Scams",
+        "rule": "Património ≠ dinheiro para F&D"
+      },
+      {
+        "id": "FD-002",
+        "source": "#78",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["emprego", "vaga", "trabalho"],
+        "content": "VAGAS DE EMPREGO - PORTEIRO",
+        "decision": "Ignore - Benign",
+        "rationale": "Requisitos claros da posição oferecida = legítimo",
+        "rule": "Job offer com requisitos claros = legítimo"
+      }
+    ],
+    "SPAM": [
+      {
+        "id": "SPAM-001",
+        "source": "#95",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["grupo", "acesso", "engagement"],
+        "content": "Acesso a grupo em troca de engagement",
+        "decision": "No Action",
+        "rationale": "\"Grupo\" NÃO é considerado \"content\" per policy",
+        "rule": "Grupo ≠ content para Engagement Gating"
+      },
+      {
+        "id": "SPAM-002",
+        "source": "#96",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["clicar", "mágica"],
+        "content": "Espere e veja a mágica da lei da atenção acontecer, basta apenas clicar",
+        "decision": "No Action",
+        "rationale": "Sem existing/specific content oferecido",
+        "rule": "Engagement SEM specific existing content = No Action"
+      },
+      {
+        "id": "SPAM-003",
+        "source": "#97",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["siga", "aprenda"],
+        "content": "siga @ e aprenda a ser o homem da casa",
+        "decision": "No Action",
+        "rationale": "Sem existing/specific content oferecido",
+        "rule": "Seguir para \"aprender\" ≠ specific content"
+      },
+      {
+        "id": "SPAM-004",
+        "source": "#98",
+        "policy": "No Action",
+        "subPolicy": "N/A",
+        "keywords": ["presentinho", "engagement"],
+        "content": "Presentinho (mas não claro se em troca)",
+        "decision": "No Action",
+        "rationale": "\"Presentinho\" é content MAS não é claro se é em TROCA",
+        "rule": "Content oferecido deve ser CLARAMENTE em troca de engagement"
+      },
+      {
+        "id": "SPAM-005",
+        "source": "#99",
+        "policy": "SPAM",
+        "subPolicy": "Engagement Gating",
+        "keywords": ["e-book", "clicando", "eu quero"],
+        "content": "Adquira seu e-book clicando no link da bio ou digite 'eu quero'",
+        "decision": "Label → Spam → Engagement Gating",
+        "rationale": "DUAS formas de acesso = AMBAS são engagement = VIOLA",
+        "rule": "Duas formas de engagement para mesmo content = viola"
+      },
+      {
+        "id": "SPAM-006",
+        "source": "#100",
+        "policy": "SPAM",
+        "subPolicy": "Engagement Gating",
+        "keywords": ["link", "comente", "siga"],
+        "content": "o link está nos destaques. Comente e siga para receber",
+        "decision": "Label → Spam → Engagement Gating",
+        "rationale": "ATUALIZAÇÃO: Duas formas, SE UMA é engagement = VIOLA",
+        "rule": "Link disponível + pedido de engagement = Engagement Gating"
+      },
+      {
+        "id": "SPAM-007",
+        "source": "#101",
+        "policy": "SPAM",
+        "subPolicy": "Giveaways & Exchanges",
+        "keywords": ["dinheiro", "click", "engagement"],
+        "content": "Dinheiro oferecido em troca de click",
+        "decision": "Label → Spam → Giveaways & Exchanges",
+        "rationale": "DISTINÇÃO: Spam Giveaways vs Fraud Giveaways",
+        "rule": "Dinheiro por public-facing engagement = SPAM (não Fraud)"
+      }
+    ],
+    "VGC": [
+      {
+        "id": "VGC-001",
+        "source": "#112",
+        "policy": "VGC",
+        "subPolicy": "Sadistic Remarks",
+        "keywords": ["violência", "encurralado", "mocking"],
+        "content": "Homem encurralado + sujeito a violência + mocking",
+        "decision": "Label → VGC → Sadistic Remarks",
+        "rationale": "PDITI forcibly restrained + violência + mocking = Brutality",
+        "rule": "Restrained + violence + mocking = Sadistic Remarks (> Physical Bullying)"
+      },
+      {
+        "id": "VGC-002",
+        "source": "#113",
+        "policy": "VGC",
+        "subPolicy": "Human Gore",
+        "keywords": ["erupções", "bolhas", "infetado"],
+        "content": "Erupções cutâneas infetadas e bolhas",
+        "decision": "Label → VGC → Human Gore → Human waste",
+        "rationale": "Infected rashes/blisters = Human waste category",
+        "rule": "Infecções cutâneas visíveis = Human waste"
+      }
+    ]
+  }
+}

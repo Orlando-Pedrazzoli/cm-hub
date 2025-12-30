@@ -7,7 +7,12 @@ import { Badge } from "@/components/ui/Badge";
 import { Trash2, Clock, ChevronRight, AlertTriangle } from "lucide-react";
 
 export function HistoryList() {
-  const { history, removeFromHistory, clearHistory, setCurrentResult, setActiveTab } = useAppStore();
+  // HistoryItem extends AnalysisResult - os dados estão diretamente no item
+  const history = useAppStore((state) => state.history);
+  const removeFromHistory = useAppStore((state) => state.removeFromHistory);
+  const clearHistory = useAppStore((state) => state.clearHistory);
+  const setActiveTab = useAppStore((state) => state.setActiveTab);
+  const setCurrentText = useAppStore((state) => state.setCurrentText);
 
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp);
@@ -22,6 +27,14 @@ export function HistoryList() {
   const truncateText = (text: string, maxLength: number = 80) => {
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength) + "...";
+  };
+
+  // Função para visualizar item do histórico
+  const viewHistoryItem = (item: typeof history[0]) => {
+    // Define o texto atual para o do item do histórico
+    setCurrentText(item.text);
+    // Navega para o analyzer
+    setActiveTab("analyzer");
   };
 
   if (history.length === 0) {
@@ -53,27 +66,31 @@ export function HistoryList() {
 
       <div className="space-y-2">
         {history.map((item) => (
-          <Card
+          <div
             key={item.id}
-            variant={item.result.shouldEscalate ? "danger" : item.result.primaryPolicy ? "warning" : "default"}
-            className="cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
+            onClick={() => viewHistoryItem(item)}
+            className="cursor-pointer"
           >
+            <Card
+              variant={item.shouldEscalate ? "danger" : item.primaryPolicy ? "warning" : "default"}
+              className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
+            >
             <CardContent className="py-3">
               <div className="flex items-start gap-4">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                  item.result.shouldEscalate
+                  item.shouldEscalate
                     ? "bg-red-500/20"
-                    : item.result.primaryPolicy === "vi"
+                    : item.primaryPolicy === "vi"
                     ? "bg-red-500/10"
-                    : item.result.primaryPolicy === "bh"
+                    : item.primaryPolicy === "bh"
                     ? "bg-purple-500/10"
                     : "bg-zinc-100 dark:bg-zinc-800"
                 }`}>
-                  {item.result.shouldEscalate ? (
+                  {item.shouldEscalate ? (
                     <AlertTriangle className="w-5 h-5 text-red-500 dark:text-red-400" />
                   ) : (
                     <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">
-                      {item.result.primaryPolicy?.toUpperCase() || "—"}
+                      {item.primaryPolicy?.toUpperCase() || "—"}
                     </span>
                   )}
                 </div>
@@ -82,19 +99,19 @@ export function HistoryList() {
                   <div className="flex items-center gap-2 mb-1">
                     <Badge
                       variant={
-                        item.result.shouldEscalate
+                        item.shouldEscalate
                           ? "danger"
-                          : item.result.primaryPolicy === "vi"
+                          : item.primaryPolicy === "vi"
                           ? "danger"
-                          : item.result.primaryPolicy === "bh"
+                          : item.primaryPolicy === "bh"
                           ? "purple"
                           : "default"
                       }
                       size="sm"
                     >
-                      {item.result.shouldEscalate ? "ESCALATE" : item.result.primaryPolicyName || "Sem Violação"}
+                      {item.shouldEscalate ? "ESCALATE" : item.primaryPolicyName || "Sem Violação"}
                     </Badge>
-                    <span className="text-xs text-zinc-500">{item.result.confidence}%</span>
+                    <span className="text-xs text-zinc-500">{item.confidence}%</span>
                   </div>
                   <p className="text-sm text-zinc-700 dark:text-zinc-300 truncate">{truncateText(item.text)}</p>
                   <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">{formatDate(item.timestamp)}</p>
@@ -104,8 +121,7 @@ export function HistoryList() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      setCurrentResult(item.result);
-                      setActiveTab("analyzer");
+                      viewHistoryItem(item);
                     }}
                     className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg transition-colors"
                   >
@@ -124,6 +140,7 @@ export function HistoryList() {
               </div>
             </CardContent>
           </Card>
+          </div>
         ))}
       </div>
     </div>
