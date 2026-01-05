@@ -2,7 +2,7 @@
 // CM POLICY HUB - POLICY LOADER
 // Carrega dados completos dos JSONs das policies
 // para injeção no prompt do Gemini
-// v2.0.0
+// v2.0.1 - Fixed null checks
 // ============================================
 
 import { PolicyId } from "./types";
@@ -84,9 +84,9 @@ export interface SubcategoryData {
 export interface LabelHierarchyItem {
   id: string;
   label: string;
-  path: string[];
-  action: string;
-  severity: string;
+  path?: string[];
+  action?: string;
+  severity?: string;
   hierarchyRank?: number;
   conditions?: string[];
 }
@@ -245,11 +245,12 @@ export function extractLabelHierarchyForPrompt(policy: PolicyData): string {
   );
 
   sorted.forEach((item, index) => {
-    const path = item.path.join(" > ");
-    const severity = item.severity.toUpperCase();
-    const action = item.action.toUpperCase();
+    // ⭐ FIXED: Check if path exists before joining
+    const path = item.path?.join(" > ") || item.label || "Unknown";
+    const severity = (item.severity || "unknown").toUpperCase();
+    const action = (item.action || "unknown").toUpperCase();
     
-    hierarchyText += `${index + 1}. **${item.label}**\n`;
+    hierarchyText += `${index + 1}. **${item.label || item.id}**\n`;
     hierarchyText += `   - Path: ${path}\n`;
     hierarchyText += `   - Action: ${action} | Severity: ${severity}\n`;
     
@@ -319,7 +320,7 @@ export function extractCategoriesForPrompt(policy: PolicyData): string {
   let categoriesText = `### CATEGORIES & SUBCATEGORIES - ${policy.shortName}\n\n`;
 
   policy.categories.forEach(cat => {
-    categoriesText += `**${cat.name}** (${cat.severity.toUpperCase()})\n`;
+    categoriesText += `**${cat.name}** (${(cat.severity || "unknown").toUpperCase()})\n`;
     
     if (cat.description) {
       categoriesText += `${cat.description}\n`;
@@ -376,22 +377,22 @@ export function extractEscalationCriteriaForPrompt(policy: PolicyData): string {
     escalationText += `**ALL THREE REQUIRED FOR ESCALATION:**\n\n`;
 
     escalationText += `1. **EXPLICIT INTENT** (one of):\n`;
-    cis.criteria.explicitIntent.forEach(item => {
+    (cis.criteria?.explicitIntent || []).forEach(item => {
       escalationText += `   - ${item}\n`;
     });
 
     escalationText += `\n2. **SPECIFIC CAPABILITY** (one of):\n`;
-    cis.criteria.specificCapability.forEach(item => {
+    (cis.criteria?.specificCapability || []).forEach(item => {
       escalationText += `   - ${item}\n`;
     });
 
     escalationText += `\n3. **IMMINENCE** (one of):\n`;
-    cis.criteria.imminence.forEach(item => {
+    (cis.criteria?.imminence || []).forEach(item => {
       escalationText += `   - ${item}\n`;
     });
 
     escalationText += `\n**DO NOT ESCALATE CIS:**\n`;
-    cis.doNotEscalate.forEach(item => {
+    (cis.doNotEscalate || []).forEach(item => {
       escalationText += `- ${item}\n`;
     });
     escalationText += "\n";
@@ -414,7 +415,7 @@ export function extractViolenceSeverityForPrompt(policy: PolicyData): string {
 
   if (levels.high_severity) {
     severityText += `**HIGH SEVERITY (LETHAL)**: ${levels.high_severity.description}\n`;
-    severityText += `Methods: ${levels.high_severity.explicit_methods.join(", ")}\n`;
+    severityText += `Methods: ${(levels.high_severity.explicit_methods || []).join(", ")}\n`;
     if (levels.high_severity.proxy_language) {
       severityText += `Proxy language: ${levels.high_severity.proxy_language.join(", ")}\n`;
     }
@@ -423,12 +424,12 @@ export function extractViolenceSeverityForPrompt(policy: PolicyData): string {
 
   if (levels.mid_severity) {
     severityText += `**MID SEVERITY (SERIOUS INJURY)**: ${levels.mid_severity.description}\n`;
-    severityText += `Methods: ${levels.mid_severity.explicit_methods.join(", ")}\n\n`;
+    severityText += `Methods: ${(levels.mid_severity.explicit_methods || []).join(", ")}\n\n`;
   }
 
   if (levels.low_severity) {
     severityText += `**LOW SEVERITY (MINOR HARM)**: ${levels.low_severity.description}\n`;
-    severityText += `Methods: ${levels.low_severity.explicit_methods.join(", ")}\n\n`;
+    severityText += `Methods: ${(levels.low_severity.explicit_methods || []).join(", ")}\n\n`;
   }
 
   return severityText;

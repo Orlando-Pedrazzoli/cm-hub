@@ -70,17 +70,30 @@ interface DecisionTreeResponse {
 
 function buildPreAnalysisContext(text: string): PreAnalysisContext {
   // Use keyword-loader v2 (com aliases)
-  const detectedKeywords = findKeywordsInText(text);
+  const detectedKeywords = findKeywordsInText(text) || [];
   
   // ⭐ Usar funções de policy-checks.ts
   const exceptions = detectExceptions(text);
   const language = detectLanguage(text);
-  const threatPatterns = detectThreatPatterns(text);
+  
+  // detectThreatPatterns retorna { pattern: string; type: string; }[]
+  let threatPatterns: { pattern: string; type: string; }[] = [];
+  try {
+    if (typeof detectThreatPatterns === 'function') {
+      threatPatterns = detectThreatPatterns(text) || [];
+    }
+  } catch {
+    threatPatterns = [];
+  }
 
   // Log stats
-  const keywordStats = getKeywordStats();
-  console.log(`📊 Pre-analysis using ${keywordStats.total} keywords (${keywordStats.aliases} aliases)`);
-  console.log(`📊 Excluded terms: ${keywordStats.excludedTerms}, Threat patterns: ${keywordStats.threatPatterns}`);
+  try {
+    const keywordStats = getKeywordStats();
+    console.log(`📊 Pre-analysis using ${keywordStats.total} keywords (${keywordStats.aliases} aliases)`);
+    console.log(`📊 Excluded terms: ${keywordStats.excludedTerms}, Threat patterns: ${keywordStats.threatPatterns}`);
+  } catch {
+    console.log(`📊 Keyword stats not available`);
+  }
 
   // Log clarification stats
   try {
@@ -191,8 +204,8 @@ export async function POST(request: NextRequest) {
     // PHASE 1: Pre-Analysis
     const preAnalysis = buildPreAnalysisContext(text);
 
-    console.log(`🔍 Pre-analysis found ${preAnalysis.detectedKeywords.length} keywords`);
-    console.log(`📋 Candidate policies: ${preAnalysis.candidatePolicies.join(", ") || "none"}`);
+    console.log(`🔍 Pre-analysis found ${preAnalysis.detectedKeywords?.length || 0} keywords`);
+    console.log(`📋 Candidate policies: ${preAnalysis.candidatePolicies?.join(", ") || "none"}`);
     console.log(`🎯 Threat patterns: ${preAnalysis.threatPatterns?.length || 0}`);
 
     // Quick clarification check for No Action
@@ -224,10 +237,10 @@ export async function POST(request: NextRequest) {
             appliedClarification: quickCheck.clarificationId,
           },
           preAnalysis: {
-            keywords: preAnalysis.detectedKeywords,
-            candidatePolicies: preAnalysis.candidatePolicies,
+            keywords: preAnalysis.detectedKeywords || [],
+            candidatePolicies: preAnalysis.candidatePolicies || [],
             primaryCandidate: preAnalysis.primaryCandidate,
-            exceptions: preAnalysis.exceptions.detected,
+            exceptions: preAnalysis.exceptions?.detected || [],
             language: preAnalysis.language,
           },
           processingTime,
@@ -349,15 +362,15 @@ export async function POST(request: NextRequest) {
       success: true,
       analysis: validatedAnalysis,
       preAnalysis: {
-        keywords: preAnalysis.detectedKeywords,
-        candidatePolicies: preAnalysis.candidatePolicies,
+        keywords: preAnalysis.detectedKeywords || [],
+        candidatePolicies: preAnalysis.candidatePolicies || [],
         primaryCandidate: preAnalysis.primaryCandidate,
-        exceptions: preAnalysis.exceptions.detected,
+        exceptions: preAnalysis.exceptions?.detected || [],
         viChecks: preAnalysis.viChecks,
         ssiedChecks: preAnalysis.ssiedChecks,
         bhChecks: preAnalysis.bhChecks,
         language: preAnalysis.language,
-        threatPatterns: preAnalysis.threatPatterns,
+        threatPatterns: preAnalysis.threatPatterns || [],
       },
       processingTime,
       quickCheckApplied: false,
