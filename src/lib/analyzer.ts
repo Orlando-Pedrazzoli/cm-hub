@@ -1,15 +1,10 @@
 // ============================================
-// CM POLICY HUB - ANALYZER (v3.0)
-// Sistema de análise integrado com keyword-loader
-// Refatorado para usar dados dinâmicos dos JSONs
-// ============================================
+// CM POLICY HUB - ANALYZER (v4.0 REFATORADO)
 // 
-// CHANGELOG v3.0:
-// - Removido keywords hardcoded (usava ~400 linhas redundantes)
-// - Integração com keyword-loader.ts para keywords dinâmicas
-// - Mantidos todos os checks específicos por policy
-// - Mantida lógica de merge com AI analysis
-// - Código mais limpo e manutenível
+// MUDANÇAS v4.0:
+// - Usa policy-checks.ts para funções compartilhadas
+// - Elimina ~300 linhas de código duplicado
+// - Mantém compatibilidade com API existente
 // ============================================
 
 import {
@@ -19,12 +14,25 @@ import {
   Severity,
   ActionType,
   PolicyChecks,
-  DetectedExceptions,
-  VIChecks,
-  BHChecks,
-  CSEANChecks,
   AdultSexualChecks,
+  CSEANChecks,
 } from "./types";
+
+// ⭐ NOVO: Importar funções compartilhadas de policy-checks.ts
+import {
+  detectExceptions,
+  performVIChecks,
+  performSSIEDChecks,
+  performBHChecks,
+  performWAEChecks,
+  performVGCChecks,
+  performTAChecks,
+  SSIEDChecks,
+  BHChecks,
+  WAEChecks,
+  VGCChecks,
+  TAChecks,
+} from "./policy-checks";
 
 // INTEGRAÇÃO COM KEYWORD-LOADER
 import { findKeywordsInText } from "./keyword-loader";
@@ -45,397 +53,17 @@ export interface DecisionTreeResponse {
 }
 
 // ============================================
-// EXTENDED POLICY CHECKS
+// RE-EXPORT TYPES FROM POLICY-CHECKS
+// Para manter compatibilidade com código existente
 // ============================================
 
-export interface WAEChecks {
-  hasWeaponMention: boolean;
-  hasAmmunitionMention: boolean;
-  hasExplosiveMention: boolean;
-  hasSaleIntent: boolean;
-  hasBrickAndMortar: boolean;
-  hasPeerToPeer: boolean;
-  hasInstructions: boolean;
-  has3DPrintingContext: boolean;
-  hasCircumventionSignals: boolean;
-  weaponType: "firearm" | "bladed" | "explosive" | "ammunition" | "3d_printed" | "unknown";
-}
+export type { SSIEDChecks, BHChecks, WAEChecks, VGCChecks, TAChecks };
 
-export interface VGCChecks {
-  hasGraphicImagerySignals: boolean;
-  hasHumanVictim: boolean;
-  hasAnimalVictim: boolean;
-  hasFictionalContext: boolean;
-  hasSadisticIndicators: boolean;
-  hasNewsContext: boolean;
-  severityLevel: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-  isDesignatedEvent: boolean;
-}
-
-export interface TAChecks {
-  hasTobaccoProduct: boolean;
-  hasAlcoholProduct: boolean;
-  hasENDSProduct: boolean;
-  hasSaleIntent: boolean;
-  hasBrickAndMortar: boolean;
-  hasPeerToPeer: boolean;
-  hasConsumptionDepiction: boolean;
-  hasBrandDepiction: boolean;
-  hasPromotion: boolean;
-  isFictionalContext: boolean;
-  productType: "tobacco" | "alcohol" | "ends" | "cessation" | "unknown";
-}
-
-export interface SSIEDChecks {
-  hasSuicideContent: boolean;
-  hasSelfInjuryContent: boolean;
-  hasEatingDisorderContent: boolean;
-  hasPromotionSignals: boolean;
-  hasAdmissionSignals: boolean;
-  hasGraphicImagery: boolean;
-  hasMockingContent: boolean;
-  hasRecoveryContext: boolean;
-  hasViralEventReference: boolean;
-  isCIS: boolean; // Credible Intent of Suicide
-  cisHasExplicitIntent: boolean;
-  cisHasCapability: boolean;
-  cisHasImminence: boolean;
-  edSignalType: "promotion" | "context" | "benign" | "none";
-}
+// Re-exported from types.ts: CSEANChecks, AdultSexualChecks
 
 // ============================================
-// EXCEPTION DETECTION
+// POLICY-SPECIFIC CHECKS (não duplicadas)
 // ============================================
-
-function detectExceptions(text: string): DetectedExceptions {
-  const lower = text.toLowerCase();
-  const detected: string[] = [];
-
-  const checks = {
-    hasSelfDefense: /\b(defesa|defender|proteger|self.?defense|legítima defesa)\b/i.test(lower),
-    hasRedemption: /\b(arrependo|desculpa|perdão|sorry|regret|me arrependo)\b/i.test(lower),
-    hasCondemning: /\b(é errado|não se deve|condenamos|wrong|condemn|é uma vergonha)\b/i.test(lower),
-    hasHypothetical: /\b(se eu fosse|imagine|ficção|filme|série|jogo|game|movie|fiction|hipotético)\b/i.test(lower),
-    hasEducational: /\b(educação|ensino|academic|education|study|universidade|escola)\b/i.test(lower),
-    hasNewsReporting: /\b(notícia|reportagem|news|report|journalism|jornal|g1|folha|estadão)\b/i.test(lower),
-    hasArtisticContext: /\b(arte|artístico|música|letra|artistic|lyrics|poesia|poema)\b/i.test(lower),
-    hasSatire: /\b(sátira|ironia|piada|satire|joke|parody|meme|comédia)\b/i.test(lower),
-    hasEndearingContext: /\b(meu amor|querido|amigo|brincadeira|friend|dear|carinho)\b/i.test(lower),
-    hasCriminalAllegation: /\b(polícia|tribunal|police|court|lawsuit|processo|crime)\b/i.test(lower),
-    hasBusinessReview: /\b(review|avaliação|estrelas|stars|serviço|atendimento)\b/i.test(lower),
-    hasFightSportContext: /\b(mma|ufc|boxe|boxing|luta|fight|wrestling|jiu.?jitsu)\b/i.test(lower),
-    hasMedicalContext: /\b(médico|medicina|doctor|medical|health|hospital|tratamento)\b/i.test(lower),
-    hasFamilyContext: /\b(filho|filha|bebé|família|son|daughter|baby|family|mãe|pai)\b/i.test(lower),
-    hasRecoveryContext: /\b(recuperação|recovery|superando|overcame|em tratamento|sobriety)\b/i.test(lower),
-    hasAwarenessContext: /\b(conscientização|awareness|prevenção|prevention|ajuda|help)\b/i.test(lower),
-    hasBrickAndMortar: /\b(loja|store|shop|site oficial|official|retail|atacado|varejo)\b/i.test(lower),
-    hasReligiousContext: /\b(ramadan|quaresma|jejum religioso|religious|oração|prayer)\b/i.test(lower),
-    hasFictionalContext: /\b(filme|movie|série|series|tv show|novela|livro|book|jogo|game)\b/i.test(lower),
-  };
-
-  // Collect detected exceptions
-  if (checks.hasSelfDefense) detected.push("Self-defense");
-  if (checks.hasRedemption) detected.push("Redemption");
-  if (checks.hasCondemning) detected.push("Condemning");
-  if (checks.hasHypothetical) detected.push("Hypothetical/Fiction");
-  if (checks.hasEducational) detected.push("Educational");
-  if (checks.hasNewsReporting) detected.push("News Reporting");
-  if (checks.hasArtisticContext) detected.push("Artistic Context");
-  if (checks.hasSatire) detected.push("Satire/Humor");
-  if (checks.hasEndearingContext) detected.push("Endearing Context");
-  if (checks.hasCriminalAllegation) detected.push("Criminal Allegation");
-  if (checks.hasBusinessReview) detected.push("Business Review");
-  if (checks.hasFightSportContext) detected.push("Fight/Sport Context");
-  if (checks.hasMedicalContext) detected.push("Medical Context");
-  if (checks.hasFamilyContext) detected.push("Family Context");
-  if (checks.hasRecoveryContext) detected.push("Recovery Context");
-  if (checks.hasAwarenessContext) detected.push("Awareness/Prevention");
-  if (checks.hasBrickAndMortar) detected.push("Brick-and-Mortar");
-  if (checks.hasReligiousContext) detected.push("Religious Context");
-  if (checks.hasFictionalContext) detected.push("Fictional Context");
-
-  return { ...checks, detected };
-}
-
-// ============================================
-// POLICY-SPECIFIC CHECKS
-// ============================================
-
-function performWAEChecks(text: string, keywords: KeywordMatch[]): WAEChecks {
-  const waeKeywords = keywords.filter((k) => k.policy === "wae");
-  
-  const hasWeaponMention = waeKeywords.some((k) => 
-    ["Firearm", "Firearm Slang BR", "Bladed Weapon", "firearm", "firearms", "bladed_weapons"].some(cat => 
-      k.category.toLowerCase().includes(cat.toLowerCase())
-    )
-  );
-  const hasAmmunitionMention = waeKeywords.some((k) => 
-    k.category.toLowerCase().includes("ammunition")
-  );
-  const hasExplosiveMention = waeKeywords.some((k) => 
-    k.category.toLowerCase().includes("explosive")
-  );
-  const has3DPrintingContext = waeKeywords.some((k) => 
-    k.category.toLowerCase().includes("3d") || k.category.toLowerCase().includes("printed")
-  );
-  const hasInstructions = waeKeywords.some((k) => 
-    k.category.toLowerCase().includes("instruction")
-  );
-  
-  const hasSaleIntent = /\b(vendo|compro|vender|comprar|sell|buy|sale|à venda|for sale)\b/i.test(text);
-  const hasBrickAndMortar = /\b(loja|store|site oficial|official|retail|armasltda|taurus)\b/i.test(text);
-  const hasPeerToPeer = /\b(dm|inbox|whatsapp|telegram|particular|privado)\b/i.test(text) && hasSaleIntent;
-  
-  const hasCircumventionSignals = /\b(emoji|código|code|foto inbox|pic in dm)\b/i.test(text) ||
-    /[🔫💣🗡️🔪]/u.test(text);
-
-  let weaponType: WAEChecks["weaponType"] = "unknown";
-  if (has3DPrintingContext) weaponType = "3d_printed";
-  else if (hasExplosiveMention) weaponType = "explosive";
-  else if (hasAmmunitionMention) weaponType = "ammunition";
-  else if (waeKeywords.some((k) => k.category.toLowerCase().includes("bladed"))) weaponType = "bladed";
-  else if (hasWeaponMention) weaponType = "firearm";
-
-  return {
-    hasWeaponMention,
-    hasAmmunitionMention,
-    hasExplosiveMention,
-    hasSaleIntent,
-    hasBrickAndMortar,
-    hasPeerToPeer,
-    hasInstructions,
-    has3DPrintingContext,
-    hasCircumventionSignals,
-    weaponType,
-  };
-}
-
-function performVGCChecks(text: string, keywords: KeywordMatch[]): VGCChecks {
-  const vgcKeywords = keywords.filter((k) => k.policy === "vgc");
-  
-  const hasGraphicImagerySignals = vgcKeywords.some((k) => 
-    ["dismemberment", "burning", "internal_organs", "dead_body", "graphic", "gore", "mutilation"].some(cat =>
-      k.category.toLowerCase().includes(cat)
-    )
-  );
-  const hasHumanVictim = /\b(pessoa|human|homem|mulher|man|woman|child|criança)\b/i.test(text);
-  const hasAnimalVictim = vgcKeywords.some((k) => 
-    k.category.toLowerCase().includes("animal")
-  );
-  const hasFictionalContext = /\b(filme|movie|jogo|game|série|series|animação|animation)\b/i.test(text);
-  const hasSadisticIndicators = vgcKeywords.some((k) => 
-    ["sadistic", "torture"].some(cat => k.category.toLowerCase().includes(cat))
-  );
-  const hasNewsContext = /\b(notícia|news|reportagem|report|jornal|g1)\b/i.test(text);
-
-  // Calculate severity level (1-10)
-  let severityLevel: VGCChecks["severityLevel"] = 10;
-  if (vgcKeywords.some((k) => k.severity === "critical")) severityLevel = 1;
-  else if (hasSadisticIndicators) severityLevel = 2;
-  else if (vgcKeywords.some((k) => k.category.toLowerCase().includes("dismemberment"))) severityLevel = 3;
-  else if (vgcKeywords.some((k) => k.severity === "high")) severityLevel = 4;
-  else if (hasGraphicImagerySignals) severityLevel = 5;
-  else if (vgcKeywords.length > 0) severityLevel = 7;
-
-  // Check for designated events
-  const isDesignatedEvent = /\b(holocaust|holocausto|rwanda|tiananmen|columbine|christchurch)\b/i.test(text);
-
-  return {
-    hasGraphicImagerySignals,
-    hasHumanVictim,
-    hasAnimalVictim,
-    hasFictionalContext,
-    hasSadisticIndicators,
-    hasNewsContext,
-    severityLevel,
-    isDesignatedEvent,
-  };
-}
-
-function performVIChecks(text: string, keywords: KeywordMatch[]): VIChecks {
-  const viKeywords = keywords.filter((k) => k.policy === "vi");
-  
-  const hasTarget = /\b(te|você|tu|you|him|her|them|ele|ela|eles)\b/i.test(text) || 
-                   /[A-Z][a-záàâãéèêíïóôõöúç]{2,}/.test(text) ||
-                   /@\w+/.test(text);
-  const hasIntent = /\b(vou|vamos|gonna|will|going to|irei|farei)\b/i.test(text);
-  const hasTiming = /\b(amanhã|hoje|às?\s*\d|daqui\s+a|tomorrow|today|tonight|agora|now)\b/i.test(text);
-  const hasArmament = viKeywords.some((k) => k.category.toLowerCase().includes("armament")) ||
-                      /\b(arma|faca|pistola|gun|knife|weapon|espingarda|rifle)\b/i.test(text);
-  const hasLocation = /\b(escola|trabalho|casa|escritório|school|work|home|office|igreja|church)\b/i.test(text);
-  const hasMethod = viKeywords.some((k) => 
-    ["hsv", "high_severity", "lethal", "death_threat", "calls_for_death", "proxy_lethal"].some(cat =>
-      k.category.toLowerCase().includes(cat)
-    )
-  );
-  
-  const isCredibleThreat = hasTarget && hasIntent && hasMethod && 
-                          (hasTiming || hasArmament || hasLocation);
-
-  return { 
-    hasTarget, 
-    hasIntent, 
-    hasTiming, 
-    hasArmament, 
-    hasLocation, 
-    hasMethod, 
-    isCredibleThreat,
-  };
-}
-
-function performTAChecks(text: string, keywords: KeywordMatch[]): TAChecks {
-  const taKeywords = keywords.filter((k) => k.policy === "ta");
-  
-  const hasTobaccoProduct = taKeywords.some((k) => 
-    k.category.toLowerCase().includes("tobacco")
-  );
-  const hasAlcoholProduct = taKeywords.some((k) => 
-    k.category.toLowerCase().includes("alcohol")
-  );
-  const hasENDSProduct = taKeywords.some((k) => 
-    ["ends", "vape", "vaping", "e-cigarette"].some(cat => k.category.toLowerCase().includes(cat))
-  );
-  
-  const hasSaleIntent = /\b(vendo|compro|vender|comprar|sell|buy|sale|à venda|for sale|delivery)\b/i.test(text);
-  const hasBrickAndMortar = /\b(loja|store|restaurante|bar|pub|brewery|cervejaria|vinícola)\b/i.test(text);
-  const hasPeerToPeer = /\b(dm|inbox|whatsapp|particular|privado|hmu|hit me up)\b/i.test(text) && hasSaleIntent;
-  
-  const hasConsumptionDepiction = /\b(bebendo|drinking|fumando|smoking|vaping|tomando)\b/i.test(text);
-  const hasBrandDepiction = taKeywords.some((k) => 
-    k.category.toLowerCase().includes("brand")
-  );
-  const hasPromotion = /\b(promoção|promotion|desconto|discount|grátis|free|oferta|offer)\b/i.test(text);
-  
-  const isFictionalContext = /\b(filme|movie|série|series|novela|tv show)\b/i.test(text);
-
-  let productType: TAChecks["productType"] = "unknown";
-  if (hasENDSProduct) productType = "ends";
-  else if (hasTobaccoProduct) productType = "tobacco";
-  else if (hasAlcoholProduct) productType = "alcohol";
-
-  return {
-    hasTobaccoProduct,
-    hasAlcoholProduct,
-    hasENDSProduct,
-    hasSaleIntent,
-    hasBrickAndMortar,
-    hasPeerToPeer,
-    hasConsumptionDepiction,
-    hasBrandDepiction,
-    hasPromotion,
-    isFictionalContext,
-    productType,
-  };
-}
-
-function performSSIEDChecks(text: string, keywords: KeywordMatch[]): SSIEDChecks {
-  const ssiedKeywords = keywords.filter((k) => k.policy === "ssied" || k.policy === "cis");
-  
-  // Suicide detection
-  const hasSuicideContent = ssiedKeywords.some((k) => 
-    ["suicide", "suicídio", "suicidio", "intent", "ideation", "method", "note", "signal", "incitement"].some(cat =>
-      k.category.toLowerCase().includes(cat)
-    )
-  );
-  
-  // Self-Injury detection
-  const hasSelfInjuryContent = ssiedKeywords.some((k) => 
-    ["self-injury", "self_injury", "si_means", "cutting", "autolesão", "automutilação"].some(cat =>
-      k.category.toLowerCase().includes(cat)
-    )
-  );
-  
-  // Eating Disorder detection
-  const hasEatingDisorderContent = ssiedKeywords.some((k) => 
-    ["ed_promotion", "ed_coordination", "ed_type", "ed_behavior", "ed_signal", "eating", "anorexia", "bulimia"].some(cat =>
-      k.category.toLowerCase().includes(cat)
-    )
-  );
-  
-  // Promotion signals (critical)
-  const hasPromotionSignals = ssiedKeywords.some((k) => 
-    k.category.toLowerCase().includes("promotion") || k.category.toLowerCase().includes("incitement")
-  );
-  
-  // Admission signals
-  const hasAdmissionSignals = /\b(eu tenho|i have|sofro de|i suffer|minha anorexia|my anorexia|me corto|i cut myself)\b/i.test(text);
-  
-  // Graphic imagery
-  const hasGraphicImagery = /\b(sangue|blood|corte|cut|cicatriz|scar|vômito|vomit)\b/i.test(text) && 
-    (hasSuicideContent || hasSelfInjuryContent || hasEatingDisorderContent);
-  
-  // Mocking content
-  const hasMockingContent = /\b(lol|lmao|kkk|😂|🤣|meme|piada|joke)\b/i.test(text) && 
-    (hasSuicideContent || hasSelfInjuryContent || hasEatingDisorderContent);
-  
-  // Recovery context
-  const hasRecoveryContext = /\b(recuperação|recovery|superando|overcame|em tratamento|sober|clean)\b/i.test(text);
-  
-  // Viral events
-  const hasViralEventReference = ssiedKeywords.some((k) => 
-    k.category.toLowerCase().includes("viral")
-  ) || /\b(blue whale|baleia azul|momo challenge|jonathan galindo)\b/i.test(text);
-  
-  // CIS (Credible Intent of Suicide) detection
-  const cisHasExplicitIntent = ssiedKeywords.some((k) => 
-    k.category.toLowerCase().includes("intent") || k.category.toLowerCase().includes("note")
-  ) || /\b(vou me matar|i will kill myself|going to end it|this is goodbye)\b/i.test(text);
-  
-  const cisHasCapability = ssiedKeywords.some((k) => 
-    k.category.toLowerCase().includes("method")
-  ) || /\b(pílulas|pills|arma|gun|corda|rope|ponte|bridge|prédio|building)\b/i.test(text);
-  
-  const cisHasImminence = /\b(agora|now|hoje|today|tonight|esta noite|amanhã|tomorrow)\b/i.test(text);
-  
-  const isCIS = cisHasExplicitIntent && cisHasCapability && cisHasImminence;
-  
-  // ED Signal type
-  let edSignalType: SSIEDChecks["edSignalType"] = "none";
-  if (hasPromotionSignals) edSignalType = "promotion";
-  else if (hasEatingDisorderContent) edSignalType = "context";
-  else if (/\b(dieta|diet|emagrecer|weight loss)\b/i.test(text)) edSignalType = "benign";
-
-  return {
-    hasSuicideContent,
-    hasSelfInjuryContent,
-    hasEatingDisorderContent,
-    hasPromotionSignals,
-    hasAdmissionSignals,
-    hasGraphicImagery,
-    hasMockingContent,
-    hasRecoveryContext,
-    hasViralEventReference,
-    isCIS,
-    cisHasExplicitIntent,
-    cisHasCapability,
-    cisHasImminence,
-    edSignalType,
-  };
-}
-
-function performBHChecks(text: string): BHChecks {
-  const hasIdentifiableTarget = /\b(te|você|@\w+|tu|seu|sua)\b/i.test(text);
-  
-  let targetType: BHChecks["targetType"] = "unknown";
-  if (/\b(presidente|ministro|celebridade|president|celebrity)\b/i.test(text)) {
-    targetType = "public_figure";
-  } else if (/\b(criança|menor|filho|kid|child|minor)\b/i.test(text)) {
-    targetType = "private_minor";
-  } else if (hasIdentifiableTarget) {
-    targetType = "private_adult";
-  }
-
-  return {
-    hasIdentifiableTarget,
-    targetType,
-    hasNameFaceMatch: false,
-    hasPurposefulExposure: /@\w+/.test(text),
-    hasSelfReport: false,
-    isEndearingContext: /\b(meu amor|querido|amigo|friend|dear)\b/i.test(text),
-    isCriminalAllegation: /\b(polícia|tribunal|police|court)\b/i.test(text),
-    isBusinessReview: /\b(review|avaliação|estrelas)\b/i.test(text),
-  };
-}
 
 function performCSEANChecks(text: string, keywords: KeywordMatch[]): CSEANChecks {
   const hasMinorPresent = /\b(criança|menor|miúdo|kid|child|minor|teen|novinha)\b/i.test(text);
@@ -474,7 +102,7 @@ function performAdultSexualChecks(text: string, keywords: KeywordMatch[]): Adult
     hasSolicitationSignals: keywords.some((k) => k.policy === "sspx"),
     hasConsentIndicators: /\b(consensual|consent)\b/i.test(text),
     isCommercialContent: /\b(vendo|selling|€|\$|onlyfans)\b/i.test(text),
-    contextType: "unknown",
+    contextType: "unknown" as const,
   };
 }
 
@@ -543,21 +171,53 @@ function mapPolicyFromPath(decisionPath: string[]): PolicyId | null {
 }
 
 // ============================================
+// POLICY NAMES CONSTANT
+// ============================================
+
+const POLICY_NAMES: Record<string, string> = {
+  vi: "Violence and Incitement",
+  bh: "Bullying and Harassment",
+  ssied: "Suicide, Self-Injury, and Eating Disorders",
+  hc: "Hateful Conduct",
+  csean: "Child Sexual Exploitation, Abuse, and Nudity",
+  ase: "Adult Sexual Exploitation",
+  ansa: "Adult Nudity and Sexual Activity",
+  sspx: "Adult Sexual Solicitation",
+  vgc: "Violent and Graphic Content",
+  doi: "Dangerous Organizations and Individuals",
+  he: "Human Exploitation",
+  dp: "Drugs and Pharmaceuticals",
+  ta: "Tobacco and Alcohol",
+  wae: "Weapons, Ammunition, and Explosives",
+  fsdp: "Fraud, Scam, and Deceptive Practices",
+  chpc: "Coordinating Harm and Promoting Crime",
+  pv: "Privacy Violations",
+  cs: "Cybersecurity",
+  spam: "Spam",
+  ogg: "Online Gambling and Games",
+  hw: "Health and Wellness",
+  rp: "Recalled Products",
+  psl: "Profane and Sexualized Language",
+  orgs: "Other RGS",
+  cis: "Credible Intent of Suicide",
+};
+
+// ============================================
 // MAIN ANALYSIS FUNCTION (Local Only)
-// Agora usa keyword-loader.ts em vez de keywords hardcoded
+// ⭐ Agora usa funções de policy-checks.ts
 // ============================================
 
 export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text" | "timestamp" | "aiAnalysis" | "language" | "processingTime"> {
   // INTEGRAÇÃO: Usar keyword-loader para encontrar keywords
   const keywords = findKeywordsInText(text);
   
-  // Detect exceptions
+  // ⭐ Usar funções de policy-checks.ts (elimina duplicação)
   const exceptions = detectExceptions(text);
   
-  // Perform policy-specific checks
+  // ⭐ Usar funções de policy-checks.ts
   const checks: ExtendedPolicyChecks = {
     vi: performVIChecks(text, keywords),
-    bh: performBHChecks(text),
+    bh: performBHChecks(text, keywords),
     csean: performCSEANChecks(text, keywords),
     adultSexual: performAdultSexualChecks(text, keywords),
     wae: performWAEChecks(text, keywords),
@@ -607,36 +267,6 @@ export function analyzeContent(text: string): Omit<AnalysisResult, "id" | "text"
     
     if (sortedPolicies.length > 0) {
       primaryPolicy = sortedPolicies[0][0];
-      
-      // Get policy name from constants or use ID
-      const POLICY_NAMES: Record<string, string> = {
-        vi: "Violence and Incitement",
-        bh: "Bullying and Harassment",
-        ssied: "Suicide, Self-Injury, and Eating Disorders",
-        hc: "Hateful Conduct",
-        csean: "Child Sexual Exploitation, Abuse, and Nudity",
-        ase: "Adult Sexual Exploitation",
-        ansa: "Adult Nudity and Sexual Activity",
-        sspx: "Adult Sexual Solicitation",
-        vgc: "Violent and Graphic Content",
-        doi: "Dangerous Organizations and Individuals",
-        he: "Human Exploitation",
-        dp: "Drugs and Pharmaceuticals",
-        ta: "Tobacco and Alcohol",
-        wae: "Weapons, Ammunition, and Explosives",
-        fsdp: "Fraud, Scam, and Deceptive Practices",
-        chpc: "Coordinating Harm and Promoting Crime",
-        pv: "Privacy Violations",
-        cyber: "Cybersecurity",
-        spam: "Spam",
-        ogg: "Online Gambling and Games",
-        hw: "Health and Wellness",
-        rp: "Recalled Products",
-        psl: "Profane and Sexualized Language",
-        orgs: "Other RGS",
-        cis: "Credible Intent of Suicide",
-      };
-      
       primaryPolicyName = POLICY_NAMES[primaryPolicy] || primaryPolicy.toUpperCase();
       
       // Build detected policies list

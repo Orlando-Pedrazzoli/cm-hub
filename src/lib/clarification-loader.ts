@@ -1,6 +1,11 @@
 /**
- * Clarification Loader v1.0
+ * Clarification Loader v2.0
  * Loads and indexes policy clarifications for CM Policy Hub AI analysis
+ * 
+ * v2.0 CHANGES:
+ * - Now uses clarifications-unified.json (159 clarifications)
+ * - Supports all 25 policies including new ones (CHPC, CS, PV, DP, WAE, TA, HW, OGG, RP, CIS, ORGS)
+ * - Improved policy alias mapping
  * 
  * Location: /src/lib/clarification-loader.ts
  */
@@ -27,6 +32,7 @@ export interface ClarificationDatabase {
     totalClarifications: number;
     lastUpdated: string;
     description: string;
+    sources?: string[];
   };
   clarifications: Record<string, Clarification[]>;
 }
@@ -45,25 +51,36 @@ const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 /**
  * Load clarifications from JSON file
+ * v2.0: Now defaults to clarifications-unified.json
  */
 export function loadClarificationsFromFile(filePath?: string): ClarificationDatabase {
-  const defaultPath = path.join(process.cwd(), 'src', 'data', 'clarifications', 'clarifications-database.json');
+  // v2.0: Use unified file by default
+  const defaultPath = path.join(process.cwd(), 'src', 'data', 'clarifications', 'clarifications-unified.json');
+  const fallbackPath = path.join(process.cwd(), 'src', 'data', 'clarifications', 'clarifications-database.json');
+  
   const targetPath = filePath || defaultPath;
   
   try {
     const content = fs.readFileSync(targetPath, 'utf-8');
     return JSON.parse(content) as ClarificationDatabase;
   } catch (error) {
-    console.error(`[ClarificationLoader] Failed to load from ${targetPath}:`, error);
-    return {
-      metadata: {
-        version: '0.0.0',
-        totalClarifications: 0,
-        lastUpdated: new Date().toISOString(),
-        description: 'Empty fallback database'
-      },
-      clarifications: {}
-    };
+    // Fallback to old file if unified doesn't exist
+    console.warn(`[ClarificationLoader] Could not load ${targetPath}, trying fallback...`);
+    try {
+      const fallbackContent = fs.readFileSync(fallbackPath, 'utf-8');
+      return JSON.parse(fallbackContent) as ClarificationDatabase;
+    } catch (fallbackError) {
+      console.error(`[ClarificationLoader] Failed to load any clarification file:`, fallbackError);
+      return {
+        metadata: {
+          version: '0.0.0',
+          totalClarifications: 0,
+          lastUpdated: new Date().toISOString(),
+          description: 'Empty fallback database'
+        },
+        clarifications: {}
+      };
+    }
   }
 }
 
@@ -81,12 +98,21 @@ export function buildClarificationIndex(database: ClarificationDatabase): Clarif
       // Add to all
       all.push(clarification);
 
-      // Index by policy
+      // Index by policy (normalize to uppercase)
       const policyNormalized = clarification.policy.toUpperCase();
       if (!byPolicy.has(policyNormalized)) {
         byPolicy.set(policyNormalized, []);
       }
       byPolicy.get(policyNormalized)!.push(clarification);
+
+      // Also index by the key used in the JSON
+      const keyNormalized = policyKey.toUpperCase();
+      if (keyNormalized !== policyNormalized && !byPolicy.has(keyNormalized)) {
+        byPolicy.set(keyNormalized, []);
+      }
+      if (keyNormalized !== policyNormalized) {
+        byPolicy.get(keyNormalized)!.push(clarification);
+      }
 
       // Index by keywords
       for (const keyword of clarification.keywords) {
@@ -114,7 +140,7 @@ export function buildClarificationIndex(database: ClarificationDatabase): Clarif
  */
 function extractDecisionType(decision: string): string {
   const normalized = decision.toLowerCase();
-  if (normalized.includes('no action') || normalized.includes('ignore')) {
+  if (normalized.includes('no action') || normalized.includes('ignore') || normalized.includes('benign')) {
     return 'NO_ACTION';
   }
   if (normalized.includes('escalate') || normalized.includes('escalar')) {
@@ -122,6 +148,9 @@ function extractDecisionType(decision: string): string {
   }
   if (normalized.includes('label')) {
     return 'LABEL';
+  }
+  if (normalized.includes('depends')) {
+    return 'DEPENDS';
   }
   return 'OTHER';
 }
@@ -148,39 +177,139 @@ export function getClarificationIndex(forceReload: boolean = false): Clarificati
 }
 
 /**
+ * v2.0: Extended policy alias mapping for all 25 policies
+ */
+const POLICY_ALIASES: Record<string, string> = {
+  // SSIED aliases
+  'SUICIDE': 'SSIED',
+  'SELF-INJURY': 'SSIED',
+  'EATING DISORDER': 'SSIED',
+  'ED': 'SSIED',
+  'SI': 'SSIED',
+  
+  // BH aliases
+  'BULLYING': 'BH',
+  'HARASSMENT': 'BH',
+  
+  // VI aliases
+  'VIOLENCE': 'VI',
+  'INCITEMENT': 'VI',
+  'V&I': 'VI',
+  
+  // HC aliases
+  'HATE': 'HC',
+  'HATEFUL': 'HC',
+  'HATE SPEECH': 'HC',
+  
+  // ANSA aliases
+  'NUDITY': 'ANSA',
+  'SEXUAL ACTIVITY': 'ANSA',
+  'ADULT NUDITY': 'ANSA',
+  
+  // PSL aliases
+  'PROFANITY': 'PSL',
+  'PROFANE': 'PSL',
+  
+  // CSE/CSEAN aliases
+  'CHILD': 'CSEAN',
+  'CSAM': 'CSEAN',
+  'CSE': 'CSEAN',
+  
+  // ASE aliases
+  'EXPLOITATION': 'ASE',
+  'ADULT EXPLOITATION': 'ASE',
+  'NCII': 'ASE',
+  
+  // HE aliases
+  'HUMAN TRAFFICKING': 'HE',
+  'TRAFFICKING': 'HE',
+  
+  // VGC aliases
+  'GRAPHIC': 'VGC',
+  'GORE': 'VGC',
+  'GRAPHIC CONTENT': 'VGC',
+  
+  // SSPX aliases
+  'SOLICITATION': 'SSPX',
+  'SEXUAL SOLICITATION': 'SSPX',
+  
+  // DOI aliases
+  'DANGEROUS ORGS': 'DOI',
+  'TERRORISM': 'DOI',
+  
+  // FD/FSDP aliases
+  'FRAUD': 'FSDP',
+  'SCAM': 'FSDP',
+  'FD': 'FSDP',
+  
+  // SPAM aliases
+  'ENGAGEMENT GATING': 'SPAM',
+  
+  // RGS aliases
+  'RESTRICTED GOODS': 'RGS',
+  
+  // New policy aliases (v2.0)
+  'COORDINATING HARM': 'CHPC',
+  'PROMOTING CRIME': 'CHPC',
+  
+  'CYBERSECURITY': 'CYBER',
+  'HACKING': 'CYBER',
+  'CYBER': 'CYBER',
+  'CS': 'CYBER',
+  
+  'PRIVACY': 'PV',
+  'DOXXING': 'PV',
+  
+  'DRUGS': 'DP',
+  'PHARMACEUTICALS': 'DP',
+  
+  'WEAPONS': 'WAE',
+  'AMMUNITION': 'WAE',
+  'EXPLOSIVES': 'WAE',
+  
+  'TOBACCO': 'TA',
+  'ALCOHOL': 'TA',
+  
+  'HEALTH': 'HW',
+  'WELLNESS': 'HW',
+  
+  'GAMBLING': 'OGG',
+  'GAMES': 'OGG',
+  
+  'RECALLED': 'RP',
+  'RECALLED PRODUCTS': 'RP',
+  
+  'CREDIBLE INTENT': 'CIS',
+  'CRISIS': 'CIS',
+  
+  'OTHER RGS': 'ORGS',
+  'OTHER RESTRICTED': 'ORGS',
+};
+
+/**
  * Get clarifications by policy
+ * v2.0: Improved alias handling
  */
 export function getClarificationsByPolicy(policy: string): Clarification[] {
   const index = getClarificationIndex();
   const normalized = policy.toUpperCase();
   
-  // Handle common aliases
-  const policyMap: Record<string, string> = {
-    'SUICIDE': 'SSIED',
-    'SELF-INJURY': 'SSIED',
-    'BULLYING': 'BH',
-    'HARASSMENT': 'BH',
-    'VIOLENCE': 'VI',
-    'INCITEMENT': 'VI',
-    'HATE': 'HC',
-    'HATEFUL': 'HC',
-    'NUDITY': 'ANSA',
-    'SEXUAL ACTIVITY': 'ANSA',
-    'PROFANITY': 'PSL',
-    'SPAM': 'SPAM',
-    'FRAUD': 'FD',
-    'CHILD': 'CSE',
-    'CSE': 'CSE',
-    'EXPLOITATION': 'ASE',
-    'HUMAN TRAFFICKING': 'HE',
-    'GRAPHIC': 'VGC',
-    'GORE': 'VGC',
-    'RESTRICTED GOODS': 'RGS',
-    'SOLICITATION': 'SSPX'
-  };
-
-  const mappedPolicy = policyMap[normalized] || normalized;
-  return index.byPolicy.get(mappedPolicy) || [];
+  // Try direct match first
+  let results = index.byPolicy.get(normalized);
+  if (results && results.length > 0) {
+    return results;
+  }
+  
+  // Try alias mapping
+  const mappedPolicy = POLICY_ALIASES[normalized];
+  if (mappedPolicy) {
+    results = index.byPolicy.get(mappedPolicy);
+    if (results && results.length > 0) {
+      return results;
+    }
+  }
+  
+  return [];
 }
 
 /**
@@ -229,12 +358,15 @@ export function getAllClarifications(): Clarification[] {
 
 /**
  * Get clarification statistics
+ * v2.0: Now shows all 25 policies
  */
 export function getClarificationStats(): {
   total: number;
   byPolicy: Record<string, number>;
   byDecision: Record<string, number>;
   uniqueKeywords: number;
+  policiesWithClarifications: string[];
+  policiesWithoutClarifications: string[];
 } {
   const index = getClarificationIndex();
   
@@ -248,11 +380,28 @@ export function getClarificationStats(): {
     byDecision[decision] = clarifications.length;
   }
 
+  // All 27 policies (usando IDs de types.ts)
+  const ALL_POLICIES = [
+    'SSIED', 'BH', 'VI', 'HC', 'ANSA', 'PSL', 'CSEAN', 'ASE', 'HE', 'VGC',
+    'SSPX', 'DOI', 'FSDP', 'SPAM', 'CHPC', 'CYBER', 'PV', 'DP', 'WAE',
+    'TA', 'HW', 'OGG', 'RP', 'CIS', 'ORGS', 'BCP', 'BCR'
+  ];
+
+  const policiesWithClarifications = ALL_POLICIES.filter(p => 
+    index.byPolicy.has(p) && (index.byPolicy.get(p)?.length || 0) > 0
+  );
+
+  const policiesWithoutClarifications = ALL_POLICIES.filter(p => 
+    !index.byPolicy.has(p) || (index.byPolicy.get(p)?.length || 0) === 0
+  );
+
   return {
     total: index.all.length,
     byPolicy,
     byDecision,
-    uniqueKeywords: index.byKeyword.size
+    uniqueKeywords: index.byKeyword.size,
+    policiesWithClarifications,
+    policiesWithoutClarifications,
   };
 }
 
