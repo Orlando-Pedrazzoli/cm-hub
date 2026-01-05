@@ -7,6 +7,9 @@ import { ChevronRight, Sparkles, X, Check, Clock } from "lucide-react";
 export function Sidebar() {
   const { sidebarOpen, setSidebarOpen } = useAppStore();
 
+  // Calculate ready percentage
+  const readyPercentage = Math.round((POLICY_STATS.ready / POLICY_STATS.total) * 100);
+
   // Group policies by category
   const policyGroups: { title: string; policies: PolicyConfig[] }[] = [
     {
@@ -148,10 +151,10 @@ export function Sidebar() {
             <div className="h-2 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transition-all duration-500"
-                style={{ width: `${POLICY_STATS.readyPercentage}%` }}
+                style={{ width: `${readyPercentage}%` }}
               />
             </div>
-            <p className="text-xs text-zinc-500 mt-1.5">{POLICY_STATS.readyPercentage}% complete</p>
+            <p className="text-xs text-zinc-500 mt-1.5">{readyPercentage}% complete</p>
           </div>
 
           {/* Ready policies list */}
