@@ -1,7 +1,7 @@
 // ============================================
 // CM POLICY HUB - ZUSTAND STORE
 // State management completo com suporte para Enhanced AI Analysis
-// v3.0.3 - Fixed TabType
+// v3.0.4 - Added sidebarOpen/setSidebarOpen
 // ============================================
 
 import { create } from "zustand";
@@ -15,7 +15,7 @@ import {
   DetectedExceptions,
   VIChecks,
   ConfidenceBreakdown,
-  TabType,  // ← IMPORTAR TabType
+  TabType,
 } from "./types";
 import { analyzeContent, mergeWithAIAnalysis } from "./analyzer";
 
@@ -118,11 +118,15 @@ interface AppState {
   removeFromHistory: (id: string) => void;
   clearHistory: () => void;
   
-  // Active UI state - USAR TabType
+  // Active UI state
   activeTab: TabType;
   setActiveTab: (tab: TabType) => void;
   selectedPolicy: PolicyId | null;
   setSelectedPolicy: (policy: PolicyId | null) => void;
+  
+  // Sidebar state (v3.0.4)
+  sidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
   
   // Actions
   analyze: (text: string) => Promise<AnalysisResult>;
@@ -438,11 +442,15 @@ export const useAppStore = create<AppState>()(
         })),
       clearHistory: () => set({ history: [] }),
 
-      // Active UI state - AGORA USA TabType
+      // Active UI state
       activeTab: "analyzer",
       setActiveTab: (tab: TabType) => set({ activeTab: tab }),
       selectedPolicy: null,
       setSelectedPolicy: (policy) => set({ selectedPolicy: policy }),
+
+      // Sidebar state (v3.0.4)
+      sidebarOpen: true,
+      setSidebarOpen: (open: boolean) => set({ sidebarOpen: open }),
 
       // Reset analysis
       resetAnalysis: () =>
@@ -579,7 +587,8 @@ export const useAppStore = create<AppState>()(
       name: "cm-policy-hub-storage-v3",
       partialize: (state) => ({
         settings: state.settings,
-        history: state.history.slice(0, 50), // Only persist last 50 items
+        history: state.history.slice(0, 50),
+        sidebarOpen: state.sidebarOpen, // Persist sidebar state
       }),
     }
   )
@@ -596,6 +605,7 @@ export const useAnalysisError = () => useAppStore((state) => state.analysisError
 export const useHistory = () => useAppStore((state) => state.history);
 export const usePreAnalysisData = () => useAppStore((state) => state.preAnalysisData);
 export const useActiveTab = () => useAppStore((state) => state.activeTab);
+export const useSidebarOpen = () => useAppStore((state) => state.sidebarOpen);
 
 // ============================================
 // ACTIONS (for cleaner component code)
@@ -611,6 +621,8 @@ export const appActions = {
   clearHistory: () => useAppStore.getState().clearHistory(),
   setActiveTab: (tab: TabType) => 
     useAppStore.getState().setActiveTab(tab),
+  setSidebarOpen: (open: boolean) =>
+    useAppStore.getState().setSidebarOpen(open),
 };
 
 export default useAppStore;
