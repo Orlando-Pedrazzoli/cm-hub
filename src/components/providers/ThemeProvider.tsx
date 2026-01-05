@@ -16,12 +16,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     const root = document.documentElement;
     
-    if (settings.theme === "dark") {
+    if (settings.darkMode) {
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");
     }
-  }, [settings.theme, mounted]);
+  }, [settings.darkMode, mounted]);
 
   return <>{children}</>;
 }
